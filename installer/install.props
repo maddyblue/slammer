@@ -18,30 +18,34 @@ app.license=gpl.html
 comp.count=5
 
 comp.0.name=Newmark program (check *ONLY* on initial install)
-comp.0.disk-size=4836
-comp.0.real-size=4681
+comp.0.disk-size=2376
+comp.0.real-size=2219
 comp.0.fileset=newmark-program
 
-comp.1.name=California records
-comp.1.disk-size=75484
-comp.1.real-size=72787
-comp.1.fileset=newmark-eq-california
-comp.1.sql=eq-california.sql
+comp.1.name=International records
+comp.1.disk-size=15460
+comp.1.real-size=15247
+comp.1.fileset=newmark-eq-international
+comp.1.sql=eq-international.sql
+comp.1.sqllen=115
 
 comp.2.name=Other US records
 comp.2.disk-size=22504
 comp.2.real-size=22136
 comp.2.fileset=newmark-eq-otherus
 comp.2.sql=eq-otherus.sql
+comp.2.sqllen=176
 
-comp.3.name=International records
-comp.3.disk-size=15460
-comp.3.real-size=15244
-comp.3.fileset=newmark-eq-international
-comp.3.sql=eq-international.sql
+comp.3.name=California records
+comp.3.disk-size=75484
+comp.3.real-size=72787
+comp.3.fileset=newmark-eq-california
+comp.3.sql=eq-california.sql
+comp.3.sqllen=1239
 
 comp.4.name=Chi-Chi, Taiwan earthquake records
 comp.4.disk-size=224320
 comp.4.real-size=223043
 comp.4.fileset=newmark-eq-chichi
 comp.4.sql=eq-chichi.sql
+comp.4.sqllen=630
