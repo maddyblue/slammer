@@ -140,10 +140,11 @@ class ResultsPanel extends JPanel implements ActionListener
 							clearOutput();
 
 							paramUnit = parent.Parameters.unitMetric.isSelected();
-							final double g = paramUnit ? Analysis.Gcmss : Analysis.Gftss;
-							unitDisplacement = paramUnit ? "(cm)" : "(ft)";
+							final double g = paramUnit ? Analysis.Gcmss : Analysis.Ginss;
+							unitDisplacement = paramUnit ? "(cm)" : "(in)";
 							outputTableModel.setColumnIdentifiers(new Object[] {"Earthquake", "Record", ParametersPanel.stringRB + " " + unitDisplacement, ParametersPanel.stringDC + " " + unitDisplacement, ParametersPanel.stringCP + " " + unitDisplacement});
-							unitFmt = paramUnit ? Analysis.fmtOne : Analysis.fmtFour;
+							//unitFmt = paramUnit ? Analysis.fmtOne : Analysis.fmtFour;
+							unitFmt = Analysis.fmtOne;
 
 							boolean paramDualslope = parent.Parameters.dualSlope.isSelected();
 
@@ -195,7 +196,7 @@ class ResultsPanel extends JPanel implements ActionListener
 							double thrust = 0, uwgt = 0, height = 0, vs = 0, damp = 0, vr = 0;
 							int dv2 = 0, dv3 = 0;
 
-							scaleRB = paramUnit ? 1 : Analysis.CMtoFT;
+							scaleRB = paramUnit ? 1 : Analysis.CMtoIN;
 
 							if(parent.Parameters.CAdisp.isSelected())
 							{
@@ -268,6 +269,7 @@ class ResultsPanel extends JPanel implements ActionListener
 							{
 								Double tempd;
 
+								/*
 								tempd = (Double)Utils.checkNum(parent.Parameters.paramUwgt.getText(), ParametersPanel.stringUwgt + " field", null, false, null, null, false, null, false);
 								if(tempd == null)
 								{
@@ -276,6 +278,8 @@ class ResultsPanel extends JPanel implements ActionListener
 								}
 								else
 									uwgt = tempd.doubleValue();
+								*/
+								uwgt = 1;
 
 								tempd = (Double)Utils.checkNum(parent.Parameters.paramHeight.getText(), ParametersPanel.stringHeight + " field", null, false, null, null, false, null, false);
 								if(tempd == null)
@@ -324,6 +328,23 @@ class ResultsPanel extends JPanel implements ActionListener
 										parent.selectParameters();
 										return null;
 									}
+								}
+
+								// metric
+								if(paramUnit)
+								{
+									//uwgt /= Analysis.M3toCM3;
+									height *= Analysis.MtoCM;
+									vs *= Analysis.MtoCM;
+									vr *= Analysis.MtoCM;
+								}
+								// english
+								else
+								{
+									//uwgt /= Analysis.FT3toIN3;
+									height *= Analysis.FTtoIN;
+									vs *= Analysis.FTtoIN;
+									vr *= Analysis.FTtoIN;
 								}
 							}
 
@@ -444,6 +465,7 @@ class ResultsPanel extends JPanel implements ActionListener
 
 								if(paramDecoupled)
 								{
+									// [i]scale is divided by Gcmss because the algorithm expects input data in Gs, but our input files are in cmss. this has nothing to do with, and is not affected by, the unit base being used (english or metric).
 									inv = Decoupled.Decoupled(ain, uwgt, height, vs, damp, di, iscale / Analysis.Gcmss, g, vr, ca, dv2, dv3);
 									norm = Decoupled.Decoupled(ain, uwgt, height, vs, damp, di, scale / Analysis.Gcmss, g, vr, ca, dv2, dv3);
 
@@ -468,6 +490,7 @@ class ResultsPanel extends JPanel implements ActionListener
 
 								if(paramCoupled)
 								{
+									// [i]scale is divided by Gcmss because the algorithm expects input data in Gs, but our input files are in cmss. this has nothing to do with, and is not affected by, the unit base being used (english or metric).
 									inv = Coupled.Coupled(ain, uwgt, height, vs, damp, di, iscale / Analysis.Gcmss, g, vr, ca, dv2, dv3);
 									norm = Coupled.Coupled(ain, uwgt, height, vs, damp, di, scale / Analysis.Gcmss, g, vr, ca, dv2, dv3);
 
@@ -522,6 +545,7 @@ class ResultsPanel extends JPanel implements ActionListener
 								rsd[j + 2] = unitFmt.format(value);
 							}
 
+							outputTableModel.addRow(new Object[] {null, null, null, null, null});
 							outputTableModel.addRow(rmean);
 							outputTableModel.addRow(rmedian);
 							outputTableModel.addRow(rsd);

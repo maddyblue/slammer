@@ -34,12 +34,18 @@ public class Analysis
 	public static final DecimalFormat fmtZero  = new DecimalFormat("0");
 
 	public static final double CMtoFT = 0.032808399;
+	public static final double FTtoIN = 12.0;
+	public static final double CMtoIN = CMtoFT * FTtoIN; // 0.393700787
 	public static final double Gcmss	= 980.665;
-	public static final double Gftss  = Gcmss * CMtoFT;
+	public static final double Gftss  = Gcmss * CMtoFT; // 32.1740486
+	public static final double Ginss  = Gcmss * CMtoIN; // 386.088583
+	public static final double PCFtoKNM3 = 6.3659; // lb/ft^3 to kN/m^3
+	public static final double FTtoM = 0.3048;
+	public static final double FT3toIN3 = FTtoIN * FTtoIN * FTtoIN;
+	public static final double MtoCM = 100;
+	public static final double M3toCM3 = MtoCM * MtoCM * MtoCM;
 
-	public static final int each = 1;
 	private static double time;
-	private static int eachAt;
 	private static double dint;
 	public static XYSeries xys;
 	private static double last;
@@ -52,7 +58,6 @@ public class Analysis
 	protected static void setValueSize(final double Dint)
 	{
 		time = 0;
-		eachAt = each;
 		dint = Dint;
 		xys = new XYSeries("");
 		last = -1;

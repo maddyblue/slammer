@@ -30,6 +30,7 @@ import javax.swing.border.*;
 import java.util.Vector;
 import java.io.*;
 import newmark.*;
+import newmark.analysis.*;
 
 class ParametersPanel extends JPanel implements ActionListener
 {
@@ -46,7 +47,7 @@ class ParametersPanel extends JPanel implements ActionListener
 	public JTextField thrustAngle = new JTextField(4);
 
 	ButtonGroup CAgroup = new ButtonGroup();
-	public JRadioButton CAconst = new JRadioButton("Constant", true);
+	public JRadioButton CAconst = new JRadioButton("Constant (g)", true);
 	public JRadioButton CAdisp = new JRadioButton("Varies with displacement");
 
 	public JTextField CAconstTF = new JTextField();
@@ -254,13 +255,13 @@ class ParametersPanel extends JPanel implements ActionListener
 
 		c.gridx = x++;
 		c.gridy = y++;
-		c.weightx = 1;
 		c.fill = GridBagConstraints.HORIZONTAL;
 		gridbag.setConstraints(CAconstTF, c);
 		panel.add(CAconstTF);
 
 		c.gridx = x++;
 		c.weighty = 1;
+		c.weightx = 1;
 		c.gridwidth = 2;
 		c.fill = GridBagConstraints.BOTH;
 		gridbag.setConstraints(dispPane, c);
@@ -306,7 +307,7 @@ class ParametersPanel extends JPanel implements ActionListener
 		label = new JLabel(" ");
 		label.setBorder(BorderFactory.createMatteBorder(0, 1, 0, 0, Color.BLACK));
 		c.gridx = x++;
-		c.gridheight = 8;
+		c.gridheight = 7;
 		c.weightx = 0;
 		c.fill = GridBagConstraints.VERTICAL;
 		gridbag.setConstraints(label, c);
@@ -338,6 +339,8 @@ class ParametersPanel extends JPanel implements ActionListener
 
 		c.weightx = 0;
 		c.fill = GridBagConstraints.NONE;
+
+		/*
 		c.anchor = GridBagConstraints.EAST;
 		c.gridx = x; x += 3;
 		c.gridy = y++;
@@ -348,6 +351,7 @@ class ParametersPanel extends JPanel implements ActionListener
 		c.anchor = GridBagConstraints.WEST;
 		gridbag.setConstraints(paramUwgt, c);
 		panel.add(paramUwgt);
+		*/
 
 		c.gridy = y++;
 		c.gridx = x; x += 3;
@@ -420,21 +424,31 @@ class ParametersPanel extends JPanel implements ActionListener
 
 	private void updateUnits()
 	{
+		Double d;
 		if(unitMetric.isSelected())
 		{
-			labelUwgt.setText("<html>" + stringUwgt + " (kN/m<sup>3</sup>)</html>");
+			//labelUwgt.setText("<html>" + stringUwgt + " (kN/m<sup>3</sup>)</html>");
 			labelHeight.setText(stringHeight + " (m)");
 			labelVs.setText(stringVs + " (m/s)");
 			labelVr.setText(stringVr + " (m/s)");
 			dispTableModel.setColName(stringDisp + " (cm)");
+
+			//try{d = new Double(paramUwgt.getText()); paramUwgt.setText(Analysis.fmtTwo.format(new Double(d.doubleValue() / Analysis.PCFtoKNM3)));} catch(Exception ex){}
+			try{d = new Double(paramHeight.getText()); paramHeight.setText(Analysis.fmtTwo.format(new Double(d.doubleValue() * Analysis.FTtoM)));} catch(Exception ex){}
+			try{d = new Double(paramVs.getText()); paramVs.setText(Analysis.fmtTwo.format(new Double(d.doubleValue() * Analysis.FTtoM)));} catch(Exception ex){}
+			try{d = new Double(paramVr.getText()); paramVr.setText(Analysis.fmtTwo.format(new Double(d.doubleValue() * Analysis.FTtoM)));} catch(Exception ex){}
 		}
 		else if(unitEnglish.isSelected())
 		{
-			labelUwgt.setText("<html>" + stringUwgt + " (lb/ft<sup>3</sup>)</html>");
+			//labelUwgt.setText("<html>" + stringUwgt + " (lb/ft<sup>3</sup>)</html>");
 			labelHeight.setText(stringHeight + " (ft)");
 			labelVs.setText(stringVs + " (ft/s)");
 			labelVr.setText(stringVr + " (ft/s)");
-			dispTableModel.setColName(stringDisp + " (ft)");
+			dispTableModel.setColName(stringDisp + " (in)");
+			//try{d = new Double(paramUwgt.getText()); paramUwgt.setText(Analysis.fmtTwo.format(new Double(d.doubleValue() * Analysis.PCFtoKNM3)));} catch(Exception ex){}
+			try{d = new Double(paramHeight.getText()); paramHeight.setText(Analysis.fmtTwo.format(new Double(d.doubleValue() / Analysis.FTtoM)));} catch(Exception ex){}
+			try{d = new Double(paramVs.getText()); paramVs.setText(Analysis.fmtTwo.format(new Double(d.doubleValue() / Analysis.FTtoM)));} catch(Exception ex){}
+			try{d = new Double(paramVr.getText()); paramVr.setText(Analysis.fmtTwo.format(new Double(d.doubleValue() / Analysis.FTtoM)));} catch(Exception ex){}
 		}
 	}
 
