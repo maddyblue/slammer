@@ -31,6 +31,7 @@ import java.io.File;
 import java.util.Vector;
 import org.jfree.data.xy.*;
 import org.jfree.chart.*;
+import org.jfree.chart.axis.*;
 import newmark.*;
 import newmark.analysis.*;
 
@@ -101,7 +102,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 		graph.setActionCommand("graph");
 		graph.addActionListener(this);
 
-		graphFreq.setActionCommand("graphFreq");
+		graphFreq.setActionCommand("graphResponse");
 		graphFreq.addActionListener(this);
 
 		setLayout(new BorderLayout());
@@ -239,7 +240,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 				table.setModel(NewmarkTable.REFRESH);
 				recordClear();
 			}
-			else if(command.equals("graph"))
+			else if(command.equals("graph") || command.equals("graphResponse"))
 			{
 				int row = table.getSelectedRow();
 				if(row == -1)
@@ -273,148 +274,100 @@ class RecordManagerPanel extends JPanel implements ActionListener
 				XYSeries xys = new XYSeries("");
 				dat.reset();
 
-				Double val;
-				double last1 = 0, last2 = 0, current;
-				double diff1, diff2;
-				double time = 0, timeStor = 0, td;
-				int perSec = 50;
-				double interval = 1.0 / (double)perSec;
-				int i = 0;
+				String xAxis = null, yAxis = null;
 
-				// add the first point
-				if((val = dat.each()) != null)
+				if(command.equals("graph"))
 				{
-					xys.add(time, val);
-					time += di;
-					last2 = val.doubleValue();
-				}
+					xAxis = "Time (s)";
+					yAxis = "Acceleration (cm/s/s)";
+					Double val;
+					double last1 = 0, last2 = 0, current;
+					double diff1, diff2;
+					double time = 0, timeStor = 0, td;
+					int perSec = 50;
+					double interval = 1.0 / (double)perSec;
+					int i = 0;
 
-				// don't add the second point, but update the data
-				if((val = dat.each()) != null)
-				{
-					time += di;
-					last1 = val.doubleValue();
-				}
-
-				while((val = dat.each()) != null)
-				{
-					td = time - di;
-					current = val.doubleValue();
-
-					diff1 = last1 - current;
-					diff2 = last1 - last2;
-
-					if(
-						(diff1 <= 0 && diff2 <= 0) ||
-						(diff1 >= 0 && diff2 >= 0) ||
-						(td >= (timeStor + interval)))
+					// add the first point
+					if((val = dat.each()) != null)
 					{
-						xys.add(td, last1);
-						timeStor = td;
+						xys.add(time, val);
+						time += di;
+						last2 = val.doubleValue();
 					}
 
-					last2 = last1;
-					last1 = current;
-					time += di;
+					// don't add the second point, but update the data
+					if((val = dat.each()) != null)
+					{
+						time += di;
+						last1 = val.doubleValue();
+					}
+
+					while((val = dat.each()) != null)
+					{
+						td = time - di;
+						current = val.doubleValue();
+
+						diff1 = last1 - current;
+						diff2 = last1 - last2;
+
+						if(
+							(diff1 <= 0 && diff2 <= 0) ||
+							(diff1 >= 0 && diff2 >= 0) ||
+							(td >= (timeStor + interval)))
+						{
+							xys.add(td, last1);
+							timeStor = td;
+						}
+
+						last2 = last1;
+						last1 = current;
+						time += di;
+					}
+				}
+				else if(command.equals("graphResponse"))
+				{
+					xAxis = "Frequency (Hz)";
+					yAxis = "Fourier Amplitude (cm/sec)";
+					double[] arr = new double[dat.size()];
+
+					Double temp;
+					for(int i = 0; (temp = dat.each()) != null; i++)
+						arr[i] = temp.doubleValue();
+
+					double[][] fft = ImportRecords.fftWrap(arr, di);
+
+					double df = 1.0 / ((double)(arr.length) * di);
+					double fr, mag;
+
+					for(int i = 0; i < arr.length; i++)
+					{
+						fr = (double)i * df;
+						mag = Math.sqrt(Math.pow(fft[i][0], 2) + Math.pow(fft[i][1], 2));
+						xys.add(fr, mag);
+					}
 				}
 
 				String title = eq + ": " + record;
 				XYSeriesCollection xysc = new XYSeriesCollection(xys);
-				JFreeChart chart = ChartFactory.createXYLineChart(title, "Time (s)", "Acceleration (cm/s/s)", xysc, org.jfree.chart.plot.PlotOrientation.VERTICAL, false, true, false);
-				ChartFrame frame = new ChartFrame(eq + ": " + record, chart);
-				frame.pack();
-				frame.setLocationRelativeTo(null);
-				frame.show();
-			}
-			else if(command.equals("graphFreq"))
-			{
-				int row = table.getSelectedRow();
-				if(row == -1)
-					return;
 
-				String eq = table.getModel().getValueAt(row, 0).toString();
-				String record = table.getModel().getValueAt(row, 1).toString();
+				JFreeChart chart = ChartFactory.createXYLineChart(title, xAxis, yAxis, xysc, org.jfree.chart.plot.PlotOrientation.VERTICAL, false, true, false);
 
-				Object[][] res = null;
-				res = Utils.getDB().runQuery("select path,digi_int from data where eq='" + eq + "' and record='" + record + "'");
-				if(res == null) return;
-
-				String path = res[1][0].toString();
-				double di = Double.parseDouble(res[1][1].toString());
-
-				File f = new File(path);
-				if(f.canRead() == false)
+				if(command.equals("graphResponse"))
 				{
-					GUIUtils.popupError("Cannot read or open the file " + path + ".");
-					return;
+					chart.getXYPlot().setRangeAxis(new LogarithmicAxis(yAxis));
+					LogarithmicAxis la = new LogarithmicAxis(xAxis);
+					la.setAllowNegativesFlag(true);
+					chart.getXYPlot().setDomainAxis(la);
 				}
 
-				DoubleList dat = new DoubleList(path);
+				//margins are stupid
+				chart.getXYPlot().getDomainAxis().setLowerMargin(0);
+				chart.getXYPlot().getDomainAxis().setUpperMargin(0);
+				chart.getXYPlot().getDomainAxis().setLowerBound(0);
+				chart.getXYPlot().getDomainAxis().setUpperBound(xys.getX(dat.size() - 1).doubleValue());
 
-				if(dat.bad())
-				{
-					GUIUtils.popupError("Invalid data at data point " + dat.badEntry() + " in " + path + ".");
-					return;
-				}
-
-				XYSeries xys = new XYSeries("");
-
-				// create the fft array
-
-				double[] arr = new double[dat.size()];
-
-				Double temp;
-				dat.reset();
-				for(int i = 0; (temp = dat.each()) != null; i++)
-					arr[i] = temp.doubleValue();
-
-				ImportRecords.rdc(arr);
-
-				ImportRecords.taper(arr);
-
-				// Pads the array so its length is a power of 2.
-				int test = 0;
-
-				for(int i = 1; test < arr.length; i++)
-				{
-					test = (int)Math.pow(2, i);
-				}
-
-				double[][] narr = new double[test][2];
-
-				for(int i = 0; i < arr.length; i++)
-				{
-					narr[i][0] = arr[i];
-					narr[i][1] = 0;
-				}
-
-				for(int i = narr.length; i < test; i++)
-				{
-					narr[i][0] = 0;
-					narr[i][1] = 0;
-				}
-
-				// forward fft
-				ImportRecords.fft(narr);
-
-				// scale to keep units correct
-				for(int i = 0; i < narr.length; i++)
-				{
-					narr[i][0] *= di;
-					narr[i][1] *= di;
-				}
-
-				double df = 1.0 / ((double)(narr.length) * di);
-
-				for(int i = 0; i < narr.length; i += 2)
-				{
-					xys.add(df * i, Math.sqrt(Math.pow(narr[i][0], 2) + Math.pow(narr[i][1], 2)));
-				}
-
-				String title = eq + ": " + record;
-				XYSeriesCollection xysc = new XYSeriesCollection(xys);
-				JFreeChart chart = ChartFactory.createXYLineChart(title, "Frequency (Hz)", "Amplitude", xysc, org.jfree.chart.plot.PlotOrientation.VERTICAL, false, true, false);
-				ChartFrame frame = new ChartFrame(eq + ": " + record, chart);
+				ChartFrame frame = new ChartFrame(title, chart);
 				frame.pack();
 				frame.setLocationRelativeTo(null);
 				frame.show();
@@ -499,7 +452,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 					modRup.setText(Utils.shorten(res[1][incr++]));
 					modSite.setSelectedItem(NewmarkTable.SiteClassArray[Integer.parseInt(Utils.shorten(res[1][incr++].toString()))]);
 					modMech.setSelectedItem(NewmarkTable.FocMechArray[Integer.parseInt(Utils.shorten(res[1][incr++].toString()))]);
-					enable = res[1][incr++].toString().equals("true") ? true : false; // Boolean.getBoolean() didn't work
+					enable = res[1][incr++].toString().equals("1") ? true : false;
 				}
 				else
 				{
