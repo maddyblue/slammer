@@ -223,9 +223,9 @@ public class Coupled extends Analysis
 		///////////////////////////////////////////////////////////////////
 		dd = -sdot1 / (sdot2 - sdot1);
 		ddt = dd * delt;
-		acc11 = gSIN - mu[qq - 1] * (g * COS + ain[j - 1] * scal * gSIN);
+		acc11 = gSIN - mu[qq - 1] * (gCOS + ain[j - 1] * scal * gSIN);
 		acc1b = ain[j - 2] * g * scal + dd * (ain[j - 1] - ain[j - 2]) * g * scal;
-		acc22 = gSIN - mu[qq - 1] * (g * COS + acc1b * SIN);
+		acc22 = gSIN - mu[qq - 1] * (gCOS + acc1b * SIN);
 
 		//if dd=0, sliding has already stopped and skip this solution
 
@@ -253,7 +253,7 @@ public class Coupled extends Analysis
 		ddt = (1.0 - dd) * delt;
 		slide = false;
 		acc11 = acc22;
-		acc22 = ain[j - 1] * g * scal * COS;
+		acc22 = ain[j - 1] * gCOS * scal;
 
 		khat = 1.0 + 2.0 * damp * omega * gamma * ddt + (omega * omega) * beta * (ddt * ddt);
 		a = (1.0 - (L * L) / (Mtot * M)) + 2.0 * damp * omega * ddt * (gamma - 1.0) + (omega * omega) * (ddt * ddt) * (beta - 0.5);
