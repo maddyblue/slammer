@@ -317,7 +317,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 
 				String title = eq + ": " + record;
 				XYSeriesCollection xysc = new XYSeriesCollection(xys);
-				JFreeChart chart = ChartFactory.createXYLineChart(title, "Time (s)", "Acceleration (cm/s/s)", xysc, org.jfree.chart.plot.PlotOrientation.HORIZONTAL, false, true, false);
+				JFreeChart chart = ChartFactory.createXYLineChart(title, "Time (s)", "Acceleration (cm/s/s)", xysc, org.jfree.chart.plot.PlotOrientation.VERTICAL, false, true, false);
 				ChartFrame frame = new ChartFrame(eq + ": " + record, chart);
 				frame.pack();
 				frame.setLocationRelativeTo(null);
