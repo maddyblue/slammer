@@ -187,7 +187,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 			System.out.println(command);
 			if(command.equals("delete"))
 			{
-				int n = JOptionPane.showConfirmDialog(this,"Do you want to delete these records?", "Delete?", 						JOptionPane.YES_NO_OPTION);
+				int n = JOptionPane.showConfirmDialog(this, "Do you want to delete these records?", "Delete?", JOptionPane.YES_NO_OPTION);
 				if(n != JOptionPane.YES_OPTION)
 					return;
 
