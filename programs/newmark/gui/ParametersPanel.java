@@ -69,16 +69,21 @@ class ParametersPanel extends JPanel implements ActionListener
 	JLabel labelUwgt = new JLabel();
 	JLabel labelHeight = new JLabel();
 	JLabel labelVs = new JLabel();
-	JLabel labelDamp = new JLabel("Damping ratio (percent)");
+	JLabel labelDamp = new JLabel(stringDamp + " (percent)");
 
 	final public static String stringUwgt = "Unit weight";
 	final public static String stringHeight = "Height";
 	final public static String stringVs = "Shear wave velocity";
 	final public static String stringDisp = "Displacement";
+	final public static String stringDamp = "Damping ratio";
 
-	public JCheckBox typeRigid = new JCheckBox("Rigid Block");
-	public JCheckBox typeDecoupled = new JCheckBox("Decoupled");
-	public JCheckBox typeCoupled = new JCheckBox("Coupled");
+	final public static String stringRB = "Rigid Block";
+	final public static String stringDC = "Decoupled";
+	final public static String stringCP = "Coupled";
+
+	public JCheckBox typeRigid = new JCheckBox(stringRB);
+	public JCheckBox typeDecoupled = new JCheckBox(stringDC);
+	public JCheckBox typeCoupled = new JCheckBox(stringCP);
 
 	JButton next = new JButton("Perform Analysis");
 
