@@ -339,13 +339,4 @@ public class ImportRecords extends Analysis
 
 		return new double[] {zd, zv, za};
 	}
-
-	/* Response spectra
-	 */
-	public static void rsc(double[] arr, double di, double damp, double period)
-	{
-		double yy = Math.sqrt(1.0 - damp * damp);
-		double w = 2 * Math.PI / period;
-
-	}
 }
