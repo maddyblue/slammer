@@ -18,7 +18,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-/* $Id: ResultsPanel.java,v 1.7 2003/12/31 02:40:03 dolmant Exp $ */
+/* $Id: ResultsPanel.java,v 1.8 2004/01/06 00:41:31 dolmant Exp $ */
 
 package newmark.gui;
 
@@ -410,8 +410,8 @@ class ResultsPanel extends JPanel implements ActionListener
 							norm = new Double((String)Analysis.Coupled(dat, Analysis.Gftss, di, scale, uwgt, height, vs, damp, 0 /* angle */, caList));
 							break;
 						case CoupledMetric:
-							inv = new Double((String)Analysis.Coupled(dat, Analysis.Gcmss, di, iscale, uwgt, height, vs, damp, 0 /* angle */, caList));
-							norm = new Double((String)Analysis.Coupled(dat, Analysis.Gcmss, di, scale, uwgt, height, vs, damp, 0 /* angle */, caList));
+							inv = new Double((String)Analysis.Coupled(dat, Analysis.Gcmss, di, iscale, 1 /* uwgt */, height, vs, damp, 0 /* angle */, caList));
+							norm = new Double((String)Analysis.Coupled(dat, Analysis.Gcmss, di, scale, 1 /* uwgt */, height, vs, damp, 0 /* angle */, caList));
 							break;
 						default:
 							GUIUtils.popupError("No analysis method selected.");
