@@ -18,7 +18,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-/* $Id: AddRecordsTable.java,v 1.1 2003/06/15 01:58:11 dolmant Exp $ */
+/* $Id: AddRecordsTable.java,v 1.2 2004/01/06 00:36:02 dolmant Exp $ */
 
 package newmark.gui;
 
@@ -97,31 +97,35 @@ class AddRecordsTable extends JPanel implements ActionListener
 		add(BorderLayout.CENTER, scroll);
 	}
 
-	public void setLocation(File f)
+	public void addLocation(File[] flist)
 	{
 		File files[];
+		File f;
 
-		model.empty();
+		for(int i = 0; i < flist.length; i++)
+		{
+			f = flist[i];
 
-		if(f.isFile())
-		{
-			files = new File[1];
-			files[0] = f;
-		}
-		else if(f.isDirectory())
-		{
-			files = f.listFiles();
-		}
-		else
-		{
-			return;
-		}
-
-		for(int i = 0; i < files.length; i++)
-		{
-			if(files[i].isFile())
+			if(f.isFile())
 			{
-				model.addRow(files[i].getAbsolutePath());
+				files = new File[1];
+				files[0] = f;
+			}
+			else if(f.isDirectory())
+			{
+				files = f.listFiles();
+			}
+			else
+			{
+				return;
+			}
+
+			for(int j = 0; j < files.length; j++)
+			{
+				if(files[j].isFile())
+				{
+					model.addRow(files[j].getAbsolutePath());
+				}
 			}
 		}
 	}

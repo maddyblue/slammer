@@ -18,7 +18,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-/* $Id: AddRecordsPanel.java,v 1.1 2003/06/15 01:58:11 dolmant Exp $ */
+/* $Id: AddRecordsPanel.java,v 1.2 2004/01/06 00:36:02 dolmant Exp $ */
 
 package newmark.gui;
 
@@ -37,10 +37,11 @@ class AddRecordsPanel extends JPanel implements ActionListener
 
 	AddRecordsTable table = new AddRecordsTable();
 
-	JTextField location = new JTextField();
 	JFileChooser chooser = new JFileChooser();
-	JButton browse = new JButton("Browse...");
-	JButton add = new JButton("Add record(s)");
+	JButton browse = new JButton("Add files/directories to list");
+	JButton clearTable = new JButton("Clear list");
+	JButton clearSelected = new JButton("Clear highlited records from list");
+	JButton add = new JButton("Import records");
 
 	public AddRecordsPanel(NewmarkTabbedPane parent)
 	{
@@ -50,28 +51,29 @@ class AddRecordsPanel extends JPanel implements ActionListener
 		browse.setActionCommand("browse");
 		browse.addActionListener(this);
 
-		add.setMnemonic(KeyEvent.VK_A);
+		clearTable.setActionCommand("clearTable");
+		clearTable.addActionListener(this);
+
+		clearSelected.setActionCommand("clearSelected");
+		clearSelected.addActionListener(this);
+
 		add.setActionCommand("add");
 		add.addActionListener(this);
 
 		chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-
-		location.setEditable(false);
+		chooser.setMultiSelectionEnabled(true);
 
 		Vector list = new Vector();
-		list.add(new JLabel("Select a file or directory: "));
 		list.add(browse);
-
-		JPanel north = new JPanel(new BorderLayout());
-		north.add(BorderLayout.WEST, GUIUtils.makeRecursiveLayoutRight(list));
-		north.add(BorderLayout.CENTER, location);
+		list.add(clearTable);
+		list.add(clearSelected);
 
 		JPanel south = new JPanel(new BorderLayout());
 		south.add(BorderLayout.WEST, add);
 
 		setLayout(new BorderLayout());
 
-		add(BorderLayout.NORTH, north);
+		add(BorderLayout.NORTH, GUIUtils.makeRecursiveLayoutRight(list));
 		add(BorderLayout.CENTER, table);
 		add(BorderLayout.SOUTH, south);
 	}
@@ -171,9 +173,19 @@ class AddRecordsPanel extends JPanel implements ActionListener
 				int r = chooser.showOpenDialog(this);
 				if(r == JFileChooser.APPROVE_OPTION)
 				{
-					table.setLocation(chooser.getSelectedFile());
-					location.setText(chooser.getSelectedFile().getAbsolutePath());
+					table.addLocation(chooser.getSelectedFiles());
 				}
+			}
+			else if(command.equals("clearTable"))
+			{
+				table.model.empty();
+			}
+			else if(command.equals("clearSelected"))
+			{
+				int[] rows = table.table.getSelectedRows();
+
+				for(int i = rows.length; i > 0; i--)
+					table.model.removeRow(rows[i - 1]);
 			}
 		}
 		catch (Exception ex)
