@@ -32,6 +32,7 @@ import java.util.Vector;
 import org.jfree.data.xy.*;
 import org.jfree.chart.*;
 import newmark.*;
+import newmark.analysis.*;
 
 class RecordManagerPanel extends JPanel implements ActionListener
 {
@@ -40,7 +41,8 @@ class RecordManagerPanel extends JPanel implements ActionListener
 	NewmarkTable table;
 
 	JComboBox eqList = new JComboBox();
-	JButton graph = new JButton("Graph selected record");
+	JButton graph = new JButton("record");
+	JButton graphFreq = new JButton("frequency");
 	JButton delete = new JButton("Delete selected record(s) from database");
 
 	JButton save = new JButton("Save changes");
@@ -99,6 +101,9 @@ class RecordManagerPanel extends JPanel implements ActionListener
 		graph.setActionCommand("graph");
 		graph.addActionListener(this);
 
+		graphFreq.setActionCommand("graphFreq");
+		graphFreq.addActionListener(this);
+
 		setLayout(new BorderLayout());
 		add(BorderLayout.NORTH, createNorthPanel());
 		add(BorderLayout.CENTER, table);
@@ -118,6 +123,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 
 		list = new Vector();
 		list.add(graph);
+		list.add(graphFreq);
 		list.add(delete);
 		panel.add(BorderLayout.EAST, GUIUtils.makeRecursiveLayoutRight(list));
 
@@ -315,6 +321,102 @@ class RecordManagerPanel extends JPanel implements ActionListener
 				String title = eq + ": " + record;
 				XYSeriesCollection xysc = new XYSeriesCollection(xys);
 				JFreeChart chart = ChartFactory.createXYLineChart(title, "Time (s)", "Acceleration (cm/s/s)", xysc, org.jfree.chart.plot.PlotOrientation.VERTICAL, false, true, false);
+				ChartFrame frame = new ChartFrame(eq + ": " + record, chart);
+				frame.pack();
+				frame.setLocationRelativeTo(null);
+				frame.show();
+			}
+			else if(command.equals("graphFreq"))
+			{
+				int row = table.getSelectedRow();
+				if(row == -1)
+					return;
+
+				String eq = table.getModel().getValueAt(row, 0).toString();
+				String record = table.getModel().getValueAt(row, 1).toString();
+
+				Object[][] res = null;
+				res = Utils.getDB().runQuery("select path,digi_int from data where eq='" + eq + "' and record='" + record + "'");
+				if(res == null) return;
+
+				String path = res[1][0].toString();
+				double di = Double.parseDouble(res[1][1].toString());
+
+				File f = new File(path);
+				if(f.canRead() == false)
+				{
+					GUIUtils.popupError("Cannot read or open the file " + path + ".");
+					return;
+				}
+
+				DoubleList dat = new DoubleList(path);
+
+				if(dat.bad())
+				{
+					GUIUtils.popupError("Invalid data at data point " + dat.badEntry() + " in " + path + ".");
+					return;
+				}
+
+				XYSeries xys = new XYSeries("");
+
+				// create the fft array
+
+				double[] arr = new double[dat.size()];
+
+				Double temp;
+				dat.reset();
+				for(int i = 0; (temp = dat.each()) != null; i++)
+					arr[i] = temp.doubleValue();
+
+				ImportRecords.rdc(arr);
+
+				ImportRecords.taper(arr);
+
+				// Pads the array so its length is a power of 2.
+				int test = 0;
+
+				for(int i = 1; test < arr.length; i++)
+				{
+					test = (int)Math.pow(2, i);
+				}
+
+				double[][] narr = new double[test][2];
+				double[][] tmparr = new double[test][2];
+
+				for(int i = 0; i < arr.length; i++)
+				{
+					narr[i][0] = arr[i];
+					narr[i][1] = 0;
+					tmparr[i][1] = arr[i];
+					tmparr[i][0] = i * di;
+				}
+
+				for(int i = narr.length; i < test; i++)
+				{
+					narr[i][0] = 0;
+					narr[i][1] = 0;
+				}
+
+				// forward fft
+				ImportRecords.fft(narr);
+
+				// scale to keep units correct
+				for(int i = 0; i < narr.length; i++)
+				{
+					narr[i][0] *= di;
+					narr[i][1] *= di;
+				}
+
+				double df = 1.0 / ((double)(narr.length) * di);
+
+				for(int i = 0; i < narr.length; i += 2)
+				{
+					xys.add(df * i, Math.sqrt(Math.pow(narr[i][0], 2) + Math.pow(narr[i][1], 2)));
+				}
+
+				String title = eq + ": " + record;
+				XYSeriesCollection xysc = new XYSeriesCollection(xys);
+				JFreeChart chart = ChartFactory.createXYLineChart(title, "Frequency (Hz)", "Amplitude", xysc, org.jfree.chart.plot.PlotOrientation.VERTICAL, false, true, false);
 				ChartFrame frame = new ChartFrame(eq + ": " + record, chart);
 				frame.pack();
 				frame.setLocationRelativeTo(null);
