@@ -18,7 +18,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-/* $Id: DoubleList.java,v 1.1 2003/06/15 01:58:11 dolmant Exp $ */
+/* $Id: DoubleList.java,v 1.2 2003/07/15 00:14:53 dolmant Exp $ */
 
 package newmark;
 
@@ -49,6 +49,12 @@ public class DoubleList
 	private DoubleListElement head, current;
 	private int length;
 	private int bad = 0;
+
+	public DoubleList()
+	{
+		head = new DoubleListElement();
+		current = head;
+	}
 
 	public DoubleList(String fname) throws IOException
 	{
@@ -89,6 +95,13 @@ public class DoubleList
 		}
 		head = head.next;
 		current = head;
+	}
+
+	public void add(double val)
+	{
+		current.next = new DoubleListElement(new Double(val));
+		current = current.next;
+		length++;
 	}
 
 	private String nextDouble(FileReader file) throws IOException
