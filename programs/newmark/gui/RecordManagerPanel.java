@@ -381,14 +381,11 @@ class RecordManagerPanel extends JPanel implements ActionListener
 				}
 
 				double[][] narr = new double[test][2];
-				double[][] tmparr = new double[test][2];
 
 				for(int i = 0; i < arr.length; i++)
 				{
 					narr[i][0] = arr[i];
 					narr[i][1] = 0;
-					tmparr[i][1] = arr[i];
-					tmparr[i][0] = i * di;
 				}
 
 				for(int i = narr.length; i < test; i++)
