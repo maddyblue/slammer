@@ -180,6 +180,7 @@ class ParametersPanel extends JPanel implements ActionListener
 		int x = 0;
 
 		c.anchor = GridBagConstraints.NORTHWEST;
+		c.fill = GridBagConstraints.VERTICAL;
 
 		c.gridx = x++;
 		c.gridy = y++;
