@@ -286,7 +286,6 @@ class RecordManagerPanel extends JPanel implements ActionListener
 					double time = 0, timeStor = 0, td;
 					int perSec = 50;
 					double interval = 1.0 / (double)perSec;
-					int i = 0;
 
 					// add the first point
 					if((val = dat.each()) != null)
@@ -338,15 +337,66 @@ class RecordManagerPanel extends JPanel implements ActionListener
 					double[][] fft = ImportRecords.fftWrap(arr, di);
 
 					double df = 1.0 / ((double)(arr.length) * di);
-					double fr, mag;
+
+					dat = new DoubleList();
 
 					for(int i = 0; i < arr.length; i++)
 					{
-						fr = (double)i * df;
-						mag = Math.sqrt(Math.pow(fft[i][0], 2) + Math.pow(fft[i][1], 2));
-						xys.add(fr, mag);
+						dat.add(Math.sqrt(Math.pow(fft[i][0], 2) + Math.pow(fft[i][1], 2)));
+					}
+
+					// graph all direction changes and a few inbetween
+
+					Double val;
+					double last1 = 0, last2 = 0, current;
+					double diff1, diff2;
+					double freq = 0, fd;
+					int i = 0, skip = 3;
+
+					dat.reset();
+
+					// add the first point
+					if((val = dat.each()) != null)
+					{
+						i++;
+						xys.add(freq, val);
+						freq += df;
+						last2 = val.doubleValue();
+					}
+
+					// don't add the second point, but update the data
+					if((val = dat.each()) != null)
+					{
+						i++;
+						freq += df;
+						last1 = val.doubleValue();
+					}
+
+					while((val = dat.each()) != null)
+					{
+						i++;
+						fd = freq - df;
+						current = val.doubleValue();
+
+						diff1 = last1 - current;
+						diff2 = last1 - last2;
+
+						if(
+							(diff1 <= 0 && diff2 <= 0) ||
+							(diff1 >= 0 && diff2 >= 0) ||
+							((i % skip) == 0)
+						)
+						{
+							xys.add(fd, last1);
+						}
+
+						last2 = last1;
+						last1 = current;
+						freq += df;
 					}
 				}
+
+				System.out.println(dat.size() + ", " + xys.getItemCount());
 
 				String title = eq + ": " + record;
 				XYSeriesCollection xysc = new XYSeriesCollection(xys);
@@ -365,7 +415,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 				chart.getXYPlot().getDomainAxis().setLowerMargin(0);
 				chart.getXYPlot().getDomainAxis().setUpperMargin(0);
 				chart.getXYPlot().getDomainAxis().setLowerBound(0);
-				chart.getXYPlot().getDomainAxis().setUpperBound(xys.getX(dat.size() - 1).doubleValue());
+				chart.getXYPlot().getDomainAxis().setUpperBound(xys.getX(xys.getItemCount() - 1).doubleValue());
 
 				ChartFrame frame = new ChartFrame(title, chart);
 				frame.pack();
