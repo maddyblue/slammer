@@ -18,7 +18,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-/* $Id: Utils.java,v 1.1 2003/06/15 01:58:11 dolmant Exp $ */
+/* $Id: Utils.java,v 1.2 2003/07/04 19:45:35 dolmant Exp $ */
 
 package newmark;
 
@@ -57,9 +57,15 @@ public class Utils
 
 	public static void catchException(Exception ex)
 	{
-		System.out.println("Error: " + ex.getMessage());
-		ex.printStackTrace();
-		System.exit(0);
+		StackTraceElement e[] = ex.getStackTrace();
+		String trace = "";
+
+		for(int i = 0; i < e.length; i++)
+		{
+			trace = trace + e[i].getClassName() + "(" + e[i].getFileName() + ":" + e[i].getLineNumber() + ")\n";
+		}
+
+		GUIUtils.popupError("Error: " + ex.getMessage() + "\n" + trace);
 	}
 
 	public static String addSlashes(String str)
