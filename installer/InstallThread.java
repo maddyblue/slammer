@@ -30,8 +30,7 @@ import javax.swing.*;
  */
 public class InstallThread extends Thread
 {
-	public InstallThread(Install installer, Progress progress,
-		String installDir, String binDir, int size, Vector components, Vector sql)
+	public InstallThread(Install installer, Progress progress, String installDir, String binDir, int size, Vector components, Vector sql, Vector sqllen, DBThread dbthread, Vector dbvect)
 	{
 		super("Install thread");
 
@@ -42,6 +41,9 @@ public class InstallThread extends Thread
 		this.size = size;
 		this.components = components;
 		this.sql = sql;
+		this.sqllen = sqllen;
+		this.dbthread = dbthread;
+		this.dbvect = dbvect;
 
 		buf = new byte[32768];
 	}
@@ -57,86 +59,54 @@ public class InstallThread extends Thread
 
 		try
 		{
-			for(int i = 0; i < components.size(); i++)
+			int i = 0;
+
+			// first, install the Newmark fileset
+			if(((String)components.elementAt(i)).equals("newmark-program"))
 			{
-				installComponent((String)components.elementAt(i), sql.elementAt(i) != null);
+				installComponent((String)components.elementAt(i));
+				i++;
 			}
 
+			// with the remaining sets, install any sql files
 			String sqlfile;
-			JProgressBar prog = new JProgressBar(0, sqlnum);
-			JFrame progFrame = new JFrame("Progress...");
 
-			prog.setStringPainted(true);
-			prog.setString("Updating database");
-			progFrame.getContentPane().add(prog);
-			progFrame.setSize(300, 75);
-			Dimension screen = progFrame.getToolkit().getScreenSize();
-			Dimension size = progFrame.getSize();
-			progFrame.setLocation((screen.width - size.width) / 2,	(screen.height - size.height) / 2);
-			int incr = 0;
-
-			for(int i = 0; i < sql.size(); i++)
+			for(int j = i; j < components.size(); j++)
 			{
-				if((sqlfile = (String)sql.elementAt(i)) != null)
+				sqlfile = (String)sql.elementAt(j);
+
+				if(sqlfile != null)
 				{
-					progFrame.show();
-					startdb();
+					String outfile = installDir + File.separatorChar
+						+ "records" + File.separatorChar + sqlfile;
 
-					FileReader fr = new FileReader(installDir + File.separatorChar
-						+ "records" + File.separatorChar + sqlfile);
-					String s = "";
-					String cur[] = new String[17];
-					int j = 0;
-					char c;
-					String q;
+					InputStream in = new BufferedInputStream(
+					getClass().getResourceAsStream("/records/" + sqlfile));
 
-					while(fr.ready())
-					{
-						c = (char)fr.read();
+					if(in == null)
+						throw new FileNotFoundException(sqlfile);
 
-						switch(c)
-						{
-							case '\r':
-								break;
-							case '\t':
-								cur[j] = addSlashes(s);
-								j++;
-								s = "";
-								break;
-							case '\n':
-							{
-								cur[j] = addSlashes(s);
-								s = "";
-								j = 0;
+					copy(in, outfile);
+					in.close();
 
-								String path = addSlashes(installDir + File.separator + "records" + File.separator) + cur[0] + addSlashes(File.separator) + cur[1];
-
-								Object res[][] = runQuery("select id from data where eq='" + cur[0] + "' and record='" + cur[1] + "'");
-								if(res != null)
-								{
-									// already in database: continue
-									System.out.println("already in db");
-									continue;
-								}
-
-								q = "insert into data values (uniquekey('data'), '" + cur[0] + "', '" + cur[1] + "', " + cur[2] + ", " + nullify(cur[3]) + ", " + cur[4] + ", " + cur[5] + ", " + cur[6] + ", " + cur[7] + ", " + nullify(cur[8]) + ", " + nullify(cur[9]) + ", " + nullify(cur[10]) + ", " + cur[11] + ", '" + cur[12] + "', '" + cur[13] + "', " + nullify(cur[14]) + ", " + nullify(cur[15]) + ", " + cur[16] + ", " + 0 + ", '" + path + "', 0, 0, 0)";
-								runQuery(q);
-
-								prog.setValue(incr++);
-								prog.paintImmediately(0,0,prog.getWidth(),prog.getHeight());
-
-								break;
-							}
-							default:
-								s += (char)c;
-								break;
-						}
-					}
+					dbvect.addElement(sqlfile);
 				}
 			}
-			progFrame.dispose();
 
-			closedb();
+			// now start the database thread
+			dbthread.startdb();
+			setPriority(NORM_PRIORITY);
+			dbthread.setPriority(NORM_PRIORITY);
+			dbthread.start();
+
+			// install the eq sets concurrently with the database updates
+			for(; i < components.size(); i++)
+			{
+				installComponent((String)components.elementAt(i));
+			}
+
+			// wait until the database is done updating
+			dbthread.join();
 
 			// create it in case it doesn't already exist
 			if(binDir != null)
@@ -175,11 +145,12 @@ public class InstallThread extends Thread
 	private String binDir;
 	private int size;
 	private Vector components;
-	private Vector sql;
+	private Vector sql, sqllen;
 	private byte[] buf;
-	private int sqlnum = 0;
+	private DBThread dbthread;
+	private Vector dbvect;
 
-	private void installComponent(String name, boolean incrsql) throws IOException
+	private void installComponent(String name) throws IOException
 	{
 		BufferedReader fileList = new BufferedReader(
 			new InputStreamReader(getClass()
@@ -199,9 +170,6 @@ public class InstallThread extends Thread
 
 			copy(in,outfile);
 			in.close();
-
-			if(incrsql)
-				sqlnum++;
 		}
 
 		fileList.close();
@@ -230,104 +198,5 @@ public class InstallThread extends Thread
 
 		in.close();
 		out.close();
-	}
-
-	public static String addSlashes(String str)
-	{
-		String ret = "";
-		char c;
-		for(int i = 0; i < str.length(); i++)
-		{
-			c = str.charAt(i);
-			switch(c)
-			{
-				case '\\':
-				case '\'':
-					ret += '\\';
-					break;
-			}
-			ret += c;
-		}
-		return ret;
-	}
-
-	// database connection stuff
-
-	private java.sql.Connection connection = null;
-
-	private void startdb() throws Exception
-	{
-		if(connection != null)
-			return;
-
-		Class.forName("com.mckoi.JDBCDriver");
-
-		String url = "jdbc:mckoi:local://" + installDir + File.separatorChar + "programs" + File.separatorChar + "Database" + File.separatorChar + "db.conf";
-		String username = "newmark";
-		String password = "newmark";
-
-		connection = java.sql.DriverManager.getConnection(url, username, password);
-	}
-
-	private Object[][] runQuery(String query) throws SQLException
-	{
-		Statement statement = connection.createStatement();
-		ResultSet result = null;
-		ResultSetMetaData resdata;
-
-		result = statement.executeQuery(query);
-
-		int row_count = 0;
-		while(result.next()) row_count++;
-		if(row_count <= 0)
-		{
-			statement.close();
-			return null;
-		}
-
-		resdata = result.getMetaData();
-		int word_len;
-		int col_count = resdata.getColumnCount();
-		result.first();
-		result.previous();
-
-		Object[][] array = new Object[row_count + 1][col_count];
-		int[] col_len = new int[col_count];
-		int temp;
-		for(int i = 1; i <= col_count; i++)
-		{
-			array[0][i - 1] = resdata.getColumnName(i);
-			temp = (array[0][i - 1].toString()).length();
-			if(temp > col_len[i - 1]) col_len[i - 1] = temp;
-		}
-		for(int i1 = 1; result.next(); i1++)
-		{
-			for(int i2 = 1; i2 <= col_count; i2++)
-			{
-				array[i1][i2 - 1] = result.getString(i2);
-				if(array[i1][i2 - 1] == null)
-					temp = 0;
-				else
-					temp = (array[i1][i2 - 1].toString()).length();
-				if(temp > col_len[i2 - 1]) col_len[i2 - 1] = temp;
-			}
-		}
-		statement.close();
-		return array;
-	}
-
-	public void closedb() throws SQLException
-	{
-		if(connection != null)
-			connection.close();
-	}
-
-	// utility functions
-
-	public static String nullify(String s)
-	{
-		if(s == null || s.equals(""))
-			return "null";
-		return s;
 	}
 }

@@ -26,8 +26,10 @@ package installer;
 public interface Progress
 {
 	public void setMaximum(int max);
+	public void setMaximumDB(int max);
 
 	public void advance(int value);
+	public void advanceDB();
 
 	public void done();
 

@@ -115,6 +115,7 @@ public class SwingInstall extends JFrame
 	{
 		Vector components = new Vector();
 		Vector sql = new Vector();
+		Vector sqllen = new Vector();
 		int size = 0;
 
 		JPanel comp = selectComponents.comp;
@@ -131,18 +132,25 @@ public class SwingInstall extends JFrame
 					"comp." + ids.elementAt(i) + ".fileset"));
 				sql.addElement(installer.getProperty(
 					"comp." + ids.elementAt(i) + ".sql"));
+				sqllen.addElement(installer.getProperty(
+					"comp." + ids.elementAt(i) + ".sqllen"));
 			}
 		}
 
 		JTextField binDir = chooseDirectory.binDir;
 		String installDir = chooseDirectory.installDir.getText();
 
+		Vector dbvect = new Vector();
+
+		DBThread dbthread = new DBThread(dbvect, sqllen, installDir, progress);
+
 		InstallThread thread = new InstallThread(
 			installer,progress,
 			(installDir == null ? null : installDir),
 			(binDir == null ? null : binDir.getText()),
-			size,components,sql);
-		progress.setThread(thread);
+			size,components,sql,sqllen,
+			dbthread,
+			dbvect);
 		thread.start();
 	}
 
@@ -521,8 +529,7 @@ public class SwingInstall extends JFrame
 
 	class SwingProgress extends JPanel implements Progress
 	{
-		JProgressBar progress;
-		InstallThread thread;
+		JProgressBar progress, dbprogress;
 
 		SwingProgress()
 		{
@@ -531,7 +538,12 @@ public class SwingInstall extends JFrame
 			progress = new JProgressBar();
 			progress.setStringPainted(true);
 
+			dbprogress = new JProgressBar();
+			dbprogress.setString("Database synchronization");
+			dbprogress.setStringPainted(true);
+
 			SwingProgress.this.add(BorderLayout.NORTH,progress);
+			SwingProgress.this.add(BorderLayout.SOUTH,dbprogress);
 		}
 
 		public void setMaximum(final int max)
@@ -545,6 +557,17 @@ public class SwingInstall extends JFrame
 			});
 		}
 
+		public void setMaximumDB(final int max)
+		{
+			SwingUtilities.invokeLater(new Runnable()
+			{
+				public void run()
+				{
+					dbprogress.setMaximum(max);
+				}
+			});
+		}
+
 		public void advance(final int value)
 		{
 			try
@@ -553,8 +576,25 @@ public class SwingInstall extends JFrame
 				{
 					public void run()
 					{
-						progress.setValue(progress
-							.getValue() + value);
+						progress.setValue(progress.getValue() + value);
+					}
+				});
+				Thread.yield();
+			}
+			catch(Exception e)
+			{
+			}
+		}
+
+		public void advanceDB()
+		{
+			try
+			{
+				SwingUtilities.invokeAndWait(new Runnable()
+				{
+					public void run()
+					{
+						dbprogress.setValue(dbprogress.getValue() + 1);
 					}
 				});
 				Thread.yield();
@@ -590,11 +630,6 @@ public class SwingInstall extends JFrame
 					System.exit(1);
 				}
 			});
-		}
-
-		public void setThread(InstallThread thread)
-		{
-			this.thread = thread;
 		}
 	}
 }

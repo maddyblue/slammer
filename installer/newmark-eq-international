@@ -1,4 +1,3 @@
-records/Duzce, Turkey 1999/WF-000
 records/Duzce, Turkey 1999/BOL-000
 records/Duzce, Turkey 1999/BOL-090
 records/Duzce, Turkey 1999/BU-000
@@ -17,8 +16,8 @@ records/Duzce, Turkey 1999/MDR-000
 records/Duzce, Turkey 1999/MDR-090
 records/Duzce, Turkey 1999/VO-000
 records/Duzce, Turkey 1999/VO-090
+records/Duzce, Turkey 1999/WF-000
 records/Duzce, Turkey 1999/WF-090
-records/Friuli, Italy 1976/TMZ-000
 records/Friuli, Italy 1976/BCS-000
 records/Friuli, Italy 1976/BCS-270
 records/Friuli, Italy 1976/CLV-000
@@ -27,8 +26,8 @@ records/Friuli, Italy 1976/COD-000
 records/Friuli, Italy 1976/COD-270
 records/Friuli, Italy 1976/FLT-000
 records/Friuli, Italy 1976/FLT-270
+records/Friuli, Italy 1976/TMZ-000
 records/Friuli, Italy 1976/TMZ-270
-records/Kobe, Japan 1995/TOT-000
 records/Kobe, Japan 1995/FUK-000
 records/Kobe, Japan 1995/FUK-090
 records/Kobe, Japan 1995/HIK-000
@@ -51,8 +50,8 @@ records/Kobe, Japan 1995/TAK-000
 records/Kobe, Japan 1995/TAK-090
 records/Kobe, Japan 1995/TAZ-000
 records/Kobe, Japan 1995/TAZ-090
+records/Kobe, Japan 1995/TOT-000
 records/Kobe, Japan 1995/TOT-090
-records/Kocaeli, Turkey 1999/ZYT-000
 records/Kocaeli, Turkey 1999/ARK-000
 records/Kocaeli, Turkey 1999/ARK-090
 records/Kocaeli, Turkey 1999/ATK-000
@@ -92,6 +91,7 @@ records/Kocaeli, Turkey 1999/MCD-090
 records/Kocaeli, Turkey 1999/SKR-090
 records/Kocaeli, Turkey 1999/YPT-060
 records/Kocaeli, Turkey 1999/YPT-330
+records/Kocaeli, Turkey 1999/ZYT-000
 records/Kocaeli, Turkey 1999/ZYT-090
 records/Nahanni, Canada 1985/NS1-010
 records/Nahanni, Canada 1985/NS1-280
@@ -99,9 +99,11 @@ records/Nahanni, Canada 1985/NS2-240
 records/Nahanni, Canada 1985/NS2-330
 records/Nahanni, Canada 1985/NS3-270
 records/Nahanni, Canada 1985/NS3-360
-records/Tabas, Iran 1978/DAY-LN
+records/Tabas, Iran 1978/BAJ-L1
+records/Tabas, Iran 1978/BAJ-T1
 records/Tabas, Iran 1978/BOS-L1
 records/Tabas, Iran 1978/BOS-T1
+records/Tabas, Iran 1978/DAY-LN
 records/Tabas, Iran 1978/DAY-TR
 records/Tabas, Iran 1978/FER-L1
 records/Tabas, Iran 1978/FER-T1
@@ -111,7 +113,5 @@ records/Tabas, Iran 1978/SED-L1
 records/Tabas, Iran 1978/SED-T1
 records/Tabas, Iran 1978/TAB-074
 records/Tabas, Iran 1978/TAB-344
-records/Tabas, Iran 1978/BAJ-T1
-records/Tabas, Iran 1978/BAJ-L1
 records/EQdata-international.txt
 records/eq-international.sql
