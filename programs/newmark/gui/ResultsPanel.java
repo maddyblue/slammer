@@ -18,7 +18,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-/* $Id: ResultsPanel.java,v 1.1 2003/06/15 01:58:11 dolmant Exp $ */
+/* $Id: ResultsPanel.java,v 1.2 2003/06/19 04:33:41 dolmant Exp $ */
 
 package newmark.gui;
 
@@ -77,6 +77,7 @@ class ResultsPanel extends JPanel implements ActionListener
 	Vector dataVect;
 	double max;
 	XYSeriesCollection xycol;
+	String parameters;
 
 	public ResultsPanel(NewmarkTabbedPane parent) throws Exception
 	{
@@ -138,6 +139,24 @@ class ResultsPanel extends JPanel implements ActionListener
 			System.out.println(command);
 			if(command.equals("analyze"))
 			{
+				// save the parameters first
+				String slope, displacement, scaling;
+
+				if(parent.Parameters.downSlope.isSelected())
+					slope = "Downslope displacement only.";
+				else
+					slope = "Downslope and upslope displacement.\nThrust angle (in degrees): " + parent.Parameters.thrustAngle.getText();
+
+				if(parent.Parameters.nd.isSelected())
+					displacement = "Constant critical acceleration.\nAcceleration: " + parent.Parameters.constCA.getText();
+				else
+				{
+					if(parent.Parameters.ndDisp.isSelected())
+					{
+						displacement = "Varies with displacement";
+					}
+				}
+
 				JProgressBar mon = new JProgressBar();
 				mon.setStringPainted(true);
 				JFrame monFrame = new JFrame("Progress...");
