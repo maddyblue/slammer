@@ -18,7 +18,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-/* $Id: GUIUtils.java,v 1.1 2003/06/15 01:58:11 dolmant Exp $ */
+/* $Id: GUIUtils.java,v 1.2 2003/06/19 04:33:41 dolmant Exp $ */
 
 package newmark.gui;
 
@@ -31,7 +31,6 @@ public class GUIUtils
 {
 	public static final Font headerFont = new Font("Dialoug", Font.BOLD, 16);
 	public static final Color bg = new Color(204,204,204);
-	public static final EmptyBorder emptyBorder = new EmptyBorder(20,0,0,0);
 
 	public static void popupError(String er)
 	{
