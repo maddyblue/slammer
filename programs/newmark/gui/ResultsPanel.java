@@ -40,6 +40,16 @@ import newmark.analysis.*;
 
 class ResultsPanel extends JPanel implements ActionListener
 {
+	// array indexes
+	final public static int RB = 0; // rigid block
+	final public static int DC = 1; // decoupled
+	final public static int CP = 2; // coupled
+
+	// table column indexes
+	final public static int RBC = 2;
+	final public static int DCC = 3;
+	final public static int CPC = 4;
+
 	NewmarkTabbedPane parent;
 
 	JButton Analyze = new JButton("Perform Analysis");
@@ -60,22 +70,14 @@ class ResultsPanel extends JPanel implements ActionListener
 	JCheckBox plotNewmarkLegend = new JCheckBox("Display legend", false);
 	JTextField outputBins = new JTextField("10",4);
 
-	XYSeriesCollection xysc = new XYSeriesCollection();
+	XYSeriesCollection xysc[] = new XYSeriesCollection[3];
 
 	JRadioButton outputDelTab = new JRadioButton("tab delimited", true);
 	JRadioButton outputDelSpace = new JRadioButton("space delimited");
 	JRadioButton outputDelComma = new JRadioButton("comma delimited");
 	ButtonGroup outputDelGroup = new ButtonGroup();
 
-	final static int RigidBlockDualConst = 1 << 0;
-	final static int RigidBlockDualDisp  = 1 << 1;
-	final static int RigidBlockDualTime  = 1 << 2;
-	final static int RigidBlockDownConst = 1 << 3;
-	final static int RigidBlockDownDisp  = 1 << 4;
-	final static int CoupledEnglish      = 1 << 6;
-	final static int CoupledMetric       = 1 << 7;
-
-	Vector dataVect;
+	Vector dataVect[] = new Vector[3];
 	double max;
 	XYSeriesCollection xycol;
 	String parameters;
@@ -86,9 +88,9 @@ class ResultsPanel extends JPanel implements ActionListener
 
 		outputTableModel.addColumn("Earthquake");
 		outputTableModel.addColumn("Record");
-		outputTableModel.addColumn("Displacement 1 (cm)");
-		outputTableModel.addColumn("Displacement 2 (cm)");
-		outputTableModel.addColumn("Average Disp. (cm)");
+		outputTableModel.addColumn("Rigid Block");
+		outputTableModel.addColumn("Decoupled");
+		outputTableModel.addColumn("Coupled");
 
 		Analyze.setActionCommand("analyze");
 		Analyze.addActionListener(this);
@@ -135,47 +137,35 @@ class ResultsPanel extends JPanel implements ActionListener
 				monFrame.getContentPane().add(mon);
 				monFrame.setSize(400,75);
 				GUIUtils.setLocationMiddle(monFrame);
-				boolean none = true;
 
-				int index = parent.Parameters.tabbedPane.getSelectedIndex();
-				int method = 0;
-				String page = "";
-				RigidBlockPanel r = null;
-				CoupledPanel c = null;
+				boolean paramUnit = parent.Parameters.unitEnglish.isSelected();
+				boolean paramDualslope = parent.Parameters.dualSlope.isSelected();
 
-				if(index == 0)
+				double paramScale;
+				if(parent.Parameters.scalePGAon.isSelected())
 				{
-						r = parent.Parameters.RigidBlock;
-						page = "Rigid-Block";
-
-						if(r.downSlope.isSelected())
-						{
-							if(r.nd.isSelected())
-								method = RigidBlockDownConst;
-							else if(r.ndDisp.isSelected())
-								method = RigidBlockDownDisp;
-						}
-						else if(r.dualSlope.isSelected())
-						{
-							method = RigidBlockDualConst;
-						}
+					Double d = (Double)Utils.checkNum(parent.Parameters.scalePGAval.getText(), "scale PGA field", null, false, null, new Double(0), false, null, false);
+					if(d == null)
+					{
+						parent.selectParameters();
+						monFrame.dispose();
+						return;
+					}
+					paramScale = d.doubleValue();
 				}
-				else if(index == 1)
-				{
-						c = parent.Parameters.Coupled;
-						page = "Coupled";
+				else
+					paramScale = 0;
 
-						if(c.unitEnglish.isSelected())
-							method = CoupledEnglish;
-						else if(c.unitMetric.isSelected())
-							method = CoupledMetric;
-				}
+				boolean paramDoScale = (paramScale > 0);
 
-				if(method == 0)
+				boolean paramRigid = parent.Parameters.typeRigid.isSelected();
+				boolean paramDecoupled = parent.Parameters.typeDecoupled.isSelected();
+				boolean paramCoupled = parent.Parameters.typeCoupled.isSelected();
+				if(!paramRigid && !paramDecoupled && !paramCoupled)
 				{
 					monFrame.dispose();
 					parent.selectParameters();
-					GUIUtils.popupError("Error: no analysis method selected.");
+					GUIUtils.popupError("Error: no analysis methods selected.");
 					return;
 				}
 
@@ -188,46 +178,30 @@ class ResultsPanel extends JPanel implements ActionListener
 					GUIUtils.popupError("No records selected for analysis.");
 					return;
 				}
+
 				String eq, record;
 				DoubleList dat;
-				double di, ca = 0, avg, total = 0;
-				double num = 0;
-				double scale = 1;
-				Double norm = new Double(0), inv = new Double(0);
-				double[][] caList = null;
-				Vector caVect = new Vector();
-				double thrust = 0;
-				double uwgt = 0, height = 0, vs = 0, damp = 0;
+				double di;
+				double avg, num = 0;
+				double total[] = new double[3];
+				double scale = 1, iscale;
+				String norm = "", inv = "";
+				double[][] ca;
+				double thrust = 0, uwgt = 0, height = 0, vs = 0, damp = 0;
 
-				if(
-					method == RigidBlockDownDisp ||
-					method == RigidBlockDualDisp ||
-					method == RigidBlockDualTime ||
-					method == CoupledEnglish ||
-					method == CoupledMetric)
+				if(parent.Parameters.CAdisp.isSelected())
 				{
 					String value;
-
-					String tableSelect = "";
+					Vector caVect;
 					TableCellEditor editor = null;
 
-					if(method == RigidBlockDualDisp || method == RigidBlockDownDisp)
-					{
-						tableSelect = "displacement";
-						editor = r.dispTable.getCellEditor();
-						caVect = r.dispTableModel.getDataVector();
-					}
-					else if(method == CoupledEnglish || method == CoupledMetric)
-					{
-						tableSelect = "displacement";
-						editor = c.dispTable.getCellEditor();
-						caVect = c.dispTableModel.getDataVector();
-					}
+					editor = parent.Parameters.dispTable.getCellEditor();
+					caVect = parent.Parameters.dispTableModel.getDataVector();
 
 					if(editor != null)
 						editor.stopCellEditing();
 
-					caList = new double[caVect.size()][2];
+					ca = new double[caVect.size()][2];
 
 					for(int i = 0; i < caVect.size(); i++)
 					{
@@ -238,38 +212,44 @@ class ResultsPanel extends JPanel implements ActionListener
 							{
 								parent.selectParameters();
 								monFrame.dispose();
-								GUIUtils.popupError("Error: empty field in data table.\nPlease complete the " + page + " " + tableSelect + " table so that all data pairs have values or delete empty rows.");
+								GUIUtils.popupError("Error: empty field in table.\nPlease complete the displacement table so that all data pairs have values, or delete all empty rows.");
 								return;
 							}
-							Double d = (Double)Utils.checkNum(value, page + " " + tableSelect + " table", null, false, null, null, false, null, false);
+							Double d = (Double)Utils.checkNum(value, "displacement table", null, false, null, null, false, null, false);
 							if(d == null)
 							{
 								monFrame.dispose();
 								return;
 							}
-							caList[i][j] = d.doubleValue();
+							ca[i][j] = d.doubleValue();
 						}
 					}
-				}
 
-				if(method == RigidBlockDualConst || method == RigidBlockDownConst)
+					if(caVect.size() == 0)
+					{
+						parent.selectParameters();
+						monFrame.dispose();
+						GUIUtils.popupError("Error: no displacements listed in displacement table.");
+						return;
+					}
+				}
+				else
 				{
-					Double d = (Double)Utils.checkNum(r.constCA.getText(), page + "constant critical acceleration field", null, false, null, new Double(0), true, null, false);
+					Double d = (Double)Utils.checkNum(parent.Parameters.CAconstTF.getText(), "constant critical acceleration field", null, false, null, new Double(0), true, null, false);
 					if(d == null)
 					{
 						parent.selectParameters();
 						monFrame.dispose();
 						return;
 					}
-					ca = d.doubleValue();
+					ca = new double[1][2];
+					ca[0][0] = 0;
+					ca[0][1] = d.doubleValue();
 				}
 
-				if(
-					method == RigidBlockDualConst ||
-					method == RigidBlockDualDisp ||
-					method == RigidBlockDualTime)
+				if(paramDualslope)
 				{
-					Double thrustD =  (Double)Utils.checkNum(r.thrustAngle.getText(), page + " thrust angle field", new Double(90), true, null, new Double(0), true, null, false);
+					Double thrustD = (Double)Utils.checkNum(parent.Parameters.thrustAngle.getText(), "thrust angle field", new Double(90), true, null, new Double(0), true, null, false);
 					if(thrustD == null)
 					{
 						parent.selectParameters();
@@ -280,11 +260,11 @@ class ResultsPanel extends JPanel implements ActionListener
 						thrust = thrustD.doubleValue();
 				}
 
-				if(method == CoupledEnglish || method == CoupledMetric)
+				if(paramDecoupled || paramCoupled)
 				{
 					Double tempd;
 
-					tempd = (Double)Utils.checkNum(c.paramUwgt.getText(), page + " " + CoupledPanel.stringUwgt + " field", null, false, null, null, false, null, false);
+					tempd = (Double)Utils.checkNum(parent.Parameters.paramUwgt.getText(), CoupledPanel.stringUwgt + " field", null, false, null, null, false, null, false);
 					if(tempd == null)
 					{
 						parent.selectParameters();
@@ -294,7 +274,7 @@ class ResultsPanel extends JPanel implements ActionListener
 					else
 						uwgt = tempd.doubleValue();
 
-					tempd = (Double)Utils.checkNum(c.paramHeight.getText(), page + " " + CoupledPanel.stringHeight + " field", null, false, null, null, false, null, false);
+					tempd = (Double)Utils.checkNum(parent.Parameters.paramHeight.getText(), CoupledPanel.stringHeight + " field", null, false, null, null, false, null, false);
 					if(tempd == null)
 					{
 						parent.selectParameters();
@@ -304,7 +284,7 @@ class ResultsPanel extends JPanel implements ActionListener
 					else
 						height = tempd.doubleValue();
 
-					tempd = (Double)Utils.checkNum(c.paramVs.getText(), page + " " + CoupledPanel.stringVs + " field", null, false, null, null, false, null, false);
+					tempd = (Double)Utils.checkNum(parent.Parameters.paramVs.getText(), CoupledPanel.stringVs + " field", null, false, null, null, false, null, false);
 					if(tempd == null)
 					{
 						parent.selectParameters();
@@ -314,7 +294,7 @@ class ResultsPanel extends JPanel implements ActionListener
 					else
 						vs = tempd.doubleValue();
 
-					tempd = (Double)Utils.checkNum(c.paramDamp.getText(), page + " " + CoupledPanel.stringDamp + " field", null, false, null, null, false, null, false);
+					tempd = (Double)Utils.checkNum(parent.Parameters.paramDamp.getText(), CoupledPanel.stringDamp + " field", null, false, null, null, false, null, false);
 					if(tempd == null)
 					{
 						parent.selectParameters();
@@ -327,91 +307,98 @@ class ResultsPanel extends JPanel implements ActionListener
 
 				File testFile;
 				String path;
-				DecimalFormat fmt = new DecimalFormat(Analysis.fmtOne);
 				mon.setMinimum(0);
 				mon.setMaximum(res.length - 2);
 				monFrame.show();
-				dataVect = new Vector(res.length - 1);
-				xysc = new XYSeriesCollection();
-				double iscale = -1.0 * scale;
+				dataVect[RB] = new Vector(res.length - 1);
+				dataVect[DC] = new Vector(res.length - 1);
+				dataVect[CP] = new Vector(res.length - 1);
+				xysc[RB] = new XYSeriesCollection();
+				xysc[DC] = new XYSeriesCollection();
+				xysc[CP] = new XYSeriesCollection();
+				iscale = -1.0 * scale;
 				int j;
+				Object[] row;
 				for(int i = 1; i < res.length; i++)
 				{
+					row = new Object[5];
 					eq = res[i][0].toString();
 					record = res[i][1].toString();
 					mon.setString(eq + " - " + record);
 					mon.setValue(i);
 					mon.paintImmediately(0,0,mon.getWidth(),mon.getHeight());
 
-					di = Double.parseDouble(res[i][2].toString());
+					row[0] = eq;
+					row[1] = record;
+					row[2] = null;
+					row[3] = null;
+					row[4] = null;
+
 					path = res[i][3].toString();
 					testFile = new File(path);
 					if(!testFile.exists() || !testFile.canRead())
 					{
-						outputTableModel.addRow(new Object[] {eq, record, "File does not exist or is not readable", path, null});
+						row[2] = "File does not exist or is not readable";
+						row[3] = path;
+						outputTableModel.addRow(row);
 						continue;
 					}
 					dat = new DoubleList(path);
 					if(dat.bad())
 					{
-						outputTableModel.addRow(new Object[] {eq, record, "Invalid data at point " + dat.badEntry(), path, null});
+						row[2] = "Invalid data at point " + dat.badEntry();
+						row[3] = path;
+						outputTableModel.addRow(row);
 						continue;
 					}
 
-					if(parent.Parameters.scalePGAon.isSelected() == true)
+					di = Double.parseDouble(res[i][2].toString());
+
+					if(paramDoScale)
 					{
-						Double d = (Double)Utils.checkNum(parent.Parameters.scalePGAval.getText(), "scale PGA field", null, false, null, new Double(0), false, null, false);
-						if(d == null)
-						{
-							parent.selectParameters();
-							monFrame.dispose();
-							return;
-						}
-						scale = d.doubleValue() / Double.parseDouble(res[i][4].toString());
+						scale = paramScale / Double.parseDouble(res[i][4].toString());
 						iscale = -1.0 * scale;
 					}
 
-					switch(method)
+					// do the actual analysis
+
+					if(paramRigid)
 					{
-						case RigidBlockDualConst:
-							inv = new Double((String)RigidBlock.NewmarkRigorousDual(dat, di, ca, thrust, iscale));
-							norm = new Double((String)RigidBlock.NewmarkRigorousDual(dat, di, ca, thrust, scale));
-							break;
-						case RigidBlockDownConst:
-							inv = new Double((String)RigidBlock.NewmarkRigorous(dat, di, ca, iscale));
-							norm = new Double((String)RigidBlock.NewmarkRigorous(dat, di, ca, scale));
-							break;
-						case RigidBlockDownDisp:
-							inv = new Double((String)RigidBlock.NewmarkRigorousDisp(dat, di, caList, iscale));
-							norm = new Double((String)RigidBlock.NewmarkRigorousDisp(dat, di, caList, scale));
-							break;
-						case CoupledEnglish:
-							inv = new Double((String)Coupled.Coupled(dat, Analysis.Gftss, di, iscale, uwgt, height, vs, damp, 0 /* angle */, caList));
-							norm = new Double((String)Coupled.Coupled(dat, Analysis.Gftss, di, scale, uwgt, height, vs, damp, 0 /* angle */, caList));
-							break;
-						case CoupledMetric:
-							inv = new Double((String)Coupled.Coupled(dat, Analysis.Gcmss, di, iscale, 1 /* uwgt */, height, vs, damp, 0 /* angle */, caList));
-							norm = new Double((String)Coupled.Coupled(dat, Analysis.Gcmss, di, scale, 1 /* uwgt */, height, vs, damp, 0 /* angle */, caList));
-							break;
-						default:
-							GUIUtils.popupError("No analysis method selected.");
-							return;
+						inv = RigidBlock.NewmarkRigorousDisp(dat, di, ca, iscale);
+						norm = RigidBlock.NewmarkRigorousDisp(dat, di, ca, scale);
+						avg = avg(inv, norm);
+
+						total[RB] += avg;
+						row[RBC] = new Double(avg);
+
+						Analysis.xys.setName(eq + " - " + record);
+						xysc[RB].addSeries(Analysis.xys);
+
+						for(j = 0; j < dataVect[RB].size() && ((Double)dataVect[RB].elementAt(j)).doubleValue() < avg; j++);
+						dataVect[RB].insertElementAt(new Double(avg), j);
 					}
 
-					Analysis.xys.setName(eq + " - " + record);
-					xysc.addSeries(Analysis.xys);
+					if(paramCoupled)
+					{
+						inv = Coupled.Coupled(dat, Analysis.Gcmss, di, iscale, uwgt, height, vs, damp, 0, ca);
+						norm = Coupled.Coupled(dat, Analysis.Gcmss, di, scale, uwgt, height, vs, damp, 0, ca);
+						avg = avg(inv, norm);
 
-					avg = (norm.doubleValue()+inv.doubleValue())/2.0;
-					total += avg;
-					num++;
+						total[CP] += avg;
+						row[CPC] = new Double(avg);
 
-					for(j = 0; j < dataVect.size() && ((Double)dataVect.elementAt(j)).doubleValue() < avg; j++);
+						Analysis.xys.setName(eq + " - " + record);
+						xysc[CP].addSeries(Analysis.xys);
 
-					dataVect.insertElementAt(new Double(avg), j);
-					outputTableModel.addRow(new Object[] {eq, record, fmt.format(norm), fmt.format(inv), fmt.format(avg)});
+						for(j = 0; j < dataVect[CP].size() && ((Double)dataVect[CP].elementAt(j)).doubleValue() < avg; j++);
+						dataVect[CP].insertElementAt(new Double(avg), j);
+					}
+
+					outputTableModel.addRow(row);
 				}
 				mon.setString("Calculating stastistics...");
 				mon.paintImmediately(0,0,mon.getWidth(),mon.getHeight());
+				/*
 				if(dataVect.size() == 0)
 				{
 					monFrame.dispose();
@@ -419,10 +406,9 @@ class ResultsPanel extends JPanel implements ActionListener
 				}
 				max = ((Double)dataVect.elementAt(dataVect.size() - 1)).doubleValue();
 
-				fmt = new DecimalFormat(Analysis.fmtOne);
-				double mean = Double.parseDouble(fmt.format(total/num));
-				outputMean.setText("Mean value is: " + fmt.format(mean) + " cm");
-				outputMedian.setText("Median value is: " + fmt.format(dataVect.elementAt((int)(num/2))) + " cm");
+				double mean = Double.parseDouble(Analysis.fmtOne.format(total/num));
+				outputMean.setText("Mean value is: " + Analysis.fmtOne.format(mean) + " cm");
+				outputMedian.setText("Median value is: " + Analysis.fmtOne.format(dataVect.elementAt((int)(num/2))) + " cm");
 
 				double value = 0;
 				double valtemp;
@@ -433,7 +419,8 @@ class ResultsPanel extends JPanel implements ActionListener
 				}
 				value /= num - 1;
 				value = Math.sqrt(value);
-				outputStdDev.setText("Standard Deviation is: " + fmt.format(value) + " cm");
+				outputStdDev.setText("Standard Deviation is: " + Analysis.fmtOne.format(value) + " cm");
+				*/
 				monFrame.dispose();
 			}
 			else if(command.equals("clearOutput"))
@@ -470,6 +457,7 @@ class ResultsPanel extends JPanel implements ActionListener
 			}
 			else if(command.equals("plotOutput"))
 			{
+				/*
 				if(dataVect == null) return;
 				Double Bins = (Double)Utils.checkNum(outputBins.getText(), "output bins field", null, false, null, new Double(0), false, null, false);
 				if(Bins != null)
@@ -491,10 +479,11 @@ class ResultsPanel extends JPanel implements ActionListener
 					frame.setLocationRelativeTo(null);
 					frame.show();
 				}
+				*/
 			}
 			else if(command.equals("plotNewmark"))
 			{
-				JFreeChart chart = ChartFactory.createXYLineChart("Newmark displacement versus time", "Time (s)", "Newmark displacement (cm)", xysc, org.jfree.chart.plot.PlotOrientation.VERTICAL, plotNewmarkLegend.isSelected(), true, false);
+				JFreeChart chart = ChartFactory.createXYLineChart("Newmark displacement versus time", "Time (s)", "Newmark displacement (cm)", xysc[RB], org.jfree.chart.plot.PlotOrientation.VERTICAL, plotNewmarkLegend.isSelected(), true, false);
 				ChartFrame frame = new ChartFrame("Newmark displacement versus time", chart);
 				frame.pack();
 				frame.setLocationRelativeTo(null);
@@ -509,7 +498,6 @@ class ResultsPanel extends JPanel implements ActionListener
 
 	private void clearOutput()
 	{
-		dataVect = null;
 		int rows = outputTableModel.getRowCount();
 		while(--rows >= 0)
 			outputTableModel.removeRow(rows);
@@ -570,4 +558,8 @@ class ResultsPanel extends JPanel implements ActionListener
 		return outputGraphs;
 	}
 
+	private double avg(String a, String b)
+	{
+		return((Double.parseDouble(a) + Double.parseDouble(b)) / 2.0);
+	}
 }
