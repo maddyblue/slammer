@@ -33,8 +33,9 @@ public class Analysis
 	public static final DecimalFormat fmtOne   = new DecimalFormat("0.0");
 	public static final DecimalFormat fmtZero  = new DecimalFormat("0");
 
+	public static final double CMtoFT = 0.032808399;
 	public static final double Gcmss	= 980.665;
-	public static final double Gftss  = Gcmss * 0.032808399;
+	public static final double Gftss  = Gcmss * CMtoFT;
 
 	public static final int each = 1;
 	private static double time;

@@ -78,6 +78,9 @@ class ResultsPanel extends JPanel implements ActionListener
 	JRadioButton outputDelComma = new JRadioButton("comma delimited");
 	ButtonGroup outputDelGroup = new ButtonGroup();
 
+	boolean paramUnit = false;
+	String unitDisplacement = "";
+	DecimalFormat unitFmt;
 	Vector dataVect[] = new Vector[3];
 	double max;
 	XYSeriesCollection xycol;
@@ -139,7 +142,12 @@ class ResultsPanel extends JPanel implements ActionListener
 				monFrame.setSize(400,75);
 				GUIUtils.setLocationMiddle(monFrame);
 
-				boolean paramUnit = parent.Parameters.unitEnglish.isSelected();
+				paramUnit = parent.Parameters.unitMetric.isSelected();
+				final double g = paramUnit ? Analysis.Gcmss : Analysis.Gftss;
+				unitDisplacement = paramUnit ? "(cm)" : "(ft)";
+				outputTableModel.setColumnIdentifiers(new Object[] {"Earthquake", "Record", ParametersPanel.stringRB + " " + unitDisplacement, ParametersPanel.stringDC + " " + unitDisplacement, ParametersPanel.stringCP + " " + unitDisplacement});
+				unitFmt = paramUnit ? Analysis.fmtOne : Analysis.fmtFour;
+
 				boolean paramDualslope = parent.Parameters.dualSlope.isSelected();
 
 				double paramScale;
@@ -186,12 +194,14 @@ class ResultsPanel extends JPanel implements ActionListener
 				double num = 0;
 				Double avg;
 				double total[] = new double[3];
-				double scale = 1, iscale;
+				double scale = 1, iscale, scaleRB;
 				double inv, norm;
 				double[][] ca;
 				double[] ain;
 				double thrust = 0, uwgt = 0, height = 0, vs = 0, damp = 0, vr = 0;
 				int dv2 = 0, dv3 = 0;
+
+				scaleRB = paramUnit ? 1 : Analysis.CMtoFT;
 
 				if(parent.Parameters.CAdisp.isSelected())
 				{
@@ -413,7 +423,7 @@ class ResultsPanel extends JPanel implements ActionListener
 					if(paramDoScale)
 					{
 						scale = paramScale / Double.parseDouble(res[i][4].toString());
-						iscale = -1.0 * scale;
+						iscale = -scale;
 					}
 
 					ain = dat.getAsArray();
@@ -422,9 +432,9 @@ class ResultsPanel extends JPanel implements ActionListener
 
 					if(paramRigid)
 					{
-						inv = RigidBlock.NewmarkRigorous(dat, di, ca, iscale, paramDualslope, thrust);
-						norm = RigidBlock.NewmarkRigorous(dat, di, ca, scale, paramDualslope, thrust);
-						avg = avg(inv, norm, Analysis.fmtOne);
+						inv = RigidBlock.NewmarkRigorous(dat, di, ca, iscale * scaleRB, paramDualslope, thrust);
+						norm = RigidBlock.NewmarkRigorous(dat, di, ca, scale * scaleRB, paramDualslope, thrust);
+						avg = avg(inv, norm, unitFmt);
 
 						total[RB] += avg.doubleValue();
 						row[RBC] = avg;
@@ -438,10 +448,10 @@ class ResultsPanel extends JPanel implements ActionListener
 
 					if(paramDecoupled)
 					{
-						inv = Decoupled.Decoupled(ain, uwgt, height, vs, damp, di, iscale / Analysis.Gcmss, Analysis.Gftss, vr, ca, dv2, dv3);
-						norm = Decoupled.Decoupled(ain, uwgt, height, vs, damp, di, scale / Analysis.Gcmss, Analysis.Gftss, vr, ca, dv2, dv3);
+						inv = Decoupled.Decoupled(ain, uwgt, height, vs, damp, di, iscale / Analysis.Gcmss, g, vr, ca, dv2, dv3);
+						norm = Decoupled.Decoupled(ain, uwgt, height, vs, damp, di, scale / Analysis.Gcmss, g, vr, ca, dv2, dv3);
 
-						avg = avg(inv, norm, Analysis.fmtOne);
+						avg = avg(inv, norm, unitFmt);
 
 						total[DC] += avg.doubleValue();
 						row[DCC] = avg;
@@ -455,10 +465,10 @@ class ResultsPanel extends JPanel implements ActionListener
 
 					if(paramCoupled)
 					{
-						inv = Coupled.Coupled(ain, uwgt, height, vs, damp, di, iscale / Analysis.Gcmss, Analysis.Gftss, vr, ca, dv2, dv3);
-						norm = Coupled.Coupled(ain, uwgt, height, vs, damp, di, scale / Analysis.Gcmss, Analysis.Gftss, vr, ca, dv2, dv3);
+						inv = Coupled.Coupled(ain, uwgt, height, vs, damp, di, iscale / Analysis.Gcmss, g, vr, ca, dv2, dv3);
+						norm = Coupled.Coupled(ain, uwgt, height, vs, damp, di, scale / Analysis.Gcmss, g, vr, ca, dv2, dv3);
 
-						avg = avg(inv, norm, Analysis.fmtOne);
+						avg = avg(inv, norm, unitFmt);
 
 						total[CP] += avg.doubleValue();
 						row[CPC] = avg;
@@ -553,7 +563,7 @@ class ResultsPanel extends JPanel implements ActionListener
 					HistogramDataset dataset = new HistogramDataset();
 					dataset.addSeries("", series, (int)Bins.doubleValue());
 
-					JFreeChart hist = ChartFactory.createHistogram("Histogram of " + s + " Displacements", s + " (cm)", "Number of Records", dataset, org.jfree.chart.plot.PlotOrientation.VERTICAL, false, false, false);
+					JFreeChart hist = ChartFactory.createHistogram("Histogram of " + s + " Displacements", s + " " + unitDisplacement, "Number of Records", dataset, org.jfree.chart.plot.PlotOrientation.VERTICAL, false, false, false);
 					ChartFrame frame = new ChartFrame("Histogram of " + s + " Displacements", hist);
 
 					frame.pack();
@@ -569,7 +579,7 @@ class ResultsPanel extends JPanel implements ActionListener
 				if(xysc[i] == null)
 					return;
 
-				JFreeChart chart = ChartFactory.createXYLineChart(s + " displacement versus time", "Time (s)", s + " displacement (cm)", xysc[i], org.jfree.chart.plot.PlotOrientation.VERTICAL, plotNewmarkLegend.isSelected(), true, false);
+				JFreeChart chart = ChartFactory.createXYLineChart(s + " displacement versus time", "Time (s)", s + " displacement " + unitDisplacement, xysc[i], org.jfree.chart.plot.PlotOrientation.VERTICAL, plotNewmarkLegend.isSelected(), true, false);
 				ChartFrame frame = new ChartFrame(s + " displacement versus time", chart);
 				frame.pack();
 				frame.setLocationRelativeTo(null);

@@ -422,7 +422,7 @@ class ParametersPanel extends JPanel implements ActionListener
 	{
 		if(unitMetric.isSelected())
 		{
-			labelUwgt.setText("<html>" + stringUwgt + " (kN/m<sup>3</sup>)</html>");
+			labelUwgt.setText("<html>" + stringUwgt + " (kg/m<sup>3</sup>)</html>");
 			labelHeight.setText(stringHeight + " (m)");
 			labelVs.setText(stringVs + " (m/s)");
 			labelVr.setText(stringVr + " (m/s)");
@@ -434,7 +434,7 @@ class ParametersPanel extends JPanel implements ActionListener
 			labelHeight.setText(stringHeight + " (ft)");
 			labelVs.setText(stringVs + " (ft/s)");
 			labelVr.setText(stringVr + " (ft/s)");
-			dispTableModel.setColName(stringDisp + " (in)");
+			dispTableModel.setColName(stringDisp + " (ft)");
 		}
 	}
 
