@@ -280,8 +280,16 @@ public class Newmark
 			}
 			else
 			{
+				SplashScreen splash = new SplashScreen();
+
+				Utils.startDB();
+
+				splash.advance();
+
 				Utils.getDB().runUpdate("update data set select1=0 where select1=1");
 				Utils.getDB().runUpdate("update data set select2=0 where select2=1");
+
+				splash.advance();
 
 				// for Windows XP users, make it look mostly native
 				UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -305,10 +313,18 @@ public class Newmark
 						System.exit(0);
 					}
 				});
+
+				splash.advance();
+
 				frame.getContentPane().add(new NewmarkTabbedPane(frame));
 				frame.setSize(780,575);
 				GUIUtils.setLocationMiddle(frame);
+
+				splash.advance();
+
 				frame.setVisible(true);
+
+				splash.dispose();
 			}
 		}
 		catch(Exception ex)

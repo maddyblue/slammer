@@ -29,6 +29,7 @@
 		>
 			<fileset dir=".">
 				<include name="newmark/**/*.class"/>
+				<include name="newmark/images/*.jpg"/>
 				<include name="help/**/*"/>
 			</fileset>
 		</jar>
