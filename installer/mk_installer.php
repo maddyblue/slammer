@@ -2,13 +2,19 @@
 
 <?php
 
-$jarfile = "/media/newmark/newmarkinstall.jar";
+$jarfile = "~/newmark/newmarkinstall.jar";
 
+echo "Compiling installer java files...";
+passthru("javac *.java");
+echo "done.\n";
+
+echo "Creating initial jar file...";
 passthru("cd .. && jar cfm $jarfile installer/install.mf \\"
 	. "installer/install.props \\"
 	. "installer/*.html \\"
 	. "installer/*.class \\"
 	. "installer/newmark-*");
+echo "done.\n";
 
 $list = array("newmark-program", "mckoi-fileset");
 
@@ -16,17 +22,24 @@ foreach($list as $file)
 {
 	$contents = contents($file);
 
+	echo "Adding $file to $jarfile...";
 	passthru("cd .. && jar uf $jarfile $contents");
+	echo "done.\n";
 }
 
 $list = array("california", "otherus", "international", "chichi");
+$list = array("otherus");
 
 foreach($list as $file)
 {
 	$contents = contents("newmark-eq-$file");
 
+	echo "Adding $file to $jarfile...";
 	passthru("cd .. && zip -q $jarfile $contents");
+	echo "done.\n";
 }
+
+echo "Done.\n";
 
 function contents($filename)
 {

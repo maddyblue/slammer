@@ -10,7 +10,7 @@ function addfile($name, $file)
 function adddir($dir, $file)
 {
 	$dir = str_replace(" ", "\\ ", $dir);
-	passthru("cd .. && find $dir | grep -v CVS | sed '1,1d' >> $file");
+	passthru("cd .. && find $dir -type f | grep -v .svn | sort >> $file");
 }
 
 function clear($file)
@@ -69,7 +69,7 @@ adddir("programs/Database/data", $file);
 getsize($file);
 
 // mckoi fileset
-passthru("cd .. && find com \( -name \*.class \) | sed 's/" . '\\' . '$/' . '\\' . '\\' . '$/g' . "' > installer/mckoi-fileset");
+passthru("cd .. && find com -name \*.class | sort | sed 's/" . '\\' . '$/' . '\\' . '\\' . '$/g' . "' > installer/mckoi-fileset");
 
 // newmark-eq-california
 $eqs = array(

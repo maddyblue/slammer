@@ -18,8 +18,8 @@ app.license=gpl.html
 comp.count=5
 
 comp.0.name=Newmark program (check *ONLY* on initial install)
-comp.0.disk-size=2376
-comp.0.real-size=2219
+comp.0.disk-size=3048
+comp.0.real-size=2892
 comp.0.fileset=newmark-program
 
 comp.1.name=International records
