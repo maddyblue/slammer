@@ -17,7 +17,7 @@ app.license=gpl.html
 # is stored, newline delimited
 comp.count=2
 
-comp.0.name=Newmark program (check *ONLY* on initial install)
+comp.0.name=Newmark program (check only on initial install)
 comp.0.disk-size=3700
 comp.0.real-size=3693
 comp.0.fileset=newmark-program
