@@ -18,7 +18,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-/* $Id: Utils.java,v 1.2 2003/07/04 19:45:35 dolmant Exp $ */
+/* $Id: Utils.java,v 1.3 2003/08/01 01:26:11 dolmant Exp $ */
 
 package newmark;
 
@@ -51,8 +51,11 @@ public class Utils
 
 	public static void closeDB() throws Exception
 	{
-		db.close();
-		db = null;
+		if(db != null)
+		{
+			db.close();
+			db = null;
+		}
 	}
 
 	public static void catchException(Exception ex)
