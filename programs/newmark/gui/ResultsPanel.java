@@ -61,9 +61,6 @@ class ResultsPanel extends JPanel implements ActionListener
 
 	JButton saveOutput = new JButton("Save output");
 	JFileChooser fc = new JFileChooser();
-	JLabel outputMean = new JLabel("Mean:");
-	JLabel outputMedian = new JLabel("Median:");
-	JLabel outputStdDev = new JLabel("Standard Deviation:");
 
 	JButton plotOutput = new JButton("Plot histogram of Newmark displacements");
 	JButton plotNewmark = new JButton("Plot Newmark displacements versus time");
@@ -82,7 +79,6 @@ class ResultsPanel extends JPanel implements ActionListener
 	String unitDisplacement = "";
 	DecimalFormat unitFmt;
 	Vector dataVect[] = new Vector[3];
-	double max;
 	XYSeriesCollection xycol;
 	String parameters;
 
@@ -407,6 +403,8 @@ class ResultsPanel extends JPanel implements ActionListener
 									continue;
 								}
 
+								num++;
+
 								di = Double.parseDouble(res[i][2].toString());
 
 								if(paramDoScale)
@@ -472,29 +470,38 @@ class ResultsPanel extends JPanel implements ActionListener
 								outputTableModel.addRow(row);
 							}
 							pm.update("Calculating stastistics...");
-							/*
-							if(dataVect.size() == 0)
-							{
-								monFrame.dispose();
-								return;
-							}
-							max = ((Double)dataVect.elementAt(dataVect.size() - 1)).doubleValue();
 
-							double mean = Double.parseDouble(Analysis.fmtOne.format(total/num));
-							outputMean.setText("Mean value is: " + Analysis.fmtOne.format(mean) + " cm");
-							outputMedian.setText("Median value is: " + Analysis.fmtOne.format(dataVect.elementAt((int)(num/2))) + " cm");
+							double max, mean, value, valtemp;
+							Object[] rmean = new Object[] {null, "Mean value", null, null, null};
+							Object[] rmedian = new Object[] {null, "Median value", null, null, null};
+							Object[] rsd = new Object[] {null, "Standard deviation", null, null, null};
 
-							double value = 0;
-							double valtemp;
-							for(int i = 0; i < num; i++)
+							for(j = 0; j < dataVect.length; j++)
 							{
-								valtemp = mean - ((Double)dataVect.elementAt(i)).doubleValue();
-								value += (valtemp * valtemp);
+								if(dataVect[j] == null || dataVect[j].size() == 0)
+									continue;
+
+								max = ((Double)dataVect[j].elementAt(dataVect[j].size() - 1)).doubleValue();
+
+								mean = Double.parseDouble(unitFmt.format(total[j] / num));
+								rmean[j + 2] = unitFmt.format(mean);
+								rmedian[j + 2] = unitFmt.format(dataVect[j].elementAt((int)(num / 2.0)));
+
+								value = 0;
+
+								for(int i = 0; i < num; i++)
+								{
+									valtemp = mean - ((Double)dataVect[j].elementAt(i)).doubleValue();
+									value += (valtemp * valtemp);
+								}
+								value /= num - 1;
+								value = Math.sqrt(value);
+								rsd[j + 2] = unitFmt.format(value);
 							}
-							value /= num - 1;
-							value = Math.sqrt(value);
-							outputStdDev.setText("Standard Deviation is: " + Analysis.fmtOne.format(value) + " cm");
-							*/
+
+							outputTableModel.addRow(rmean);
+							outputTableModel.addRow(rmedian);
+							outputTableModel.addRow(rsd);
 						}
 						catch(Throwable ex)
 						{
@@ -520,9 +527,11 @@ class ResultsPanel extends JPanel implements ActionListener
 				{
 					FileWriter fw = new FileWriter(fc.getSelectedFile());
 
+					/*
 					fw.write(outputMean.getText() + "\n");
 					fw.write(outputMedian.getText() + "\n");
 					fw.write(outputStdDev.getText() + "\n");
+					*/
 
 					Vector v = outputTableModel.getDataVector(), v1;
 					for(int i = 0; i < v.size(); i++)
@@ -606,10 +615,6 @@ class ResultsPanel extends JPanel implements ActionListener
 		int rows = outputTableModel.getRowCount();
 		while(--rows >= 0)
 			outputTableModel.removeRow(rows);
-
-		outputMean.setText("Mean:");
-		outputMedian.setText("Median:");
-		outputStdDev.setText("Standard Deviation:");
 	}
 
 	private JPanel createHeader()
@@ -626,11 +631,6 @@ class ResultsPanel extends JPanel implements ActionListener
 		JPanel outputTablePanel = new JPanel(new BorderLayout());
 
 		JPanel outputData = new JPanel(new BorderLayout());
-		JPanel filler = new JPanel(new GridLayout(0, 1));
-		filler.add(outputMean);
-		filler.add(outputMedian);
-		filler.add(outputStdDev);
-		outputData.add(BorderLayout.EAST, filler);
 		JPanel west = new JPanel(new BorderLayout());
 		Box list = new Box(BoxLayout.X_AXIS);
 		list.add(outputDelTab);
