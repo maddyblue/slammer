@@ -714,8 +714,8 @@ Northridge 1994	6.7	3	LOA-092	Lawndale, 14801 Osage Ave.	USC	33.8970	-118.3460	3
 Northridge 1994	6.7	3	LOA-182	Lawndale, 14801 Osage Ave.	USC	33.8970	-118.3460	3	0.005	39.0	43.0	40.2
 Northridge 1994	6.7	3	LOS-000	Canyon Country, 16628 W. Lost Canyon Rd.	USC	34.4190	-118.4260	3	0.005	26.0	32.0	11.4
 Northridge 1994	6.7	3	LOS-270	Canyon Country, 16628 W. Lost Canyon Rd.	USC	34.4190	-118.4260	3	0.005	26.0	32.0	11.4
-Northridge 1994	6.7	3	LPS-180	Los Angeles, Pico & Sentous	CGS	34.0430	-118.2710	3	0.010	31.0	36.4	31.3
 Northridge 1994	6.7	3	LPS-090	Los Angeles, Pico & Sentous	CGS	34.0430	-118.2710	3	0.010	31.0	36.4	31.3
+Northridge 1994	6.7	3	LPS-180	Los Angeles, Pico & Sentous	CGS	34.0430	-118.2710	3	0.010	31.0	36.4	31.3
 Northridge 1994	6.7	3	LRK-000	Littlerock, Brainard Canyon	CGS	34.4860	-117.9800	1	0.010	60.0	62.9	45.7
 Northridge 1994	6.7	3	LRK-090	Littlerock, Brainard Canyon	CGS	34.4860	-117.9800	1	0.010	60.0	62.9	45.7
 Northridge 1994	6.7	3	LRP-210	Littlerock, Post Office	USGS	34.5200	-117.9900	3	0.005	61.0	63.9	46.7
@@ -750,8 +750,8 @@ Northridge 1994	6.7	3	MJO-000	Mojave, Oak Creek Canyon	CGS	35.0420	-118.3770	2	0
 Northridge 1994	6.7	3	MJO-090	Mojave, Oak Creek Canyon	CGS	35.0420	-118.3770	2	0.020	94.0	96.0	82.0
 Northridge 1994	6.7	3	MPK-090	Moorpark	CGS	34.2880	-118.8810	3	0.020	33.0	38.0	24.2
 Northridge 1994	6.7	3	MPK-180	Moorpark	CGS	34.2880	-118.8810	3	0.020	33.0	38.0	24.2
-Northridge 1994	6.7	3	MSM-160	Los Angeles, 12001 Chalon Rd.	USC	34.0860	-118.4810	2	0.005	15.0	24.0	20.9
 Northridge 1994	6.7	3	MSM-070	Los Angeles, 12001 Chalon Rd.	USC	34.0860	-118.4810	2	0.005	15.0	24.0	20.9
+Northridge 1994	6.7	3	MSM-160	Los Angeles, 12001 Chalon Rd.	USC	34.0860	-118.4810	2	0.005	15.0	24.0	20.9
 Northridge 1994	6.7	3	MTL-206	Montibello, 1105 Bluff Rd.	USC	33.9900	-118.1140	4	0.005	46.0	50.0	43.8
 Northridge 1994	6.7	3	MTL-296	Montibello, 1105 Bluff Rd.	USC	33.9900	-118.1140	4	0.005	46.0	50.0	43.8
 Northridge 1994	6.7	3	MTW-090	Mount Wilson, Caltech Seismic Station	CGS	34.2240	-118.0570	1	0.020	45.0	48.0	35.6
