@@ -350,7 +350,32 @@ class AddRecordsPanel extends JPanel implements ActionListener
 		if(add)
 		{
 			// add it to the db
-			Utils.getDB().runUpdate("insert into data values (uniquekey('data'), '" + eq + "', '" + record + "', " + di + ", " + mag + ", " + arias + ", " + dobry + ", " + pga + ", " + meanper + ", " + epidist + ", " + focdist + ", " + rupdist + ", " + focmech + ", '" + loc + "', '" + owner + "', " + lat + ", " + lng + ", " + siteclass + ", " + 1 + ", '" + file + "', " + 0 + ", " + 0 + ", " + 0 + ")");
+			String q = "insert into data " +
+				"(eq, record, digi_int, mom_mag, arias, dobry, pga, mean_per, epi_dist, foc_dist, rup_dist, foc_mech, location, owner, latitude, longitude, class, change, path, select1, analyze, select2) values ( '" +
+				eq + "', '" +
+				record + "', " +
+				di + ", " +
+				mag + ", " +
+				arias + ", " +
+				dobry + ", " +
+				pga + ", " +
+				meanper + ", " +
+				epidist + ", " +
+				focdist + ", " +
+				rupdist + ", " +
+				focmech + ", '" +
+				loc + "', '" +
+				owner + "', " +
+				lat + ", " +
+				lng + ", " +
+				siteclass + ", " +
+				1 + ", '" +
+				file + "', " +
+				0 + ", " +
+				0 + ", " +
+				0 + ")";
+				System.out.println(q);
+			Utils.getDB().runUpdate(q);
 		}
 		else
 		{
