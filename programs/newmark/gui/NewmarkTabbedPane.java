@@ -18,7 +18,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-/* $Id: NewmarkTabbedPane.java,v 1.2 2003/07/31 21:32:53 dolmant Exp $ */
+/* $Id$ */
 
 package newmark.gui;
 

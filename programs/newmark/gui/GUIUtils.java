@@ -18,7 +18,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-/* $Id: GUIUtils.java,v 1.3 2003/08/01 01:26:45 dolmant Exp $ */
+/* $Id$ */
 
 package newmark.gui;
 

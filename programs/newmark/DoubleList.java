@@ -18,7 +18,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-/* $Id: DoubleList.java,v 1.3 2003/07/18 05:25:15 dolmant Exp $ */
+/* $Id$ */
 
 package newmark;
 
