@@ -18,7 +18,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-/* $Id: GUIUtils.java,v 1.2 2003/06/19 04:33:41 dolmant Exp $ */
+/* $Id: GUIUtils.java,v 1.3 2003/08/01 01:26:45 dolmant Exp $ */
 
 package newmark.gui;
 
@@ -30,7 +30,7 @@ import java.util.Vector;
 public class GUIUtils
 {
 	public static final Font headerFont = new Font("Dialoug", Font.BOLD, 16);
-	public static final Color bg = new Color(204,204,204);
+	public static Color bg = new Color(204,204,204);
 
 	public static void popupError(String er)
 	{
