@@ -45,7 +45,10 @@
 		</delete>
 	</target>
 
-	<target name="def" depends="compile, jar, run">
+	<target name="def" depends="build, run">
+	</target>
+
+	<target name="build" depends="compile, jar">
 	</target>
 
 	<target name="all" depends="clean, def">
