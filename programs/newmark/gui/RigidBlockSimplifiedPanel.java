@@ -18,7 +18,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-/* $Id: RigidBlockSimplifiedPanel.java,v 1.1 2003/06/15 01:58:11 dolmant Exp $ */
+/* $Id: RigidBlockSimplifiedPanel.java,v 1.2 2003/06/19 04:33:41 dolmant Exp $ */
 
 package newmark.gui;
 
@@ -219,7 +219,6 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 		temp.add(labelRes);
 		temp.add(labelResf);
 
-		//temp.setBorder(new EmptyBorder(0, 0, 20, 0));
 		panel.add(BorderLayout.WEST, temp);
 
 		return panel;
