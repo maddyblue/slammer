@@ -2,9 +2,9 @@
 
 <?php
 
-$jarfile = "/usr/dolmant/newmarkinstall.jar";
+$jarfile = "/media/newmark/newmarkinstall.jar";
 
-passthru("cd .. && jar cfm0 $jarfile installer/install.mf \\"
+passthru("cd .. && jar cfm $jarfile installer/install.mf \\"
 	. "installer/install.props \\"
 	. "installer/*.html \\"
 	. "installer/*.class \\"
@@ -16,7 +16,7 @@ foreach($list as $file)
 {
 	$contents = contents($file);
 
-	passthru("cd .. && jar uf0 $jarfile $contents");
+	passthru("cd .. && jar uf $jarfile $contents");
 }
 
 $list = array("california", "otherus", "international", "chichi");
@@ -25,7 +25,7 @@ foreach($list as $file)
 {
 	$contents = contents("newmark-eq-$file");
 
-	passthru("cd .. && zip -q0 $jarfile $contents");
+	passthru("cd .. && zip -q $jarfile $contents");
 }
 
 function contents($filename)
