@@ -282,9 +282,11 @@ public class Newmark
 			{
 				SplashScreen splash = new SplashScreen();
 
+				Utils.startDB();
+
 				splash.advance();
 
-				Utils.startDB();
+				Utils.getDB().runUpdate("update data set select1=0, select2=0");
 
 				splash.advance();
 
