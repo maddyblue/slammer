@@ -18,7 +18,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-/* $Id: NewmarkTabbedPane.java,v 1.1 2003/06/15 01:58:11 dolmant Exp $ */
+/* $Id: NewmarkTabbedPane.java,v 1.2 2003/07/31 21:32:53 dolmant Exp $ */
 
 package newmark.gui;
 
@@ -66,7 +66,7 @@ public class NewmarkTabbedPane extends JTabbedPane
 		}
 
 		Rigorous.addTab("Step 1: Select Records", SelectRecords);
-		Rigorous.addTab("Step 2: Perform Rigid-Block Analysis", Parameters);
+		Rigorous.addTab("Step 2: Perform Analysis", Parameters);
 		Rigorous.addTab("Step 3: View Results", Results);
 
 		Simplified.addTab("Rigid-Block Analysis", RigidBlockSimplified);
@@ -76,7 +76,7 @@ public class NewmarkTabbedPane extends JTabbedPane
 		Manager.addTab("Add Records", AddRecords);
 
 		addTab("Getting Started", GettingStarted);
-		addTab("Rigorous Rigid-Block Analysis", Rigorous);
+		addTab("Rigorous Analysis", Rigorous);
 		addTab("Simplified Analyses", Simplified);
 		addTab("Record Manager", Manager);
 		addTab("Utilities", Utilities);

@@ -18,7 +18,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-/* $Id: ResultsPanel.java,v 1.4 2003/07/18 05:25:15 dolmant Exp $ */
+/* $Id: ResultsPanel.java,v 1.5 2003/07/31 21:32:53 dolmant Exp $ */
 
 package newmark.gui;
 
@@ -66,6 +66,15 @@ class ResultsPanel extends JPanel implements ActionListener
 	JRadioButton outputDelSpace = new JRadioButton("space delimited");
 	JRadioButton outputDelComma = new JRadioButton("comma delimited");
 	ButtonGroup outputDelGroup = new ButtonGroup();
+
+	final static int RigidBlockDualConst = 1 << 0;
+	final static int RigidBlockDualDisp  = 1 << 1;
+	final static int RigidBlockDualTime  = 1 << 2;
+	final static int RigidBlockDownConst = 1 << 3;
+	final static int RigidBlockDownDisp  = 1 << 4;
+	final static int RigidBlockDownTime  = 1 << 5;
+	final static int CoupledEnglish      = 1 << 6;
+	final static int CoupledMetric       = 1 << 7;
 
 	Vector dataVect;
 	double max;
@@ -125,23 +134,7 @@ class ResultsPanel extends JPanel implements ActionListener
 			System.out.println(command);
 			if(command.equals("analyze"))
 			{
-				// save the parameters first
-				String slope, displacement, scaling;
-
-				if(parent.Parameters.downSlope.isSelected())
-					slope = "Downslope displacement only.";
-				else
-					slope = "Downslope and upslope displacement.\nThrust angle (in degrees): " + parent.Parameters.thrustAngle.getText();
-
-				if(parent.Parameters.nd.isSelected())
-					displacement = "Constant critical acceleration.\nAcceleration: " + parent.Parameters.constCA.getText();
-				else
-				{
-					if(parent.Parameters.ndDisp.isSelected())
-					{
-						displacement = "Varies with displacement";
-					}
-				}
+				clearOutput();
 
 				JProgressBar mon = new JProgressBar();
 				mon.setStringPainted(true);
@@ -150,6 +143,50 @@ class ResultsPanel extends JPanel implements ActionListener
 				monFrame.setSize(400,75);
 				GUIUtils.setLocationMiddle(monFrame);
 				boolean none = true;
+
+				int index = parent.Parameters.tabbedPane.getSelectedIndex();
+				int method = 0;
+				String page = "";
+				RigidBlockPanel r = null;
+				CoupledPanel c = null;
+
+				if(index == 0)
+				{
+						r = parent.Parameters.RigidBlock;
+						page = "Rigid-Block";
+
+						if(r.downSlope.isSelected())
+						{
+							if(r.nd.isSelected())
+								method = RigidBlockDownConst;
+							else if(r.ndDisp.isSelected())
+								method = RigidBlockDownDisp;
+							else if(r.ndTime.isSelected())
+								method = RigidBlockDownTime;
+						}
+						else if(r.dualSlope.isSelected())
+						{
+							method = RigidBlockDualConst;
+						}
+				}
+				else if(index == 1)
+				{
+						c = parent.Parameters.Coupled;
+						page = "Coupled";
+
+						if(c.unitEnglish.isSelected())
+							method = CoupledEnglish;
+						else if(c.unitMetric.isSelected())
+							method = CoupledMetric;
+				}
+
+				if(method == 0)
+				{
+					monFrame.dispose();
+					parent.selectParameters();
+					GUIUtils.popupError("Error: no analysis method selected.");
+					return;
+				}
 
 				Object[][] res = Utils.getDB().runQuery("select eq, record, digi_int, path, pga from data where select2=true and analyze=true");
 
@@ -167,59 +204,73 @@ class ResultsPanel extends JPanel implements ActionListener
 				double scale = 1;
 				Double norm = new Double(0), inv = new Double(0);
 				double[][] caList = null;
-				Vector caVect;
-				Object[] caTemp;
-				String temp1;
-				Double temp;
-				int i2, i3;
+				Vector caVect = new Vector();
+				double thrust = 0;
+				double uwgt = 0, height = 0, vs = 0, damp = 0;
 
-				clearOutput();
-
-				if(parent.Parameters.ndDisp.isSelected() == true || parent.Parameters.ndTime.isSelected() == true)
+				if(
+					method == RigidBlockDownDisp ||
+					method == RigidBlockDownTime ||
+					method == RigidBlockDualDisp ||
+					method == RigidBlockDualTime ||
+					method == CoupledEnglish ||
+					method == CoupledMetric)
 				{
-					String tableSelect;
-					if(parent.Parameters.ndDisp.isSelected() == true)
+					String value;
+
+					String tableSelect = "";
+					TableCellEditor editor = null;
+
+					if(method == RigidBlockDualDisp || method == RigidBlockDownDisp)
 					{
 						tableSelect = "displacement";
-						TableCellEditor edit = parent.Parameters.dispTable.getCellEditor();
-						if(edit != null) edit.stopCellEditing();
-						caVect = parent.Parameters.dispTableModel.getDataVector();
+						editor = r.dispTable.getCellEditor();
+						caVect = r.dispTableModel.getDataVector();
 					}
-					else
+					else if(method == RigidBlockDualTime || method == RigidBlockDownTime)
 					{
 						tableSelect = "time";
-						TableCellEditor edit = parent.Parameters.timeTable.getCellEditor();
-						if(edit != null) edit.stopCellEditing();
-						caVect = parent.Parameters.timeTableModel.getDataVector();
+						editor = r.timeTable.getCellEditor();
+						caVect = r.timeTableModel.getDataVector();
+					}
+					else if(method == CoupledEnglish || method == CoupledMetric)
+					{
+						tableSelect = "displacement";
+						editor = c.dispTable.getCellEditor();
+						caVect = c.dispTableModel.getDataVector();
 					}
 
+					if(editor != null)
+						editor.stopCellEditing();
+
 					caList = new double[caVect.size()][2];
-					caTemp = caVect.toArray();
-					for(int i1 = 0; i1 < caTemp.length; i1++)
+
+					for(int i = 0; i < caVect.size(); i++)
 					{
-						for(i2 = 0; i2 < 2; i2++)
+						for(int j = 0; j < 2; j++)
 						{
-							temp1 = (String)(((Vector)caTemp[i1]).elementAt(i2));
-							if(temp1 == null || temp1 == "")
+							value = (String)(((Vector)(caVect.elementAt(i))).elementAt(j));
+							if(value == null || value == "")
 							{
 								parent.selectParameters();
 								monFrame.dispose();
-								GUIUtils.popupError("Error: empty field in data table.\nPlease complete the " + tableSelect + " table so that all data pairs have values or delete empty rows.");
+								GUIUtils.popupError("Error: empty field in data table.\nPlease complete the " + page + " " + tableSelect + " table so that all data pairs have values or delete empty rows.");
 								return;
 							}
-							Double d = (Double)Utils.checkNum(temp1, tableSelect + " table", null, false, null, null, false, null, false);
+							Double d = (Double)Utils.checkNum(value, page + " " + tableSelect + " table", null, false, null, null, false, null, false);
 							if(d == null)
 							{
 								monFrame.dispose();
 								return;
 							}
-							caList[i1][i2] = d.doubleValue();
+							caList[i][j] = d.doubleValue();
 						}
 					}
 				}
-				else if(parent.Parameters.nd.isSelected() == true)
+
+				if(method == RigidBlockDualConst || method == RigidBlockDownConst)
 				{
-					Double d = (Double)Utils.checkNum(parent.Parameters.constCA.getText(), "constant critical acceleration field", null, false, null, new Double(0), true, null, false);
+					Double d = (Double)Utils.checkNum(r.constCA.getText(), page + "constant critical acceleration field", null, false, null, new Double(0), true, null, false);
 					if(d == null)
 					{
 						parent.selectParameters();
@@ -228,19 +279,13 @@ class ResultsPanel extends JPanel implements ActionListener
 					}
 					ca = d.doubleValue();
 				}
-				else
-				{
-					monFrame.dispose();
-					parent.selectParameters();
-					GUIUtils.popupError("Error: no analysis method selected.");
-					return;
-				}
 
-				Double thrustD;
-				double thrust = 0;
-				if(parent.Parameters.dualSlope.isSelected())
+				if(
+					method == RigidBlockDualConst ||
+					method == RigidBlockDualDisp ||
+					method == RigidBlockDualTime)
 				{
-					thrustD =  (Double)Utils.checkNum(parent.Parameters.thrustAngle.getText(), "thrust angle field", new Double(90), true, null, new Double(0), true, null, false);
+					Double thrustD =  (Double)Utils.checkNum(r.thrustAngle.getText(), page + " thrust angle field", new Double(90), true, null, new Double(0), true, null, false);
 					if(thrustD == null)
 					{
 						parent.selectParameters();
@@ -249,6 +294,51 @@ class ResultsPanel extends JPanel implements ActionListener
 					}
 					else
 						thrust = thrustD.doubleValue();
+				}
+
+				if(method == CoupledEnglish || method == CoupledMetric)
+				{
+					Double tempd;
+
+					tempd = (Double)Utils.checkNum(c.paramUwgt.getText(), page + " " + CoupledPanel.stringUwgt + " field", null, false, null, null, false, null, false);
+					if(tempd == null)
+					{
+						parent.selectParameters();
+						monFrame.dispose();
+						return;
+					}
+					else
+						uwgt = tempd.doubleValue();
+
+					tempd = (Double)Utils.checkNum(c.paramHeight.getText(), page + " " + CoupledPanel.stringHeight + " field", null, false, null, null, false, null, false);
+					if(tempd == null)
+					{
+						parent.selectParameters();
+						monFrame.dispose();
+						return;
+					}
+					else
+						height = tempd.doubleValue();
+
+					tempd = (Double)Utils.checkNum(c.paramVs.getText(), page + " " + CoupledPanel.stringVs + " field", null, false, null, null, false, null, false);
+					if(tempd == null)
+					{
+						parent.selectParameters();
+						monFrame.dispose();
+						return;
+					}
+					else
+						vs = tempd.doubleValue();
+
+					tempd = (Double)Utils.checkNum(c.paramDamp.getText(), page + " " + CoupledPanel.stringDamp + " field", null, false, null, null, false, null, false);
+					if(tempd == null)
+					{
+						parent.selectParameters();
+						monFrame.dispose();
+						return;
+					}
+					else
+						damp = tempd.doubleValue() / 100.0;
 				}
 
 				File testFile;
@@ -260,6 +350,7 @@ class ResultsPanel extends JPanel implements ActionListener
 				dataVect = new Vector(res.length - 1);
 				xysc = new XYSeriesCollection();
 				double iscale = -1.0 * scale;
+				int j;
 				for(int i = 1; i < res.length; i++)
 				{
 					eq = res[i][0].toString();
@@ -294,38 +385,33 @@ class ResultsPanel extends JPanel implements ActionListener
 						}
 						scale = d.doubleValue() / Double.parseDouble(res[i][4].toString());
 					}
-					if(parent.Parameters.dualSlope.isSelected())
+
+					switch(method)
 					{
-						inv = new Double((String)Analysis.NewmarkRigorousDual(dat, di, ca, thrust, iscale));
-						norm = new Double((String)Analysis.NewmarkRigorousDual(dat, di, ca, thrust, scale));
-					}
-					else if(parent.Parameters.downSlope.isSelected())
-					{
-						if(parent.Parameters.nd.isSelected())
-						{
+						case RigidBlockDualConst:
+							inv = new Double((String)Analysis.NewmarkRigorousDual(dat, di, ca, thrust, iscale));
+							norm = new Double((String)Analysis.NewmarkRigorousDual(dat, di, ca, thrust, scale));
+							break;
+						case RigidBlockDownConst:
 							inv = new Double((String)Analysis.NewmarkRigorous(dat, di, ca, iscale));
 							norm = new Double((String)Analysis.NewmarkRigorous(dat, di, ca, scale));
-						}
-						else if(parent.Parameters.ndDisp.isSelected())
-						{
+							break;
+						case RigidBlockDownDisp:
 							inv = new Double((String)Analysis.NewmarkRigorousDisp(dat, di, caList, iscale));
 							norm = new Double((String)Analysis.NewmarkRigorousDisp(dat, di, caList, scale));
-						}
-						else if(parent.Parameters.ndTime.isSelected())
-						{
+							break;
+						case RigidBlockDownTime:
 							inv = new Double((String)Analysis.NewmarkRigorousTime(dat, di, caList, iscale));
 							norm = new Double((String)Analysis.NewmarkRigorousTime(dat, di, caList, scale));
-						}
-						else
-						{
+							break;
+						case CoupledEnglish:
+							norm = new Double((String)Analysis.Coupled(dat, Analysis.Gftss, di, scale, uwgt, height, vs, damp, 0 /* angle */, caList));
+							break;
+						case CoupledMetric:
+							break;
+						default:
 							GUIUtils.popupError("No analysis method selected.");
 							return;
-						}
-					}
-					else
-					{
-						GUIUtils.popupError("No analysis method selected.");
-						return;
 					}
 
 					Analysis.xys.setName(eq + " - " + record);
@@ -334,8 +420,10 @@ class ResultsPanel extends JPanel implements ActionListener
 					avg = (norm.doubleValue()+inv.doubleValue())/2.0;
 					total += avg;
 					num++;
-					for(i3 = 0; i3 < dataVect.size() && ((Double)dataVect.elementAt(i3)).doubleValue() < avg; i3++);
-					dataVect.insertElementAt(new Double(avg), i3);
+
+					for(j = 0; j < dataVect.size() && ((Double)dataVect.elementAt(j)).doubleValue() < avg; j++);
+
+					dataVect.insertElementAt(new Double(avg), j);
 					outputTableModel.addRow(new Object[] {eq, record, fmt.format(norm), fmt.format(inv), fmt.format(avg)});
 				}
 				mon.setString("Calculating stastistics...");

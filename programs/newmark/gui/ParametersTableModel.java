@@ -18,7 +18,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-/* $Id: ParametersTableModel.java,v 1.1 2003/06/15 01:58:11 dolmant Exp $ */
+/* $Id: ParametersTableModel.java,v 1.2 2003/07/31 21:32:53 dolmant Exp $ */
 
 package newmark.gui;
 
@@ -36,12 +36,13 @@ import newmark.*;
 class ParametersTableModel extends DefaultTableModel implements TableModelListener
 {
 	String name;
+	String right = "Crit. Accel. (g)";
 
 	public ParametersTableModel(String left, String name)
 	{
 		this.name = name;
 		addColumn(left);
-		addColumn("Crit. Accel. (g)");
+		addColumn(right);
 		addTableModelListener(this);
 		addRow(new Object[] {"0", ""});
 	}
@@ -54,6 +55,16 @@ class ParametersTableModel extends DefaultTableModel implements TableModelListen
 	public void addRow()
 	{
 		addRow(new Object[] {"", ""});
+	}
+
+	public void setColName(String name)
+	{
+		this.name = name;
+		Object i[] = new Object[2];
+		i[0] = name;
+		i[1] = right;
+
+		setColumnIdentifiers(i);
 	}
 
 	public void tableChanged(TableModelEvent e)
