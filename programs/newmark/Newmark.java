@@ -290,7 +290,7 @@ public class Newmark
 
 				splash.advance();
 
-				// for Windows XP users, make it look mostly native
+				// for Windows users, make it look mostly native
 				UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 
 				JFrame frame = new JFrame("Newmark");
