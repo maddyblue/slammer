@@ -25,7 +25,6 @@ import newmark.*;
 public class Coupled extends Analysis
 {
 	// main function parameters
-	private static DoubleList dat;
 	private static double uwgt, height, vs, damp, dt, scal, g, vr, vs1;
 	private static int dv2, dv3;
 
