@@ -68,7 +68,8 @@ class ResultsPanel extends JPanel implements ActionListener
 	JButton plotOutput = new JButton("Plot histogram of Newmark displacements");
 	JButton plotNewmark = new JButton("Plot Newmark displacements versus time");
 	JCheckBox plotNewmarkLegend = new JCheckBox("Display legend", false);
-	JTextField outputBins = new JTextField("10",4);
+	JTextField outputBins = new JTextField("10", 2);
+	JComboBox plotAnalysis = new JComboBox(new Object[] {ParametersPanel.stringRB, ParametersPanel.stringDC, ParametersPanel.stringCP});
 
 	XYSeriesCollection xysc[] = new XYSeriesCollection[3];
 
@@ -88,9 +89,9 @@ class ResultsPanel extends JPanel implements ActionListener
 
 		outputTableModel.addColumn("Earthquake");
 		outputTableModel.addColumn("Record");
-		outputTableModel.addColumn("Rigid Block");
-		outputTableModel.addColumn("Decoupled");
-		outputTableModel.addColumn("Coupled");
+		outputTableModel.addColumn(ParametersPanel.stringRB);
+		outputTableModel.addColumn(ParametersPanel.stringDC);
+		outputTableModel.addColumn(ParametersPanel.stringCP);
 
 		Analyze.setActionCommand("analyze");
 		Analyze.addActionListener(this);
@@ -182,10 +183,11 @@ class ResultsPanel extends JPanel implements ActionListener
 				String eq, record;
 				DoubleList dat;
 				double di;
-				double avg, num = 0;
+				double num = 0;
+				Double avg;
 				double total[] = new double[3];
 				double scale = 1, iscale;
-				String norm = "", inv = "";
+				double inv, norm;
 				double[][] ca;
 				double thrust = 0, uwgt = 0, height = 0, vs = 0, damp = 0;
 
@@ -264,7 +266,7 @@ class ResultsPanel extends JPanel implements ActionListener
 				{
 					Double tempd;
 
-					tempd = (Double)Utils.checkNum(parent.Parameters.paramUwgt.getText(), CoupledPanel.stringUwgt + " field", null, false, null, null, false, null, false);
+					tempd = (Double)Utils.checkNum(parent.Parameters.paramUwgt.getText(), ParametersPanel.stringUwgt + " field", null, false, null, null, false, null, false);
 					if(tempd == null)
 					{
 						parent.selectParameters();
@@ -274,7 +276,7 @@ class ResultsPanel extends JPanel implements ActionListener
 					else
 						uwgt = tempd.doubleValue();
 
-					tempd = (Double)Utils.checkNum(parent.Parameters.paramHeight.getText(), CoupledPanel.stringHeight + " field", null, false, null, null, false, null, false);
+					tempd = (Double)Utils.checkNum(parent.Parameters.paramHeight.getText(), ParametersPanel.stringHeight + " field", null, false, null, null, false, null, false);
 					if(tempd == null)
 					{
 						parent.selectParameters();
@@ -284,7 +286,7 @@ class ResultsPanel extends JPanel implements ActionListener
 					else
 						height = tempd.doubleValue();
 
-					tempd = (Double)Utils.checkNum(parent.Parameters.paramVs.getText(), CoupledPanel.stringVs + " field", null, false, null, null, false, null, false);
+					tempd = (Double)Utils.checkNum(parent.Parameters.paramVs.getText(), ParametersPanel.stringVs + " field", null, false, null, null, false, null, false);
 					if(tempd == null)
 					{
 						parent.selectParameters();
@@ -294,7 +296,7 @@ class ResultsPanel extends JPanel implements ActionListener
 					else
 						vs = tempd.doubleValue();
 
-					tempd = (Double)Utils.checkNum(parent.Parameters.paramDamp.getText(), CoupledPanel.stringDamp + " field", null, false, null, null, false, null, false);
+					tempd = (Double)Utils.checkNum(parent.Parameters.paramDamp.getText(), ParametersPanel.stringDamp + " field", null, false, null, null, false, null, false);
 					if(tempd == null)
 					{
 						parent.selectParameters();
@@ -310,12 +312,40 @@ class ResultsPanel extends JPanel implements ActionListener
 				mon.setMinimum(0);
 				mon.setMaximum(res.length - 2);
 				monFrame.show();
-				dataVect[RB] = new Vector(res.length - 1);
-				dataVect[DC] = new Vector(res.length - 1);
-				dataVect[CP] = new Vector(res.length - 1);
-				xysc[RB] = new XYSeriesCollection();
-				xysc[DC] = new XYSeriesCollection();
-				xysc[CP] = new XYSeriesCollection();
+
+				if(paramRigid)
+				{
+					dataVect[RB] = new Vector(res.length - 1);
+					xysc[RB] = new XYSeriesCollection();
+				}
+				else
+				{
+					dataVect[RB] = null;
+					xysc[RB] = null;
+				}
+
+				if(paramDecoupled)
+				{
+					dataVect[DC] = new Vector(res.length - 1);
+					xysc[DC] = new XYSeriesCollection();
+				}
+				else
+				{
+					dataVect[DC] = null;
+					xysc[DC] = null;
+				}
+
+				if(paramCoupled)
+				{
+					dataVect[CP] = new Vector(res.length - 1);
+					xysc[CP] = new XYSeriesCollection();
+				}
+				else
+				{
+					dataVect[CP] = null;
+					xysc[CP] = null;
+				}
+
 				iscale = -1.0 * scale;
 				int j;
 				Object[] row;
@@ -364,34 +394,52 @@ class ResultsPanel extends JPanel implements ActionListener
 
 					if(paramRigid)
 					{
-						inv = RigidBlock.NewmarkRigorousDisp(dat, di, ca, iscale);
-						norm = RigidBlock.NewmarkRigorousDisp(dat, di, ca, scale);
-						avg = avg(inv, norm);
+						inv = RigidBlock.NewmarkRigorous(dat, di, ca, iscale, paramDualslope, thrust);
+						norm = RigidBlock.NewmarkRigorous(dat, di, ca, scale, paramDualslope, thrust);
+						avg = avg(inv, norm, Analysis.fmtOne);
 
-						total[RB] += avg;
-						row[RBC] = new Double(avg);
+						total[RB] += avg.doubleValue();
+						row[RBC] = avg;
 
 						Analysis.xys.setName(eq + " - " + record);
 						xysc[RB].addSeries(Analysis.xys);
 
-						for(j = 0; j < dataVect[RB].size() && ((Double)dataVect[RB].elementAt(j)).doubleValue() < avg; j++);
-						dataVect[RB].insertElementAt(new Double(avg), j);
+						for(j = 0; j < dataVect[RB].size() && ((Double)dataVect[RB].elementAt(j)).doubleValue() < avg.doubleValue(); j++);
+						dataVect[RB].insertElementAt(avg, j);
+					}
+
+					if(paramDecoupled)
+					{
+						// just use the Coupled code for now so we atleast have a working algorithm
+						inv = Coupled.Coupled(dat, Analysis.Gcmss, di, iscale, uwgt, height, vs, damp, 0, ca);
+						norm = Coupled.Coupled(dat, Analysis.Gcmss, di, scale, uwgt, height, vs, damp, 0, ca);
+
+						avg = avg(inv, norm, Analysis.fmtOne);
+
+						total[DC] += avg.doubleValue();
+						row[DCC] = avg;
+
+						Analysis.xys.setName(eq + " - " + record);
+						xysc[DC].addSeries(Analysis.xys);
+
+						for(j = 0; j < dataVect[DC].size() && ((Double)dataVect[DC].elementAt(j)).doubleValue() < avg.doubleValue(); j++);
+						dataVect[DC].insertElementAt(avg, j);
 					}
 
 					if(paramCoupled)
 					{
 						inv = Coupled.Coupled(dat, Analysis.Gcmss, di, iscale, uwgt, height, vs, damp, 0, ca);
 						norm = Coupled.Coupled(dat, Analysis.Gcmss, di, scale, uwgt, height, vs, damp, 0, ca);
-						avg = avg(inv, norm);
+						avg = avg(inv, norm, Analysis.fmtOne);
 
-						total[CP] += avg;
-						row[CPC] = new Double(avg);
+						total[CP] += avg.doubleValue();
+						row[CPC] = avg;
 
 						Analysis.xys.setName(eq + " - " + record);
 						xysc[CP].addSeries(Analysis.xys);
 
-						for(j = 0; j < dataVect[CP].size() && ((Double)dataVect[CP].elementAt(j)).doubleValue() < avg; j++);
-						dataVect[CP].insertElementAt(new Double(avg), j);
+						for(j = 0; j < dataVect[CP].size() && ((Double)dataVect[CP].elementAt(j)).doubleValue() < avg.doubleValue(); j++);
+						dataVect[CP].insertElementAt(avg, j);
 					}
 
 					outputTableModel.addRow(row);
@@ -457,34 +505,44 @@ class ResultsPanel extends JPanel implements ActionListener
 			}
 			else if(command.equals("plotOutput"))
 			{
-				/*
-				if(dataVect == null) return;
+				int i = plotAnalysis.getSelectedIndex();
+				String s = plotAnalysis.getSelectedItem().toString();
+
+				if(dataVect[i] == null)
+					return;
+
 				Double Bins = (Double)Utils.checkNum(outputBins.getText(), "output bins field", null, false, null, new Double(0), false, null, false);
+
 				if(Bins != null)
 				{
-					double series[] = new double[dataVect.size()];
+					double series[] = new double[dataVect[i].size()];
 
-					for(int i = 0; i < dataVect.size(); i++)
+					for(int j = 0; j < dataVect[i].size(); j++)
 					{
-						series[i] = (((Double)dataVect.elementAt(i)).doubleValue());
+						series[j] = (((Double)dataVect[i].elementAt(j)).doubleValue());
 					}
 
 					HistogramDataset dataset = new HistogramDataset();
 					dataset.addSeries("", series, (int)Bins.doubleValue());
 
-					JFreeChart hist = ChartFactory.createHistogram("Histogram of Newmark Displacements", "Newmark Displacement (cm)", "Number of Records", dataset, org.jfree.chart.plot.PlotOrientation.VERTICAL, false, false, false);
-					ChartFrame frame = new ChartFrame("Histogram of Newmark Displacements", hist);
+					JFreeChart hist = ChartFactory.createHistogram("Histogram of " + s + " Displacements", s + " (cm)", "Number of Records", dataset, org.jfree.chart.plot.PlotOrientation.VERTICAL, false, false, false);
+					ChartFrame frame = new ChartFrame("Histogram of " + s + " Displacements", hist);
 
 					frame.pack();
 					frame.setLocationRelativeTo(null);
 					frame.show();
 				}
-				*/
 			}
 			else if(command.equals("plotNewmark"))
 			{
-				JFreeChart chart = ChartFactory.createXYLineChart("Newmark displacement versus time", "Time (s)", "Newmark displacement (cm)", xysc[RB], org.jfree.chart.plot.PlotOrientation.VERTICAL, plotNewmarkLegend.isSelected(), true, false);
-				ChartFrame frame = new ChartFrame("Newmark displacement versus time", chart);
+				int i = plotAnalysis.getSelectedIndex();
+				String s = plotAnalysis.getSelectedItem().toString();
+
+				if(xysc[i] == null)
+					return;
+
+				JFreeChart chart = ChartFactory.createXYLineChart(s + " displacement versus time", "Time (s)", s + " displacement (cm)", xysc[i], org.jfree.chart.plot.PlotOrientation.VERTICAL, plotNewmarkLegend.isSelected(), true, false);
+				ChartFrame frame = new ChartFrame(s + " displacement versus time", chart);
 				frame.pack();
 				frame.setLocationRelativeTo(null);
 				frame.show();
@@ -498,9 +556,18 @@ class ResultsPanel extends JPanel implements ActionListener
 
 	private void clearOutput()
 	{
+		dataVect[RB] = null;
+		dataVect[DC] = null;
+		dataVect[CP] = null;
+
+		xysc[RB] = null;
+		xysc[DC] = null;
+		xysc[CP] = null;
+
 		int rows = outputTableModel.getRowCount();
 		while(--rows >= 0)
 			outputTableModel.removeRow(rows);
+
 		outputMean.setText("Mean:");
 		outputMedian.setText("Median:");
 		outputStdDev.setText("Standard Deviation:");
@@ -542,24 +609,78 @@ class ResultsPanel extends JPanel implements ActionListener
 
 	private JPanel createGraphs()
 	{
-		JPanel outputGraphs = new JPanel(new VariableGridLayout(VariableGridLayout.FIXED_NUM_COLUMNS,2));
+		JPanel panel = new JPanel();
 
-		outputGraphs.add(plotOutput);
-		Box b = new Box(BoxLayout.X_AXIS);
-		b.add(new JLabel("Plot with "));
-		b.add(outputBins);
-		b.add(new JLabel(" bins"));
-		JPanel p = new JPanel(new BorderLayout());
-		p.add(BorderLayout.WEST, b);
-		outputGraphs.add(p);
-		outputGraphs.add(plotNewmark);
-		outputGraphs.add(plotNewmarkLegend);
+		Insets left = new Insets(0, 20, 0, 0);
+		Insets none = new Insets(0, 0, 0, 0);
 
-		return outputGraphs;
+		GridBagLayout gridbag = new GridBagLayout();
+		panel.setLayout(gridbag);
+
+		GridBagConstraints c = new GridBagConstraints();
+		JLabel label;
+
+		int y = 0;
+		int x = 0;
+
+		c.gridx = x++;
+		c.gridy = y++;
+		c.weightx = 1;
+		c.fill = GridBagConstraints.HORIZONTAL;
+		gridbag.setConstraints(plotOutput, c);
+		panel.add(plotOutput);
+
+		c.gridx = x++;
+		c.weightx = 0;
+		label = new JLabel("Plot with ");
+		gridbag.setConstraints(label, c);
+		panel.add(label);
+
+		c.gridx = x++;
+		gridbag.setConstraints(outputBins, c);
+		panel.add(outputBins);
+
+		c.gridx = x++;
+		label = new JLabel(" bins.");
+		gridbag.setConstraints(label, c);
+		panel.add(label);
+
+		c.gridx = x++;
+		c.insets = left;
+		label = new JLabel("Analysis:");
+		gridbag.setConstraints(label, c);
+		panel.add(label);
+
+		x = 0;
+
+		c.gridy = y++;
+		c.gridx = x++;
+		c.weightx = 1;
+		c.insets = none;
+		gridbag.setConstraints(plotNewmark, c);
+		panel.add(plotNewmark);
+
+		c.gridx = x;
+		c.gridwidth = 3;
+		c.weightx = 0;
+		gridbag.setConstraints(plotNewmarkLegend, c);
+		panel.add(plotNewmarkLegend);
+
+		x += 3;
+
+		c.gridx = x;
+		c.gridwidth = 1;
+		c.insets = left;
+		gridbag.setConstraints(plotAnalysis, c);
+		panel.add(plotAnalysis);
+
+		return panel;
 	}
 
-	private double avg(String a, String b)
+	private Double avg(final double a, final double b, DecimalFormat f)
 	{
-		return((Double.parseDouble(a) + Double.parseDouble(b)) / 2.0);
+		return (new Double(f.format(new Double(
+			(a + b) / 2.0
+			))));
 	}
 }

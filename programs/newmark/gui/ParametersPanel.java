@@ -71,6 +71,10 @@ class ParametersPanel extends JPanel implements ActionListener
 	JLabel labelVs = new JLabel();
 	JLabel labelDamp = new JLabel(stringDamp + " (percent)");
 
+	public JCheckBox typeRigid = new JCheckBox(stringRB);
+	public JCheckBox typeDecoupled = new JCheckBox(stringDC);
+	public JCheckBox typeCoupled = new JCheckBox(stringCP);
+
 	final public static String stringUwgt = "Unit weight";
 	final public static String stringHeight = "Height";
 	final public static String stringVs = "Shear wave velocity";
@@ -80,10 +84,6 @@ class ParametersPanel extends JPanel implements ActionListener
 	final public static String stringRB = "Rigid Block";
 	final public static String stringDC = "Decoupled";
 	final public static String stringCP = "Coupled";
-
-	public JCheckBox typeRigid = new JCheckBox(stringRB);
-	public JCheckBox typeDecoupled = new JCheckBox(stringDC);
-	public JCheckBox typeCoupled = new JCheckBox(stringCP);
 
 	JButton next = new JButton("Perform Analysis");
 

@@ -25,131 +25,41 @@ import newmark.*;
 
 public class RigidBlock extends Analysis
 {
-	public static String NewmarkRigorousDual(DoubleList data, final double d, final double ca, final double ta, final double mult)
+	public static double NewmarkRigorous(DoubleList data, final double d, final double[][] disp, final double mult, final boolean dualSlope, final double ta)
 	{
-		Double val;
-		double a, n, q=0, r=0, s=0, y=0, v=0, u=0;
+		Double val; // current data value from input file
+		double a, n, q = 0, r = 0, s = 0, t, u = 0, v = 0, y = 0;
 
+		// dual slope calculations
 		final double l = Math.toRadians(ta);
 		final double g = Math.sin(l) * Gcmss;
-		final double t = (ca * Gcmss) + g;
 
-		setValueSize(d);
-		data.reset();
-		while((val = data.each()) != null)
-		{
-			a = (val.doubleValue() * mult) + g;
+		t = disp[0][1] * Gcmss;
+		if(dualSlope)
+			t += g;
 
-			if(a == 0)
-			{
-				store(u);
-				continue;
-			}
-
-			if(Math.abs(v) < .0001)
-			{
-				if(Math.abs(a) > t)
-				{
-					n = sign(a);
-				}
-				else
-				{
-					n = a / t;
-				}
-			}
-			else
-			{
-				n = sign(v);
-			}
-			y = a - n * t;
-			v = r + d / 2.0 * (y + s);
-			if (!(r == 0.0 || (v / r) > 0))
-			{
-				v = 0;
-				y = 0;
-			}
-			u = q + d / 2.0 * (v + r);
-			q = u;
-			r = v;
-			s = y;
-			if(mult > 0.0) store(u);
-		}
-
-		end(u);
-		return fmtOne.format(u);
-	}
-
-	public static String NewmarkRigorous(DoubleList data, final double di, final double ca, final double mult)
-	{
-		Double val;
-		double t, d, q = 0, r = 0, s = 0, y = 0, v = 0, u = 0, a, n;
-		t = ca;
-		t *= Gcmss;
-		d = di;
-		setValueSize(di);
-		data.reset();
-		int count = 0;
-		while((val = data.each()) != null)
-		{
-			a = val.doubleValue() * mult;
-			if(a == 0)
-			{
-				store(u);
-				continue;
-			}
-			if(v < .0001)
-			{
-				if(Math.abs(a) > t )
-				{
-					n = sign(a);
-				}
-				else
-				{
-					n = a / t;
-				}
-			}
-			else
-			{
-				n = 1;
-			}
-			y = a - n * t;
-			v = r + d / 2.0 * (y + s);
-			if (v <= 0.0)
-			{
-				v = 0;
-				y = 0;
-			}
-			u = q + d / 2.0 * (v + r);
-			q = u;
-			r = v;
-			s = y;
-			if(mult > 0.0) store(u);
-		}
-
-		end(u);
-		return fmtOne.format(u);
-	}
-
-	public static String NewmarkRigorousDisp(DoubleList data, final double di, final double[][] disp, final double mult)
-	{
-		Double val;
-		double t, d, q = 0, r = 0, s = 0, y = 0, v = 0, u = 0, a, n;
-		t = disp[0][1];
-		t *= Gcmss;
-		int pos = 0;
+		int pos = 0; // position in the displacement/ca table
 		double prop;
-		d = di;
-		setValueSize(di);
+
+		setValueSize(d); // init the graphing data
+
 		data.reset();
 		while((val = data.each()) != null)
 		{
 			a = val.doubleValue() * mult;
-			if(a == 0)
+			if(dualSlope)
+				a += g;
+
+			if(a == 0 && mult > 0.0)
 			{
 				store(u);
 				continue;
 			}
-			if(v < .0001)
+
+			if(
+				(!dualSlope && v < .0001) ||
+				(dualSlope && Math.abs(v) < .0001)
+			)
 			{
 				if(Math.abs(a) > t )
 					n = sign(a);
@@ -157,36 +67,52 @@ public class RigidBlock extends Analysis
 					n = a / t;
 			}
 			else
-				n = 1;
+				n = dualSlope ? sign(v) : 1;
+
 			y = a - n * t;
-			v = r + d / 2 * (y + s);
-			if (v <= 0)
+			v = r + d / 2.0 * (y + s);
+
+			if (
+				(!dualSlope && v <= 0.0) ||
+				(dualSlope && (!(r == 0.0 || (v / r) > 0.0)))
+			)
 			{
 				v = 0;
 				y = 0;
 			}
-			u = q + d / 2 * (v + r);
+
+			u = q + d / 2.0 * (v + r);
 			q = u;
 			r = v;
 			s = y;
-			if(mult > 0) store(u);
+
+			// only store stuff if we aren't in the inverse run. this is just a simple speedup.
+			if(mult > 0.0)
+				store(u);
+
+			// if we are at the end of the disp/ca table, don't bother doing anything else
 			if(pos == disp.length - 1)
 				continue;
+
+			// figure out the new pos based on current displacement
 			while(u > disp[pos + 1][0])
 			{
 				pos++;
 				if(pos == disp.length - 1) break;
 			}
+
 			if(pos == disp.length - 1)
 			{
 				t = Gcmss * disp[pos][1];
-				continue;
 			}
-			prop = (u - disp[pos][0]) / (disp[pos + 1][0] - disp[pos][0]);
-			t = Gcmss * (disp[pos][1] - (disp[pos][1] - disp[pos + 1][1]) * prop);
+			else
+			{
+				prop = (u - disp[pos][0]) / (disp[pos + 1][0] - disp[pos][0]);
+				t = Gcmss * (disp[pos][1] - (disp[pos][1] - disp[pos + 1][1]) * prop);
+			}
 		}
 
 		end(u);
-		return fmtOne.format(u);
+		return u;
 	}
 }

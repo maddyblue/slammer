@@ -24,7 +24,7 @@ import newmark.*;
 
 public class Coupled extends Analysis
 {
-	public static String Coupled(final DoubleList data, final double G, final double di, final double scale, final double uwgt, final double height, final double vs, final double damp, final double angle, final double caList[][])
+	public static double Coupled(final DoubleList data, final double G, final double di, final double scale, final double uwgt, final double height, final double vs, final double damp, final double angle, final double caList[][])
 	{
 		double temp[];
 		final double beta = 0.25;
@@ -211,7 +211,7 @@ public class Coupled extends Analysis
 
 		end(s2);
 
-		return Double.toString(s2);
+		return s2;
 	}
 
 	public static double[] CoupledSolvu(double u1, double udot1, double udotdot1, double u2, double udot2, double udotdot2, double acc1, double acc2, boolean slide, final int j, final double M, final double Mtot, final double L, final double omega, final double beta, final double gamma, final double di, final double damp, final double G)
