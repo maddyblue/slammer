@@ -124,18 +124,15 @@ class NewmarkTableModel extends DefaultTableModel implements NewmarkTableInterfa
 				}
 				else if(cols[j] == fieldArray[rowAriasInt][colAbbrev])
 				{
-					DecimalFormat fmt = new DecimalFormat(Analysis.fmtThree);
-					data[i][j] = fmt.format(Double.parseDouble(ret[i + 1][j].toString()));
+					data[i][j] = Analysis.fmtThree.format(Double.parseDouble(ret[i + 1][j].toString()));
 				}
 				else if(cols[j] == fieldArray[rowPGA][colAbbrev])
 				{
-					DecimalFormat fmt = new DecimalFormat(Analysis.fmtThree);
-					data[i][j] = fmt.format(Double.parseDouble(ret[i + 1][j].toString()));
+					data[i][j] = Analysis.fmtThree.format(Double.parseDouble(ret[i + 1][j].toString()));
 				}
 				else if(cols[j] == fieldArray[rowMeanPer][colAbbrev])
 				{
-					DecimalFormat fmt = new DecimalFormat(Analysis.fmtTwo);
-					data[i][j] = fmt.format(Double.parseDouble(ret[i + 1][j].toString()));
+					data[i][j] = Analysis.fmtTwo.format(Double.parseDouble(ret[i + 1][j].toString()));
 				}
 				else
 				{
