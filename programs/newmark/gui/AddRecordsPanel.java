@@ -374,7 +374,6 @@ class AddRecordsPanel extends JPanel implements ActionListener
 				0 + ", " +
 				0 + ", " +
 				0 + ")";
-				System.out.println(q);
 			Utils.getDB().runUpdate(q);
 		}
 		else
