@@ -75,44 +75,43 @@ public class Newmark
 			}
 			else if(args[0].equals("drop"))
 			{
-				Utils.getDB().runQuery("drop table data, group");
+				Utils.getDB().runUpdate("drop table data");
+				Utils.getDB().runUpdate("drop table grp");
 				Utils.closeDB();
 			}
 			else if(args[0].equals("create"))
 			{
-				Utils.getDB().runQuery("create table data ("
-					+ "id        integer(10)  not null,"
+				Utils.getDB().runUpdate("create table data ("
+					+ "id        integer      not null generated always as identity primary key,"
 					+ "eq        varchar(100) not null,"
 					+ "record    varchar(100) not null,"
 					+ "digi_int  double       not null,"
-					+ "mom_mag   double           null,"
+					+ "mom_mag   double               ,"
 					+ "arias     double       not null,"
 					+ "dobry     double       not null,"
 					+ "pga       double       not null,"
 					+ "mean_per  double       not null,"
-					+ "epi_dist  double           null,"
-					+ "foc_dist  double           null,"
-					+ "rup_dist  double           null,"
-					+ "foc_mech  tinyint      not null,"
+					+ "epi_dist  double               ,"
+					+ "foc_dist  double               ,"
+					+ "rup_dist  double               ,"
+					+ "foc_mech  smallint     not null,"
 					+ "location  varchar(100) not null,"
 					+ "owner     varchar(100) not null,"
-					+ "latitude  double           null,"
-					+ "longitude double           null,"
-					+ "class     tinyint      not null,"
-					+ "change    bit          not null,"
+					+ "latitude  double               ,"
+					+ "longitude double               ,"
+					+ "class     smallint     not null,"
+					+ "change    smallint     not null,"
 					+ "path      varchar(255) not null,"
-					+ "select1   bit          not null,"
-					+ "analyze   bit          not null,"
-					+ "select2   bit          not null,"
-					+ "unique (id)"
+					+ "select1   smallint     not null,"
+					+ "analyze   smallint     not null,"
+					+ "select2   smallint     not null"
 					+ ")");
 
-				Utils.getDB().runQuery("create table group ("
-					+ "record    integer(10)  not null,"
+				Utils.getDB().runUpdate("create table grp ("
+					+ "record    integer      not null,"
 					+ "name      varchar(100) not null,"
-					+ "analyze   bit          not null"
+					+ "analyze   smallint     not null"
 					+ ")");
-				Utils.closeDB();
 			}
 			else if(args[0].equals("import"))
 			{
@@ -126,6 +125,8 @@ public class Newmark
 				DoubleList data;
 				Object res[][];
 				int c;
+
+				Utils.getDB().runUpdate("delete from data");
 
 				while(fr.ready())
 				{
@@ -147,7 +148,7 @@ public class Newmark
 									cur[i] = Utils.nullify(s);
 									break;
 								default:
-									cur[i] = Utils.addSlashes(s);
+									cur[i] = Utils.addQuote(s);
 									break;
 							}
 							i++;
@@ -170,15 +171,41 @@ public class Newmark
 							}
 
 							di = Double.parseDouble(cur[9]);
-							data = new DoubleList(path);
+							/*data = new DoubleList(path);
 							if(data.bad())
 							{
 								GUIUtils.popupError("Invalid data in file " + path + " at point " + data.badEntry() + ".");
 								continue;
-							}
-							q = "insert into data values (uniquekey('data'), '" + cur[0] + "', '" + cur[3] + "', " + cur[9] + ", " + cur[1] + ", " + ImportRecords.Arias(data, di) + ", " + ImportRecords.Dobry(data, di) + ", " + ImportRecords.PGA(data) + ", " + ImportRecords.MeanPer(data, di) + ", " + cur[10] + ", " + cur[11] + ", " + cur[12] + ", " + cur[2] + ", '" + cur[4] + "', '" + cur[5] + "', " + cur[6] + ", " + cur[7] + ", " + cur[8] + ", 0, '" + path + "', 0, 0, 0)";
+							}*/
+							q = "insert into data " +
+								"(eq, record, digi_int, mom_mag, arias, dobry, pga, mean_per, epi_dist, foc_dist, rup_dist, foc_mech, location, owner, latitude, longitude, class, change, path, select1, analyze, select2)" +
+								" values ( " +
+								"'" + cur[0] + "'," +
+								"'" + cur[3] + "'," +
+								"" + cur[9] + "," +
+								"" + cur[1] + "," +
+								//"" + ImportRecords.Arias(data, di) + "," +
+								//"" + ImportRecords.Dobry(data, di) + "," +
+								//"" + ImportRecords.PGA(data) + "," +
+								//"" + ImportRecords.MeanPer(data, di) + "," +
+								"0, 0, 0, 0," +
+								"" + cur[10] + "," +
+								"" + cur[11] + "," +
+								"" + cur[12] + "," +
+								"" + cur[2] + "," +
+								"'" + cur[4] + "'," +
+								"'" + cur[5] + "'," +
+								"" + cur[6] + "," +
+								"" + cur[7] + "," +
+								"" + cur[8] + "," +
+								"0," +
+								"'" + path + "'," +
+								"0," +
+								"0," +
+								"0" +
+								")";
 							System.out.println(q);
-							Utils.getDB().runQuery(q);
+							Utils.getDB().runUpdate(q);
 							cur = new String[13];
 
 							break;
@@ -194,8 +221,8 @@ public class Newmark
 			}
 			else
 			{
-				Utils.getDB().runQuery("update data set select1=false where select1=true");
-				Utils.getDB().runQuery("update data set select2=false where select2=true");
+				Utils.getDB().runUpdate("update data set select1=0 where select1=1");
+				Utils.getDB().runUpdate("update data set select2=0 where select2=1");
 
 				// for Windows XP users, make it look mostly native
 				UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -228,6 +255,7 @@ public class Newmark
 		catch(Exception ex)
 		{
 			Utils.catchException(ex);
+			System.exit(1);
 		}
 	}
 }

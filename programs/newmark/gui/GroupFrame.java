@@ -142,7 +142,7 @@ class GroupFrame extends JFrame implements ActionListener
 	public void updateGroupList() throws Exception
 	{
 		canChange = false;
-		Object[][] names = Utils.getDB().runQuery("select distinct name from group order by name");
+		Object[][] names = Utils.getDB().runQuery("select distinct name from grp order by name");
 		JComboBox cur;
 		Object sel = changeCB.getSelectedItem();
 		for(int i = 0; i < list.size(); i++)
@@ -178,7 +178,7 @@ class GroupFrame extends JFrame implements ActionListener
 			{
 				canChange = false;
 
-				Object[][] res = Utils.getDB().runQuery("select id,analyze from data where select2=true");
+				Object[][] res = Utils.getDB().runQuery("select id,analyze from data where select2=1");
 				if(res == null)
 				{
 					addField.setText("Nothing to add");
@@ -186,9 +186,9 @@ class GroupFrame extends JFrame implements ActionListener
 				}
 
 				String name = addField.getText();
-				Utils.getDB().runQuery("delete from group where name='" + name + "'");
+				Utils.getDB().runUpdate("delete from grp where name='" + name + "'");
 				for(int i = 1; i < res.length; i++)
-					Utils.getDB().runQuery("insert into group values(" + res[i][0] + ", '" + name + "', " + res[i][1] + ")");
+					Utils.getDB().runUpdate("insert into grp values(" + res[i][0] + ", '" + name + "', " + res[i][1] + ")");
 				updateGroupList();
 				if(changeCB.getSelectedItem() == null) changeCB.setSelectedItem(name);
 				canChange = true;
@@ -205,7 +205,7 @@ class GroupFrame extends JFrame implements ActionListener
 
 				canChange = false;
 				String s = deleteCB.getSelectedItem().toString();
-				Utils.getDB().runQuery("delete from group where name='" + s + "'");
+				Utils.getDB().runUpdate("delete from grp where name='" + s + "'");
 				if(changeCB.getSelectedItem() == s) changeCB.setSelectedItem(null);
 				updateGroupList();
 				canChange = true;
@@ -245,12 +245,12 @@ class GroupFrame extends JFrame implements ActionListener
 
 					if(index == 0)
 					{
-						res = Utils.getDB().runQuery("select id from data where select2=true order by eq, record");
+						res = Utils.getDB().runQuery("select id from data where select2=1 order by eq, record");
 					}
 					else
 					{
 						String group = exportCB.getSelectedItem().toString();
-						res = Utils.getDB().runQuery("select record from group where name='" + group + "'");
+						res = Utils.getDB().runQuery("select record from grp where name='" + group + "'");
 					}
 
 					if(res == null || res.length <= 1)
@@ -326,11 +326,11 @@ class GroupFrame extends JFrame implements ActionListener
 				if(!canChange) return;
 				if(changeCB.getSelectedItem() == null) return;
 
-				Object[][] res = Utils.getDB().runQuery("select record, analyze from group where name='" +
+				Object[][] res = Utils.getDB().runQuery("select record, analyze from grp where name='" +
 				changeCB.getSelectedItem().toString() + "'");
-				Utils.getDB().runQuery("update data set select2=false where select2=true");
+				Utils.getDB().runUpdate("update data set select2=0 where select2=1");
 				for(int i = 1; i < res.length; i++)
-					Utils.getDB().runQuery("update data set select2=true, analyze=" + res[i][1].toString() + " where id=" + res[i][0].toString());
+					Utils.getDB().runUpdate("update data set select2=1, analyze=" + res[i][1].toString() + " where id=" + res[i][0].toString());
 				if(model != null) model.setModel(NewmarkTable.REFRESH);
 
 				parent.updateSelectLabel();

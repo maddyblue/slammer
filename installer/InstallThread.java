@@ -60,12 +60,14 @@ public class InstallThread extends Thread
 		try
 		{
 			int i = 0;
+			boolean newDB = false;
 
 			// first, install the Newmark fileset
 			if(((String)components.elementAt(i)).equals("newmark-program"))
 			{
 				installComponent((String)components.elementAt(i));
 				i++;
+				newDB = true;
 			}
 
 			// with the remaining sets, install any sql files
@@ -94,7 +96,7 @@ public class InstallThread extends Thread
 			}
 
 			// now start the database thread
-			dbthread.startdb();
+			dbthread.startdb(newDB);
 			setPriority(NORM_PRIORITY);
 			dbthread.setPriority(NORM_PRIORITY);
 			dbthread.start();

@@ -27,17 +27,13 @@ import java.sql.*;
 public class EQDatabase
 {
 	protected java.sql.Connection connection;
+	public static final String url = "jdbc:derby:database";
 
 	public EQDatabase() throws Exception
 	{
-		Class.forName("com.mckoi.JDBCDriver");
-
-		char sep = System.getProperty("file.separator").charAt(0);
-		String url = "jdbc:mckoi:local://." + sep + "Database" + sep + "db.conf";
-		String username = "newmark";
-		String password = "newmark";
-
-		connection = java.sql.DriverManager.getConnection(url, username, password);
+		System.setProperty("derby.system.home", ".");
+		Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
+		connection = java.sql.DriverManager.getConnection(url);
 	}
 
 	private String format(Object obj, int len)
@@ -74,7 +70,15 @@ public class EQDatabase
 
 	public void set(String eq, String record, String set) throws SQLException
 	{
-		runQuery("update data set " + set + " where eq='" + eq + "' and record='" + record + "'");
+		runUpdate("update data set " + set + " where eq='" + eq + "' and record='" + record + "'");
+	}
+
+	public int runUpdate(String update) throws SQLException
+	{
+		Statement statement = connection.createStatement();
+		int i = statement.executeUpdate(update);
+		statement.close();
+		return i;
 	}
 
 	public Object[][] runQuery(String query) throws SQLException
@@ -85,7 +89,7 @@ public class EQDatabase
 	// print determines if the returned results from the query are printed
 	public Object[][] runQuery(String query, boolean print) throws SQLException
 	{
-		Statement statement = connection.createStatement();
+		Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 		ResultSet result = null;
 		ResultSetMetaData resdata;
 
@@ -155,6 +159,8 @@ public class EQDatabase
 	public void close() throws SQLException
 	{
 		connection.close();
+		connection = null;
+		//java.sql.DriverManager.getConnection(url + ";shutdown=true");
 	}
 
 	// EQ functions
@@ -173,10 +179,10 @@ public class EQDatabase
 			return (new String[0]);
 
 		String[] list = new String[array.length - 1];
+
 		for(int i = 0; i < list.length; i++)
-		{
-			list[i] = array[i + 1][0].toString();
-		}
+			list[i] =  Utils.shorten(array[i + 1][0]);
+
 		return list;
 	}
 

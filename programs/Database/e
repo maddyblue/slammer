@@ -1,4 +1,0 @@
-#!/bin/sh
-
-rm data/*
-cp data-empty/* data

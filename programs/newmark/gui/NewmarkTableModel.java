@@ -175,7 +175,7 @@ class NewmarkTableModel extends DefaultTableModel implements NewmarkTableInterfa
 			secondaryOrder = "desc";
 		}
 
-		ret = "SELECT " + ret + " FROM data WHERE select" + (selectTable ? "2" : "1") + "=true ORDER BY "
+		ret = "SELECT " + ret + " FROM data WHERE select" + (selectTable ? "2" : "1") + "=1 ORDER BY "
 			+ NewmarkTable.getColValue(colFieldName, colDBName, primarySort.getSelectedItem().toString()) + " " + primaryOrder + ","
 			+ NewmarkTable.getColValue(colFieldName, colDBName, secondarySort.getSelectedItem().toString()) + " " + secondaryOrder;
 		return ret;

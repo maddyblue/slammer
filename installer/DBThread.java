@@ -74,34 +74,23 @@ public class DBThread extends Thread
 						case '\r':
 							break;
 						case '\t':
-							cur[j] = addSlashes(s);
+							cur[j] = addQuote(s);
 							j++;
 							s = "";
 							break;
 						case '\n':
 						{
-							cur[j] = addSlashes(s);
+							cur[j] = addQuote(s);
 							s = "";
 							j = 0;
 
-							String path = addSlashes(installDir + File.separator + "records" + File.separator) + cur[0] + addSlashes(File.separator) + cur[1];
+							String path = addQuote(installDir + File.separator + "records" + File.separator) + cur[0] + addQuote(File.separator) + cur[1];
 
 							progress.advanceDB();
 
-							reslen = runQuery("select id from data where eq='" + cur[0] + "' and record='" + cur[1] + "'");
-							System.out.println(reslen);
-
-							// entry is not already in db
-							if(reslen == 0)
-							{
-								q = "insert into data values (uniquekey('data'), '" + cur[0] + "', '" + cur[1] + "', " + cur[2] + ", " + nullify(cur[3]) + ", " + cur[4] + ", " + cur[5] + ", " + cur[6] + ", " + cur[7] + ", " + nullify(cur[8]) + ", " + nullify(cur[9]) + ", " + nullify(cur[10]) + ", " + cur[11] + ", '" + cur[12] + "', '" + cur[13] + "', " + nullify(cur[14]) + ", " + nullify(cur[15]) + ", " + cur[16] + ", " + 0 + ", '" + path + "', 0, 0, 0)";
-								runQuery(q);
-								System.out.println(q);
-							}
-							else
-							{
-								System.out.println(cur[0] + " - " + cur[1] + ": already in db");
-							}
+							q = "insert into data (eq, record, digi_int, mom_mag, arias, dobry, pga, mean_per, epi_dist, foc_dist, rup_dist, foc_mech, location, owner, latitude, longitude, class, change, path, select1, analyze, select2) values ('" + cur[0] + "', '" + cur[1] + "', " + cur[2] + ", " + nullify(cur[3]) + ", " + cur[4] + ", " + cur[5] + ", " + cur[6] + ", " + cur[7] + ", " + nullify(cur[8]) + ", " + nullify(cur[9]) + ", " + nullify(cur[10]) + ", " + cur[11] + ", '" + cur[12] + "', '" + cur[13] + "', " + nullify(cur[14]) + ", " + nullify(cur[15]) + ", " + cur[16] + ", " + 0 + ", '" + path + "', 0, 0, 0)";
+							runUpdate(q);
+							System.out.println(q);
 
 							break;
 						}
@@ -146,43 +135,92 @@ public class DBThread extends Thread
 		return ret;
 	}
 
+	public static String addQuote(String str)
+	{
+		String ret = "";
+		char c;
+		for(int i = 0; i < str.length(); i++)
+		{
+			c = str.charAt(i);
+			switch(c)
+			{
+				case '\'':
+					ret += '\'';
+					break;
+			}
+			ret += c;
+		}
+		return ret;
+	}
+
 	// database connection stuff
 	private java.sql.Connection connection = null;
+	public static String url = "jdbc:derby:" + installDir + File.separator + "programs" + File.separator + "database";
 
-	public void startdb() throws Exception
+	public void startdb(boolean newDB) throws Exception
 	{
 		if(connection != null)
 			return;
 
-		Class.forName("com.mckoi.JDBCDriver");
+		Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
 
-		String url = "jdbc:mckoi:local://" + installDir + File.separatorChar + "programs" + File.separatorChar + "Database" + File.separatorChar + "db.conf";
-		String username = "newmark";
-		String password = "newmark";
+		String connect_url = url;
+		if(newDB)
+			connect_url += ";create=true";
 
-		connection = java.sql.DriverManager.getConnection(url, username, password);
+		connection = java.sql.DriverManager.getConnection(connect_url);
+
+		if(newDB)
+		{
+			runUpdate("create table data ("
+				+ "id        integer      not null generated always as identity primary key,"
+				+ "eq        varchar(100) not null,"
+				+ "record    varchar(100) not null,"
+				+ "digi_int  double       not null,"
+				+ "mom_mag   double               ,"
+				+ "arias     double       not null,"
+				+ "dobry     double       not null,"
+				+ "pga       double       not null,"
+				+ "mean_per  double       not null,"
+				+ "epi_dist  double               ,"
+				+ "foc_dist  double               ,"
+				+ "rup_dist  double               ,"
+				+ "foc_mech  smallint     not null,"
+				+ "location  varchar(100) not null,"
+				+ "owner     varchar(100) not null,"
+				+ "latitude  double               ,"
+				+ "longitude double               ,"
+				+ "class     smallint     not null,"
+				+ "change    smallint     not null,"
+				+ "path      varchar(255) not null,"
+				+ "select1   smallint     not null,"
+				+ "analyze   smallint     not null,"
+				+ "select2   smallint     not null"
+				+ ")");
+
+			runUpdate("create table grp ("
+				+ "record    integer      not null,"
+				+ "name      varchar(100) not null,"
+				+ "analyze   smallint     not null"
+				+ ")");
+		}
 	}
 
-	private int runQuery(String query) throws SQLException
+	private int runUpdate(String update) throws SQLException
 	{
 		Statement statement = connection.createStatement();
-		ResultSet result = null;
-
-		result = statement.executeQuery(query);
+		int result = statement.executeUpdate(update);
 		statement.close();
-
-		int ret = 0;
-
-		while(result.next())
-			ret++;
-
-		return ret;
+		return result;
 	}
 
 	public void closedb() throws SQLException
 	{
 		if(connection != null)
+		{
 			connection.close();
+			connection = null;
+		}
 	}
 
 	// utility functions

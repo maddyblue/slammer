@@ -138,10 +138,10 @@ class NewmarkTable extends JPanel implements ActionListener, NewmarkTableInterfa
 			if(fromDB && (res == null || res.length <= 1))
 				continue;
 
-			set(rows[i], selectStr + "=false");
+			set(rows[i], selectStr + "=0");
 
 			if(fromDB)
-				Utils.getDB().runQuery("delete from data where eq='" + eq + "' and record='" + record + "'");
+				Utils.getDB().runUpdate("delete from data where eq='" + eq + "' and record='" + record + "'");
 		}
 		model.setModel(REFRESH);
 
@@ -151,7 +151,7 @@ class NewmarkTable extends JPanel implements ActionListener, NewmarkTableInterfa
 
 	public void empty() throws Exception
 	{
-		Utils.getDB().runQuery("update data set " + selectStr + "=false where " + selectStr + "=true");
+		Utils.getDB().runUpdate("update data set " + selectStr + "=0 where " + selectStr + "=1");
 		model.setModel(REFRESH);
 	}
 
@@ -166,9 +166,9 @@ class NewmarkTable extends JPanel implements ActionListener, NewmarkTableInterfa
 
 	public void addRecord(String eq, String record, boolean setAnalyze) throws Exception
 	{
-		String set = selectStr + "=true";
+		String set = selectStr + "=1";
 		if(setAnalyze)
-			 set += ", analyze=true";
+			 set += ", analyze=1";
 
 		Utils.getDB().set(eq, record, set);
 		model.setModel(REFRESH);

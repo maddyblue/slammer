@@ -350,7 +350,7 @@ class AddRecordsPanel extends JPanel implements ActionListener
 		if(add)
 		{
 			// add it to the db
-			Utils.getDB().runQuery("insert into data values (uniquekey('data'), '" + eq + "', '" + record + "', " + di + ", " + mag + ", " + arias + ", " + dobry + ", " + pga + ", " + meanper + ", " + epidist + ", " + focdist + ", " + rupdist + ", " + focmech + ", '" + loc + "', '" + owner + "', " + lat + ", " + lng + ", " + siteclass + ", " + 1 + ", '" + file + "', " + 0 + ", " + 0 + ", " + 0 + ")");
+			Utils.getDB().runUpdate("insert into data values (uniquekey('data'), '" + eq + "', '" + record + "', " + di + ", " + mag + ", " + arias + ", " + dobry + ", " + pga + ", " + meanper + ", " + epidist + ", " + focdist + ", " + rupdist + ", " + focmech + ", '" + loc + "', '" + owner + "', " + lat + ", " + lng + ", " + siteclass + ", " + 1 + ", '" + file + "', " + 0 + ", " + 0 + ", " + 0 + ")");
 		}
 		else
 		{
@@ -374,7 +374,7 @@ class AddRecordsPanel extends JPanel implements ActionListener
 				+ " , longitude= " + lng
 				+ " , class= "     + siteclass
 				+ "  where path='" + file + "'";
-				Utils.getDB().runQuery(q);
+				Utils.getDB().runUpdate(q);
 		}
 
 		return "";

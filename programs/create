@@ -1,2 +1,0 @@
-#!/bin/sh
-java -jar jars/mckoidb-1.0.3.jar -conf Database/db.conf -create "newmark" "newmark"

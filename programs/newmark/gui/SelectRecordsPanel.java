@@ -333,7 +333,7 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 				{
 					if(record == "Select all records")
 					{
-						Utils.getDB().runQuery("update data set select2=true, analyze=true where eq='" + eq + "' and select2=false");
+						Utils.getDB().runUpdate("update data set select2=1, analyze=1 where eq='" + eq + "' and select2=0");
 						table.setModel(NewmarkTable.REFRESH);
 					}
 					else
@@ -343,7 +343,7 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 			}
 			else if(command.equals("all"))
 			{
-				Utils.getDB().runQuery("update data set analyze=true where select2=true and analyze=false");
+				Utils.getDB().runUpdate("update data set analyze=1 where select2=1 and analyze=0");
 				table.setModel(NewmarkTable.REFRESH);
 				updateSelectLabel();
 			}
@@ -413,7 +413,7 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 			}
 			else if(command.equals("none"))
 			{
-				Utils.getDB().runQuery("update data set analyze=false where select2=true and analyze=true");
+				Utils.getDB().runUpdate("update data set analyze=0 where select2=1 and analyze=1");
 				table.setModel(NewmarkTable.REFRESH);
 				updateSelectLabel();
 			}
@@ -478,15 +478,15 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 					where = "where " + where.substring(4);
 					try
 					{
-						Object[][] result = Utils.getDB().runQuery("update data set select2=true, analyze=true " + where);
-						if(result == null)
+						int result = Utils.getDB().runUpdate("update data set select2=1, analyze=1 " + where);
+						if(result == 0)
 						{
 							searchTA.setText("Search complete. No records found.");
 							return;
 						}
 						else
 						{
-							searchTA.setText("Search complete. " + (result[1][0].toString()) + " records found.");
+							searchTA.setText("Search complete. " + result + " records found.");
 							table.setModel(NewmarkTable.REFRESH);
 							updateSelectLabel();
 						}
@@ -568,8 +568,8 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 
 	public void updateSelectLabel() throws Exception
 	{
-		Object[][] ret1 = Utils.getDB().runQuery("select count(*) from data where select2=true and analyze=true");
-		Object[][] ret2 = Utils.getDB().runQuery("select count(*) from data where select2=true");
+		Object[][] ret1 = Utils.getDB().runQuery("select count(*) from data where select2=1 and analyze=1");
+		Object[][] ret2 = Utils.getDB().runQuery("select count(*) from data where select2=1");
 		if(ret1 == null)
 			ret1 = new Object[][]{{null, "0"}};
 		if(ret2 == null)

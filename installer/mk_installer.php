@@ -16,19 +16,19 @@ passthru("cd .. && jar cfm $jarfile installer/install.mf \\"
 	. "installer/newmark-*");
 echo "done.\n";
 
-$list = array("newmark-program", "mckoi-fileset");
+$list = array("newmark-program", "database-fileset");
 
 foreach($list as $file)
 {
 	$contents = contents($file);
 
 	echo "Adding $file to $jarfile...";
-	passthru("cd .. && jar uf $jarfile $contents");
+	passthru("cd .. && zip -q $jarfile $contents");
 	echo "done.\n";
 }
 
 $list = array("california", "otherus", "international", "chichi");
-//$list = array("otherus", "international");
+$list = array("international");
 
 foreach($list as $file)
 {

@@ -174,7 +174,7 @@ class ResultsPanel extends JPanel implements ActionListener
 								return null;
 							}
 
-							Object[][] res = Utils.getDB().runQuery("select eq, record, digi_int, path, pga from data where select2=true and analyze=true");
+							Object[][] res = Utils.getDB().runQuery("select eq, record, digi_int, path, pga from data where select2=1 and analyze=1");
 
 							if(res == null || res.length <= 1)
 							{

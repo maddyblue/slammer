@@ -59,12 +59,10 @@ $file = "installer/newmark-program";
 clear($file);
 addfile("programs/newmark.jar", $file);
 adddir("programs/jars", $file);
-addfile("programs/Database/db.conf", $file);
-adddir("programs/Database/data", $file);
 getsize($file);
 
-// mckoi fileset
-passthru("cd .. && find com -name \*.class | sort | sed 's/" . '\\' . '$/' . '\\' . '\\' . '$/g' . "' > installer/mckoi-fileset");
+// database fileset
+passthru("cd .. && find org -type f | sort | sed 's/" . '\\' . '$/' . '\\' . '\\' . '$/g' . "' > installer/database-fileset");
 
 // newmark-eq-california
 $eqs = array(

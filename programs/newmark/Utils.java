@@ -90,6 +90,24 @@ public class Utils
 		return ret;
 	}
 
+	public static String addQuote(String str)
+	{
+		String ret = "";
+		char c;
+		for(int i = 0; i < str.length(); i++)
+		{
+			c = str.charAt(i);
+			switch(c)
+			{
+				case '\'':
+					ret += '\'';
+					break;
+			}
+			ret += c;
+		}
+		return ret;
+	}
+
 	public static Object checkNum(String str, String label, Double lt, boolean lte, String lts, Double gt, boolean gte, String gts, boolean ret)
 	{
 		Object o = checkNum(str, label, lt, lte, lts, gt, gte, gts);
@@ -222,7 +240,7 @@ public class Utils
 
 		if(man)
 		{
-			Object[][] names = Utils.getDB().runQuery("select distinct name from group order by name");
+			Object[][] names = Utils.getDB().runQuery("select distinct name from grp order by name");
 			if(names != null)
 			{
 				eqList.addItem(" -- Groups -- ");

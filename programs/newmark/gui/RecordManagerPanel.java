@@ -215,7 +215,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 					}
 				}
 
-				Utils.getDB().runQuery("update data set select1=false where select1=true");
+				Utils.getDB().runUpdate("update data set select1=0 where select1=1");
 
 				if(isEq)
 				{
@@ -226,14 +226,14 @@ class RecordManagerPanel extends JPanel implements ActionListener
 					else
 						where = "where eq='" + (String)eqList.getSelectedItem() + "'";
 
-					Utils.getDB().runQuery("update data set select1=true " + where);
+					Utils.getDB().runUpdate("update data set select1=1 " + where);
 				}
 				else
 				{
-					Object[][] res = Utils.getDB().runQuery("select record,analyze from group where name='" + (String)eqList.getSelectedItem() + "'");
+					Object[][] res = Utils.getDB().runQuery("select record,analyze from grp where name='" + (String)eqList.getSelectedItem() + "'");
 
 					for(int i = 1; i < res.length; i++)
-						Utils.getDB().runQuery("update data set select1=true where id=" + res[i][0].toString());
+						Utils.getDB().runUpdate("update data set select1=1 where id=" + res[i][0].toString());
 				}
 
 				table.setModel(NewmarkTable.REFRESH);
