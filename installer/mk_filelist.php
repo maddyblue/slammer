@@ -10,7 +10,7 @@ function addfile($name, $file)
 function adddir($dir, $file)
 {
 	$dir = str_replace(" ", "\\ ", $dir);
-	passthru("cd .. && find $dir | sed '1,1d' >> $file");
+	passthru("cd .. && find $dir | grep -v CVS | sed '1,1d' >> $file");
 }
 
 function clear($file)
