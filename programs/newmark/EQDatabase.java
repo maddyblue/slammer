@@ -27,11 +27,11 @@ import java.sql.*;
 public class EQDatabase
 {
 	protected java.sql.Connection connection;
-	public static final String url = "jdbc:derby:database";
+	public static final String url = "jdbc:derby:db";
 
 	public EQDatabase() throws Exception
 	{
-		System.setProperty("derby.system.home", ".");
+		System.setProperty("derby.system.home", "database");
 		Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
 		connection = java.sql.DriverManager.getConnection(url);
 	}
