@@ -527,27 +527,48 @@ class ResultsPanel extends JPanel implements ActionListener
 				{
 					FileWriter fw = new FileWriter(fc.getSelectedFile());
 
-					/*
-					fw.write(outputMean.getText() + "\n");
-					fw.write(outputMedian.getText() + "\n");
-					fw.write(outputStdDev.getText() + "\n");
-					*/
+					String delim;
 
-					Vector v = outputTableModel.getDataVector(), v1;
-					for(int i = 0; i < v.size(); i++)
+					if(outputDelSpace.isSelected())
+						delim = " ";
+					else if(outputDelComma.isSelected())
+						delim = ",";
+					else
+						delim = "\t";
+
+					int c = outputTableModel.getColumnCount();
+					int r = outputTableModel.getRowCount();
+
+					// table column headers
+					for(int i = 0; i < c; i++)
 					{
-						v1 = (Vector)v.elementAt(i);
-						String delim;
-						if(outputDelSpace.isSelected()) delim = " ";
-						else if(outputDelComma.isSelected()) delim = ",";
-						else delim = "\t";
-						for(int i1 = 0; i1 < v1.size(); i1++)
+						if(i != 0)
+							fw.write(delim);
+
+						fw.write(outputTableModel.getColumnName(i));
+					}
+
+					fw.write("\n");
+
+					Object o;
+
+					for(int i = 0; i < r; i++)
+					{
+						for(int j = 0; j < c; j++)
 						{
-							if(i1 != 0) fw.write(delim);
-							fw.write(v1.elementAt(i1).toString());
+							if(j != 0)
+								fw.write(delim);
+
+							o = outputTableModel.getValueAt(i, j);
+							if(o == null)
+								o = "";
+
+							fw.write(o.toString());
 						}
+
 						fw.write("\n");
 					}
+
 					fw.close();
 				}
 			}
