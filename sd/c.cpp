@@ -19,98 +19,92 @@ double Mtot, M, L, omega, beta, gamma1, dt, g, scal, angle, damp;
 int qq;
 double mu[5]={0,0,0,0,0}, ain[40000];
 
-
-
 int main()
 {
+	double height, rho, vs, uwgt, pi, delt=0, disp[5], time;
+	int nhead, npl, npts, i, k, j, kk, slide, nmu ;
 
-double height, rho, vs, uwgt, pi, delt=0, disp[5], time;
-int nhead, npl, npts, i, k, j, kk, slide, nmu ;
+	//slide=0 no sliding, slide=1 sliding
+	//variable that end in 1 are for previous time step
+	//variable that end in 2 are for current time step
 
-//slide=0 no sliding, slide=1 sliding
-//variable that end in 1 are for previous time step
-//variable that end in 2 are for current time step
+	char filename1[100], filename2[100];
+	char filename3[100];
+	char descrip[100],junk[100];
 
-char filename1[100], filename2[100];
-char filename3[100];
-char descrip[100],junk[100];
+	double s1=0, sdot1=0, sdotdot1=0;
+	double s2=0, sdot2=0, sdotdot2=0;
+	double u1=0, udot1=0, udotdot1=0;
+	double u2=0, udot2=0, udotdot2=0, baseacc=0;
+	double basef=0, acc1=0, acc2=0, normalf1=0, normalf2=0;
 
-double s1=0, sdot1=0, sdotdot1=0;
-double s2=0, sdot2=0, sdotdot2=0;
-double u1=0, udot1=0, udotdot1=0;
-double u2=0, udot2=0, udotdot2=0, baseacc=0;
-double basef=0, acc1=0, acc2=0, normalf1=0, normalf2=0;
+	//These are previous iteration value
 
-//These are previous iteration value
+	////////////////////////////////////
+	cout<<"input file? : ";
+	cin>>filename1;
+	cout<<"output file? : ";
+	cin>>filename2;
 
+	/////////////////////////////////////////
+	fstream fin;
+	fstream fout;
+	fin.open(filename1,ios_base::in);
+	fout.open(filename2,ios_base::out);
+	fout.setf(ios_base::right, ios_base::floatfield);
+	fin.get(descrip,100);
 
-////////////////////////////////////
-cout<<"input file? : ";
-cin>>filename1;
-cout<<"output file? : ";
-cin>>filename2;
+	fin>>uwgt>>height>>vs>>damp;
+	fin>>dt>>npts>>scal>>g;
+	fin>>nhead>>npl;
+	fin>>filename3;
+	fin>>angle>>nmu;
 
-/////////////////////////////////////////
-fstream fin;
-fstream fout;
-fin.open(filename1,ios_base::in);
-fout.open(filename2,ios_base::out);
-fout.setf(ios_base::right, ios_base::floatfield);
-fin.get(descrip,100);
+	rho=uwgt/g;
 
-fin>>uwgt>>height>>vs>>damp;
-fin>>dt>>npts>>scal>>g;
-fin>>nhead>>npl;
-fin>>filename3;
-fin>>angle>>nmu;
-
-rho=uwgt/g;
-
-for(i=1;i<=nmu;i++)
-{
-	fin>>disp[i-1]>>mu[i-1];
-}
-
-
-
-////////////////////////////////////////////
-fout<<descrip[100];
-fout<<endl<<endl;
-fout<<"Density : "<<rho<<endl;
-fout<<"Height : "<<height<<endl;
-fout<<"Shear wave velocity : "<<vs<<endl;
-fout<<"Damping Ratio : "<<damp<<endl;
-if(nmu==1)
-{
-	fout<<"Friction Coeff. : "<<mu[0]<<endl<<endl;
-}
-if(!(nmu==1))
-{
 	for(i=1;i<=nmu;i++)
 	{
-		fout<<"Friction Coeff. : "<<mu[i-1]<<endl<<endl;
+		fin>>disp[i-1]>>mu[i-1];
 	}
 
-}
+	////////////////////////////////////////////
+	fout<<descrip;
+	fout<<endl<<endl;
+	fout<<"Density : "<<rho<<endl;
+	fout<<"Height : "<<height<<endl;
+	fout<<"Shear wave velocity : "<<vs<<endl;
+	fout<<"Damping Ratio : "<<damp<<endl;
+	if(nmu==1)
+	{
+		fout<<"Friction Coeff. : "<<mu[0]<<endl<<endl;
+	}
+	if(!(nmu==1))
+	{
+		for(i=1;i<=nmu;i++)
+		{
+			fout<<"Friction Coeff. : "<<mu[i-1]<<endl<<endl;
+		}
 
-fout<<"  "<<"Time"<<"   "<<"Sliding Displ."<<"   "<<"Sliding Veloc."<<"   "<<"Slidng Accel."<<"  "<<"Slide"<<"  "<<"udotdot"<<"  "<<"Ground Acc"<<endl<<endl;
-fin.close();
-fin.clear();
+	}
 
-// Read accleration time history
-////////////////////////////////////////////////////////////////////////////
-fin.open(filename3,ios_base::in);
+	fout << "Time" << "      " << "Sliding Displ." << endl << endl;
+	fin.close();
+	fin.clear();
 
-for(i=1;i<=nhead;i++)
-{
-	fin.get(junk,100);
-}
+	// Read accleration time history
+	////////////////////////////////////////////////////////////////////////////
+	fin.open(filename3,ios_base::in);
 
-k=npts/npl;
+	for(i=1;i<=nhead;i++)
+	{
+		fin.get(junk,100);
+	}
+
+	k=npts/npl;
 
 
 
-for(i=1;i<=k;i++)
+	for(i=1;i<=k;i++)
 
 	{
 		for(j=1;j<=npl;j++)
@@ -121,7 +115,7 @@ for(i=1;i<=k;i++)
 		}
 	}
 
-kk=npts-k*npl;
+	kk=npts-k*npl;
 	if(!(kk==0))
 	{
 		for(j=1;j<=kk;j++)
@@ -129,8 +123,8 @@ kk=npts-k*npl;
 	}
 
 
-// for each mode calculate constants for Newmark algorithm
-/////////////////////////////////////////////////////////////////////////
+	// for each mode calculate constants for Newmark algorithm
+	/////////////////////////////////////////////////////////////////////////
 
 	beta=0.25;
 	gamma1=0.5;
@@ -138,22 +132,22 @@ kk=npts-k*npl;
 	Mtot=rho*height;
 	slide=0;
 	normalf2=0.0;
-//qq indicates which mu is in effect
-    qq=1;
+	//qq indicates which mu is in effect
+	qq=1;
 
-		omega=pi*vs/(2*height);
-		L=2*rho*height/pi;
-		M=rho*height/2;
+	omega=pi*vs/(2*height);
+	L=2*rho*height/pi;
+	M=rho*height/2;
 
 
 
-// Loop for time steps in time histories
+	// Loop for time steps in time histories
 
 	for(j=1;j<=npts;j++)
 	{
 		time=j*dt;
 
-// set up state from previous time step
+		// set up state from previous time step
 		if(j==1)
 		{
 			u1=0;
@@ -176,48 +170,48 @@ kk=npts-k*npl;
 			normalf1=normalf2;
 		}
 
-cout<<"ain= "<<ain[j-1]<<endl;
-// Set up acceleration loading
-///////////////////////////////////////
+		//cout<<"ain= "<<ain[j-1]<<endl;
+		// Set up acceleration loading
+		///////////////////////////////////////
 
-// Normal force corrected for vertical component of accel
-/////////////////////////////////////////////////////////
+		// Normal force corrected for vertical component of accel
+		/////////////////////////////////////////////////////////
 
-	normalf2=Mtot*g*cos(angle*pi/180)+Mtot*ain[j-1]*scal*g*sin(angle*pi/180);
+		normalf2=Mtot*g*cos(angle*pi/180)+Mtot*ain[j-1]*scal*g*sin(angle*pi/180);
 
-	if(j==1)
-	{
-		acc1=0;
-		acc2=ain[j-1]*g*scal*cos(angle*pi/180);
-	}
-	if(!(j==1))
-	{
-		if(slide==0)
+		if(j==1)
 		{
-			acc1=ain[j-2]*g*scal*cos(angle*pi/180);
+			acc1=0;
 			acc2=ain[j-1]*g*scal*cos(angle*pi/180);
 		}
-		if(!(slide==0))
+		if(!(j==1))
 		{
-			acc1=g*sin(angle*pi/180)-mu[qq-1]*normalf1/Mtot;
-			acc2=g*sin(angle*pi/180)-mu[qq-1]*normalf2/Mtot;
+			if(slide==0)
+			{
+				acc1=ain[j-2]*g*scal*cos(angle*pi/180);
+				acc2=ain[j-1]*g*scal*cos(angle*pi/180);
+			}
+			if(!(slide==0))
+			{
+				acc1=g*sin(angle*pi/180)-mu[qq-1]*normalf1/Mtot;
+				acc2=g*sin(angle*pi/180)-mu[qq-1]*normalf2/Mtot;
+			}
 		}
-	}
 
 
 
 
-// Solve for u, udot, udotdot at next time step
-////////////////////////////////////////////////
+		// Solve for u, udot, udotdot at next time step
+		////////////////////////////////////////////////
 
-solvu(u1, udot1, udotdot1, u2, udot2, udotdot2,delt,acc1,acc2, slide, j, Mtot, M, L, omega, mu, beta, gamma1, dt, g, scal, ain , angle, damp, qq);
+		solvu(u1, udot1, udotdot1, u2, udot2, udotdot2,delt,acc1,acc2, slide, j, Mtot, M, L, omega, mu, beta, gamma1, dt, g, scal, ain , angle, damp, qq);
 
-////// Calc. base force based on udotdot calc
+		////// Calc. base force based on udotdot calc
 
 		basef=-Mtot*ain[j-1]*scal*g*cos(angle*pi/180)-L*udotdot2+Mtot*g*sin(angle*pi/180);
 
-/////// Check if sliding has started
-		cout<<"basef="<<basef<<" muqq "<<mu[qq-1]*normalf2<<endl;
+		/////// Check if sliding has started
+		//cout<<"basef="<<basef<<" muqq "<<mu[qq-1]*normalf2<<endl;
 
 		if(slide==0)
 		{
@@ -227,16 +221,16 @@ solvu(u1, udot1, udotdot1, u2, udot2, udotdot2,delt,acc1,acc2, slide, j, Mtot, M
 			}
 		}
 
-///// Update sliding acceleration based on calc'd response
+		///// Update sliding acceleration based on calc'd response
 
 		if(slide==1)
 		{
 			sdotdot2=-ain[j-1]*g*scal*cos(angle*pi/180)-mu[qq-1]*normalf2/Mtot-L*udotdot2/Mtot+g*sin(angle*pi/180);
 		}
 
-///// If sliding is occuring, integrate sdotdot,
-///// using trapezoid rule, to get sdot and s
-//////////////////////////////////////////////////
+		///// If sliding is occuring, integrate sdotdot,
+		///// using trapezoid rule, to get sdot and s
+		//////////////////////////////////////////////////
 
 		if(slide==1)
 		{
@@ -244,8 +238,8 @@ solvu(u1, udot1, udotdot1, u2, udot2, udotdot2,delt,acc1,acc2, slide, j, Mtot, M
 			s2=s1+0.5*dt*(sdot2+sdot1);
 		}
 
-///// Check if sliding has stopped. B/c 1 way sliding and know that
-///// sdot is >0 for our direction, just check sdot<0
+		///// Check if sliding has stopped. B/c 1 way sliding and know that
+		///// sdot is >0 for our direction, just check sdot<0
 
 		if(slide==1)
 		{
@@ -263,29 +257,31 @@ solvu(u1, udot1, udotdot1, u2, udot2, udotdot2,delt,acc1,acc2, slide, j, Mtot, M
 		baseacc=ain[j-1]*g*scal*cos(angle*pi/180);
 
 
-///// Output sliding quantities
-//////////////////////////////////
-fout.setf(ios::fixed);
-//fout<<"  "<<setw(9)<<setprecision(5)<<time<<"   "<<setw(8)<<setprecision(5)<<s2<<"   "<<setw(8)<<setprecision(5)<<sdot2<<"   "<<setw(8)<<setprecision(5)<<sdotdot2<<"  "<<setw(3)<<slide<<"  "<<setw(10)<<setprecision(5)<<udotdot2<<"  "<<setw(10)<<setprecision(5)<<baseacc<<endl<<endl;
-fout<<"  "<<setw(9)<<setprecision(5)<<time<<"  "<<setw(10)<<setprecision(5)<<s2<<endl;
+		///// Output sliding quantities
+		//////////////////////////////////
+		fout.setf(ios::fixed);
+		//fout<<"  "<<setw(9)<<setprecision(5)<<time<<"   "<<setw(8)<<setprecision(5)<<s2<<"   "<<setw(8)<<setprecision(5)<<sdot2<<"   "<<setw(8)<<setprecision(5)<<sdotdot2<<"  "<<setw(3)<<slide<<"  "<<setw(10)<<setprecision(5)<<udotdot2<<"  "<<setw(10)<<setprecision(5)<<baseacc<<endl<<endl;
+		fout << setw(9) << setprecision(5) << time << " " << setw(10) << setprecision(5) << s2 << endl;
 
-if(nmu>1)
-{
-	if((slide==0)&&(abs(s2)>=disp[qq-1]))
-	{
-		if(qq>nmu-1)
+		if(nmu>1)
 		{
-			qq=qq;
-		}
-		else
-		{
-			qq=qq+1;
+			if((slide==0)&&(abs(s2)>=disp[qq-1]))
+			{
+				if(qq>nmu-1)
+				{
+					qq=qq;
+				}
+				else
+				{
+					qq=qq+1;
+				}
+			}
 		}
 	}
-}
-}
 
-return 0;
+	cout << "displacement: " << s2 << endl;
+
+	return 0;
 }
 
 /////////////////////////////////////////////////////////////////
@@ -303,7 +299,7 @@ void slidestop(double &s1, double &sdot1, double &sdotdot1, double &sdotdot2, do
 
 	//// Time of end of sliding is taken as where sdot=0 from previous
 	//// analysis assuming sliding thruoughout the time step
-    ///////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////
 	dd=-sdot1/(sdot2-sdot1);
 	ddt=dd*delt;
 	acc11=g*sin(angle*pi/180)-mu[qq-1]*(g*cos(angle*pi/180)+ain[j-1]*scal*g*sin(angle*pi/180));
@@ -320,9 +316,9 @@ void slidestop(double &s1, double &sdot1, double &sdotdot1, double &sdotdot2, do
 
 	slide=1;
 
-   solvu(u1, udot1, udotdot1, u2, udot2, udotdot2,delt,acc11,acc22, slide, j, Mtot, M, L, omega, mu, beta, gamma1, dt, g, scal, ain,angle,damp,qq);
+	solvu(u1, udot1, udotdot1, u2, udot2, udotdot2,delt,acc11,acc22, slide, j, Mtot, M, L, omega, mu, beta, gamma1, dt, g, scal, ain,angle,damp,qq);
 
-    u1=u2;
+	u1=u2;
 	udot1=udot2;
 	udotdot1=udotdot2;
 	normalf2=Mtot*g*cos(angle*pi/180)+Mtot*acc1b*sin(angle*pi/180);
@@ -390,22 +386,3 @@ void solvu(double &u1,double &udot1, double &udotdot1, double &u2, double &udot2
 		udotdot2=( -(L/M)*acc22 - 2*damp*omega*udot2 - (omega*omega)*u2)  /d1;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
