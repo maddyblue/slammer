@@ -32,6 +32,9 @@ import java.util.Vector;
 import org.jfree.data.xy.*;
 import org.jfree.chart.*;
 import org.jfree.chart.axis.*;
+import org.jfree.chart.renderer.xy.StandardXYItemRenderer;
+import org.jfree.chart.plot.XYPlot;
+import org.jfree.data.Range;
 import newmark.*;
 import newmark.analysis.*;
 
@@ -42,8 +45,9 @@ class RecordManagerPanel extends JPanel implements ActionListener
 	NewmarkTable table;
 
 	JComboBox eqList = new JComboBox();
-	JButton graph = new JButton("record");
-	JButton graphFreq = new JButton("frequency");
+	JButton graphTime = new JButton("t");
+	JButton graphFourier = new JButton("f");
+	JButton graphSpectra = new JButton("s");
 	JButton delete = new JButton("Delete selected record(s) from database");
 
 	JButton save = new JButton("Save changes");
@@ -99,11 +103,14 @@ class RecordManagerPanel extends JPanel implements ActionListener
 		delete.setActionCommand("delete");
 		delete.addActionListener(this);
 
-		graph.setActionCommand("graph");
-		graph.addActionListener(this);
+		graphTime.setActionCommand("graphTime");
+		graphTime.addActionListener(this);
 
-		graphFreq.setActionCommand("graphResponse");
-		graphFreq.addActionListener(this);
+		graphFourier.setActionCommand("graphFourier");
+		graphFourier.addActionListener(this);
+
+		graphSpectra.setActionCommand("graphSpectra");
+		graphSpectra.addActionListener(this);
 
 		setLayout(new BorderLayout());
 		add(BorderLayout.NORTH, createNorthPanel());
@@ -123,8 +130,9 @@ class RecordManagerPanel extends JPanel implements ActionListener
 		panel.add(BorderLayout.WEST, GUIUtils.makeRecursiveLayoutRight(list));
 
 		list = new Vector();
-		list.add(graph);
-		list.add(graphFreq);
+		list.add(graphTime);
+		list.add(graphFourier);
+		list.add(graphSpectra);
 		list.add(delete);
 		panel.add(BorderLayout.EAST, GUIUtils.makeRecursiveLayoutRight(list));
 
@@ -240,7 +248,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 				table.setModel(NewmarkTable.REFRESH);
 				recordClear();
 			}
-			else if(command.equals("graph") || command.equals("graphResponse"))
+			else if(command.equals("graphTime") || command.equals("graphFourier") || command.equals("graphSpectra"))
 			{
 				int row = table.getSelectedRow();
 				if(row == -1)
@@ -274,10 +282,11 @@ class RecordManagerPanel extends JPanel implements ActionListener
 				XYSeries xys = new XYSeries("");
 				dat.reset();
 
-				String xAxis = null, yAxis = null;
+				String xAxis = null, yAxis = null, title = "";
 
-				if(command.equals("graph"))
+				if(command.equals("graphTime"))
 				{
+					title = "Time Series";
 					xAxis = "Time (s)";
 					yAxis = "Acceleration (cm/s/s)";
 					Double val;
@@ -324,8 +333,9 @@ class RecordManagerPanel extends JPanel implements ActionListener
 						time += di;
 					}
 				}
-				else if(command.equals("graphResponse"))
+				else if(command.equals("graphFourier"))
 				{
+					title = "Fourier Amplitude Spectrum";
 					xAxis = "Frequency (Hz)";
 					yAxis = "Fourier Amplitude (cm/sec)";
 					double[] arr = new double[dat.size()];
@@ -341,9 +351,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 					dat = new DoubleList();
 
 					for(int i = 0; i < arr.length; i++)
-					{
 						dat.add(Math.sqrt(Math.pow(fft[i][0], 2) + Math.pow(fft[i][1], 2)));
-					}
 
 					// graph all direction changes and a few inbetween
 
@@ -355,11 +363,12 @@ class RecordManagerPanel extends JPanel implements ActionListener
 
 					dat.reset();
 
-					// add the first point
+					// first point
 					if((val = dat.each()) != null)
 					{
 						i++;
-						xys.add(freq, val);
+						// we can't have 0 in the graph, so start with the second data point
+						//xys.add(freq, val);
 						freq += df;
 						last2 = val.doubleValue();
 					}
@@ -368,6 +377,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 					if((val = dat.each()) != null)
 					{
 						i++;
+						//xys.add(freq, val);
 						freq += df;
 						last1 = val.doubleValue();
 					}
@@ -395,25 +405,40 @@ class RecordManagerPanel extends JPanel implements ActionListener
 						freq += df;
 					}
 				}
+				else if(command.equals("graphSpectra"))
+				{
+					title = "Absolute-Acceleration Response Spectra";
+					xAxis = "Period (s)";
+					yAxis = "Acceleration Response (cm/s/s)";
+					double[] arr = new double[dat.size()];
 
-				String title = eq + ": " + record;
+					Double temp;
+					for(int i = 0; (temp = dat.each()) != null; i++)
+						arr[i] = temp.doubleValue();
+
+					double periodMax = 15.0;
+					double interval = 0.01;
+					double damp = 0.00;
+					double[] z;
+
+					// don't start with 0, LogarithmicAxis doesn't allow it
+					for(double p = interval; p < periodMax; p += interval)
+					{
+						z = ImportRecords.cmpmax(arr, 2.0 * Math.PI / p, damp, di);
+						xys.add(p, z[2]);
+					}
+				}
+
+				title += ": " + eq + " - " + record;
 				XYSeriesCollection xysc = new XYSeriesCollection(xys);
 
 				JFreeChart chart = ChartFactory.createXYLineChart(title, xAxis, yAxis, xysc, org.jfree.chart.plot.PlotOrientation.VERTICAL, false, true, false);
 
-				if(command.equals("graphResponse"))
+				if(command.equals("graphFourier") || command.equals("graphSpectra"))
 				{
 					chart.getXYPlot().setRangeAxis(new LogarithmicAxis(yAxis));
-					LogarithmicAxis la = new LogarithmicAxis(xAxis);
-					la.setAllowNegativesFlag(true);
-					chart.getXYPlot().setDomainAxis(la);
+					chart.getXYPlot().setDomainAxis(new LogarithmicAxis(xAxis));
 				}
-
-				//margins are stupid
-				chart.getXYPlot().getDomainAxis().setLowerMargin(0);
-				chart.getXYPlot().getDomainAxis().setUpperMargin(0);
-				chart.getXYPlot().getDomainAxis().setLowerBound(0);
-				chart.getXYPlot().getDomainAxis().setUpperBound(xys.getX(xys.getItemCount() - 1).doubleValue());
 
 				ChartFrame frame = new ChartFrame(title, chart);
 				frame.pack();
@@ -422,7 +447,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 			}
 			else if(command.equals("save"))
 			{
-				int n = JOptionPane.showConfirmDialog(this,"Are you sure you want to modify this records?", "Are you sure?", JOptionPane.YES_NO_OPTION);
+				int n = JOptionPane.showConfirmDialog(this,"Are you sure you want to modify these records?", "Are you sure?", JOptionPane.YES_NO_OPTION);
 				if(n != JOptionPane.YES_OPTION)
 					return;
 
