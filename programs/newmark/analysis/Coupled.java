@@ -198,15 +198,15 @@ public class Coupled extends Analysis
 			s[j - 1] = s2;
 
 			if(scal > 0)
-				store(s2);
+				store(Math.abs(s2));
 
 			//System.out.println((j * dt) + ":  " + s[j - 1]);
 
 			residual_mu();
 		}
 
-		end(s2);
-		return s2;
+		end(Math.abs(s2));
+		return Math.abs(s2);
 	}
 
 	// Subroutine for the end of sliding

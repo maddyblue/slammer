@@ -438,9 +438,8 @@ class ResultsPanel extends JPanel implements ActionListener
 
 					if(paramDecoupled)
 					{
-						// just use the Coupled code for now so we atleast have a working algorithm
-						inv = 0;
-						norm = 0;
+						inv = Decoupled.Decoupled(ain, uwgt, height, vs, damp, di, iscale / Analysis.Gcmss, Analysis.Gftss, vr, ca, dv2, dv3);
+						norm = Decoupled.Decoupled(ain, uwgt, height, vs, damp, di, scale / Analysis.Gcmss, Analysis.Gftss, vr, ca, dv2, dv3);
 
 						avg = avg(inv, norm, Analysis.fmtOne);
 
@@ -459,7 +458,7 @@ class ResultsPanel extends JPanel implements ActionListener
 						inv = Coupled.Coupled(ain, uwgt, height, vs, damp, di, iscale / Analysis.Gcmss, Analysis.Gftss, vr, ca, dv2, dv3);
 						norm = Coupled.Coupled(ain, uwgt, height, vs, damp, di, scale / Analysis.Gcmss, Analysis.Gftss, vr, ca, dv2, dv3);
 
-						avg = avg(inv, norm, Analysis.fmtFour);
+						avg = avg(inv, norm, Analysis.fmtOne);
 
 						total[CP] += avg.doubleValue();
 						row[CPC] = avg;
