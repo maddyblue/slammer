@@ -18,7 +18,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-/* $Id: Newmark.java,v 1.1 2003/06/15 01:58:11 dolmant Exp $ */
+/* $Id: Newmark.java,v 1.2 2003/07/15 00:14:21 dolmant Exp $ */
 
 package newmark;
 
@@ -42,7 +42,7 @@ public class Newmark
 			if(args[0].equals("getsql"))
 			{
 
-				FileWriter fw = new FileWriter(".." + File.pathSeparatorChar + "records" + File.pathSeparatorChar + "eq.sql");
+				FileWriter fw = new FileWriter(".." + File.separatorChar + "records" + File.separatorChar + "eq.sql");
 
 				Object[][] res = Utils.getDB().runQuery("select eq, record, digi_int, mom_mag, arias, dobry, pga, mean_per, epi_dist, foc_dist, rup_dist, foc_mech, location, owner, latitude, longitude, class from data order by eq, record");
 
@@ -71,14 +71,6 @@ public class Newmark
 
 				fw.close();
 				Utils.closeDB();
-			}
-			else if(args[0].equals("fonts"))
-			{
-				Font fonts[] = GraphicsEnvironment.getLocalGraphicsEnvironment().getAllFonts();
-				for(int i = 0; i < fonts.length; i++)
-				{
-					System.out.println(fonts[i].getFontName());
-				}
 			}
 			else if(args[0].equals("drop"))
 			{
@@ -120,7 +112,7 @@ public class Newmark
 			}
 			else if(args[0].equals("import"))
 			{
-				FileReader fr = new FileReader(".." + File.pathSeparatorChar + "records" + File.pathSeparatorChar + "EQdata.txt");
+				FileReader fr = new FileReader(".." + File.separatorChar + "records" + File.separatorChar + "EQdata.txt");
 				String s = "";
 				String cur[] = new String[13];
 				int i = 0;
