@@ -112,7 +112,7 @@ class NewmarkTableModel extends DefaultTableModel implements NewmarkTableInterfa
 				}
 				else if(cols[j] == fieldArray[rowAnalyze][colAbbrev])
 				{
-					data[i][j] = new Boolean(ret[i + 1][j].toString());
+					data[i][j] = new Boolean(ret[i + 1][j].toString().equals("1"));
 				}
 				else if(cols[j] == fieldArray[rowFocMech][colAbbrev])
 				{

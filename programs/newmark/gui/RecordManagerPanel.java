@@ -476,7 +476,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 
 			try
 			{
-				res = Utils.getDB().runQuery("select path, eq, record, trim(trailing '0' from digi_int), location, mom_mag, owner, epi_dist, latitude, foc_dist, longitude, rup_dist, class, foc_mech, change from data where eq='" + eq + "' and record='" + record + "'");
+				res = Utils.getDB().runQuery("select path, eq, record, digi_int, location, mom_mag, owner, epi_dist, latitude, foc_dist, longitude, rup_dist, class, foc_mech, change from data where eq='" + eq + "' and record='" + record + "'");
 			}
 			catch(Exception ex)
 			{

@@ -534,7 +534,7 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 			Utils.getDB().set(
 				model.getValueAt(row, 0).toString(),
 				model.getValueAt(row, 1).toString(),
-				("analyze=" + model.getValueAt(row, column).toString())
+				("analyze=" + (model.getValueAt(row, column).toString().equals("true") ? "1" : "0"))
 				);
 			updateSelectLabel();
 		}
