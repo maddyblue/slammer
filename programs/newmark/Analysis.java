@@ -18,7 +18,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-/* $Id: Analysis.java,v 1.3 2003/07/31 21:32:53 dolmant Exp $ */
+/* $Id: Analysis.java,v 1.4 2003/08/07 02:41:54 dolmant Exp $ */
 
 package newmark;
 
@@ -278,7 +278,6 @@ public class Analysis
 
 		ofile.close();
 
-		System.out.println(indexl + ", " + indexr);
 		return null;
 	}
 
@@ -293,16 +292,17 @@ public class Analysis
 
 		setValueSize(d);
 		data.reset();
-		int count = 0;
 		while((val = data.each()) != null)
 		{
 			a = (val.doubleValue() * mult) + g;
+
 			if(a == 0)
 			{
 				store(u);
 				continue;
 			}
-			if(v < .0001)
+
+			if(Math.abs(v) < .0001)
 			{
 				if(Math.abs(a) > t)
 				{
@@ -909,7 +909,6 @@ public class Analysis
 
 	public static String Coupled(final DoubleList data, final double G, final double di, final double scale, final double uwgt, final double height, final double vs, final double damp, final double angle, final double caList[][])
 	{
-		System.out.println(G + ", " + di + ", " + uwgt + ", " + height + ", " + vs + ", " + damp + ", " + angle);
 		double temp[];
 		final double beta = 0.25;
 		final double gamma = 0.5;
@@ -934,6 +933,8 @@ public class Analysis
 		final double angleS = Math.sin(angleR);
 
 		setValueSize(di);
+
+		data.reset();
 
 		Double val;
 		double cur = 0, prev;
