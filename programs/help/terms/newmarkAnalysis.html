@@ -1,0 +1,19 @@
+<html>
+<body>
+
+<p><b>NEWMARK ANALYSIS</b></p>
+
+<p>Newmark (1965) proposed a method of analyzing the dynamic performance of slopes that bridges the gap between overly simplistic pseudostatic analysis and very sophisticated, but generally impractical, finite-element modeling. Although Newmark introduced his method to analyze the performance of artificial embankments, Wilson and Keefer (1983) showed that using Newmark's method to model the dynamic behavior of landslides on natural slopes yields reasonable and useful results. Jibson (1993) gives details on how to perform such analyses for landslides.</p>
+
+<p>Newmark's method models a landslide as a rigid friction block that slides on an inclined plane. The block has a known critical (or yield) acceleration, which is simply the threshold base acceleration required to overcome basal shear resistance and initiate sliding. The analysis calculates the cumulative permanent displacement of the block relative to its base as it is subjected to the effects of an earthquake acceleration-time history. The user then judges the significance of the displacement. </p>
+
+<p>In the analysis, an acceleration-time history of interest is selected, and the critical acceleration of the slope to be modeled is superimposed. Accelerations below the critical level cause no permanent displacement of the block. Those portions of the record that exceed the critical acceleration are integrated once to obtain the velocity profile of the block; a second integration is performed to obtain the cumulative displacement history of the block. Newmark's method is based on a fairly simple model of rigid-body displacement, and thus it does not necessarily precisely predict measured landslide displacements in the field. Rather, Newmark displacement is a useful index of how a slope is likely to perform during seismic shaking.</p>
+
+<p>Newmark (1965) showed that the critical acceleration of a potential landslide block is a simple function of the static factor of safety and the landslide geometry, expressed as</p>
+
+<p><i>a<sub>c</sub></i> = (<i>FS</i> - 1)<i>g</i> sin <img src="file:help/images/alpha.gif"></p>
+
+<p>where <i>a<sub>c</sub></i> is the critical acceleration in terms of <i>g</i>, the acceleration of Earth's gravity; <i>FS</i> is the static factor of safety; and <img src="file:help/images/alpha.gif"> is the thrust angle, or the angle from the horizontal that the center of mass of the potential landslide block first moves, which can generally be approximated as the slope angle. Thus, conducting a Newmark analysis requires knowing the static factor of safety and the slope angle and selecting an earthquake strong-motion record.</p>
+
+</body>
+</html>

@@ -1,0 +1,4 @@
+#!/bin/sh
+java -cp jars/mckoidb-0.94h.jar com.mckoi.tools.JDBCQueryTool \
+	-url ":jdbc:mckoi:local://./Database/db.conf" \
+	-u "newmark" -p "newmark"

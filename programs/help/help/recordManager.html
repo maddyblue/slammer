@@ -1,0 +1,82 @@
+<html>
+<body>
+
+<p><b>Record Manager</b></p>
+
+<p>The &quot;Record Manager&quot; page allows perusal of data on all earthquake records in the database and permits the user to add additional records for analysis. The page is divided under two tabs: Manage Records and Add Records.</p>
+
+<p><i>Manage Records</i>. The drop-down box at the upper left corner of the page allows the user to select an earthquake. When an earthquake is selected, all records for that earthquake appear in the data table in the center of the page. Two types of data can be selected for display. If &quot;Display properties of records&quot; is selected, the following seismological properties of the selected records are displayed: earthquake (moment) magnitude, Arias intensity (m/s), Dobry duration (s), PGA (g), Mean Period (s), epicentral distance (km), focal distance (km), and rupture distance (km). If &quot;Display properties of stations&quot; is selected, the following station properties are displayed: station location (descriptive), station owner, latitude, longitude, and site classification. Some data fields are blank for some records if the information was unavailable at the time publication.</p>
+
+<p>Station owners are as follows:</p>
+<br>
+<ul>
+	<li>ACOE-U.S. Army Corps of Engineers</li>
+	<li>BYU-Brigham Young University</li>
+	<li>CDOT-California Department of Transportation</li>
+	<li>CDWR-California Department of Water Resources</li>
+	<li>CGS-California Geological Survey</li>
+	<li>CWB-Central Weather Bureau of Taiwan</li>
+	<li>ERD-Earthquake Research Department, Turkey</li>
+	<li>GSC-Geological Survey of Canada</li>
+	<li>IRAN-Government of Iran</li>
+	<li>ITU-Istanbul Technical University, Turkey</li>
+	<li>JMA-Japan Meteorological Agency</li>
+	<li>JR-Japan Railway</li>
+	<li>KIN--Kinemetrics</li>
+	<li>KOERI-Kandilli Observatory and Earthquake Research Institute, Turkey</li>
+	<li>LADWP-Los Angeles Department of Water and Power</li>
+	<li>LAFC-Los Angeles Flood Control</li>
+	<li>LAMONT-Lamont-Doherty</li>
+	<li>MWD-Metropolitan Water District</li>
+	<li>SCE-Southern California Edison</li>
+	<li>TPU-Tacoma Public Utilities</li>
+	<li>UCSD-University of California San Diego</li>
+	<li>USGS-U.S. Geological Survey</li>
+	<li>USC-University of Southern California</li>
+	<li>UW-University of Washington</li>
+	<li>VA-Veterans Administration</li>
+</ul>
+
+<p>Records displayed in the table can be sorted (primarily and secondarily) by any of the listed properties by making selections in the &quot;Sort by&quot; drop-down boxes. The drop-down box to the right of the sort boxes allows any combination of sorting in ascending (A) or descending (D) order.</p>
+
+<p>Any strong-motion record can be plotted by highlighting it in the table and clicking on the &quot;Graph selected record&quot; button. Right clicking on the resulting plot box allows the user to customize the appearance of the plot, save it, print it, or zoom in or out.</p>
+
+<p>Records can be deleted from the database by highlight the record(s) in the data table in the center of the page and clicking on &quot;Delete selected record(s)&quot;. If permanent records are deleted, they can be restored by reinstalling the earthquake set in the installation script.</p>
+
+<p>Information on user-added records can be added or changed using the &quot;Modify record&quot; table at the bottom of the page. Highlighting a user-added record in the table in the center of the page causes those record properties to appear in the boxes at the bottom of the page. Any of these properties can be modified or, if no data were entered when the records were added, new information can be input. Latitude and longitude must be in decimal degrees. The &quot;Focal mechanism&quot; and &quot;Site classification&quot; boxes have drop-down boxes permitting selection of acceptable choices. When changes have been made in the appropriate boxes, click on &quot;Save changes&quot; and the information will be updated. Only information on user-added records can be modified; if a permanent record is highlighted, data will appear in the &quot;Modify&quot; boxes, but it will be grayed out and not editable.</p>
+
+<p><i>Add Records</i>. Additional strong-motion records can be added to the database and used for analysis. Both individual records and directories containing multiple records can be added.</p>
+
+<p>Using the browse box, select the file or directory containing the earthquake record(s) to be added. The file or files selected will appear in the import table. The import table contains several columns; some require input, others are optional. The required columns are as follows:</p>
+<p>
+<ul>
+<li><b>Import</b>. Contains a check box to allow selection or deselection of records to be imported.</li>
+<li><b>File</b>. Contains the path and file name of each record. This file name is the default record name (see below). This record name can be changed, if desired.</li>
+<li><b>Earthquake</b>. Contains the earthquake name. The default earthquake name is the directory name where the files reside, but this can be changed. Earthquake names are unique and form the basis for grouping records throughout the program. To add records for an existing earthquake (including one from the permanent database), input the exact earthquake name in this column, and added records will be added to this earthquake group. To add records for a new earthquake, use a unique name, which must be used for all records for that earthquake.</li>
+<li><b>Record</b>. Contains the record name. The default is the file name, but any name can be selected.</li>
+<li><b>Dig. Int</b>. Contains the digitization interval of the records to be added. Digitization interval is the time spacing (in seconds) between acceleration values in the file. <i>This is a critically important parameter that must be correctly input or the programs will yield incorrect results</i>.</li>
+</ul>
+</p>
+
+<p>Providing data in the remaining columns is optional. Obviously, however, for added records to be searchable by their various properties, values for those properties must be input. Properties can be input at the time records are added or later through the &quot;Modify record&quot; procedure on the &quot;Manage Records&quot; page.</p>
+<p>
+<ul>
+	<li><b>Magnitude</b>. Earthquake magnitude. Magnitudes for the permanent records are moment magnitudes.</li>
+	<li><b>Epicentral Distance</b>. Distance from the recording site to the earthquake epicenter, in kilometers.</li>
+	<li><b>Focal Distance</b>. Distance from the recording site to the earthquake focus or hypocenter, in kilometers. This can be determined using the Pythagorean Theorem if the epicentral distance and focal depth are known.</li>
+	<li><b>Rupture Distance</b>. Distance from the recording site to the nearest point on the fault-rupture surface, in kilometers.</li>
+	<li><b>Focal Mechanism</b>. Choices for focal mechanism are listed in drop-down boxes that appear when a box in this column is highlighted. They include strike-slip, normal, reverse, oblique normal, and oblique reverse.</li>
+	<li><b>Location</b>. Descriptive location of recording site.</li>
+	<li><b>Owner</b>. Station owner.</li>
+	<li><b>Latitude</b>. Latitude in decimal degrees. North latitude is positive, south latitude is negative.</li>
+	<li><b>Longitude</b>. Longitude in decimal degrees. East longitude is positive, west longitude is negative.</li>
+	<li><b>Site Class</b>. Site classification based on near-surface geology. Choices are listed in drop-down boxes and include hard rock, soft rock, stiff soil, and soft soil.</li>
+</ul>
+</p>
+
+<p>In many cases, entire columns will contain identical data for a given group of records. To fill columns with identical data, use the &quot;Set values in column&quot; box. Select the column from the drop-down box, and specify the value in the adjacent box. Then click &quot;Set&quot; to fill the columns with the specified value. For &quot;Focal mechanism&quot; and &quot;Site Class&quot;, a drop-down box will be available to select from among acceptable choices.</p>
+
+<p>When records have been selected and data entered into appropriate columns, click &quot;Add record(s)&quot; and the records will be added to the database. The program automatically calculates peak ground acceleration, Arias intensity, mean period, and duration. Input parameters can be proofed and modified if needed on the &quot;Manage Records&quot; page. After records have been imported, the Import check box is unchecked. If any records cannot be imported due to missing data in required fields or unreadable files, the Import check box remains checked to indicate that the record has not yet been imported.</p>
+
+</body>
+</html>

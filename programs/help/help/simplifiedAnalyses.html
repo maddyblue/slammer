@@ -1,0 +1,47 @@
+<html>
+<body>
+
+<p><b>Simplified Analyses</b></p>
+
+<p>This page allows users to select between two types of simplified analysis: rigid-block and decoupled. Simplified analyses involve no actual integration of strong-motion records but require inputting various parameters into empirically calibrated equations that estimate slope displacement.</p>
+
+<p><i>Rigid-Block Analysis.</i> Two types of simplified rigid-block analysis are available: Ambraseys and Menu (1988) and Jibson and others (1998, 2001). Clicking on either of these analyses activates data-input boxes that specify what data are required. Ambraseys and Menu requires specifying the critical (yield) acceleration and peak horizontal ground acceleration; Jibson and others requires specifying the critical acceleration and Arias shaking intensity. When these parameters have been entered, click &quot;Perform Analysis&quot;, and the estimated Newmark displacement (in centimeters) is shown in the lower left. Brief explanations of each program appear at the bottom of the page when that program is selected.</p>
+
+<p>A third program is also on this page that allows estimation of the probability of failure as a function of Newmark displacement. Enter the Newmark displacement in the first box (nothing is entered into the second box) and click on &quot;Perform Analysis&quot;. The estimated probability of failure (in decimal form) is displayed. This analysis is primarily valid for fairly shallow, disrupted landslides (falls and shallow slides in rock and debris) and was calibrated using data from the 1994 Northridge earthquake; thus, it is most appropriately applied to those types of slides in southern California.</p>
+
+<p><i>Decoupled Analysis.</i> Decoupled analysis allows for modeling of landslide blocks that are not rigid but have an elastic dynamic response (see detailed documentation). The simplified decoupled analysis of Bray and Rathje (1998) as implemented by Blake and others (2002) is the basis for this page. A group of input parameters is specified, and various intermediate parameters are then calculated and used to estimate displacement.</p>
+<p>&nbsp;&nbsp;&nbsp;Input parameters:</p>
+
+<p>
+<ul>
+	<li>Critical (yield) acceleration, (<i>g</i>), as used elsewhere.</li>
+	<li>Vertical thickness, <i>h</i> (m), is the maximum vertical thickness between the ground surface and slip surface used to determine <i>a<sub>c</sub></i>.</li>
+	<li>Shear-wave velocity, <i>V<sub>s</sub></i> (m/s), is the small-strain shear-wave velocity of the materials above the slip plane.</li>
+	<li>Earthquake magnitude, <i>M</i>, is the mode magnitude based on deaggregation of seismic hazard.</li>
+	<li>Peak bedrock acceleration, <i>MHA</i> (g), is the maximum horizontal acceleration on bedrock expected at the site, analogous to PGA or <i>a<sub>max</sub></i>.</li>
+	<li>Earthquake distance, <i>r</i> (km), is mode earthquake source distance based on deaggregation of seismic hazard.</li>
+</ul>
+</p>
+
+<p>To the right of the input parameters are a group of boxes that allow specification of standard deviations (sigma) of several parameters. If these data are available they can be input; if not, zeros are in the boxes by default, which will yield mean values of the output parameters.</p>
+
+<p>After clicking the &quot;Compute&quot; button, values for various intermediate calculations appear in the boxes under &quot;Calculations&quot;.</p>
+
+<p>
+<ul>
+	<li>Site period, <i>T<sub>s</sub></i> (s), is the fundamental period of the potential landslide mass, estimated as 4<i>h</i>/V<sub>s</sub>.</li>
+	<li>Mean shaking period, <i>T<sub>m</sub></i> (s), is the mean period of the input rock motion.</li>
+	<li>Period ratio is simply <i>T<sub>s</sub></i>/<i>T<sub>m</sub></i>.</li>
+	<li>Duration, <i>D</i><sub>(5-95%)</sub> (s), is the estimated significant duration of shaking defined as the time required to build up the central 90% (from 5% to 95%) of the Arias Intensity.</li>
+	<li>Non-linear Response Factor, <i>NRF</i>, is a factor that accounts for the non-linear response of the landslide materials.</li>
+	<li>Max. hor. equiv. acc. (<i>MHEA</i>), <i>a<sub>max</sub></i> (<i>g</i>), is the maximum horizontal equivalent acceleration as defined by Bray and Rathje (1998) and Blake and others (2002).</li>
+	<li><i>MHEA</i>/((<i>MHA</i>)(<i>NRF</i>)) is the normalized maximum horizontal acceleration.</li>
+	<li><i>a<sub>c</sub></i>/<i>a<sub>max</sub></i> is the critical acceleration ratio, where <i>a<sub>c</sub></i> is the critical acceleration and <i>a<sub>max</sub></i> is the maximum horizontal equivalent acceleration.</li>
+	<li>Normalized displacement (cm/s) is as defined by Bray and Rathje (1998) and Blake and others (2002).</li>
+</ul>
+</p>
+
+<p>Under &quot;Results&quot;, the estimated displacement (in centimeters) is shown. To the right, two values used in site screening procedures are given: the median <i>f<sub>eq</sub></i>, a factor related to the seismicity of the site (Blake and others, 2002), and the seismic coefficient for the screening procedure.</p>
+
+</body>
+</html>

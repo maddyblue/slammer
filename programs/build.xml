@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+
+<!--
+     This is a build.xml file for building Newmark.
+-->
+
+<project name="Newmark" default="def" basedir=".">
+
+	<target name="compile">
+		<javac
+			srcdir="."
+			destdir="."
+			debug="on"
+			deprecation="on"
+		>
+			<include name="newmark/**/*.java"/>
+			<classpath>
+				<fileset dir="jars">
+					<include name="*.jar"/>
+				</fileset>
+			</classpath>
+		</javac>
+	</target>
+
+	<target name="jar">
+		<jar
+			jarfile="newmark.jar"
+			manifest="newmark/newmark.manifest"
+		>
+			<fileset dir=".">
+				<include name="newmark/**/*.class"/>
+				<!-- <include name="com/**"/> -->
+			</fileset>
+		</jar>
+	</target>
+
+	<target name="run">
+		<java fork="true" jar="newmark.jar">
+		</java>
+	</target>
+
+	<target name="clean">
+		<delete>
+			<fileset dir="." includes="newmark/**/*.class"/>
+		</delete>
+	</target>
+
+	<target name="def" depends="compile, jar, run">
+	</target>
+
+	<target name="all" depends="clean, def">
+	</target>
+
+</project>
