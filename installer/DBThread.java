@@ -61,9 +61,8 @@ public class DBThread extends Thread
 				String s = "";
 				String cur[] = new String[17];
 				int j = 0;
-				int reslen;
 				char c;
-				String q;
+				String q, path;
 
 				while(fr.ready())
 				{
@@ -84,17 +83,25 @@ public class DBThread extends Thread
 							s = "";
 							j = 0;
 
-							String path = addQuote(installDir + File.separator + "records" + File.separator) + cur[0] + addQuote(File.separator) + cur[1];
+							if(countQuery("select count(*) from data where eq='" + cur[0] + "' and record='" + cur[1] + "'") > 0)
+							{
+								System.out.println(cur[0] + " - " + cur[1] + ": already in db");
+							}
+							else
+							{
+								path = installDir + File.separator + "records" + File.separator + cur[0] + File.separator + cur[1];
 
-							progress.advanceDB();
+								progress.advanceDB();
 
-							q = "insert into data (eq, record, digi_int, mom_mag, arias, dobry, pga, mean_per, epi_dist, foc_dist, rup_dist, foc_mech, location, owner, latitude, longitude, class, change, path, select1, analyze, select2) values ('" + cur[0] + "', '" + cur[1] + "', " + cur[2] + ", " + nullify(cur[3]) + ", " + cur[4] + ", " + cur[5] + ", " + cur[6] + ", " + cur[7] + ", " + nullify(cur[8]) + ", " + nullify(cur[9]) + ", " + nullify(cur[10]) + ", " + cur[11] + ", '" + cur[12] + "', '" + cur[13] + "', " + nullify(cur[14]) + ", " + nullify(cur[15]) + ", " + cur[16] + ", " + 0 + ", '" + path + "', 0, 0, 0)";
-							runUpdate(q);
+								q = "insert into data (eq, record, digi_int, mom_mag, arias, dobry, pga, mean_per, epi_dist, foc_dist, rup_dist, foc_mech, location, owner, latitude, longitude, class, change, path, select1, analyze, select2) values ('" + cur[0] + "', '" + cur[1] + "', " + cur[2] + ", " + nullify(cur[3]) + ", " + cur[4] + ", " + cur[5] + ", " + cur[6] + ", " + cur[7] + ", " + nullify(cur[8]) + ", " + nullify(cur[9]) + ", " + nullify(cur[10]) + ", " + cur[11] + ", '" + cur[12] + "', '" + cur[13] + "', " + nullify(cur[14]) + ", " + nullify(cur[15]) + ", " + cur[16] + ", " + 0 + ", '" + path + "', 0, 0, 0)";
+								runUpdate(q);
+								System.out.println("adding " + cur[0] + " - " + cur[1]);
+							}
 
 							break;
 						}
 						default:
-							s += (char)c;
+							s += c;
 							break;
 					}
 				}
@@ -212,6 +219,19 @@ public class DBThread extends Thread
 		int result = statement.executeUpdate(update);
 		statement.close();
 		return result;
+	}
+
+	private int countQuery(String query) throws SQLException
+	{
+		Statement statement = connection.createStatement();
+		ResultSet result = null;
+
+		result = statement.executeQuery(query);
+		result.next();
+		int ret = result.getInt(1);
+		statement.close();
+
+		return ret;
 	}
 
 	public void closedb() throws SQLException

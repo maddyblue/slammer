@@ -67,7 +67,8 @@ public class InstallThread extends Thread
 			{
 				installComponent((String)components.elementAt(i));
 				i++;
-				newDB = true;
+				File f = new File(installDir + File.separatorChar + "programs" + File.separatorChar + "database" + File.separatorChar + "db");
+				newDB = !f.exists();
 			}
 
 			// with the remaining sets, install any sql files
