@@ -29,10 +29,8 @@ import java.awt.event.*;
 import javax.swing.border.*;
 import java.io.File;
 import java.util.Vector;
-import org.jfree.data.*;
+import org.jfree.data.xy.*;
 import org.jfree.chart.*;
-import org.jfree.chart.plot.*;
-import org.jfree.chart.axis.*;
 import newmark.*;
 
 class RecordManagerPanel extends JPanel implements ActionListener
@@ -269,7 +267,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 					return;
 				}
 
-				XYSeries xys = new XYSeries("", false);
+				XYSeries xys = new XYSeries("");
 				dat.reset();
 
 				Double val;
@@ -319,7 +317,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 
 				String title = eq + ": " + record;
 				XYSeriesCollection xysc = new XYSeriesCollection(xys);
-				JFreeChart chart = ChartFactory.createLineXYChart(title, "Time (s)", "Acceleration (cm/s/s)", xysc, false, true, false);
+				JFreeChart chart = ChartFactory.createXYLineChart(title, "Time (s)", "Acceleration (cm/s/s)", xysc, org.jfree.chart.plot.PlotOrientation.HORIZONTAL, false, true, false);
 				ChartFrame frame = new ChartFrame(eq + ": " + record, chart);
 				frame.pack();
 				frame.setLocationRelativeTo(null);

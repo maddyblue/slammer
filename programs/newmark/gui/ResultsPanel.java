@@ -29,10 +29,9 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.border.*;
 import java.util.Vector;
-import org.jfree.data.*;
+import org.jfree.data.xy.*;
+import org.jfree.data.statistics.HistogramDataset;
 import org.jfree.chart.*;
-import org.jfree.chart.plot.*;
-import org.jfree.chart.axis.*;
 import java.text.DecimalFormat;
 import java.util.Vector;
 import java.io.*;
@@ -504,7 +503,7 @@ class ResultsPanel extends JPanel implements ActionListener
 					HistogramDataset dataset = new HistogramDataset();
 					dataset.addSeries("", series, (int)Bins.doubleValue());
 
-					JFreeChart hist = ChartFactory.createHistogram("Histogram of Newmark Displacements", "Newmark Displacement (cm)", "Number of Records", dataset, PlotOrientation.VERTICAL, false, false, false);
+					JFreeChart hist = ChartFactory.createHistogram("Histogram of Newmark Displacements", "Newmark Displacement (cm)", "Number of Records", dataset, org.jfree.chart.plot.PlotOrientation.VERTICAL, false, false, false);
 					ChartFrame frame = new ChartFrame("Histogram of Newmark Displacements", hist);
 
 					frame.pack();
@@ -514,7 +513,7 @@ class ResultsPanel extends JPanel implements ActionListener
 			}
 			else if(command.equals("plotNewmark"))
 			{
-				JFreeChart chart = ChartFactory.createLineXYChart("Newmark displacement versus time", "Time (s)", "Newmark displacement (cm)", xysc, plotNewmarkLegend.isSelected(), true, false);
+				JFreeChart chart = ChartFactory.createXYLineChart("Newmark displacement versus time", "Time (s)", "Newmark displacement (cm)", xysc, org.jfree.chart.plot.PlotOrientation.VERTICAL, plotNewmarkLegend.isSelected(), true, false);
 				ChartFrame frame = new ChartFrame("Newmark displacement versus time", chart);
 				frame.pack();
 				frame.setLocationRelativeTo(null);

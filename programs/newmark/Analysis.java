@@ -24,10 +24,7 @@ package newmark;
 
 import java.text.DecimalFormat;
 import java.io.*;
-import org.jfree.data.*;
-import org.jfree.chart.*;
-import org.jfree.chart.plot.*;
-import org.jfree.chart.axis.*;
+import org.jfree.data.xy.XYSeries;
 import newmark.gui.*;
 
 public class Analysis
