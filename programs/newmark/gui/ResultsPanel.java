@@ -658,6 +658,12 @@ class ResultsPanel extends JPanel implements ActionListener
 					return;
 
 				JFreeChart chart = ChartFactory.createXYLineChart(s + " displacement versus time", "Time (s)", s + " displacement " + unitDisplacement, xysc[i], org.jfree.chart.plot.PlotOrientation.VERTICAL, plotNewmarkLegend.isSelected(), true, false);
+
+				//margins are stupid
+				chart.getXYPlot().getDomainAxis().setLowerMargin(0);
+				chart.getXYPlot().getDomainAxis().setUpperMargin(0);
+				chart.getXYPlot().getDomainAxis().setLowerBound(0);
+
 				ChartFrame frame = new ChartFrame(s + " displacement versus time", chart);
 				frame.pack();
 				frame.setLocationRelativeTo(null);
