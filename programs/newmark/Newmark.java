@@ -18,7 +18,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-/* $Id: Newmark.java,v 1.3 2003/07/18 05:25:15 dolmant Exp $ */
+/* $Id: Newmark.java,v 1.4 2003/08/01 01:25:44 dolmant Exp $ */
 
 package newmark;
 
@@ -70,6 +70,11 @@ public class Newmark
 				}
 
 				fw.close();
+				Utils.closeDB();
+			}
+			else if(args[0].equals("drop"))
+			{
+				Utils.getDB().runQuery("drop table data, group");
 				Utils.closeDB();
 			}
 			else if(args[0].equals("create"))
@@ -191,7 +196,13 @@ public class Newmark
 				Utils.getDB().runQuery("update data set select1=false where select1=true");
 				Utils.getDB().runQuery("update data set select2=false where select2=true");
 
+				// for Windows XP users, make it look mostly native
+				UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+
 				JFrame frame = new JFrame("Newmark");
+
+				GUIUtils.bg = frame.getBackground();
+
 				frame.addWindowListener(new WindowAdapter() {
 					public void windowClosing(WindowEvent e)
 					{
