@@ -18,13 +18,16 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-/* $Id: Analysis.java,v 1.1 2003/06/15 01:58:11 dolmant Exp $ */
+/* $Id: Analysis.java,v 1.2 2003/07/18 05:25:15 dolmant Exp $ */
 
 package newmark;
 
 import java.text.DecimalFormat;
 import java.io.*;
-import com.jrefinery.data.*;
+import org.jfree.data.*;
+import org.jfree.chart.*;
+import org.jfree.chart.plot.*;
+import org.jfree.chart.axis.*;
 import newmark.gui.*;
 
 public class Analysis
@@ -34,6 +37,8 @@ public class Analysis
 	public static final String fmtTwo               = "0.00";
 	public static final String fmtOne               = "0.0";
 	public static final String fmtZero              = "0";
+
+	public static final double Gcmss	= 980.665;
 
 	public static final int each = 1;
 	private static double time;
@@ -56,31 +61,6 @@ public class Analysis
 		last = -1;
 		skipped = false;
 		timeStor = 0;
-	}
-
-	private static void store_OLD(final double d)
-	{
-		if(eachAt != each)
-		{
-			time += dint;
-			eachAt += 1;
-			return;
-		}
-
-		if(d == last)
-			skipped = true;
-		else
-		{
-			if(skipped)
-			{
-				realStore(last, time - dint);
-				skipped = false;
-			}
-			realStore(d,time);
-		}
-		time += dint;
-		if(eachAt == each) eachAt = 0;
-		else eachAt += 1;
 	}
 
 	private static void store(final double d)
@@ -126,6 +106,14 @@ public class Analysis
 	public static double log10(final double val)
 	{
 		return Math.log(val) / Math.log(10.0);
+	}
+
+	public static double sign(final double val)
+	{
+		if(val >= 0)
+			return 1;
+		else
+			return -1;
 	}
 
 	/* the algorithms/programs
@@ -184,7 +172,7 @@ public class Analysis
 
 	public static String CM_GS(DoubleList data, FileWriter ofile) throws IOException
 	{
-		final double val = 1.0 / 980.665;
+		final double val = 1.0 / Gcmss;
 		return Mult(data, ofile, val);
 	}
 
@@ -203,7 +191,7 @@ public class Analysis
 	public static String PGA(DoubleList data)
 	{
 		DecimalFormat fmt = new DecimalFormat(fmtThree);
-		return fmt.format(FindMax(data) / 980.665); // store in g's, but expect to be in cm/s/s
+		return fmt.format(FindMax(data) / Gcmss); // store in g's, but expect to be in cm/s/s
 	}
 
 	private static double FindMax(DoubleList data)
@@ -222,7 +210,7 @@ public class Analysis
 
 	public static String GS_CM(DoubleList data, FileWriter ofile) throws IOException
 	{
-		final double val = 980.665;
+		final double val = Gcmss;
 		return Mult(data, ofile, val);
 	}
 
@@ -242,14 +230,118 @@ public class Analysis
 		return null;
 	}
 
+	public static String Peapick(DoubleList data, FileWriter ofile, final double value) throws IOException
+	{
+		Double val;
+		int top = data.size() - 1;
+		int indexl = 0, index = 0, indexr = top;
+
+		data.reset();
+		while((val = data.each()) != null)
+		{
+			if(Math.abs(val.doubleValue()) >= value)
+			{
+				indexl = index - 50;
+				if(indexl < 0)
+					indexl = 0;
+				break;
+			}
+			index++;
+		}
+
+		data.end();
+		index = top;
+		while((val = data.eachP()) != null)
+		{
+			if(Math.abs(val.doubleValue()) >= value)
+			{
+				indexr = index + 50;
+				if(indexr > top)
+					indexr = top;
+				break;
+			}
+			index--;
+		}
+
+		// put data.current at indexl
+		data.reset();
+		for(int i = 0; i < indexl; i++)
+			data.next();
+
+		// start writing to the file
+		for(int i = indexl; i <= indexr; i++)
+		{
+			ofile.write(data.each().toString());
+			ofile.write('\n');
+		}
+
+		ofile.close();
+
+		System.out.println(indexl + ", " + indexr);
+		return null;
+	}
+
+	public static String NewmarkRigorousDual(DoubleList data, final double d, final double ca, final double ta, final double mult)
+	{
+		Double val;
+		double a, n, q=0, r=0, s=0, y=0, v=0, u=0;
+
+		final double l = Math.toRadians(ta);
+		final double g = Math.sin(l) * Gcmss;
+		final double t = (ca * Gcmss) + g;
+
+		setValueSize(d);
+		data.reset();
+		int count = 0;
+		while((val = data.each()) != null)
+		{
+			a = (val.doubleValue() * mult) + g;
+			if(a == 0)
+			{
+				store(u);
+				continue;
+			}
+			if(v < .0001)
+			{
+				if(Math.abs(a) > t)
+				{
+					n = sign(a);
+				}
+				else
+				{
+					n = a / t;
+				}
+			}
+			else
+			{
+				n = sign(v);
+			}
+			y = a - n * t;
+			v = r + d / 2.0 * (y + s);
+			if (!(r == 0.0 || (v / r) > 0))
+			{
+				v = 0;
+				y = 0;
+			}
+			u = q + d / 2.0 * (v + r);
+			q = u;
+			r = v;
+			s = y;
+			if(mult > 0.0) store(u);
+		}
+
+		DecimalFormat fmt = new DecimalFormat(fmtOne);
+		end(u);
+		return fmt.format(u);
+	}
+
 	public static String NewmarkRigorous(DoubleList data, final double di, final double ca, final double mult)
 	{
 		Double val;
 		double t, d, q = 0, r = 0, s = 0, y = 0, v = 0, u = 0, a, n;
 		t = ca;
-		t *= 980.665;
+		t *= Gcmss;
 		d = di;
-		int step = 0;
 		setValueSize(di);
 		data.reset();
 		int count = 0;
@@ -265,7 +357,7 @@ public class Analysis
 			{
 				if(Math.abs(a) > t )
 				{
-					n = a / Math.abs(a);
+					n = sign(a);
 				}
 				else
 				{
@@ -300,8 +392,8 @@ public class Analysis
 		Double val;
 		double t, d, q = 0, r = 0, s = 0, y = 0, v = 0, u = 0, a, n;
 		t = disp[0][1];
-		t *= 980.665;
-		int pos = 0, step = 0;
+		t *= Gcmss;
+		int pos = 0;
 		double prop;
 		d = di;
 		setValueSize(di);
@@ -317,7 +409,7 @@ public class Analysis
 			if(v < .0001)
 			{
 				if(Math.abs(a) > t )
-					n = a / Math.abs(a);
+					n = sign(a);
 				else
 					n = a / t;
 			}
@@ -344,11 +436,11 @@ public class Analysis
 			}
 			if(pos == disp.length - 1)
 			{
-				t = 980.665 * disp[pos][1];
+				t = Gcmss * disp[pos][1];
 				continue;
 			}
 			prop = (u - disp[pos][0]) / (disp[pos + 1][0] - disp[pos][0]);
-			t = 980.665 * (disp[pos][1] - (disp[pos][1] - disp[pos + 1][1]) * prop);
+			t = Gcmss * (disp[pos][1] - (disp[pos][1] - disp[pos + 1][1]) * prop);
 		}
 
 		DecimalFormat fmt = new DecimalFormat(fmtOne);
@@ -362,8 +454,8 @@ public class Analysis
 		double t, d, q = 0, r = 0, s = 0, y = 0, v = 0, u = 0, a, n;
 		double time = 0;
 		t = disp[0][1];
-		t *= 980.665;
-		int pos = 0, step = 0;
+		t *= Gcmss;
+		int pos = 0;
 		double prop;
 		setValueSize(di);
 		d = di;
@@ -379,7 +471,7 @@ public class Analysis
 			if(v < .0001)
 			{
 				if(Math.abs(a) > t )
-					n = a / Math.abs(a);
+					n = sign(a);
 				else
 					n = a / t;
 			}
@@ -406,11 +498,11 @@ public class Analysis
 			}
 			if(pos == disp.length - 1)
 			{
-				t = 980.665 * disp[pos][1];
+				t = Gcmss * disp[pos][1];
 				continue;
 			}
 			prop = (time - disp[pos][0]) / (disp[pos + 1][0] - disp[pos][0]);
-			t = 980.665 * (disp[pos][1] - (disp[pos][1] - disp[pos + 1][1]) * prop);
+			t = Gcmss * (disp[pos][1] - (disp[pos][1] - disp[pos + 1][1]) * prop);
 			time += d;
 		}
 

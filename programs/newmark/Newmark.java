@@ -18,7 +18,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-/* $Id: Newmark.java,v 1.2 2003/07/15 00:14:21 dolmant Exp $ */
+/* $Id: Newmark.java,v 1.3 2003/07/18 05:25:15 dolmant Exp $ */
 
 package newmark;
 
@@ -72,9 +72,8 @@ public class Newmark
 				fw.close();
 				Utils.closeDB();
 			}
-			else if(args[0].equals("drop"))
+			else if(args[0].equals("create"))
 			{
-				Utils.getDB().runQuery("drop table if exists data");
 				Utils.getDB().runQuery("create table data ("
 					+ "id        integer(10)  not null,"
 					+ "eq        varchar(100) not null,"
@@ -102,7 +101,6 @@ public class Newmark
 					+ "unique (id)"
 					+ ")");
 
-				Utils.getDB().runQuery("drop table if exists group");
 				Utils.getDB().runQuery("create table group ("
 					+ "record    integer(10)  not null,"
 					+ "name      varchar(100) not null,"

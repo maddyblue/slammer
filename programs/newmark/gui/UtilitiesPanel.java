@@ -18,7 +18,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-/* $Id: UtilitiesPanel.java,v 1.1 2003/06/15 01:58:11 dolmant Exp $ */
+/* $Id: UtilitiesPanel.java,v 1.2 2003/07/18 05:25:15 dolmant Exp $ */
 
 package newmark.gui;
 
@@ -39,6 +39,7 @@ class UtilitiesPanel extends JPanel implements ActionListener
 	JRadioButton gscm = new JRadioButton("Convert g's to cm/s/s");
 	JRadioButton mult = new JRadioButton("Multiply by a constant");
 	JRadioButton redigit = new JRadioButton("Redigitize");
+	JRadioButton peapick = new JRadioButton("Pea picker");
 	ButtonGroup group = new ButtonGroup();
 
 	JFileChooser fcs = new JFileChooser();
@@ -68,21 +69,25 @@ class UtilitiesPanel extends JPanel implements ActionListener
 		gscm.setActionCommand("change");
 		mult.setActionCommand("change");
 		redigit.setActionCommand("change");
+		peapick.setActionCommand("change");
 
 		cmgs.addActionListener(this);
 		gscm.addActionListener(this);
 		mult.addActionListener(this);
 		redigit.addActionListener(this);
+		peapick.addActionListener(this);
 
 		cmgs.setMnemonic(KeyEvent.VK_G);
 		gscm.setMnemonic(KeyEvent.VK_C);
 		mult.setMnemonic(KeyEvent.VK_M);
 		redigit.setMnemonic(KeyEvent.VK_R);
+		peapick.setMnemonic(KeyEvent.VK_P);
 
 		group.add(cmgs);
 		group.add(gscm);
 		group.add(mult);
 		group.add(redigit);
+		group.add(peapick);
 
 		sourceb.setActionCommand("source");
 		sourceb.addActionListener(this);
@@ -111,11 +116,12 @@ class UtilitiesPanel extends JPanel implements ActionListener
 
 	private JPanel createUtilitiesPanelHeader()
 	{
-		JPanel panel = new JPanel(new GridLayout(0, 4));
+		JPanel panel = new JPanel(new VariableGridLayout(VariableGridLayout.FIXED_NUM_COLUMNS, 5));
 		panel.add(cmgs);
 		panel.add(gscm);
 		panel.add(mult);
 		panel.add(redigit);
+		panel.add(peapick);
 		return panel;
 	}
 
@@ -209,6 +215,12 @@ class UtilitiesPanel extends JPanel implements ActionListener
 					constantf.setEnabled(true);
 					pane.setText("This program converts a time file (a file containing paired time and acceleration values) into a file containing a sequence of acceleration values having a constant time spacing (digitization interval) using an interpolation algorithm.  The input and output files or directories must be specified or selected using the browser.  The digitization interval for the output file must be specified in the indicated field; any value can be selected by the user, but values of 0.01-0.05 generally are appropriate.  The output file is in the format necessary to run the other programs in this package, but if the original time file had units of g's, it will be necessary to convert to cm/s/s before running other Analysis.");
 				}
+				else if(peapick.isSelected())
+				{
+					constant.setText("Gs to truncate record");
+					constantf.setEnabled(true);
+					pane.setText("This program removes the points of a record from the beginning and end of the file that are less than the specified number of Gs. 50 points are added to each side for lead in time.");
+				}
 			}
 			else if(command.equals("go"))
 			{
@@ -294,6 +306,13 @@ class UtilitiesPanel extends JPanel implements ActionListener
 					sel = 4;
 					selStr = "Redigitization to digitization interval of " + constantf.getText();
 				}
+				else if(peapick.isSelected())
+				{
+					val = (Double)Utils.checkNum(constantf.getText(), "pea picker field", null, false, null, new Double(0), false, null, false);
+					if(val == null) return;
+					sel = 5;
+					selStr = "Pea picking";
+				}
 				else
 				{
 					GUIUtils.popupError("No utilitiy selected.");
@@ -370,6 +389,9 @@ class UtilitiesPanel extends JPanel implements ActionListener
 				break;
 			case 4: // redigit
 				err = Analysis.Redigitize(data, o, var);
+				break;
+			case 5: // peapick
+				Analysis.Peapick(data, o, var * Analysis.Gcmss);
 				break;
 		}
 

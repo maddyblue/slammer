@@ -18,7 +18,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-/* $Id: DoubleList.java,v 1.2 2003/07/15 00:14:53 dolmant Exp $ */
+/* $Id: DoubleList.java,v 1.3 2003/07/18 05:25:15 dolmant Exp $ */
 
 package newmark;
 
@@ -30,30 +30,32 @@ public class DoubleList
 	class DoubleListElement
 	{
 		protected Double val;
-		protected DoubleListElement next;
+		protected DoubleListElement next, prev;
 
 		public DoubleListElement()
 		{
 			val = null;
 			next = null;
+			prev = null;
 		}
 
 		public DoubleListElement(Double val)
 		{
 			this.val = val;
 			next = null;
+			prev = null;
 		}
 	}
 
 	/* head is the beginning of the list, pointing to the first element */
-	private DoubleListElement head, current;
+	private DoubleListElement head, current, end;
 	private int length;
 	private int bad = 0;
 
 	public DoubleList()
 	{
 		head = new DoubleListElement();
-		current = head;
+		end = current = head;
 	}
 
 	public DoubleList(String fname) throws IOException
@@ -90,16 +92,19 @@ public class DoubleList
 			}
 			else if(dbl.equals("")) break;
 			current.next = new DoubleListElement(new Double(dbl));
+			current.next.prev = current;
 			current = current.next;
 			length++;
 		}
 		head = head.next;
+		end = current;
 		current = head;
 	}
 
 	public void add(double val)
 	{
 		current.next = new DoubleListElement(new Double(val));
+		current.next.prev = current;
 		current = current.next;
 		length++;
 	}
@@ -168,6 +173,11 @@ public class DoubleList
 		current = head;
 	}
 
+	public void end()
+	{
+		current = end;
+	}
+
 	public Double each()
 	{
 		if(current == null)
@@ -175,6 +185,24 @@ public class DoubleList
 
 		Double ret = current.val;
 		current = current.next;
+		return ret;
+	}
+
+	public void next()
+	{
+		if(current == null)
+			return;
+
+		current = current.next;
+	}
+
+	public Double eachP()
+	{
+		if(current == null)
+				return null;
+
+		Double ret = current.val;
+		current = current.prev;
 		return ret;
 	}
 

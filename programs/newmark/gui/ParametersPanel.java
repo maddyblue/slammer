@@ -18,7 +18,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-/* $Id: ParametersPanel.java,v 1.2 2003/06/19 04:33:41 dolmant Exp $ */
+/* $Id: ParametersPanel.java,v 1.3 2003/07/18 05:25:15 dolmant Exp $ */
 
 package newmark.gui;
 
@@ -87,12 +87,12 @@ class ParametersPanel extends JPanel implements ActionListener
 
 		SlopeGroup.add(downSlope);
 		downSlope.setMnemonic(KeyEvent.VK_D);
-		downSlope.setActionCommand("downSlope");
+		downSlope.setActionCommand("change");
 		downSlope.addActionListener(this);
 
 		SlopeGroup.add(dualSlope);
 		dualSlope.setMnemonic(KeyEvent.VK_U);
-		dualSlope.setActionCommand("dualSlope");
+		dualSlope.setActionCommand("change");
 		dualSlope.addActionListener(this);
 
 		thrustAngle.setEnabled(false);
@@ -100,17 +100,17 @@ class ParametersPanel extends JPanel implements ActionListener
 
 		CAgroup.add(nd);
 		nd.setMnemonic(KeyEvent.VK_C);
-		nd.setActionCommand("CAconst");
+		nd.setActionCommand("change");
 		nd.addActionListener(this);
 
 		CAgroup.add(ndDisp);
 		ndDisp.setMnemonic(KeyEvent.VK_D);
-		ndDisp.setActionCommand("CAdisp");
+		ndDisp.setActionCommand("change");
 		ndDisp.addActionListener(this);
 
 		CAgroup.add(ndTime);
 		ndTime.setMnemonic(KeyEvent.VK_T);
-		ndTime.setActionCommand("CAtime");
+		ndTime.setActionCommand("change");
 		ndTime.addActionListener(this);
 
 		dispTable.setEnabled(false);
@@ -244,35 +244,49 @@ class ParametersPanel extends JPanel implements ActionListener
 			{
 				timeTableModel.addRow();
 			}
-			else if(command.equals("CAconst"))
+			else if(command.equals("change"))
 			{
-				constCA.setEnabled(true);
+				constCA.setEnabled(false);
 				dispTable.setEnabled(false);
 				dispAddRow.setEnabled(false);
 				dispDelRow.setEnabled(false);
 				timeTable.setEnabled(false);
 				timeAddRow.setEnabled(false);
 				timeDelRow.setEnabled(false);
-			}
-			else if(command.equals("CAdisp"))
-			{
-				constCA.setEnabled(false);
-				dispTable.setEnabled(true);
-				dispAddRow.setEnabled(true);
-				dispDelRow.setEnabled(true);
-				timeTable.setEnabled(false);
-				timeAddRow.setEnabled(false);
-				timeDelRow.setEnabled(false);
-			}
-			else if(command.equals("CAtime"))
-			{
-				constCA.setEnabled(false);
-				dispTable.setEnabled(false);
-				dispAddRow.setEnabled(false);
-				dispDelRow.setEnabled(false);
-				timeTable.setEnabled(true);
-				timeAddRow.setEnabled(true);
-				timeDelRow.setEnabled(true);
+				thrustAngle.setEnabled(false);
+				ndTime.setEnabled(true);
+				ndDisp.setEnabled(true);
+
+				thrustAngle.setBackground(GUIUtils.bg);
+
+				if(downSlope.isSelected())
+				{
+					if(nd.isSelected())
+					{
+						constCA.setEnabled(true);
+					}
+					else if(ndDisp.isSelected())
+					{
+						dispTable.setEnabled(true);
+						dispAddRow.setEnabled(true);
+						dispDelRow.setEnabled(true);
+					}
+					else if(ndTime.isSelected())
+					{
+						timeTable.setEnabled(true);
+						timeAddRow.setEnabled(true);
+						timeDelRow.setEnabled(true);
+					}
+				}
+				else if(dualSlope.isSelected())
+				{
+					constCA.setEnabled(true);
+					thrustAngle.setEnabled(true);
+					thrustAngle.setBackground(Color.white);
+					nd.setSelected(true);
+					ndTime.setEnabled(false);
+					ndDisp.setEnabled(false);
+				}
 			}
 			else if(command.equals("delDispRow"))
 			{
@@ -283,16 +297,6 @@ class ParametersPanel extends JPanel implements ActionListener
 			{
 				if(timeTableModel.getRowCount() > 1)
 					timeTableModel.removeRow(timeTableModel.getRowCount() - 1);
-			}
-			else if(command.equals("downSlope"))
-			{
-				thrustAngle.setEnabled(false);
-				thrustAngle.setBackground(GUIUtils.bg);
-			}
-			else if(command.equals("dualSlope"))
-			{
-				thrustAngle.setEnabled(true);
-				thrustAngle.setBackground(Color.white);
 			}
 			else if(command.equals("next"))
 			{

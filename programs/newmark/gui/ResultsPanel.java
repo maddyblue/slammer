@@ -18,7 +18,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-/* $Id: ResultsPanel.java,v 1.3 2003/07/15 00:19:58 dolmant Exp $ */
+/* $Id: ResultsPanel.java,v 1.4 2003/07/18 05:25:15 dolmant Exp $ */
 
 package newmark.gui;
 
@@ -236,6 +236,21 @@ class ResultsPanel extends JPanel implements ActionListener
 					return;
 				}
 
+				Double thrustD;
+				double thrust = 0;
+				if(parent.Parameters.dualSlope.isSelected())
+				{
+					thrustD =  (Double)Utils.checkNum(parent.Parameters.thrustAngle.getText(), "thrust angle field", new Double(90), true, null, new Double(0), true, null, false);
+					if(thrustD == null)
+					{
+						parent.selectParameters();
+						monFrame.dispose();
+						return;
+					}
+					else
+						thrust = thrustD.doubleValue();
+				}
+
 				File testFile;
 				String path;
 				DecimalFormat fmt = new DecimalFormat(Analysis.fmtOne);
@@ -244,6 +259,7 @@ class ResultsPanel extends JPanel implements ActionListener
 				monFrame.show();
 				dataVect = new Vector(res.length - 1);
 				xysc = new XYSeriesCollection();
+				double iscale = -1.0 * scale;
 				for(int i = 1; i < res.length; i++)
 				{
 					eq = res[i][0].toString();
@@ -278,20 +294,38 @@ class ResultsPanel extends JPanel implements ActionListener
 						}
 						scale = d.doubleValue() / Double.parseDouble(res[i][4].toString());
 					}
-					if(parent.Parameters.nd.isSelected() == true)
+					if(parent.Parameters.dualSlope.isSelected())
 					{
-						inv = new Double((String)Analysis.NewmarkRigorous(dat, di, ca, -1.0 * scale));
-						norm = new Double((String)Analysis.NewmarkRigorous(dat, di, ca, 1.0 * scale));
+						inv = new Double((String)Analysis.NewmarkRigorousDual(dat, di, ca, thrust, iscale));
+						norm = new Double((String)Analysis.NewmarkRigorousDual(dat, di, ca, thrust, scale));
 					}
-					else if(parent.Parameters.ndDisp.isSelected() == true)
+					else if(parent.Parameters.downSlope.isSelected())
 					{
-						inv = new Double((String)Analysis.NewmarkRigorousDisp(dat, di, caList, -1.0 * scale));
-						norm = new Double((String)Analysis.NewmarkRigorousDisp(dat, di, caList, 1.0 * scale));
+						if(parent.Parameters.nd.isSelected())
+						{
+							inv = new Double((String)Analysis.NewmarkRigorous(dat, di, ca, iscale));
+							norm = new Double((String)Analysis.NewmarkRigorous(dat, di, ca, scale));
+						}
+						else if(parent.Parameters.ndDisp.isSelected())
+						{
+							inv = new Double((String)Analysis.NewmarkRigorousDisp(dat, di, caList, iscale));
+							norm = new Double((String)Analysis.NewmarkRigorousDisp(dat, di, caList, scale));
+						}
+						else if(parent.Parameters.ndTime.isSelected())
+						{
+							inv = new Double((String)Analysis.NewmarkRigorousTime(dat, di, caList, iscale));
+							norm = new Double((String)Analysis.NewmarkRigorousTime(dat, di, caList, scale));
+						}
+						else
+						{
+							GUIUtils.popupError("No analysis method selected.");
+							return;
+						}
 					}
-					else if(parent.Parameters.ndTime.isSelected() == true)
+					else
 					{
-						inv = new Double((String)Analysis.NewmarkRigorousTime(dat, di, caList, -1.0 * scale));
-						norm = new Double((String)Analysis.NewmarkRigorousTime(dat, di, caList, 1.0 * scale));
+						GUIUtils.popupError("No analysis method selected.");
+						return;
 					}
 
 					Analysis.xys.setName(eq + " - " + record);
