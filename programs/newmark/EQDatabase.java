@@ -159,7 +159,9 @@ public class EQDatabase
 	{
 		connection.close();
 		connection = null;
-		//java.sql.DriverManager.getConnection(url + ";shutdown=true");
+		try {
+			java.sql.DriverManager.getConnection(EQDatabase.url + ";shutdown=true");
+		} catch(Exception e) {}
 	}
 
 	// EQ functions
