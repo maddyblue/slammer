@@ -320,8 +320,16 @@ class ResultsPanel extends JPanel implements ActionListener
 							monFrame.dispose();
 							return;
 						}
-						else
-							vr = tempd.doubleValue();
+
+						vr = tempd.doubleValue();
+
+						if((vr / vs) <= 2.5)
+						{
+							GUIUtils.popupError("Error: Shear wave velocity of rock must be at least 2.5 times larger than Shear wave velocity of soil.");
+							parent.selectParameters();
+							monFrame.dispose();
+							return;
+						}
 					}
 				}
 
@@ -448,10 +456,8 @@ class ResultsPanel extends JPanel implements ActionListener
 
 					if(paramCoupled)
 					{
-						inv = Coupled.Coupled(ain, uwgt, height, vs, damp, di, iscale, Analysis.Gftss, vr, ca, dv2, dv3);
-						norm = Coupled.Coupled(ain, uwgt, height, vs, damp, di, scale, Analysis.Gftss, vr, ca, dv2, dv3);
-
-						System.out.println(inv + ", " + norm);
+						inv = Coupled.Coupled(ain, uwgt, height, vs, damp, di, iscale / Analysis.Gcmss, Analysis.Gftss, vr, ca, dv2, dv3);
+						norm = Coupled.Coupled(ain, uwgt, height, vs, damp, di, scale / Analysis.Gcmss, Analysis.Gftss, vr, ca, dv2, dv3);
 
 						avg = avg(inv, norm, Analysis.fmtFour);
 
