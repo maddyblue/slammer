@@ -155,13 +155,14 @@ public class DBThread extends Thread
 
 	// database connection stuff
 	private java.sql.Connection connection = null;
-	public static String url = "jdbc:derby:" + installDir + File.separator + "programs" + File.separator + "database";
+	public static final String url = "jdbc:derby:db";
 
 	public void startdb(boolean newDB) throws Exception
 	{
 		if(connection != null)
 			return;
 
+		System.setProperty("derby.system.home", installDir + File.separator + "programs" + File.separator + "database");
 		Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
 
 		String connect_url = url;
@@ -220,6 +221,9 @@ public class DBThread extends Thread
 		{
 			connection.close();
 			connection = null;
+			try {
+				java.sql.DriverManager.getConnection(url + ";shutdown=true");
+			} catch(Exception e) {}
 		}
 	}
 
