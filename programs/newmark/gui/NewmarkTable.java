@@ -18,7 +18,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-/* $Id: NewmarkTable.java,v 1.1 2003/06/15 01:58:11 dolmant Exp $ */
+/* $Id$ */
 
 package newmark.gui;
 
@@ -73,10 +73,8 @@ class NewmarkTable extends JPanel implements ActionListener, NewmarkTableInterfa
 		model = new NewmarkTableModel(selectTable, primarySort, secondarySort, order);
 		table = new JTable(model);
 
-		recordButton.setMnemonic(KeyEvent.VK_D);
 		recordButton.setActionCommand("record");
 		recordButton.addActionListener(this);
-		stationButton.setMnemonic(KeyEvent.VK_T);
 		stationButton.setActionCommand("station");
 		stationButton.addActionListener(this);
 		displayGroup.add(recordButton);

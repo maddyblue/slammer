@@ -85,11 +85,9 @@ class DecoupledSimplifiedPanel extends JPanel implements ActionListener
 	{
 		this.parent = parent;
 
-		go.setMnemonic(KeyEvent.VK_C);
 		go.setActionCommand("go");
 		go.addActionListener(this);
 
-		clear.setMnemonic(KeyEvent.VK_F);
 		clear.setActionCommand("clear");
 		clear.addActionListener(this);
 

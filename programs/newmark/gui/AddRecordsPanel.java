@@ -48,7 +48,6 @@ class AddRecordsPanel extends JPanel implements ActionListener
 	{
 		this.parent = parent;
 
-		browse.setMnemonic(KeyEvent.VK_B);
 		browse.setActionCommand("browse");
 		browse.addActionListener(this);
 

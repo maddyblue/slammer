@@ -90,27 +90,21 @@ class ResultsPanel extends JPanel implements ActionListener
 		outputTableModel.addColumn("Displacement 2 (cm)");
 		outputTableModel.addColumn("Average Disp. (cm)");
 
-		Analyze.setMnemonic(KeyEvent.VK_A);
 		Analyze.setActionCommand("analyze");
 		Analyze.addActionListener(this);
 
-		ClearOutput.setMnemonic(KeyEvent.VK_C);
 		ClearOutput.setActionCommand("clearOutput");
 		ClearOutput.addActionListener(this);
 
-		saveOutput.setMnemonic(KeyEvent.VK_S);
 		saveOutput.setActionCommand("saveOutput");
 		saveOutput.addActionListener(this);
 
-		plotOutput.setMnemonic(KeyEvent.VK_H);
 		plotOutput.setActionCommand("plotOutput");
 		plotOutput.addActionListener(this);
 
-		plotNewmark.setMnemonic(KeyEvent.VK_V);
 		plotNewmark.setActionCommand("plotNewmark");
 		plotNewmark.addActionListener(this);
 
-		plotNewmarkLegend.setMnemonic(KeyEvent.VK_L);
 		plotNewmarkLegend.setActionCommand("plotNewmarkLegend");
 		plotNewmarkLegend.addActionListener(this);
 

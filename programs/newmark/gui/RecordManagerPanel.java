@@ -18,7 +18,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-/* $Id: RecordManagerPanel.java,v 1.2 2003/07/15 00:19:58 dolmant Exp $ */
+/* $Id$ */
 
 package newmark.gui;
 
@@ -90,15 +90,12 @@ class RecordManagerPanel extends JPanel implements ActionListener
 		eqList.setActionCommand("eqListChange");
 		eqList.addActionListener(this);
 
-		save.setMnemonic(KeyEvent.VK_S);
 		save.setActionCommand("save");
 		save.addActionListener(this);
 
-		delete.setMnemonic(KeyEvent.VK_D);
 		delete.setActionCommand("delete");
 		delete.addActionListener(this);
 
-		graph.setMnemonic(KeyEvent.VK_G);
 		graph.setActionCommand("graph");
 		graph.addActionListener(this);
 

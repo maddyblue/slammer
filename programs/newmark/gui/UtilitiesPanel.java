@@ -78,12 +78,6 @@ class UtilitiesPanel extends JPanel implements ActionListener
 		redigit.addActionListener(this);
 		peapick.addActionListener(this);
 
-		cmgs.setMnemonic(KeyEvent.VK_G);
-		gscm.setMnemonic(KeyEvent.VK_C);
-		mult.setMnemonic(KeyEvent.VK_M);
-		redigit.setMnemonic(KeyEvent.VK_R);
-		peapick.setMnemonic(KeyEvent.VK_P);
-
 		group.add(cmgs);
 		group.add(gscm);
 		group.add(mult);

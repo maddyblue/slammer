@@ -18,7 +18,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-/* $Id: SelectRecordsPanel.java,v 1.1 2003/06/15 01:58:11 dolmant Exp $ */
+/* $Id$ */
 
 package newmark.gui;
 
@@ -76,11 +76,9 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 	{
 		this.parent = parent;
 
-		searchButton.setMnemonic(KeyEvent.VK_S);
 		searchButton.setActionCommand("search");
 		searchButton.addActionListener(this);
 
-		clearButton.setMnemonic(KeyEvent.VK_C);
 		clearButton.setActionCommand("clear");
 		clearButton.addActionListener(this);
 
@@ -122,27 +120,21 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 		eqList.setActionCommand("eqListChange");
 		eqList.addActionListener(this);
 
-		selectRecord.setMnemonic(KeyEvent.VK_R);
 		selectRecord.setActionCommand("addRecord");
 		selectRecord.addActionListener(this);
 
-		selectNone.setMnemonic(KeyEvent.VK_N);
 		selectNone.setActionCommand("none");
 		selectNone.addActionListener(this);
 
-		selectAll.setMnemonic(KeyEvent.VK_A);
 		selectAll.setActionCommand("all");
 		selectAll.addActionListener(this);
 
-		emptyTable.setMnemonic(KeyEvent.VK_E);
 		emptyTable.setActionCommand("empty");
 		emptyTable.addActionListener(this);
 
-		deleteSelected.setMnemonic(KeyEvent.VK_D);
 		deleteSelected.setActionCommand("deleteSelected");
 		deleteSelected.addActionListener(this);
 
-		next.setMnemonic(KeyEvent.VK_G);
 		next.setActionCommand("next");
 		next.addActionListener(this);
 

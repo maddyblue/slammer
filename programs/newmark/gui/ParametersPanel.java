@@ -18,7 +18,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-/* $Id: ParametersPanel.java,v 1.4 2003/07/31 21:32:53 dolmant Exp $ */
+/* $Id$ */
 
 package newmark.gui;
 
@@ -53,19 +53,16 @@ class ParametersPanel extends JPanel implements ActionListener
 		this.parent = parent;
 
 		PGAgroup.add(scalePGAon);
-		scalePGAon.setMnemonic(KeyEvent.VK_S);
 		scalePGAon.setActionCommand("scalePGA");
 		scalePGAon.addActionListener(this);
 
 		PGAgroup.add(scalePGAoff);
-		scalePGAoff.setMnemonic(KeyEvent.VK_N);
 		scalePGAoff.setActionCommand("scalePGA");
 		scalePGAoff.addActionListener(this);
 		scalePGAoff.setSelected(true);
 
 		scalePGAval.setEnabled(false);
 
-		next.setMnemonic(KeyEvent.VK_A);
 		next.setActionCommand("next");
 		next.addActionListener(this);
 

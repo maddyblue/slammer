@@ -18,7 +18,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-/* $Id: CoupledPanel.java,v 1.1 2003/07/31 21:32:53 dolmant Exp $ */
+/* $Id$ */
 
 package newmark.gui;
 
@@ -70,11 +70,9 @@ class CoupledPanel extends JPanel implements ActionListener
 
 		unitEnglish.setActionCommand("unit");
 		unitEnglish.addActionListener(this);
-		unitEnglish.setMnemonic(KeyEvent.VK_E);
 
 		unitMetric.setActionCommand("unit");
 		unitMetric.addActionListener(this);
-		unitMetric.setMnemonic(KeyEvent.VK_M);
 
 		updateUnits();
 

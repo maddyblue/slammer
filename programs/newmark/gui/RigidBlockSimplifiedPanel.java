@@ -69,19 +69,15 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 		group.add(Ambraseys);
 		group.add(probFailure);
 
-		Jibson.setMnemonic(KeyEvent.VK_J);
 		Jibson.setActionCommand("change");
 		Jibson.addActionListener(this);
 
-		Ambraseys.setMnemonic(KeyEvent.VK_A);
 		Ambraseys.setActionCommand("change");
 		Ambraseys.addActionListener(this);
 
-		probFailure.setMnemonic(KeyEvent.VK_F);
 		probFailure.setActionCommand("change");
 		probFailure.addActionListener(this);
 
-		button.setMnemonic(KeyEvent.VK_P);
 		button.setActionCommand("do");
 		button.addActionListener(this);
 

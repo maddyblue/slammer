@@ -64,12 +64,10 @@ class RigidBlockPanel extends JPanel implements ActionListener
 		dispPane = new JScrollPane(dispTable);
 
 		SlopeGroup.add(downSlope);
-		downSlope.setMnemonic(KeyEvent.VK_D);
 		downSlope.setActionCommand("change");
 		downSlope.addActionListener(this);
 
 		SlopeGroup.add(dualSlope);
-		dualSlope.setMnemonic(KeyEvent.VK_U);
 		dualSlope.setActionCommand("change");
 		dualSlope.addActionListener(this);
 
@@ -77,12 +75,10 @@ class RigidBlockPanel extends JPanel implements ActionListener
 		thrustAngle.setBackground(GUIUtils.bg);
 
 		CAgroup.add(nd);
-		nd.setMnemonic(KeyEvent.VK_C);
 		nd.setActionCommand("change");
 		nd.addActionListener(this);
 
 		CAgroup.add(ndDisp);
-		ndDisp.setMnemonic(KeyEvent.VK_D);
 		ndDisp.setActionCommand("change");
 		ndDisp.addActionListener(this);
 

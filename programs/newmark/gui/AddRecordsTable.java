@@ -18,7 +18,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-/* $Id: AddRecordsTable.java,v 1.2 2004/01/06 00:36:02 dolmant Exp $ */
+/* $Id$ */
 
 package newmark.gui;
 
@@ -56,7 +56,6 @@ class AddRecordsTable extends JPanel implements ActionListener
 		c = table.getColumn(NewmarkTable.fieldArray[NewmarkTable.rowSiteClass][NewmarkTable.colAbbrev]);
 		c.setCellEditor(new DefaultCellEditor(new JComboBox(NewmarkTable.SiteClassArray)));
 
-		set.setMnemonic(KeyEvent.VK_S);
 		set.setActionCommand("set");
 		set.addActionListener(this);
 
