@@ -111,41 +111,7 @@ public class ImportRecords extends Analysis
 		for(int i = 0; (temp = data.each()) != null; i++)
 			arr[i] = temp.doubleValue();
 
-		rdc(arr);
-
-		taper(arr);
-
-		// Pads the array so its length is a power of 2.
-		int test = 0;
-
-		for(int i = 1; test < arr.length; i++)
-		{
-			test = (int)Math.pow(2, i);
-		}
-
-		double[][] narr = new double[test][2];
-
-		for(int i = 0; i < arr.length; i++)
-		{
-			narr[i][0] = arr[i];
-			narr[i][1] = 0;
-		}
-
-		for(int i = narr.length; i < test; i++)
-		{
-			narr[i][0] = 0;
-			narr[i][1] = 0;
-		}
-
-		// forward fft
-		fft(narr);
-
-		// scale to keep units correct
-		for(int i = 0; i < narr.length; i++)
-		{
-			narr[i][0] *= di;
-			narr[i][1] *= di;
-		}
+		double[][] narr = fftWrap(arr, di);
 
 		// set frequency increment
 		double df = 1.0 / ((double)(narr.length) * di);
@@ -168,6 +134,46 @@ public class ImportRecords extends Analysis
 		}
 
 		return fmtTwo.format(top / bot);
+	}
+
+	public static double[][] fftWrap(final double[] array, final double di)
+	{
+		rdc(array);
+		taper(array);
+
+		// Pads the array so its length is a power of 2.
+		int test = 0;
+
+		for(int i = 1; test < array.length; i++)
+		{
+			test = (int)Math.pow(2, i);
+		}
+
+		double[][] narr = new double[test][2];
+
+		for(int i = 0; i < array.length; i++)
+		{
+			narr[i][0] = array[i];
+			narr[i][1] = 0;
+		}
+
+		for(int i = narr.length; i < test; i++)
+		{
+			narr[i][0] = 0;
+			narr[i][1] = 0;
+		}
+
+		// forward fft
+		fft(narr);
+
+		// scale to keep units correct
+		for(int i = 0; i < narr.length; i++)
+		{
+			narr[i][0] *= di;
+			narr[i][1] *= di;
+		}
+
+		return narr;
 	}
 
 	public static void fft(double[][] array)
@@ -268,5 +274,78 @@ public class ImportRecords extends Analysis
 			arg = Math.PI * (double)(i) / (double)(n) + Math.PI;
 			arr[arr.length - i - 1] *= (1.0 + Math.cos(arg)) / 2.0;
 		}
+	}
+
+	/* Compute maximum response
+	 * Written by I.M. Idriss at U.C. Berkeley 1968, using the
+	 * technique presented by Nigam and Jennigs (1969( in
+	 * "Calculation of Response Spectra from String-Motion
+	 * Earthquake Records": Bulletin of the Seismological Society
+	 * of America, vol. 59, pp. 909-922.
+	 *
+	 * April Converse made minor changes in 1989.
+	 * Ported to Java by Matt Jibson in 2005.
+	 *
+	 * arr = time series data, cm/sec/sec
+	 * w = oscillator natural frequency = (2*pi)/(oscillator period)
+	 * d = damping, as fraction of critical damping
+	 * dt = digitization interval
+	 */
+	public static double[] cmpmax(double[] arr, double w, double d, double dt)
+	{
+		double w2 = w * w;
+		double w3 = w2 * w;
+		double wd = w * Math.sqrt(1.0 - d * d);
+
+		double xd[] = {0, 0};
+		double xv[] = {0, 0};
+
+		double f1 = 2.0 * d / (w3 * dt);
+		double f2 = 1.0 / w2;
+		double f3 = d * w;
+		double f4 = 1.0 / wd;
+		double f5 = f3 * f4;
+		double f6 = 2.8 * f3;
+		double e = Math.exp(-f3 * dt);
+		double s = Math.sin(wd * dt);
+		double c = Math.cos(wd * dt);
+		double g1 = e * s;
+		double g2 = e * c;
+		double h1 = wd * g2 - f3 * g1;
+		double h2 = wd * g1 + f3 * g2;
+		double dug, z1, z2, z3, z4, a, b, aa, f, g, h, zd = 0, zv = 0, za = 0;
+
+		for(int k = 0; k < (arr.length - 1); k++)
+		{
+			dug = arr[k + 1] - arr[k];
+			z1 = f2 * dug;
+			z2 = f2 * arr[k];
+			z3 = f1 * dug;
+			z4 = z1 / dt;
+			b = xd[0] + z2 - z3;
+			a = f4 * xv[0] + f5 * b + f4 * z4;
+			xd[1] = a * g1 + b * g2 + z3 - z2 - z1;
+			xv[1] = a * h1 - b * h2 - z4;
+			xd[0] = xd[1];
+			xv[0] = xv[1];
+			aa = -f6 * xv[0] - w2 * xd[0];
+			f = Math.abs(xd[0]);
+			g = Math.abs(xv[0]);
+			h = Math.abs(aa);
+			if(f > zd) zd = f;
+			if(g > zv) zv = g;
+			if(h > za) za = h;
+		}
+
+		return new double[] {zd, zv, za};
+	}
+
+	/* Response spectra
+	 */
+	public static void rsc(double[] arr, double di, double damp, double period)
+	{
+		double yy = Math.sqrt(1.0 - damp * damp);
+		double w = 2 * Math.PI / period;
+
 	}
 }
