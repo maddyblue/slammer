@@ -290,6 +290,11 @@ public class ImportRecords extends Analysis
 	 * w = oscillator natural frequency = (2*pi)/(oscillator period)
 	 * d = damping, as fraction of critical damping
 	 * dt = digitization interval
+	 *
+	 * Returns:
+	 * ZD   = maximum relative displacement response, cm.
+	 * ZV   =   "        "     velocity       "     , cm/sec.
+	 * ZA   =   "     absolute acceleration   "     , cm/sec/sec.
 	 */
 	public static double[] cmpmax(double[] arr, double w, double d, double dt)
 	{
