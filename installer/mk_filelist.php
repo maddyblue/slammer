@@ -62,7 +62,7 @@ adddir("programs/jars", $file);
 getsize($file);
 
 // database fileset
-passthru("cd .. && find org -type f | sort | sed 's/" . '\\' . '$/' . '\\' . '\\' . '$/g' . "' > installer/database-fileset");
+passthru("cd .. && find org -type f | grep -v \".svn\" | sort | sed 's/" . '\\' . '$/' . '\\' . '\\' . '$/g' . "' > installer/database-fileset");
 
 // newmark-eq-california
 $eqs = array(
