@@ -336,7 +336,7 @@ class ResultsPanel extends JPanel implements ActionListener
 				File testFile;
 				String path;
 				mon.setMinimum(0);
-				mon.setMaximum(res.length - 2);
+				mon.setMaximum(res.length - 1);
 				monFrame.show();
 
 				if(paramRigid)
