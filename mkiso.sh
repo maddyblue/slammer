@@ -1,2 +1,2 @@
 #!/bin/sh
-mkhybrid -R -o install.iso newmarkinstall.jar
+mkhybrid -R -o newmarkinstall.iso newmarkinstall.jar
