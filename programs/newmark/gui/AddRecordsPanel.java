@@ -134,17 +134,17 @@ class AddRecordsPanel extends JPanel implements ActionListener
 
 					// get the data
 					incr = 1;
-					file = Utils.addSlashes(m.getValueAt(i, incr++).toString());
-					eq = Utils.addSlashes(m.getValueAt(i, incr++).toString());
-					record = Utils.addSlashes(m.getValueAt(i, incr++).toString());
+					file = Utils.addQuote(m.getValueAt(i, incr++).toString());
+					eq = Utils.addQuote(m.getValueAt(i, incr++).toString());
+					record = Utils.addQuote(m.getValueAt(i, incr++).toString());
 					di = m.getValueAt(i, incr++).toString();
 					mag = Utils.nullify(m.getValueAt(i, incr++).toString());
 					epidist = Utils.nullify(m.getValueAt(i, incr++).toString());
 					focdist = Utils.nullify(m.getValueAt(i, incr++).toString());
 					rupdist = Utils.nullify(m.getValueAt(i, incr++).toString());
 					focmech = m.getValueAt(i, incr++).toString();
-					loc = Utils.addSlashes(m.getValueAt(i, incr++).toString());
-					owner = Utils.addSlashes(m.getValueAt(i, incr++).toString());
+					loc = Utils.addQuote(m.getValueAt(i, incr++).toString());
+					owner = Utils.addQuote(m.getValueAt(i, incr++).toString());
 					lat = Utils.nullify(m.getValueAt(i, incr++).toString());
 					lng = Utils.nullify(m.getValueAt(i, incr++).toString());
 					siteclass = m.getValueAt(i, incr++).toString();
@@ -202,9 +202,9 @@ class AddRecordsPanel extends JPanel implements ActionListener
 		Object ret;
 		DoubleList data;
 
-		eq = Utils.addSlashes(eq);
-		record = Utils.addSlashes(record);
-		file = Utils.addSlashes(file);
+		eq = Utils.addQuote(eq);
+		record = Utils.addQuote(record);
+		file = Utils.addQuote(file);
 
 		// verify existence of must-have data
 		if(eq.equals(""))
