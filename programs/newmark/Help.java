@@ -116,7 +116,7 @@ public class Help extends JFrame
 		treeView.setMinimumSize(minimumSize);
 		splitPane.setDividerLocation(175);
 
-		splitPane.setPreferredSize(new Dimension(500, 300));
+		splitPane.setPreferredSize(new Dimension(700, 500));
 
 		//Add the split pane to this frame.
 		getContentPane().add(splitPane, BorderLayout.CENTER);
