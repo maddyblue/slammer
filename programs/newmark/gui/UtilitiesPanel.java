@@ -159,7 +159,7 @@ class UtilitiesPanel extends JPanel implements ActionListener
 		line = new Vector();
 		line.add(new JLabel("Skip the first "));
 		line.add(skip);
-		line.add(new JLabel(" lines of the soruce file (use this to skip header data)."));
+		line.add(new JLabel(" lines of the source file (use this to skip header data)."));
 
 		list.add(GUIUtils.makeRecursiveLayoutRight(line));
 		list.add(new JLabel(" "));
