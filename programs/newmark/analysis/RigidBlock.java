@@ -75,9 +75,8 @@ public class RigidBlock extends Analysis
 			if(mult > 0.0) store(u);
 		}
 
-		DecimalFormat fmt = new DecimalFormat(fmtOne);
 		end(u);
-		return fmt.format(u);
+		return fmtOne.format(u);
 	}
 
 	public static String NewmarkRigorous(DoubleList data, final double di, final double ca, final double mult)
@@ -127,9 +126,8 @@ public class RigidBlock extends Analysis
 			if(mult > 0.0) store(u);
 		}
 
-		DecimalFormat fmt = new DecimalFormat(fmtOne);
 		end(u);
-		return fmt.format(u);
+		return fmtOne.format(u);
 	}
 
 	public static String NewmarkRigorousDisp(DoubleList data, final double di, final double[][] disp, final double mult)
@@ -188,8 +186,7 @@ public class RigidBlock extends Analysis
 			t = Gcmss * (disp[pos][1] - (disp[pos][1] - disp[pos + 1][1]) * prop);
 		}
 
-		DecimalFormat fmt = new DecimalFormat(fmtOne);
 		end(u);
-		return fmt.format(u);
+		return fmtOne.format(u);
 	}
 }

@@ -22,15 +22,16 @@
 
 package newmark.analysis;
 
+import java.text.DecimalFormat;
 import org.jfree.data.xy.XYSeries;
 
 public class Analysis
 {
-	public static final String fmtFour              = "0.0000";
-	public static final String fmtThree             = "0.000";
-	public static final String fmtTwo               = "0.00";
-	public static final String fmtOne               = "0.0";
-	public static final String fmtZero              = "0";
+	public static final DecimalFormat fmtFour  = new DecimalFormat("0.0000");
+	public static final DecimalFormat fmtThree = new DecimalFormat("0.000");
+	public static final DecimalFormat fmtTwo   = new DecimalFormat("0.00");
+	public static final DecimalFormat fmtOne   = new DecimalFormat("0.0");
+	public static final DecimalFormat fmtZero  = new DecimalFormat("0");
 
 	public static final double Gcmss	= 980.665;
 	public static final double Gftss  = Gcmss * 0.032808399;

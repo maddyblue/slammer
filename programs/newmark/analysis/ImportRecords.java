@@ -34,8 +34,7 @@ public class ImportRecords extends Analysis
 
 	public static String Arias(DoubleList data, final double di)
 	{
-		DecimalFormat fmt = new DecimalFormat(fmtThree);
-		return fmt.format(AriasDobry(data, di, false));
+		return fmtThree.format(AriasDobry(data, di, false));
 	}
 
 	/* Arias, with optional dobry.  If the boolean dobry is true, this function
@@ -81,14 +80,12 @@ public class ImportRecords extends Analysis
 
 	public static String Dobry(DoubleList data, final double di)
 	{
-		DecimalFormat fmt = new DecimalFormat(fmtOne);
-		return fmt.format(AriasDobry(data, di, true));
+		return fmtOne.format(AriasDobry(data, di, true));
 	}
 
 	public static String PGA(DoubleList data)
 	{
-		DecimalFormat fmt = new DecimalFormat(fmtThree);
-		return fmt.format(FindMax(data) / Gcmss); // store in g's, but expect to be in cm/s/s
+		return fmtThree.format(FindMax(data) / Gcmss); // store in g's, but expect to be in cm/s/s
 	}
 
 	private static double FindMax(DoubleList data)
@@ -170,8 +167,7 @@ public class ImportRecords extends Analysis
 			}
 		}
 
-		DecimalFormat fmt = new DecimalFormat(fmtTwo);
-		return fmt.format(top / bot);
+		return fmtTwo.format(top / bot);
 	}
 
 	public static void fft(double[][] array)

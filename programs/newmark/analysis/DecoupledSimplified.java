@@ -75,25 +75,23 @@ public class DecoupledSimplified extends Analysis
 		dispin = dispcm / 2.54;
 
 		int incr = 0;
-		DecimalFormat fmt = new DecimalFormat(fmtThree);
-		DecimalFormat fmt1 = new DecimalFormat(fmtOne);
-		ret[incr++] = fmt.format(siteper);
-		ret[incr++] = fmt.format(nrffact);
-		ret[incr++] = fmt.format(meanper);
-		ret[incr++] = fmt.format(dur);
-		ret[incr++] = fmt.format(tstm);
-		ret[incr++] = fmt.format(mheamhanrf);
-		ret[incr++] = fmt.format(kmax);
-		ret[incr++] = fmt.format(kykmax);
-		ret[incr++] = fmt.format(normdisp);
-		ret[incr++] = fmt1.format(dispcm);
-		ret[incr++] = fmt1.format(dispin);
+		ret[incr++] = fmtThree.format(siteper);
+		ret[incr++] = fmtThree.format(nrffact);
+		ret[incr++] = fmtThree.format(meanper);
+		ret[incr++] = fmtThree.format(dur);
+		ret[incr++] = fmtThree.format(tstm);
+		ret[incr++] = fmtThree.format(mheamhanrf);
+		ret[incr++] = fmtThree.format(kmax);
+		ret[incr++] = fmtThree.format(kykmax);
+		ret[incr++] = fmtThree.format(normdisp);
+		ret[incr++] = fmtOne.format(dispcm);
+		ret[incr++] = fmtOne.format(dispin);
 
 		if(doScreening)
 		{
 			double medianfreq = nrffact / 3.477 * (1.87 - log10(allowdisp / (rock * nrffact * dur)));
-			ret[incr++] = fmt.format(medianfreq); // medianfreq
-			ret[incr++] = fmt.format(medianfreq * rock); // seiscoef
+			ret[incr++] = fmtThree.format(medianfreq); // medianfreq
+			ret[incr++] = fmtThree.format(medianfreq * rock); // seiscoef
 		}
 		else
 		{
