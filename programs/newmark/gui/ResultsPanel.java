@@ -370,6 +370,8 @@ class ResultsPanel extends JPanel implements ActionListener
 
 							int j;
 							Object[] row;
+							XYDataItem xydi;
+							double graphscale;
 
 							for(int i = 1; i < res.length && !pm.isCanceled(); i++)
 							{
@@ -431,6 +433,13 @@ class ResultsPanel extends JPanel implements ActionListener
 
 									for(j = 0; j < dataVect[RB].size() && ((Double)dataVect[RB].elementAt(j)).doubleValue() < avg.doubleValue(); j++);
 									dataVect[RB].insertElementAt(avg, j);
+
+									graphscale = avg.doubleValue() / norm;
+									for(j = 0; j < Analysis.xys.getItemCount(); j++)
+									{
+										xydi = Analysis.xys.getDataItem(j);
+										xydi.setY(new Float(xydi.getY().floatValue() * graphscale));
+									}
 								}
 
 								if(paramDecoupled)
@@ -448,6 +457,13 @@ class ResultsPanel extends JPanel implements ActionListener
 
 									for(j = 0; j < dataVect[DC].size() && ((Double)dataVect[DC].elementAt(j)).doubleValue() < avg.doubleValue(); j++);
 									dataVect[DC].insertElementAt(avg, j);
+
+									graphscale = avg.doubleValue() / norm;
+									for(j = 0; j < Analysis.xys.getItemCount(); j++)
+									{
+										xydi = Analysis.xys.getDataItem(j);
+										xydi.setY(new Float(xydi.getY().floatValue() * graphscale));
+									}
 								}
 
 								if(paramCoupled)
@@ -465,6 +481,13 @@ class ResultsPanel extends JPanel implements ActionListener
 
 									for(j = 0; j < dataVect[CP].size() && ((Double)dataVect[CP].elementAt(j)).doubleValue() < avg.doubleValue(); j++);
 									dataVect[CP].insertElementAt(avg, j);
+
+									graphscale = avg.doubleValue() / norm;
+									for(j = 0; j < Analysis.xys.getItemCount(); j++)
+									{
+										xydi = Analysis.xys.getDataItem(j);
+										xydi.setY(new Float(xydi.getY().floatValue() * graphscale));
+									}
 								}
 
 								outputTableModel.addRow(row);
