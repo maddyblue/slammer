@@ -58,7 +58,7 @@ public class Utils
 		}
 	}
 
-	public static void catchException(Exception ex)
+	public static void catchException(Throwable ex)
 	{
 		StackTraceElement e[] = ex.getStackTrace();
 		String trace = "";

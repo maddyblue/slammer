@@ -133,381 +133,382 @@ class ResultsPanel extends JPanel implements ActionListener
 			System.out.println(command);
 			if(command.equals("analyze"))
 			{
-				clearOutput();
-
-				JProgressBar mon = new JProgressBar();
-				mon.setStringPainted(true);
-				JFrame monFrame = new JFrame("Progress...");
-				monFrame.getContentPane().add(mon);
-				monFrame.setSize(400,75);
-				GUIUtils.setLocationMiddle(monFrame);
-
-				paramUnit = parent.Parameters.unitMetric.isSelected();
-				final double g = paramUnit ? Analysis.Gcmss : Analysis.Gftss;
-				unitDisplacement = paramUnit ? "(cm)" : "(ft)";
-				outputTableModel.setColumnIdentifiers(new Object[] {"Earthquake", "Record", ParametersPanel.stringRB + " " + unitDisplacement, ParametersPanel.stringDC + " " + unitDisplacement, ParametersPanel.stringCP + " " + unitDisplacement});
-				unitFmt = paramUnit ? Analysis.fmtOne : Analysis.fmtFour;
-
-				boolean paramDualslope = parent.Parameters.dualSlope.isSelected();
-
-				double paramScale;
-				if(parent.Parameters.scalePGAon.isSelected())
+				final SwingWorker worker = new SwingWorker()
 				{
-					Double d = (Double)Utils.checkNum(parent.Parameters.scalePGAval.getText(), "scale PGA field", null, false, null, new Double(0), false, null, false);
-					if(d == null)
+					ProgressFrame pm = new ProgressFrame(0);
+
+					public Object construct()
 					{
-						parent.selectParameters();
-						monFrame.dispose();
-						return;
-					}
-					paramScale = d.doubleValue();
-				}
-				else
-					paramScale = 0;
-
-				boolean paramDoScale = (paramScale > 0);
-
-				boolean paramRigid = parent.Parameters.typeRigid.isSelected();
-				boolean paramDecoupled = parent.Parameters.typeDecoupled.isSelected();
-				boolean paramCoupled = parent.Parameters.typeCoupled.isSelected();
-				if(!paramRigid && !paramDecoupled && !paramCoupled)
-				{
-					monFrame.dispose();
-					parent.selectParameters();
-					GUIUtils.popupError("Error: no analysis methods selected.");
-					return;
-				}
-
-				Object[][] res = Utils.getDB().runQuery("select eq, record, digi_int, path, pga from data where select2=true and analyze=true");
-
-				if(res == null || res.length <= 1)
-				{
-					parent.selectSelectRecords();
-					monFrame.dispose();
-					GUIUtils.popupError("No records selected for analysis.");
-					return;
-				}
-
-				String eq, record;
-				DoubleList dat;
-				double di;
-				double num = 0;
-				Double avg;
-				double total[] = new double[3];
-				double scale = 1, iscale, scaleRB;
-				double inv, norm;
-				double[][] ca;
-				double[] ain;
-				double thrust = 0, uwgt = 0, height = 0, vs = 0, damp = 0, vr = 0;
-				int dv2 = 0, dv3 = 0;
-
-				scaleRB = paramUnit ? 1 : Analysis.CMtoFT;
-
-				if(parent.Parameters.CAdisp.isSelected())
-				{
-					String value;
-					Vector caVect;
-					TableCellEditor editor = null;
-
-					editor = parent.Parameters.dispTable.getCellEditor();
-					caVect = parent.Parameters.dispTableModel.getDataVector();
-
-					if(editor != null)
-						editor.stopCellEditing();
-
-					ca = new double[caVect.size()][2];
-
-					for(int i = 0; i < caVect.size(); i++)
-					{
-						for(int j = 0; j < 2; j++)
+						try
 						{
-							value = (String)(((Vector)(caVect.elementAt(i))).elementAt(j));
-							if(value == null || value == "")
+							clearOutput();
+
+							paramUnit = parent.Parameters.unitMetric.isSelected();
+							final double g = paramUnit ? Analysis.Gcmss : Analysis.Gftss;
+							unitDisplacement = paramUnit ? "(cm)" : "(ft)";
+							outputTableModel.setColumnIdentifiers(new Object[] {"Earthquake", "Record", ParametersPanel.stringRB + " " + unitDisplacement, ParametersPanel.stringDC + " " + unitDisplacement, ParametersPanel.stringCP + " " + unitDisplacement});
+							unitFmt = paramUnit ? Analysis.fmtOne : Analysis.fmtFour;
+
+							boolean paramDualslope = parent.Parameters.dualSlope.isSelected();
+
+							double paramScale;
+							if(parent.Parameters.scalePGAon.isSelected())
+							{
+								Double d = (Double)Utils.checkNum(parent.Parameters.scalePGAval.getText(), "scale PGA field", null, false, null, new Double(0), false, null, false);
+								if(d == null)
+								{
+									parent.selectParameters();
+									return null;
+								}
+								paramScale = d.doubleValue();
+							}
+							else
+								paramScale = 0;
+
+							boolean paramDoScale = (paramScale > 0);
+
+							boolean paramRigid = parent.Parameters.typeRigid.isSelected();
+							boolean paramDecoupled = parent.Parameters.typeDecoupled.isSelected();
+							boolean paramCoupled = parent.Parameters.typeCoupled.isSelected();
+							if(!paramRigid && !paramDecoupled && !paramCoupled)
 							{
 								parent.selectParameters();
-								monFrame.dispose();
-								GUIUtils.popupError("Error: empty field in table.\nPlease complete the displacement table so that all data pairs have values, or delete all empty rows.");
-								return;
+								GUIUtils.popupError("Error: no analysis methods selected.");
+								return null;
 							}
-							Double d = (Double)Utils.checkNum(value, "displacement table", null, false, null, null, false, null, false);
-							if(d == null)
+
+							Object[][] res = Utils.getDB().runQuery("select eq, record, digi_int, path, pga from data where select2=true and analyze=true");
+
+							if(res == null || res.length <= 1)
+							{
+								parent.selectSelectRecords();
+								GUIUtils.popupError("No records selected for analysis.");
+								return null;
+							}
+
+							String eq, record;
+							DoubleList dat;
+							double di;
+							double num = 0;
+							Double avg;
+							double total[] = new double[3];
+							double scale = 1, iscale, scaleRB;
+							double inv, norm;
+							double[][] ca;
+							double[] ain;
+							double thrust = 0, uwgt = 0, height = 0, vs = 0, damp = 0, vr = 0;
+							int dv2 = 0, dv3 = 0;
+
+							scaleRB = paramUnit ? 1 : Analysis.CMtoFT;
+
+							if(parent.Parameters.CAdisp.isSelected())
+							{
+								String value;
+								Vector caVect;
+								TableCellEditor editor = null;
+
+								editor = parent.Parameters.dispTable.getCellEditor();
+								caVect = parent.Parameters.dispTableModel.getDataVector();
+
+								if(editor != null)
+									editor.stopCellEditing();
+
+								ca = new double[caVect.size()][2];
+
+								for(int i = 0; i < caVect.size(); i++)
+								{
+									for(int j = 0; j < 2; j++)
+									{
+										value = (String)(((Vector)(caVect.elementAt(i))).elementAt(j));
+										if(value == null || value == "")
+										{
+											parent.selectParameters();
+											GUIUtils.popupError("Error: empty field in table.\nPlease complete the displacement table so that all data pairs have values, or delete all empty rows.");
+											return null;
+										}
+										Double d = (Double)Utils.checkNum(value, "displacement table", null, false, null, null, false, null, false);
+										if(d == null)
+										{
+											parent.selectParameters();
+											return null;
+										}
+										ca[i][j] = d.doubleValue();
+									}
+								}
+
+								if(caVect.size() == 0)
+								{
+									parent.selectParameters();
+									GUIUtils.popupError("Error: no displacements listed in displacement table.");
+									return null;
+								}
+							}
+							else
+							{
+								Double d = (Double)Utils.checkNum(parent.Parameters.CAconstTF.getText(), "constant critical acceleration field", null, false, null, new Double(0), true, null, false);
+								if(d == null)
+								{
+									parent.selectParameters();
+									return null;
+								}
+								ca = new double[1][2];
+								ca[0][0] = 0;
+								ca[0][1] = d.doubleValue();
+							}
+
+							if(paramDualslope)
+							{
+								Double thrustD = (Double)Utils.checkNum(parent.Parameters.thrustAngle.getText(), "thrust angle field", new Double(90), true, null, new Double(0), true, null, false);
+								if(thrustD == null)
+								{
+									parent.selectParameters();
+									return null;
+								}
+								else
+									thrust = thrustD.doubleValue();
+							}
+
+							if(paramDecoupled || paramCoupled)
+							{
+								Double tempd;
+
+								tempd = (Double)Utils.checkNum(parent.Parameters.paramUwgt.getText(), ParametersPanel.stringUwgt + " field", null, false, null, null, false, null, false);
+								if(tempd == null)
+								{
+									parent.selectParameters();
+									return null;
+								}
+								else
+									uwgt = tempd.doubleValue();
+
+								tempd = (Double)Utils.checkNum(parent.Parameters.paramHeight.getText(), ParametersPanel.stringHeight + " field", null, false, null, null, false, null, false);
+								if(tempd == null)
+								{
+									parent.selectParameters();
+									return null;
+								}
+								else
+									height = tempd.doubleValue();
+
+								tempd = (Double)Utils.checkNum(parent.Parameters.paramVs.getText(), ParametersPanel.stringVs + " field", null, false, null, null, false, null, false);
+								if(tempd == null)
+								{
+									parent.selectParameters();
+									return null;
+								}
+								else
+									vs = tempd.doubleValue();
+
+								tempd = (Double)Utils.checkNum(parent.Parameters.paramDamp.getText(), ParametersPanel.stringDamp + " field", null, false, null, null, false, null, false);
+								if(tempd == null)
+								{
+									parent.selectParameters();
+									return null;
+								}
+								else
+									damp = tempd.doubleValue() / 100.0;
+
+								dv2 = parent.Parameters.paramBaseType.getSelectedIndex();
+								dv3 = parent.Parameters.paramSoilModel.getSelectedIndex();
+
+								if(dv2 == 1)
+								{
+									tempd = (Double)Utils.checkNum(parent.Parameters.paramVr.getText(), ParametersPanel.stringVr + " field", null, false, null, null, false, null, false);
+									if(tempd == null)
+									{
+										parent.selectParameters();
+										return null;
+									}
+
+									vr = tempd.doubleValue();
+
+									if((vr / vs) <= 2.5)
+									{
+										GUIUtils.popupError("Error: Shear wave velocity of rock must be at least 2.5 times larger than Shear wave velocity of soil.");
+										parent.selectParameters();
+										return null;
+									}
+								}
+							}
+
+							File testFile;
+							String path;
+
+							if(paramRigid)
+							{
+								dataVect[RB] = new Vector(res.length - 1);
+								xysc[RB] = new XYSeriesCollection();
+							}
+							else
+							{
+								dataVect[RB] = null;
+								xysc[RB] = null;
+							}
+
+							if(paramDecoupled)
+							{
+								dataVect[DC] = new Vector(res.length - 1);
+								xysc[DC] = new XYSeriesCollection();
+							}
+							else
+							{
+								dataVect[DC] = null;
+								xysc[DC] = null;
+							}
+
+							if(paramCoupled)
+							{
+								dataVect[CP] = new Vector(res.length - 1);
+								xysc[CP] = new XYSeriesCollection();
+							}
+							else
+							{
+								dataVect[CP] = null;
+								xysc[CP] = null;
+							}
+
+							iscale = -1.0 * scale;
+
+
+							pm.setMaximum(res.length);
+
+							int j;
+							Object[] row;
+
+							for(int i = 1; i < res.length && !pm.isCanceled(); i++)
+							{
+								row = new Object[5];
+								eq = res[i][0].toString();
+								record = res[i][1].toString();
+
+								pm.update(i, eq + " - " + record);
+
+								row[0] = eq;
+								row[1] = record;
+								row[2] = null;
+								row[3] = null;
+								row[4] = null;
+
+								path = res[i][3].toString();
+								testFile = new File(path);
+								if(!testFile.exists() || !testFile.canRead())
+								{
+									row[2] = "File does not exist or is not readable";
+									row[3] = path;
+									outputTableModel.addRow(row);
+									continue;
+								}
+								dat = new DoubleList(path);
+								if(dat.bad())
+								{
+									row[2] = "Invalid data at point " + dat.badEntry();
+									row[3] = path;
+									outputTableModel.addRow(row);
+									continue;
+								}
+
+								di = Double.parseDouble(res[i][2].toString());
+
+								if(paramDoScale)
+								{
+									scale = paramScale / Double.parseDouble(res[i][4].toString());
+									iscale = -scale;
+								}
+
+								ain = dat.getAsArray();
+
+								// do the actual analysis
+
+								if(paramRigid)
+								{
+									inv = RigidBlock.NewmarkRigorous(dat, di, ca, iscale * scaleRB, paramDualslope, thrust);
+									norm = RigidBlock.NewmarkRigorous(dat, di, ca, scale * scaleRB, paramDualslope, thrust);
+									avg = avg(inv, norm, unitFmt);
+
+									total[RB] += avg.doubleValue();
+									row[RBC] = avg;
+
+									Analysis.xys.setName(eq + " - " + record);
+									xysc[RB].addSeries(Analysis.xys);
+
+									for(j = 0; j < dataVect[RB].size() && ((Double)dataVect[RB].elementAt(j)).doubleValue() < avg.doubleValue(); j++);
+									dataVect[RB].insertElementAt(avg, j);
+								}
+
+								if(paramDecoupled)
+								{
+									inv = Decoupled.Decoupled(ain, uwgt, height, vs, damp, di, iscale / Analysis.Gcmss, g, vr, ca, dv2, dv3);
+									norm = Decoupled.Decoupled(ain, uwgt, height, vs, damp, di, scale / Analysis.Gcmss, g, vr, ca, dv2, dv3);
+
+									avg = avg(inv, norm, unitFmt);
+
+									total[DC] += avg.doubleValue();
+									row[DCC] = avg;
+
+									Analysis.xys.setName(eq + " - " + record);
+									xysc[DC].addSeries(Analysis.xys);
+
+									for(j = 0; j < dataVect[DC].size() && ((Double)dataVect[DC].elementAt(j)).doubleValue() < avg.doubleValue(); j++);
+									dataVect[DC].insertElementAt(avg, j);
+								}
+
+								if(paramCoupled)
+								{
+									inv = Coupled.Coupled(ain, uwgt, height, vs, damp, di, iscale / Analysis.Gcmss, g, vr, ca, dv2, dv3);
+									norm = Coupled.Coupled(ain, uwgt, height, vs, damp, di, scale / Analysis.Gcmss, g, vr, ca, dv2, dv3);
+
+									avg = avg(inv, norm, unitFmt);
+
+									total[CP] += avg.doubleValue();
+									row[CPC] = avg;
+
+									Analysis.xys.setName(eq + " - " + record);
+									xysc[CP].addSeries(Analysis.xys);
+
+									for(j = 0; j < dataVect[CP].size() && ((Double)dataVect[CP].elementAt(j)).doubleValue() < avg.doubleValue(); j++);
+									dataVect[CP].insertElementAt(avg, j);
+								}
+
+								outputTableModel.addRow(row);
+							}
+							pm.update("Calculating stastistics...");
+							/*
+							if(dataVect.size() == 0)
 							{
 								monFrame.dispose();
 								return;
 							}
-							ca[i][j] = d.doubleValue();
+							max = ((Double)dataVect.elementAt(dataVect.size() - 1)).doubleValue();
+
+							double mean = Double.parseDouble(Analysis.fmtOne.format(total/num));
+							outputMean.setText("Mean value is: " + Analysis.fmtOne.format(mean) + " cm");
+							outputMedian.setText("Median value is: " + Analysis.fmtOne.format(dataVect.elementAt((int)(num/2))) + " cm");
+
+							double value = 0;
+							double valtemp;
+							for(int i = 0; i < num; i++)
+							{
+								valtemp = mean - ((Double)dataVect.elementAt(i)).doubleValue();
+								value += (valtemp * valtemp);
+							}
+							value /= num - 1;
+							value = Math.sqrt(value);
+							outputStdDev.setText("Standard Deviation is: " + Analysis.fmtOne.format(value) + " cm");
+							*/
 						}
-					}
-
-					if(caVect.size() == 0)
-					{
-						parent.selectParameters();
-						monFrame.dispose();
-						GUIUtils.popupError("Error: no displacements listed in displacement table.");
-						return;
-					}
-				}
-				else
-				{
-					Double d = (Double)Utils.checkNum(parent.Parameters.CAconstTF.getText(), "constant critical acceleration field", null, false, null, new Double(0), true, null, false);
-					if(d == null)
-					{
-						parent.selectParameters();
-						monFrame.dispose();
-						return;
-					}
-					ca = new double[1][2];
-					ca[0][0] = 0;
-					ca[0][1] = d.doubleValue();
-				}
-
-				if(paramDualslope)
-				{
-					Double thrustD = (Double)Utils.checkNum(parent.Parameters.thrustAngle.getText(), "thrust angle field", new Double(90), true, null, new Double(0), true, null, false);
-					if(thrustD == null)
-					{
-						parent.selectParameters();
-						monFrame.dispose();
-						return;
-					}
-					else
-						thrust = thrustD.doubleValue();
-				}
-
-				if(paramDecoupled || paramCoupled)
-				{
-					Double tempd;
-
-					tempd = (Double)Utils.checkNum(parent.Parameters.paramUwgt.getText(), ParametersPanel.stringUwgt + " field", null, false, null, null, false, null, false);
-					if(tempd == null)
-					{
-						parent.selectParameters();
-						monFrame.dispose();
-						return;
-					}
-					else
-						uwgt = tempd.doubleValue();
-
-					tempd = (Double)Utils.checkNum(parent.Parameters.paramHeight.getText(), ParametersPanel.stringHeight + " field", null, false, null, null, false, null, false);
-					if(tempd == null)
-					{
-						parent.selectParameters();
-						monFrame.dispose();
-						return;
-					}
-					else
-						height = tempd.doubleValue();
-
-					tempd = (Double)Utils.checkNum(parent.Parameters.paramVs.getText(), ParametersPanel.stringVs + " field", null, false, null, null, false, null, false);
-					if(tempd == null)
-					{
-						parent.selectParameters();
-						monFrame.dispose();
-						return;
-					}
-					else
-						vs = tempd.doubleValue();
-
-					tempd = (Double)Utils.checkNum(parent.Parameters.paramDamp.getText(), ParametersPanel.stringDamp + " field", null, false, null, null, false, null, false);
-					if(tempd == null)
-					{
-						parent.selectParameters();
-						monFrame.dispose();
-						return;
-					}
-					else
-						damp = tempd.doubleValue() / 100.0;
-
-					dv2 = parent.Parameters.paramBaseType.getSelectedIndex();
-					dv3 = parent.Parameters.paramSoilModel.getSelectedIndex();
-
-					if(dv2 == 1)
-					{
-						tempd = (Double)Utils.checkNum(parent.Parameters.paramVr.getText(), ParametersPanel.stringVr + " field", null, false, null, null, false, null, false);
-						if(tempd == null)
+						catch(Throwable ex)
 						{
-							parent.selectParameters();
-							monFrame.dispose();
-							return;
+							Utils.catchException(ex);
 						}
 
-						vr = tempd.doubleValue();
-
-						if((vr / vs) <= 2.5)
-						{
-							GUIUtils.popupError("Error: Shear wave velocity of rock must be at least 2.5 times larger than Shear wave velocity of soil.");
-							parent.selectParameters();
-							monFrame.dispose();
-							return;
-						}
-					}
-				}
-
-				File testFile;
-				String path;
-				mon.setMinimum(0);
-				mon.setMaximum(res.length - 1);
-				monFrame.show();
-
-				if(paramRigid)
-				{
-					dataVect[RB] = new Vector(res.length - 1);
-					xysc[RB] = new XYSeriesCollection();
-				}
-				else
-				{
-					dataVect[RB] = null;
-					xysc[RB] = null;
-				}
-
-				if(paramDecoupled)
-				{
-					dataVect[DC] = new Vector(res.length - 1);
-					xysc[DC] = new XYSeriesCollection();
-				}
-				else
-				{
-					dataVect[DC] = null;
-					xysc[DC] = null;
-				}
-
-				if(paramCoupled)
-				{
-					dataVect[CP] = new Vector(res.length - 1);
-					xysc[CP] = new XYSeriesCollection();
-				}
-				else
-				{
-					dataVect[CP] = null;
-					xysc[CP] = null;
-				}
-
-				iscale = -1.0 * scale;
-				int j;
-				Object[] row;
-				for(int i = 1; i < res.length; i++)
-				{
-					row = new Object[5];
-					eq = res[i][0].toString();
-					record = res[i][1].toString();
-					mon.setString(eq + " - " + record);
-					mon.setValue(i);
-					mon.paintImmediately(0,0,mon.getWidth(),mon.getHeight());
-
-					row[0] = eq;
-					row[1] = record;
-					row[2] = null;
-					row[3] = null;
-					row[4] = null;
-
-					path = res[i][3].toString();
-					testFile = new File(path);
-					if(!testFile.exists() || !testFile.canRead())
-					{
-						row[2] = "File does not exist or is not readable";
-						row[3] = path;
-						outputTableModel.addRow(row);
-						continue;
-					}
-					dat = new DoubleList(path);
-					if(dat.bad())
-					{
-						row[2] = "Invalid data at point " + dat.badEntry();
-						row[3] = path;
-						outputTableModel.addRow(row);
-						continue;
+						return null;
 					}
 
-					di = Double.parseDouble(res[i][2].toString());
-
-					if(paramDoScale)
-					{
-						scale = paramScale / Double.parseDouble(res[i][4].toString());
-						iscale = -scale;
+					public void finished() {
+						pm.dispose();
 					}
-
-					ain = dat.getAsArray();
-
-					// do the actual analysis
-
-					if(paramRigid)
-					{
-						inv = RigidBlock.NewmarkRigorous(dat, di, ca, iscale * scaleRB, paramDualslope, thrust);
-						norm = RigidBlock.NewmarkRigorous(dat, di, ca, scale * scaleRB, paramDualslope, thrust);
-						avg = avg(inv, norm, unitFmt);
-
-						total[RB] += avg.doubleValue();
-						row[RBC] = avg;
-
-						Analysis.xys.setName(eq + " - " + record);
-						xysc[RB].addSeries(Analysis.xys);
-
-						for(j = 0; j < dataVect[RB].size() && ((Double)dataVect[RB].elementAt(j)).doubleValue() < avg.doubleValue(); j++);
-						dataVect[RB].insertElementAt(avg, j);
-					}
-
-					if(paramDecoupled)
-					{
-						inv = Decoupled.Decoupled(ain, uwgt, height, vs, damp, di, iscale / Analysis.Gcmss, g, vr, ca, dv2, dv3);
-						norm = Decoupled.Decoupled(ain, uwgt, height, vs, damp, di, scale / Analysis.Gcmss, g, vr, ca, dv2, dv3);
-
-						avg = avg(inv, norm, unitFmt);
-
-						total[DC] += avg.doubleValue();
-						row[DCC] = avg;
-
-						Analysis.xys.setName(eq + " - " + record);
-						xysc[DC].addSeries(Analysis.xys);
-
-						for(j = 0; j < dataVect[DC].size() && ((Double)dataVect[DC].elementAt(j)).doubleValue() < avg.doubleValue(); j++);
-						dataVect[DC].insertElementAt(avg, j);
-					}
-
-					if(paramCoupled)
-					{
-						inv = Coupled.Coupled(ain, uwgt, height, vs, damp, di, iscale / Analysis.Gcmss, g, vr, ca, dv2, dv3);
-						norm = Coupled.Coupled(ain, uwgt, height, vs, damp, di, scale / Analysis.Gcmss, g, vr, ca, dv2, dv3);
-
-						avg = avg(inv, norm, unitFmt);
-
-						total[CP] += avg.doubleValue();
-						row[CPC] = avg;
-
-						Analysis.xys.setName(eq + " - " + record);
-						xysc[CP].addSeries(Analysis.xys);
-
-						for(j = 0; j < dataVect[CP].size() && ((Double)dataVect[CP].elementAt(j)).doubleValue() < avg.doubleValue(); j++);
-						dataVect[CP].insertElementAt(avg, j);
-					}
-
-					outputTableModel.addRow(row);
-				}
-				mon.setString("Calculating stastistics...");
-				mon.paintImmediately(0,0,mon.getWidth(),mon.getHeight());
-				/*
-				if(dataVect.size() == 0)
-				{
-					monFrame.dispose();
-					return;
-				}
-				max = ((Double)dataVect.elementAt(dataVect.size() - 1)).doubleValue();
-
-				double mean = Double.parseDouble(Analysis.fmtOne.format(total/num));
-				outputMean.setText("Mean value is: " + Analysis.fmtOne.format(mean) + " cm");
-				outputMedian.setText("Median value is: " + Analysis.fmtOne.format(dataVect.elementAt((int)(num/2))) + " cm");
-
-				double value = 0;
-				double valtemp;
-				for(int i = 0; i < num; i++)
-				{
-					valtemp = mean - ((Double)dataVect.elementAt(i)).doubleValue();
-					value += (valtemp * valtemp);
-				}
-				value /= num - 1;
-				value = Math.sqrt(value);
-				outputStdDev.setText("Standard Deviation is: " + Analysis.fmtOne.format(value) + " cm");
-				*/
-				monFrame.dispose();
+				};
+				worker.start();
 			}
 			else if(command.equals("clearOutput"))
 			{
