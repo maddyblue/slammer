@@ -36,7 +36,7 @@ class ParametersPanel extends JPanel implements ActionListener
 	NewmarkTabbedPane parent;
 
 	ButtonGroup PGAgroup = new ButtonGroup();
-	public JRadioButton scalePGAoff = new JRadioButton("Do not scale");
+	public JRadioButton scalePGAoff = new JRadioButton("Do not scale", true);
 	public JRadioButton scalePGAon = new JRadioButton("Scale records to a uniform PGA (in g's) of");
 	public JTextField scalePGAval = new JTextField("", 4);
 
@@ -46,7 +46,7 @@ class ParametersPanel extends JPanel implements ActionListener
 	public JTextField thrustAngle = new JTextField(4);
 
 	ButtonGroup CAgroup = new ButtonGroup();
-	public JRadioButton CAconst = new JRadioButton("Constant");
+	public JRadioButton CAconst = new JRadioButton("Constant", true);
 	public JRadioButton CAdisp = new JRadioButton("Varies with displacement");
 
 	public JTextField CAconstTF = new JTextField();
@@ -58,8 +58,8 @@ class ParametersPanel extends JPanel implements ActionListener
 	JScrollPane dispPane;
 
 	ButtonGroup unitGroup = new ButtonGroup();
-	public JRadioButton unitEnglish = new JRadioButton("English", true);
-	public JRadioButton unitMetric = new JRadioButton("Metric");
+	public JRadioButton unitEnglish = new JRadioButton("English");
+	public JRadioButton unitMetric = new JRadioButton("Metric", true);
 
 	public JTextField paramUwgt = new JTextField(7);
 	public JTextField paramHeight = new JTextField(7);
@@ -187,12 +187,12 @@ class ParametersPanel extends JPanel implements ActionListener
 		panel.add(label);
 
 		c.gridx = x++;
-		gridbag.setConstraints(unitEnglish, c);
-		panel.add(unitEnglish);
-
-		c.gridx = x++;
 		gridbag.setConstraints(unitMetric, c);
 		panel.add(unitMetric);
+
+		c.gridx = x++;
+		gridbag.setConstraints(unitEnglish, c);
+		panel.add(unitEnglish);
 
 		x = 0;
 
