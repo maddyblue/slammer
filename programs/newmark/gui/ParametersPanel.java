@@ -18,7 +18,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-/* $Id: ParametersPanel.java,v 1.1 2003/06/15 01:58:11 dolmant Exp $ */
+/* $Id: ParametersPanel.java,v 1.2 2003/06/19 04:33:41 dolmant Exp $ */
 
 package newmark.gui;
 
@@ -34,6 +34,11 @@ import newmark.*;
 class ParametersPanel extends JPanel implements ActionListener
 {
 	NewmarkTabbedPane parent;
+
+	ButtonGroup SlopeGroup = new ButtonGroup();
+	JRadioButton downSlope = new JRadioButton("Downslope displacement only", true);
+	JRadioButton dualSlope = new JRadioButton("Downslope and upslope displacement");
+	JTextField thrustAngle = new JTextField(7);
 
 	ButtonGroup CAgroup = new ButtonGroup();
 	JRadioButton nd = new JRadioButton("Constant critical acceleration");
@@ -79,6 +84,19 @@ class ParametersPanel extends JPanel implements ActionListener
 		timeDelRow.setActionCommand("delTimeRow");
 		timeDelRow.addActionListener(this);
 		timePane = new JScrollPane(timeTable);
+
+		SlopeGroup.add(downSlope);
+		downSlope.setMnemonic(KeyEvent.VK_D);
+		downSlope.setActionCommand("downSlope");
+		downSlope.addActionListener(this);
+
+		SlopeGroup.add(dualSlope);
+		dualSlope.setMnemonic(KeyEvent.VK_U);
+		dualSlope.setActionCommand("dualSlope");
+		dualSlope.addActionListener(this);
+
+		thrustAngle.setEnabled(false);
+		thrustAngle.setBackground(GUIUtils.bg);
 
 		CAgroup.add(nd);
 		nd.setMnemonic(KeyEvent.VK_C);
@@ -131,8 +149,25 @@ class ParametersPanel extends JPanel implements ActionListener
 	{
 		JLabel label = new JLabel("Specify the critical (yield) acceleration of the landslide (in g's):");
 		label.setFont(GUIUtils.headerFont);
+		label.setBorder(new EmptyBorder(0,0,10,0));
 		JPanel ret = new JPanel(new BorderLayout());
 		ret.add(BorderLayout.WEST, label);
+
+		Vector v = new Vector();
+		v.add(dualSlope);
+		v.add(Box.createHorizontalStrut(20));
+		v.add(new JLabel("Thrust angle (in degrees): "));
+		v.add(thrustAngle);
+
+		JPanel temp = GUIUtils.makeRecursiveLayoutRight(v);
+
+		v = new Vector();
+		v.add(downSlope);
+		v.add(temp);
+		ret.add(BorderLayout.SOUTH, GUIUtils.makeRecursiveLayoutDown(v));
+
+		ret.setBorder(new EmptyBorder(0,0,10,0));
+
 		return ret;
 	}
 
@@ -248,6 +283,16 @@ class ParametersPanel extends JPanel implements ActionListener
 			{
 				if(timeTableModel.getRowCount() > 1)
 					timeTableModel.removeRow(timeTableModel.getRowCount() - 1);
+			}
+			else if(command.equals("downSlope"))
+			{
+				thrustAngle.setEnabled(false);
+				thrustAngle.setBackground(GUIUtils.bg);
+			}
+			else if(command.equals("dualSlope"))
+			{
+				thrustAngle.setEnabled(true);
+				thrustAngle.setBackground(Color.white);
 			}
 			else if(command.equals("next"))
 			{
