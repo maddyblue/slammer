@@ -396,8 +396,6 @@ class RecordManagerPanel extends JPanel implements ActionListener
 					}
 				}
 
-				System.out.println(dat.size() + ", " + xys.getItemCount());
-
 				String title = eq + ": " + record;
 				XYSeriesCollection xysc = new XYSeriesCollection(xys);
 
