@@ -2,7 +2,7 @@
 
 <?php
 
-$jarfile = "../newmarkinstall.jar";
+$jarfile = "newmarkinstall.jar";
 
 echo "Compiling installer java files...";
 passthru("javac *.java");
@@ -28,6 +28,7 @@ foreach($list as $file)
 }
 
 $list = array("california", "otherus", "international", "chichi");
+//$list = array("otherus", "international");
 
 foreach($list as $file)
 {

@@ -61,6 +61,7 @@ public class DBThread extends Thread
 				String s = "";
 				String cur[] = new String[17];
 				int j = 0;
+				int reslen;
 				char c;
 				String q;
 
@@ -87,14 +88,20 @@ public class DBThread extends Thread
 
 							progress.advanceDB();
 
-							Object res = runQuery("select id from data where eq='" + cur[0] + "' and record='" + cur[1] + "'");
+							reslen = runQuery("select id from data where eq='" + cur[0] + "' and record='" + cur[1] + "'");
+							System.out.println(reslen);
 
-							// already in database: continue
-							if(res == null)
-								continue;
-
-							q = "insert into data values (uniquekey('data'), '" + cur[0] + "', '" + cur[1] + "', " + cur[2] + ", " + nullify(cur[3]) + ", " + cur[4] + ", " + cur[5] + ", " + cur[6] + ", " + cur[7] + ", " + nullify(cur[8]) + ", " + nullify(cur[9]) + ", " + nullify(cur[10]) + ", " + cur[11] + ", '" + cur[12] + "', '" + cur[13] + "', " + nullify(cur[14]) + ", " + nullify(cur[15]) + ", " + cur[16] + ", " + 0 + ", '" + path + "', 0, 0, 0)";
-							runQuery(q);
+							// entry is not already in db
+							if(reslen == 0)
+							{
+								q = "insert into data values (uniquekey('data'), '" + cur[0] + "', '" + cur[1] + "', " + cur[2] + ", " + nullify(cur[3]) + ", " + cur[4] + ", " + cur[5] + ", " + cur[6] + ", " + cur[7] + ", " + nullify(cur[8]) + ", " + nullify(cur[9]) + ", " + nullify(cur[10]) + ", " + cur[11] + ", '" + cur[12] + "', '" + cur[13] + "', " + nullify(cur[14]) + ", " + nullify(cur[15]) + ", " + cur[16] + ", " + 0 + ", '" + path + "', 0, 0, 0)";
+								runQuery(q);
+								System.out.println(q);
+							}
+							else
+							{
+								System.out.println(cur[0] + " - " + cur[1] + ": already in db");
+							}
 
 							break;
 						}
@@ -156,20 +163,20 @@ public class DBThread extends Thread
 		connection = java.sql.DriverManager.getConnection(url, username, password);
 	}
 
-	private Object runQuery(String query) throws SQLException
+	private int runQuery(String query) throws SQLException
 	{
 		Statement statement = connection.createStatement();
 		ResultSet result = null;
-		ResultSetMetaData resdata;
 
 		result = statement.executeQuery(query);
 		statement.close();
 
-		// We don't need to implement anything fancy here, only this basic stuff.
-		if(result.next())
-			return null;
-		else
-			return result;
+		int ret = 0;
+
+		while(result.next())
+			ret++;
+
+		return ret;
 	}
 
 	public void closedb() throws SQLException
