@@ -282,12 +282,9 @@ public class Newmark
 			{
 				SplashScreen splash = new SplashScreen();
 
-				Utils.startDB();
-
 				splash.advance();
 
-				Utils.getDB().runUpdate("update data set select1=0 where select1=1");
-				Utils.getDB().runUpdate("update data set select2=0 where select2=1");
+				Utils.startDB();
 
 				splash.advance();
 
@@ -297,6 +294,8 @@ public class Newmark
 				JFrame frame = new JFrame("Newmark");
 
 				GUIUtils.bg = frame.getBackground();
+
+				splash.advance();
 
 				frame.addWindowListener(new WindowAdapter() {
 					public void windowClosing(WindowEvent e)
@@ -320,11 +319,10 @@ public class Newmark
 				frame.setSize(780,575);
 				GUIUtils.setLocationMiddle(frame);
 
-				splash.advance();
+				splash.dispose();
 
 				frame.setVisible(true);
 
-				splash.dispose();
 			}
 		}
 		catch(Exception ex)

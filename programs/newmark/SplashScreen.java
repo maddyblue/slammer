@@ -105,7 +105,7 @@ public class SplashScreen extends JComponent
 
 		g.setColor(Color.black);
 
-		String str = "Newmark Programs";
+		String str = "Starting Newmark Programs";
 
 		g.drawString(str,
 			(getWidth() - fm.stringWidth(str)) / 2,
