@@ -29,7 +29,7 @@
 		>
 			<fileset dir=".">
 				<include name="newmark/**/*.class"/>
-				<!-- <include name="com/**"/> -->
+				<include name="help/**/*"/>
 			</fileset>
 		</jar>
 	</target>

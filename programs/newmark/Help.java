@@ -46,6 +46,8 @@ public class Help extends JFrame
 	private boolean playWithLineStyle = false;
 	private String lineStyle = "Angled";
 
+	public static final String prefix = "jar:file:newmark.jar!/help/";
+
 	public Help()
 	{
 		super("Newmark Help");
@@ -127,9 +129,6 @@ public class Help extends JFrame
 	{
 		public String bookName;
 		public URL bookURL;
-		public String prefix = "file:"
-		+ System.getProperty("user.dir")
-		+ System.getProperty("file.separator");
 		public BookInfo(String book, String filename)
 		{
 			bookName = book;
@@ -156,10 +155,7 @@ public class Help extends JFrame
 		String s = null;
 		try
 		{
-			s = "file:"
-			+ System.getProperty("user.dir")
-			+ System.getProperty("file.separator")
-			+ "help/program/introduction.html";
+			s = prefix + "program/introduction.html";
 			if (DEBUG)
 			{
 				System.out.println("Help URL is " + s);
@@ -196,32 +192,32 @@ public class Help extends JFrame
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("Introduction",
-			"help/program/introduction.html"));
+			"program/introduction.html"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("File Formats",
-			"help/program/fileFormats.html"));
+			"program/fileFormats.html"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("Navigating the Program Pages",
-			"help/program/nav.html"));
+			"program/nav.html"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("Earthquake Data",
-			"help/program/eqdata.html"));
+			"program/eqdata.html"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("Adding Earthquake Sets From CD",
-			"help/program/eqsets.html"));
+			"program/eqsets.html"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("Acknowledgements",
-			"help/program/acknowledgements.html"));
+			"program/acknowledgements.html"));
 			category.add(book);
 
 		category = new DefaultMutableTreeNode("Program Pages");
@@ -229,7 +225,7 @@ public class Help extends JFrame
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("Getting Started",
-			"help/help/gettingStarted.html"));
+			"help/gettingStarted.html"));
 			category.add(book);
 
 			section = new DefaultMutableTreeNode("Rigorous Rigid-Block Analysis");
@@ -237,37 +233,37 @@ public class Help extends JFrame
 
 				book = new DefaultMutableTreeNode(new BookInfo
 				("Rigorous Rigid-Block Analysis",
-				"help/help/rigorousRigidBlockAnalysis.html"));
+				"help/rigorousRigidBlockAnalysis.html"));
 				section.add(book);
 
 				book = new DefaultMutableTreeNode(new BookInfo
 				("Step1: Select Records",
-				"help/help/rigorousRigidBlockAnalysis.html#step1"));
+				"help/rigorousRigidBlockAnalysis.html#step1"));
 				section.add(book);
 
 				book = new DefaultMutableTreeNode(new BookInfo
 				("Step2: Perform Rigid-Block Analysis",
-				"help/help/rigorousRigidBlockAnalysis.html#step2"));
+				"help/rigorousRigidBlockAnalysis.html#step2"));
 				section.add(book);
 
 				book = new DefaultMutableTreeNode(new BookInfo
 				("Step3: View Results",
-				"help/help/rigorousRigidBlockAnalysis.html#step3"));
+				"help/rigorousRigidBlockAnalysis.html#step3"));
 				section.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("Simplified Analyses",
-			"help/help/simplifiedAnalyses.html"));
+			"help/simplifiedAnalyses.html"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("Utilities",
-			"help/help/utilities.html"));
+			"help/utilities.html"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("Record Manager",
-			"help/help/recordManager.html"));
+			"help/recordManager.html"));
 			category.add(book);
 
 		category = new DefaultMutableTreeNode("Definition of Terms");
@@ -275,77 +271,77 @@ public class Help extends JFrame
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("Arias Intensity",
-			"help/terms/ariasIntensity.html"));
+			"terms/ariasIntensity.html"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("Coupled Analysis",
-			"help/terms/coupledAnalysis.html"));
+			"terms/coupledAnalysis.html"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("Critical Acceleration",
-			"help/terms/criticalAcceleration.html"));
+			"terms/criticalAcceleration.html"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("Decoupled Analysis",
-			"help/terms/decoupledAnalysis.html"));
+			"terms/decoupledAnalysis.html"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("Digitization Interval",
-			"help/terms/digint.html"));
+			"terms/digint.html"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("Dobry Duration",
-			"help/terms/dobryDuration.html"));
+			"terms/dobryDuration.html"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("Epicentral Distance",
-			"help/terms/epiDist.html"));
+			"terms/epiDist.html"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("Focal Distance",
-			"help/terms/focDist.html"));
+			"terms/focDist.html"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("Mean Period",
-			"help/terms/meanPeriod.html"));
+			"terms/meanPeriod.html"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("Newmark Analysis",
-			"help/terms/newmarkAnalysis.html"));
+			"terms/newmarkAnalysis.html"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("Newmark Displacement",
-			"help/terms/newmarkDisplacement.html"));
+			"terms/newmarkDisplacement.html"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("Peak Ground Acceleration",
-			"help/terms/pga.html"));
+			"terms/pga.html"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("Rigid-Block Analysis",
-			"help/terms/rigidBlockAnalysis.html"));
+			"terms/rigidBlockAnalysis.html"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("Rupture Distance",
-			"help/terms/rupDist.html"));
+			"terms/rupDist.html"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("Thrust Angle",
-			"help/terms/thrustAngle.html"));
+			"terms/thrustAngle.html"));
 			category.add(book);
 
 		category = new DefaultMutableTreeNode("Newmark Documentation");
@@ -353,62 +349,62 @@ public class Help extends JFrame
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("Title",
-			"help/science/newmark.html"));
+			"science/newmark.html"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("Abstract",
-			"help/science/newmark.html#ABSTRACT"));
+			"science/newmark.html#ABSTRACT"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("Introduction",
-			"help/science/newmark.html#INTRODUCTION"));
+			"science/newmark.html#INTRODUCTION"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("Past Applications Of Newmark's Method",
-			"help/science/newmark.html#PAST APPLICATIONS OF NEWMARK'S METHOD"));
+			"science/newmark.html#PAST APPLICATIONS OF NEWMARK'S METHOD"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("Types of Sliding-Block Analysis Currently in Use",
-			"help/science/newmark.html#TYPES OF SLIDING-BLOCK ANALYSIS CURRENTLY IN USE"));
+			"science/newmark.html#TYPES OF SLIDING-BLOCK ANALYSIS CURRENTLY IN USE"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("Which Analysis Should Be Used?",
-			"help/science/newmark.html#WHICH ANALYSIS SHOULD BE USED?"));
+			"science/newmark.html#WHICH ANALYSIS SHOULD BE USED?"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("Conducting A Newmark Analysis",
-			"help/science/newmark.html#CONDUCTING A NEWMARK ANALYSIS"));
+			"science/newmark.html#CONDUCTING A NEWMARK ANALYSIS"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("A Simplified Newmark Method",
-			"help/science/newmark.html#A SIMPLIFIED NEWMARK METHOD"));
+			"science/newmark.html#A SIMPLIFIED NEWMARK METHOD"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("Interpreting Newmark Displacements",
-			"help/science/newmark.html#INTERPRETING NEWMARK DISPLACEMENTS"));
+			"science/newmark.html#INTERPRETING NEWMARK DISPLACEMENTS"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("Discussion",
-			"help/science/newmark.html#DISCUSSION"));
+			"science/newmark.html#DISCUSSION"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("Conclusion",
-			"help/science/newmark.html#CONCLUSION"));
+			"science/newmark.html#CONCLUSION"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("References",
-			"help/science/newmark.html#REFERENCES"));
+			"science/newmark.html#REFERENCES"));
 			category.add(book);
 	}
 }

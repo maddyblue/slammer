@@ -24,7 +24,7 @@ package newmark.gui;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.*;
+import java.net.URL;
 import newmark.*;
 
 class GettingStartedPanel extends JPanel
@@ -37,15 +37,7 @@ class GettingStartedPanel extends JPanel
 	{
 		this.parent = parent;
 
-		FileReader read = new FileReader("help/program/gettingStarted.html");
-		String str = "";
-		while(read.ready())
-			str += (char)read.read();
-		read.close();
-
-		startedPane.setEditable(false);
-		startedPane.setContentType("text/html");
-		startedPane.setText(str);
+		startedPane.setPage(new URL(Help.prefix + "program/gettingStarted.html"));
 
 		setLayout(new BorderLayout());
 
