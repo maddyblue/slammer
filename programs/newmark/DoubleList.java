@@ -240,4 +240,19 @@ public class DoubleList
 	{
 		return bad;
 	}
+
+	public double[] getAsArray()
+	{
+		double[] ret = new double[size()];
+
+		DoubleListElement c = head;
+
+		for(int i = 0; c != null; i++)
+		{
+			ret[i] = c.val.doubleValue();
+			c = c.next;
+		}
+
+		return ret;
+	}
 }

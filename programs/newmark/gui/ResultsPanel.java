@@ -189,6 +189,7 @@ class ResultsPanel extends JPanel implements ActionListener
 				double scale = 1, iscale;
 				double inv, norm;
 				double[][] ca;
+				double[] ain;
 				double thrust = 0, uwgt = 0, height = 0, vs = 0, damp = 0;
 
 				if(parent.Parameters.CAdisp.isSelected())
@@ -390,6 +391,8 @@ class ResultsPanel extends JPanel implements ActionListener
 						iscale = -1.0 * scale;
 					}
 
+					ain = dat.getAsArray();
+
 					// do the actual analysis
 
 					if(paramRigid)
@@ -411,8 +414,8 @@ class ResultsPanel extends JPanel implements ActionListener
 					if(paramDecoupled)
 					{
 						// just use the Coupled code for now so we atleast have a working algorithm
-						inv = Coupled.Coupled(dat, Analysis.Gcmss, di, iscale, uwgt, height, vs, damp, 0, ca);
-						norm = Coupled.Coupled(dat, Analysis.Gcmss, di, scale, uwgt, height, vs, damp, 0, ca);
+						inv = 0;
+						norm = 0;
 
 						avg = avg(inv, norm, Analysis.fmtOne);
 
@@ -428,9 +431,13 @@ class ResultsPanel extends JPanel implements ActionListener
 
 					if(paramCoupled)
 					{
-						inv = Coupled.Coupled(dat, Analysis.Gcmss, di, iscale, uwgt, height, vs, damp, 0, ca);
-						norm = Coupled.Coupled(dat, Analysis.Gcmss, di, scale, uwgt, height, vs, damp, 0, ca);
-						avg = avg(inv, norm, Analysis.fmtOne);
+						int dv2 = 0, dv3 = 1;
+						double vr = 3000;
+
+						inv = Coupled.Coupled(ain, uwgt, height, vs, damp, di, iscale, Analysis.Gftss, vr, ca, dv2, dv3);
+						norm = Coupled.Coupled(ain, uwgt, height, vs, damp, di, scale, Analysis.Gftss, vr, ca, dv2, dv3);
+
+						avg = avg(inv, norm, Analysis.fmtFour);
 
 						total[CP] += avg.doubleValue();
 						row[CPC] = avg;
