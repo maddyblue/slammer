@@ -2,7 +2,7 @@
 
 <?php
 
-$jarfile = "~/newmark/newmarkinstall.jar";
+$jarfile = "../newmarkinstall.jar";
 
 echo "Compiling installer java files...";
 passthru("javac *.java");
