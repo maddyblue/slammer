@@ -65,11 +65,17 @@ class ParametersPanel extends JPanel implements ActionListener
 	public JTextField paramHeight = new JTextField(7);
 	public JTextField paramVs = new JTextField(7);
 	public JTextField paramDamp = new JTextField(7);
+	public JComboBox paramBaseType = new JComboBox(new Object[] {"rigid rock", "elastic rock"});
+	public JTextField paramVr = new JTextField(7);
+	public JComboBox paramSoilModel = new JComboBox(new Object[] {"linear elastic", "equivalent linear"});
 
 	JLabel labelUwgt = new JLabel();
 	JLabel labelHeight = new JLabel();
 	JLabel labelVs = new JLabel();
-	JLabel labelDamp = new JLabel(stringDamp + " (percent)");
+	JLabel labelDamp = new JLabel(stringDamp + " (%)");
+	JLabel labelBaseType = new JLabel(stringBaseType);
+	JLabel labelVr = new JLabel();
+	JLabel labelSoilModel = new JLabel(stringSoilModel);
 
 	public JCheckBox typeRigid = new JCheckBox(stringRB);
 	public JCheckBox typeDecoupled = new JCheckBox(stringDC);
@@ -77,9 +83,12 @@ class ParametersPanel extends JPanel implements ActionListener
 
 	final public static String stringUwgt = "Unit weight";
 	final public static String stringHeight = "Height";
-	final public static String stringVs = "Shear wave velocity";
+	final public static String stringVs = "Shear wave velocity (soil)";
 	final public static String stringDisp = "Displacement";
 	final public static String stringDamp = "Damping ratio";
+	final public static String stringBaseType = "Base type";
+	final public static String stringVr = "Shear wave velocity (base rock)";
+	final public static String stringSoilModel = "Soil model";
 
 	final public static String stringRB = "Rigid Block";
 	final public static String stringDC = "Decoupled";
@@ -140,6 +149,10 @@ class ParametersPanel extends JPanel implements ActionListener
 
 		dispAddRow.setEnabled(false);
 		dispDelRow.setEnabled(false);
+
+		paramBaseType.setActionCommand("paramBaseType");
+		paramBaseType.addActionListener(this);
+		paramVr.setEnabled(false);
 
 		updateUnits();
 
@@ -284,6 +297,7 @@ class ParametersPanel extends JPanel implements ActionListener
 
 		c.gridx = x++;
 		c.gridy = y++;
+		c.weightx = 1;
 		c.anchor = GridBagConstraints.CENTER;
 		gridbag.setConstraints(typeRigid, c);
 		panel.add(typeRigid);
@@ -292,59 +306,114 @@ class ParametersPanel extends JPanel implements ActionListener
 		label = new JLabel(" ");
 		label.setBorder(BorderFactory.createMatteBorder(0, 1, 0, 0, Color.BLACK));
 		c.gridx = x++;
-		c.gridheight = 5;
+		c.gridheight = 8;
+		c.weightx = 0;
 		c.fill = GridBagConstraints.VERTICAL;
 		gridbag.setConstraints(label, c);
-		panel.add(label, c);
+		panel.add(label);
 		c.gridheight = 1;
 		c.fill = GridBagConstraints.NONE;
 
-		c.gridx = x++;
+		c.gridx = x; x += 2;
+		c.weightx = 2;
+		c.gridwidth = 2;
 		gridbag.setConstraints(typeDecoupled, c);
 		panel.add(typeDecoupled);
 
-		c.gridx = x--;
+		c.gridx = x++;
+		c.weightx = 0;
+		c.gridwidth = 1;
+		label = new JLabel(" ");
+		label.setBorder(BorderFactory.createMatteBorder(0, 1, 0, 0, Color.BLACK));
+		gridbag.setConstraints(label, c);
+		panel.add(label);
+
+		c.gridx = x;
+		c.weightx = 2;
+		c.gridwidth = 2;
 		gridbag.setConstraints(typeCoupled, c);
 		panel.add(typeCoupled);
+
+		x = 2;
 
 		c.weightx = 0;
 		c.fill = GridBagConstraints.NONE;
 		c.anchor = GridBagConstraints.EAST;
-		c.gridx = x++;
+		c.gridx = x; x += 3;
 		c.gridy = y++;
 		gridbag.setConstraints(labelUwgt, c);
 		panel.add(labelUwgt);
 
-		c.gridx = x--;
+		c.gridx = x; x -= 3;
+		c.anchor = GridBagConstraints.WEST;
 		gridbag.setConstraints(paramUwgt, c);
 		panel.add(paramUwgt);
 
 		c.gridy = y++;
-		c.gridx = x++;
+		c.gridx = x; x += 3;
+		c.anchor = GridBagConstraints.EAST;
 		gridbag.setConstraints(labelHeight, c);
 		panel.add(labelHeight, c);
 
-		c.gridx = x--;
+		c.gridx = x; x -= 3;
+		c.anchor = GridBagConstraints.WEST;
 		gridbag.setConstraints(paramHeight, c);
 		panel.add(paramHeight, c);
 
 		c.gridy = y++;
-		c.gridx = x++;
+		c.gridx = x; x += 3;
+		c.anchor = GridBagConstraints.EAST;
 		gridbag.setConstraints(labelVs, c);
 		panel.add(labelVs, c);
 
-		c.gridx = x--;
+		c.gridx = x; x -= 3;
+		c.anchor = GridBagConstraints.WEST;
 		gridbag.setConstraints(paramVs, c);
 		panel.add(paramVs, c);
 
 		c.gridy = y++;
-		c.gridx = x++;
+		c.gridx = x; x += 3;
+		c.anchor = GridBagConstraints.EAST;
 		gridbag.setConstraints(labelDamp, c);
 		panel.add(labelDamp, c);
 
-		c.gridx = x--;
+		c.gridx = x; x -= 3;
+		c.anchor = GridBagConstraints.WEST;
 		gridbag.setConstraints(paramDamp, c);
 		panel.add(paramDamp, c);
+
+		c.gridy = y++;
+		c.gridx = x; x += 3;
+		c.anchor = GridBagConstraints.EAST;
+		gridbag.setConstraints(labelBaseType, c);
+		panel.add(labelBaseType, c);
+
+		c.gridx = x; x -= 3;
+		c.anchor = GridBagConstraints.WEST;
+		gridbag.setConstraints(paramBaseType, c);
+		panel.add(paramBaseType, c);
+
+		c.gridy = y++;
+		c.gridx = x; x += 3;
+		c.anchor = GridBagConstraints.EAST;
+		gridbag.setConstraints(labelVr, c);
+		panel.add(labelVr, c);
+
+		c.gridx = x; x -= 3;
+		c.anchor = GridBagConstraints.WEST;
+		gridbag.setConstraints(paramVr, c);
+		panel.add(paramVr, c);
+
+		c.gridy = y++;
+		c.gridx = x; x += 3;
+		c.anchor = GridBagConstraints.EAST;
+		gridbag.setConstraints(labelSoilModel, c);
+		panel.add(labelSoilModel, c);
+
+		c.gridx = x; x -= 3;
+		c.anchor = GridBagConstraints.WEST;
+		gridbag.setConstraints(paramSoilModel, c);
+		panel.add(paramSoilModel, c);
 
 		return panel;
 	}
@@ -353,17 +422,19 @@ class ParametersPanel extends JPanel implements ActionListener
 	{
 		if(unitMetric.isSelected())
 		{
-			labelUwgt.setText("<html>" + stringUwgt + " (kilo-Newtons per m<sup>3</sup>)</html>");
-			labelHeight.setText(stringHeight + " (meters)");
-			labelVs.setText(stringVs + " (meters per second)");
+			labelUwgt.setText("<html>" + stringUwgt + " (kN/m<sup>3</sup>)</html>");
+			labelHeight.setText(stringHeight + " (m)");
+			labelVs.setText(stringVs + " (m/s)");
+			labelVr.setText(stringVr + " (m/s)");
 			dispTableModel.setColName(stringDisp + " (cm)");
 		}
 		else if(unitEnglish.isSelected())
 		{
-			labelUwgt.setText(stringUwgt + " (pounds per cubic foot)");
-			labelHeight.setText(stringHeight + " (feet)");
-			labelVs.setText(stringVs + " (feet per second)");
-			dispTableModel.setColName(stringDisp + " (inches)");
+			labelUwgt.setText("<html>" + stringUwgt + " (lb/ft<sup>3</sup>)</html>");
+			labelHeight.setText(stringHeight + " (ft)");
+			labelVs.setText(stringVs + " (ft/s)");
+			labelVr.setText(stringVr + " (ft/s)");
+			dispTableModel.setColName(stringDisp + " (in)");
 		}
 	}
 
@@ -406,6 +477,10 @@ class ParametersPanel extends JPanel implements ActionListener
 			else if(command.equals("unit"))
 			{
 				updateUnits();
+			}
+			else if(command.equals("paramBaseType"))
+			{
+				paramVr.setEnabled(paramBaseType.getSelectedIndex() == 1);
 			}
 		}
 		catch (Exception ex)

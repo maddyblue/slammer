@@ -190,7 +190,8 @@ class ResultsPanel extends JPanel implements ActionListener
 				double inv, norm;
 				double[][] ca;
 				double[] ain;
-				double thrust = 0, uwgt = 0, height = 0, vs = 0, damp = 0;
+				double thrust = 0, uwgt = 0, height = 0, vs = 0, damp = 0, vr = 0;
+				int dv2 = 0, dv3 = 0;
 
 				if(parent.Parameters.CAdisp.isSelected())
 				{
@@ -306,6 +307,22 @@ class ResultsPanel extends JPanel implements ActionListener
 					}
 					else
 						damp = tempd.doubleValue() / 100.0;
+
+					dv2 = parent.Parameters.paramBaseType.getSelectedIndex();
+					dv3 = parent.Parameters.paramSoilModel.getSelectedIndex();
+
+					if(dv2 == 1)
+					{
+						tempd = (Double)Utils.checkNum(parent.Parameters.paramVr.getText(), ParametersPanel.stringVr + " field", null, false, null, null, false, null, false);
+						if(tempd == null)
+						{
+							parent.selectParameters();
+							monFrame.dispose();
+							return;
+						}
+						else
+							vr = tempd.doubleValue();
+					}
 				}
 
 				File testFile;
@@ -431,11 +448,10 @@ class ResultsPanel extends JPanel implements ActionListener
 
 					if(paramCoupled)
 					{
-						int dv2 = 0, dv3 = 1;
-						double vr = 3000;
-
 						inv = Coupled.Coupled(ain, uwgt, height, vs, damp, di, iscale, Analysis.Gftss, vr, ca, dv2, dv3);
 						norm = Coupled.Coupled(ain, uwgt, height, vs, damp, di, scale, Analysis.Gftss, vr, ca, dv2, dv3);
+
+						System.out.println(inv + ", " + norm);
 
 						avg = avg(inv, norm, Analysis.fmtFour);
 
