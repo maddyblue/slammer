@@ -18,7 +18,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-/* $Id: ResultsPanel.java,v 1.2 2003/06/19 04:33:41 dolmant Exp $ */
+/* $Id: ResultsPanel.java,v 1.3 2003/07/15 00:19:58 dolmant Exp $ */
 
 package newmark.gui;
 
@@ -29,8 +29,10 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.border.*;
 import java.util.Vector;
-import com.jrefinery.data.*;
-import com.jrefinery.chart.*;
+import org.jfree.data.*;
+import org.jfree.chart.*;
+import org.jfree.chart.plot.*;
+import org.jfree.chart.axis.*;
 import java.text.DecimalFormat;
 import java.util.Vector;
 import java.io.*;
@@ -53,21 +55,12 @@ class ResultsPanel extends JPanel implements ActionListener
 	JLabel outputMedian = new JLabel("Median:");
 	JLabel outputStdDev = new JLabel("Standard Deviation:");
 
-	JFreeChart ndHist = ChartFactory.createVerticalBarChart("Histogram of Newmark Displacements", "Newmark Displacement (cm)", "Number of Records", new DefaultCategoryDataset(new Double[][] {{}}), false);
-	ChartFrame ndHistFrame = new ChartFrame("Histogram of Newmark Displacements", ndHist);
-	VerticalCategoryPlot ndHistPlot = (VerticalCategoryPlot)(ndHist.getPlot());
-	HorizontalCategoryAxis ndHistHorizAxis = (HorizontalCategoryAxis)(ndHistPlot.getDomainAxis());
-	NumberAxis ndHistVertAxis = (NumberAxis)(ndHistPlot.getRangeAxis());
-
-	JFreeChart ndPlot = ChartFactory.createLineXYChart("Newmark displacement versus time", "Time (s)", "Newmark displacement (cm)", new XYSeriesCollection(), false);
-	ChartFrame ndPlotFrame = new ChartFrame("Newmark displacement versus time", ndPlot);
-	Legend plotNewmarkLegendData = ndPlot.getLegend();
-	XYPlot ndPlotPlot = (XYPlot)(ndPlot.getPlot());
-
 	JButton plotOutput = new JButton("Plot histogram of Newmark displacements");
 	JButton plotNewmark = new JButton("Plot Newmark displacements versus time");
 	JCheckBox plotNewmarkLegend = new JCheckBox("Display legend", false);
 	JTextField outputBins = new JTextField("10",4);
+
+	XYSeriesCollection xysc = new XYSeriesCollection();
 
 	JRadioButton outputDelTab = new JRadioButton("tab delimited", true);
 	JRadioButton outputDelSpace = new JRadioButton("space delimited");
@@ -100,13 +93,6 @@ class ResultsPanel extends JPanel implements ActionListener
 		saveOutput.setMnemonic(KeyEvent.VK_S);
 		saveOutput.setActionCommand("saveOutput");
 		saveOutput.addActionListener(this);
-
-		ndHistHorizAxis.setVerticalCategoryLabels(true);
-		ndHistPlot.setDomainAxis(ndHistHorizAxis);
-
-		TickUnits tu = NumberAxis.createIntegerTickUnits();
-		ndHistVertAxis.setStandardTickUnits(tu);
-		ndHistPlot.setRangeAxis(ndHistVertAxis);
 
 		plotOutput.setMnemonic(KeyEvent.VK_H);
 		plotOutput.setActionCommand("plotOutput");
@@ -252,13 +238,12 @@ class ResultsPanel extends JPanel implements ActionListener
 
 				File testFile;
 				String path;
-				xycol = new XYSeriesCollection();
-				XYSeries xys;
 				DecimalFormat fmt = new DecimalFormat(Analysis.fmtOne);
 				mon.setMinimum(0);
 				mon.setMaximum(res.length - 2);
 				monFrame.show();
 				dataVect = new Vector(res.length - 1);
+				xysc = new XYSeriesCollection();
 				for(int i = 1; i < res.length; i++)
 				{
 					eq = res[i][0].toString();
@@ -295,25 +280,23 @@ class ResultsPanel extends JPanel implements ActionListener
 					}
 					if(parent.Parameters.nd.isSelected() == true)
 					{
-						norm = new Double((String)Analysis.NewmarkRigorous(dat, di, ca, 1.0 * scale));
-						Analysis.xys.setName(eq + " - " + record);
-						xycol.addSeries(Analysis.xys);
 						inv = new Double((String)Analysis.NewmarkRigorous(dat, di, ca, -1.0 * scale));
+						norm = new Double((String)Analysis.NewmarkRigorous(dat, di, ca, 1.0 * scale));
 					}
 					else if(parent.Parameters.ndDisp.isSelected() == true)
 					{
-						norm = new Double((String)Analysis.NewmarkRigorousDisp(dat, di, caList, 1.0 * scale));
-						Analysis.xys.setName(eq + " - " + record);
-						xycol.addSeries(Analysis.xys);
 						inv = new Double((String)Analysis.NewmarkRigorousDisp(dat, di, caList, -1.0 * scale));
+						norm = new Double((String)Analysis.NewmarkRigorousDisp(dat, di, caList, 1.0 * scale));
 					}
 					else if(parent.Parameters.ndTime.isSelected() == true)
 					{
-						norm = new Double((String)Analysis.NewmarkRigorousTime(dat, di, caList, 1.0 * scale));
-						Analysis.xys.setName(eq + " - " + record);
-						xycol.addSeries(Analysis.xys);
 						inv = new Double((String)Analysis.NewmarkRigorousTime(dat, di, caList, -1.0 * scale));
+						norm = new Double((String)Analysis.NewmarkRigorousTime(dat, di, caList, 1.0 * scale));
 					}
+
+					Analysis.xys.setName(eq + " - " + record);
+					xysc.addSeries(Analysis.xys);
+
 					avg = (norm.doubleValue()+inv.doubleValue())/2.0;
 					total += avg;
 					num++;
@@ -329,12 +312,6 @@ class ResultsPanel extends JPanel implements ActionListener
 					return;
 				}
 				max = ((Double)dataVect.elementAt(dataVect.size() - 1)).doubleValue();
-				drawHist();
-				plotNewmarkLegendData = Legend.createInstance(ndPlot);
-				if(plotNewmarkLegend.isSelected())
-					ndPlot.setLegend(plotNewmarkLegendData);
-				else
-					ndPlot.setLegend(null);
 
 				fmt = new DecimalFormat(Analysis.fmtOne);
 				double mean = Double.parseDouble(fmt.format(total/num));
@@ -387,21 +364,35 @@ class ResultsPanel extends JPanel implements ActionListener
 			}
 			else if(command.equals("plotOutput"))
 			{
-				ndHistFrame.pack();
-				ndHistFrame.show();
-				drawHist();
+				if(dataVect == null) return;
+				Double Bins = (Double)Utils.checkNum(outputBins.getText(), "output bins field", null, false, null, new Double(0), false, null, false);
+				if(Bins != null)
+				{
+					double series[] = new double[dataVect.size()];
+
+					for(int i = 0; i < dataVect.size(); i++)
+					{
+						series[i] = (((Double)dataVect.elementAt(i)).doubleValue());
+					}
+
+					HistogramDataset dataset = new HistogramDataset();
+					dataset.addSeries("", series, (int)Bins.doubleValue());
+
+					JFreeChart hist = ChartFactory.createHistogram("Histogram of Newmark Displacements", "Newmark Displacement (cm)", "Number of Records", dataset, PlotOrientation.VERTICAL, false, false, false);
+					ChartFrame frame = new ChartFrame("Histogram of Newmark Displacements", hist);
+
+					frame.pack();
+					frame.setLocationRelativeTo(null);
+					frame.show();
+				}
 			}
 			else if(command.equals("plotNewmark"))
 			{
-				ndPlotFrame.pack();
-				ndPlotFrame.show();
-			}
-			else if(command.equals("plotNewmarkLegend"))
-			{
-				if(plotNewmarkLegend.isSelected())
-					ndPlot.setLegend(plotNewmarkLegendData);
-				else
-					ndPlot.setLegend(null);
+				JFreeChart chart = ChartFactory.createLineXYChart("Newmark displacement versus time", "Time (s)", "Newmark displacement (cm)", xysc, plotNewmarkLegend.isSelected(), true, false);
+				ChartFrame frame = new ChartFrame("Newmark displacement versus time", chart);
+				frame.pack();
+				frame.setLocationRelativeTo(null);
+				frame.show();
 			}
 		}
 		catch (Exception ex)
@@ -419,43 +410,6 @@ class ResultsPanel extends JPanel implements ActionListener
 		outputMean.setText("Mean:");
 		outputMedian.setText("Median:");
 		outputStdDev.setText("Standard Deviation:");
-		ndHistPlot.setDataset(new DefaultCategoryDataset(new Double[][] {{}}));
-		ndPlotPlot.setDataset(new XYSeriesCollection());
-	}
-
-	private void drawHist()
-	{
-		if(dataVect == null) return;
-		Double Bins = (Double)Utils.checkNum(outputBins.getText(), "output bins field", null, false, null, new Double(0), false, null, false);
-		if(Bins != null)
-		{
-			int SEP_COLS = (int)Bins.doubleValue();
-			int temp_SEP_COLS = SEP_COLS;
-			if(dataVect.size() < SEP_COLS) temp_SEP_COLS = dataVect.size();
-			if(max == 0) temp_SEP_COLS = 1;
-			double sep = max / (double)temp_SEP_COLS;
-			int high = 0;
-			int val = 0;
-			Double[][] dataArr = new Double[1][dataVect.size()];
-			double[] stufff = new double[temp_SEP_COLS];
-			for(int i = 0; i < dataVect.size(); i++)
-			{
-				val = (int)((((Double)dataVect.elementAt(i)).doubleValue())/sep);
-				if(val == temp_SEP_COLS) val--;
-				stufff[val] += 1;
-				if(val > high) high = val;
-			}
-			String[] categories = new String[high + 1];
-			dataArr = new Double[1][high + 1];
-			DecimalFormat fmt = new DecimalFormat(Analysis.fmtOne);
-			for(int i = 0; i < temp_SEP_COLS; i++)
-			{
-				dataArr[0][i] = new Double(stufff[i]);
-				categories[i] = new String(fmt.format(((double)(i) * sep)) + " - " + fmt.format((double)(i + 1) * sep));
-			}
-			ndHistPlot.setDataset(new DefaultCategoryDataset(new String[] {""}, categories, dataArr));
-			ndPlotPlot.setDataset(xycol);
-		}
 	}
 
 	private JPanel createHeader()

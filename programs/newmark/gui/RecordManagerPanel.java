@@ -18,7 +18,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-/* $Id: RecordManagerPanel.java,v 1.1 2003/06/15 01:58:11 dolmant Exp $ */
+/* $Id: RecordManagerPanel.java,v 1.2 2003/07/15 00:19:58 dolmant Exp $ */
 
 package newmark.gui;
 
@@ -29,8 +29,10 @@ import java.awt.event.*;
 import javax.swing.border.*;
 import java.io.File;
 import java.util.Vector;
-import com.jrefinery.data.*;
-import com.jrefinery.chart.*;
+import org.jfree.data.*;
+import org.jfree.chart.*;
+import org.jfree.chart.plot.*;
+import org.jfree.chart.axis.*;
 import newmark.*;
 
 class RecordManagerPanel extends JPanel implements ActionListener
@@ -61,10 +63,6 @@ class RecordManagerPanel extends JPanel implements ActionListener
 	JComboBox  modMech = new JComboBox(NewmarkTable.FocMechArray);
 
 	JButton add = new JButton("Add record(s)...");
-
-	JFreeChart recordChart = ChartFactory.createLineXYChart("", "Time (s)", "Acceleration (cm/s/s)", new XYSeriesCollection(), false);
-	Plot recordPlot = recordChart.getPlot();
-	ChartFrame recordFrame = new ChartFrame("", recordChart);
 
 	public RecordManagerPanel(NewmarkTabbedPane parent) throws Exception
 	{
@@ -271,43 +269,65 @@ class RecordManagerPanel extends JPanel implements ActionListener
 					return;
 				}
 
-				XYSeriesCollection col = new XYSeriesCollection();
-				XYSeries xys = new  XYSeries("");
-				Double val;
-
+				XYSeries xys = new XYSeries("", false);
 				dat.reset();
-				int i = -1;
-				boolean skip = false;
+
+				Double val;
+				double last1 = 0, last2 = 0, current;
+				double diff1, diff2;
+				double time = 0, timeStor = 0, td;
+				int perSec = 50;
+				double interval = 1.0 / (double)perSec;
+				int i = 0;
+
+				// add the first point
+				if((val = dat.each()) != null)
+				{
+					xys.add(time, val);
+					time += di;
+					last2 = val.doubleValue();
+				}
+
+				// don't add the second point, but update the data
+				if((val = dat.each()) != null)
+				{
+					time += di;
+					last1 = val.doubleValue();
+				}
+
 				while((val = dat.each()) != null)
 				{
-					i++;
-					if(skip)
+					td = time - di;
+					current = val.doubleValue();
+
+					diff1 = last1 - current;
+					diff2 = last1 - last2;
+
+					if(
+						(diff1 <= 0 && diff2 <= 0) ||
+						(diff1 >= 0 && diff2 >= 0) ||
+						(td >= (timeStor + interval)))
 					{
-						skip = false;
+						xys.add(td, last1);
+						timeStor = td;
 					}
-					else
-					{
-						xys.add(new Double(i * di), val);
-						skip = true;
-					}
+
+					last2 = last1;
+					last1 = current;
+					time += di;
 				}
-				col.addSeries(xys);
 
 				String title = eq + ": " + record;
-				Vector titles = new Vector(1);
-				titles.add(new TextTitle(title));
-				recordChart.setTitles(titles);
-				recordFrame.setTitle(title);
-
-				recordPlot.setDataset(col);
-
-				recordFrame.pack();
-				recordFrame.show();
-
+				XYSeriesCollection xysc = new XYSeriesCollection(xys);
+				JFreeChart chart = ChartFactory.createLineXYChart(title, "Time (s)", "Acceleration (cm/s/s)", xysc, false, true, false);
+				ChartFrame frame = new ChartFrame(eq + ": " + record, chart);
+				frame.pack();
+				frame.setLocationRelativeTo(null);
+				frame.show();
 			}
 			else if(command.equals("save"))
 			{
-				int n = JOptionPane.showConfirmDialog(this,"Are you sure you want to modify this records?", "Are you sure?", 						JOptionPane.YES_NO_OPTION);
+				int n = JOptionPane.showConfirmDialog(this,"Are you sure you want to modify this records?", "Are you sure?", JOptionPane.YES_NO_OPTION);
 				if(n != JOptionPane.YES_OPTION)
 					return;
 
