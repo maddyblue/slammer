@@ -18,7 +18,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-/* $Id: RigidBlockSimplifiedPanel.java,v 1.2 2003/06/19 04:33:41 dolmant Exp $ */
+/* $Id$ */
 
 package newmark.gui;
 
@@ -29,6 +29,7 @@ import java.awt.event.*;
 import javax.swing.border.*;
 import java.util.Vector;
 import newmark.*;
+import newmark.analysis.*;
 
 class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 {
@@ -147,7 +148,7 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 					if(d1 == null) return;
 					Double d = (Double)Utils.checkNum(labelTwof.getText(), "Arias Intensity field", null, false, null, new Double(0), false, null, false);
 					if(d == null) return;
-					labelResf.setText(Analysis.JibsonAndOthers(d.doubleValue(), d1.doubleValue()));
+					labelResf.setText(RigidBlockSimplified.JibsonAndOthers(d.doubleValue(), d1.doubleValue()));
 				}
 				else if(Ambraseys.isSelected())
 				{
@@ -155,13 +156,13 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 					if(d1 == null) return;
 					Double d = (Double)Utils.checkNum(labelTwof.getText(), "peak ground acceleration field", null, false, null, new Double(0), false, null, false);
 					if(d == null) return;
-					labelResf.setText(Analysis.AmbraseysAndMenu(d.doubleValue(), d1.doubleValue()));
+					labelResf.setText(RigidBlockSimplified.AmbraseysAndMenu(d.doubleValue(), d1.doubleValue()));
 				}
 				else if(probFailure.isSelected())
 				{
 					Double d = (Double)Utils.checkNum(labelOnef.getText(), "Newmark displacement field", null, false, null, new Double(0), true, null, false);
 					if(d == null) return;
-					labelResf.setText(Analysis.ProbFailure(d.doubleValue()));
+					labelResf.setText(RigidBlockSimplified.ProbFailure(d.doubleValue()));
 				}
 				else
 				{

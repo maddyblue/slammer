@@ -18,7 +18,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-/* $Id: RigidBlockPanel.java,v 1.1 2003/07/31 21:32:53 dolmant Exp $ */
+/* $Id$ */
 
 package newmark.gui;
 
@@ -43,7 +43,6 @@ class RigidBlockPanel extends JPanel implements ActionListener
 	ButtonGroup CAgroup = new ButtonGroup();
 	JRadioButton nd = new JRadioButton("Constant critical acceleration");
 	JRadioButton ndDisp = new JRadioButton("Varies with displacement");
-	JRadioButton ndTime = new JRadioButton("Varies with time");
 
 	JTextField constCA = new JTextField();
 
@@ -52,12 +51,6 @@ class RigidBlockPanel extends JPanel implements ActionListener
 	JButton dispAddRow = new JButton("Add Row");
 	JButton dispDelRow = new JButton("Delete Last Row");
 	JScrollPane dispPane;
-
-	ParametersTableModel timeTableModel = new ParametersTableModel("Time (s)", "Time");
-	ParametersTable timeTable = new ParametersTable(timeTableModel);
-	JButton timeAddRow = new JButton("Add Row");
-	JButton timeDelRow = new JButton("Delete Last Row");
-	JScrollPane timePane;
 
 	public RigidBlockPanel(ParametersPanel parent)
 	{
@@ -69,13 +62,6 @@ class RigidBlockPanel extends JPanel implements ActionListener
 		dispDelRow.setActionCommand("delDispRow");
 		dispDelRow.addActionListener(this);
 		dispPane = new JScrollPane(dispTable);
-
-		timeTable.setPreferredScrollableViewportSize(new Dimension(0,0));
-		timeAddRow.setActionCommand("addTimeRow");
-		timeAddRow.addActionListener(this);
-		timeDelRow.setActionCommand("delTimeRow");
-		timeDelRow.addActionListener(this);
-		timePane = new JScrollPane(timeTable);
 
 		SlopeGroup.add(downSlope);
 		downSlope.setMnemonic(KeyEvent.VK_D);
@@ -100,18 +86,10 @@ class RigidBlockPanel extends JPanel implements ActionListener
 		ndDisp.setActionCommand("change");
 		ndDisp.addActionListener(this);
 
-		CAgroup.add(ndTime);
-		ndTime.setMnemonic(KeyEvent.VK_T);
-		ndTime.setActionCommand("change");
-		ndTime.addActionListener(this);
-
 		dispTable.setEnabled(false);
-		timeTable.setEnabled(false);
 
 		dispAddRow.setEnabled(false);
 		dispDelRow.setEnabled(false);
-		timeAddRow.setEnabled(false);
-		timeDelRow.setEnabled(false);
 
 		setLayout(new BorderLayout());
 
@@ -163,20 +141,8 @@ class RigidBlockPanel extends JPanel implements ActionListener
 		centerTableButtons.add(dispDelRow);
 		centerTable.add(BorderLayout.SOUTH, centerTableButtons);
 
-		JPanel rightTable = new JPanel(new BorderLayout());
-		rightTable.add(BorderLayout.NORTH, ndTime);
-		rightTable.add(BorderLayout.CENTER, timePane);
-		JPanel rightTableButtons = new JPanel(new GridLayout(0, 2));
-		rightTableButtons.add(timeAddRow);
-		rightTableButtons.add(timeDelRow);
-		rightTable.add(BorderLayout.SOUTH, rightTableButtons);
-
-		JPanel middlePanel = new JPanel(new GridLayout(0, 2));
-		middlePanel.add(centerTable);
-		middlePanel.add(rightTable);
-
 		paramPanelTables.add(BorderLayout.WEST, westTable);
-		paramPanelTables.add(BorderLayout.CENTER, middlePanel);
+		paramPanelTables.add(BorderLayout.CENTER, centerTable);
 
 		return paramPanelTables;
 	}
@@ -191,21 +157,13 @@ class RigidBlockPanel extends JPanel implements ActionListener
 			{
 				dispTableModel.addRow();
 			}
-			else if(command.equals("addTimeRow"))
-			{
-				timeTableModel.addRow();
-			}
 			else if(command.equals("change"))
 			{
 				constCA.setEnabled(false);
 				dispTable.setEnabled(false);
 				dispAddRow.setEnabled(false);
 				dispDelRow.setEnabled(false);
-				timeTable.setEnabled(false);
-				timeAddRow.setEnabled(false);
-				timeDelRow.setEnabled(false);
 				thrustAngle.setEnabled(false);
-				ndTime.setEnabled(true);
 				ndDisp.setEnabled(true);
 
 				thrustAngle.setBackground(GUIUtils.bg);
@@ -222,12 +180,6 @@ class RigidBlockPanel extends JPanel implements ActionListener
 						dispAddRow.setEnabled(true);
 						dispDelRow.setEnabled(true);
 					}
-					else if(ndTime.isSelected())
-					{
-						timeTable.setEnabled(true);
-						timeAddRow.setEnabled(true);
-						timeDelRow.setEnabled(true);
-					}
 				}
 				else if(dualSlope.isSelected())
 				{
@@ -235,7 +187,6 @@ class RigidBlockPanel extends JPanel implements ActionListener
 					thrustAngle.setEnabled(true);
 					thrustAngle.setBackground(Color.white);
 					nd.setSelected(true);
-					ndTime.setEnabled(false);
 					ndDisp.setEnabled(false);
 				}
 			}
@@ -243,11 +194,6 @@ class RigidBlockPanel extends JPanel implements ActionListener
 			{
 				if(dispTableModel.getRowCount() > 1)
 					dispTableModel.removeRow(dispTableModel.getRowCount() - 1);
-			}
-			else if(command.equals("delTimeRow"))
-			{
-				if(timeTableModel.getRowCount() > 1)
-					timeTableModel.removeRow(timeTableModel.getRowCount() - 1);
 			}
 		}
 		catch (Exception ex)

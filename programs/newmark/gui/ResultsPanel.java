@@ -18,7 +18,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-/* $Id: ResultsPanel.java,v 1.8 2004/01/06 00:41:31 dolmant Exp $ */
+/* $Id$ */
 
 package newmark.gui;
 
@@ -36,6 +36,7 @@ import java.text.DecimalFormat;
 import java.util.Vector;
 import java.io.*;
 import newmark.*;
+import newmark.analysis.*;
 
 class ResultsPanel extends JPanel implements ActionListener
 {
@@ -71,7 +72,6 @@ class ResultsPanel extends JPanel implements ActionListener
 	final static int RigidBlockDualTime  = 1 << 2;
 	final static int RigidBlockDownConst = 1 << 3;
 	final static int RigidBlockDownDisp  = 1 << 4;
-	final static int RigidBlockDownTime  = 1 << 5;
 	final static int CoupledEnglish      = 1 << 6;
 	final static int CoupledMetric       = 1 << 7;
 
@@ -160,8 +160,6 @@ class ResultsPanel extends JPanel implements ActionListener
 								method = RigidBlockDownConst;
 							else if(r.ndDisp.isSelected())
 								method = RigidBlockDownDisp;
-							else if(r.ndTime.isSelected())
-								method = RigidBlockDownTime;
 						}
 						else if(r.dualSlope.isSelected())
 						{
@@ -209,7 +207,6 @@ class ResultsPanel extends JPanel implements ActionListener
 
 				if(
 					method == RigidBlockDownDisp ||
-					method == RigidBlockDownTime ||
 					method == RigidBlockDualDisp ||
 					method == RigidBlockDualTime ||
 					method == CoupledEnglish ||
@@ -225,12 +222,6 @@ class ResultsPanel extends JPanel implements ActionListener
 						tableSelect = "displacement";
 						editor = r.dispTable.getCellEditor();
 						caVect = r.dispTableModel.getDataVector();
-					}
-					else if(method == RigidBlockDualTime || method == RigidBlockDownTime)
-					{
-						tableSelect = "time";
-						editor = r.timeTable.getCellEditor();
-						caVect = r.timeTableModel.getDataVector();
 					}
 					else if(method == CoupledEnglish || method == CoupledMetric)
 					{
@@ -389,28 +380,24 @@ class ResultsPanel extends JPanel implements ActionListener
 					switch(method)
 					{
 						case RigidBlockDualConst:
-							inv = new Double((String)Analysis.NewmarkRigorousDual(dat, di, ca, thrust, iscale));
-							norm = new Double((String)Analysis.NewmarkRigorousDual(dat, di, ca, thrust, scale));
+							inv = new Double((String)RigidBlock.NewmarkRigorousDual(dat, di, ca, thrust, iscale));
+							norm = new Double((String)RigidBlock.NewmarkRigorousDual(dat, di, ca, thrust, scale));
 							break;
 						case RigidBlockDownConst:
-							inv = new Double((String)Analysis.NewmarkRigorous(dat, di, ca, iscale));
-							norm = new Double((String)Analysis.NewmarkRigorous(dat, di, ca, scale));
+							inv = new Double((String)RigidBlock.NewmarkRigorous(dat, di, ca, iscale));
+							norm = new Double((String)RigidBlock.NewmarkRigorous(dat, di, ca, scale));
 							break;
 						case RigidBlockDownDisp:
-							inv = new Double((String)Analysis.NewmarkRigorousDisp(dat, di, caList, iscale));
-							norm = new Double((String)Analysis.NewmarkRigorousDisp(dat, di, caList, scale));
-							break;
-						case RigidBlockDownTime:
-							inv = new Double((String)Analysis.NewmarkRigorousTime(dat, di, caList, iscale));
-							norm = new Double((String)Analysis.NewmarkRigorousTime(dat, di, caList, scale));
+							inv = new Double((String)RigidBlock.NewmarkRigorousDisp(dat, di, caList, iscale));
+							norm = new Double((String)RigidBlock.NewmarkRigorousDisp(dat, di, caList, scale));
 							break;
 						case CoupledEnglish:
-							inv = new Double((String)Analysis.Coupled(dat, Analysis.Gftss, di, iscale, uwgt, height, vs, damp, 0 /* angle */, caList));
-							norm = new Double((String)Analysis.Coupled(dat, Analysis.Gftss, di, scale, uwgt, height, vs, damp, 0 /* angle */, caList));
+							inv = new Double((String)Coupled.Coupled(dat, Analysis.Gftss, di, iscale, uwgt, height, vs, damp, 0 /* angle */, caList));
+							norm = new Double((String)Coupled.Coupled(dat, Analysis.Gftss, di, scale, uwgt, height, vs, damp, 0 /* angle */, caList));
 							break;
 						case CoupledMetric:
-							inv = new Double((String)Analysis.Coupled(dat, Analysis.Gcmss, di, iscale, 1 /* uwgt */, height, vs, damp, 0 /* angle */, caList));
-							norm = new Double((String)Analysis.Coupled(dat, Analysis.Gcmss, di, scale, 1 /* uwgt */, height, vs, damp, 0 /* angle */, caList));
+							inv = new Double((String)Coupled.Coupled(dat, Analysis.Gcmss, di, iscale, 1 /* uwgt */, height, vs, damp, 0 /* angle */, caList));
+							norm = new Double((String)Coupled.Coupled(dat, Analysis.Gcmss, di, scale, 1 /* uwgt */, height, vs, damp, 0 /* angle */, caList));
 							break;
 						default:
 							GUIUtils.popupError("No analysis method selected.");

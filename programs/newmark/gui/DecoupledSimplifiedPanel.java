@@ -18,7 +18,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-/* $Id: DecoupledSimplifiedPanel.java,v 1.1 2003/06/15 01:58:11 dolmant Exp $ */
+/* $Id$ */
 
 package newmark.gui;
 
@@ -29,6 +29,7 @@ import java.awt.event.*;
 import javax.swing.border.*;
 import java.util.Vector;
 import newmark.*;
+import newmark.analysis.*;
 
 class DecoupledSimplifiedPanel extends JPanel implements ActionListener
 {
@@ -165,7 +166,7 @@ class DecoupledSimplifiedPanel extends JPanel implements ActionListener
 					allowdispd = new Double(0);
 				}
 
-				String[] res = Analysis.BrayAndRathje(kyd.doubleValue(), hd.doubleValue(), vsd.doubleValue(), md.doubleValue(), rockd.doubleValue(), rd.doubleValue(), mheaSd.doubleValue(), meanperSd.doubleValue(), sigdurSd.doubleValue(), normdispSd.doubleValue(), allowdispd.doubleValue(), doScreening);
+				String[] res = DecoupledSimplified.BrayAndRathje(kyd.doubleValue(), hd.doubleValue(), vsd.doubleValue(), md.doubleValue(), rockd.doubleValue(), rd.doubleValue(), mheaSd.doubleValue(), meanperSd.doubleValue(), sigdurSd.doubleValue(), normdispSd.doubleValue(), allowdispd.doubleValue(), doScreening);
 
 				int incr = 0;
 				siteper.setText(res[incr++]);

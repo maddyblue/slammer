@@ -18,7 +18,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-/* $Id: AddRecordsPanel.java,v 1.2 2004/01/06 00:36:02 dolmant Exp $ */
+/* $Id$ */
 
 package newmark.gui;
 
@@ -30,6 +30,7 @@ import java.awt.event.*;
 import javax.swing.border.*;
 import java.util.Vector;
 import newmark.*;
+import newmark.analysis.*;
 
 class AddRecordsPanel extends JPanel implements ActionListener
 {
@@ -313,10 +314,10 @@ class AddRecordsPanel extends JPanel implements ActionListener
 			return ("Errors on file " + file + ", earthquake " + eq + ", record " + record + ":\nInvalid data at data point " + data.badEntry() + "\n");
 		}
 
-		arias = Analysis.Arias(data, dig_int);
-		dobry = Analysis.Dobry(data, dig_int);
-		meanper = Analysis.MeanPer(data, dig_int);
-		pga = Analysis.PGA(data);
+		arias = ImportRecords.Arias(data, dig_int);
+		dobry = ImportRecords.Dobry(data, dig_int);
+		meanper = ImportRecords.MeanPer(data, dig_int);
+		pga = ImportRecords.PGA(data);
 
 		// a few conversions
 		pre = focmech;

@@ -18,11 +18,12 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-/* $Id: Newmark.java,v 1.4 2003/08/01 01:25:44 dolmant Exp $ */
+/* $Id$ */
 
 package newmark;
 
 import newmark.gui.*;
+import newmark.analysis.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -175,7 +176,7 @@ public class Newmark
 								GUIUtils.popupError("Invalid data in file " + path + " at point " + data.badEntry() + ".");
 								continue;
 							}
-							q = "insert into data values (uniquekey('data'), '" + cur[0] + "', '" + cur[3] + "', " + cur[9] + ", " + cur[1] + ", " + Analysis.Arias(data, di) + ", " + Analysis.Dobry(data, di) + ", " + Analysis.PGA(data) + ", " + Analysis.MeanPer(data, di) + ", " + cur[10] + ", " + cur[11] + ", " + cur[12] + ", " + cur[2] + ", '" + cur[4] + "', '" + cur[5] + "', " + cur[6] + ", " + cur[7] + ", " + cur[8] + ", 0, '" + path + "', 0, 0, 0)";
+							q = "insert into data values (uniquekey('data'), '" + cur[0] + "', '" + cur[3] + "', " + cur[9] + ", " + cur[1] + ", " + ImportRecords.Arias(data, di) + ", " + ImportRecords.Dobry(data, di) + ", " + ImportRecords.PGA(data) + ", " + ImportRecords.MeanPer(data, di) + ", " + cur[10] + ", " + cur[11] + ", " + cur[12] + ", " + cur[2] + ", '" + cur[4] + "', '" + cur[5] + "', " + cur[6] + ", " + cur[7] + ", " + cur[8] + ", 0, '" + path + "', 0, 0, 0)";
 							System.out.println(q);
 							Utils.getDB().runQuery(q);
 							cur = new String[13];

@@ -18,7 +18,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-/* $Id: UtilitiesPanel.java,v 1.2 2003/07/18 05:25:15 dolmant Exp $ */
+/* $Id$ */
 
 package newmark.gui;
 
@@ -30,6 +30,7 @@ import javax.swing.border.*;
 import java.util.Vector;
 import java.io.*;
 import newmark.*;
+import newmark.analysis.*;
 
 class UtilitiesPanel extends JPanel implements ActionListener
 {
@@ -379,19 +380,19 @@ class UtilitiesPanel extends JPanel implements ActionListener
 		switch(sel)
 		{
 			case 1: // cmgs
-				Analysis.CM_GS(data, o);
+				Utilities.CM_GS(data, o);
 				break;
 			case 2: // gscm
-				Analysis.GS_CM(data, o);
+				Utilities.GS_CM(data, o);
 				break;
 			case 3: // mult
-				Analysis.Mult(data, o, var);
+				Utilities.Mult(data, o, var);
 				break;
 			case 4: // redigit
-				err = Analysis.Redigitize(data, o, var);
+				err = Utilities.Redigitize(data, o, var);
 				break;
 			case 5: // peapick
-				Analysis.Peapick(data, o, var * Analysis.Gcmss);
+				Utilities.Peapick(data, o, var * Analysis.Gcmss);
 				break;
 		}
 
