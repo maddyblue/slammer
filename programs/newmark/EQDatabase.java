@@ -31,7 +31,6 @@ public class EQDatabase
 
 	public EQDatabase() throws Exception
 	{
-		System.setProperty("derby.system.home", "database");
 		Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
 		connection = java.sql.DriverManager.getConnection(url);
 	}

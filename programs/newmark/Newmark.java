@@ -35,6 +35,8 @@ public class Newmark
 	{
 		try
 		{
+			System.setProperty("derby.system.home", "database");
+
 			if(args.length < 1)
 			{
 				args = new String[] {""};
@@ -79,7 +81,16 @@ public class Newmark
 				Utils.getDB().runUpdate("drop table grp");
 				Utils.closeDB();
 			}
-			else if(args[0].equals("create"))
+			else if(args[0].equals("createdb"))
+			{
+				Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
+				java.sql.Connection connection = java.sql.DriverManager.getConnection(EQDatabase.url + ";create=true");
+				connection.close();
+				try {
+					java.sql.DriverManager.getConnection(EQDatabase.url + ";shutdown=true");
+				} catch(Exception e) {}
+			}
+			else if(args[0].equals("createtable"))
 			{
 				Utils.getDB().runUpdate("create table data ("
 					+ "id        integer      not null generated always as identity primary key,"
@@ -218,6 +229,54 @@ public class Newmark
 
 				fr.close();
 				Utils.closeDB();
+			}
+			else if(args[0].equals("importsql"))
+			{
+				FileReader fr = new FileReader(".." + File.separatorChar + "records" + File.separatorChar + "eq.sql");
+				String s = "";
+				String cur[] = new String[17];
+				int j = 0;
+				int reslen;
+				char c;
+				String q, path;
+
+				Utils.getDB().runUpdate("delete from data");
+
+				while(fr.ready())
+				{
+					c = (char)fr.read();
+
+					switch(c)
+					{
+						case '\r':
+							break;
+						case '\t':
+							cur[j] = Utils.addQuote(s);
+							j++;
+							s = "";
+							break;
+						case '\n':
+						{
+							cur[j] = Utils.addQuote(s);
+							s = "";
+							j = 0;
+
+							path = ".." + File.separatorChar + "records" + File.separator + cur[0] + File.separator + cur[1];
+
+							q = "insert into data (eq, record, digi_int, mom_mag, arias, dobry, pga, mean_per, epi_dist, foc_dist, rup_dist, foc_mech, location, owner, latitude, longitude, class, change, path, select1, analyze, select2) values ('" + cur[0] + "', '" + cur[1] + "', " + cur[2] + ", " + Utils.nullify(cur[3]) + ", " + cur[4] + ", " + cur[5] + ", " + cur[6] + ", " + cur[7] + ", " + Utils.nullify(cur[8]) + ", " + Utils.nullify(cur[9]) + ", " + Utils.nullify(cur[10]) + ", " + cur[11] + ", '" + cur[12] + "', '" + cur[13] + "', " + Utils.nullify(cur[14]) + ", " + Utils.nullify(cur[15]) + ", " + cur[16] + ", " + 0 + ", '" + path + "', 0, 0, 0)";
+							Utils.getDB().runUpdate(q);
+							System.out.println(q);
+
+							break;
+						}
+						default:
+							s += (char)c;
+							break;
+					}
+				}
+
+				Utils.closeDB();
+				fr.close();
 			}
 			else
 			{
