@@ -177,7 +177,7 @@ public class ImportRecords extends Analysis
 
 		n = array.length;
 		ln = (int)(Math.log((double)n) / Math.log(2) + 0.5);
-		nv2 = n / 2;
+		nv2 = n / 2.0;
 		j = 1;
 
 		for (i = 1; i < n; i++ )
@@ -197,7 +197,7 @@ public class ImportRecords extends Analysis
 			while (k < j)
 			{
 				j = j - k;
-				k = k / 2;
+				k = k / 2.0;
 			}
 
 			j = j + k;
@@ -206,7 +206,7 @@ public class ImportRecords extends Analysis
 		for (l = 1; l <= ln; l++) /* loops thru stages */
 		{
 			le = (int)(Math.exp((double)l * Math.log(2)) + 0.5);
-			le1 = le / 2;
+			le1 = le / 2.0;
 			u_r = 1.0;
 			u_i = 0.0;
 			w_r =  Math.cos(Math.PI / (double)le1);
