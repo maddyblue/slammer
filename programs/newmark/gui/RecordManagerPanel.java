@@ -75,7 +75,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 
 		table = new NewmarkTable(false);
 
-		modFile.setEnabled(false);
+		modFile.setEditable(false);
 
 		ListSelectionModel recordSelect = table.getSelectionModel();
 		recordSelect.addListSelectionListener(new ListSelectionListener()
@@ -542,17 +542,17 @@ class RecordManagerPanel extends JPanel implements ActionListener
 
 	public void recordEnable(boolean b)
 	{
-		modEq.setEnabled(b);
-		modRec.setEnabled(b);
-		modDI.setEnabled(b);
-		modLoc.setEnabled(b);
-		modMag.setEnabled(b);
-		modOwn.setEnabled(b);
-		modEpi.setEnabled(b);
-		modLat.setEnabled(b);
-		modFoc.setEnabled(b);
-		modLng.setEnabled(b);
-		modRup.setEnabled(b);
+		modEq.setEditable(b);
+		modRec.setEditable(b);
+		modDI.setEditable(b);
+		modLoc.setEditable(b);
+		modMag.setEditable(b);
+		modOwn.setEditable(b);
+		modEpi.setEditable(b);
+		modLat.setEditable(b);
+		modFoc.setEditable(b);
+		modLng.setEditable(b);
+		modRup.setEditable(b);
 		modSite.setEnabled(b);
 		modMech.setEnabled(b);
 		save.setEnabled(b);
