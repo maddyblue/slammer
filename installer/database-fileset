@@ -1128,10 +1128,8 @@ org/apache/derby/impl/store/raw/log/LogCounter.class
 org/apache/derby/impl/store/raw/log/LogRecord.class
 org/apache/derby/impl/store/raw/log/LogToFile.class
 org/apache/derby/impl/store/raw/log/ReadOnly.class
-org/apache/derby/impl/store/raw/log/SaveLWMOperation.class
 org/apache/derby/impl/store/raw/log/Scan.class
 org/apache/derby/impl/store/raw/log/StreamLogScan.class
-org/apache/derby/impl/store/raw/log/TruncationPoint.class
 org/apache/derby/impl/store/raw/xact/BeginXact.class
 org/apache/derby/impl/store/raw/xact/ContainerLocking2.class
 org/apache/derby/impl/store/raw/xact/ContainerLocking3.class
@@ -1234,6 +1232,7 @@ org/apache/derby/vti/DeferModification.class
 org/apache/derby/vti/IFastPath.class
 org/apache/derby/vti/IQualifyable.class
 org/apache/derby/vti/Pushable.class
+org/apache/derby/vti/UpdatableVTITemplate.class
 org/apache/derby/vti/VTICosting.class
 org/apache/derby/vti/VTIEnvironment.class
 org/apache/derby/vti/VTIMetaDataTemplate.class

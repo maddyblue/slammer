@@ -28,7 +28,6 @@ foreach($list as $file)
 }
 
 $list = array("california", "otherus", "international", "chichi");
-$list = array("international");
 
 foreach($list as $file)
 {
