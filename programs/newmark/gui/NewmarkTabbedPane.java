@@ -41,6 +41,7 @@ public class NewmarkTabbedPane extends JTabbedPane
 	public UtilitiesPanel Utilities;
 	public RecordManagerPanel RecordManager;
 	public AddRecordsPanel AddRecords;
+	public GraphingOptionsPanel GraphingOptions;
 
 	public static Help help = null;
 
@@ -59,6 +60,7 @@ public class NewmarkTabbedPane extends JTabbedPane
 		Parameters = new ParametersPanel(this);
 		RecordManager = new RecordManagerPanel(this);
 		AddRecords = new AddRecordsPanel(this);
+		GraphingOptions = new GraphingOptionsPanel(this);
 
 		if(help == null)
 		{
@@ -74,6 +76,7 @@ public class NewmarkTabbedPane extends JTabbedPane
 
 		Manager.addTab("Manage Records", RecordManager);
 		Manager.addTab("Add Records", AddRecords);
+		Manager.addTab("Graphing Options", GraphingOptions);
 
 		addTab("Getting Started", GettingStarted);
 		addTab("Rigorous Analysis", Rigorous);

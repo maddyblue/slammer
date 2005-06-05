@@ -45,9 +45,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 	NewmarkTable table;
 
 	JComboBox eqList = new JComboBox();
-	JButton graphTime = new JButton("t");
-	JButton graphFourier = new JButton("f");
-	JButton graphSpectra = new JButton("s");
+	JButton graph = new JButton("Graph");
 	JButton delete = new JButton("Delete selected record(s) from database");
 
 	JButton save = new JButton("Save changes");
@@ -103,14 +101,8 @@ class RecordManagerPanel extends JPanel implements ActionListener
 		delete.setActionCommand("delete");
 		delete.addActionListener(this);
 
-		graphTime.setActionCommand("graphTime");
-		graphTime.addActionListener(this);
-
-		graphFourier.setActionCommand("graphFourier");
-		graphFourier.addActionListener(this);
-
-		graphSpectra.setActionCommand("graphSpectra");
-		graphSpectra.addActionListener(this);
+		graph.setActionCommand("graph");
+		graph.addActionListener(this);
 
 		setLayout(new BorderLayout());
 		add(BorderLayout.NORTH, createNorthPanel());
@@ -130,9 +122,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 		panel.add(BorderLayout.WEST, GUIUtils.makeRecursiveLayoutRight(list));
 
 		list = new Vector();
-		list.add(graphTime);
-		list.add(graphFourier);
-		list.add(graphSpectra);
+		list.add(graph);
 		list.add(delete);
 		panel.add(BorderLayout.EAST, GUIUtils.makeRecursiveLayoutRight(list));
 
@@ -248,7 +238,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 				table.setModel(NewmarkTable.REFRESH);
 				recordClear();
 			}
-			else if(command.equals("graphTime") || command.equals("graphFourier") || command.equals("graphSpectra"))
+			else if(command.equals("graph"))
 			{
 				int row = table.getSelectedRow();
 				if(row == -1)
@@ -283,6 +273,10 @@ class RecordManagerPanel extends JPanel implements ActionListener
 				dat.reset();
 
 				String xAxis = null, yAxis = null, title = "";
+
+				if(parent.GraphingOptions.typeTime.isSelected()) command = "graphTime";
+				else if(parent.GraphingOptions.typeFourier.isSelected()) command = "graphFourier";
+				else if(parent.GraphingOptions.typeSpectra.isSelected()) command = "graphSpectra";
 
 				if(command.equals("graphTime"))
 				{
@@ -348,84 +342,50 @@ class RecordManagerPanel extends JPanel implements ActionListener
 
 					double df = 1.0 / ((double)(arr.length) * di);
 
-					dat = new DoubleList();
+					double current;
+					double freq = 0;
+					int step, i;
 
-					for(int i = 0; i < arr.length; i++)
-						dat.add(Math.sqrt(Math.pow(fft[i][0], 2) + Math.pow(fft[i][1], 2)));
-
-					// graph all direction changes and a few inbetween
-
-					Double val;
-					double last1 = 0, last2 = 0, current;
-					double diff1, diff2;
-					double freq = 0, fd;
-					int i = 0, skip = 3;
-
-					dat.reset();
-
-					// first point
-					if((val = dat.each()) != null)
+					for(i = 0; i < arr.length;)
 					{
-						i++;
-						// we can't have 0 in the graph, so start with the second data point
-						//xys.add(freq, val);
-						freq += df;
-						last2 = val.doubleValue();
-					}
+						// don't graph anything below 0.1 hz
+						if(freq > 0.1)
+							xys.add(freq, Math.sqrt(Math.pow(fft[i][0], 2) + Math.pow(fft[i][1], 2)));
 
-					// don't add the second point, but update the data
-					if((val = dat.each()) != null)
-					{
-						i++;
-						//xys.add(freq, val);
-						freq += df;
-						last1 = val.doubleValue();
-					}
+						// throw out 3/4 of the points above 10 hz
+						if(freq > 10.0)
+							step = 4;
+						else
+							step = 1;
 
-					while((val = dat.each()) != null)
-					{
-						i++;
-						fd = freq - df;
-						current = val.doubleValue();
-
-						diff1 = last1 - current;
-						diff2 = last1 - last2;
-
-						if(
-							(diff1 <= 0 && diff2 <= 0) ||
-							(diff1 >= 0 && diff2 >= 0) ||
-							((i % skip) == 0)
-						)
-						{
-							xys.add(fd, last1);
-						}
-
-						last2 = last1;
-						last1 = current;
-						freq += df;
+						i += step;
+						freq = i * df;
 					}
 				}
 				else if(command.equals("graphSpectra"))
 				{
-					title = "Absolute-Acceleration Response Spectra";
+					int index = parent.GraphingOptions.spectraCB.getSelectedIndex();
+
+					title = parent.GraphingOptions.spectraCB.getSelectedItem().toString() + " Response Spectra";
 					xAxis = "Period (s)";
-					yAxis = "Acceleration Response (cm/s/s)";
+					yAxis = "Response";
 					double[] arr = new double[dat.size()];
 
 					Double temp;
 					for(int i = 0; (temp = dat.each()) != null; i++)
 						arr[i] = temp.doubleValue();
 
-					double periodMax = 15.0;
-					double interval = 0.01;
-					double damp = 0.00;
+					double periodMax = Double.parseDouble(parent.GraphingOptions.spectraHigh.getText());
+					double interval = Double.parseDouble(parent.GraphingOptions.spectraIncr.getText());
+					double damp = Double.parseDouble(parent.GraphingOptions.spectraDamp.getText()) / 100.0;
+
 					double[] z;
 
 					// don't start with 0, LogarithmicAxis doesn't allow it
 					for(double p = interval; p < periodMax; p += interval)
 					{
 						z = ImportRecords.cmpmax(arr, 2.0 * Math.PI / p, damp, di);
-						xys.add(p, z[2]);
+						xys.add(p, z[index]);
 					}
 				}
 
