@@ -449,7 +449,7 @@ class ResultsPanel extends JPanel implements ActionListener
 									total[RB] += avg.doubleValue();
 									row[RBC] = avg;
 
-									Analysis.xys.setName(eq + " - " + record);
+									Analysis.xys.setKey(eq + " - " + record);
 									xysc[RB].addSeries(Analysis.xys);
 
 									for(j = 0; j < dataVect[RB].size() && ((Double)dataVect[RB].elementAt(j)).doubleValue() < avg.doubleValue(); j++);
@@ -474,7 +474,7 @@ class ResultsPanel extends JPanel implements ActionListener
 									total[DC] += avg.doubleValue();
 									row[DCC] = avg;
 
-									Analysis.xys.setName(eq + " - " + record);
+									Analysis.xys.setKey(eq + " - " + record);
 									xysc[DC].addSeries(Analysis.xys);
 
 									for(j = 0; j < dataVect[DC].size() && ((Double)dataVect[DC].elementAt(j)).doubleValue() < avg.doubleValue(); j++);
@@ -499,7 +499,7 @@ class ResultsPanel extends JPanel implements ActionListener
 									total[CP] += avg.doubleValue();
 									row[CPC] = avg;
 
-									Analysis.xys.setName(eq + " - " + record);
+									Analysis.xys.setKey(eq + " - " + record);
 									xysc[CP].addSeries(Analysis.xys);
 
 									for(j = 0; j < dataVect[CP].size() && ((Double)dataVect[CP].elementAt(j)).doubleValue() < avg.doubleValue(); j++);
