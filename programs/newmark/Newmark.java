@@ -182,12 +182,12 @@ public class Newmark
 							}
 
 							di = Double.parseDouble(cur[9]);
-							/*data = new DoubleList(path);
+							data = new DoubleList(path);
 							if(data.bad())
 							{
 								GUIUtils.popupError("Invalid data in file " + path + " at point " + data.badEntry() + ".");
 								continue;
-							}*/
+							}
 							q = "insert into data " +
 								"(eq, record, digi_int, mom_mag, arias, dobry, pga, mean_per, epi_dist, foc_dist, rup_dist, foc_mech, location, owner, latitude, longitude, class, change, path, select1, analyze, select2)" +
 								" values ( " +
@@ -195,11 +195,10 @@ public class Newmark
 								"'" + cur[3] + "'," +
 								"" + cur[9] + "," +
 								"" + cur[1] + "," +
-								//"" + ImportRecords.Arias(data, di) + "," +
-								//"" + ImportRecords.Dobry(data, di) + "," +
-								//"" + ImportRecords.PGA(data) + "," +
-								//"" + ImportRecords.MeanPer(data, di) + "," +
-								"0, 0, 0, 0," +
+								"" + ImportRecords.Arias(data, di) + "," +
+								"" + ImportRecords.Dobry(data, di) + "," +
+								"" + ImportRecords.PGA(data) + "," +
+								"" + ImportRecords.MeanPer(data, di) + "," +
 								"" + cur[10] + "," +
 								"" + cur[11] + "," +
 								"" + cur[12] + "," +
