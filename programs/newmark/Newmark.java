@@ -55,11 +55,10 @@ public class Newmark
 					return;
 				}
 
-				for(int i = 1; i < res.length; i++)
-				{
-					if((i % 20) == 0)
-						System.out.println(i);
+				int i;
 
+				for(i = 1; i < res.length; i++)
+				{
 					if(i > 1)
 						fw.write("\n");
 
@@ -71,6 +70,8 @@ public class Newmark
 						fw.write(Utils.shorten(res[i][j]));
 					}
 				}
+
+				System.out.println(i - 1);
 
 				fw.close();
 				Utils.closeDB();
