@@ -23,29 +23,29 @@ comp.0.real-size=3693
 comp.0.fileset=newmark-program
 
 comp.1.name=International records
-comp.1.disk-size=11200
-comp.1.real-size=10981
+comp.1.disk-size=13096
+comp.1.real-size=12859
 comp.1.fileset=newmark-eq-international
 comp.1.sql=eq-international.sql
 comp.1.sqllen=115
 
 comp.2.name=Other US records
-comp.2.disk-size=12088
-comp.2.real-size=11728
+comp.2.disk-size=16480
+comp.2.real-size=16100
 comp.2.fileset=newmark-eq-otherus
 comp.2.sql=eq-otherus.sql
 comp.2.sqllen=176
 
 comp.3.name=California records
-comp.3.disk-size=67936
-comp.3.real-size=65472
+comp.3.disk-size=72456
+comp.3.real-size=69968
 comp.3.fileset=newmark-eq-california
 comp.3.sql=eq-california.sql
 comp.3.sqllen=1239
 
 comp.4.name=Chi-Chi, Taiwan earthquake records
-comp.4.disk-size=146624
-comp.4.real-size=145347
+comp.4.disk-size=171272
+comp.4.real-size=169974
 comp.4.fileset=newmark-eq-chichi
 comp.4.sql=eq-chichi.sql
 comp.4.sqllen=630
