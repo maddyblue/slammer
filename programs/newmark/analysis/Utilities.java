@@ -42,12 +42,19 @@ public class Utilities extends Analysis
 
 	public static String Mult(DoubleList data, FileWriter ofile, final double value) throws IOException
 	{
+		return Shift(data, ofile, value, 0);
+	}
+
+	// first add shift to every value, then multiply by value
+	public static String Shift(DoubleList data, FileWriter ofile, final double value, final double shift) throws IOException
+	{
 		Double val;
 		double temp;
 		data.reset();
 		while((val = data.each()) != null)
 		{
 			temp = val.doubleValue();
+			temp += shift;
 			temp *= value;
 			ofile.write(Double.toString(temp));
 			ofile.write('\n');

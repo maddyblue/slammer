@@ -42,7 +42,7 @@ public class Newmark
 				args = new String[] {""};
 			}
 
-			if(args[0].equals("getsql"))
+			if(args[0].equals("getsql")) // {{{
 			{
 
 				FileWriter fw = new FileWriter(".." + File.separatorChar + "records" + File.separatorChar + "eq.sql");
@@ -75,14 +75,14 @@ public class Newmark
 
 				fw.close();
 				Utils.closeDB();
-			}
-			else if(args[0].equals("drop"))
+			} // }}}
+			else if(args[0].equals("drop")) // {{{
 			{
 				Utils.getDB().runUpdate("drop table data");
 				Utils.getDB().runUpdate("drop table grp");
 				Utils.closeDB();
-			}
-			else if(args[0].equals("createdb"))
+			} // }}}
+			else if(args[0].equals("createdb")) // {{{
 			{
 				Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
 				java.sql.Connection connection = java.sql.DriverManager.getConnection(EQDatabase.url + ";create=true");
@@ -90,8 +90,8 @@ public class Newmark
 				try {
 					java.sql.DriverManager.getConnection(EQDatabase.url + ";shutdown=true");
 				} catch(Exception e) {}
-			}
-			else if(args[0].equals("createtable"))
+			} // }}}
+			else if(args[0].equals("createtable")) // {{{
 			{
 				Utils.getDB().runUpdate("create table data ("
 					+ "id        integer      not null generated always as identity primary key,"
@@ -124,8 +124,8 @@ public class Newmark
 					+ "name      varchar(100) not null,"
 					+ "analyze   smallint     not null"
 					+ ")");
-			}
-			else if(args[0].equals("import"))
+			} // }}}
+			else if(args[0].equals("import")) // {{{
 			{
 				FileReader fr = new FileReader(".." + File.separatorChar + "records" + File.separatorChar + "EQdata.txt");
 				String s = "";
@@ -140,7 +140,7 @@ public class Newmark
 
 				Utils.getDB().runUpdate("delete from data");
 
-				while(fr.ready())
+				do
 				{
 					c = (char)fr.read();
 
@@ -168,7 +168,7 @@ public class Newmark
 							break;
 						case '\n':
 						{
-							cur[i] = s;
+							cur[i] = Utils.nullify(s);
 							s = "";
 							i = 0;
 
@@ -225,12 +225,12 @@ public class Newmark
 							s += (char)c;
 							break;
 					}
-				}
+				}	while(fr.ready());
 
 				fr.close();
 				Utils.closeDB();
-			}
-			else if(args[0].equals("importsql"))
+			} // }}}
+			else if(args[0].equals("importsql")) // {{{
 			{
 				FileReader fr = new FileReader(".." + File.separatorChar + "records" + File.separatorChar + "eq.sql");
 				String s = "";
@@ -242,7 +242,7 @@ public class Newmark
 
 				Utils.getDB().runUpdate("delete from data");
 
-				while(fr.ready())
+				do
 				{
 					c = (char)fr.read();
 
@@ -273,12 +273,111 @@ public class Newmark
 							s += (char)c;
 							break;
 					}
-				}
+				}	while(fr.ready());
 
 				Utils.closeDB();
 				fr.close();
-			}
-			else
+			} // }}}
+			else if(args[0].equals("importjapan")) // {{{
+			{
+				String inpath = "/home/dolmant/Keepers";
+				String outpath = "/home/dolmant/newmark/trunk/records";
+				String path;
+				File d = new File(inpath);
+				File f[] = d.listFiles();
+				String cur[] = new String[13];
+				double di;
+				DoubleList data;
+				Double db;
+				String eq = "Niigata-Ken-Chuetsu, Japan 2004";
+				BufferedReader br;
+				FileWriter fw = new FileWriter(outpath + "/EQdata-japan.txt");
+				String line[];
+
+				cur[0] = eq;
+
+				cur[10] = ""; // epi dist
+				cur[11] = ""; // foc dist
+				cur[12] = ""; // rup dist
+				cur[2] = "0"; // foc mech
+				cur[4] = ""; // location
+				cur[5] = ""; // owner
+				cur[8] = "0"; // class
+
+				for(int i = 0; i < f.length; i++)
+				{
+					br = new BufferedReader(new FileReader(f[i]));
+
+					br.readLine();
+					br.readLine();
+					br.readLine();
+					br.readLine();
+
+					line = br.readLine().split("[ \t]+"); // mag
+					cur[1] = line[1];
+
+					line = br.readLine().split("[ \t]+"); // station name
+					cur[3] = line[2];
+
+					line = br.readLine().split("[ \t]+"); // lat
+					cur[6] = line[2];
+
+					line = br.readLine().split("[ \t]+"); // long
+					cur[7] = line[2];
+
+					br.readLine();
+					br.readLine();
+
+					line = br.readLine().split("[ \t]+"); // di
+					di = 1.0 / Double.parseDouble(line[2].substring(0, 3));
+					cur[9] = Double.toString(di);
+
+					br.readLine();
+
+					line = br.readLine().split("[ \t]+"); // dir
+					path = cur[3] + "-";
+
+					if(line[1].equals("E-W"))
+						path += "090";
+					else
+						path += "000";
+
+					cur[3] = path;
+					path = outpath + "/" + eq + "/" + path;
+
+					data = new DoubleList(f[i].getAbsolutePath(), 17);
+					if(data.bad())
+					{
+						GUIUtils.popupError("Invalid data in file " + path + " at point " + data.badEntry() + ".");
+						continue;
+					}
+
+					for(int j = 0; j < cur.length; j++)
+					{
+						if(j > 0)
+							fw.write("\t");
+
+						fw.write(cur[j]);
+					}
+
+					fw.write("\n");
+
+					data.reset();
+
+					double avg = 0;
+					while((db = data.each()) != null)
+						avg += db.doubleValue();
+
+					avg /= data.size();
+
+					Utilities.Shift(data, new FileWriter(path), 2000.0 / 8388608.0, -avg);
+
+					System.out.println(path);
+				}
+
+				fw.close();
+			} // }}}
+			else // {{{
 			{
 				SplashScreen splash = new SplashScreen();
 
@@ -325,7 +424,7 @@ public class Newmark
 
 				frame.setVisible(true);
 
-			}
+			} // }}}
 		}
 		catch(Exception ex)
 		{
