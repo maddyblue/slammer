@@ -52,12 +52,6 @@ public class DoubleList
 	private int length;
 	private int bad = 0;
 
-	public DoubleList()
-	{
-		head = new DoubleListElement();
-		end = current = head;
-	}
-
 	public DoubleList(String fname) throws IOException
 	{
 		this(fname, 0);
@@ -99,14 +93,6 @@ public class DoubleList
 		head = head.next;
 		end = current;
 		current = head;
-	}
-
-	public void add(double val)
-	{
-		current.next = new DoubleListElement(new Double(val));
-		current.next.prev = current;
-		current = current.next;
-		length++;
 	}
 
 	private String nextDouble(FileReader file) throws IOException
