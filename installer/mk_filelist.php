@@ -105,6 +105,7 @@ $eqs = array(
 	"Kobe, Japan 1995",
 	"Kocaeli, Turkey 1999",
 	"Nahanni, Canada 1985",
+	"Niigata-Ken-Chuetsu, Japan 2004",
 	"Tabas, Iran 1978"
 );
 $file = "newmark-eq-international";

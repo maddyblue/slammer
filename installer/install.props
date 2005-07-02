@@ -23,8 +23,8 @@ comp.0.real-size=3693
 comp.0.fileset=newmark-program
 
 comp.1.name=International records
-comp.1.disk-size=13096
-comp.1.real-size=12859
+comp.1.disk-size=70428
+comp.1.real-size=69883
 comp.1.fileset=newmark-eq-international
 comp.1.sql=eq-international.sql
 comp.1.sqllen=115
