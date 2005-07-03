@@ -85,7 +85,7 @@ public class ImportRecords extends Analysis
 
 	public static String PGA(DoubleList data)
 	{
-		return fmtFour.format(FindMax(data) / Gcmss); // store in g's, but expect to be in cm/s/s
+		return fmtThree.format(FindMax(data) / Gcmss); // store in g's, but expect to be in cm/s/s
 	}
 
 	private static double FindMax(DoubleList data)
