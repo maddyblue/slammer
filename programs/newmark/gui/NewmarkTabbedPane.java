@@ -68,8 +68,8 @@ public class NewmarkTabbedPane extends JTabbedPane
 		}
 
 		Rigorous.addTab("Step 1: Select Records", SelectRecords);
-		Rigorous.addTab("Step 2: Perform Analysis", Parameters);
-		Rigorous.addTab("Step 3: View Results", Results);
+		Rigorous.addTab("Step 2: Select Analyses", Parameters);
+		Rigorous.addTab("Step 3: Perform Analyses and View Results", Results);
 
 		Simplified.addTab("Rigid-Block Analysis", RigidBlockSimplified);
 		Simplified.addTab("Decoupled Analysis", DecoupledSimplified);

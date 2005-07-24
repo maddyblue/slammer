@@ -36,7 +36,7 @@ import newmark.*;
 class ParametersTableModel extends DefaultTableModel implements TableModelListener
 {
 	String name;
-	String right = "Crit. Accel. (g)";
+	String right = "Critical Acceleration (g)";
 
 	public ParametersTableModel(String left, String name)
 	{

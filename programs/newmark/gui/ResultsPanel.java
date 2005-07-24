@@ -269,7 +269,6 @@ class ResultsPanel extends JPanel implements ActionListener
 							{
 								Double tempd;
 
-								/*
 								tempd = (Double)Utils.checkNum(parent.Parameters.paramUwgt.getText(), ParametersPanel.stringUwgt + " field", null, false, null, null, false, null, false);
 								if(tempd == null)
 								{
@@ -278,8 +277,6 @@ class ResultsPanel extends JPanel implements ActionListener
 								}
 								else
 									uwgt = tempd.doubleValue();
-								*/
-								uwgt = 1;
 
 								tempd = (Double)Utils.checkNum(parent.Parameters.paramHeight.getText(), ParametersPanel.stringHeight + " field", null, false, null, null, false, null, false);
 								if(tempd == null)
@@ -333,7 +330,7 @@ class ResultsPanel extends JPanel implements ActionListener
 								// metric
 								if(paramUnit)
 								{
-									//uwgt /= Analysis.M3toCM3;
+									uwgt /= Analysis.M3toCM3;
 									height *= Analysis.MtoCM;
 									vs *= Analysis.MtoCM;
 									vr *= Analysis.MtoCM;
@@ -341,7 +338,7 @@ class ResultsPanel extends JPanel implements ActionListener
 								// english
 								else
 								{
-									//uwgt /= Analysis.FT3toIN3;
+									uwgt /= Analysis.FT3toIN3;
 									height *= Analysis.FTtoIN;
 									vs *= Analysis.FTtoIN;
 									vr *= Analysis.FTtoIN;

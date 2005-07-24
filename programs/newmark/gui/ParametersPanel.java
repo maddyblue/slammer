@@ -53,7 +53,7 @@ class ParametersPanel extends JPanel implements ActionListener
 	public JTextField CAconstTF = new JTextField();
 
 	public ParametersTableModel dispTableModel = new ParametersTableModel("Displacement (cm)", "Displacement");
-	ParametersTable dispTable = new ParametersTable(dispTableModel);
+	JTable dispTable = new JTable(dispTableModel);
 	JButton dispAddRow = new JButton("Add Row");
 	JButton dispDelRow = new JButton("Delete Last Row");
 	JScrollPane dispPane;
@@ -160,18 +160,13 @@ class ParametersPanel extends JPanel implements ActionListener
 		next.setActionCommand("next");
 		next.addActionListener(this);
 
-		setLayout(new BorderLayout());
-
-		add(BorderLayout.CENTER, createCenterPanel());
-		add(BorderLayout.SOUTH, createSouthPanel());
+		createPanel();
 	}
 
-	private JPanel createCenterPanel()
+	private void createPanel()
 	{
-		JPanel panel = new JPanel();
-
 		GridBagLayout gridbag = new GridBagLayout();
-		panel.setLayout(gridbag);
+		setLayout(gridbag);
 
 		GridBagConstraints c = new GridBagConstraints();
 		JLabel label;
@@ -184,81 +179,73 @@ class ParametersPanel extends JPanel implements ActionListener
 
 		c.gridx = x++;
 		c.gridy = y++;
+		label = new JLabel("Choose Analysis Properties:");
+		label.setFont(GUIUtils.headerFont);
+		c.gridwidth = 5;
+		gridbag.setConstraints(label, c);
+		add(label);
+		c.gridwidth = 1;
+
+		x = 0;
+		c.gridy = y++;
+		c.gridx = x++;
+		label = new JLabel("     ");
+		gridbag.setConstraints(label, c);
+		add(label);
+
+		c.gridx = x++;
 		label = new JLabel("Units:");
 		gridbag.setConstraints(label, c);
-		panel.add(label);
+		add(label);
 
 		c.gridx = x++;
 		gridbag.setConstraints(unitMetric, c);
-		panel.add(unitMetric);
+		add(unitMetric);
 
 		c.gridx = x++;
 		gridbag.setConstraints(unitEnglish, c);
-		panel.add(unitEnglish);
+		add(unitEnglish);
 
-		x = 0;
-
+		x = 1;
 		c.gridx = x++;
 		c.gridy = y++;
 		label = new JLabel("Scaling:");
 		gridbag.setConstraints(label, c);
-		panel.add(label);
+		add(label);
 
 		c.gridx = x++;
 		gridbag.setConstraints(scalePGAoff, c);
-		panel.add(scalePGAoff);
+		add(scalePGAoff);
 
 		c.gridx = x++;
 		gridbag.setConstraints(scalePGAon, c);
-		panel.add(scalePGAon);
+		add(scalePGAon);
 
 		c.gridx = x++;
 		gridbag.setConstraints(scalePGAval, c);
-		panel.add(scalePGAval);
+		add(scalePGAval);
 
-		x = 0;
-
-		c.gridx = x++;
-		c.gridy = y++;
-		label = new JLabel("Slope Displacement:");
-		gridbag.setConstraints(label, c);
-		panel.add(label);
-
-		c.gridx = x++;
-		gridbag.setConstraints(downSlope, c);
-		panel.add(downSlope);
-
-		c.gridx = x++;
-		gridbag.setConstraints(dualSlope, c);
-		panel.add(dualSlope);
-
-		c.gridx = x++;
-		gridbag.setConstraints(thrustAngle, c);
-		panel.add(thrustAngle, c);
-
-		x = 0;
-
+		x = 1;
 		c.gridx = x++;
 		c.gridy = y++;
 		label = new JLabel("Critical Acceleration:");
 		gridbag.setConstraints(label, c);
-		panel.add(label);
+		add(label);
 
 		c.gridx = x++;
 		gridbag.setConstraints(CAconst, c);
-		panel.add(CAconst);
+		add(CAconst);
 
 		c.gridx = x++;
 		gridbag.setConstraints(CAdisp, c);
-		panel.add(CAdisp);
+		add(CAdisp);
 
-		x = 1;
-
+		x = 2;
 		c.gridx = x++;
 		c.gridy = y++;
 		c.fill = GridBagConstraints.HORIZONTAL;
 		gridbag.setConstraints(CAconstTF, c);
-		panel.add(CAconstTF);
+		add(CAconstTF);
 
 		c.gridx = x++;
 		c.weighty = 1;
@@ -266,7 +253,7 @@ class ParametersPanel extends JPanel implements ActionListener
 		c.gridwidth = 2;
 		c.fill = GridBagConstraints.BOTH;
 		gridbag.setConstraints(dispPane, c);
-		panel.add(dispPane);
+		add(dispPane);
 
 		JPanel jp = new JPanel();
 		jp.setLayout(new GridLayout(1, 2));
@@ -276,151 +263,128 @@ class ParametersPanel extends JPanel implements ActionListener
 		c.gridy = y++;
 		c.weightx = 0;
 		c.weighty = 0;
+		c.fill = GridBagConstraints.HORIZONTAL;
 		gridbag.setConstraints(jp, c);
-		panel.add(jp);
+		add(jp);
 
-		return panel;
-	}
-
-	private JPanel createSouthPanel()
-	{
-		JPanel panel = new JPanel();
-
-		panel.setBorder(BorderFactory.createMatteBorder(1, 0, 0, 0, Color.BLACK));
-
-		GridBagLayout gridbag = new GridBagLayout();
-		panel.setLayout(gridbag);
-
-		GridBagConstraints c = new GridBagConstraints();
-		JLabel label;
-
-		int y = 0;
-		int x = 0;
+		x = 0;
+		c.gridx = x++;
+		c.gridy = y++;
+		label = new JLabel("Choose Types of Analysis:");
+		label.setFont(GUIUtils.headerFont);
+		label.setBorder(BorderFactory.createMatteBorder(3, 0, 0, 0, Color.BLACK));
+		c.gridwidth = 5;
+		c.anchor = GridBagConstraints.NORTHWEST;
+		gridbag.setConstraints(label, c);
+		add(label);
+		c.gridwidth = 1;
 
 		c.gridx = x++;
 		c.gridy = y++;
-		c.weightx = 1;
-		c.anchor = GridBagConstraints.CENTER;
 		gridbag.setConstraints(typeRigid, c);
-		panel.add(typeRigid);
+		add(typeRigid);
 
-		// i can't get borders to show around JCheckBoxes, so make a fake one
-		label = new JLabel(" ");
-		label.setBorder(BorderFactory.createMatteBorder(0, 1, 0, 0, Color.BLACK));
-		c.gridx = x++;
-		c.gridheight = 7;
-		c.weightx = 0;
-		c.fill = GridBagConstraints.VERTICAL;
-		gridbag.setConstraints(label, c);
-		panel.add(label);
-		c.gridheight = 1;
-		c.fill = GridBagConstraints.NONE;
-
-		c.gridx = x; x += 2;
-		c.weightx = 2;
-		c.gridwidth = 2;
-		gridbag.setConstraints(typeDecoupled, c);
-		panel.add(typeDecoupled);
-
-		c.gridx = x++;
-		c.weightx = 0;
-		c.gridwidth = 1;
-		label = new JLabel(" ");
-		label.setBorder(BorderFactory.createMatteBorder(0, 1, 0, 0, Color.BLACK));
-		gridbag.setConstraints(label, c);
-		panel.add(label);
+		jp = new JPanel();
+		label = new JLabel("Slope Displacement:");
+		jp.add(label);
+		jp.add(downSlope);
+		jp.add(dualSlope);
+		jp.add(thrustAngle);
 
 		c.gridx = x;
-		c.weightx = 2;
-		c.gridwidth = 2;
+		c.gridwidth = 3;
+		gridbag.setConstraints(jp, c);
+		add(jp);
+		c.gridwidth = 1;
+
+		x = 1;
+		c.gridx = x;
+		c.gridy = y++;
+		c.gridwidth = 4;
+		jp = new JPanel();
+		jp.setBorder(BorderFactory.createMatteBorder(1, 0, 0, 0, Color.BLACK));
+		gridbag.setConstraints(jp, c);
+		add(jp);
+		c.gridwidth = 1;
+
+		c.gridy = y++;
 		gridbag.setConstraints(typeCoupled, c);
-		panel.add(typeCoupled);
+		add(typeCoupled);
+
+		c.gridy = y--;
+		gridbag.setConstraints(typeDecoupled, c);
+		add(typeDecoupled);
 
 		x = 2;
-
-		c.weightx = 0;
+		c.gridy = y++;
+		c.gridx = x++;
 		c.fill = GridBagConstraints.NONE;
-
-		/*
-		c.anchor = GridBagConstraints.EAST;
-		c.gridx = x; x += 3;
-		c.gridy = y++;
 		gridbag.setConstraints(labelUwgt, c);
-		panel.add(labelUwgt);
+		add(labelUwgt, c);
 
-		c.gridx = x; x -= 3;
-		c.anchor = GridBagConstraints.WEST;
+		c.gridx = x--;
 		gridbag.setConstraints(paramUwgt, c);
-		panel.add(paramUwgt);
-		*/
+		add(paramUwgt, c);
 
 		c.gridy = y++;
-		c.gridx = x; x += 3;
-		c.anchor = GridBagConstraints.EAST;
+		c.gridx = x++;
+		c.fill = GridBagConstraints.NONE;
 		gridbag.setConstraints(labelHeight, c);
-		panel.add(labelHeight, c);
+		add(labelHeight, c);
 
-		c.gridx = x; x -= 3;
-		c.anchor = GridBagConstraints.WEST;
+		c.gridx = x--;
 		gridbag.setConstraints(paramHeight, c);
-		panel.add(paramHeight, c);
+		add(paramHeight, c);
 
 		c.gridy = y++;
-		c.gridx = x; x += 3;
-		c.anchor = GridBagConstraints.EAST;
+		c.gridx = x++;
+		c.fill = GridBagConstraints.NONE;
 		gridbag.setConstraints(labelVs, c);
-		panel.add(labelVs, c);
+		add(labelVs, c);
 
-		c.gridx = x; x -= 3;
-		c.anchor = GridBagConstraints.WEST;
+		c.gridx = x--;
 		gridbag.setConstraints(paramVs, c);
-		panel.add(paramVs, c);
+		add(paramVs, c);
 
 		c.gridy = y++;
-		c.gridx = x; x += 3;
-		c.anchor = GridBagConstraints.EAST;
+		c.gridx = x++;
+		c.fill = GridBagConstraints.NONE;
 		gridbag.setConstraints(labelDamp, c);
-		panel.add(labelDamp, c);
+		add(labelDamp, c);
 
-		c.gridx = x; x -= 3;
-		c.anchor = GridBagConstraints.WEST;
+		c.gridx = x--;
 		gridbag.setConstraints(paramDamp, c);
-		panel.add(paramDamp, c);
+		add(paramDamp, c);
 
 		c.gridy = y++;
-		c.gridx = x; x += 3;
-		c.anchor = GridBagConstraints.EAST;
+		c.gridx = x++;
+		c.fill = GridBagConstraints.NONE;
 		gridbag.setConstraints(labelBaseType, c);
-		panel.add(labelBaseType, c);
+		add(labelBaseType, c);
 
-		c.gridx = x; x -= 3;
-		c.anchor = GridBagConstraints.WEST;
+		c.gridx = x--;
 		gridbag.setConstraints(paramBaseType, c);
-		panel.add(paramBaseType, c);
+		add(paramBaseType, c);
 
 		c.gridy = y++;
-		c.gridx = x; x += 3;
-		c.anchor = GridBagConstraints.EAST;
+		c.gridx = x++;
+		c.fill = GridBagConstraints.NONE;
 		gridbag.setConstraints(labelVr, c);
-		panel.add(labelVr, c);
+		add(labelVr, c);
 
-		c.gridx = x; x -= 3;
-		c.anchor = GridBagConstraints.WEST;
+		c.gridx = x--;
 		gridbag.setConstraints(paramVr, c);
-		panel.add(paramVr, c);
+		add(paramVr, c);
 
 		c.gridy = y++;
-		c.gridx = x; x += 3;
-		c.anchor = GridBagConstraints.EAST;
+		c.gridx = x++;
+		c.fill = GridBagConstraints.NONE;
 		gridbag.setConstraints(labelSoilModel, c);
-		panel.add(labelSoilModel, c);
+		add(labelSoilModel, c);
 
-		c.gridx = x; x -= 3;
-		c.anchor = GridBagConstraints.WEST;
+		c.gridx = x--;
 		gridbag.setConstraints(paramSoilModel, c);
-		panel.add(paramSoilModel, c);
-
-		return panel;
+		add(paramSoilModel, c);
 	}
 
 	private void updateUnits()
@@ -428,25 +392,25 @@ class ParametersPanel extends JPanel implements ActionListener
 		Double d;
 		if(unitMetric.isSelected())
 		{
-			//labelUwgt.setText("<html>" + stringUwgt + " (kN/m<sup>3</sup>)</html>");
+			labelUwgt.setText("<html>" + stringUwgt + " (kN/m<sup>3</sup>)</html>");
 			labelHeight.setText(stringHeight + " (m)");
 			labelVs.setText(stringVs + " (m/s)");
 			labelVr.setText(stringVr + " (m/s)");
 			dispTableModel.setColName(stringDisp + " (cm)");
 
-			//try{d = new Double(paramUwgt.getText()); paramUwgt.setText(Analysis.fmtTwo.format(new Double(d.doubleValue() / Analysis.PCFtoKNM3)));} catch(Exception ex){}
+			try{d = new Double(paramUwgt.getText()); paramUwgt.setText(Analysis.fmtTwo.format(new Double(d.doubleValue() / Analysis.PCFtoKNM3)));} catch(Exception ex){}
 			try{d = new Double(paramHeight.getText()); paramHeight.setText(Analysis.fmtTwo.format(new Double(d.doubleValue() * Analysis.FTtoM)));} catch(Exception ex){}
 			try{d = new Double(paramVs.getText()); paramVs.setText(Analysis.fmtTwo.format(new Double(d.doubleValue() * Analysis.FTtoM)));} catch(Exception ex){}
 			try{d = new Double(paramVr.getText()); paramVr.setText(Analysis.fmtTwo.format(new Double(d.doubleValue() * Analysis.FTtoM)));} catch(Exception ex){}
 		}
 		else if(unitEnglish.isSelected())
 		{
-			//labelUwgt.setText("<html>" + stringUwgt + " (lb/ft<sup>3</sup>)</html>");
+			labelUwgt.setText("<html>" + stringUwgt + " (lb/ft<sup>3</sup>)</html>");
 			labelHeight.setText(stringHeight + " (ft)");
 			labelVs.setText(stringVs + " (ft/s)");
 			labelVr.setText(stringVr + " (ft/s)");
 			dispTableModel.setColName(stringDisp + " (in)");
-			//try{d = new Double(paramUwgt.getText()); paramUwgt.setText(Analysis.fmtTwo.format(new Double(d.doubleValue() * Analysis.PCFtoKNM3)));} catch(Exception ex){}
+			try{d = new Double(paramUwgt.getText()); paramUwgt.setText(Analysis.fmtTwo.format(new Double(d.doubleValue() * Analysis.PCFtoKNM3)));} catch(Exception ex){}
 			try{d = new Double(paramHeight.getText()); paramHeight.setText(Analysis.fmtTwo.format(new Double(d.doubleValue() / Analysis.FTtoM)));} catch(Exception ex){}
 			try{d = new Double(paramVs.getText()); paramVs.setText(Analysis.fmtTwo.format(new Double(d.doubleValue() / Analysis.FTtoM)));} catch(Exception ex){}
 			try{d = new Double(paramVr.getText()); paramVr.setText(Analysis.fmtTwo.format(new Double(d.doubleValue() / Analysis.FTtoM)));} catch(Exception ex){}
