@@ -1,9 +1,9 @@
-0,1Dec-Coup,Rigid-ElasticRock,LinEl-EqLin                                   
-0 1 0								
-120.0 100. 575.9 0.0898					
-0.02 1000 1.0 32.2						
-0 8								
-pac8.txt							
-1								
-0.0 0.1													
-2500				
+0,1Dec-Coup,Rigid-ElasticRock,LinEl-EqLin
+0 1 0
+120.0 100. 575.9 0.0898
+0.02 1000 1.0 32.2
+0 8
+pac8.txt
+1
+0.0 0.1
+2500

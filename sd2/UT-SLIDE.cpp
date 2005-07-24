@@ -121,18 +121,18 @@ int qq;
 	{
 		dampf=0.0;
 	}
-	else 
+	else
 	{
 		dampf=55.016*pow((vr/vs),-0.9904)/100;
 	}
 
-	
+
 ///////////////////////////////////////////
 
 
 	output1(filename2, descrip, rho, height, vs, vr, damp1, nmu, mu, disp, dampf, dv1, dv2, dv3);
 
-	
+
 	vs=vs1;
 
 // Read Acceleration time history
@@ -152,11 +152,11 @@ int qq;
 	Mtot=rho*height;
 	slide=0;
     qq=1;
-	
+
 	omega=pi*vs/(2*height);
 	L=-2*rho*height/pi*cos(pi);
 	M=rho*height/2;
-    
+
 damp=damp1+dampf;
 	n=100.0;
 	o=100.0;
@@ -169,25 +169,25 @@ damp=damp1+dampf;
 	{
 		d_eq(filename2, n, o, npts, g, scal, u1, udot1, udotdot1, u, udot, udotdot, acc1, acc2, ain, s, slide, omega, damp, rho, height, dt, avgacc, vs, gameff1, gamref, dampf, pi, uwgt, vr, dv2, vs1);
 	}
-	
-		
+
+
 	omega=pi*vs/(2*height);
 	if(dv2==0)
 	{
 		dampf=0.0;
 	}
-	else 
+	else
 	{
 		dampf=55.016*pow((vr/vs),-0.9904)/100;
 	}
-	
+
 // For Linear Elastic
-	
-	
-	
+
+
+
 	for(j=1;j<=npts;j++)
 	{
-		        
+
 		d_setupstate(j, g, scal, u1, udot1, udotdot1, u, udot, udotdot, acc1, acc2, ain, s,slide);
 
 		d_response(omega, damp, rho, height, j, dt, acc1, acc2, avgacc, u, udot, udotdot, u1, udot1, udotdot1, vs);
@@ -203,9 +203,9 @@ damp=damp1+dampf;
 	fout.setf(ios::fixed);
 
 	avg_acc(avgacc, npts, mmax);
-    
-	
-	
+
+
+
 // Calculate decoupled displacements
 
 	for(j=1;j<=npts;j++)
@@ -214,7 +214,7 @@ damp=damp1+dampf;
 
 	//output sliding quantities
 /////////////////////////////
-	
+
 		output2(filename2, s, j, dt);
 		residual_mu(j, nmu, slide, s, disp, qq);
 
@@ -235,7 +235,7 @@ void d_response(double omega, double damp, double rho, double height,int j, doub
 	pi=3.141592;
 	Mtot=rho*height;
 	omega=pi*vs/(2*height);
-	
+
 	L=-2*rho*height/pi*cos(pi);
 	M=rho*height/2;
     khat=(omega*omega)+2*damp*omega*gamma/(beta*dt)+1/(beta*(dt*dt));
@@ -262,7 +262,7 @@ void d_response(double omega, double damp, double rho, double height,int j, doub
 			u2=u1+deltu;
 			udot2=udot1+deltudot;
 			udotdot2=udotdot1+deltudotdot;
-	
+
 			//
 		}
 
@@ -284,15 +284,15 @@ void d_setupstate(int j, double g, double scal, double &u1, double &udot1, doubl
 		    u1=0.0;
 			udot1=0.0;
 			udotdot1=0.0;
-			
+
 		}
 		else
 		{
-			
+
 			u1=u[j-2];
 			udot1=udot[j-2];
 			udotdot1=udotdot[j-2];
-			
+
 		}
 
 
@@ -316,7 +316,7 @@ void d_setupstate(int j, double g, double scal, double &u1, double &udot1, doubl
 			acc1=ain[j-2]*g*scal;
 			acc2=ain[j-1]*g*scal;
 		}
-	
+
 }
 
 
@@ -334,7 +334,7 @@ void d_sliding(int qq, int j, double dt, int &slide, double mu[], double g, doub
 	{
 		deltacc=avgacc[j-1]-avgacc[j-2];
 	}
-   	
+
 
 	if(slide==0)
 	{
@@ -342,14 +342,14 @@ void d_sliding(int qq, int j, double dt, int &slide, double mu[], double g, doub
 		s[j-1]=s[j-2];
 	}
 
-	
+
 	if(slide==1)
 	{
 		sdot[j-1]=sdot[j-2]+(mu[qq-1]*g-avgacc[j-2])*dt-0.5*deltacc*dt;
 		s[j-1]=s[j-2]-sdot[j-2]*dt-0.5*dt*dt*(mu[qq-1]*g-avgacc[j-2])+deltacc*dt*dt/6;
 	}
 
-	
+
 	if(slide==0)
 	{
 		if(avgacc[j-1]>mu[qq-1]*g)
@@ -366,7 +366,7 @@ void d_sliding(int qq, int j, double dt, int &slide, double mu[], double g, doub
 				s[j-1]=s[j-2];
 				sdot[j-1]=0.0;
 			}
-  
+
 		}
 
 }
@@ -376,7 +376,7 @@ void d_eq(char filename2[], double n, double o, int npts, double g, double scal,
 {
 
 	int j, t=0;
-	
+
 	while(n>5||o>5)
 	{
 		for(j=1;j<=npts;j++)
@@ -384,20 +384,20 @@ void d_eq(char filename2[], double n, double o, int npts, double g, double scal,
 				d_setupstate(j, g, scal, u1, udot1, udotdot1, u, udot, udotdot, acc1, acc2, ain, s,slide);
 				d_response(omega, damp, rho, height, j, dt, acc1, acc2, avgacc, u, udot, udotdot, u1, udot1, udotdot1, vs);
 			}
-		
+
 		for(j=1;j<=npts;j++)
 			{
-				
+
 				effstr(u, gameff1, height, npts);
 			}
-		
+
 			eq_property(gameff1, gamref, dampf, damp, vs, n, o, g, pi, uwgt, vr, dv2, vs1);
 
 	fstream fout;
 	fout.open(filename2,ios_base::out|ios_base::app);
 	fout.setf(ios_base::right, ios_base::floatfield);
 	fout.setf(ios::fixed);
-		
+
 	t=t+1;
 	fout<<"ITERATION"<<setw(3)<<t<<setw(10)<<setprecision(2)<<vs<<setw(20)<<setprecision(2)<<vr<<setw(20)<<setprecision(4)<<damp-dampf<<setw(20)<<setprecision(4)<<dampf<<setw(20)<<setprecision(4)<<damp<<endl<<endl;
 
@@ -434,14 +434,14 @@ void effstr(double u[], double &gameff1, double height, int npts)
 
 	double mx1=0.0, mx=0.0, mmax;
 	int j;
-		
+
 	for(j=1;j<=npts;j++)
 	{
 	if (j==1)
 	{
 		mx1=u[j-1];
 		mx=u[j-1];
-		
+
 	}
 	else
 	{
@@ -459,14 +459,14 @@ void effstr(double u[], double &gameff1, double height, int npts)
 			else
 				mx=mx;
 		}
-		
+
 	}
 
 
 	if(j==npts)
 	{
 		if(fabs(mx)>fabs(mx1))
-		{	
+		{
 			mmax=mx;
 			gameff1=0.65*mmax/height;
 		}
@@ -475,7 +475,7 @@ void effstr(double u[], double &gameff1, double height, int npts)
 			mmax=mx1;
 			gameff1=0.65*mmax/height;
 		}
-		else 
+		else
 		{
 			if(mx>0)
 			{
@@ -502,7 +502,7 @@ void acctime(char filename3[], int npts, int npl, int nhead, char junk[], double
 	int i, k, j, kk;
 	fstream fin;
 	fin.open(filename3,ios_base::in);
-	
+
 	for(i=1;i<=nhead;i++)
 	{
 		fin.getline(junk,80);
@@ -510,10 +510,10 @@ void acctime(char filename3[], int npts, int npl, int nhead, char junk[], double
 	k=npts/npl;
 
 	for(i=1;i<=k;i++)
-		{	
+		{
 			for(j=1;j<=npl;j++)
 			fin>>ain[(i-1)*npl+j-1];
-	 
+
 		}
 
 	kk=npts-k*npl;
@@ -523,7 +523,7 @@ void acctime(char filename3[], int npts, int npl, int nhead, char junk[], double
 	{
 		for(j=1;j<=kk;j++)
 			fin>>ain[k*npl+j-1];
-	
+
 	}
 
 }
@@ -542,7 +542,7 @@ double a, b, c;
 	cin>>filename2;
 
 /////////////////////////////////////////
-	fstream fin; 
+	fstream fin;
 	fin.open(filename1,ios_base::in);
 	fin.getline(descrip,80);
 	fin>>dv1>>dv2>>dv3;
@@ -569,7 +569,7 @@ fin.clear();
 	if(c<=2.5)
 	{
 		cout<<" Shear wave velocity of Rock(VR) should be at least 2.5 times larger than Shear wave velocity of Soil (Vs)"<<endl;
-		return 0;	
+		return 0;
 	}
 
 	if(c>2.5)
@@ -584,13 +584,13 @@ fin.clear();
 void output1(char filename2[], char descrip[], double rho, double height, double vs, double vr, double damp, int nmu, double mu[], double disp[], double dampf, int dv1, int dv2, int dv3)
 {
 
-	int i;	
+	int i;
 
 	fstream fout;
 	fout.open(filename2,ios_base::out);
 	fout.setf(ios_base::right, ios_base::floatfield);
 	fout<<endl<<endl;
-	
+
 	if(dv1==0&&dv2==0&&dv3==0)
 	{
 		fout<<"Decoupled Linear Elastic Analysis - Rigid Rock Base"<<endl<<endl;
@@ -626,7 +626,7 @@ void output1(char filename2[], char descrip[], double rho, double height, double
 		fout<<"Coupled Equivalent Linear Analysis - Elastic Rock Base"<<endl<<endl;
 	}
 
-    
+
 	fout<<descrip[80];
 	fout<<endl<<endl;
 	fout<<"Density : "<<rho<<endl;
@@ -642,7 +642,7 @@ void output1(char filename2[], char descrip[], double rho, double height, double
 		{
 			fout<<"Yield Acceleration Coeff.: "<<mu[i-1]<<"   over Displacement "<<disp[i-1]<<endl;
 		}
-	
+
 	}
 
 	fout<<endl;
@@ -661,26 +661,26 @@ void output2(char filename2[], double s[], int j, double dt)
 	fout.open(filename2,ios_base::out|ios_base::app);
 	fout.setf(ios_base::right, ios_base::floatfield);
 	fout.setf(ios::fixed);
-		
+
 	if(j==1)
 	{
 	fout<<setw(10)<<"TIME"<<setw(30)<<"Sliding Displ."<<endl;
 	}
-	
+
 	fout<<setw(10)<<setprecision(4)<<j*dt<<setw(25)<<setprecision(5)<<s[j-1]<<endl;
-	
+
 }
 
 void eq_property(double gameff1, double gamref, double &dampf, double &damp, double &vs, double &n, double &o, double g, double pi, double uwgt, double vr, int dv2, double vs1)
 {
 
 	double gameff2, vs2, com1, com2, damp2, G1, G2, l, m;
-	
+
 	gameff2=fabs(gameff1)*100.0;
 	vs2=vs1/sqrt(1+(gameff2/gamref));
 	com1=1/(1+gameff2/gamref);
 	com2=pow(com1,0.1);
-	
+
 
 	if(dv2==0)
 		{
@@ -690,23 +690,23 @@ void eq_property(double gameff1, double gamref, double &dampf, double &damp, dou
 		{
 			dampf=55.016*pow((vr/vs2),-0.9904);
 		}
-	
-		
+
+
 	damp2=dampf+0.62*com2*(100/pi*(4*((gameff2-gamref*log((gamref+gameff2)/gamref))/(gameff2*gameff2/(gameff2+gamref)))-2))+1;
-    
+
 	G1=(uwgt/g)*vs*vs;
 	G2=(uwgt/g)*vs2*vs2;
-	
+
 	l=(G1-G2)/G1;
 	m=((damp*100)-damp2)/(damp*100);
-	
+
 	n=fabs(l)*100.0;
 	o=fabs(m)*100.0;
-	
+
 	vs=vs2;
 	damp=damp2*0.01;
 	dampf=dampf*0.01;
-    	
+
 }
 
 
@@ -754,7 +754,7 @@ void coupled(char filename2[], char filename3[], double &uwgt, double &height, d
 
 	output1(filename2, descrip, rho, height, vs, vr, damp1, nmu, mu, disp, dampf, dv1, dv2, dv3);
 
-	
+
 
 
 // Read accleration time history
@@ -809,7 +809,7 @@ void coupled(char filename2[], char filename3[], double &uwgt, double &height, d
 
 	for(j=1;j<=npts;j++)
 	{
-		
+
 		coupled_setupstate(j, g, qq, scal, pi, u1, udot1, udotdot1, u2, udot2, udotdot2, s1, sdot1, sdotdot1,s2, sdot2, sdotdot2, normalf1, normalf2, acc11, acc22, mu, ain, slide, Mtot);
 
 	// Solve for u, udot, udotdot at next time step
@@ -820,7 +820,7 @@ void coupled(char filename2[], char filename3[], double &uwgt, double &height, d
 		udotdot[j-1]=udotdot2;
 
 	///// Update sliding acceleration based on calc'd response
-		
+
 		c_slideacc(slide, j, dt, qq, sdotdot1, sdot1, s1, sdotdot2, sdot2, s2, ain, g, scal, pi, mu, normalf2, Mtot, L, udotdot2, basef);
 
 	/// Check if sliding has started
@@ -837,7 +837,7 @@ void coupled(char filename2[], char filename3[], double &uwgt, double &height, d
 
 }
 
-/////////////////////////////////////////////////////////////////	
+/////////////////////////////////////////////////////////////////
 //      Subroutine for the end of sliding
 
 int slidestop(double &s1, double &sdot1, double &sdotdot1, double &sdotdot2, double &u1, double &udot1, double &udotdot1, double &s2, double &sdot2, double &u2, double &udot2, double &udotdot2, int j, int qq, int slide, double pi, double &normalf2,double Mtot, double M, double L, double omega, double mu[5], double beta, double gamma, double dt, double g, double scal, double ain[5000], double angle, double damp)
@@ -847,9 +847,9 @@ int slidestop(double &s1, double &sdot1, double &sdotdot1, double &sdotdot2, dou
 	double acc1b,delt,dd;
 	double khat, deltp, a, b;
 	double u[8000]={0.0};
-	
+
 	delt=dt;
-    
+
 
 	//// Time of end of sliding is taken as where sdot=0 from previous
 	//// analysis assuming sliding thruoughout the time step
@@ -868,7 +868,7 @@ int slidestop(double &s1, double &sdot1, double &sdotdot1, double &sdotdot2, dou
 		return 0;
 	}
 
-	
+
 
     solvu(u1, udot1, udotdot1, u2, udot2, udotdot2, delt, ddt, acc11,acc22, slide, j, Mtot, M, L, omega, beta, gamma, damp, u);
     u1=u2;
@@ -910,7 +910,7 @@ void solvu(double &u1,double &udot1, double &udotdot1, double &u2, double &udot2
 	if(slide==1)
 	{
 		d1=1-(L*L)/(M*Mtot);
-	} 
+	}
 	else
 	{
 		d1=1.0;
@@ -947,11 +947,11 @@ void solvu(double &u1,double &udot1, double &udotdot1, double &u2, double &udot2
 
 void coupled_setupstate(int j, double g, int qq, double scal, double pi, double &u1, double &udot1, double &udotdot1, double &u2, double &udot2, double &udotdot2, double &s1, double &sdot1, double &sdotdot1,double &s2, double &sdot2, double &sdotdot2, double &normalf1, double &normalf2, double &acc11, double &acc22, double mu[], double ain[], int slide, double Mtot)
 {
-	
+
 	double angle=0.0;
-	
-	
-		
+
+
+
 		// set up state from previous time step
 		if(j==1)
 		{
@@ -963,7 +963,7 @@ void coupled_setupstate(int j, double g, int qq, double scal, double pi, double 
 			sdotdot1=0.0;
 			normalf1=0.0;
 		}
-		
+
 		else
 		{
 			u1=u2;
@@ -993,13 +993,13 @@ void coupled_setupstate(int j, double g, int qq, double scal, double pi, double 
 		{
 			acc11=ain[j-2]*g*scal*cos(angle*pi/180);
 			acc22=ain[j-1]*g*scal*cos(angle*pi/180);
-		}	
+		}
 	else
 		{
 			acc11=g*sin(angle*pi/180)-mu[qq-1]*normalf1/Mtot;
 			acc22=g*sin(angle*pi/180)-mu[qq-1]*normalf2/Mtot;
 		}
-	
+
 }
 
 
@@ -1018,9 +1018,9 @@ void c_slidingcheck(double basef, double &s1, double &sdot1, double &sdotdot1, d
 		{
 			if(sdot2<=0.0)
 			{
-				
+
 				slidestop(s1, sdot1, sdotdot1, sdotdot2, u1, udot1, udotdot1, s2, sdot2, u2, udot2, udotdot2, j, qq, slide, pi, normalf2, Mtot, M, L, omega, mu, beta, gamma, dt, g, scal, ain, angle, damp);
-				
+
 				slide=0;
 				sdot2=0.0;
 				sdotdot2=0.0;
@@ -1036,7 +1036,7 @@ void c_slideacc(int slide, int j, double dt, int qq, double sdotdot1, double sdo
 
 		double angle=0.0;
 
-		if(slide==1)	
+		if(slide==1)
 		{
 			sdotdot2=-ain[j-1]*g*scal*cos(angle*pi/180)-mu[qq-1]*normalf2/Mtot-L*udotdot2/Mtot+g*sin(angle*pi/180);
 
@@ -1072,13 +1072,13 @@ void c_eq(char filename2[],int npts, double height, double g, int qq, double sca
 
 			coupled_setupstate(j, g, qq, scal, pi, u1, udot1, udotdot1, u2, udot2, udotdot2, s1, sdot1, sdotdot1,s2, sdot2, sdotdot2, normalf1, normalf2, acc11, acc22, mu, ain, slide, Mtot);
 			solvu(u1, udot1, udotdot1, u2, udot2, udotdot2, delt, dt, acc11,acc22, slide, j, Mtot, M, L, omega, beta, gamma, damp, u);
-				
+
 		}
-	
+
 
 		for(j=1;j<=npts;j++)
 		{
-			
+
 			effstr(u, gameff1, height, npts);
 		}
 
@@ -1089,13 +1089,13 @@ void c_eq(char filename2[],int npts, double height, double g, int qq, double sca
 	fout.open(filename2,ios_base::out|ios_base::app);
 	fout.setf(ios_base::right, ios_base::floatfield);
 	fout.setf(ios::fixed);
-	
+
 	t=t+1;
 	fout<<"ITERATION"<<setw(3)<<t<<setw(10)<<setprecision(2)<<vs<<setw(20)<<setprecision(2)<<vr<<setw(20)<<setprecision(4)<<damp-dampf<<setw(20)<<setprecision(4)<<dampf<<setw(20)<<setprecision(4)<<damp<<endl<<endl;
 
 	}
 
-}	
+}
 
 
 void avg_acc(double avgacc[], int npts, double &mmax)
@@ -1104,10 +1104,10 @@ void avg_acc(double avgacc[], int npts, double &mmax)
 
 	double mx1=0.0, mx=0.0;
 	int j;
-	
+
 	for(j=1;j<=npts;j++)
 	{
-	
+
 		if (j==1)
 		{
 			mx1=avgacc[j-1];
@@ -1121,7 +1121,7 @@ void avg_acc(double avgacc[], int npts, double &mmax)
 					mx1=avgacc[j-1];
 				else
 					mx1=mx1;
-			}	
+			}
 			else
 			{
 				if(avgacc[j-1]>=mx)
@@ -1129,21 +1129,21 @@ void avg_acc(double avgacc[], int npts, double &mmax)
 				else
 					mx=mx;
 			}
-		
+
 		}
 
-	
+
 		if(j==npts)
 		{
 			if(fabs(mx)>fabs(mx1))
-			{	
+			{
 				mmax=mx;
 			}
 			else if(fabs(mx)<fabs(mx1))
 			{
 				mmax=mx1;
 			}
-			else 
+			else
 			{
 				if(mx>0)
 				{
