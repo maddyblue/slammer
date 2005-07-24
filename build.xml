@@ -91,4 +91,24 @@
 		</jar>
 	</target>
 
+	<target name="iso">
+
+		<exec executable="mkhybrid">
+			<arg line="-R -o newmarkinstall.iso newmarkinstall.jar" />
+		</exec>
+
+	</target>
+
+	<target name="burn">
+
+		<exec executable="cdrecord">
+			<arg line="dev=/dev/cd0c speed=10 blank=fast" />
+		</exec>
+
+		<exec executable="cdrecord">
+			<arg line="dev=/dev/cd0c speed=10 -data newmarkinstall.iso" />
+		</exec>
+
+	</target>
+
 </project>
