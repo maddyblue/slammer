@@ -1,0 +1,94 @@
+<project name="Newmark">
+
+	<property name="inst" location="installer" />
+	<property name="rec" value="records" />
+
+	<target name="filelist">
+
+		<tar
+			destfile="${inst}/newmark-program.tar"
+			basedir="."
+			includes="programs/**/*.jar"
+		/>
+
+		<tar destfile="${inst}/newmark-eq-california.tar">
+			<tarfileset dir="${rec}" prefix="${rec}">
+				<include name="Cape Mendocino 1992/*" />
+				<include name="Coalinga 1983/*" />
+				<include name="Coyote Lake 1979/*" />
+				<include name="Daly City 1957/*" />
+				<include name="El Centro 1940/*" />
+				<include name="Imperial Valley 1979/*" />
+				<include name="Kern County 1952/*" />
+				<include name="Landers 1992/*" />
+				<include name="Loma Prieta 1989/*" />
+				<include name="Mammoth Lakes-1 1980/*" />
+				<include name="Mammoth Lakes-2 1980/*" />
+				<include name="Morgan Hill 1984/*" />
+				<include name="N. Palm Springs 1986/*" />
+				<include name="Northridge 1994/*" />
+				<include name="Parkfield 1966/*" />
+				<include name="San Fernando 1971/*" />
+				<include name="Santa Barbara 1978/*" />
+				<include name="Superstition Hills 1987/*" />
+				<include name="Westmorland 1981/*" />
+				<include name="Whittier Narrows 1987/*" />
+			</tarfileset>
+		</tar>
+
+		<tar destfile="${inst}/newmark-eq-chichi.tar">
+			<tarfileset dir="${rec}" prefix="${rec}">
+				<include name="Chi-Chi, Taiwan 1999/*" />
+			</tarfileset>
+		</tar>
+
+		<tar destfile="${inst}/newmark-eq-international.tar">
+			<tarfileset dir="${rec}" prefix="${rec}">
+				<include name="Duzce, Turkey 1999/*" />
+				<include name="Friuli, Italy 1976/*" />
+				<include name="Kobe, Japan 1995/*" />
+				<include name="Kocaeli, Turkey 1999/*" />
+				<include name="Nahanni, Canada 1985/*" />
+				<include name="Niigata-Ken-Chuetsu, Japan 2004/*" />
+				<include name="Tabas, Iran 1978/*" />
+			</tarfileset>
+		</tar>
+
+		<tar destfile="${inst}/newmark-eq-otherus.tar">
+			<tarfileset dir="${rec}" prefix="${rec}">
+				<include name="Hilo 1975/*" />
+				<include name="Nisqually 2001/*" />
+			</tarfileset>
+		</tar>
+
+		<exec executable="sh">
+			<arg line="installer/filesize.sh" />
+		</exec>
+
+	</target>
+
+	<target name="installer">
+
+		<delete>
+			<fileset dir="installer" includes="*.class" />
+		</delete>
+
+		<javac debug="true" srcdir="installer" />
+
+		<jar
+			jarfile="newmarkinstall.jar"
+			manifest="installer/install.mf"
+		>
+			<fileset dir=".">
+				<include name="installer/newmark-program.tar.bz2" />
+				<include name="installer/newmark-eq-otherus.tar.bz2" />
+				<include name="installer/*.class" />
+				<include name="installer/*.html" />
+				<include name="installer/install.props" />
+				<include name="org/**" />
+				<include name="records/eq-*.sql" />
+			</fileset>
+		</jar>
+	</target>
+
+</project>
