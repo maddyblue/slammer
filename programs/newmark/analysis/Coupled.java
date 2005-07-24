@@ -25,8 +25,8 @@ import newmark.*;
 public class Coupled extends Analysis
 {
 	// main function parameters
-	private static double uwgt, height, vs, damp, dt, scal, g, vr, vs1;
-	private static int dv2, dv3;
+	private static double uwgt, height, vs, damp, damp1, dt, scal, g, vr, vs1;
+	private static int dv1, dv2, dv3;
 
 	// main function variables
 	private static double Mtot, M, L, omega, beta, gamma, angle;
@@ -46,7 +46,7 @@ public class Coupled extends Analysis
 	private static double u2, udot2, udotdot2, baseacc;
 	private static double basef, acc11, acc22, normalf1, normalf2;
 	private static double mx, mx1, mmax, gameff1, gamref, n, o;
-	private static double s[], u[], disp[], mu[];
+	private static double s[], u[], disp[], mu[], udotdot[];
 
 	private static double ain[];
 
@@ -54,14 +54,15 @@ public class Coupled extends Analysis
 
 	private static double COS, SIN, gSIN, gCOS;
 
-	public static double Coupled(double[] ain_p, double uwgt_p, double height_p, double vs_p, double damp_p, double dt_p, double scal_p, double g_p, double vr_p, double[][] ca, int dv2_p, int dv3_p)
+	public static double Coupled(double[] ain_p, double uwgt_p, double height_p, double vs_p, double damp1_p, double dt_p, double scal_p, double g_p, double vr_p, double[][] ca, int dv2_p, int dv3_p)
 	{
 		// assign all passed parameters to the local data
 		uwgt = uwgt_p;
 		height = height_p;
 		vs = vs_p;
-		vs1 = vs;
-		damp = damp_p;
+		vs1 = vs_p;
+		damp1 = damp1_p;
+		damp = damp1;
 		dt = dt_p;
 		scal = scal_p;
 		g = g_p;
@@ -118,9 +119,12 @@ public class Coupled extends Analysis
 		gameff1 = 0.0;
 		s = new double[ain.length];
 		u = new double[ain.length];
+		udotdot = new double[ain.length];
 		//These are previous iteration value
 
+		dv1 = 1;
 		rho = uwgt / g;
+		nmu = ca.length;
 
 		if(dv2 == 0)
 			dampf = 0.0;
@@ -161,11 +165,10 @@ public class Coupled extends Analysis
 		angle = 0.0;
 		//qq indicates which mu is in effect
 		qq = 1;
-		nmu = ca.length;
 		omega = Math.PI * vs / (2.0 * height);
 		L = 2.0 * rho * height / Math.PI;
 		M = rho * height / 2.0;
-		damp += dampf;
+		damp = damp1 + dampf;
 		n = 100.0;
 		o = 100.0;
 		gamref = 0.13;
@@ -179,6 +182,33 @@ public class Coupled extends Analysis
 
 		// Loop for time steps in time histories
 
+		s1 = 0.0;
+		sdot1 = 0.0;
+		sdotdot1 = 0.0;
+		s2 = 0.0;
+		sdot2 = 0.0;
+		sdotdot2 = 0.0;
+		u1 = 0.0;
+		udot1 = 0.0;
+		udotdot1 = 0.0;
+		u2 = 0.0;
+		udot2 = 0.0;
+		udotdot2 = 0.0;
+		baseacc = 0.0;
+		basef = 0.0;
+		acc11 = 0.0;
+		acc22 = 0.0;
+		normalf1 = 0.0;
+		normalf2 = 0.0;
+		gameff1 = 0.0;
+		omega = Math.PI * vs / (2.0 * height);
+
+		for(j = 0; j < npts; j++)
+		{
+			s[j] = 0;
+			u[j] = 0;
+		}
+
 		for(j = 1; j <= npts; j++)
 		{
 			coupled_setupstate(j);
@@ -187,6 +217,8 @@ public class Coupled extends Analysis
 			////////////////////////////////////////////////
 
 			solvu(j);
+
+			udotdot[j - 1] = udotdot2;
 
 			///// Update sliding acceleration based on calc'd response
 			c_slideacc();
@@ -232,14 +264,7 @@ public class Coupled extends Analysis
 		if(dd == 0)
 			return;
 
-		/* The original slidestop passes solvu a dummy u[] that this function
-		 * creates, and solvu changes one variable in u at u[j-1], so, remember
-		 * that and restore it when we're done.
-		 */
-		double tempu = u[j - 1];
 		solvu(j);
-		u[j - 1] = tempu;
-
 		u1 = u2;
 		udot1 = udot2;
 		udotdot1 = udotdot2;
@@ -249,6 +274,7 @@ public class Coupled extends Analysis
 		s2 = s1 + 0.5 * ddt * (sdot1 + sdot2);
 
 		// Solve for non sliding response during remaining part of dt
+		////////////////////////////////////////////////////////////////
 
 		ddt = (1.0 - dd) * delt;
 		slide = false;
@@ -289,13 +315,13 @@ public class Coupled extends Analysis
 			deltudot = gamma / (beta * delt) * deltu;
 			u2 = deltu;
 			udot2 = deltudot;
-			udotdot2 = ( - (L / M) * acc22 - 2.0 * damp * omega * udot2 - (omega * omega) * u2) / d1;
+			udotdot2 = ( - (L / M) * acc22 - 2 * damp * omega * udot2 - (omega * omega) * u2) / d1;
 		}
 		else
 		{
 			deltp =  - L / M * (acc22 - acc11) + a * udot1 + b * udotdot1;
 			deltu = deltp / khat;
-			deltudot = gamma / (beta * delt) * deltu - gamma / beta * udot1 + delt * (1 - gamma / (2 * beta)) * udotdot1;
+			deltudot = gamma / (beta * delt) * deltu - gamma / beta * udot1 + delt * (1.0 - gamma / (2.0 * beta)) * udotdot1;
 			u2 = u1 + deltu;
 			udot2 = udot1 + deltudot;
 			udotdot2 = ( - (L / M) * acc22 - 2.0 * damp * omega * udot2 - (omega * omega) * u2) / d1;
@@ -329,7 +355,7 @@ public class Coupled extends Analysis
 			normalf1 = normalf2;
 		}
 
-		//  Set up acceleration loading
+		// Set up acceleration loading
 		///////////////////////////////////////
 
 		// Normal force corrected for vertical component of accel
@@ -342,7 +368,7 @@ public class Coupled extends Analysis
 			acc11 = 0.0;
 			acc22 = ain[jj - 1] * gCOS * scal;
 		}
-		else if (!slide)
+		else if(!slide)
 		{
 			acc11 = ain[jj - 2] * gCOS * scal;
 			acc22 = ain[jj - 1] * gCOS * scal;
@@ -380,14 +406,14 @@ public class Coupled extends Analysis
 		///// Update sliding acceleration based on calc'd response
 
 		if(slide)
-			sdotdot2 = - ain[j - 1] * gCOS * scal - mu[qq - 1] * normalf2 / Mtot - L * udotdot2 / Mtot + gSIN;
+			sdotdot2 =  - ain[j - 1] * gCOS * scal - mu[qq - 1] * normalf2 / Mtot - L * udotdot2 / Mtot + gSIN;
 
 		//////  Calc. base force based on udotdot calc
 
-		basef = - Mtot * ain[j - 1] * scal * gCOS - L * udotdot2 + Mtot * gSIN;
+		basef =  - Mtot * ain[j - 1] * gCOS * scal - L * udotdot2 + Mtot * gSIN;
 
 		/////  If sliding is occuring, integrate sdotdot,
-		/////  uMath.sing trapezoid rule, to get sdot and s
+		/////  using trapezoid rule, to get sdot and s
 		//////////////////////////////////////////////////
 
 		if(slide)
@@ -441,15 +467,11 @@ public class Coupled extends Analysis
 				{
 					if(u[j - 1] <= mx1)
 						mx1 = u[j - 1];
-					else
-						mx1 = mx1;
 				}
 				else
 				{
 					if(u[j - 1] >= mx)
 						mx = u[j - 1];
-					else
-						mx = mx;
 				}
 			}
 
@@ -520,7 +542,7 @@ public class Coupled extends Analysis
 		{
 			if(!slide && (Math.abs(s[j - 1]) >= disp[qq - 1]))
 			{
-				if(qq <= nmu - 1)
+				if(qq <= (nmu - 1))
 					qq++;
 			}
 		}
