@@ -377,6 +377,15 @@ public class Newmark
 
 				fw.close();
 			} // }}}
+			else if(args[0].equals("test")) // {{{
+			{
+				junit.textui.TestRunner.run(NewmarkTest.suite());
+			} // }}}
+			else if(args[0].equals("testg")) // {{{
+			{
+				junit.swingui.TestRunner tr = new junit.swingui.TestRunner();
+				tr.start(new String[] { "newmark.NewmarkTest" });
+			} // }}}
 			else // {{{
 			{
 				SplashScreen splash = new SplashScreen();
