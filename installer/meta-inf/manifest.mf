@@ -1,5 +1,0 @@
-Manifest-Version: 1.0
-Created-By: Apache Ant 1.5
-Main-Class: com.mckoi.runtime.McKoiDBMain
-Class-Path: gnu-regexp-1.1.4.jar jakarta-regexp-1.1.jar
-

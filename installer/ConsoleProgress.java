@@ -1,5 +1,5 @@
 /*
- * Progress.java
+ * ConsoleProgress.java
  *
  * Originally written by Slava Pestov for the jEdit installer project. This work
  * has been placed into the public domain. You may use this work in any way and
@@ -14,16 +14,26 @@
 package installer;
 
 /*
- * An interface for reporting installation progress. ConsoleProgress and
- * SwingProcess are the two existing implementations.
+ * Displays install progress when running in text-only mode.
  */
-public interface Progress
+public class ConsoleProgress implements Progress
 {
-	public void setMaximum(int max);
 
-	public void advance(int value);
+	public void setMaximum(int max)
+	{
+	}
 
-	public void done();
+	public void advance(int value)
+	{
+	}
 
-	public void error(String message);
+	public void done()
+	{
+		System.out.println("*** Installation complete");
+	}
+
+	public void error(String message)
+	{
+		System.err.println("*** An error occurred: " + message);
+	}
 }

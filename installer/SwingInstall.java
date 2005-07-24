@@ -1,32 +1,24 @@
 /*
  * SwingInstall.java
- * Copyright (C) 1999, 2000, 2001, 2002 Slava Pestov
  *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License
- * as published by the Free Software Foundation; either version 2
- * of the License, or any later version.
+ * Originally written by Slava Pestov for the jEdit installer project. This work
+ * has been placed into the public domain. You may use this work in any way and
+ * for any purpose you wish.
  *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+ * THIS SOFTWARE IS PROVIDED AS-IS WITHOUT WARRANTY OF ANY KIND, NOT EVEN THE
+ * IMPLIED WARRANTY OF MERCHANTABILITY. THE AUTHOR OF THIS SOFTWARE, ASSUMES
+ * _NO_ RESPONSIBILITY FOR ANY CONSEQUENCE RESULTING FROM THE USE, MODIFICATION,
+ * OR REDISTRIBUTION OF THIS SOFTWARE.
  */
 
 package installer;
 
 import javax.swing.border.*;
-import javax.swing.event.*;
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 import java.io.File;
-import java.io.IOException;
-import java.util.Vector;
+import java.util.*;
 
 /*
  * Graphical front-end to installer.
@@ -36,10 +28,12 @@ public class SwingInstall extends JFrame
 	public SwingInstall()
 	{
 		installer = new Install();
+		osTasks = OperatingSystem.getOperatingSystem().getOSTasks(installer);
 
 		appName = installer.getProperty("app.name");
+		appVersion = installer.getProperty("app.version");
 
-		setTitle(appName + " installer");
+		setTitle(appName + " " + appVersion + " installer");
 
 		JPanel content = new JPanel(new WizardLayout());
 		setContentPane(content);
@@ -90,12 +84,15 @@ public class SwingInstall extends JFrame
 		pack();
 		setLocation((screen.width - getSize().width) / 2,
 			(screen.height - getSize().height) / 2);
-		show();
+		setVisible(true);
 	}
 
 	// package-private members
+	// package-private, not private, for speedy access by inner classes
 	Install installer;
+	OperatingSystem.OSTask[] osTasks;
 	String appName;
+	String appVersion;
 
 	JLabel caption;
 
@@ -114,8 +111,6 @@ public class SwingInstall extends JFrame
 	void install()
 	{
 		Vector components = new Vector();
-		Vector sql = new Vector();
-		Vector sqllen = new Vector();
 		int size = 0;
 
 		JPanel comp = selectComponents.comp;
@@ -126,31 +121,34 @@ public class SwingInstall extends JFrame
 			if(((JCheckBox)comp.getComponent(i))
 				.getModel().isSelected())
 			{
-				size += installer.getIntProperty(
+				components.add(new Integer(i));
+				size += installer.getIntegerProperty(
 					"comp." + ids.elementAt(i) + ".real-size");
-				components.addElement(installer.getProperty(
-					"comp." + ids.elementAt(i) + ".fileset"));
-				sql.addElement(installer.getProperty(
-					"comp." + ids.elementAt(i) + ".sql"));
-				sqllen.addElement(installer.getProperty(
-					"comp." + ids.elementAt(i) + ".sqllen"));
 			}
 		}
 
-		JTextField binDir = chooseDirectory.binDir;
 		String installDir = chooseDirectory.installDir.getText();
 
-		Vector dbvect = new Vector();
-
-		DBThread dbthread = new DBThread(dbvect, sqllen, installDir, progress);
+		Map osTaskDirs = chooseDirectory.osTaskDirs;
+		Iterator keys = osTaskDirs.keySet().iterator();
+		while(keys.hasNext())
+		{
+			OperatingSystem.OSTask osTask = (OperatingSystem.OSTask)keys.next();
+			String dir = ((JTextField)osTaskDirs.get(osTask)).getText();
+			if(dir != null && dir.length() != 0)
+			{
+				osTask.setEnabled(true);
+				osTask.setDirectory(dir);
+			}
+			else
+				osTask.setEnabled(false);
+		}
 
 		InstallThread thread = new InstallThread(
 			installer,progress,
-			(installDir == null ? null : installDir),
-			(binDir == null ? null : binDir.getText()),
-			size,components,sql,sqllen,
-			dbthread,
-			dbvect);
+			installDir,osTasks,
+			size,components);
+		progress.setThread(thread);
 		thread.start();
 	}
 
@@ -209,14 +207,14 @@ public class SwingInstall extends JFrame
 		public void actionPerformed(ActionEvent evt)
 		{
 			Object source = evt.getSource();
-			if(evt.getSource() == cancelButton)
+			if(source == cancelButton)
 				System.exit(0);
-			else if(evt.getSource() == prevButton)
+			else if(source == prevButton)
 			{
 				currentPage--;
 				pageChanged();
 			}
-			else if(evt.getSource() == nextButton)
+			else if(source == nextButton)
 			{
 				if(currentPage == pages.length - 1)
 					System.exit(0);
@@ -286,8 +284,6 @@ public class SwingInstall extends JFrame
 			buttonSize.width = Math.max(buttonSize.width,prevButton.getPreferredSize().width);
 			buttonSize.width = Math.max(buttonSize.width,nextButton.getPreferredSize().width);
 
-			int bottomBorder = buttonSize.height + PADDING;
-
 			// cancel button goes on far left
 			cancelButton.setBounds(
 				PADDING,
@@ -356,91 +352,80 @@ public class SwingInstall extends JFrame
 	}
 
 	class ChooseDirectory extends JPanel
-	implements ActionListener
 	{
 		JTextField installDir;
-		JButton chooseInstall;
-		JTextField binDir;
-		JButton chooseBin;
+		Map osTaskDirs;
 
 		ChooseDirectory()
 		{
 			super(new BorderLayout());
 
-			String _binDir = OperatingSystem.getOperatingSystem()
-				.getShortcutDirectory(appName);
+			osTaskDirs = new HashMap();
 
-			JPanel directoryPanel = new JPanel();
-			GridBagLayout layout = new GridBagLayout();
-			directoryPanel.setLayout(layout);
-			GridBagConstraints cons = new GridBagConstraints();
-			cons.anchor = GridBagConstraints.WEST;
-			cons.fill = GridBagConstraints.HORIZONTAL;
-			cons.gridy = 1;
-			cons.insets = new Insets(0,0,6,0);
+			JPanel directoryPanel = new JPanel(new VariableGridLayout(
+				VariableGridLayout.FIXED_NUM_COLUMNS,3,12,12));
 
-			JLabel label = new JLabel("Install program in: ",SwingConstants.RIGHT);
-			label.setBorder(new EmptyBorder(0,0,0,12));
-			layout.setConstraints(label,cons);
-			directoryPanel.add(label);
+			installDir = addField(directoryPanel,"Install program in:",
+				OperatingSystem.getOperatingSystem()
+				.getInstallDirectory(appName,appVersion));
 
-			cons.weightx = 1.0f;
-			installDir = new JTextField();
-			installDir.setText(OperatingSystem.getOperatingSystem()
-				.getInstallDirectory(appName));
-			layout.setConstraints(installDir,cons);
-			directoryPanel.add(installDir);
-
-			if(_binDir != null)
+			for(int i = 0; i < osTasks.length; i++)
 			{
-				cons.gridy = 2;
-				cons.weightx = 0.0f;
-				cons.insets = new Insets(0,0,0,0);
-				label = new JLabel("Install shortcut in: ",SwingConstants.RIGHT);
-				label.setBorder(new EmptyBorder(0,0,0,12));
-				layout.setConstraints(label,cons);
-				directoryPanel.add(label);
-
-				cons.weightx = 1.0f;
-				binDir = new JTextField(_binDir);
-				layout.setConstraints(binDir,cons);
-				directoryPanel.add(binDir);
+				OperatingSystem.OSTask osTask = osTasks[i];
+				String label = osTask.getLabel();
+				if(label != null)
+				{
+					JTextField field = addField(directoryPanel,label,
+						osTask.getDirectory());
+					osTaskDirs.put(osTask,field);
+				}
 			}
-
 			ChooseDirectory.this.add(BorderLayout.NORTH,directoryPanel);
-
-			Box buttons = new Box(BoxLayout.X_AXIS);
-			buttons.add(Box.createGlue());
-			chooseInstall = new JButton("Choose Install Directory...");
-			chooseInstall.setRequestFocusEnabled(false);
-			chooseInstall.addActionListener(this);
-			buttons.add(chooseInstall);
-			if(_binDir != null)
-			{
-				buttons.add(Box.createHorizontalStrut(6));
-				chooseBin = new JButton("Choose Shortcut Directory...");
-				chooseBin.setRequestFocusEnabled(false);
-				chooseBin.addActionListener(this);
-				buttons.add(chooseBin);
-			}
-			buttons.add(Box.createGlue());
-
-			ChooseDirectory.this.add(BorderLayout.SOUTH,buttons);
 		}
 
-		public void actionPerformed(ActionEvent evt)
+		private JTextField addField(JPanel directoryPanel, String label,
+			String defaultText)
 		{
-			JTextField field = (evt.getSource() == chooseInstall
-				? installDir : binDir);
+			JTextField field = new JTextField(defaultText);
 
-			File directory = new File(field.getText());
-			JFileChooser chooser = new JFileChooser(directory.getParent());
-			chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-			chooser.setSelectedFile(directory);
+			directoryPanel.add(new JLabel(label,SwingConstants.RIGHT));
 
-			if(chooser.showOpenDialog(SwingInstall.this)
-				== JFileChooser.APPROVE_OPTION)
-				field.setText(chooser.getSelectedFile().getPath());
+			Box fieldBox = new Box(BoxLayout.Y_AXIS);
+			fieldBox.add(Box.createGlue());
+			Dimension dim = field.getPreferredSize();
+			dim.width = Integer.MAX_VALUE;
+			field.setMaximumSize(dim);
+			fieldBox.add(field);
+			fieldBox.add(Box.createGlue());
+			directoryPanel.add(fieldBox);
+			JButton choose = new JButton("Choose...");
+			choose.setRequestFocusEnabled(false);
+			choose.addActionListener(new ActionHandler(field));
+			directoryPanel.add(choose);
+
+			return field;
+		}
+
+		class ActionHandler implements ActionListener
+		{
+			JTextField field;
+
+			ActionHandler(JTextField field)
+			{
+				this.field = field;
+			}
+
+			public void actionPerformed(ActionEvent evt)
+			{
+				File directory = new File(field.getText());
+				JFileChooser chooser = new JFileChooser(directory.getParent());
+				chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+				chooser.setSelectedFile(directory);
+
+				if(chooser.showOpenDialog(SwingInstall.this)
+					== JFileChooser.APPROVE_OPTION)
+					field.setText(chooser.getSelectedFile().getPath());
+			}
 		}
 	}
 
@@ -473,7 +458,7 @@ public class SwingInstall extends JFrame
 		{
 			filesets = new Vector();
 
-			int count = installer.getIntProperty("comp.count");
+			int count = installer.getIntegerProperty("comp.count");
 			JPanel panel = new JPanel(new GridLayout(count,1));
 
 			String osClass = OperatingSystem.getOperatingSystem()
@@ -516,7 +501,7 @@ public class SwingInstall extends JFrame
 				if(((JCheckBox)comp.getComponent(i))
 					.getModel().isSelected())
 				{
-					size += installer.getIntProperty("comp."
+					size += installer.getIntegerProperty("comp."
 						+ filesets.elementAt(i)
 						+ ".disk-size");
 				}
@@ -529,7 +514,8 @@ public class SwingInstall extends JFrame
 
 	class SwingProgress extends JPanel implements Progress
 	{
-		JProgressBar progress, dbprogress;
+		JProgressBar progress;
+		InstallThread thread;
 
 		SwingProgress()
 		{
@@ -538,12 +524,7 @@ public class SwingInstall extends JFrame
 			progress = new JProgressBar();
 			progress.setStringPainted(true);
 
-			dbprogress = new JProgressBar();
-			dbprogress.setString("Database synchronization");
-			dbprogress.setStringPainted(true);
-
 			SwingProgress.this.add(BorderLayout.NORTH,progress);
-			SwingProgress.this.add(BorderLayout.SOUTH,dbprogress);
 		}
 
 		public void setMaximum(final int max)
@@ -552,18 +533,8 @@ public class SwingInstall extends JFrame
 			{
 				public void run()
 				{
+					progress.setValue(0);
 					progress.setMaximum(max);
-				}
-			});
-		}
-
-		public void setMaximumDB(final int max)
-		{
-			SwingUtilities.invokeLater(new Runnable()
-			{
-				public void run()
-				{
-					dbprogress.setMaximum(max);
 				}
 			});
 		}
@@ -576,25 +547,8 @@ public class SwingInstall extends JFrame
 				{
 					public void run()
 					{
-						progress.setValue(progress.getValue() + value);
-					}
-				});
-				Thread.yield();
-			}
-			catch(Exception e)
-			{
-			}
-		}
-
-		public void advanceDB()
-		{
-			try
-			{
-				SwingUtilities.invokeAndWait(new Runnable()
-				{
-					public void run()
-					{
-						dbprogress.setValue(dbprogress.getValue() + 1);
+						progress.setValue(progress
+							.getValue() + value);
 					}
 				});
 				Thread.yield();
@@ -630,6 +584,11 @@ public class SwingInstall extends JFrame
 					System.exit(1);
 				}
 			});
+		}
+
+		public void setThread(InstallThread thread)
+		{
+			this.thread = thread;
 		}
 	}
 }
