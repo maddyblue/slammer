@@ -6,6 +6,8 @@
 
 <project name="Newmark" default="def" basedir=".">
 
+
+
 	<target name="compile">
 		<javac
 			srcdir="."
@@ -53,6 +55,22 @@
 	</target>
 
 	<target name="all" depends="clean, def">
+	</target>
+
+	<target name="test">
+
+	<exec executable="java">
+		<arg line="-jar newmark.jar test" />
+	</exec>
+
+	</target>
+
+	<target name="testg">
+
+	<exec executable="java">
+		<arg line="-jar newmark.jar testg" />
+	</exec>
+
 	</target>
 
 </project>

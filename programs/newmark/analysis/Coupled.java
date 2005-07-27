@@ -22,20 +22,8 @@ package newmark.analysis;
 
 import newmark.*;
 
-public class Coupled extends Analysis
+public class Coupled extends DeCoupledCommon
 {
-	// main function parameters
-	private static double uwgt, height, vs, damp, damp1, dt, scal, g, vr, vs1;
-	private static int dv1, dv2, dv3;
-
-	// main function variables
-	private static double Mtot, M, L, omega, beta, gamma, angle;
-	private static int qq, nmu;
-
-	private static double rho, delt, dampf;
-	private static int j;
-	private static boolean slide;
-
 	//slide=0 no sliding, slide=1 sliding
 	//variable that end in 1 are for previous time step
 	//variable that end in 2 are for current time step
@@ -45,16 +33,10 @@ public class Coupled extends Analysis
 	private static double u1, udot1, udotdot1;
 	private static double u2, udot2, udotdot2, baseacc;
 	private static double basef, acc11, acc22, normalf1, normalf2;
-	private static double mx, mx1, mmax, gameff1, gamref, n, o;
-	private static double s[], u[], disp[], mu[], udotdot[];
-
-	private static double ain[];
-
-	private static int npts;
 
 	private static double COS, SIN, gSIN, gCOS;
 
-	public static double Coupled(double[] ain_p, double uwgt_p, double height_p, double vs_p, double damp1_p, double dt_p, double scal_p, double g_p, double vr_p, double[][] ca, int dv2_p, int dv3_p)
+	public static double Coupled(double[] ain_p, double uwgt_p, double height_p, double vs_p, double damp1_p, double dt_p, double scal_p, double g_p, double vr_p, double[][] ca, boolean dv2_p, boolean dv3_p)
 	{
 		// assign all passed parameters to the local data
 		uwgt = uwgt_p;
@@ -122,13 +104,12 @@ public class Coupled extends Analysis
 		udotdot = new double[ain.length];
 		//These are previous iteration value
 
-		dv1 = 1;
 		rho = uwgt / g;
 		nmu = ca.length;
 
-		if(dv2 == 0)
+		if(!dv2)
 			dampf = 0.0;
-		else if(dv2 == 1)
+		else
 			dampf = 55.016 * Math.pow((vr / vs), -0.9904) / 100.0;
 
 		/* Helpful debugging output
@@ -175,10 +156,8 @@ public class Coupled extends Analysis
 
 		// Finding Equivalent Linear Properties of Soil
 
-		if(dv3==1)
-		{
+		if(dv3)
 			c_eq();
-		}
 
 		// Loop for time steps in time histories
 
@@ -224,7 +203,6 @@ public class Coupled extends Analysis
 			c_slideacc();
 
 			/// Check if sliding has started
-
 			c_slidingcheck();
 
 			s[j - 1] = s2;
@@ -232,7 +210,7 @@ public class Coupled extends Analysis
 			if(scal > 0)
 				store(Math.abs(s2));
 
-			//System.out.println((j * dt) + ":  " + s[j - 1]);
+			System.out.println((j * dt) + ":  " + s[j - 1] + ", " + slide);
 
 			residual_mu();
 		}
@@ -444,107 +422,6 @@ public class Coupled extends Analysis
 			t++;
 			System.out.println("ITERATION" + "  " + t + "  " + vs + "  " + vr + "  " + (damp-dampf) + "  " + dampf + "  " + damp);
 			//*/
-		}
-	}
-
-	private static void effstr()
-	{
-		//effective shear strain calculation
-
-		double mx1 = 0.0, mx = 0.0, mmax;
-		int j;
-
-		for(j = 1; j <= npts; j++)
-		{
-			if (j == 1)
-			{
-				mx1 = u[j - 1];
-				mx = u[j - 1];
-			}
-			else
-			{
-				if(u[j - 1] < 0)
-				{
-					if(u[j - 1] <= mx1)
-						mx1 = u[j - 1];
-				}
-				else
-				{
-					if(u[j - 1] >= mx)
-						mx = u[j - 1];
-				}
-			}
-
-			if(j == npts)
-			{
-				if(Math.abs(mx) > Math.abs(mx1))
-				{
-					mmax = mx;
-					gameff1 = 0.65 * mmax / height;
-				}
-				else if(Math.abs(mx) < Math.abs(mx1))
-				{
-					mmax = mx1;
-					gameff1 = 0.65 * mmax / height;
-				}
-				else
-				{
-					if(mx>0)
-					{
-						mmax = mx;
-						gameff1 = 0.65 * mmax / height;
-					}
-					else
-					{
-						mmax = mx1;
-						gameff1 = 0.65 * mmax / height;
-					}
-				}
-			}
-		}
-
-		gameff1 = Math.abs(gameff1);
-	}
-
-	private static void eq_property()
-	{
-		double gameff2, vs2, com1, com2, damp2, G1, G2, l, m;
-
-		gameff2 = Math.abs(gameff1) * 100.0;
-		vs2 = vs1 / Math.sqrt(1 + (gameff2 / gamref));
-		com1 = 1.0 / (1.0 + gameff2 / gamref);
-		com2 = Math.pow(com1, 0.1);
-
-		if(dv2 == 0)
-			dampf = 0.0;
-		else if(dv2 == 1)
-			dampf = 55.016 * Math.pow((vr / vs2), -0.9904); // should this also be "/ 100.0" like it is in the main Coupled() function?
-
-		damp2 = dampf + 0.62 * com2 * (100.0 / Math.PI * (4.0 * ((gameff2 - gamref * Math.log((gamref + gameff2) / gamref)) / (gameff2 * gameff2 / (gameff2 + gamref))) - 2.0)) + 1.0;
-
-		G1 = (uwgt / g) * vs * vs;
-		G2 = (uwgt / g) * vs2 * vs2;
-
-		l = (G1 - G2) / G1;
-		m = ((damp * 100.0) - damp2) / (damp * 100.0);
-
-		n = Math.abs(l) * 100.0;
-		o = Math.abs(m) * 100.0;
-
-		vs = vs2;
-		damp = damp2 * 0.01;
-		dampf = dampf * 0.01;
-	}
-
-	private static void residual_mu()
-	{
-		if(nmu > 1)
-		{
-			if(!slide && (Math.abs(s[j - 1]) >= disp[qq - 1]))
-			{
-				if(qq <= (nmu - 1))
-					qq++;
-			}
 		}
 	}
 }
