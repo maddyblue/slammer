@@ -403,6 +403,9 @@ public class Newmark
 
 				JFrame frame = new JFrame("Newmark");
 
+				frame.setIconImage(new ImageIcon(
+					frame.getClass().getResource("/newmark/images/splash.jpg")).getImage());
+
 				GUIUtils.bg = frame.getBackground();
 
 				splash.advance();
