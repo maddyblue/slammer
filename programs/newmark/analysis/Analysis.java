@@ -27,6 +27,7 @@ import org.jfree.data.xy.XYSeries;
 
 public class Analysis
 {
+	public static final DecimalFormat fmtFive  = new DecimalFormat("0.00000");
 	public static final DecimalFormat fmtFour  = new DecimalFormat("0.0000");
 	public static final DecimalFormat fmtThree = new DecimalFormat("0.000");
 	public static final DecimalFormat fmtTwo   = new DecimalFormat("0.00");
@@ -55,8 +56,12 @@ public class Analysis
 	private static double interval = 1.0 / (double)perSec;
 	private static double timeStor;
 
+	public static boolean testing = false;
+
 	protected static void setValueSize(final double Dint)
 	{
+		if(testing) return;
+
 		time = 0;
 		dint = Dint;
 		xys = new XYSeries("");
@@ -67,6 +72,8 @@ public class Analysis
 
 	protected static void store(final double d)
 	{
+		if(testing) return;
+
 		if(d == last)
 		{
 			skipped = true;
@@ -91,6 +98,8 @@ public class Analysis
 
 	protected static void end(final double d)
 	{
+		if(testing) return;
+
 		if(skipped)
 			realStore(last, time - dint);
 		realStore(d, time);
