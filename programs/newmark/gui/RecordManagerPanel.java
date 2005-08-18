@@ -65,7 +65,24 @@ class RecordManagerPanel extends JPanel implements ActionListener
 	JComboBox  modSite = new JComboBox(NewmarkTable.SiteClassArray);
 	JComboBox  modMech = new JComboBox(NewmarkTable.FocMechArray);
 
+	ButtonGroup TypeGroup = new ButtonGroup();
+	JRadioButton typeTime = new JRadioButton("Time Series", true);
+	JRadioButton typeFourier = new JRadioButton("Fourier Amplitude Spectrum");
+	JRadioButton typeSpectra = new JRadioButton("Response Spectra");
+
+	JComboBox spectraCB = new JComboBox();
+
+	JTextField spectraDamp = new JTextField("0", 5);
+	JTextField spectraIncr = new JTextField("0.01", 5);
+	JTextField spectraHigh = new JTextField("15.0", 5);
+
+	final public static String spectraAccStr = "Absolute-Acceleration";
+	final public static String spectraVelStr = "Relative-Velocity";
+	final public static String spectraDisStr = "Relative-Displacement";
+
 	JButton add = new JButton("Add record(s)...");
+
+	JTabbedPane managerTP = new JTabbedPane();
 
 	public RecordManagerPanel(NewmarkTabbedPane parent) throws Exception
 	{
@@ -91,6 +108,14 @@ class RecordManagerPanel extends JPanel implements ActionListener
 			}
 		});
 
+		TypeGroup.add(typeTime);
+		TypeGroup.add(typeFourier);
+		TypeGroup.add(typeSpectra);
+
+		spectraCB.addItem(spectraAccStr);
+		spectraCB.addItem(spectraVelStr);
+		spectraCB.addItem(spectraDisStr);
+
 		Utils.addEQList(eqList, Boolean.TRUE);
 		eqList.setActionCommand("eqListChange");
 		eqList.addActionListener(this);
@@ -104,10 +129,13 @@ class RecordManagerPanel extends JPanel implements ActionListener
 		graph.setActionCommand("graph");
 		graph.addActionListener(this);
 
+		managerTP.addTab("Modify Record", createModifyPanel());
+		managerTP.addTab("Graphing Options", createGraphPanel());
+
 		setLayout(new BorderLayout());
 		add(BorderLayout.NORTH, createNorthPanel());
 		add(BorderLayout.CENTER, table);
-		add(BorderLayout.SOUTH, createSouthPanel());
+		add(BorderLayout.SOUTH, managerTP);
 
 		recordClear();
 	}
@@ -129,7 +157,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 		return panel;
 	}
 
-	private JPanel createSouthPanel()
+	private JPanel createModifyPanel()
 	{
 		JPanel panel = new JPanel(new BorderLayout());
 
@@ -177,6 +205,73 @@ class RecordManagerPanel extends JPanel implements ActionListener
 		south.add(modMech);
 
 		panel.add(BorderLayout.SOUTH, south);
+
+		return panel;
+	}
+
+	public JPanel createGraphPanel()
+	{
+		JPanel panel = new JPanel();
+
+		GridBagLayout gridbag = new GridBagLayout();
+		GridBagConstraints c = new GridBagConstraints();
+		JLabel label;
+
+		panel.setLayout(gridbag);
+
+		int x = 0;
+		int y = 0;
+
+		c.anchor = GridBagConstraints.NORTHWEST;
+
+		c.gridx = x++;
+		c.gridy = y++;
+		gridbag.setConstraints(typeTime, c);
+		panel.add(typeTime);
+
+		c.gridy = y++;
+		gridbag.setConstraints(typeFourier, c);
+		panel.add(typeFourier);
+
+		c.gridy = y++;
+		gridbag.setConstraints(typeSpectra, c);
+		panel.add(typeSpectra);
+
+		c.gridx = x++;
+		c.gridy = y++;
+		gridbag.setConstraints(spectraCB, c);
+		panel.add(spectraCB);
+
+		x = 1;
+		c.gridx = x++;
+		c.gridy = y++;
+		label = new JLabel("Damping (%)");
+		gridbag.setConstraints(label, c);
+		panel.add(label);
+
+		c.gridx = x++;
+		label = new JLabel("Frequency Intrement (Hz)");
+		gridbag.setConstraints(label, c);
+		panel.add(label);
+
+		c.gridx = x++;
+		label = new JLabel("High Frequency (Hz)");
+		gridbag.setConstraints(label, c);
+		panel.add(label);
+
+		x = 1;
+		c.gridx = x++;
+		c.gridy = y++;
+		gridbag.setConstraints(spectraDamp, c);
+		panel.add(spectraDamp);
+
+		c.gridx = x++;
+		gridbag.setConstraints(spectraIncr, c);
+		panel.add(spectraIncr);
+
+		c.gridx = x++;
+		gridbag.setConstraints(spectraHigh, c);
+		panel.add(spectraHigh);
 
 		return panel;
 	}
@@ -274,9 +369,9 @@ class RecordManagerPanel extends JPanel implements ActionListener
 
 				String xAxis = null, yAxis = null, title = "";
 
-				if(parent.GraphingOptions.typeTime.isSelected()) command = "graphTime";
-				else if(parent.GraphingOptions.typeFourier.isSelected()) command = "graphFourier";
-				else if(parent.GraphingOptions.typeSpectra.isSelected()) command = "graphSpectra";
+				if(typeTime.isSelected()) command = "graphTime";
+				else if(typeFourier.isSelected()) command = "graphFourier";
+				else if(typeSpectra.isSelected()) command = "graphSpectra";
 
 				if(command.equals("graphTime"))
 				{
@@ -364,9 +459,9 @@ class RecordManagerPanel extends JPanel implements ActionListener
 				}
 				else if(command.equals("graphSpectra"))
 				{
-					int index = parent.GraphingOptions.spectraCB.getSelectedIndex();
+					int index = spectraCB.getSelectedIndex();
 
-					title = parent.GraphingOptions.spectraCB.getSelectedItem().toString() + " Response Spectra";
+					title = spectraCB.getSelectedItem().toString() + " Response Spectra";
 					xAxis = "Period (s)";
 					yAxis = "Response";
 					double[] arr = new double[dat.size()];
@@ -375,9 +470,9 @@ class RecordManagerPanel extends JPanel implements ActionListener
 					for(int i = 0; (temp = dat.each()) != null; i++)
 						arr[i] = temp.doubleValue();
 
-					double periodMax = Double.parseDouble(parent.GraphingOptions.spectraHigh.getText());
-					double interval = Double.parseDouble(parent.GraphingOptions.spectraIncr.getText());
-					double damp = Double.parseDouble(parent.GraphingOptions.spectraDamp.getText()) / 100.0;
+					double periodMax = Double.parseDouble(spectraHigh.getText());
+					double interval = Double.parseDouble(spectraIncr.getText());
+					double damp = Double.parseDouble(spectraDamp.getText()) / 100.0;
 
 					double[] z;
 

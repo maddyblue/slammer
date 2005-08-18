@@ -38,10 +38,10 @@ public class NewmarkTabbedPane extends JTabbedPane
 	public RigidBlockSimplifiedPanel RigidBlockSimplified;
 	public DecoupledSimplifiedPanel DecoupledSimplified;
 	public ResultsPanel Results;
+	public WhichAnalysisPanel WhichAnalysis;
 	public UtilitiesPanel Utilities;
 	public RecordManagerPanel RecordManager;
 	public AddRecordsPanel AddRecords;
-	public GraphingOptionsPanel GraphingOptions;
 
 	public static Help help = null;
 
@@ -57,10 +57,10 @@ public class NewmarkTabbedPane extends JTabbedPane
 		RigidBlockSimplified = new RigidBlockSimplifiedPanel(this);
 		DecoupledSimplified = new DecoupledSimplifiedPanel(this);
 		Results = new ResultsPanel(this);
+		WhichAnalysis = new WhichAnalysisPanel(this);
 		Parameters = new ParametersPanel(this);
 		RecordManager = new RecordManagerPanel(this);
 		AddRecords = new AddRecordsPanel(this);
-		GraphingOptions = new GraphingOptionsPanel(this);
 
 		if(help == null)
 		{
@@ -70,13 +70,13 @@ public class NewmarkTabbedPane extends JTabbedPane
 		Rigorous.addTab("Step 1: Select Records", SelectRecords);
 		Rigorous.addTab("Step 2: Select Analyses", Parameters);
 		Rigorous.addTab("Step 3: Perform Analyses and View Results", Results);
+		Rigorous.addTab("Appendix: Whith Analysis Should I Use?", WhichAnalysis);
 
 		Simplified.addTab("Rigid-Block Analysis", RigidBlockSimplified);
 		Simplified.addTab("Decoupled Analysis", DecoupledSimplified);
 
 		Manager.addTab("Manage Records", RecordManager);
 		Manager.addTab("Add Records", AddRecords);
-		Manager.addTab("Graphing Options", GraphingOptions);
 
 		addTab("Getting Started", GettingStarted);
 		addTab("Rigorous Analysis", Rigorous);
