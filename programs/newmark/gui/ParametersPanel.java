@@ -281,6 +281,7 @@ class ParametersPanel extends JPanel implements ActionListener
 
 		c.gridx = x++;
 		c.gridy = y++;
+		c.fill = GridBagConstraints.NONE;
 		gridbag.setConstraints(typeRigid, c);
 		add(typeRigid);
 
@@ -301,6 +302,7 @@ class ParametersPanel extends JPanel implements ActionListener
 		c.gridx = x;
 		c.gridy = y++;
 		c.gridwidth = 4;
+		c.fill = GridBagConstraints.HORIZONTAL;
 		jp = new JPanel();
 		jp.setBorder(BorderFactory.createMatteBorder(1, 0, 0, 0, Color.BLACK));
 		gridbag.setConstraints(jp, c);
@@ -308,6 +310,7 @@ class ParametersPanel extends JPanel implements ActionListener
 		c.gridwidth = 1;
 
 		c.gridy = y++;
+		c.fill = GridBagConstraints.NONE;
 		gridbag.setConstraints(typeCoupled, c);
 		add(typeCoupled);
 
@@ -318,7 +321,6 @@ class ParametersPanel extends JPanel implements ActionListener
 		x = 2;
 		c.gridy = y++;
 		c.gridx = x++;
-		c.fill = GridBagConstraints.NONE;
 		gridbag.setConstraints(labelUwgt, c);
 		add(labelUwgt, c);
 
@@ -328,7 +330,6 @@ class ParametersPanel extends JPanel implements ActionListener
 
 		c.gridy = y++;
 		c.gridx = x++;
-		c.fill = GridBagConstraints.NONE;
 		gridbag.setConstraints(labelHeight, c);
 		add(labelHeight, c);
 
@@ -338,7 +339,6 @@ class ParametersPanel extends JPanel implements ActionListener
 
 		c.gridy = y++;
 		c.gridx = x++;
-		c.fill = GridBagConstraints.NONE;
 		gridbag.setConstraints(labelVs, c);
 		add(labelVs, c);
 
@@ -348,7 +348,6 @@ class ParametersPanel extends JPanel implements ActionListener
 
 		c.gridy = y++;
 		c.gridx = x++;
-		c.fill = GridBagConstraints.NONE;
 		gridbag.setConstraints(labelDamp, c);
 		add(labelDamp, c);
 
@@ -358,7 +357,6 @@ class ParametersPanel extends JPanel implements ActionListener
 
 		c.gridy = y++;
 		c.gridx = x++;
-		c.fill = GridBagConstraints.NONE;
 		gridbag.setConstraints(labelBaseType, c);
 		add(labelBaseType, c);
 
@@ -368,7 +366,6 @@ class ParametersPanel extends JPanel implements ActionListener
 
 		c.gridy = y++;
 		c.gridx = x++;
-		c.fill = GridBagConstraints.NONE;
 		gridbag.setConstraints(labelVr, c);
 		add(labelVr, c);
 
@@ -378,7 +375,6 @@ class ParametersPanel extends JPanel implements ActionListener
 
 		c.gridy = y++;
 		c.gridx = x++;
-		c.fill = GridBagConstraints.NONE;
 		gridbag.setConstraints(labelSoilModel, c);
 		add(labelSoilModel, c);
 
