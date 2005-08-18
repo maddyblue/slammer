@@ -194,7 +194,7 @@ class ResultsPanel extends JPanel implements ActionListener
 							double[][] ca;
 							double[] ain;
 							double thrust = 0, uwgt = 0, height = 0, vs = 0, damp = 0, vr = 0;
-							int dv2 = 0, dv3 = 0;
+							boolean dv2 = false, dv3 = false;
 
 							scaleRB = paramUnit ? 1 : Analysis.CMtoIN;
 
@@ -305,10 +305,10 @@ class ResultsPanel extends JPanel implements ActionListener
 								else
 									damp = tempd.doubleValue() / 100.0;
 
-								dv2 = parent.Parameters.paramBaseType.getSelectedIndex();
-								dv3 = parent.Parameters.paramSoilModel.getSelectedIndex();
+								dv2 = parent.Parameters.paramBaseType.getSelectedIndex() == 1;
+								dv3 = parent.Parameters.paramSoilModel.getSelectedIndex() == 1;
 
-								if(dv2 == 1)
+								if(dv2)
 								{
 									tempd = (Double)Utils.checkNum(parent.Parameters.paramVr.getText(), ParametersPanel.stringVr + " field", null, false, null, null, false, null, false);
 									if(tempd == null)
