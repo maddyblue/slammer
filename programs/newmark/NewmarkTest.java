@@ -51,6 +51,7 @@ public class NewmarkTest extends TestCase
 
 	public static Test suite()
 	{
+		Analysis.testing = true; // this lets the swing test suite work
 		TestSuite suite = new TestSuite();
 		suite.addTest(new NewmarkTest("RigorousDecoupledRigidLinear"));
 		suite.addTest(new NewmarkTest("RigorousDecoupledElasticLinear"));
@@ -66,49 +67,48 @@ public class NewmarkTest extends TestCase
 	public void RigorousDecoupledRigidLinear()
 	{
 		res = Decoupled.Decoupled(dat.getAsArray(), uwgt, height, vs, damp, dt, scal, g, vr, ca, false, false);
-		Assert.assertTrue(res == 0.14571080279368634);
+		Assert.assertEquals(0.14571, res, 1e-5);
 	}
 
 	public void RigorousDecoupledElasticLinear()
 	{
 		res = Decoupled.Decoupled(dat.getAsArray(), uwgt, height, vs, damp, dt, scal, g, vr, ca, true, false);
-		Assert.assertTrue(res == 0.08827247717251724);
+		Assert.assertEquals(0.08827, res, 1e-5);
 	}
 
 	public void RigorousDecoupledRigidEquivalent()
 	{
 		res = Decoupled.Decoupled(dat.getAsArray(), uwgt, height, vs, damp, dt, scal, g, vr, ca, false, true);
-		Assert.assertTrue(res == 0.03485663254172693);
+		Assert.assertEquals(0.03486, res, 1e-5);
 	}
 
 	public void RigorousDecoupledElasticEquivalent()
 	{
 		res = Decoupled.Decoupled(dat.getAsArray(), uwgt, height, vs, damp, dt, scal, g, vr, ca, true, true);
-		Assert.assertTrue(res == 0.004889278169344175);
+		Assert.assertEquals(0.00489, res, 1e-5);
 	}
 
 	public void RigorousCoupledRigidLinear()
 	{
 		res = Coupled.Coupled(dat.getAsArray(), uwgt, height, vs, damp, dt, scal, g, vr, ca, false, false);
-		//Assert.assertTrue(res == 0.14571080279368634);
-		System.out.println(res);
+		Assert.assertEquals(0.12784, res, 1e-5);
 	}
 
 	public void RigorousCoupledElasticLinear()
 	{
 		res = Coupled.Coupled(dat.getAsArray(), uwgt, height, vs, damp, dt, scal, g, vr, ca, true, false);
-		Assert.assertTrue(res == 0.07616587141747784);
+		Assert.assertEquals(0.07615, res, 1e-5);
 	}
 
 	public void RigorousCoupledRigidEquivalent()
 	{
 		res = Coupled.Coupled(dat.getAsArray(), uwgt, height, vs, damp, dt, scal, g, vr, ca, false, true);
-		Assert.assertTrue(res == 0.022254347288441275);
+		Assert.assertEquals(0.02225, res, 1e-5);
 	}
 
 	public void RigorousCoupledElasticEquivalent()
 	{
 		res = Coupled.Coupled(dat.getAsArray(), uwgt, height, vs, damp, dt, scal, g, vr, ca, true, true);
-		Assert.assertTrue(res == 0.008559588772147233);
+		Assert.assertEquals(0.00859, res, 1e-5);
 	}
 }
