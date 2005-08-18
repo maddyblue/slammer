@@ -1,4 +1,5 @@
 programs/jars/derby-10.0.2.1.jar
 programs/jars/jcommon-1.0.0-rc1.jar
 programs/jars/jfreechart-1.0.0-rc1.jar
+programs/jars/junit-3.8.1.jar
 programs/newmark.jar
