@@ -36,28 +36,20 @@ public class DecoupledSimplified extends Analysis
 		nrffact = 0.62247 + 0.91958 * Math.exp(-rock / 0.44491);
 
 		if(m <= 7.25)
-		{
 			meanper = (0.411 + 0.0837 * (m - 6.0) + 0.00208 * r) * Math.exp(meanperS * 0.437);
-		}
 		else
-		{
 			meanper = (0.411 + 1.25 * 0.0837 + 0.00208 * r) * Math.exp(meanperS * 0.437);
-		}
 
-		dur1 = Math.exp(-0.532 + 0.552 * Math.log((0.95 - 0.05) / (1.0 - 0.95)) - 0.0262 * Math.pow(Math.log((0.95 - 0.05) / (1 - 0.95)), 2));
+		dur1 = Math.exp(-0.532 + 0.552 * Math.log((0.95 - 0.05) / (1.0 - 0.95)) - 0.0262 * Math.pow(Math.log((0.95 - 0.05) / (1.0 - 0.95)), 2));
 		dur2 = Math.exp(5.204 + 0.851 * (m - 6.0));
 		dur3 = Math.pow(10, (1.5 * m + 16.05));
 		dur4 = Math.pow(dur2 / dur3, -1.0 / 3.0) / (4900000.0 * 3.2) + 0.063 * (r - 10.0);
 		dur5 = Math.pow(dur2 / dur3, -1.0 / 3.0) / (4900000.0 * 3.2);
 
 		if(r >= 10.0)
-		{
-			dur = Math.exp(Math.log(Math.exp(Math.log(dur4) + Math.log(dur1) + (0.493 * sigdurS))));
-		}
+			dur = Math.exp(Math.log(dur4) + Math.log(dur1) + (0.493 * sigdurS));
 		else
-		{
-			dur = Math.exp(Math.log(Math.exp(Math.log(dur5) + Math.log(dur1) + (0.493 * sigdurS))));
-		}
+			dur = Math.exp(Math.log(dur5) + Math.log(dur1) + (0.493 * sigdurS));
 
 		arg = (siteper / meanper);
 		tstm = arg > 8.0 ? 8.0 : arg;
