@@ -257,7 +257,7 @@ class DecoupledSimplifiedPanel extends JPanel implements ActionListener
 		c.gridy = y++;
 		c.gridx = x++;
 		c.insets = none;
-		label = new JLabel("Critical (yield) acceleration, Ac (g): ");
+		label = new JLabel("<html>Critical (yield) acceleration, a<sub>c</sub> (g): </html>");
 		gridbag.setConstraints(label, c);
 		panel.add(label);
 
@@ -301,7 +301,7 @@ class DecoupledSimplifiedPanel extends JPanel implements ActionListener
 		c.gridy = y++;
 		x = 0;
 		c.gridx = x++;
-		label = new JLabel("Shear-wave velocity, Vs (m/s): ");
+		label = new JLabel("<html>Shear-wave velocity, V<sub>s</sub> (m/s): </html>");
 		gridbag.setConstraints(label, c);
 		panel.add(label);
 
@@ -422,7 +422,7 @@ class DecoupledSimplifiedPanel extends JPanel implements ActionListener
 		c.gridx = x++;
 		c.insets = none;
 		c.anchor = GridBagConstraints.SOUTHWEST;
-		label = new JLabel("Site period, Ts (s): ");
+		label = new JLabel("<html>Site period, T<sub>s</sub> (s): </html>");
 		gridbag.setConstraints(label, c);
 		panel.add(label);
 
@@ -433,7 +433,7 @@ class DecoupledSimplifiedPanel extends JPanel implements ActionListener
 		c.gridy = y++;
 		x = 0;
 		c.gridx = x++;
-		label = new JLabel("Mean shaking period, Tm (s): ");
+		label = new JLabel("<html>Mean shaking period, T<sub>m</sub> (s): </html>");
 		gridbag.setConstraints(label, c);
 		panel.add(label);
 
@@ -444,7 +444,7 @@ class DecoupledSimplifiedPanel extends JPanel implements ActionListener
 		c.gridy = y++;
 		x = 0;
 		c.gridx = x++;
-		label = new JLabel("Period ratio, Ts/Tm: ");
+		label = new JLabel("<html>Period ratio, T<sub>s</sub>/T<sub>m</sub>: </html>");
 		gridbag.setConstraints(label, c);
 		panel.add(label);
 
@@ -455,7 +455,7 @@ class DecoupledSimplifiedPanel extends JPanel implements ActionListener
 		c.gridy = y++;
 		x = 0;
 		c.gridx = x++;
-		label = new JLabel("Duration, D(5-95%) (s): ");
+		label = new JLabel("<html>Duration, D<sub>(5-95%)</sub> (s): </html>");
 		gridbag.setConstraints(label, c);
 		panel.add(label);
 
@@ -477,7 +477,7 @@ class DecoupledSimplifiedPanel extends JPanel implements ActionListener
 		c.gridy = y++;
 		x = 0;
 		c.gridx = x++;
-		label = new JLabel("Max. hor. equiv. acc. (MHEA), Amax (g): ");
+		label = new JLabel("<html>Max. hor. equiv. acc. (MHEA), a<sub>max</sub> (g): </html>");
 		gridbag.setConstraints(label, c);
 		panel.add(label);
 
@@ -499,7 +499,7 @@ class DecoupledSimplifiedPanel extends JPanel implements ActionListener
 		c.gridy = y++;
 		x = 0;
 		c.gridx = x++;
-		label = new JLabel("Ac/Amax: ");
+		label = new JLabel("<html>a<sub>c</sub>/a<sub>max</sub>: </html>");
 		gridbag.setConstraints(label, c);
 		panel.add(label);
 
@@ -538,7 +538,7 @@ class DecoupledSimplifiedPanel extends JPanel implements ActionListener
 
 		c.gridx = x++;
 		c.insets = left;
-		label = new JLabel("Median Feq for screen procedure: ");
+		label = new JLabel("<html>Median F<sub>eq</sub> for screen procedure: </html>");
 		gridbag.setConstraints(label, c);
 		panel.add(label);
 
