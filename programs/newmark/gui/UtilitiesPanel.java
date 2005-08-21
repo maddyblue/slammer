@@ -36,11 +36,11 @@ class UtilitiesPanel extends JPanel implements ActionListener
 {
 	NewmarkTabbedPane parent;
 
-	JRadioButton cmgs = new JRadioButton("Convert cm/s/s to g's");
-	JRadioButton gscm = new JRadioButton("Convert g's to cm/s/s");
+	JRadioButton cmgs = new JRadioButton("<html>Convert cm/s<sup>2</sup> to g's</html>");
+	JRadioButton gscm = new JRadioButton("<html>Convert g's to cm/s<sup>2</sup></html>");
 	JRadioButton mult = new JRadioButton("Multiply by a constant");
 	JRadioButton redigit = new JRadioButton("Redigitize");
-	JRadioButton peapick = new JRadioButton("Pea picker");
+	JRadioButton peapick = new JRadioButton("Trim records");
 	ButtonGroup group = new ButtonGroup();
 
 	JFileChooser fcs = new JFileChooser();
