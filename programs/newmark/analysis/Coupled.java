@@ -210,7 +210,7 @@ public class Coupled extends DeCoupledCommon
 			if(scal > 0)
 				store(Math.abs(s2));
 
-			System.out.println((j * dt) + ":  " + s[j - 1] + ", " + slide);
+			//System.out.println((j * dt) + ":  " + s[j - 1] + ", " + slide);
 
 			residual_mu();
 		}
@@ -293,7 +293,7 @@ public class Coupled extends DeCoupledCommon
 			deltudot = gamma / (beta * delt) * deltu;
 			u2 = deltu;
 			udot2 = deltudot;
-			udotdot2 = ( - (L / M) * acc22 - 2 * damp * omega * udot2 - (omega * omega) * u2) / d1;
+			udotdot2 = ( - (L / M) * acc22 - 2.0 * damp * omega * udot2 - (omega * omega) * u2) / d1;
 		}
 		else
 		{
