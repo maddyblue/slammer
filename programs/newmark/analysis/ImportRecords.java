@@ -301,6 +301,8 @@ public class ImportRecords extends Analysis
 		double w3 = w2 * w;
 		double wd = w * Math.sqrt(1.0 - d * d);
 
+		//System.out.println(w + ", " + d + ", " + dt + ", " + wd + ", " + (1.0 / w * 2.0 * Math.PI));
+
 		double xd[] = {0, 0};
 		double xv[] = {0, 0};
 
@@ -309,7 +311,7 @@ public class ImportRecords extends Analysis
 		double f3 = d * w;
 		double f4 = 1.0 / wd;
 		double f5 = f3 * f4;
-		double f6 = 2.8 * f3;
+		double f6 = 2.0 * f3;
 		double e = Math.exp(-f3 * dt);
 		double s = Math.sin(wd * dt);
 		double c = Math.cos(wd * dt);
