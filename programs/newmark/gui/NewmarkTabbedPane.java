@@ -43,7 +43,7 @@ public class NewmarkTabbedPane extends JTabbedPane
 	public RecordManagerPanel RecordManager;
 	public AddRecordsPanel AddRecords;
 
-	public static Help help = null;
+	public static Help help = new Help();
 
 	JTabbedPane Rigorous = new JTabbedPane();
 	JTabbedPane Simplified = new JTabbedPane();
@@ -62,11 +62,6 @@ public class NewmarkTabbedPane extends JTabbedPane
 		RecordManager = new RecordManagerPanel(this);
 		AddRecords = new AddRecordsPanel(this);
 
-		if(help == null)
-		{
-			help = new Help();
-		}
-
 		Rigorous.addTab("Step 1: Select Records", SelectRecords);
 		Rigorous.addTab("Step 2: Select Analyses", Parameters);
 		Rigorous.addTab("Step 3: Perform Analyses and View Results", Results);
@@ -81,7 +76,7 @@ public class NewmarkTabbedPane extends JTabbedPane
 		addTab("Getting Started", GettingStarted);
 		addTab("Rigorous Analysis", Rigorous);
 		addTab("Simplified Analyses", Simplified);
-		addTab("Record Manager", Manager);
+		addTab("Manage/Add Records", Manager);
 		addTab("Utilities", Utilities);
 		addTab("Help", null);
 
@@ -97,7 +92,7 @@ public class NewmarkTabbedPane extends JTabbedPane
 			if(t.getSelectedIndex() == (t.getTabCount() - 1))
 			{
 				t.setSelectedIndex(last);
-				NewmarkTabbedPane.help.show();
+				NewmarkTabbedPane.help.setVisible(true);
 			}
 			last = t.getSelectedIndex();
 		}
