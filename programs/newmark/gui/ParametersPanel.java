@@ -84,11 +84,11 @@ class ParametersPanel extends JPanel implements ActionListener
 
 	final public static String stringUwgt = "Unit weight";
 	final public static String stringHeight = "Height";
-	final public static String stringVs = "Shear wave velocity (soil)";
+	final public static String stringVs = "Shear-wave velocity (soil)";
 	final public static String stringDisp = "Displacement";
 	final public static String stringDamp = "Damping ratio";
 	final public static String stringBaseType = "Base type";
-	final public static String stringVr = "Shear wave velocity (base rock)";
+	final public static String stringVr = "Shear-wave velocity (base rock)";
 	final public static String stringSoilModel = "Soil model";
 
 	final public static String stringRB = "Rigid Block";
@@ -160,13 +160,31 @@ class ParametersPanel extends JPanel implements ActionListener
 		next.setActionCommand("next");
 		next.addActionListener(this);
 
-		createPanel();
+		GridBagLayout gridbag = new GridBagLayout();
+		GridBagConstraints c = new GridBagConstraints();
+		setLayout(gridbag);
+		JPanel jp;
+
+		c.weightx = 1;
+		c.weighty = 1;
+		c.fill = GridBagConstraints.BOTH;
+
+		jp = createPanelNorth();
+		gridbag.setConstraints(jp, c);
+		add(jp);
+
+		c.gridy = 1;
+		c.weighty = 0;
+		jp = createPanelSouth();
+		gridbag.setConstraints(jp, c);
+		add(jp);
 	}
 
-	private void createPanel()
+	private JPanel createPanelNorth()
 	{
+		JPanel panel = new JPanel();
 		GridBagLayout gridbag = new GridBagLayout();
-		setLayout(gridbag);
+		panel.setLayout(gridbag);
 
 		GridBagConstraints c = new GridBagConstraints();
 		JLabel label;
@@ -183,7 +201,7 @@ class ParametersPanel extends JPanel implements ActionListener
 		label.setFont(GUIUtils.headerFont);
 		c.gridwidth = 5;
 		gridbag.setConstraints(label, c);
-		add(label);
+		panel.add(label);
 		c.gridwidth = 1;
 
 		x = 0;
@@ -191,61 +209,61 @@ class ParametersPanel extends JPanel implements ActionListener
 		c.gridx = x++;
 		label = new JLabel("     ");
 		gridbag.setConstraints(label, c);
-		add(label);
+		panel.add(label);
 
 		c.gridx = x++;
 		label = new JLabel("Units:");
 		gridbag.setConstraints(label, c);
-		add(label);
+		panel.add(label);
 
 		c.gridx = x++;
 		gridbag.setConstraints(unitMetric, c);
-		add(unitMetric);
+		panel.add(unitMetric);
 
 		c.gridx = x++;
 		gridbag.setConstraints(unitEnglish, c);
-		add(unitEnglish);
+		panel.add(unitEnglish);
 
 		x = 1;
 		c.gridx = x++;
 		c.gridy = y++;
 		label = new JLabel("Scaling:");
 		gridbag.setConstraints(label, c);
-		add(label);
+		panel.add(label);
 
 		c.gridx = x++;
 		gridbag.setConstraints(scalePGAoff, c);
-		add(scalePGAoff);
+		panel.add(scalePGAoff);
 
 		c.gridx = x++;
 		gridbag.setConstraints(scalePGAon, c);
-		add(scalePGAon);
+		panel.add(scalePGAon);
 
 		c.gridx = x++;
 		gridbag.setConstraints(scalePGAval, c);
-		add(scalePGAval);
+		panel.add(scalePGAval);
 
 		x = 1;
 		c.gridx = x++;
 		c.gridy = y++;
 		label = new JLabel("Critical Acceleration:");
 		gridbag.setConstraints(label, c);
-		add(label);
+		panel.add(label);
 
 		c.gridx = x++;
 		gridbag.setConstraints(CAconst, c);
-		add(CAconst);
+		panel.add(CAconst);
 
 		c.gridx = x++;
 		gridbag.setConstraints(CAdisp, c);
-		add(CAdisp);
+		panel.add(CAdisp);
 
 		x = 2;
 		c.gridx = x++;
 		c.gridy = y++;
 		c.fill = GridBagConstraints.HORIZONTAL;
 		gridbag.setConstraints(CAconstTF, c);
-		add(CAconstTF);
+		panel.add(CAconstTF);
 
 		c.gridx = x++;
 		c.weighty = 1;
@@ -253,7 +271,7 @@ class ParametersPanel extends JPanel implements ActionListener
 		c.gridwidth = 2;
 		c.fill = GridBagConstraints.BOTH;
 		gridbag.setConstraints(dispPane, c);
-		add(dispPane);
+		panel.add(dispPane);
 
 		JPanel jp = new JPanel();
 		jp.setLayout(new GridLayout(1, 2));
@@ -265,122 +283,163 @@ class ParametersPanel extends JPanel implements ActionListener
 		c.weighty = 0;
 		c.fill = GridBagConstraints.HORIZONTAL;
 		gridbag.setConstraints(jp, c);
-		add(jp);
+		panel.add(jp);
 
-		x = 0;
+		return panel;
+	}
+
+	private JPanel createPanelSouth()
+	{
+		JPanel panel = new JPanel();
+		panel.setBorder(BorderFactory.createMatteBorder(3, 0, 0, 0, Color.BLACK));
+		GridBagLayout gridbag = new GridBagLayout();
+		panel.setLayout(gridbag);
+
+		GridBagConstraints c = new GridBagConstraints();
+		JLabel label;
+		JPanel jp;
+		Insets left = new Insets(0, 5, 0, 0);
+		Insets none = new Insets(0, 0, 0, 0);
+
+		int y = 0;
+		int x = 0;
+
+		c.anchor = GridBagConstraints.NORTHWEST;
+		c.fill = GridBagConstraints.BOTH;
+
 		c.gridx = x++;
 		c.gridy = y++;
+		c.weightx = 1;
 		label = new JLabel("Choose Types of Analysis:");
 		label.setFont(GUIUtils.headerFont);
-		label.setBorder(BorderFactory.createMatteBorder(3, 0, 0, 0, Color.BLACK));
-		c.gridwidth = 5;
+		c.gridwidth = 4;
 		c.anchor = GridBagConstraints.NORTHWEST;
 		gridbag.setConstraints(label, c);
-		add(label);
+		panel.add(label);
 		c.gridwidth = 1;
 
-		c.gridx = x++;
 		c.gridy = y++;
-		c.fill = GridBagConstraints.NONE;
-		gridbag.setConstraints(typeRigid, c);
-		add(typeRigid);
+		c.weightx = 0;
+		label = new JLabel("     ");
+		gridbag.setConstraints(label, c);
+		panel.add(label);
 
+		c.gridx = x++;
+		c.anchor = GridBagConstraints.WEST;
+		c.fill = GridBagConstraints.VERTICAL;
+		typeRigid.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 1, Color.BLACK));
+		typeRigid.setBorderPainted(true);
+		gridbag.setConstraints(typeRigid, c);
+		panel.add(typeRigid);
+
+		c.gridx = x--;
+		c.gridwidth = 2;
 		jp = new JPanel();
 		label = new JLabel("Slope Displacement:");
+		jp.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
 		jp.add(label);
 		jp.add(downSlope);
 		jp.add(dualSlope);
 		jp.add(thrustAngle);
-
-		c.gridx = x;
-		c.gridwidth = 3;
 		gridbag.setConstraints(jp, c);
-		add(jp);
-		c.gridwidth = 1;
+		panel.add(jp);
 
-		x = 1;
-		c.gridx = x;
-		c.gridy = y++;
-		c.gridwidth = 4;
-		c.fill = GridBagConstraints.HORIZONTAL;
-		jp = new JPanel();
-		jp.setBorder(BorderFactory.createMatteBorder(1, 0, 0, 0, Color.BLACK));
-		gridbag.setConstraints(jp, c);
-		add(jp);
-		c.gridwidth = 1;
+		JPanel dcpanel = new JPanel(new GridLayout(0, 1));
+		dcpanel.add(typeCoupled);
+		dcpanel.add(typeDecoupled);
+		typeCoupled.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 1, Color.BLACK));
+		typeDecoupled.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 1, Color.BLACK));
+		typeCoupled.setBorderPainted(true);
+		typeDecoupled.setBorderPainted(true);
 
+		c.gridx = x++;
 		c.gridy = y++;
+		c.gridwidth = 1;
+		c.gridheight = 7;
+		c.fill = GridBagConstraints.BOTH;
+		gridbag.setConstraints(dcpanel, c);
+		panel.add(dcpanel);
+
+		c.gridx = x++;
+		c.gridheight = 1;
 		c.fill = GridBagConstraints.NONE;
-		gridbag.setConstraints(typeCoupled, c);
-		add(typeCoupled);
-
-		c.gridy = y--;
-		gridbag.setConstraints(typeDecoupled, c);
-		add(typeDecoupled);
-
-		x = 2;
-		c.gridy = y++;
-		c.gridx = x++;
+		c.anchor = GridBagConstraints.SOUTHWEST;
+		c.insets = left; // line up these to the 5-unit gap made by FlowLayout on the slope displacement panel
 		gridbag.setConstraints(labelUwgt, c);
-		add(labelUwgt, c);
+		panel.add(labelUwgt, c);
 
 		c.gridx = x--;
+		c.insets = none;
 		gridbag.setConstraints(paramUwgt, c);
-		add(paramUwgt, c);
+		panel.add(paramUwgt, c);
 
 		c.gridy = y++;
 		c.gridx = x++;
+		c.insets = left;
 		gridbag.setConstraints(labelHeight, c);
-		add(labelHeight, c);
+		panel.add(labelHeight, c);
 
 		c.gridx = x--;
+		c.insets = none;
 		gridbag.setConstraints(paramHeight, c);
-		add(paramHeight, c);
+		panel.add(paramHeight, c);
 
 		c.gridy = y++;
 		c.gridx = x++;
+		c.insets = left;
 		gridbag.setConstraints(labelVs, c);
-		add(labelVs, c);
+		panel.add(labelVs, c);
 
 		c.gridx = x--;
+		c.insets = none;
 		gridbag.setConstraints(paramVs, c);
-		add(paramVs, c);
+		panel.add(paramVs, c);
 
 		c.gridy = y++;
 		c.gridx = x++;
+		c.insets = left;
 		gridbag.setConstraints(labelDamp, c);
-		add(labelDamp, c);
+		panel.add(labelDamp, c);
 
 		c.gridx = x--;
+		c.insets = none;
 		gridbag.setConstraints(paramDamp, c);
-		add(paramDamp, c);
+		panel.add(paramDamp, c);
 
 		c.gridy = y++;
 		c.gridx = x++;
+		c.insets = left;
 		gridbag.setConstraints(labelBaseType, c);
-		add(labelBaseType, c);
+		panel.add(labelBaseType, c);
 
 		c.gridx = x--;
+		c.insets = none;
 		gridbag.setConstraints(paramBaseType, c);
-		add(paramBaseType, c);
+		panel.add(paramBaseType, c);
 
 		c.gridy = y++;
 		c.gridx = x++;
+		c.insets = left;
 		gridbag.setConstraints(labelVr, c);
-		add(labelVr, c);
+		panel.add(labelVr, c);
 
 		c.gridx = x--;
+		c.insets = none;
 		gridbag.setConstraints(paramVr, c);
-		add(paramVr, c);
+		panel.add(paramVr, c);
 
 		c.gridy = y++;
 		c.gridx = x++;
+		c.insets = left;
 		gridbag.setConstraints(labelSoilModel, c);
-		add(labelSoilModel, c);
+		panel.add(labelSoilModel, c);
 
 		c.gridx = x--;
+		c.insets = none;
 		gridbag.setConstraints(paramSoilModel, c);
-		add(paramSoilModel, c);
+		panel.add(paramSoilModel, c);
+
+		return panel;
 	}
 
 	private void updateUnits()
