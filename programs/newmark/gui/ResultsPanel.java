@@ -52,6 +52,8 @@ class ResultsPanel extends JPanel implements ActionListener
 
 	NewmarkTabbedPane parent;
 
+	JComboBox decimalsCB = new JComboBox(new Object[] { "one", "two", "three" });
+
 	JButton Analyze = new JButton("Perform Analysis");
 	JButton ClearOutput = new JButton("Clear output");
 
@@ -91,6 +93,10 @@ class ResultsPanel extends JPanel implements ActionListener
 		outputTableModel.addColumn(ParametersPanel.stringRB);
 		outputTableModel.addColumn(ParametersPanel.stringDC);
 		outputTableModel.addColumn(ParametersPanel.stringCP);
+
+		decimalsCB.setActionCommand("decimals");
+		decimalsCB.addActionListener(this);
+		changeDecimal();
 
 		Analyze.setActionCommand("analyze");
 		Analyze.addActionListener(this);
@@ -143,8 +149,6 @@ class ResultsPanel extends JPanel implements ActionListener
 							final double g = paramUnit ? Analysis.Gcmss : Analysis.Ginss;
 							unitDisplacement = paramUnit ? "(cm)" : "(in)";
 							outputTableModel.setColumnIdentifiers(new Object[] {"Earthquake", "Record", ParametersPanel.stringRB + " " + unitDisplacement, ParametersPanel.stringDC + " " + unitDisplacement, ParametersPanel.stringCP + " " + unitDisplacement});
-							//unitFmt = paramUnit ? Analysis.fmtOne : Analysis.fmtFour;
-							unitFmt = Analysis.fmtOne;
 
 							boolean paramDualslope = parent.Parameters.dualSlope.isSelected();
 
@@ -441,6 +445,7 @@ class ResultsPanel extends JPanel implements ActionListener
 								{
 									inv = RigidBlock.NewmarkRigorous(dat, di, ca, iscale * scaleRB, paramDualslope, thrust);
 									norm = RigidBlock.NewmarkRigorous(dat, di, ca, scale * scaleRB, paramDualslope, thrust);
+
 									avg = avg(inv, norm, unitFmt);
 
 									total[RB] += avg.doubleValue();
@@ -565,6 +570,10 @@ class ResultsPanel extends JPanel implements ActionListener
 			{
 				clearOutput();
 			}
+			else if(command.equals("decimals"))
+			{
+				changeDecimal();
+			}
 			else if(command.equals("saveOutput"))
 			{
 				if(fc.showSaveDialog(this) == JFileChooser.APPROVE_OPTION)
@@ -643,7 +652,7 @@ class ResultsPanel extends JPanel implements ActionListener
 
 					frame.pack();
 					frame.setLocationRelativeTo(null);
-					frame.show();
+					frame.setVisible(true);
 				}
 			}
 			else if(command.equals("plotNewmark"))
@@ -664,7 +673,7 @@ class ResultsPanel extends JPanel implements ActionListener
 				ChartFrame frame = new ChartFrame(s + " displacement versus time", chart);
 				frame.pack();
 				frame.setLocationRelativeTo(null);
-				frame.show();
+				frame.setVisible(true);
 			}
 		}
 		catch (Exception ex)
@@ -688,11 +697,29 @@ class ResultsPanel extends JPanel implements ActionListener
 			outputTableModel.removeRow(rows);
 	}
 
+	private void changeDecimal()
+	{
+		int i = decimalsCB.getSelectedIndex();
+
+		if(i == 2)
+			unitFmt = Analysis.fmtThree;
+		else if(i == 1)
+			unitFmt = Analysis.fmtTwo;
+		else
+			unitFmt = Analysis.fmtOne;
+	}
+
 	private JPanel createHeader()
 	{
-		JPanel container = new JPanel(new GridLayout(0, 2));
-		container.add(Analyze);
-		container.add(ClearOutput);
+		JPanel containerL = new JPanel();
+		containerL.add(new JLabel("Calculate results to"));
+		containerL.add(decimalsCB);
+		containerL.add(new JLabel("decimals. "));
+
+		JPanel container = new JPanel(new BorderLayout());
+		container.add(containerL, BorderLayout.WEST);
+		container.add(Analyze, BorderLayout.CENTER);
+		container.add(ClearOutput, BorderLayout.EAST);
 
 		return container;
 	}
