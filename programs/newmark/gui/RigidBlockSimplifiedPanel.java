@@ -43,8 +43,8 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 	JLabel labelOne = new JLabel(" ");
 	JLabel labelTwo = new JLabel(" ");
 	JLabel labelRes = new JLabel(" ");
-	JTextField labelOnef = new JTextField("", 15);
-	JTextField labelTwof = new JTextField("", 15);
+	JTextField labelOnef = new JTextField(15);
+	JTextField labelTwof = new JTextField(15);
 	JLabel labelResf = new JLabel(" ");
 	JEditorPane ta = new JEditorPane();
 	JButton button = new JButton("Perform Analysis");
@@ -84,9 +84,6 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 		ta.setEditable(false);
 		ta.setContentType("text/html");
 
-		labelOnef.setBackground(GUIUtils.bg);
-		labelTwof.setBackground(GUIUtils.bg);
-
 		setLayout(new BorderLayout ());
 
 		add(BorderLayout.NORTH, createSimplePanelTop());
@@ -104,15 +101,13 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 				labelOnef.setText("");
 				labelTwof.setText("");
 				labelResf.setText(" ");
-				labelOnef.setBackground(Color.white);
 				if(Jibson.isSelected())
 				{
 					labelOne.setText("What is the critical (yield) acceleration (in g's)?");
 					labelTwo.setText("What is the Arias Intensity (in m/s)?");
 					labelOnef.setEnabled(true);
 					labelTwof.setEnabled(true);
-					labelTwof.setBackground(Color.white);
-					labelRes.setText("Estimated Newmark Displacement (in cm)");
+					labelRes.setText("Estimated Newmark Displacement (in cm):");
 					ta.setText(JibsonStr);
 				}
 				else if(Ambraseys.isSelected())
@@ -121,8 +116,7 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 					labelTwo.setText("What is the peak ground acceleration (in g's)?");
 					labelOnef.setEnabled(true);
 					labelTwof.setEnabled(true);
-					labelTwof.setBackground(Color.white);
-					labelRes.setText("Estimated Newmark Displacement (in cm)");
+					labelRes.setText("Estimated Newmark Displacement (in cm):");
 					ta.setText(AmbraseysStr);
 				}
 				else if(probFailure.isSelected())
@@ -131,8 +125,7 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 					labelTwo.setText(" ");
 					labelOnef.setEnabled(true);
 					labelTwof.setEnabled(false);
-					labelTwof.setBackground(GUIUtils.bg);
-					labelRes.setText("Estimated probability of failure");
+					labelRes.setText("Estimated probability of failure:");
 					ta.setText(probFailureStr);
 				}
 			}
@@ -175,48 +168,67 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 
 	private JPanel createSimplePanelTop()
 	{
-		JPanel panel = new JPanel(new BorderLayout());
-		Box temp = new Box(BoxLayout.Y_AXIS);
+		Insets top = new Insets(20, 0, 0, 0);
+		Insets none = new Insets(0, 0, 0, 0);
 
-		JPanel temp1 = new JPanel(new VariableGridLayout(VariableGridLayout.FIXED_NUM_COLUMNS, 3));
-		temp1.add(Ambraseys);
-		temp1.add(Jibson);
-		temp1.add(probFailure);
-		temp1.setAlignmentX(LEFT_ALIGNMENT);
+		GridBagLayout gridbag = new GridBagLayout();
+		GridBagConstraints c = new GridBagConstraints();
+		JPanel panel = new JPanel();
+		panel.setLayout(gridbag);
 
-		temp.add(temp1);
-		temp.add(Box.createVerticalStrut(20));
-		labelOne.setAlignmentX(LEFT_ALIGNMENT);
-		temp.add(labelOne);
+		int x = 0;
+		int y = 0;
 
-		Dimension d = labelOnef.getMinimumSize();
-		labelOnef.setMinimumSize(d);
-		labelOnef.setPreferredSize(d);
-		labelOnef.setMaximumSize(d);
-		labelOnef.setAlignmentX(LEFT_ALIGNMENT);
-		temp.add(labelOnef);
-		temp.add(Box.createVerticalStrut(20));
+		c.gridx = x++;
+		c.gridy = y++;
+		c.anchor = GridBagConstraints.NORTHWEST;
+		gridbag.setConstraints(Ambraseys, c);
+		panel.add(Ambraseys);
 
-		labelTwo.setAlignmentX(LEFT_ALIGNMENT);
-		temp.add(labelTwo);
-		d = labelTwof.getMinimumSize();
-		labelTwof.setMinimumSize(d);
-		labelTwof.setPreferredSize(d);
-		labelTwof.setMaximumSize(d);
-		labelTwof.setAlignmentX(LEFT_ALIGNMENT);
-		temp.add(labelTwof);
-		temp.add(Box.createVerticalStrut(20));
+		c.gridx = x++;
+		gridbag.setConstraints(Jibson, c);
+		panel.add(Jibson);
 
-		button.setAlignmentX(LEFT_ALIGNMENT);
-		temp.add(button);
-		temp.add(Box.createVerticalStrut(20));
+		c.gridx = x++;
+		gridbag.setConstraints(probFailure, c);
+		panel.add(probFailure);
 
-		labelRes.setAlignmentX(LEFT_ALIGNMENT);
-		labelResf.setAlignmentX(LEFT_ALIGNMENT);
-		temp.add(labelRes);
-		temp.add(labelResf);
+		x = 0;
+		c.gridx = x++;
+		c.gridy = y++;
+		c.insets = top;
+		c.gridwidth = 3;
+		gridbag.setConstraints(labelOne, c);
+		panel.add(labelOne);
 
-		panel.add(BorderLayout.WEST, temp);
+		c.gridy = y++;
+		c.insets = none;
+		gridbag.setConstraints(labelOnef, c);
+		panel.add(labelOnef);
+
+		c.gridy = y++;
+		c.insets = top;
+		gridbag.setConstraints(labelTwo, c);
+		panel.add(labelTwo);
+
+		c.gridy = y++;
+		c.insets = none;
+		gridbag.setConstraints(labelTwof, c);
+		panel.add(labelTwof);
+
+		c.gridy = y++;
+		c.insets = top;
+		gridbag.setConstraints(button, c);
+		panel.add(button);
+
+		c.gridy = y++;
+		gridbag.setConstraints(labelRes, c);
+		panel.add(labelRes);
+
+		c.gridy = y++;
+		c.insets = none;
+		gridbag.setConstraints(labelResf, c);
+		panel.add(labelResf);
 
 		return panel;
 	}
