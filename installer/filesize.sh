@@ -7,7 +7,7 @@ function print_size {
 
 function mk_contents {
 	file=$1.tar
-	#tar tf $file > $1 2> /dev/null
+	tar tf $file > $1 2> /dev/null
 	print_size $1
 }
 
@@ -33,5 +33,5 @@ done
 for file in installer/newmark-*.tar
 do
 	echo "bzip2ing " $file
-	#bzip2 -k $file
+	bzip2 -k $file
 done
