@@ -498,7 +498,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 				ChartFrame frame = new ChartFrame(title, chart);
 				frame.pack();
 				frame.setLocationRelativeTo(null);
-				frame.show();
+				frame.setVisible(true);
 			}
 			else if(command.equals("save"))
 			{

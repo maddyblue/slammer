@@ -197,7 +197,7 @@ class GroupFrame extends JFrame implements ActionListener
 			}
 			else if(command.equals("close"))
 			{
-				hide();
+				setVisible(false);
 			}
 			else if(command.equals("delete"))
 			{

@@ -120,7 +120,7 @@ class AddRecordsPanel extends JPanel implements ActionListener
 				progFrame.getContentPane().add(prog);
 				progFrame.setSize(600, 75);
 				GUIUtils.setLocationMiddle(progFrame);
-				progFrame.show();
+				progFrame.setVisible(true);
 
 				int incr;
 				for(int i = 0; i < m.getRowCount(); i++)

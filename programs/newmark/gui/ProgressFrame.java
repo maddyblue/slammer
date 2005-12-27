@@ -53,7 +53,7 @@ public class ProgressFrame extends JFrame implements ActionListener
 		setSize(400,100);
 		setLocationRelativeTo(null);
 
-		show();
+		setVisible(true);
 	}
 
 	public JPanel createContentPane()

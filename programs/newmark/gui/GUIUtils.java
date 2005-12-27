@@ -47,7 +47,7 @@ public class GUIUtils
 			JOptionPane op = new JOptionPane(new JScrollPane(textArea), JOptionPane.ERROR_MESSAGE);
 			op.setPreferredSize(new Dimension(600, 400));
 			JDialog dialog = op.createDialog(op, "Error");
-			dialog.show();
+			dialog.setVisible(true);
 		}
 	}
 
