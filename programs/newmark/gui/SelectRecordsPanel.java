@@ -39,7 +39,7 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 
 	JButton searchButton = new JButton("Search for records");
 	JButton clearButton = new JButton("Clear all search fields");
-	JTextArea searchTA = new JTextArea();
+	JLabel searchTA = new JLabel();
 
 	JComboBox eqList = new JComboBox();
 	JComboBox recordList = new JComboBox();
@@ -82,11 +82,6 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 		clearButton.setActionCommand("clear");
 		clearButton.addActionListener(this);
 
-		searchTA.setLineWrap(true);
-		searchTA.setWrapStyleWord(true);
-		searchTA.setEditable(false);
-		searchTA.setBackground(GUIUtils.bg);
-
 		FocMechAll.setActionCommand("focMechAll");
 		FocMechStrikeSlip.setActionCommand("focMechOther");
 		FocMechReverse.setActionCommand("focMechOther");
@@ -112,8 +107,6 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 		SiteClassSoftRock.addActionListener(this);
 		SiteClassStiffSoil.addActionListener(this);
 		SiteClassSoftSoil.addActionListener(this);
-
-		searchTA.setRows(3);
 
 		Utils.addEQList(eqList);
 		Utils.updateRecordList(recordList, eqList);
@@ -169,7 +162,6 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 	{
 		JPanel selectHeaderVector = new JPanel(new BorderLayout());
 		selectHeaderVector.add(BorderLayout.WEST, createParmsPanel());
-		selectHeaderVector.add(BorderLayout.CENTER, createParmsRightPanel());
 
 		Vector checkBoxesVector = new Vector(2);
 		checkBoxesVector.add(createFocMechPanel());
@@ -212,52 +204,79 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 	{
 		JPanel searchPanel = new JPanel(new BorderLayout());
 
-		JPanel searchFields = new JPanel(new GridLayout(0, 3));
-		searchFields.add(new JLabel(""));
+		GridBagLayout gridbag = new GridBagLayout();
+		GridBagConstraints c = new GridBagConstraints();
+		JPanel searchFields = new JPanel();
+		searchFields.setLayout(gridbag);
+		Component comp;
 
-		JLabel greaterLabel = new JLabel("Greater than or equal to:");
-		greaterLabel.setHorizontalAlignment(JLabel.RIGHT);
-		searchFields.add(greaterLabel);
+		int x = 1;
+		int y = 0;
 
-		JLabel lessLabel = new JLabel("Less than or equal to:");
-		lessLabel.setHorizontalAlignment(JLabel.RIGHT);
-		searchFields.add(lessLabel);
+		c.gridx = x++;
+		c.gridy = y++;
+		c.anchor = GridBagConstraints.NORTHWEST;
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.weightx = 1;
+		c.insets = new Insets(0, 0, 0, 8);
+		comp = new JLabel("Greater than or equal to:");
+		gridbag.setConstraints(comp, c);
+		searchFields.add(comp);
+
+		c.gridx = x++;
+		comp = new JLabel("Less than or equal to:");
+		gridbag.setConstraints(comp, c);
+		searchFields.add(comp);
+		c.insets = new Insets(0, 0, 0, 0);
 
 		for(int i = 0; i < textFields.length; i++)
 		{
 			textFields[i][0] = new JTextField();
 			textFields[i][1] = new JTextField();
-			searchFields.add(new JLabel(searchList[i][0]));
-			searchFields.add(textFields[i][0]);
-			searchFields.add(textFields[i][1]);
+
+			x = 0;
+			c.gridx = x++;
+			c.gridy = y++;
+			c.weightx = 0;
+			comp = new JLabel(searchList[i][0]);
+			gridbag.setConstraints(comp, c);
+			searchFields.add(comp);
+
+			c.gridx = x++;
+			c.weightx = 1;
+			comp = textFields[i][0];
+			gridbag.setConstraints(comp, c);
+			searchFields.add(comp);
+
+			c.gridx = x++;
+			comp = textFields[i][1];
+			gridbag.setConstraints(comp, c);
+			searchFields.add(comp);
+
+			switch(i)
+			{
+				case 0: comp = searchButton; break;
+				case 2: comp = clearButton; break;
+				case 4: comp = searchTA; break;
+				default: comp = null; break;
+			}
+
+			if(comp != null)
+			{
+				c.gridx = x++;
+				c.weightx = 1;
+				c.gridheight = 2;
+				c.fill = GridBagConstraints.NONE;
+				gridbag.setConstraints(comp, c);
+				searchFields.add(comp);
+				c.gridheight = 1;
+				c.fill = GridBagConstraints.HORIZONTAL;
+			}
 		}
 
 		searchPanel.add(BorderLayout.WEST, searchFields);
 
 		return searchPanel;
-	}
-
-	private JPanel createParmsRightPanel()
-	{
-		Vector buttonsVector = new Vector(2);
-		buttonsVector.add(searchButton);
-		buttonsVector.add(clearButton);
-		JPanel buttons = GUIUtils.makeRecursiveLayoutDown(buttonsVector);
-
-		GridBagLayout gridbag = new GridBagLayout();
-		GridBagConstraints c = new GridBagConstraints();
-
-		JPanel panel = new JPanel();
-		panel.setLayout(gridbag);
-
-		gridbag.setConstraints(buttons, c);
-		panel.add(buttons);
-
-		JPanel ret = new JPanel(new BorderLayout());
-		ret.add(BorderLayout.WEST, panel);
-		ret.add(BorderLayout.SOUTH, searchTA);
-
-		return ret;
 	}
 
 	private JPanel createSelectIndivPanel()
@@ -358,14 +377,14 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 					}
 				}
 
-				FocMechAll.setSelected(false);
+				FocMechAll.setSelected(true);
 				FocMechStrikeSlip.setSelected(false);
 				FocMechReverse.setSelected(false);
 				FocMechNormal.setSelected(false);
 				FocMechObliqueReverse.setSelected(false);
 				FocMechObliqueNormal.setSelected(false);
 
-				SiteClassAll.setSelected(false);
+				SiteClassAll.setSelected(true);
 				SiteClassHardRock.setSelected(false);
 				SiteClassSoftRock.setSelected(false);
 				SiteClassStiffSoil.setSelected(false);
@@ -405,7 +424,7 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 			}
 			else if(command.equals("groupmanage"))
 			{
-				groupFrame.show();
+				groupFrame.setVisible(true);
 			}
 			else if(command.equals("next"))
 			{
