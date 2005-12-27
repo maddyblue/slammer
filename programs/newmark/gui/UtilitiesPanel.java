@@ -94,7 +94,6 @@ class UtilitiesPanel extends JPanel implements ActionListener
 		go.addActionListener(this);
 
 		constantf.setEnabled(false);
-		constantf.setBackground(GUIUtils.bg);
 
 		pane.setEditable(false);
 		pane.setContentType("text/html");
@@ -111,7 +110,7 @@ class UtilitiesPanel extends JPanel implements ActionListener
 
 	private JPanel createUtilitiesPanelHeader()
 	{
-		JPanel panel = new JPanel(new VariableGridLayout(VariableGridLayout.FIXED_NUM_COLUMNS, 5));
+		JPanel panel = new JPanel();
 		panel.add(cmgs);
 		panel.add(gscm);
 		panel.add(mult);
@@ -187,12 +186,10 @@ class UtilitiesPanel extends JPanel implements ActionListener
 			else if(command.equals("change"))
 			{
 				constantf.setText("");
-				constantf.setBackground(Color.white);
 				if(cmgs.isSelected() || gscm.isSelected())
 				{
 					constant.setText(" ");
 					constantf.setEnabled(false);
-					constantf.setBackground(GUIUtils.bg);
 					if(cmgs.isSelected())
 						pane.setText("This program converts a file containing a sequence of accelerations in units of cm/s/s into a file containing a sequence of accelerations in units of g.  The program simply divides each value of cm/s/s by 980.665 to obtain values in terms of g.  Both the input and output file or directory must be specified or selected using the browser.");
 					else
@@ -331,7 +328,7 @@ class UtilitiesPanel extends JPanel implements ActionListener
 					progFrame.getContentPane().add(prog);
 					progFrame.setSize(600, 75);
 					GUIUtils.setLocationMiddle(progFrame);
-					progFrame.show();
+					progFrame.setVisible(true);
 
 					File list[] = s.listFiles();
 					prog.setMaximum(list.length - 1);
