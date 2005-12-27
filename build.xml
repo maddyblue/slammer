@@ -80,8 +80,7 @@
 			manifest="installer/install.mf"
 		>
 			<fileset dir=".">
-				<include name="installer/newmark-program.tar.bz2" />
-				<include name="installer/newmark-eq-otherus.tar.bz2" />
+				<include name="installer/newmark-*.tar.bz2" />
 				<include name="installer/*.class" />
 				<include name="installer/*.html" />
 				<include name="installer/install.props" />
