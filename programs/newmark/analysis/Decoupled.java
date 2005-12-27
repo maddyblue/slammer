@@ -120,7 +120,7 @@ public class Decoupled extends DeCoupledCommon
 
 		for(j = 1; j <= npts; j++)
 			ain[j-1] *= -1.0;
-		//scal *= -1.0;
+		//scal *= -1.0; // this was in the original code, but I'm pretty sure it's pointless
 
 		// for each mode calculate constants for Newmark algorithm
 		//////////////////////////////////////////////////////////////////////// /
@@ -170,8 +170,7 @@ public class Decoupled extends DeCoupledCommon
 		{
 			d_sliding();
 
-			// scal < 0 since we do scal *= -1 earlier
-			if(scal < 0)
+			if(scal > 0)
 				store(Math.abs(s[j - 1]));
 
 			//System.out.println((j * dt) + ": " + s[j - 1]);
