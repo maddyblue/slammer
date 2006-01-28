@@ -27,7 +27,7 @@ import javax.swing.event.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.border.*;
-import java.io.File;
+import java.io.*;
 import java.util.Vector;
 import org.jfree.data.xy.*;
 import org.jfree.chart.*;
@@ -70,15 +70,16 @@ class RecordManagerPanel extends JPanel implements ActionListener
 	JRadioButton typeFourier = new JRadioButton("Fourier Amplitude Spectrum");
 	JRadioButton typeSpectra = new JRadioButton("Response Spectra");
 
-	JComboBox spectraCB = new JComboBox();
+	JComboBox spectraCB = new JComboBox(new String[] {"Absolute-Acceleration", "Relative-Velocity", "Relative-Displacement", "Psuedo Absolute-Acceleration", "Psuedo Relative-Velocity"});
+	String[] spectraCBStr = new String[] { "cm/sec/sec", "cm/sec", "cm", "cm/sec/sec", "cm/sec" };
 
-	JTextField spectraDamp = new JTextField("0", 5);
-	JTextField spectraIncr = new JTextField("0.01", 5);
-	JTextField spectraHigh = new JTextField("15.0", 5);
+	JComboBox spectraDomain = new JComboBox(new String[] {"Frequency", "Period"});
+	String[] spectraDomainStr = new String[] { "Hz", "sec" };
+	String[] spectraDirStr = new String[] { "Highest", "Shortest" };
 
-	final public static String spectraAccStr = "Absolute-Acceleration";
-	final public static String spectraVelStr = "Relative-Velocity";
-	final public static String spectraDisStr = "Relative-Displacement";
+	JLabel spectraDomainLabel = new JLabel();
+	JTextField spectraDamp = new JTextField("0");
+	JTextField spectraHigh = new JTextField("100.00");
 
 	JButton add = new JButton("Add record(s)...");
 
@@ -112,10 +113,6 @@ class RecordManagerPanel extends JPanel implements ActionListener
 		TypeGroup.add(typeFourier);
 		TypeGroup.add(typeSpectra);
 
-		spectraCB.addItem(spectraAccStr);
-		spectraCB.addItem(spectraVelStr);
-		spectraCB.addItem(spectraDisStr);
-
 		Utils.addEQList(eqList, Boolean.TRUE);
 		eqList.setActionCommand("eqListChange");
 		eqList.addActionListener(this);
@@ -131,6 +128,10 @@ class RecordManagerPanel extends JPanel implements ActionListener
 
 		managerTP.addTab("Modify Record", createModifyPanel());
 		managerTP.addTab("Graphing Options", createGraphPanel());
+
+		spectraDomain.setActionCommand("domain");
+		spectraDomain.addActionListener(this);
+		updateDomainLabel();
 
 		setLayout(new BorderLayout());
 		add(BorderLayout.NORTH, createNorthPanel());
@@ -216,60 +217,95 @@ class RecordManagerPanel extends JPanel implements ActionListener
 		GridBagLayout gridbag = new GridBagLayout();
 		GridBagConstraints c = new GridBagConstraints();
 		JLabel label;
+		Insets left = new Insets(0, 1, 0, 0);
+		Insets none = new Insets(0, 0, 0, 0);
 
 		panel.setLayout(gridbag);
 
 		int x = 0;
 		int y = 0;
 
-		c.anchor = GridBagConstraints.NORTHWEST;
+		c.anchor = GridBagConstraints.WEST;
+		c.fill = GridBagConstraints.BOTH;
+
+		Border b = BorderFactory.createCompoundBorder(
+			BorderFactory.createMatteBorder(0, 0, 1, 1, Color.BLACK),
+			BorderFactory.createEmptyBorder(2, 1, 2, 1)
+		);
 
 		c.gridx = x++;
 		c.gridy = y++;
+		typeTime.setBorder(b);
+		typeTime.setBorderPainted(true);
 		gridbag.setConstraints(typeTime, c);
 		panel.add(typeTime);
 
 		c.gridy = y++;
+		typeFourier.setBorder(b);
+		typeFourier.setBorderPainted(true);
 		gridbag.setConstraints(typeFourier, c);
 		panel.add(typeFourier);
 
-		c.gridy = y++;
+		c.gridy = y--;
+		c.gridheight = 4;
+		typeSpectra.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 1, Color.BLACK));
+		typeSpectra.setBorderPainted(true);
 		gridbag.setConstraints(typeSpectra, c);
 		panel.add(typeSpectra);
 
 		c.gridx = x++;
 		c.gridy = y++;
+		c.gridheight = 1;
+		c.gridwidth = 2;
+		label = new JLabel("");
+		label.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
+		gridbag.setConstraints(label, c);
+		panel.add(label);
+
+		c.gridy = y++;
+		c.gridwidth = 1;
+		c.insets = left;
+		label = new JLabel("Domain Axis");
+		gridbag.setConstraints(label, c);
+		panel.add(label);
+
+		c.gridx = x--;
+		c.insets = none;
+		gridbag.setConstraints(spectraDomain, c);
+		panel.add(spectraDomain);
+
+		c.gridx = x++;
+		c.gridy = y++;
+		c.insets = left;
+		label = new JLabel("Response Type");
+		gridbag.setConstraints(label, c);
+		panel.add(label);
+
+		c.gridx = x--;
+		c.insets = none;
 		gridbag.setConstraints(spectraCB, c);
 		panel.add(spectraCB);
 
-		x = 1;
 		c.gridx = x++;
 		c.gridy = y++;
+		c.insets = left;
 		label = new JLabel("Damping (%)");
 		gridbag.setConstraints(label, c);
 		panel.add(label);
 
-		c.gridx = x++;
-		label = new JLabel("Frequency Intrement (Hz)");
-		gridbag.setConstraints(label, c);
-		panel.add(label);
-
-		c.gridx = x++;
-		label = new JLabel("High Frequency (Hz)");
-		gridbag.setConstraints(label, c);
-		panel.add(label);
-
-		x = 1;
-		c.gridx = x++;
-		c.gridy = y++;
+		c.gridx = x--;
+		c.insets = none;
 		gridbag.setConstraints(spectraDamp, c);
 		panel.add(spectraDamp);
 
 		c.gridx = x++;
-		gridbag.setConstraints(spectraIncr, c);
-		panel.add(spectraIncr);
+		c.gridy = y++;
+		c.insets = left;
+		gridbag.setConstraints(spectraDomainLabel, c);
+		panel.add(spectraDomainLabel);
 
-		c.gridx = x++;
+		c.gridx = x;
+		c.insets = none;
 		gridbag.setConstraints(spectraHigh, c);
 		panel.add(spectraHigh);
 
@@ -289,6 +325,17 @@ class RecordManagerPanel extends JPanel implements ActionListener
 					return;
 
 				table.deleteSelected(true);
+			}
+			else if(command.equals("domain"))
+			{
+				try
+				{
+					Double d = new Double(spectraHigh.getText());
+					spectraHigh.setText(Analysis.fmtTwo.format(new Double(1.0 / d.doubleValue())));
+				}
+				catch(Exception ex){}
+
+				updateDomainLabel();
 			}
 			else if(command.equals("eqListChange"))
 			{
@@ -333,7 +380,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 				table.setModel(NewmarkTable.REFRESH);
 				recordClear();
 			}
-			else if(command.equals("graph"))
+			else if(command.equals("graph") || command.startsWith("data"))
 			{
 				int row = table.getSelectedRow();
 				if(row == -1)
@@ -369,11 +416,14 @@ class RecordManagerPanel extends JPanel implements ActionListener
 
 				String xAxis = null, yAxis = null, title = "";
 
-				if(typeTime.isSelected()) command = "graphTime";
-				else if(typeFourier.isSelected()) command = "graphFourier";
-				else if(typeSpectra.isSelected()) command = "graphSpectra";
+				if(command.startsWith("graph"))
+				{
+					if(typeTime.isSelected()) command = "graphTime";
+					else if(typeFourier.isSelected()) command = "graphFourier";
+					else if(typeSpectra.isSelected()) command = "graphSpectra";
+				}
 
-				if(command.equals("graphTime"))
+				if(command.endsWith("Time"))
 				{
 					title = "Time Series";
 					xAxis = "Time (s)";
@@ -422,7 +472,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 						time += di;
 					}
 				}
-				else if(command.equals("graphFourier"))
+				else if(command.endsWith("Fourier"))
 				{
 					title = "Fourier Amplitude Spectrum";
 					xAxis = "Frequency (Hz)";
@@ -457,53 +507,75 @@ class RecordManagerPanel extends JPanel implements ActionListener
 						freq = i * df;
 					}
 				}
-				else if(command.equals("graphSpectra"))
+				else if(command.endsWith("Spectra"))
 				{
 					int index = spectraCB.getSelectedIndex();
 
 					title = spectraCB.getSelectedItem().toString() + " Response Spectra";
-					xAxis = "Period (s)";
-					yAxis = "Response";
+					xAxis = spectraDomain.getSelectedItem() + " (" + spectraDomainStr[spectraDomain.getSelectedIndex()] + ")";
+					yAxis = "Response (" + spectraCBStr[spectraCB.getSelectedIndex()] + ")";
 					double[] arr = new double[dat.size()];
 
 					Double temp;
 					for(int i = 0; (temp = dat.each()) != null; i++)
 						arr[i] = temp.doubleValue();
 
-					double periodMax = Double.parseDouble(spectraHigh.getText());
-					double interval = Double.parseDouble(spectraIncr.getText());
+					double freqMax = Double.parseDouble(spectraHigh.getText());
 					double damp = Double.parseDouble(spectraDamp.getText()) / 100.0;
+
+					boolean domainFreq = true;
+
+					if(spectraDomain.getSelectedItem().equals("Period"))
+					{
+						domainFreq = false;
+						freqMax = 1.0 / freqMax;
+					}
 
 					double[] z;
 
 					// don't start with 0, LogarithmicAxis doesn't allow it
-					for(double p = interval; p < periodMax; p += interval)
+					for(double prev = 0, p = 0.05; prev < freqMax;)
 					{
-						z = ImportRecords.cmpmax(arr, 2.0 * Math.PI / p, damp, di);
-						xys.add(p, z[index]);
+						z = ImportRecords.cmpmax(arr, 2.0 * Math.PI * p, damp, di);
+						xys.add(
+							domainFreq ? p : 1.0 / p,
+							z[index]);
+
+						// make sure we always hit the max frequency
+						 prev = p;
+						 p += Analysis.log10(p + 1) / 8;
+						 if(p > freqMax)
+							 p = freqMax;
 					}
 				}
 
 				title += ": " + eq + " - " + record;
-				XYSeriesCollection xysc = new XYSeriesCollection(xys);
 
-				JFreeChart chart = ChartFactory.createXYLineChart(title, xAxis, yAxis, xysc, org.jfree.chart.plot.PlotOrientation.VERTICAL, false, true, false);
-
-				if(command.equals("graphFourier") || command.equals("graphSpectra"))
+				if(command.startsWith("graph"))
 				{
-					chart.getXYPlot().setRangeAxis(new LogarithmicAxis(yAxis));
-					chart.getXYPlot().setDomainAxis(new LogarithmicAxis(xAxis));
-				}
+					XYSeriesCollection xysc = new XYSeriesCollection(xys);
 
-				ChartFrame frame = new ChartFrame(title, chart);
-				frame.pack();
-				frame.setLocationRelativeTo(null);
-				frame.setVisible(true);
+					JFreeChart chart = ChartFactory.createXYLineChart(title, xAxis, yAxis, xysc, org.jfree.chart.plot.PlotOrientation.VERTICAL, false, true, false);
+
+					if(command.equals("graphFourier") || command.equals("graphSpectra"))
+					{
+						chart.getXYPlot().setRangeAxis(new LogarithmicAxis(yAxis));
+						chart.getXYPlot().setDomainAxis(new LogarithmicAxis(xAxis));
+					}
+
+					ChartFrame frame = new ChartFrame(title, chart);
+					frame.pack();
+					frame.setLocationRelativeTo(null);
+					frame.setVisible(true);
+				}
+				else if(command.startsWith("data"))
+				{
+
+				}
 			}
 			else if(command.equals("save"))
 			{
-				int n = JOptionPane.showConfirmDialog(this,"Are you sure you want to modify these records?", "Are you sure?", JOptionPane.YES_NO_OPTION);
-				if(n != JOptionPane.YES_OPTION)
+				if(JOptionPane.showConfirmDialog(this, "Are you sure you want to modify these records?", "Are you sure?", JOptionPane.YES_NO_OPTION) != JOptionPane.YES_OPTION)
 					return;
 
 				String error = AddRecordsPanel.manipRecord(false,
@@ -631,5 +703,10 @@ class RecordManagerPanel extends JPanel implements ActionListener
 		modMech.setSelectedItem("");
 
 		recordEnable(false);
+	}
+
+	public void updateDomainLabel()
+	{
+		spectraDomainLabel.setText(spectraDirStr[spectraDomain.getSelectedIndex()] + " " + spectraDomain.getSelectedItem() + " (" + spectraDomainStr[spectraDomain.getSelectedIndex()] + ")");
 	}
 }
