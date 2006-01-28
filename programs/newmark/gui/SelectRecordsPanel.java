@@ -68,7 +68,7 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 
 	NewmarkTable table;
 
-	JButton next = new JButton("Go to Select Analysis page");
+	JButton next = new JButton("Go to Step 2: Select Analyses");
 
 	JLabel selectLabel = new JLabel();
 

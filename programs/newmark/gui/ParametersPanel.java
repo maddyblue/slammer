@@ -62,7 +62,7 @@ class ParametersPanel extends JPanel implements ActionListener
 	public JRadioButton unitEnglish = new JRadioButton("English");
 	public JRadioButton unitMetric = new JRadioButton("Metric", true);
 
-	public JTextField paramUwgt = new JTextField(7);
+	//public JTextField paramUwgt = new JTextField(7);
 	public JTextField paramHeight = new JTextField(7);
 	public JTextField paramVs = new JTextField(7);
 	public JTextField paramDamp = new JTextField(7);
@@ -70,7 +70,7 @@ class ParametersPanel extends JPanel implements ActionListener
 	public JTextField paramVr = new JTextField(7);
 	public JComboBox paramSoilModel = new JComboBox(new Object[] {"linear elastic", "equivalent linear"});
 
-	JLabel labelUwgt = new JLabel();
+	//JLabel labelUwgt = new JLabel();
 	JLabel labelHeight = new JLabel();
 	JLabel labelVs = new JLabel();
 	JLabel labelDamp = new JLabel(stringDamp + " (%)");
@@ -82,20 +82,20 @@ class ParametersPanel extends JPanel implements ActionListener
 	public JCheckBox typeDecoupled = new JCheckBox(stringDC);
 	public JCheckBox typeCoupled = new JCheckBox(stringCP);
 
-	final public static String stringUwgt = "Unit weight";
+	//final public static String stringUwgt = "Unit weight";
 	final public static String stringHeight = "Height";
-	final public static String stringVs = "Shear-wave velocity (soil)";
+	final public static String stringVs = "Shear-wave velocity (material above slip surface)";
 	final public static String stringDisp = "Displacement";
 	final public static String stringDamp = "Damping ratio";
 	final public static String stringBaseType = "Base type";
-	final public static String stringVr = "Shear-wave velocity (base rock)";
+	final public static String stringVr = "Shear-wave velocity (material below slip surface)";
 	final public static String stringSoilModel = "Soil model";
 
 	final public static String stringRB = "Rigid Block";
 	final public static String stringDC = "Decoupled";
 	final public static String stringCP = "Coupled";
 
-	JButton next = new JButton("Perform Analysis");
+	JButton next = new JButton("Go to Step 3: Perform Analyses and View Results");
 
 	public ParametersPanel(NewmarkTabbedPane parent)
 	{
@@ -128,7 +128,6 @@ class ParametersPanel extends JPanel implements ActionListener
 		SlopeGroup.add(dualSlope);
 		dualSlope.setActionCommand("slope");
 		dualSlope.addActionListener(this);
-
 		thrustAngle.setEnabled(false);
 
 		CAgroup.add(CAconst);
@@ -150,6 +149,16 @@ class ParametersPanel extends JPanel implements ActionListener
 
 		dispAddRow.setEnabled(false);
 		dispDelRow.setEnabled(false);
+
+		typeRigid.setActionCommand("Rigid");
+		typeRigid.addActionListener(this);
+		updateRigid();
+
+		typeDecoupled.setActionCommand("DeCoupled");
+		typeDecoupled.addActionListener(this);
+		typeCoupled.setActionCommand("DeCoupled");
+		typeCoupled.addActionListener(this);
+		updateDeCoupled();
 
 		paramBaseType.setActionCommand("paramBaseType");
 		paramBaseType.addActionListener(this);
@@ -178,6 +187,12 @@ class ParametersPanel extends JPanel implements ActionListener
 		jp = createPanelSouth();
 		gridbag.setConstraints(jp, c);
 		add(jp);
+
+		c.gridy = 2;
+		c.anchor = GridBagConstraints.EAST;
+		c.fill = GridBagConstraints.NONE;
+		gridbag.setConstraints(next, c);
+		add(next);
 	}
 
 	private JPanel createPanelNorth()
@@ -267,7 +282,7 @@ class ParametersPanel extends JPanel implements ActionListener
 
 		c.gridx = x++;
 		c.weighty = 1;
-		c.weightx = 1;
+		c.weightx = 0;
 		c.gridwidth = 2;
 		c.fill = GridBagConstraints.BOTH;
 		gridbag.setConstraints(dispPane, c);
@@ -279,11 +294,16 @@ class ParametersPanel extends JPanel implements ActionListener
 		jp.add(dispDelRow);
 
 		c.gridy = y++;
-		c.weightx = 0;
 		c.weighty = 0;
-		c.fill = GridBagConstraints.HORIZONTAL;
 		gridbag.setConstraints(jp, c);
 		panel.add(jp);
+
+		// fake container to claim the free space forcing everything left
+		c.gridx = x + 1;
+		c.weightx = 1;
+		label = new JLabel("");
+		gridbag.setConstraints(label, c);
+		panel.add(label);
 
 		return panel;
 	}
@@ -355,11 +375,16 @@ class ParametersPanel extends JPanel implements ActionListener
 		c.gridx = x++;
 		c.gridy = y++;
 		c.gridwidth = 1;
-		c.gridheight = 7;
+		c.gridheight = 6;
 		c.fill = GridBagConstraints.BOTH;
 		gridbag.setConstraints(dcpanel, c);
 		panel.add(dcpanel);
 
+		c.gridheight = 1;
+		c.fill = GridBagConstraints.NONE;
+		c.anchor = GridBagConstraints.WEST;
+
+		/* Unit Weight doesn't do anything (for now?).
 		c.gridx = x++;
 		c.gridheight = 1;
 		c.fill = GridBagConstraints.NONE;
@@ -372,8 +397,8 @@ class ParametersPanel extends JPanel implements ActionListener
 		c.insets = none;
 		gridbag.setConstraints(paramUwgt, c);
 		panel.add(paramUwgt, c);
+		*/
 
-		c.gridy = y++;
 		c.gridx = x++;
 		c.insets = left;
 		gridbag.setConstraints(labelHeight, c);
@@ -447,25 +472,25 @@ class ParametersPanel extends JPanel implements ActionListener
 		Double d;
 		if(unitMetric.isSelected())
 		{
-			labelUwgt.setText("<html>" + stringUwgt + " (kN/m<sup>3</sup>)</html>");
+			//labelUwgt.setText("<html>" + stringUwgt + " (kN/m<sup>3</sup>)</html>");
 			labelHeight.setText(stringHeight + " (m)");
 			labelVs.setText(stringVs + " (m/s)");
 			labelVr.setText(stringVr + " (m/s)");
 			dispTableModel.setColName(stringDisp + " (cm)");
 
-			try{d = new Double(paramUwgt.getText()); paramUwgt.setText(Analysis.fmtTwo.format(new Double(d.doubleValue() / Analysis.PCFtoKNM3)));} catch(Exception ex){}
+			//try{d = new Double(paramUwgt.getText()); paramUwgt.setText(Analysis.fmtTwo.format(new Double(d.doubleValue() / Analysis.PCFtoKNM3)));} catch(Exception ex){}
 			try{d = new Double(paramHeight.getText()); paramHeight.setText(Analysis.fmtTwo.format(new Double(d.doubleValue() * Analysis.FTtoM)));} catch(Exception ex){}
 			try{d = new Double(paramVs.getText()); paramVs.setText(Analysis.fmtTwo.format(new Double(d.doubleValue() * Analysis.FTtoM)));} catch(Exception ex){}
 			try{d = new Double(paramVr.getText()); paramVr.setText(Analysis.fmtTwo.format(new Double(d.doubleValue() * Analysis.FTtoM)));} catch(Exception ex){}
 		}
 		else if(unitEnglish.isSelected())
 		{
-			labelUwgt.setText("<html>" + stringUwgt + " (lb/ft<sup>3</sup>)</html>");
+			//labelUwgt.setText("<html>" + stringUwgt + " (lb/ft<sup>3</sup>)</html>");
 			labelHeight.setText(stringHeight + " (ft)");
 			labelVs.setText(stringVs + " (ft/s)");
 			labelVr.setText(stringVr + " (ft/s)");
 			dispTableModel.setColName(stringDisp + " (in)");
-			try{d = new Double(paramUwgt.getText()); paramUwgt.setText(Analysis.fmtTwo.format(new Double(d.doubleValue() * Analysis.PCFtoKNM3)));} catch(Exception ex){}
+			//try{d = new Double(paramUwgt.getText()); paramUwgt.setText(Analysis.fmtTwo.format(new Double(d.doubleValue() * Analysis.PCFtoKNM3)));} catch(Exception ex){}
 			try{d = new Double(paramHeight.getText()); paramHeight.setText(Analysis.fmtTwo.format(new Double(d.doubleValue() / Analysis.FTtoM)));} catch(Exception ex){}
 			try{d = new Double(paramVs.getText()); paramVs.setText(Analysis.fmtTwo.format(new Double(d.doubleValue() / Analysis.FTtoM)));} catch(Exception ex){}
 			try{d = new Double(paramVr.getText()); paramVr.setText(Analysis.fmtTwo.format(new Double(d.doubleValue() / Analysis.FTtoM)));} catch(Exception ex){}
@@ -478,27 +503,9 @@ class ParametersPanel extends JPanel implements ActionListener
 		{
 			String command = e.getActionCommand();
 			System.out.println(command);
-			if(command.equals("next"))
-			{
-				parent.selectRigorousRigidBlock();
-				parent.Results.Analyze.doClick();
-			}
-			else if(command.equals("scalePGA"))
-			{
-				scalePGAval.setEnabled(scalePGAon.isSelected());
-			}
-			else if(command.equals("slope"))
-			{
-				thrustAngle.setEnabled(dualSlope.isSelected());
-			}
-			else if(command.equals("addDispRow"))
+			if(command.equals("addDispRow"))
 			{
 				dispTableModel.addRow();
-			}
-			else if(command.equals("delDispRow"))
-			{
-				if(dispTableModel.getRowCount() > 1)
-					dispTableModel.removeRow(dispTableModel.getRowCount() - 1);
 			}
 			else if(command.equals("ca"))
 			{
@@ -508,18 +515,65 @@ class ParametersPanel extends JPanel implements ActionListener
 				dispAddRow.setEnabled(set);
 				dispDelRow.setEnabled(set);
 			}
-			else if(command.equals("unit"))
+			else if(command.equals("delDispRow"))
 			{
-				updateUnits();
+				if(dispTableModel.getRowCount() > 1)
+					dispTableModel.removeRow(dispTableModel.getRowCount() - 1);
+			}
+			else if(command.equals("next"))
+			{
+				parent.selectRigorousRigidBlock();
 			}
 			else if(command.equals("paramBaseType"))
 			{
 				paramVr.setEnabled(paramBaseType.getSelectedIndex() == 1);
+			}
+			else if(command.equals("scalePGA"))
+			{
+				scalePGAval.setEnabled(scalePGAon.isSelected());
+			}
+			else if(command.equals("slope"))
+			{
+				thrustAngle.setEnabled(dualSlope.isSelected());
+			}
+			else if(command.equals("unit"))
+			{
+				updateUnits();
+			}
+			else if(command.equals("DeCoupled"))
+			{
+				updateDeCoupled();
+			}
+			else if(command.equals("Rigid"))
+			{
+				updateRigid();
 			}
 		}
 		catch (Exception ex)
 		{
 			Utils.catchException(ex);
 		}
+	}
+
+	public void updateDeCoupled()
+	{
+		boolean selected = typeDecoupled.isSelected() || typeCoupled.isSelected();
+
+		//paramUwgt.setEnabled(selected);
+		paramHeight.setEnabled(selected);
+		paramVs.setEnabled(selected);
+		paramDamp.setEnabled(selected);
+		paramBaseType.setEnabled(selected);
+		paramVr.setEnabled(selected);
+		paramSoilModel.setEnabled(selected);
+	}
+
+	public void updateRigid()
+	{
+		boolean selected = typeRigid.isSelected();
+
+		downSlope.setEnabled(selected);
+		dualSlope.setEnabled(selected);
+		thrustAngle.setEnabled(selected && dualSlope.isSelected());
 	}
 }

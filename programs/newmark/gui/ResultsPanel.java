@@ -273,6 +273,7 @@ class ResultsPanel extends JPanel implements ActionListener
 							{
 								Double tempd;
 
+								/*
 								tempd = (Double)Utils.checkNum(parent.Parameters.paramUwgt.getText(), ParametersPanel.stringUwgt + " field", null, false, null, null, false, null, false);
 								if(tempd == null)
 								{
@@ -281,6 +282,8 @@ class ResultsPanel extends JPanel implements ActionListener
 								}
 								else
 									uwgt = tempd.doubleValue();
+								*/
+								uwgt = 100.0; // unit weight is disabled, so hardcode to 100
 
 								tempd = (Double)Utils.checkNum(parent.Parameters.paramHeight.getText(), ParametersPanel.stringHeight + " field", null, false, null, null, false, null, false);
 								if(tempd == null)

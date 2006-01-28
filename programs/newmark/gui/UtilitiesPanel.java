@@ -209,7 +209,7 @@ class UtilitiesPanel extends JPanel implements ActionListener
 				}
 				else if(peapick.isSelected())
 				{
-					constant.setText("Gs to truncate record");
+					constant.setText("Trim record between g values of");
 					constantf.setEnabled(true);
 					pane.setText("This program removes the points of a record from the beginning and end of the file that are less than the specified number of Gs. 50 points are added to each side for lead in time.");
 				}
