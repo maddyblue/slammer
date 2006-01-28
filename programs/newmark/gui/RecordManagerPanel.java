@@ -70,10 +70,10 @@ class RecordManagerPanel extends JPanel implements ActionListener
 	JRadioButton typeFourier = new JRadioButton("Fourier Amplitude Spectrum");
 	JRadioButton typeSpectra = new JRadioButton("Response Spectra");
 
-	JComboBox spectraCB = new JComboBox(new String[] {"Absolute-Acceleration", "Relative-Velocity", "Relative-Displacement", "Psuedo Absolute-Acceleration", "Psuedo Relative-Velocity"});
+	JComboBox spectraCB = new JComboBox(new String[] { "Absolute-Acceleration", "Relative-Velocity", "Relative-Displacement", "Psuedo Absolute-Acceleration", "Psuedo Relative-Velocity" });
 	String[] spectraCBStr = new String[] { "cm/sec/sec", "cm/sec", "cm", "cm/sec/sec", "cm/sec" };
 
-	JComboBox spectraDomain = new JComboBox(new String[] {"Frequency", "Period"});
+	JComboBox spectraDomain = new JComboBox(new String[] { "Frequency", "Period" });
 	String[] spectraDomainStr = new String[] { "Hz", "sec" };
 	String[] spectraDirStr = new String[] { "Highest", "Shortest" };
 
