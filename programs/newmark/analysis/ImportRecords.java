@@ -291,17 +291,17 @@ public class ImportRecords extends Analysis
 	 * dt = digitization interval
 	 *
 	 * Returns:
-	 * ZD   = maximum relative displacement response, cm.
-	 * ZV   =   "        "     velocity       "     , cm/sec.
-	 * ZA   =   "     absolute acceleration   "     , cm/sec/sec.
+	 * ZA   = maximum absolute acceleration response, cm/sec/sec.
+	 * ZV   =   "     relative velocity       "     , cm/sec.
+	 * ZD   =   "     relative displacement   "     , cm.
+	 * w2*zd= psuedo absolute acceleration
+	 * w*zd = psuedo relative velocity
 	 */
 	public static double[] cmpmax(double[] arr, double w, double d, double dt)
 	{
 		double w2 = w * w;
 		double w3 = w2 * w;
 		double wd = w * Math.sqrt(1.0 - d * d);
-
-		//System.out.println(w + ", " + d + ", " + dt + ", " + wd + ", " + (1.0 / w * 2.0 * Math.PI));
 
 		double xd[] = {0, 0};
 		double xv[] = {0, 0};
@@ -343,6 +343,6 @@ public class ImportRecords extends Analysis
 			if(h > za) za = h;
 		}
 
-		return new double[] {zd, zv, za};
+		return new double[] {za, zv, zd, w2 * zd, w * zd};
 	}
 }
