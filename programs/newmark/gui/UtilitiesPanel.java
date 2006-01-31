@@ -49,8 +49,8 @@ class UtilitiesPanel extends JPanel implements ActionListener
 	JLabel source = new JLabel("Source file or directory");
 	JLabel dest = new JLabel("Destination file or directory");
 	JLabel constant1 = new JLabel(" ");
-	JLabel constant1Pre = new JLabel("1");
-	JLabel constant1Post = new JLabel("2");
+	JLabel constant1Pre = new JLabel("");
+	JLabel constant1Post = new JLabel("");
 	JLabel constant2 = new JLabel(" ");
 	JLabel constant2Pre = new JLabel("");
 	JLabel constant2Post = new JLabel("");
