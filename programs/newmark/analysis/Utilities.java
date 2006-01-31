@@ -169,4 +169,30 @@ public class Utilities extends Analysis
 		ofile.close();
 		return "";
 	}
+
+	public static String Clip(DoubleList data, FileWriter ofile, final double clip, final double dt) throws IOException
+	{
+		Double val;
+		data.reset();
+
+		if(clip < 0)
+		{
+			int i = 0;
+
+			for(; (i < (-clip / dt)) && ((val = data.each()) != null); i++)
+				;
+
+			while((val = data.each()) != null)
+				ofile.write(val + "\n");
+		}
+		else
+		{
+			for(int i = 0; (i <= (clip / dt)) && ((val = data.each()) != null); i++)
+				ofile.write(val + "\n");
+		}
+
+		ofile.close();
+
+		return "";
+	}
 }
