@@ -32,14 +32,31 @@ public class SplashScreen extends JComponent
 	public SplashScreen()
 	{
 		setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-		setBackground(Color.white);
+		setBackground(Color.WHITE);
 
-		Font font = new Font("Dialog",Font.PLAIN,10);
+		Font font = new Font("Dialog", Font.PLAIN, 10);
 		setFont(font);
 		fm = getFontMetrics(font);
 
+		String images[] = {
+			"Anchorage",
+			"Black Rapids",
+			"Georgia",
+			"Huascaran",
+			"Madison Canyon",
+			"McGinnis",
+			"Niigata 1",
+			"Northridge 1",
+			"Northridge 2",
+			"Springdale",
+			"Turnagain Heights",
+			"West Fork"
+		};
+
 		image = getToolkit().getImage(
-			getClass().getResource("/newmark/images/splash.jpg"));
+			getClass().getResource("/newmark/images/" +
+				images[(int)(images.length * Math.random())]
+				+ ".jpg"));
 		MediaTracker tracker = new MediaTracker(this);
 		tracker.addImage(image,0);
 
