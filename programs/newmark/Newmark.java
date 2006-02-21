@@ -138,8 +138,6 @@ public class Newmark
 				Object res[][];
 				int c;
 
-				Utils.getDB().runUpdate("delete from data");
-
 				do
 				{
 					c = (char)fr.read();
@@ -158,10 +156,6 @@ public class Newmark
 								case 6:
 								case 7:
 									cur[i] = Utils.nullify(s);
-									break;
-								case 8:
-									if(cur[i] == null || cur[i].equals(""))
-										cur[i] = "0";
 									break;
 								default:
 									cur[i] = Utils.addQuote(s);
@@ -243,8 +237,6 @@ public class Newmark
 				int reslen;
 				char c;
 				String q, path;
-
-				Utils.getDB().runUpdate("delete from data");
 
 				do
 				{
