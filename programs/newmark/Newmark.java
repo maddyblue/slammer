@@ -159,6 +159,10 @@ public class Newmark
 								case 7:
 									cur[i] = Utils.nullify(s);
 									break;
+								case 8:
+									if(cur[i] == null || cur[i].equals(""))
+										cur[i] = "0";
+									break;
 								default:
 									cur[i] = Utils.addQuote(s);
 									break;
@@ -192,28 +196,28 @@ public class Newmark
 							q = "insert into data " +
 								"(eq, record, digi_int, mom_mag, arias, dobry, pga, mean_per, epi_dist, foc_dist, rup_dist, foc_mech, location, owner, latitude, longitude, class, change, path, select1, analyze, select2)" +
 								" values ( " +
-								"'" + cur[0] + "'," +
-								"'" + cur[3] + "'," +
-								"" + cur[9] + "," +
-								"" + cur[1] + "," +
-								"" + ImportRecords.Arias(data, di) + "," +
-								"" + ImportRecords.Dobry(data, di) + "," +
-								"" + ImportRecords.PGA(data) + "," +
-								"" + ImportRecords.MeanPer(data, di) + "," +
-								"" + cur[10] + "," +
-								"" + cur[11] + "," +
-								"" + cur[12] + "," +
-								"" + cur[2] + "," +
-								"'" + cur[4] + "'," +
-								"'" + cur[5] + "'," +
-								"" + cur[6] + "," +
-								"" + cur[7] + "," +
-								"" + cur[8] + "," +
-								"0," +
-								"'" + path + "'," +
-								"0," +
-								"0," +
-								"0" +
+								"'" + cur[0] + "'," + // eq
+								"'" + cur[3] + "'," + // record
+								"" + cur[9] + "," + // digi_int
+								"" + cur[1] + "," + // mom_mag
+								"" + ImportRecords.Arias(data, di) + "," + // arias
+								"" + ImportRecords.Dobry(data, di) + "," + // dobry
+								"" + ImportRecords.PGA(data) + "," + // pga
+								"" + ImportRecords.MeanPer(data, di) + "," + // mear_per
+								"" + cur[10] + "," + // epi_dist
+								"" + cur[11] + "," + // foc_dist
+								"" + cur[12] + "," + // rup_dist
+								"" + cur[2] + "," + // foc_mech
+								"'" + cur[4] + "'," + // location
+								"'" + cur[5] + "'," + // owner
+								"" + cur[6] + "," + // latitude
+								"" + cur[7] + "," + // longitude
+								"" + cur[8] + "," + // class
+								"0," + // change
+								"'" + path + "'," + // path
+								"0," + // select1
+								"0," + // analyze
+								"0" + // select2
 								")";
 							System.out.println(q);
 							Utils.getDB().runUpdate(q);
@@ -281,7 +285,7 @@ public class Newmark
 			else if(args[0].equals("importjapan")) // {{{
 			{
 				String inpath = "/home/dolmant/Keepers";
-				String outpath = "/home/dolmant/newmark/trunk/records";
+				String outpath = "/home/dolmant/newmark/records";
 				String path;
 				File d = new File(inpath);
 				File f[] = d.listFiles();
@@ -337,7 +341,7 @@ public class Newmark
 					line = br.readLine().split("[ \t]+"); // dir
 					path = cur[3] + "-";
 
-					if(line[1].equals("E-W"))
+					if(line[1].equals("E-W") || line[1].equals("5"))
 						path += "090";
 					else
 						path += "000";
