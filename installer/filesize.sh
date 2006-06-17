@@ -32,6 +32,6 @@ done
 
 for file in installer/newmark-*.tar
 do
-	echo "bzip2ing " $file
+	echo bzip2ing $file
 	bzip2 -k $file
 done
