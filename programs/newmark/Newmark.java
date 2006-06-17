@@ -235,7 +235,7 @@ public class Newmark
 								"" + ImportRecords.Arias(data, di) + "," + // arias
 								"" + ImportRecords.Dobry(data, di) + "," + // dobry
 								"" + ImportRecords.PGA(data) + "," + // pga
-//								"" + ImportRecords.PGV(data) + "," + // pgv
+								"" + ImportRecords.PGV(data, di) + "," + // pgv
 								"" + ImportRecords.MeanPer(data, di) + "," + // mear_per
 								"" + cur[EQDAT_epi_dist] + "," + // epi_dist
 								"" + cur[EQDAT_foc_dist] + "," + // foc_dist

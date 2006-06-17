@@ -122,17 +122,20 @@ class NewmarkTableModel extends DefaultTableModel implements NewmarkTableInterfa
 				{
 					data[i][j] = SiteClassArray[Integer.parseInt(ret[i + 1][j].toString())];
 				}
-				else if(cols[j] == fieldArray[rowAriasInt][colAbbrev])
-				{
-					data[i][j] = Analysis.fmtThree.format(Double.parseDouble(ret[i + 1][j].toString()));
-				}
-				else if(cols[j] == fieldArray[rowPGA][colAbbrev])
+				else if(
+					cols[j] == fieldArray[rowAriasInt][colAbbrev] ||
+					cols[j] == fieldArray[rowPGA][colAbbrev]
+				)
 				{
 					data[i][j] = Analysis.fmtThree.format(Double.parseDouble(ret[i + 1][j].toString()));
 				}
 				else if(cols[j] == fieldArray[rowMeanPer][colAbbrev])
 				{
 					data[i][j] = Analysis.fmtTwo.format(Double.parseDouble(ret[i + 1][j].toString()));
+				}
+				else if(cols[j] == fieldArray[rowPGV][colAbbrev])
+				{
+					data[i][j] = Analysis.fmtOne.format(Double.parseDouble(ret[i + 1][j].toString()));
 				}
 				else
 				{

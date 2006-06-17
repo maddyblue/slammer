@@ -94,6 +94,7 @@ public class ImportRecords extends Analysis
 		double max, cur, curabs;
 
 		max = 0;
+		cur = 0;
 
 		data.reset();
 		while((val = data.each()) != null)
@@ -104,6 +105,8 @@ public class ImportRecords extends Analysis
 			if(curabs > max)
 				max = curabs;
 		}
+
+		return fmtOne.format(max * di);
 	}
 
 	private static double FindMax(DoubleList data)

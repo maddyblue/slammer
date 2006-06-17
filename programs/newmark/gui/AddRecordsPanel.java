@@ -105,7 +105,7 @@ class AddRecordsPanel extends JPanel implements ActionListener
 
 				// ok, the user says they are all in cm/s/s, continue
 				String file, eq, record, di, mag, epidist, focdist, rupdist, focmech, loc, owner, lat, lng, siteclass;
-				String arias, dobry, pga, meanper;
+				String arias, dobry, pga, pgv, meanper;
 				String status = "", error;
 
 				TableModel m = table.getModel();
@@ -197,7 +197,7 @@ class AddRecordsPanel extends JPanel implements ActionListener
 	public static String manipRecord(boolean add, String file, String eq, String record, String di, String mag, String epidist, String focdist, String rupdist, String focmech, String loc, String owner, String lat, String lng, String siteclass) throws Exception
 	{
 		double dig_int = 0;
-		String arias, dobry, pga, meanper;
+		String arias, dobry, pga, pgv, meanper;
 		String errors = "", pre;
 		Object ret;
 		DoubleList data;
@@ -317,6 +317,7 @@ class AddRecordsPanel extends JPanel implements ActionListener
 		dobry = ImportRecords.Dobry(data, dig_int);
 		meanper = ImportRecords.MeanPer(data, dig_int);
 		pga = ImportRecords.PGA(data);
+		pgv = ImportRecords.PGV(data, dig_int);
 
 		// a few conversions
 		pre = focmech;
@@ -351,7 +352,7 @@ class AddRecordsPanel extends JPanel implements ActionListener
 		{
 			// add it to the db
 			String q = "insert into data " +
-				"(eq, record, digi_int, mom_mag, arias, dobry, pga, mean_per, epi_dist, foc_dist, rup_dist, foc_mech, location, owner, latitude, longitude, class, change, path, select1, analyze, select2) values ( '" +
+				"(eq, record, digi_int, mom_mag, arias, dobry, pga, pgv, mean_per, epi_dist, foc_dist, rup_dist, foc_mech, location, owner, latitude, longitude, class, change, path, select1, analyze, select2) values ( '" +
 				eq + "', '" +
 				record + "', " +
 				di + ", " +
@@ -359,6 +360,7 @@ class AddRecordsPanel extends JPanel implements ActionListener
 				arias + ", " +
 				dobry + ", " +
 				pga + ", " +
+				pgv + ", " +
 				meanper + ", " +
 				epidist + ", " +
 				focdist + ", " +
@@ -387,6 +389,7 @@ class AddRecordsPanel extends JPanel implements ActionListener
 				+ " , arias= "     + arias
 				+ " , dobry= "     + dobry
 				+ " , pga= "       + pga
+				+ " , pgv= "       + pgv
 				+ " , mean_per= "  + meanper
 				+ " , epi_dist= "  + epidist
 				+ " , foc_dist= "  + focdist
