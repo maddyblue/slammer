@@ -27,7 +27,7 @@ import junit.framework.*;
 
 public class NewmarkTest extends TestCase
 {
-	private DoubleList dat;
+	private DoubleList dat, dat1;
 	private static final double uwgt = 18.85;
 	private static final double height = 30.48;
 	private static final double vs = 175.53;
@@ -47,6 +47,7 @@ public class NewmarkTest extends TestCase
 	protected void setUp() throws Exception
 	{
 		dat = new DoubleList("../sd2/pac8-new.txt");
+		dat1 = new DoubleList("../records/Cape Mendocino 1992/PET-000");
 	}
 
 	public static Test suite()
@@ -62,6 +63,10 @@ public class NewmarkTest extends TestCase
 		suite.addTest(new NewmarkTest("RigorousCoupledElasticLinear"));
 		suite.addTest(new NewmarkTest("RigorousCoupledRigidEquivalent"));
 		suite.addTest(new NewmarkTest("RigorousCoupledElasticEquivalent"));
+
+		suite.addTest(new NewmarkTest("RigorousRigidBlockDown"));
+		suite.addTest(new NewmarkTest("RigorousRigidBlockDual"));
+
 		return suite;
 	}
 
@@ -111,5 +116,17 @@ public class NewmarkTest extends TestCase
 	{
 		res = Coupled.Coupled(dat.getAsArray(), uwgt, height, vs, damp, dt, scal, g, vr, ca, true, true);
 		Assert.assertEquals(0.00859, res, 1e-4);
+	}
+
+	public void RigorousRigidBlockDown()
+	{
+		res = RigidBlock.NewmarkRigorous("", dat1, dt, ca, scal, false, 0, 1.0);
+		Assert.assertEquals(35.40371, res, 1e-4);
+	}
+
+	public void RigorousRigidBlockDual()
+	{
+		res = RigidBlock.NewmarkRigorous("", dat1, dt, ca, scal, true, 20, 1.0);
+		Assert.assertEquals(35.14587, res, 1e-4);
 	}
 }
