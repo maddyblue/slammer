@@ -48,7 +48,7 @@ public class Analysis
 
 	private static double time;
 	private static double dint;
-	public static XYSeries xys;
+	public static XYSeries graphData;
 	private static double last;
 	private static boolean skipped;
 
@@ -64,7 +64,7 @@ public class Analysis
 
 		time = 0;
 		dint = Dint;
-		xys = new XYSeries("");
+		graphData = new XYSeries("");
 		last = -1;
 		skipped = false;
 		timeStor = 0;
@@ -107,7 +107,7 @@ public class Analysis
 
 	private static void realStore(final double d, final double time)
 	{
-		try {xys.add(new Float(time), new Float(d));}
+		try {graphData.add(new Float(time), new Float(d));}
 		catch (Exception e) {}
 		last = d;
 	}

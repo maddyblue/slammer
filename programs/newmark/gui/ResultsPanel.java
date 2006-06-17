@@ -33,7 +33,7 @@ import org.jfree.data.xy.*;
 import org.jfree.data.statistics.HistogramDataset;
 import org.jfree.chart.*;
 import java.text.DecimalFormat;
-import java.util.Vector;
+import java.util.*;
 import java.io.*;
 import newmark.*;
 import newmark.analysis.*;
@@ -44,11 +44,16 @@ class ResultsPanel extends JPanel implements ActionListener
 	final public static int RB = 0; // rigid block
 	final public static int DC = 1; // decoupled
 	final public static int CP = 2; // coupled
+	final public static int AVG = 2; // average
+	final public static int NOR = 0; // normal
+	final public static int INV = 1; // inverse
 
-	// table column indexes
+	// table column indicies
 	final public static int RBC = 2;
-	final public static int DCC = 3;
-	final public static int CPC = 4;
+	final public static int DCC = 5;
+	final public static int CPC = 8;
+
+	String polarityName[] = { "Normal", "Inverse", "Average" };
 
 	NewmarkTabbedPane parent;
 
@@ -61,26 +66,38 @@ class ResultsPanel extends JPanel implements ActionListener
 	JTable outputTable = new JTable(outputTableModel);
 	JScrollPane outputTablePane = new JScrollPane(outputTable);
 
-	JButton saveOutput = new JButton("Save output");
+	JButton saveResultsOutput = new JButton("Save Results Table");
 	JFileChooser fc = new JFileChooser();
 
-	JButton plotOutput = new JButton("Plot histogram of Newmark displacements");
-	JButton plotNewmark = new JButton("Plot Newmark displacements versus time");
-	JCheckBox plotNewmarkLegend = new JCheckBox("Display legend", false);
+	JButton plotHistogram = new JButton("Plot histogram of Newmark displacements");
+	JButton plotDisplacement = new JButton("Plot Newmark displacements versus time");
+	JCheckBox plotDisplacementLegend = new JCheckBox("Display legend", false);
 	JTextField outputBins = new JTextField("10", 2);
-	JComboBox plotAnalysis = new JComboBox(new Object[] {ParametersPanel.stringRB, ParametersPanel.stringDC, ParametersPanel.stringCP});
 
-	XYSeriesCollection xysc[] = new XYSeriesCollection[3];
+	JRadioButton polarityNorDisp = new JRadioButton(polarityName[NOR], true);
+	JRadioButton polarityInvDisp = new JRadioButton(polarityName[INV]);
+	ButtonGroup polarityGroupDisp = new ButtonGroup();
 
-	JRadioButton outputDelTab = new JRadioButton("tab delimited", true);
-	JRadioButton outputDelSpace = new JRadioButton("space delimited");
-	JRadioButton outputDelComma = new JRadioButton("comma delimited");
+	JRadioButton polarityAvgHist = new JRadioButton(polarityName[AVG], true);
+	JRadioButton polarityNorHist = new JRadioButton(polarityName[NOR]);
+	JRadioButton polarityInvHist = new JRadioButton(polarityName[INV]);
+	ButtonGroup polarityGroupHist = new ButtonGroup();
+
+	JCheckBox analysisDisp[] = new JCheckBox[3];
+	JRadioButton analysisHist[] = new JRadioButton[3];
+	ButtonGroup analysisHistGroup = new ButtonGroup();
+
+	XYSeries xys[][][];
+
+	JRadioButton outputDelTab = new JRadioButton("Tab delimited", true);
+	JRadioButton outputDelSpace = new JRadioButton("Space delimited");
+	JRadioButton outputDelComma = new JRadioButton("Comma delimited");
 	ButtonGroup outputDelGroup = new ButtonGroup();
 
 	boolean paramUnit = false;
 	String unitDisplacement = "";
 	DecimalFormat unitFmt;
-	Vector dataVect[] = new Vector[3];
+	Vector dataVect[][];
 	XYSeriesCollection xycol;
 	String parameters;
 
@@ -104,21 +121,39 @@ class ResultsPanel extends JPanel implements ActionListener
 		ClearOutput.setActionCommand("clearOutput");
 		ClearOutput.addActionListener(this);
 
-		saveOutput.setActionCommand("saveOutput");
-		saveOutput.addActionListener(this);
+		saveResultsOutput.setActionCommand("saveResultsOutput");
+		saveResultsOutput.addActionListener(this);
 
-		plotOutput.setActionCommand("plotOutput");
-		plotOutput.addActionListener(this);
+		plotHistogram.setActionCommand("plotHistogram");
+		plotHistogram.addActionListener(this);
 
-		plotNewmark.setActionCommand("plotNewmark");
-		plotNewmark.addActionListener(this);
+		plotDisplacement.setActionCommand("plotDisplacement");
+		plotDisplacement.addActionListener(this);
 
-		plotNewmarkLegend.setActionCommand("plotNewmarkLegend");
-		plotNewmarkLegend.addActionListener(this);
+		plotDisplacementLegend.setActionCommand("plotDisplacementLegend");
+		plotDisplacementLegend.addActionListener(this);
 
 		outputDelGroup.add(outputDelTab);
 		outputDelGroup.add(outputDelSpace);
 		outputDelGroup.add(outputDelComma);
+
+		polarityGroupDisp.add(polarityNorDisp);
+		polarityGroupDisp.add(polarityInvDisp);
+
+		polarityGroupHist.add(polarityAvgHist);
+		polarityGroupHist.add(polarityNorHist);
+		polarityGroupHist.add(polarityInvHist);
+
+		analysisDisp[RB] = new JCheckBox(ParametersPanel.stringRB);
+		analysisDisp[DC] = new JCheckBox(ParametersPanel.stringDC);
+		analysisDisp[CP] = new JCheckBox(ParametersPanel.stringCP);
+		analysisHist[RB] = new JRadioButton(ParametersPanel.stringRB, true);
+		analysisHist[DC] = new JRadioButton(ParametersPanel.stringDC);
+		analysisHist[CP] = new JRadioButton(ParametersPanel.stringCP);
+
+		analysisHistGroup.add(analysisHist[RB]);
+		analysisHistGroup.add(analysisHist[DC]);
+		analysisHistGroup.add(analysisHist[CP]);
 
 		setLayout(new BorderLayout());
 
@@ -127,7 +162,7 @@ class ResultsPanel extends JPanel implements ActionListener
 		add(BorderLayout.SOUTH, createGraphs());
 	}
 
-	public void actionPerformed(java.awt.event.ActionEvent e)
+	public void actionPerformed(java.awt.event.ActionEvent e) // {{{
 	{
 		try
 		{
@@ -148,7 +183,11 @@ class ResultsPanel extends JPanel implements ActionListener
 							paramUnit = parent.Parameters.unitMetric.isSelected();
 							final double g = paramUnit ? Analysis.Gcmss : Analysis.Ginss;
 							unitDisplacement = paramUnit ? "(cm)" : "(in)";
-							outputTableModel.setColumnIdentifiers(new Object[] {"Earthquake", "Record", ParametersPanel.stringRB + " " + unitDisplacement, ParametersPanel.stringDC + " " + unitDisplacement, ParametersPanel.stringCP + " " + unitDisplacement});
+							outputTableModel.setColumnIdentifiers(new Object[] {"Earthquake", "Record",
+								"<--", ParametersPanel.stringRB, unitDisplacement + " -->",
+								"<--", ParametersPanel.stringDC, unitDisplacement + " -->",
+								"<--", ParametersPanel.stringCP, unitDisplacement + " -->"
+						});
 
 							boolean paramDualslope = parent.Parameters.dualSlope.isSelected();
 
@@ -174,7 +213,7 @@ class ResultsPanel extends JPanel implements ActionListener
 							if(!paramRigid && !paramDecoupled && !paramCoupled)
 							{
 								parent.selectParameters();
-								GUIUtils.popupError("Error: no analysis methods selected.");
+								GUIUtils.popupError("Error: no analyses methods selected.");
 								return null;
 							}
 
@@ -187,11 +226,14 @@ class ResultsPanel extends JPanel implements ActionListener
 								return null;
 							}
 
+							xys = new XYSeries[res.length][3][2];
+							dataVect = new Vector[3][3];
+
 							String eq, record;
 							DoubleList dat;
 							double di;
 							double num = 0;
-							Double avg;
+							double avg;
 							double total[] = new double[3];
 							double scale = 1, iscale, scaleRB;
 							double inv, norm;
@@ -273,16 +315,6 @@ class ResultsPanel extends JPanel implements ActionListener
 							{
 								Double tempd;
 
-								/*
-								tempd = (Double)Utils.checkNum(parent.Parameters.paramUwgt.getText(), ParametersPanel.stringUwgt + " field", null, false, null, null, false, null, false);
-								if(tempd == null)
-								{
-									parent.selectParameters();
-									return null;
-								}
-								else
-									uwgt = tempd.doubleValue();
-								*/
 								uwgt = 100.0; // unit weight is disabled, so hardcode to 100
 
 								tempd = (Double)Utils.checkNum(parent.Parameters.paramHeight.getText(), ParametersPanel.stringHeight + " field", null, false, null, null, false, null, false);
@@ -312,7 +344,7 @@ class ResultsPanel extends JPanel implements ActionListener
 								else
 									damp = tempd.doubleValue() / 100.0;
 
-								dv2 = parent.Parameters.paramBaseType.getSelectedIndex() == 1;
+								dv2 = true;
 								dv3 = parent.Parameters.paramSoilModel.getSelectedIndex() == 1;
 
 								if(dv2)
@@ -357,50 +389,43 @@ class ResultsPanel extends JPanel implements ActionListener
 
 							if(paramRigid)
 							{
-								dataVect[RB] = new Vector(res.length - 1);
-								xysc[RB] = new XYSeriesCollection();
-							}
-							else
-							{
-								dataVect[RB] = null;
-								xysc[RB] = null;
+								dataVect[RB][NOR] = new Vector(res.length - 1);
+								dataVect[RB][INV] = new Vector(res.length - 1);
+								dataVect[RB][AVG] = new Vector(res.length - 1);
 							}
 
 							if(paramDecoupled)
 							{
-								dataVect[DC] = new Vector(res.length - 1);
-								xysc[DC] = new XYSeriesCollection();
-							}
-							else
-							{
-								dataVect[DC] = null;
-								xysc[DC] = null;
+								dataVect[DC][NOR] = new Vector(res.length - 1);
+								dataVect[DC][INV] = new Vector(res.length - 1);
+								dataVect[DC][AVG] = new Vector(res.length - 1);
 							}
 
 							if(paramCoupled)
 							{
-								dataVect[CP] = new Vector(res.length - 1);
-								xysc[CP] = new XYSeriesCollection();
-							}
-							else
-							{
-								dataVect[CP] = null;
-								xysc[CP] = null;
+								dataVect[CP][NOR] = new Vector(res.length - 1);
+								dataVect[CP][INV] = new Vector(res.length - 1);
+								dataVect[CP][AVG] = new Vector(res.length - 1);
 							}
 
 							iscale = -1.0 * scale;
-
 
 							pm.setMaximum(res.length);
 
 							int j;
 							Object[] row;
-							XYDataItem xydi;
-							double graphscale;
+
+							outputTableModel.addRow(new Object[] { null, "Polarity:",
+								polarityName[NOR], polarityName[INV], polarityName[AVG],
+								polarityName[NOR], polarityName[INV], polarityName[AVG],
+								polarityName[NOR], polarityName[INV], polarityName[AVG]
+							});
+
+							outputTableModel.addRow(new Object[] { null, null, null, null, null, null, null, null, null, null, null });
 
 							for(int i = 1; i < res.length && !pm.isCanceled(); i++)
 							{
-								row = new Object[5];
+								row = new Object[11];
 								eq = res[i][0].toString();
 								record = res[i][1].toString();
 
@@ -411,6 +436,12 @@ class ResultsPanel extends JPanel implements ActionListener
 								row[2] = null;
 								row[3] = null;
 								row[4] = null;
+								row[5] = null;
+								row[6] = null;
+								row[7] = null;
+								row[8] = null;
+								row[9] = null;
+								row[10] = null;
 
 								path = res[i][3].toString();
 								testFile = new File(path);
@@ -446,76 +477,82 @@ class ResultsPanel extends JPanel implements ActionListener
 
 								if(paramRigid)
 								{
-									inv = RigidBlock.NewmarkRigorous(dat, di, ca, iscale * scaleRB, paramDualslope, thrust);
-									norm = RigidBlock.NewmarkRigorous(dat, di, ca, scale * scaleRB, paramDualslope, thrust);
+									norm = RigidBlock.NewmarkRigorous("norm", dat, di, ca, scale, paramDualslope, thrust, scaleRB);
+									Analysis.graphData.setKey(row[0] + " - " + row[1] + " - " + ParametersPanel.stringRB + ", " + polarityName[NOR]);
+									xys[i - 1][RB][NOR] = Analysis.graphData;
 
-									avg = avg(inv, norm, unitFmt);
+									inv = RigidBlock.NewmarkRigorous("inv", dat, di, ca, iscale, paramDualslope, thrust, scaleRB);
+									Analysis.graphData.setKey(row[0] + " - " + row[1] + " - " + ParametersPanel.stringRB + ", " + polarityName[INV]);
+									xys[i - 1][RB][INV] = Analysis.graphData;
 
-									total[RB] += avg.doubleValue();
-									row[RBC] = avg;
+									avg = avg(inv, norm);
 
-									Analysis.xys.setKey(eq + " - " + record);
-									xysc[RB].addSeries(Analysis.xys);
+									total[RB] += avg;
 
-									for(j = 0; j < dataVect[RB].size() && ((Double)dataVect[RB].elementAt(j)).doubleValue() < avg.doubleValue(); j++);
-									dataVect[RB].insertElementAt(avg, j);
+									for(j = 0; j < dataVect[RB][AVG].size() && ((Double)dataVect[RB][AVG].elementAt(j)).doubleValue() < avg; j++)
+										;
 
-									graphscale = avg.doubleValue() / norm;
-									for(j = 0; j < Analysis.xys.getItemCount(); j++)
-									{
-										xydi = Analysis.xys.getDataItem(j);
-										xydi.setY(new Float(xydi.getY().floatValue() * graphscale));
-									}
+									dataVect[RB][AVG].insertElementAt(new Double(avg), j);
+									dataVect[RB][NOR].insertElementAt(new Double(norm), j);
+									dataVect[RB][INV].insertElementAt(new Double(inv), j);
+
+									row[RBC + AVG] = unitFmt.format(avg);
+									row[RBC + NOR] = unitFmt.format(norm);
+									row[RBC + INV] = unitFmt.format(inv);
 								}
 
 								if(paramDecoupled)
 								{
 									// [i]scale is divided by Gcmss because the algorithm expects input data in Gs, but our input files are in cmss. this has nothing to do with, and is not affected by, the unit base being used (english or metric).
-									inv = Decoupled.Decoupled(ain, uwgt, height, vs, damp, di, iscale / Analysis.Gcmss, g, vr, ca, dv2, dv3);
 									norm = Decoupled.Decoupled(ain, uwgt, height, vs, damp, di, scale / Analysis.Gcmss, g, vr, ca, dv2, dv3);
+									Analysis.graphData.setKey(row[0] + " - " + row[1] + " - " + ParametersPanel.stringDC + ", " + polarityName[NOR]);
+									xys[i - 1][DC][NOR] = Analysis.graphData;
 
-									avg = avg(inv, norm, unitFmt);
+									inv = Decoupled.Decoupled(ain, uwgt, height, vs, damp, di, iscale / Analysis.Gcmss, g, vr, ca, dv2, dv3);
+									Analysis.graphData.setKey(row[0] + " - " + row[1] + " - " + ParametersPanel.stringDC + ", " + polarityName[INV]);
+									xys[i - 1][DC][INV] = Analysis.graphData;
 
-									total[DC] += avg.doubleValue();
-									row[DCC] = avg;
+									avg = avg(inv, norm);
 
-									Analysis.xys.setKey(eq + " - " + record);
-									xysc[DC].addSeries(Analysis.xys);
+									total[DC] += avg;
 
-									for(j = 0; j < dataVect[DC].size() && ((Double)dataVect[DC].elementAt(j)).doubleValue() < avg.doubleValue(); j++);
-									dataVect[DC].insertElementAt(avg, j);
+									for(j = 0; j < dataVect[DC][AVG].size() && ((Double)dataVect[DC][AVG].elementAt(j)).doubleValue() < avg; j++)
+										;
 
-									graphscale = avg.doubleValue() / norm;
-									for(j = 0; j < Analysis.xys.getItemCount(); j++)
-									{
-										xydi = Analysis.xys.getDataItem(j);
-										xydi.setY(new Float(xydi.getY().floatValue() * graphscale));
-									}
+									dataVect[DC][AVG].insertElementAt(new Double(avg), j);
+									dataVect[DC][NOR].insertElementAt(new Double(norm), j);
+									dataVect[DC][INV].insertElementAt(new Double(inv), j);
+
+									row[DCC + AVG] = unitFmt.format(avg);
+									row[DCC + NOR] = unitFmt.format(norm);
+									row[DCC + INV] = unitFmt.format(inv);
 								}
 
 								if(paramCoupled)
 								{
 									// [i]scale is divided by Gcmss because the algorithm expects input data in Gs, but our input files are in cmss. this has nothing to do with, and is not affected by, the unit base being used (english or metric).
-									inv = Coupled.Coupled(ain, uwgt, height, vs, damp, di, iscale / Analysis.Gcmss, g, vr, ca, dv2, dv3);
 									norm = Coupled.Coupled(ain, uwgt, height, vs, damp, di, scale / Analysis.Gcmss, g, vr, ca, dv2, dv3);
+									Analysis.graphData.setKey(row[0] + " - " + row[1] + " - " + ParametersPanel.stringCP + ", " + polarityName[NOR]);
+									xys[i - 1][CP][NOR] = Analysis.graphData;
 
-									avg = avg(inv, norm, unitFmt);
+									inv = Coupled.Coupled(ain, uwgt, height, vs, damp, di, iscale / Analysis.Gcmss, g, vr, ca, dv2, dv3);
+									Analysis.graphData.setKey(row[0] + " - " + row[1] + " - " + ParametersPanel.stringCP + ", " + polarityName[INV]);
+									xys[i - 1][CP][INV] = Analysis.graphData;
 
-									total[CP] += avg.doubleValue();
-									row[CPC] = avg;
+									avg = avg(inv, norm);
 
-									Analysis.xys.setKey(eq + " - " + record);
-									xysc[CP].addSeries(Analysis.xys);
+									total[CP] += avg;
 
-									for(j = 0; j < dataVect[CP].size() && ((Double)dataVect[CP].elementAt(j)).doubleValue() < avg.doubleValue(); j++);
-									dataVect[CP].insertElementAt(avg, j);
+									for(j = 0; j < dataVect[CP][AVG].size() && ((Double)dataVect[CP][AVG].elementAt(j)).doubleValue() < avg; j++)
+										;
 
-									graphscale = avg.doubleValue() / norm;
-									for(j = 0; j < Analysis.xys.getItemCount(); j++)
-									{
-										xydi = Analysis.xys.getDataItem(j);
-										xydi.setY(new Float(xydi.getY().floatValue() * graphscale));
-									}
+									dataVect[CP][AVG].insertElementAt(new Double(avg), j);
+									dataVect[CP][NOR].insertElementAt(new Double(norm), j);
+									dataVect[CP][INV].insertElementAt(new Double(inv), j);
+
+									row[CPC + AVG] = unitFmt.format(avg);
+									row[CPC + NOR] = unitFmt.format(norm);
+									row[CPC + INV] = unitFmt.format(inv);
 								}
 
 								outputTableModel.addRow(row);
@@ -523,31 +560,32 @@ class ResultsPanel extends JPanel implements ActionListener
 							pm.update("Calculating stastistics...");
 
 							double max, mean, value, valtemp;
-							Object[] rmean = new Object[] {null, "Mean value", null, null, null};
-							Object[] rmedian = new Object[] {null, "Median value", null, null, null};
-							Object[] rsd = new Object[] {null, "Standard deviation", null, null, null};
+							Object[] rmean = new Object[] {null, "Mean value", null, null, null, null, null, null, null, null, null};
+							Object[] rmedian = new Object[] {null, "Median value", null, null, null, null, null, null, null, null, null};
+							Object[] rsd = new Object[] {null, "Standard deviation", null, null, null, null, null, null, null, null, null};
 
 							for(j = 0; j < dataVect.length; j++)
 							{
-								if(dataVect[j] == null || dataVect[j].size() == 0)
+								if(dataVect[j][AVG] == null || dataVect[j][AVG].size() == 0)
 									continue;
 
-								max = ((Double)dataVect[j].elementAt(dataVect[j].size() - 1)).doubleValue();
+								max = ((Double)dataVect[j][AVG].elementAt(dataVect[j][AVG].size() - 1)).doubleValue();
 
 								mean = Double.parseDouble(unitFmt.format(total[j] / num));
-								rmean[j + 2] = unitFmt.format(mean);
-								rmedian[j + 2] = unitFmt.format(dataVect[j].elementAt((int)(num / 2.0)));
+								rmean[j * 3 + 4] = unitFmt.format(mean);
+								rmedian[j * 3 + 4] = unitFmt.format(dataVect[j][AVG].elementAt((int)(num / 2.0)));
 
 								value = 0;
 
 								for(int i = 0; i < num; i++)
 								{
-									valtemp = mean - ((Double)dataVect[j].elementAt(i)).doubleValue();
+									valtemp = mean - ((Double)dataVect[j][AVG].elementAt(i)).doubleValue();
 									value += (valtemp * valtemp);
 								}
+
 								value /= num - 1;
 								value = Math.sqrt(value);
-								rsd[j + 2] = unitFmt.format(value);
+								rsd[j * 3 + 4] = unitFmt.format(value);
 							}
 
 							outputTableModel.addRow(new Object[] {null, null, null, null, null});
@@ -577,7 +615,7 @@ class ResultsPanel extends JPanel implements ActionListener
 			{
 				changeDecimal();
 			}
-			else if(command.equals("saveOutput"))
+			else if(command.equals("saveResultsOutput"))
 			{
 				if(fc.showSaveDialog(this) == JFileChooser.APPROVE_OPTION)
 				{
@@ -628,52 +666,76 @@ class ResultsPanel extends JPanel implements ActionListener
 					fw.close();
 				}
 			}
-			else if(command.equals("plotOutput"))
+			else if(command.equals("plotHistogram"))
 			{
-				int i = plotAnalysis.getSelectedIndex();
-				String s = plotAnalysis.getSelectedItem().toString();
-
-				if(dataVect[i] == null)
+				if(dataVect == null)
 					return;
+
+				String name = "", title, pname;
+				HistogramDataset dataset = new HistogramDataset();
+
+				int polarity, analysis = -1;
+
+				if(polarityAvgHist.isSelected()) polarity = AVG;
+				else if(polarityNorHist.isSelected()) polarity = NOR;
+				else if(polarityInvHist.isSelected()) polarity = INV;
+				else polarity = -1;
+
+				for(int i = 0; i < analysisHist.length; i++)
+					if(analysisHist[i].isSelected())
+						analysis = i;
+
+				pname = polarityName[polarity];
 
 				Double Bins = (Double)Utils.checkNum(outputBins.getText(), "output bins field", null, false, null, new Double(0), false, null, false);
 
-				if(Bins != null)
-				{
-					double series[] = new double[dataVect[i].size()];
-
-					for(int j = 0; j < dataVect[i].size(); j++)
-					{
-						series[j] = (((Double)dataVect[i].elementAt(j)).doubleValue());
-					}
-
-					HistogramDataset dataset = new HistogramDataset();
-					dataset.addSeries("", series, (int)Bins.doubleValue());
-
-					JFreeChart hist = ChartFactory.createHistogram("Histogram of " + s + " Displacements", s + " " + unitDisplacement, "Number of Records", dataset, org.jfree.chart.plot.PlotOrientation.VERTICAL, false, false, false);
-					ChartFrame frame = new ChartFrame("Histogram of " + s + " Displacements", hist);
-
-					frame.pack();
-					frame.setLocationRelativeTo(null);
-					frame.setVisible(true);
-				}
-			}
-			else if(command.equals("plotNewmark"))
-			{
-				int i = plotAnalysis.getSelectedIndex();
-				String s = plotAnalysis.getSelectedItem().toString();
-
-				if(xysc[i] == null)
+				if(Bins == null || dataVect[analysis][polarity] == null)
 					return;
 
-				JFreeChart chart = ChartFactory.createXYLineChart(s + " displacement versus time", "Time (s)", s + " displacement " + unitDisplacement, xysc[i], org.jfree.chart.plot.PlotOrientation.VERTICAL, plotNewmarkLegend.isSelected(), true, false);
+				name = analysisHist[analysis].getText();
+
+				double series[] = new double[dataVect[analysis][polarity].size()];
+
+				for(int j = 0; j < dataVect[analysis][polarity].size(); j++)
+					series[j] = (((Double)dataVect[analysis][polarity].elementAt(j)).doubleValue());
+
+				dataset.addSeries(name, series, (int)Bins.doubleValue());
+
+				title = "Histogram of " + name + " Displacements (" + pname + " Polarity)";
+
+				JFreeChart hist = ChartFactory.createHistogram(title, unitDisplacement, "Number of Records", dataset, org.jfree.chart.plot.PlotOrientation.VERTICAL, false, true, false);
+				ChartFrame frame = new ChartFrame(title, hist);
+
+				frame.pack();
+				frame.setLocationRelativeTo(null);
+				frame.setVisible(true);
+			}
+			else if(command.equals("plotDisplacement"))
+			{
+				XYSeriesCollection xysc = new XYSeriesCollection();
+
+				int polarity = polarityNorDisp.isSelected() ? NOR : INV;
+				String pname = polarityName[polarity];
+
+				String name = "Displacement versus time";
+
+				for(int i = 0; i < analysisDisp.length; i++)
+				{
+					if(analysisDisp[i].isSelected() && dataVect[i][polarity] != null)
+					{
+						for(int j = 0; j < dataVect[i][polarity].size(); j++)
+							xysc.addSeries(xys[j][i][polarity]);
+					}
+				}
+
+				JFreeChart chart = ChartFactory.createXYLineChart(name, "Time (s)", "Displacement--" + pname + " polarity " + unitDisplacement, xysc, org.jfree.chart.plot.PlotOrientation.VERTICAL, plotDisplacementLegend.isSelected(), true, false);
 
 				//margins are stupid
 				chart.getXYPlot().getDomainAxis().setLowerMargin(0);
 				chart.getXYPlot().getDomainAxis().setUpperMargin(0);
 				chart.getXYPlot().getDomainAxis().setLowerBound(0);
 
-				ChartFrame frame = new ChartFrame(s + " displacement versus time", chart);
+				ChartFrame frame = new ChartFrame(name, chart);
 				frame.pack();
 				frame.setLocationRelativeTo(null);
 				frame.setVisible(true);
@@ -683,34 +745,9 @@ class ResultsPanel extends JPanel implements ActionListener
 		{
 			Utils.catchException(ex);
 		}
-	}
+	} // }}}
 
-	private void clearOutput()
-	{
-		dataVect[RB] = null;
-		dataVect[DC] = null;
-		dataVect[CP] = null;
-
-		xysc[RB] = null;
-		xysc[DC] = null;
-		xysc[CP] = null;
-
-		int rows = outputTableModel.getRowCount();
-		while(--rows >= 0)
-			outputTableModel.removeRow(rows);
-	}
-
-	private void changeDecimal()
-	{
-		int i = decimalsCB.getSelectedIndex();
-
-		if(i == 2)
-			unitFmt = Analysis.fmtThree;
-		else if(i == 1)
-			unitFmt = Analysis.fmtTwo;
-		else
-			unitFmt = Analysis.fmtOne;
-	}
+	// {{{ gui layout
 
 	private JPanel createHeader()
 	{
@@ -731,96 +768,242 @@ class ResultsPanel extends JPanel implements ActionListener
 	{
 		JPanel outputTablePanel = new JPanel(new BorderLayout());
 
-		JPanel outputData = new JPanel(new BorderLayout());
-		JPanel west = new JPanel(new BorderLayout());
-		Box list = new Box(BoxLayout.X_AXIS);
-		list.add(outputDelTab);
-		list.add(outputDelSpace);
-		list.add(outputDelComma);
-		west.add(BorderLayout.CENTER,list);
-		west.add(BorderLayout.WEST, saveOutput);
-		outputData.add(BorderLayout.WEST, west);
-
 		outputTablePanel.add(BorderLayout.CENTER, outputTablePane);
-		outputTablePanel.add(BorderLayout.SOUTH, outputData);
 
 		return outputTablePanel;
 	}
 
-	private JPanel createGraphs()
+	private JTabbedPane createGraphs()
+	{
+		JTabbedPane jtp = new JTabbedPane();
+
+		jtp.add("Graph Displacements", createGraphDisplacementsPanel());
+		jtp.add("Graph Histogram", createGraphHistogramPanel());
+		jtp.add("Save Results Table", createSaveResultsPanel());
+
+		return jtp;
+	}
+
+	private JPanel createGraphDisplacementsPanel()
 	{
 		JPanel panel = new JPanel();
 
-		Insets left = new Insets(0, 20, 0, 0);
-		Insets none = new Insets(0, 0, 0, 0);
-
 		GridBagLayout gridbag = new GridBagLayout();
 		panel.setLayout(gridbag);
-
 		GridBagConstraints c = new GridBagConstraints();
 		JLabel label;
 
-		int y = 0;
 		int x = 0;
+		int y = 0;
+
+		c.anchor = GridBagConstraints.NORTHWEST;
 
 		c.gridx = x++;
 		c.gridy = y++;
-		c.weightx = 1;
-		c.fill = GridBagConstraints.HORIZONTAL;
-		gridbag.setConstraints(plotOutput, c);
-		panel.add(plotOutput);
-
-		c.gridx = x++;
-		c.weightx = 0;
-		label = new JLabel("Plot with ");
+		label = new JLabel("Analyses:");
 		gridbag.setConstraints(label, c);
 		panel.add(label);
 
-		c.gridx = x++;
-		gridbag.setConstraints(outputBins, c);
-		panel.add(outputBins);
+		c.gridy = y++;
+		gridbag.setConstraints(analysisDisp[RB], c);
+		panel.add(analysisDisp[RB]);
 
-		c.gridx = x++;
-		label = new JLabel(" bins.");
-		gridbag.setConstraints(label, c);
-		panel.add(label);
+		c.gridy = y++;
+		gridbag.setConstraints(analysisDisp[DC], c);
+		panel.add(analysisDisp[DC]);
 
-		c.gridx = x++;
-		c.insets = left;
-		label = new JLabel("Analysis:");
-		gridbag.setConstraints(label, c);
-		panel.add(label);
+		c.gridy = y++;
+		gridbag.setConstraints(analysisDisp[CP], c);
+		panel.add(analysisDisp[CP]);
 
-		x = 0;
+		y = 0;
 
 		c.gridy = y++;
 		c.gridx = x++;
+		c.insets = new Insets(0, 5, 0, 0);
+		label = new JLabel("Polarity:");
+		gridbag.setConstraints(label, c);
+		panel.add(label);
+
+		c.gridy = y++;
+		gridbag.setConstraints(polarityNorDisp, c);
+		panel.add(polarityNorDisp);
+
+		c.gridy = y++;
+		gridbag.setConstraints(polarityInvDisp, c);
+		panel.add(polarityInvDisp);
+
+		y = 0;
+
+		c.gridy = y++;
+		c.gridx = x++;
+		c.gridheight = 2;
+		c.anchor = GridBagConstraints.WEST;
+		gridbag.setConstraints(plotDisplacement, c);
+		panel.add(plotDisplacement);
+
+		y++;
+		c.gridy = y;
+		gridbag.setConstraints(plotDisplacementLegend, c);
+		panel.add(plotDisplacementLegend);
+
+		c.gridx = x;
+		label = new JLabel(" ");
 		c.weightx = 1;
-		c.insets = none;
-		gridbag.setConstraints(plotNewmark, c);
-		panel.add(plotNewmark);
-
-		c.gridx = x;
-		c.gridwidth = 3;
-		c.weightx = 0;
-		gridbag.setConstraints(plotNewmarkLegend, c);
-		panel.add(plotNewmarkLegend);
-
-		x += 3;
-
-		c.gridx = x;
-		c.gridwidth = 1;
-		c.insets = left;
-		gridbag.setConstraints(plotAnalysis, c);
-		panel.add(plotAnalysis);
+		gridbag.setConstraints(label, c);
+		panel.add(label);
 
 		return panel;
 	}
 
-	private Double avg(final double a, final double b, DecimalFormat f)
+	private JPanel createGraphHistogramPanel()
 	{
-		return (new Double(f.format(new Double(
-			(a + b) / 2.0
-			))));
+		JPanel panel = new JPanel();
+
+		GridBagLayout gridbag = new GridBagLayout();
+		panel.setLayout(gridbag);
+		GridBagConstraints c = new GridBagConstraints();
+		JLabel label;
+
+		int x = 0;
+		int y = 0;
+
+		c.anchor = GridBagConstraints.NORTHWEST;
+
+		c.gridx = x++;
+		c.gridy = y++;
+		label = new JLabel("Analysis:");
+		gridbag.setConstraints(label, c);
+		panel.add(label);
+
+		c.gridy = y++;
+		gridbag.setConstraints(analysisHist[RB], c);
+		panel.add(analysisHist[RB]);
+
+		c.gridy = y++;
+		gridbag.setConstraints(analysisHist[DC], c);
+		panel.add(analysisHist[DC]);
+
+		c.gridy = y++;
+		gridbag.setConstraints(analysisHist[CP], c);
+		panel.add(analysisHist[CP]);
+
+		y = 0;
+
+		c.gridy = y++;
+		c.gridx = x++;
+		c.insets = new Insets(0, 5, 0, 0);
+		label = new JLabel("Polarity:");
+		gridbag.setConstraints(label, c);
+		panel.add(label);
+
+		c.gridy = y++;
+		gridbag.setConstraints(polarityAvgHist, c);
+		panel.add(polarityAvgHist);
+
+		c.gridy = y++;
+		gridbag.setConstraints(polarityNorHist, c);
+		panel.add(polarityNorHist);
+
+		c.gridy = y++;
+		gridbag.setConstraints(polarityInvHist, c);
+		panel.add(polarityInvHist);
+
+		y = 0;
+
+		c.gridx = x++;
+		c.gridy = y++;
+		c.gridheight = 2;
+		c.anchor = GridBagConstraints.WEST;
+		gridbag.setConstraints(plotHistogram, c);
+		panel.add(plotHistogram);
+
+		JPanel bins = new JPanel();
+		bins.add(new JLabel("Plot with "));
+		bins.add(outputBins);
+		bins.add(new JLabel(" bins."));
+		y++;
+		c.gridy = y;
+		gridbag.setConstraints(bins, c);
+		panel.add(bins);
+
+		c.gridx = x;
+		label = new JLabel(" ");
+		c.weightx = 1;
+		gridbag.setConstraints(label, c);
+		panel.add(label);
+
+		return panel;
+	}
+
+	private JPanel createSaveResultsPanel()
+	{
+		JPanel panel = new JPanel();
+
+		GridBagLayout gridbag = new GridBagLayout();
+		panel.setLayout(gridbag);
+		GridBagConstraints c = new GridBagConstraints();
+		JLabel label;
+
+		int x = 0;
+		int y = 0;
+
+		c.anchor = GridBagConstraints.WEST;
+
+		c.gridx = x++;
+		c.gridy = y++;
+		c.gridheight = 3;
+		gridbag.setConstraints(saveResultsOutput, c);
+		panel.add(saveResultsOutput);
+
+		c.gridheight = 1;
+		c.gridx = x++;
+		gridbag.setConstraints(outputDelTab, c);
+		panel.add(outputDelTab);
+
+		c.gridy = y++;
+		gridbag.setConstraints(outputDelSpace, c);
+		panel.add(outputDelSpace);
+
+		c.gridy = y;
+		gridbag.setConstraints(outputDelComma, c);
+		panel.add(outputDelComma);
+
+		c.gridx = x;
+		label = new JLabel(" ");
+		c.weightx = 1;
+		gridbag.setConstraints(label, c);
+		panel.add(label);
+
+		return panel;
+	}
+
+	// }}}
+
+	private void clearOutput()
+	{
+		dataVect = null;
+		xys = null;
+
+		int rows = outputTableModel.getRowCount();
+		while(--rows >= 0)
+			outputTableModel.removeRow(rows);
+	}
+
+	private void changeDecimal()
+	{
+		int i = decimalsCB.getSelectedIndex();
+
+		if(i == 2)
+			unitFmt = Analysis.fmtThree;
+		else if(i == 1)
+			unitFmt = Analysis.fmtTwo;
+		else
+			unitFmt = Analysis.fmtOne;
+	}
+
+	private double avg(final double a, final double b)
+	{
+		return (a + b) / 2.0;
 	}
 }

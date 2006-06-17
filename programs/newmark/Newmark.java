@@ -31,6 +31,43 @@ import java.io.*;
 
 public class Newmark
 {
+	// order of fields for the eq.sql file
+	public static final int DB_eq = 0;
+	public static final int DB_record = 1;
+	public static final int DB_digi_int = 2;
+	public static final int DB_mom_mag = 3;
+	public static final int DB_arias = 4;
+	public static final int DB_dobry = 5;
+	public static final int DB_pga = 6;
+	public static final int DB_pgv = 7;
+	public static final int DB_mean_per = 8;
+	public static final int DB_epi_dist = 9;
+	public static final int DB_foc_dist = 10;
+	public static final int DB_rup_dist = 11;
+	public static final int DB_foc_mech = 12;
+	public static final int DB_location = 13;
+	public static final int DB_owner = 14;
+	public static final int DB_latitude = 15;
+	public static final int DB_longitude = 16;
+	public static final int DB_class = 17;
+	public static final int DB_LENGTH = 18;
+
+	// order of fields for the EQdata.txt file
+	public static final int EQDAT_eq = 0;
+	public static final int EQDAT_mom_mag = 1;
+	public static final int EQDAT_foc_mech = 2;
+	public static final int EQDAT_record = 3;
+	public static final int EQDAT_location = 4;
+	public static final int EQDAT_owner = 5;
+	public static final int EQDAT_latitude = 6;
+	public static final int EQDAT_longitude = 7;
+	public static final int EQDAT_class = 8;
+	public static final int EQDAT_digi_int = 9;
+	public static final int EQDAT_epi_dist = 10;
+	public static final int EQDAT_foc_dist = 11;
+	public static final int EQDAT_rup_dist = 12;
+	public static final int EQDAT_LENGTH = 13;
+
 	public static void main(String[] args) throws Exception
 	{
 		try
@@ -47,7 +84,7 @@ public class Newmark
 
 				FileWriter fw = new FileWriter(".." + File.separatorChar + "records" + File.separatorChar + "eq.sql");
 
-				Object[][] res = Utils.getDB().runQuery("select eq, record, digi_int, mom_mag, arias, dobry, pga, mean_per, epi_dist, foc_dist, rup_dist, foc_mech, location, owner, latitude, longitude, class from data order by eq, record");
+				Object[][] res = Utils.getDB().runQuery("select eq, record, digi_int, mom_mag, arias, dobry, pga, pgv, mean_per, epi_dist, foc_dist, rup_dist, foc_mech, location, owner, latitude, longitude, class from data order by eq, record");
 
 				if(res == null || res.length <= 1)
 				{
@@ -102,6 +139,7 @@ public class Newmark
 					+ "arias     double       not null,"
 					+ "dobry     double       not null,"
 					+ "pga       double       not null,"
+					+ "pgv       double       not null,"
 					+ "mean_per  double       not null,"
 					+ "epi_dist  double               ,"
 					+ "foc_dist  double               ,"
@@ -129,7 +167,7 @@ public class Newmark
 			{
 				FileReader fr = new FileReader(".." + File.separatorChar + "records" + File.separatorChar + "EQdata.txt");
 				String s = "";
-				String cur[] = new String[13];
+				String cur[] = new String[EQDAT_LENGTH];
 				int i = 0;
 				int incr;
 				String path, q;
@@ -149,12 +187,12 @@ public class Newmark
 						case '\t':
 							switch(i)
 							{
-								case 1:
-								case 10:
-								case 11:
-								case 12:
-								case 6:
-								case 7:
+								case EQDAT_mom_mag:
+								case EQDAT_epi_dist:
+								case EQDAT_foc_dist:
+								case EQDAT_rup_dist:
+								case EQDAT_latitude:
+								case EQDAT_longitude:
 									cur[i] = Utils.nullify(s);
 									break;
 								default:
@@ -171,7 +209,7 @@ public class Newmark
 							i = 0;
 
 							incr = 0;
-							path = "../records/" + cur[0] + "/" + cur[3];
+							path = "../records/" + cur[EQDAT_eq] + "/" + cur[EQDAT_record];
 
 							res = Utils.getDB().runQuery("select id from data where path='" + path + "'");
 							if(res != null)
@@ -180,7 +218,7 @@ public class Newmark
 								continue;
 							}
 
-							di = Double.parseDouble(cur[9]);
+							di = Double.parseDouble(cur[EQDAT_digi_int]);
 							data = new DoubleList(path);
 							if(data.bad())
 							{
@@ -188,25 +226,26 @@ public class Newmark
 								continue;
 							}
 							q = "insert into data " +
-								"(eq, record, digi_int, mom_mag, arias, dobry, pga, mean_per, epi_dist, foc_dist, rup_dist, foc_mech, location, owner, latitude, longitude, class, change, path, select1, analyze, select2)" +
+								"(eq, record, digi_int, mom_mag, arias, dobry, pga, pgv, mean_per, epi_dist, foc_dist, rup_dist, foc_mech, location, owner, latitude, longitude, class, change, path, select1, analyze, select2)" +
 								" values ( " +
-								"'" + cur[0] + "'," + // eq
-								"'" + cur[3] + "'," + // record
-								"" + cur[9] + "," + // digi_int
-								"" + cur[1] + "," + // mom_mag
+								"'" + cur[EQDAT_eq] + "'," + // eq
+								"'" + cur[EQDAT_record] + "'," + // record
+								"" + cur[EQDAT_digi_int] + "," + // digi_int
+								"" + cur[EQDAT_mom_mag] + "," + // mom_mag
 								"" + ImportRecords.Arias(data, di) + "," + // arias
 								"" + ImportRecords.Dobry(data, di) + "," + // dobry
 								"" + ImportRecords.PGA(data) + "," + // pga
+//								"" + ImportRecords.PGV(data) + "," + // pgv
 								"" + ImportRecords.MeanPer(data, di) + "," + // mear_per
-								"" + cur[10] + "," + // epi_dist
-								"" + cur[11] + "," + // foc_dist
-								"" + cur[12] + "," + // rup_dist
-								"" + cur[2] + "," + // foc_mech
-								"'" + cur[4] + "'," + // location
-								"'" + cur[5] + "'," + // owner
-								"" + cur[6] + "," + // latitude
-								"" + cur[7] + "," + // longitude
-								"" + cur[8] + "," + // class
+								"" + cur[EQDAT_epi_dist] + "," + // epi_dist
+								"" + cur[EQDAT_foc_dist] + "," + // foc_dist
+								"" + cur[EQDAT_rup_dist] + "," + // rup_dist
+								"" + cur[EQDAT_foc_mech] + "," + // foc_mech
+								"'" + cur[EQDAT_location] + "'," + // location
+								"'" + cur[EQDAT_owner] + "'," + // owner
+								"" + cur[EQDAT_latitude] + "," + // latitude
+								"" + cur[EQDAT_longitude] + "," + // longitude
+								"" + cur[EQDAT_class] + "," + // class
 								"0," + // change
 								"'" + path + "'," + // path
 								"0," + // select1
@@ -215,7 +254,7 @@ public class Newmark
 								")";
 							System.out.println(q);
 							Utils.getDB().runUpdate(q);
-							cur = new String[13];
+							cur = new String[EQDAT_LENGTH];
 
 							break;
 						}
@@ -232,7 +271,7 @@ public class Newmark
 			{
 				FileReader fr = new FileReader(".." + File.separatorChar + "records" + File.separatorChar + "eq.sql");
 				String s = "";
-				String cur[] = new String[17];
+				String cur[] = new String[DB_LENGTH];
 				int j = 0;
 				int reslen;
 				char c;
@@ -257,9 +296,29 @@ public class Newmark
 							s = "";
 							j = 0;
 
-							path = ".." + File.separatorChar + "records" + File.separator + cur[0] + File.separator + cur[1];
+							path = ".." + File.separatorChar + "records" + File.separator + cur[DB_eq] + File.separator + cur[DB_record];
 
-							q = "insert into data (eq, record, digi_int, mom_mag, arias, dobry, pga, mean_per, epi_dist, foc_dist, rup_dist, foc_mech, location, owner, latitude, longitude, class, change, path, select1, analyze, select2) values ('" + cur[0] + "', '" + cur[1] + "', " + cur[2] + ", " + Utils.nullify(cur[3]) + ", " + cur[4] + ", " + cur[5] + ", " + cur[6] + ", " + cur[7] + ", " + Utils.nullify(cur[8]) + ", " + Utils.nullify(cur[9]) + ", " + Utils.nullify(cur[10]) + ", " + cur[11] + ", '" + cur[12] + "', '" + cur[13] + "', " + Utils.nullify(cur[14]) + ", " + Utils.nullify(cur[15]) + ", " + cur[16] + ", " + 0 + ", '" + path + "', 0, 0, 0)";
+							q = "insert into data (eq, record, digi_int, mom_mag, arias, dobry, pga, pgv, mean_per, epi_dist, foc_dist, rup_dist, foc_mech, location, owner, latitude, longitude, class, change, path, select1, analyze, select2) values ('" +
+								cur[DB_eq] + "', '" +
+								cur[DB_record] + "', " +
+								cur[DB_digi_int] + ", " +
+								Utils.nullify(cur[DB_mom_mag]) + ", " +
+								cur[DB_arias] + ", " +
+								cur[DB_dobry] + ", " +
+								cur[DB_pga] + ", " +
+								cur[DB_pgv] + ", " +
+								cur[DB_mean_per] + ", " +
+								Utils.nullify(cur[DB_epi_dist]) + ", " +
+								Utils.nullify(cur[DB_foc_dist]) + ", " +
+								Utils.nullify(cur[DB_rup_dist]) + ", " +
+								cur[DB_foc_mech] + ", '" +
+								cur[DB_location] + "', '" +
+								cur[DB_owner] + "', " +
+								Utils.nullify(cur[DB_latitude]) + ", " +
+								Utils.nullify(cur[DB_longitude]) + ", " +
+								cur[DB_class] + ", " +
+								0 + ", '" +
+								path + "', 0, 0, 0)";
 							Utils.getDB().runUpdate(q);
 							System.out.println(q);
 

@@ -118,9 +118,12 @@ public class Decoupled extends DeCoupledCommon
 		System.out.println("INITIAL" + "  " + vs + "  " + vr + "  " + damp + "  " + dampf + "  " + (damp+dampf));
 		// */
 
+		/* The following block appears in the original code. We will do the same
+		 * thing by using a scaling factor multiplier.
 		for(j = 1; j <= npts; j++)
 			ain[j-1] *= -1.0;
-		//scal *= -1.0; // this was in the original code, but I'm pretty sure it's pointless
+		*/
+		scal *= -1.0;
 
 		// for each mode calculate constants for Newmark algorithm
 		//////////////////////////////////////////////////////////////////////// /
@@ -170,8 +173,7 @@ public class Decoupled extends DeCoupledCommon
 		{
 			d_sliding();
 
-			if(scal > 0)
-				store(Math.abs(s[j - 1]));
+			store(Math.abs(s[j - 1]));
 
 			//System.out.println((j * dt) + ": " + s[j - 1]);
 

@@ -62,19 +62,15 @@ class ParametersPanel extends JPanel implements ActionListener
 	public JRadioButton unitEnglish = new JRadioButton("English");
 	public JRadioButton unitMetric = new JRadioButton("Metric", true);
 
-	//public JTextField paramUwgt = new JTextField(7);
 	public JTextField paramHeight = new JTextField(7);
 	public JTextField paramVs = new JTextField(7);
 	public JTextField paramDamp = new JTextField(7);
-	public JComboBox paramBaseType = new JComboBox(new Object[] {"rigid rock", "elastic rock"});
 	public JTextField paramVr = new JTextField(7);
 	public JComboBox paramSoilModel = new JComboBox(new Object[] {"linear elastic", "equivalent linear"});
 
-	//JLabel labelUwgt = new JLabel();
 	JLabel labelHeight = new JLabel();
 	JLabel labelVs = new JLabel();
 	JLabel labelDamp = new JLabel(stringDamp + " (%)");
-	JLabel labelBaseType = new JLabel(stringBaseType);
 	JLabel labelVr = new JLabel();
 	JLabel labelSoilModel = new JLabel(stringSoilModel);
 
@@ -82,12 +78,10 @@ class ParametersPanel extends JPanel implements ActionListener
 	public JCheckBox typeDecoupled = new JCheckBox(stringDC);
 	public JCheckBox typeCoupled = new JCheckBox(stringCP);
 
-	//final public static String stringUwgt = "Unit weight";
 	final public static String stringHeight = "Height";
 	final public static String stringVs = "Shear-wave velocity (material above slip surface)";
 	final public static String stringDisp = "Displacement";
 	final public static String stringDamp = "Damping ratio";
-	final public static String stringBaseType = "Base type";
 	final public static String stringVr = "Shear-wave velocity (material below slip surface)";
 	final public static String stringSoilModel = "Soil model";
 
@@ -159,10 +153,6 @@ class ParametersPanel extends JPanel implements ActionListener
 		typeCoupled.setActionCommand("DeCoupled");
 		typeCoupled.addActionListener(this);
 		updateDeCoupled();
-
-		paramBaseType.setActionCommand("paramBaseType");
-		paramBaseType.addActionListener(this);
-		paramVr.setEnabled(false);
 
 		updateUnits();
 
@@ -375,7 +365,7 @@ class ParametersPanel extends JPanel implements ActionListener
 		c.gridx = x++;
 		c.gridy = y++;
 		c.gridwidth = 1;
-		c.gridheight = 6;
+		c.gridheight = 5;
 		c.fill = GridBagConstraints.BOTH;
 		gridbag.setConstraints(dcpanel, c);
 		panel.add(dcpanel);
@@ -383,21 +373,6 @@ class ParametersPanel extends JPanel implements ActionListener
 		c.gridheight = 1;
 		c.fill = GridBagConstraints.NONE;
 		c.anchor = GridBagConstraints.WEST;
-
-		/* Unit Weight doesn't do anything (for now?).
-		c.gridx = x++;
-		c.gridheight = 1;
-		c.fill = GridBagConstraints.NONE;
-		c.anchor = GridBagConstraints.SOUTHWEST;
-		c.insets = left; // line up these to the 5-unit gap made by FlowLayout on the slope displacement panel
-		gridbag.setConstraints(labelUwgt, c);
-		panel.add(labelUwgt, c);
-
-		c.gridx = x--;
-		c.insets = none;
-		gridbag.setConstraints(paramUwgt, c);
-		panel.add(paramUwgt, c);
-		*/
 
 		c.gridx = x++;
 		c.insets = left;
@@ -430,17 +405,6 @@ class ParametersPanel extends JPanel implements ActionListener
 		c.insets = none;
 		gridbag.setConstraints(paramDamp, c);
 		panel.add(paramDamp, c);
-
-		c.gridy = y++;
-		c.gridx = x++;
-		c.insets = left;
-		gridbag.setConstraints(labelBaseType, c);
-		panel.add(labelBaseType, c);
-
-		c.gridx = x--;
-		c.insets = none;
-		gridbag.setConstraints(paramBaseType, c);
-		panel.add(paramBaseType, c);
 
 		c.gridy = y++;
 		c.gridx = x++;
@@ -524,10 +488,6 @@ class ParametersPanel extends JPanel implements ActionListener
 			{
 				parent.selectRigorousRigidBlock();
 			}
-			else if(command.equals("paramBaseType"))
-			{
-				paramVr.setEnabled(paramBaseType.getSelectedIndex() == 1);
-			}
 			else if(command.equals("scalePGA"))
 			{
 				scalePGAval.setEnabled(scalePGAon.isSelected());
@@ -559,11 +519,9 @@ class ParametersPanel extends JPanel implements ActionListener
 	{
 		boolean selected = typeDecoupled.isSelected() || typeCoupled.isSelected();
 
-		//paramUwgt.setEnabled(selected);
 		paramHeight.setEnabled(selected);
 		paramVs.setEnabled(selected);
 		paramDamp.setEnabled(selected);
-		paramBaseType.setEnabled(selected);
 		paramVr.setEnabled(selected);
 		paramSoilModel.setEnabled(selected);
 	}

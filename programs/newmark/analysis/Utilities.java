@@ -170,16 +170,16 @@ public class Utilities extends Analysis
 		return "";
 	}
 
-	public static String Clip(DoubleList data, FileWriter ofile, final double clip, final double dt) throws IOException
+	public static String Clip(DoubleList data, FileWriter ofile, final double clipL, final double clipR, final double dt) throws IOException
 	{
 		Double val;
 		data.reset();
 
-		if(clip < 0)
+		if(clipR < 0)
 		{
 			int i = 0;
 
-			for(; (i < (-clip / dt)) && ((val = data.each()) != null); i++)
+			for(; (i < (-clipR / dt)) && ((val = data.each()) != null); i++)
 				;
 
 			while((val = data.each()) != null)
@@ -187,7 +187,7 @@ public class Utilities extends Analysis
 		}
 		else
 		{
-			for(int i = 0; (i <= (clip / dt)) && ((val = data.each()) != null); i++)
+			for(int i = 0; (i <= (clipR / dt)) && ((val = data.each()) != null); i++)
 				ofile.write(val + "\n");
 		}
 

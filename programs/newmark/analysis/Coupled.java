@@ -207,8 +207,7 @@ public class Coupled extends DeCoupledCommon
 
 			s[j - 1] = s2;
 
-			if(scal > 0)
-				store(Math.abs(s2));
+			store(Math.abs(s2));
 
 			//System.out.println((j * dt) + ":  " + s[j - 1] + ", " + slide);
 

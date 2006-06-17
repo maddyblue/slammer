@@ -50,7 +50,7 @@ public class ImportRecords extends Analysis
 		while((val = data.each()) != null)
 		{
 			a = val.doubleValue();
-			a /= 100;
+			a /= 100.0;
 			x = a * a;
 			u += x;
 		}
@@ -63,7 +63,7 @@ public class ImportRecords extends Analysis
 			while((val = data.each()) != null)
 			{
 				a = val.doubleValue();
-				a /= 100;
+				a /= 100.0;
 				x = a * a;
 				u += x;
 				if(u > z || u < b) k--;
@@ -86,6 +86,24 @@ public class ImportRecords extends Analysis
 	public static String PGA(DoubleList data)
 	{
 		return fmtThree.format(FindMax(data) / Gcmss); // store in g's, but expect to be in cm/s/s
+	}
+
+	public static String PGV(DoubleList data, final double di)
+	{
+		Double val;
+		double max, cur, curabs;
+
+		max = 0;
+
+		data.reset();
+		while((val = data.each()) != null)
+		{
+			cur += val.doubleValue();
+			curabs = Math.abs(cur);
+
+			if(curabs > max)
+				max = curabs;
+		}
 	}
 
 	private static double FindMax(DoubleList data)

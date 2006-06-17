@@ -447,7 +447,7 @@ class UtilitiesPanel extends JPanel implements ActionListener
 				Utilities.Peapick(data, o, var1 * Analysis.Gcmss);
 				break;
 			case 6: // clip
-				Utilities.Clip(data, o, var1, var2);
+				Utilities.Clip(data, o, 0, var1, var2);
 		}
 
 		if(!err.equals(""))
