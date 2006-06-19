@@ -1,6 +1,6 @@
 /*
  * SplashScreen.java - Splash screen
- * Copyright (C) 1998, 2004 Slava Pestov
+ * Copyright (c)1998, 2004 Slava Pestov
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License

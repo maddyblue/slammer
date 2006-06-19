@@ -1,21 +1,31 @@
 /*
- * RecordManagerPanel.java - manage records
+ * Copyright (c) 2002 Matt Jibson
+ * All rights reserved.
  *
- * Copyright (C) 2002 Matthew Jibson (dolmant@dolmant.net)
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
  *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License
- * as published by the Free Software Foundation; either version 2
- * of the License, or any later version.
+ *    - Redistributions of source code must retain the above copyright
+ *      notice, this list of conditions and the following disclaimer.
+ *    - Redistributions in binary form must reproduce the above
+ *      copyright notice, this list of conditions and the following
+ *      disclaimer in the documentation and/or other materials provided
+ *      with the distribution.
  *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+ * FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+ * COPYRIGHT HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+ * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+ * BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+ * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+ * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
  *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
 /* $Id$ */
@@ -50,18 +60,18 @@ class RecordManagerPanel extends JPanel implements ActionListener
 
 	JButton save = new JButton("Save changes");
 
-	JTextField modFile = new JTextField();
-	JTextField modEq = new JTextField();
-	JTextField modRec = new JTextField();
-	JTextField modDI = new JTextField();
-	JTextField modLoc = new JTextField();
-	JTextField modMag = new JTextField();
-	JTextField modOwn = new JTextField();
-	JTextField modEpi = new JTextField();
-	JTextField modLat = new JTextField();
-	JTextField modFoc = new JTextField();
-	JTextField modLng = new JTextField();
-	JTextField modRup = new JTextField();
+	JTextField modFile = new JTextField(5);
+	JTextField modEq = new JTextField(5);
+	JTextField modRec = new JTextField(5);
+	JTextField modDI = new JTextField(5);
+	JTextField modLoc = new JTextField(5);
+	JTextField modMag = new JTextField(5);
+	JTextField modOwn = new JTextField(5);
+	JTextField modEpi = new JTextField(5);
+	JTextField modLat = new JTextField(5);
+	JTextField modFoc = new JTextField(5);
+	JTextField modLng = new JTextField(5);
+	JTextField modRup = new JTextField(5);
 	JComboBox  modSite = new JComboBox(NewmarkTable.SiteClassArray);
 	JComboBox  modMech = new JComboBox(NewmarkTable.FocMechArray);
 

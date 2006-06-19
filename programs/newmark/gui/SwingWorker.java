@@ -1,6 +1,6 @@
-package newmark.gui;
-
 /* $Id$ */
+
+package newmark.gui;
 
 import javax.swing.SwingUtilities;
 
