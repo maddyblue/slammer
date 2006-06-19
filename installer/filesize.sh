@@ -24,6 +24,7 @@ function process_eq {
 }
 
 mk_contents installer/newmark-program
+mk_contents installer/newmark-source
 
 for file in california chichi international otherus
 do

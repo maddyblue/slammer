@@ -2,13 +2,14 @@
 
 	<property name="inst" location="installer" />
 	<property name="rec" value="records" />
+	<property name="prog" value="programs" />
 
 	<target name="filelist">
 
 		<tar
 			destfile="${inst}/newmark-program.tar"
 			basedir="."
-			includes="programs/**/*.jar"
+			includes="${prog}/**/*.jar"
 		/>
 
 		<tar destfile="${inst}/newmark-eq-california.tar">
@@ -58,6 +59,16 @@
 			<tarfileset dir="${rec}" prefix="${rec}">
 				<include name="Hilo 1975/*" />
 				<include name="Nisqually 2001/*" />
+			</tarfileset>
+		</tar>
+
+		<tar destfile="${inst}/newmark-source.tar">
+			<tarfileset dir="${prog}" prefix="${prog}" excludes="*.svn">
+				<include name="build.xml" />
+				<include name="help/**" />
+				<include name="newmark/**/*.java" />
+				<include name="newmark/newmark.manifest" />
+				<include name="newmark/images/*" />
 			</tarfileset>
 		</tar>
 
