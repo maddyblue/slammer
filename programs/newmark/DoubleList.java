@@ -64,11 +64,16 @@ public class DoubleList
 
 	public DoubleList(String fname) throws IOException
 	{
-		this(fname, 0);
+		this(fname, 0, 1.0);
+	}
+
+	public DoubleList(String fname, final double scale) throws IOException
+	{
+		this(fname, 0, scale);
 	}
 
 	/* skip: the number of lines to skip at the beginning of the file */
-	public DoubleList(String fname, int skip) throws IOException
+	public DoubleList(String fname, int skip, final double scale) throws IOException
 	{
 		head = new DoubleListElement();
 		current = head;
@@ -95,7 +100,7 @@ public class DoubleList
 				return;
 			}
 			else if(dbl.equals("")) break;
-			current.next = new DoubleListElement(new Double(dbl));
+			current.next = new DoubleListElement(new Double(Double.parseDouble(dbl) * scale));
 			current.next.prev = current;
 			current = current.next;
 			length++;

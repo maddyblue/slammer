@@ -263,6 +263,17 @@ class ParametersPanel extends JPanel implements ActionListener
 		x = 1;
 		c.gridx = x++;
 		c.gridy = y++;
+		label = new JLabel("Scale data by a factor of: ");
+		gridbag.setConstraints(label, c);
+		panel.add(label);
+
+		c.gridx = x++;
+		gridbag.setConstraints(scaleData, c);
+		panel.add(scaleData);
+
+		x = 1;
+		c.gridx = x++;
+		c.gridy = y++;
 		label = new JLabel("Critical Acceleration:");
 		gridbag.setConstraints(label, c);
 		panel.add(label);
@@ -349,7 +360,7 @@ class ParametersPanel extends JPanel implements ActionListener
 		c.gridx = x++;
 		c.anchor = GridBagConstraints.WEST;
 		c.fill = GridBagConstraints.VERTICAL;
-		typeRigid.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 1, Color.BLACK));
+		typeRigid.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createMatteBorder(0, 0, 1, 1, Color.BLACK), BorderFactory.createEmptyBorder(0, 0, 0, 5)));
 		typeRigid.setBorderPainted(true);
 		gridbag.setConstraints(typeRigid, c);
 		panel.add(typeRigid);
@@ -369,8 +380,8 @@ class ParametersPanel extends JPanel implements ActionListener
 		JPanel dcpanel = new JPanel(new GridLayout(0, 1));
 		dcpanel.add(typeCoupled);
 		dcpanel.add(typeDecoupled);
-		typeCoupled.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 1, Color.BLACK));
-		typeDecoupled.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 1, Color.BLACK));
+		typeCoupled.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createMatteBorder(0, 0, 1, 1, Color.BLACK), BorderFactory.createEmptyBorder(0, 0, 0, 5)));
+		typeDecoupled.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createMatteBorder(0, 0, 0, 1, Color.BLACK), BorderFactory.createEmptyBorder(0, 0, 0, 5)));
 		typeCoupled.setBorderPainted(true);
 		typeDecoupled.setBorderPainted(true);
 

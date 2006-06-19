@@ -200,11 +200,12 @@ class ResultsPanel extends JPanel implements ActionListener
 						});
 
 							boolean paramDualslope = parent.Parameters.dualSlope.isSelected();
+							Double d;
 
-							double paramScale;
+							double paramScale, scaleData;
 							if(parent.Parameters.scalePGAon.isSelected())
 							{
-								Double d = (Double)Utils.checkNum(parent.Parameters.scalePGAval.getText(), "scale PGA field", null, false, null, new Double(0), false, null, false);
+								d = (Double)Utils.checkNum(parent.Parameters.scalePGAval.getText(), "scale PGA field", null, false, null, new Double(0), false, null, false);
 								if(d == null)
 								{
 									parent.selectParameters();
@@ -214,6 +215,14 @@ class ResultsPanel extends JPanel implements ActionListener
 							}
 							else
 								paramScale = 0;
+
+							d = (Double)Utils.checkNum(parent.Parameters.scaleData.getText(), "scale data field", null, false, null, new Double(0), false, null, false);
+							if(d == null)
+							{
+								parent.selectParameters();
+								return null;
+							}
+							scaleData = d.doubleValue();
 
 							boolean paramDoScale = (paramScale > 0);
 
@@ -279,7 +288,7 @@ class ResultsPanel extends JPanel implements ActionListener
 											GUIUtils.popupError("Error: empty field in table.\nPlease complete the displacement table so that all data pairs have values, or delete all empty rows.");
 											return null;
 										}
-										Double d = (Double)Utils.checkNum(value, "displacement table", null, false, null, null, false, null, false);
+										d = (Double)Utils.checkNum(value, "displacement table", null, false, null, null, false, null, false);
 										if(d == null)
 										{
 											parent.selectParameters();
@@ -298,7 +307,7 @@ class ResultsPanel extends JPanel implements ActionListener
 							}
 							else
 							{
-								Double d = (Double)Utils.checkNum(parent.Parameters.CAconstTF.getText(), "constant critical acceleration field", null, false, null, new Double(0), true, null, false);
+								d = (Double)Utils.checkNum(parent.Parameters.CAconstTF.getText(), "constant critical acceleration field", null, false, null, new Double(0), true, null, false);
 								if(d == null)
 								{
 									parent.selectParameters();
@@ -462,7 +471,8 @@ class ResultsPanel extends JPanel implements ActionListener
 									outputTableModel.addRow(row);
 									continue;
 								}
-								dat = new DoubleList(path);
+
+								dat = new DoubleList(path, scaleData);
 								if(dat.bad())
 								{
 									row[2] = "Invalid data at point " + dat.badEntry();
