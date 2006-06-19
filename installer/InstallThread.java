@@ -125,7 +125,7 @@ public class InstallThread extends Thread
 				FileReader fr = new FileReader(installDir + File.separatorChar
 					+ "records" + File.separatorChar + sqlfile);
 				String s = "";
-				String cur[] = new String[17];
+				String cur[] = new String[DB_LENGTH];
 				int j = 0;
 				char c;
 				String q, path;
@@ -159,7 +159,7 @@ public class InstallThread extends Thread
 
 								progress.advance(1);
 
-								q = "insert into data (eq, record, digi_int, mom_mag, arias, dobry, pga, mean_per, epi_dist, foc_dist, rup_dist, foc_mech, location, owner, latitude, longitude, class, change, path, select1, analyze, select2) values ('" + cur[0] + "', '" + cur[1] + "', " + cur[2] + ", " + nullify(cur[3]) + ", " + cur[4] + ", " + cur[5] + ", " + cur[6] + ", " + cur[7] + ", " + nullify(cur[8]) + ", " + nullify(cur[9]) + ", " + nullify(cur[10]) + ", " + cur[11] + ", '" + cur[12] + "', '" + cur[13] + "', " + nullify(cur[14]) + ", " + nullify(cur[15]) + ", " + cur[16] + ", " + 0 + ", '" + path + "', 0, 0, 0)";
+								q = "insert into data (eq, record, digi_int, mom_mag, arias, dobry, pga, pgv, mean_per, epi_dist, foc_dist, rup_dist, foc_mech, location, owner, latitude, longitude, class, change, path, select1, analyze, select2) values ('" + cur[DB_eq] + "', '" + cur[DB_record] + "', " + cur[DB_digi_int] + ", " + nullify(cur[DB_mom_mag]) + ", " + cur[DB_arias] + ", " + cur[DB_dobry] + ", " + cur[DB_pga] + ", " + cur[DB_pgv] + ", " + cur[DB_mean_per] + ", " + nullify(cur[DB_epi_dist]) + ", " + nullify(cur[DB_foc_dist]) + ", " + nullify(cur[DB_rup_dist]) + ", " + cur[DB_foc_mech] + ", '" + cur[DB_location] + "', '" + cur[DB_owner] + "', " + nullify(cur[DB_latitude]) + ", " + nullify(cur[DB_longitude]) + ", " + cur[DB_class] + ", " + 0 + ", '" + path + "', 0, 0, 0)";
 								runUpdate(q);
 								System.out.println("adding " + cur[0] + " - " + cur[1]);
 							}
@@ -193,6 +193,27 @@ public class InstallThread extends Thread
 	private OperatingSystem.OSTask[] osTasks;
 	private int size;
 	private Vector components;
+
+	// order of fields for the eq.sql file
+	private static final int DB_eq = 0;
+	private static final int DB_record = 1;
+	private static final int DB_digi_int = 2;
+	private static final int DB_mom_mag = 3;
+	private static final int DB_arias = 4;
+	private static final int DB_dobry = 5;
+	private static final int DB_pga = 6;
+	private static final int DB_pgv = 7;
+	private static final int DB_mean_per = 8;
+	private static final int DB_epi_dist = 9;
+	private static final int DB_foc_dist = 10;
+	private static final int DB_rup_dist = 11;
+	private static final int DB_foc_mech = 12;
+	private static final int DB_location = 13;
+	private static final int DB_owner = 14;
+	private static final int DB_latitude = 15;
+	private static final int DB_longitude = 16;
+	private static final int DB_class = 17;
+	private static final int DB_LENGTH = 18;
 
 	private void installComponent(String name) throws IOException
 	{
@@ -251,6 +272,7 @@ public class InstallThread extends Thread
 				+ "arias     double       not null,"
 				+ "dobry     double       not null,"
 				+ "pga       double       not null,"
+				+ "pgv       double       not null,"
 				+ "mean_per  double       not null,"
 				+ "epi_dist  double               ,"
 				+ "foc_dist  double               ,"
