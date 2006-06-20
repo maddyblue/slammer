@@ -2,7 +2,7 @@
 
 function print_size {
 	echo -n $1 "(" `cat $1 | wc -l` "): "
-	cat $1 | sed 's/ /\\ /g' | xargs ls -l | awk 'BEGIN { size=0 } { disk_size+=(int($5/4096+1)*4); size+=$5/1024 } END { print disk_size " " size }'
+	cat $1 | sed 's/ /\\ /g' | xargs ls -l | awk 'BEGIN { size=0 } { disk_size+=(int($5/4096+1)*4)/1024; size+=$5/1024 } END { print disk_size " " size }'
 }
 
 function mk_contents {

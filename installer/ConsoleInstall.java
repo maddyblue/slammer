@@ -90,7 +90,7 @@ public class ConsoleInstall
 				+ installer.getProperty("comp." + i + ".name")
 				+ " ("
 				+ installer.getProperty("comp." + i + ".disk-size")
-				+ "Kb) [Y/n]? ");
+				+ "Mb) [Y/n]? ");
 
 			String line = readLine(in);
 			if(line.length() == 0 || line.charAt(0) == 'y'

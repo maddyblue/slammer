@@ -475,7 +475,7 @@ public class SwingInstall extends JFrame
 				JCheckBox checkBox = new JCheckBox(
 					installer.getProperty("comp." + i + ".name")
 					+ " (" + installer.getProperty("comp." + i
-					+ ".disk-size") + "Kb)");
+					+ ".disk-size") + "Mb)");
 				checkBox.getModel().setSelected(true);
 				checkBox.addActionListener(this);
 				checkBox.setRequestFocusEnabled(false);
@@ -508,7 +508,7 @@ public class SwingInstall extends JFrame
 			}
 
 			sizeLabel.setText("Estimated disk usage of selected"
-				+ " components: " + size + "Kb");
+				+ " components: " + size + "Mb");
 		}
 	}
 
