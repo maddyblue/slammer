@@ -202,8 +202,8 @@ class ResultsPanel extends JPanel implements ActionListener
 							boolean paramDualslope = parent.Parameters.dualSlope.isSelected();
 							Double d;
 
-							double paramScale, scaleData;
-							if(parent.Parameters.scalePGAon.isSelected())
+							double paramScale;
+							if(parent.Parameters.scalePGA.isSelected())
 							{
 								d = (Double)Utils.checkNum(parent.Parameters.scalePGAval.getText(), "scale PGA field", null, false, null, new Double(0), false, null, false);
 								if(d == null)
@@ -213,18 +213,18 @@ class ResultsPanel extends JPanel implements ActionListener
 								}
 								paramScale = d.doubleValue();
 							}
+							else if(parent.Parameters.scaleOn.isSelected())
+							{
+								d = (Double)Utils.checkNum(parent.Parameters.scaleData.getText(), "scale data field", null, false, null, null, false, null, false);
+								if(d == null)
+								{
+									parent.selectParameters();
+									return null;
+								}
+								paramScale = d.doubleValue();
+							}
 							else
 								paramScale = 0;
-
-							d = (Double)Utils.checkNum(parent.Parameters.scaleData.getText(), "scale data field", null, false, null, new Double(0), false, null, false);
-							if(d == null)
-							{
-								parent.selectParameters();
-								return null;
-							}
-							scaleData = d.doubleValue();
-
-							boolean paramDoScale = (paramScale > 0);
 
 							boolean paramRigid = parent.Parameters.typeRigid.isSelected();
 							boolean paramDecoupled = parent.Parameters.typeDecoupled.isSelected();
@@ -472,7 +472,7 @@ class ResultsPanel extends JPanel implements ActionListener
 									continue;
 								}
 
-								dat = new DoubleList(path, scaleData);
+								dat = new DoubleList(path, parent.Parameters.scaleOn.isSelected() ? paramScale : 1.0);
 								if(dat.bad())
 								{
 									row[2] = "Invalid data at point " + dat.badEntry();
@@ -485,7 +485,7 @@ class ResultsPanel extends JPanel implements ActionListener
 
 								di = Double.parseDouble(res[i][2].toString());
 
-								if(paramDoScale)
+								if(parent.Parameters.scalePGA.isSelected())
 								{
 									scale = paramScale / Double.parseDouble(res[i][4].toString());
 									iscale = -scale;

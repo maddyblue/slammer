@@ -46,11 +46,11 @@ class ParametersPanel extends JPanel implements ActionListener
 {
 	NewmarkTabbedPane parent;
 
-	ButtonGroup PGAgroup = new ButtonGroup();
-	public JRadioButton scalePGAoff = new JRadioButton("Do not scale", true);
-	public JRadioButton scalePGAon = new JRadioButton("Scale records to a uniform PGA (in g's) of");
+	ButtonGroup scaleGroup = new ButtonGroup();
+	public JRadioButton scaleOff = new JRadioButton("Do not scale", true);
+	public JRadioButton scalePGA = new JRadioButton("Scale records to a uniform PGA (in g's) of");
+	public JRadioButton scaleOn = new JRadioButton("Scale records by a factor of");
 	public JTextField scalePGAval = new JTextField("", 4);
-
 	public JTextField scaleData = new JTextField("1.0", 5);
 
 	ButtonGroup SlopeGroup = new ButtonGroup();
@@ -116,16 +116,21 @@ class ParametersPanel extends JPanel implements ActionListener
 		unitMetric.setActionCommand("unit");
 		unitMetric.addActionListener(this);
 
-		PGAgroup.add(scalePGAon);
-		scalePGAon.setActionCommand("scalePGA");
-		scalePGAon.addActionListener(this);
+		scaleGroup.add(scalePGA);
+		scalePGA.setActionCommand("scale");
+		scalePGA.addActionListener(this);
 
-		PGAgroup.add(scalePGAoff);
-		scalePGAoff.setActionCommand("scalePGA");
-		scalePGAoff.addActionListener(this);
-		scalePGAoff.setSelected(true);
+		scaleGroup.add(scaleOff);
+		scaleOff.setActionCommand("scale");
+		scaleOff.addActionListener(this);
+		scaleOff.setSelected(true);
+
+		scaleGroup.add(scaleOn);
+		scaleOn.setActionCommand("scale");
+		scaleOn.addActionListener(this);
 
 		scalePGAval.setEnabled(false);
+		scaleData.setEnabled(false);
 
 		SlopeGroup.add(downSlope);
 		downSlope.setActionCommand("slope");
@@ -200,6 +205,7 @@ class ParametersPanel extends JPanel implements ActionListener
 	private JPanel createPanelNorth()
 	{
 		JPanel panel = new JPanel();
+		JPanel jp;
 		GridBagLayout gridbag = new GridBagLayout();
 		panel.setLayout(gridbag);
 
@@ -209,7 +215,7 @@ class ParametersPanel extends JPanel implements ActionListener
 		int y = 0;
 		int x = 0;
 
-		c.anchor = GridBagConstraints.NORTHWEST;
+		c.anchor = GridBagConstraints.WEST;
 		c.fill = GridBagConstraints.VERTICAL;
 
 		c.gridx = x++;
@@ -249,29 +255,28 @@ class ParametersPanel extends JPanel implements ActionListener
 		panel.add(label);
 
 		c.gridx = x++;
-		gridbag.setConstraints(scalePGAoff, c);
-		panel.add(scalePGAoff);
+		c.gridwidth = 2;
+		jp = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
+		jp.add(scaleOff);
+		gridbag.setConstraints(jp, c);
+		panel.add(jp);
 
-		c.gridx = x++;
-		gridbag.setConstraints(scalePGAon, c);
-		panel.add(scalePGAon);
-
-		c.gridx = x++;
-		gridbag.setConstraints(scalePGAval, c);
-		panel.add(scalePGAval);
-
-		x = 1;
-		c.gridx = x++;
 		c.gridy = y++;
-		label = new JLabel("Scale data by a factor of: ");
-		gridbag.setConstraints(label, c);
-		panel.add(label);
+		jp = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
+		jp.add(scalePGA);
+		jp.add(scalePGAval);
+		gridbag.setConstraints(jp, c);
+		panel.add(jp);
 
-		c.gridx = x++;
-		gridbag.setConstraints(scaleData, c);
-		panel.add(scaleData);
+		c.gridy = y++;
+		jp = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
+		jp.add(scaleOn);
+		jp.add(scaleData);
+		gridbag.setConstraints(jp, c);
+		panel.add(jp);
 
 		x = 1;
+		c.gridwidth = 1;
 		c.gridx = x++;
 		c.gridy = y++;
 		label = new JLabel("Critical Acceleration:");
@@ -289,6 +294,7 @@ class ParametersPanel extends JPanel implements ActionListener
 		x = 2;
 		c.gridx = x++;
 		c.gridy = y++;
+		c.anchor = GridBagConstraints.NORTHWEST;
 		c.fill = GridBagConstraints.HORIZONTAL;
 		gridbag.setConstraints(CAconstTF, c);
 		panel.add(CAconstTF);
@@ -297,11 +303,12 @@ class ParametersPanel extends JPanel implements ActionListener
 		c.weighty = 1;
 		c.weightx = 0;
 		c.gridwidth = 2;
+		c.anchor = GridBagConstraints.WEST;
 		c.fill = GridBagConstraints.BOTH;
 		gridbag.setConstraints(dispPane, c);
 		panel.add(dispPane);
 
-		JPanel jp = new JPanel();
+		jp = new JPanel();
 		jp.setLayout(new GridLayout(1, 2));
 		jp.add(dispAddRow);
 		jp.add(dispDelRow);
@@ -511,9 +518,10 @@ class ParametersPanel extends JPanel implements ActionListener
 			{
 				parent.selectRigorousRigidBlock();
 			}
-			else if(command.equals("scalePGA"))
+			else if(command.equals("scale"))
 			{
-				scalePGAval.setEnabled(scalePGAon.isSelected());
+				scalePGAval.setEnabled(scalePGA.isSelected());
+				scaleData.setEnabled(scaleOn.isSelected());
 			}
 			else if(command.equals("slope"))
 			{
