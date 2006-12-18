@@ -457,6 +457,29 @@ public class Newmark
 
 				Utils.startDB();
 
+				try
+				{
+					Object[][] pgv_exist = Utils.getDB().runQuery("select pgv from data where id=0");
+				}
+				catch (Exception e)
+				{
+					System.out.println(e);
+					e.printStackTrace();
+
+					Utils.getDB().runUpdate("alter table data add column pgv double not null default 0");
+
+					Object[][] res = Utils.getDB().runQuery("select id, path, digi_int from data");
+
+					for(int i = 1; i < res.length; i++)
+					{
+						DoubleList d = new DoubleList((String)res[i][1]);
+						double di = Double.parseDouble((String)res[i][2]);
+						String q = "update data set pgv = " + ImportRecords.PGV(d, di) + " where id= " + res[i][0];
+						System.out.println(q + ": " + (String)res[i][1]);
+						Utils.getDB().runUpdate(q);
+					}
+				}
+
 				splash.advance();
 
 				Utils.getDB().runUpdate("update data set select1=0, select2=0");
