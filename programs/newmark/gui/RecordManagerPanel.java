@@ -101,8 +101,6 @@ class RecordManagerPanel extends JPanel implements ActionListener
 
 		table = new NewmarkTable(false);
 
-		modFile.setEditable(false);
-
 		ListSelectionModel recordSelect = table.getSelectionModel();
 		recordSelect.addListSelectionListener(new ListSelectionListener()
 		{
@@ -673,12 +671,13 @@ class RecordManagerPanel extends JPanel implements ActionListener
 			{
 				recordClear();
 			}
-			recordEnable(enable);
+			recordEnable(true);
 		}
 	}
 
 	public void recordEnable(boolean b)
 	{
+		modFile.setEditable(b);
 		modEq.setEditable(b);
 		modRec.setEditable(b);
 		modDI.setEditable(b);

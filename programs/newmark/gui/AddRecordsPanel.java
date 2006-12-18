@@ -41,6 +41,7 @@ import javax.swing.border.*;
 import java.util.Vector;
 import newmark.*;
 import newmark.analysis.*;
+import java.io.*;
 
 class AddRecordsPanel extends JPanel implements ActionListener
 {
@@ -308,6 +309,12 @@ class AddRecordsPanel extends JPanel implements ActionListener
 			{
 				errors += ret.toString() + "\n";
 			}
+		}
+
+		File f = new File(file);
+		if(!f.isFile() || !f.canRead())
+		{
+			errors += "Cannot read file or file does not exist: " + file + "\n";
 		}
 
 		if(!errors.equals(""))
