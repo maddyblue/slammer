@@ -282,6 +282,7 @@ class GroupFrame extends JFrame implements ActionListener
 						NewmarkTable.makeUnitName(NewmarkTable.rowAriasInt),
 						NewmarkTable.makeUnitName(NewmarkTable.rowDuration),
 						NewmarkTable.makeUnitName(NewmarkTable.rowPGA),
+						NewmarkTable.makeUnitName(NewmarkTable.rowPGV),
 						NewmarkTable.makeUnitName(NewmarkTable.rowMeanPer),
 						NewmarkTable.makeUnitName(NewmarkTable.rowEpiDist),
 						NewmarkTable.makeUnitName(NewmarkTable.rowFocalDist),
@@ -298,13 +299,14 @@ class GroupFrame extends JFrame implements ActionListener
 					int incr;
 					for(int i = 0; i < list.length; i++)
 					{
-						res = Utils.getDB().runQuery("select eq, record, digi_int, mom_mag, arias, dobry, pga, mean_per, epi_dist, foc_dist, rup_dist, foc_mech, location, owner, latitude, longitude, class, path from data where id=" + list[i]);
+						res = Utils.getDB().runQuery("select eq, record, digi_int, mom_mag, arias, dobry, pga, pgv, mean_per, epi_dist, foc_dist, rup_dist, foc_mech, location, owner, latitude, longitude, class, path from data where id=" + list[i]);
 
 						if(res == null || res.length <= 1)
 							continue;
 
 						incr = 0;
 						delimize(fw, del,
+							Utils.shorten(res[1][incr++]),
 							Utils.shorten(res[1][incr++]),
 							Utils.shorten(res[1][incr++]),
 							Utils.shorten(res[1][incr++]),
@@ -352,7 +354,7 @@ class GroupFrame extends JFrame implements ActionListener
 		}
 	}
 
-	private void delimize(FileWriter fw, String delim, String eq, String record, String di, String mag, String arias, String dobry, String pga, String meanper, String epi, String foc, String rup, String mech, String location, String owner, String lat, String lng, String site, String path) throws IOException
+	private void delimize(FileWriter fw, String delim, String eq, String record, String di, String mag, String arias, String dobry, String pga, String pgv, String meanper, String epi, String foc, String rup, String mech, String location, String owner, String lat, String lng, String site, String path) throws IOException
 	{
 		fw.write(
 			          eq
@@ -362,6 +364,7 @@ class GroupFrame extends JFrame implements ActionListener
 			+ delim + arias
 			+ delim + dobry
 			+ delim + pga
+			+ delim + pgv
 			+ delim + meanper
 			+ delim + epi
 			+ delim + foc
