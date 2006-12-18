@@ -119,91 +119,132 @@ class UtilitiesPanel extends JPanel implements ActionListener
 		pane.setEditable(false);
 		pane.setContentType("text/html");
 
-		setLayout(new BorderLayout());
+		GridBagLayout gridbag = new GridBagLayout();
+		GridBagConstraints c = new GridBagConstraints();
+		setLayout(gridbag);
 
-		JPanel utilitiesPanelTemp = new JPanel(new BorderLayout());
-		utilitiesPanelTemp.add(BorderLayout.NORTH, createUtilitiesPanelHeader());
-		utilitiesPanelTemp.add(BorderLayout.WEST, createUtilitiesPanelWest());
+		Insets top = new Insets(10, 0, 0, 0);
+		Insets none = new Insets(0, 0, 0, 0);
 
-		add(BorderLayout.NORTH, utilitiesPanelTemp);
-		add(BorderLayout.CENTER, pane);
-	}
+		Border b = BorderFactory.createCompoundBorder(
+			BorderFactory.createEmptyBorder(0, 0, 0, 5),
+			BorderFactory.createMatteBorder(0, 0, 0, 1, Color.BLACK)
+		);
 
-	private JPanel createUtilitiesPanelHeader()
-	{
+		int x = 0;
+		int y = 0;
+
 		JPanel panel = new JPanel(new GridLayout(0, 1));
 
-		JPanel top = new JPanel();
-		top.add(cmgs);
-		top.add(gscm);
-		top.add(mult);
+		panel.add(gscm);
+		panel.add(cmgs);
+		panel.add(mult);
+		panel.add(redigit);
+		panel.add(peapick);
+		panel.add(clip);
 
-		JPanel bottom = new JPanel();
-		bottom.add(redigit);
-		bottom.add(peapick);
-		bottom.add(clip);
+		c.gridx = x++;
+		c.gridy = y;
+		c.gridheight = 10;
+		c.anchor = GridBagConstraints.NORTHWEST;
+		gridbag.setConstraints(panel, c);
+		add(panel);
 
-		panel.add(top);
-		panel.add(bottom);
+		c.gridx = x++;
+		c.fill = GridBagConstraints.BOTH;
+		JLabel label = new JLabel(" ");
+		label.setBorder(b);
+		gridbag.setConstraints(label, c);
+		add(label);
 
-		return panel;
-	}
+		c.gridheight = 1;
+		c.insets = none;
+		c.gridx = x++;
+		c.gridy = y++;
+		gridbag.setConstraints(source, c);
+		add(source);
 
-	private JPanel createUtilitiesPanelWest()
-	{
-		Vector list = new Vector();
-		Vector temp;
-		Vector line;
+		c.gridy = y++;
+		c.weightx = 1;
+		c.fill = GridBagConstraints.BOTH;
+		gridbag.setConstraints(sourcef, c);
+		add(sourcef);
 
-		list.add(new JLabel(" "));
-		list.add(source);
+		c.gridx = x--;
+		c.weightx = 0;
+		gridbag.setConstraints(sourceb, c);
+		add(sourceb);
 
-		line = new Vector();
-		line.add(sourcef);
-		line.add(sourceb);
+		c.gridx = x++;
+		c.gridy = y++;
+		c.insets = top;
+		gridbag.setConstraints(dest, c);
+		add(dest);
 
-		list.add(GUIUtils.makeRecursiveLayoutRight(line));
-		list.add(new JLabel(" "));
-		list.add(dest);
+		c.gridy = y++;
+		c.insets = none;
+		gridbag.setConstraints(destf, c);
+		add(destf);
 
-		line = new Vector();
-		line.add(destf);
-		line.add(destb);
+		c.gridx = x--;
+		gridbag.setConstraints(destb, c);
+		add(destb);
 
-		list.add(GUIUtils.makeRecursiveLayoutRight(line));
-		list.add(new JLabel(" "));
-		list.add(constant1);
+		c.gridx = x++;
+		c.gridy = y++;
+		c.gridwidth = 2;
+		c.insets = top;
+		gridbag.setConstraints(constant1, c);
+		add(constant1);
 
-		temp = new Vector();
-		temp.add(constant1Pre);
-		temp.add(constant1f);
-		temp.add(constant1Post);
+		c.gridy = y++;
+		c.insets = none;
+		panel = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
+		panel.add(constant1Pre);
+		panel.add(constant1f);
+		panel.add(constant1Post);
+		gridbag.setConstraints(panel, c);
+		add(panel);
 
-		list.add(GUIUtils.makeRecursiveLayoutRight(temp));
-		list.add(new JLabel(" "));
+		c.gridy = y++;
+		c.insets = top;
+		gridbag.setConstraints(constant2, c);
+		add(constant2);
 
-		list.add(new JLabel(" "));
-		list.add(constant2);
+		c.gridy = y++;
+		c.insets = none;
+		panel = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
+		panel.add(constant2Pre);
+		panel.add(constant2f);
+		panel.add(constant2Post);
+		gridbag.setConstraints(panel, c);
+		add(panel);
 
-		temp = new Vector();
-		temp.add(constant2Pre);
-		temp.add(constant2f);
-		temp.add(constant2Post);
+		c.gridy = y++;
+		c.insets = top;
 
-		list.add(GUIUtils.makeRecursiveLayoutRight(temp));
-		list.add(new JLabel(" "));
+		panel = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
+		panel.add(new JLabel("Skip the first "));
+		panel.add(skip);
+		panel.add(new JLabel(" lines of the source file (use this to skip header data)."));
+		gridbag.setConstraints(panel, c);
+		add(panel);
 
-		line = new Vector();
-		line.add(new JLabel("Skip the first "));
-		line.add(skip);
-		line.add(new JLabel(" lines of the source file (use this to skip header data)."));
+		c.gridy = y++;
+		c.fill = GridBagConstraints.NONE;
+		c.insets = new Insets(0, 0, 10, 0);
+		gridbag.setConstraints(go, c);
+		add(go);
 
-		list.add(GUIUtils.makeRecursiveLayoutRight(line));
-		list.add(new JLabel(" "));
-		list.add(go);
-		list.add(new JLabel(" "));
-
-		return GUIUtils.makeRecursiveLayoutDown(list);
+		c.gridx = 0;
+		c.gridy = y;
+		c.insets = none;
+		c.gridwidth = 4;
+		c.weightx = 1;
+		c.weighty = 1;
+		c.fill = GridBagConstraints.BOTH;
+		gridbag.setConstraints(pane, c);
+		add(pane);
 	}
 
 	public void actionPerformed(java.awt.event.ActionEvent e)
