@@ -25,7 +25,7 @@ comp.count=6
 
 comp.0.name=Newmark program (check only on initial install)
 comp.0.disk-size=4
-comp.0.real-size=4230
+comp.0.real-size=4206
 comp.0.fileset=newmark-program
 
 comp.1.name=California records
@@ -58,5 +58,5 @@ comp.4.sqllen=176
 
 comp.5.name=Source code
 comp.5.disk-size=2
-comp.5.real-size=1141
+comp.5.real-size=1143
 comp.5.fileset=newmark-source
