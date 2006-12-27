@@ -67,7 +67,7 @@ class ResultsPanel extends JPanel implements ActionListener
 
 	NewmarkTabbedPane parent;
 
-	JComboBox decimalsCB = new JComboBox(new Object[] { "one", "two", "three" });
+	JTextField decimalsTF = new JTextField("1", 2);
 
 	JButton Analyze = new JButton("Perform Analysis");
 	JButton ClearOutput = new JButton("Clear output");
@@ -79,7 +79,7 @@ class ResultsPanel extends JPanel implements ActionListener
 	JButton saveResultsOutput = new JButton("Save Results Table");
 	JFileChooser fc = new JFileChooser();
 
-	JButton plotHistogram = new JButton("Plot histogram of Newmark displacements");
+	JButton plotHistogram = new JButton("Plot histogram of displacements");
 	JButton plotDisplacement = new JButton("Plot Newmark displacements versus time");
 	JCheckBox plotDisplacementLegend = new JCheckBox("Display legend", false);
 	JTextField outputBins = new JTextField("10", 2);
@@ -120,10 +120,6 @@ class ResultsPanel extends JPanel implements ActionListener
 		outputTableModel.addColumn(ParametersPanel.stringRB);
 		outputTableModel.addColumn(ParametersPanel.stringDC);
 		outputTableModel.addColumn(ParametersPanel.stringCP);
-
-		decimalsCB.setActionCommand("decimals");
-		decimalsCB.addActionListener(this);
-		changeDecimal();
 
 		Analyze.setActionCommand("analyze");
 		Analyze.addActionListener(this);
@@ -226,6 +222,8 @@ class ResultsPanel extends JPanel implements ActionListener
 							else
 								paramScale = 0;
 
+							changeDecimal();
+
 							boolean paramRigid = parent.Parameters.typeRigid.isSelected();
 							boolean paramDecoupled = parent.Parameters.typeDecoupled.isSelected();
 							boolean paramCoupled = parent.Parameters.typeCoupled.isSelected();
@@ -318,7 +316,7 @@ class ResultsPanel extends JPanel implements ActionListener
 								ca[0][1] = d.doubleValue();
 							}
 
-							if(paramDualslope)
+							if(paramRigid && paramDualslope)
 							{
 								Double thrustD = (Double)Utils.checkNum(parent.Parameters.thrustAngle.getText(), "thrust angle field", new Double(90), true, null, new Double(0), true, null, false);
 								if(thrustD == null)
@@ -631,10 +629,6 @@ class ResultsPanel extends JPanel implements ActionListener
 			{
 				clearOutput();
 			}
-			else if(command.equals("decimals"))
-			{
-				changeDecimal();
-			}
 			else if(command.equals("saveResultsOutput"))
 			{
 				if(fc.showSaveDialog(this) == JFileChooser.APPROVE_OPTION)
@@ -772,8 +766,8 @@ class ResultsPanel extends JPanel implements ActionListener
 	private JPanel createHeader()
 	{
 		JPanel containerL = new JPanel();
-		containerL.add(new JLabel("Calculate results to"));
-		containerL.add(decimalsCB);
+		containerL.add(new JLabel("Display results to"));
+		containerL.add(decimalsTF);
 		containerL.add(new JLabel("decimals. "));
 
 		JPanel container = new JPanel(new BorderLayout());
@@ -1012,14 +1006,23 @@ class ResultsPanel extends JPanel implements ActionListener
 
 	private void changeDecimal()
 	{
-		int i = decimalsCB.getSelectedIndex();
+		int i;
 
-		if(i == 2)
-			unitFmt = Analysis.fmtThree;
-		else if(i == 1)
-			unitFmt = Analysis.fmtTwo;
+		Double d = (Double)Utils.checkNum(decimalsTF.getText(), "display decimals field", null, false, null, new Double(0), true, null, false);
+		if(d == null)
+			i = 1;
 		else
-			unitFmt = Analysis.fmtOne;
+			i = (int)d.doubleValue();
+
+		String s = "0";
+
+		if(i > 0)
+			s = s + ".";
+
+		while(i-- > 0)
+			s = s + "0";
+
+		unitFmt = new DecimalFormat(s);
 	}
 
 	private double avg(final double a, final double b)
