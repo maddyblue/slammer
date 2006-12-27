@@ -209,6 +209,9 @@ class ParametersPanel extends JPanel implements ActionListener
 		GridBagLayout gridbag = new GridBagLayout();
 		panel.setLayout(gridbag);
 
+		Insets left = new Insets(0, 10, 0, 0);
+		Insets none = new Insets(0, 0, 0, 0);
+
 		GridBagConstraints c = new GridBagConstraints();
 		JLabel label;
 
@@ -288,10 +291,12 @@ class ParametersPanel extends JPanel implements ActionListener
 		panel.add(CAconst);
 
 		c.gridx = x++;
+		c.insets = left;
 		gridbag.setConstraints(CAdisp, c);
 		panel.add(CAdisp);
 
 		x = 2;
+		c.insets = none;
 		c.gridx = x++;
 		c.gridy = y++;
 		c.anchor = GridBagConstraints.NORTHWEST;
@@ -300,6 +305,7 @@ class ParametersPanel extends JPanel implements ActionListener
 		panel.add(CAconstTF);
 
 		c.gridx = x++;
+		c.insets = left;
 		c.weighty = 1;
 		c.weightx = 0;
 		c.gridwidth = 2;
@@ -317,6 +323,7 @@ class ParametersPanel extends JPanel implements ActionListener
 		c.weighty = 0;
 		gridbag.setConstraints(jp, c);
 		panel.add(jp);
+		c.insets = none;
 
 		// fake container to claim the free space forcing everything left
 		c.gridx = x + 1;
