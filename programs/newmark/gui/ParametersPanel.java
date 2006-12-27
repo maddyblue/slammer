@@ -435,17 +435,6 @@ class ParametersPanel extends JPanel implements ActionListener
 		c.gridy = y++;
 		c.gridx = x++;
 		c.insets = left;
-		gridbag.setConstraints(labelDamp, c);
-		panel.add(labelDamp, c);
-
-		c.gridx = x--;
-		c.insets = none;
-		gridbag.setConstraints(paramDamp, c);
-		panel.add(paramDamp, c);
-
-		c.gridy = y++;
-		c.gridx = x++;
-		c.insets = left;
 		gridbag.setConstraints(labelVr, c);
 		panel.add(labelVr, c);
 
@@ -453,6 +442,17 @@ class ParametersPanel extends JPanel implements ActionListener
 		c.insets = none;
 		gridbag.setConstraints(paramVr, c);
 		panel.add(paramVr, c);
+
+		c.gridy = y++;
+		c.gridx = x++;
+		c.insets = left;
+		gridbag.setConstraints(labelDamp, c);
+		panel.add(labelDamp, c);
+
+		c.gridx = x--;
+		c.insets = none;
+		gridbag.setConstraints(paramDamp, c);
+		panel.add(paramDamp, c);
 
 		c.gridy = y++;
 		c.gridx = x++;
