@@ -80,7 +80,7 @@ class ResultsPanel extends JPanel implements ActionListener
 	JFileChooser fc = new JFileChooser();
 
 	JButton plotHistogram = new JButton("Plot histogram of displacements");
-	JButton plotDisplacement = new JButton("Plot Newmark displacements versus time");
+	JButton plotDisplacement = new JButton("Plot displacements versus time");
 	JCheckBox plotDisplacementLegend = new JCheckBox("Display legend", false);
 	JTextField outputBins = new JTextField("10", 2);
 
