@@ -65,11 +65,8 @@ public class Utilities extends Analysis
 		data.reset();
 		while((val = data.each()) != null)
 		{
-			temp = val.doubleValue();
-			temp += shift;
-			temp *= value;
-			ofile.write(Double.toString(temp));
-			ofile.write('\n');
+			temp = (val.doubleValue() + shift) * value;
+			ofile.write(temp + "\n");
 		}
 		ofile.close();
 		return null;
