@@ -84,7 +84,7 @@ public class NewmarkTabbedPane extends JTabbedPane
 		Manager.addTab("Add Records", AddRecords);
 
 		addTab("Getting Started", GettingStarted);
-		addTab("Rigorous Analysis", Rigorous);
+		addTab("Rigorous Analyses", Rigorous);
 		addTab("Simplified Analyses", Simplified);
 		addTab("Manage/Add Records", Manager);
 		addTab("Utilities", Utilities);
