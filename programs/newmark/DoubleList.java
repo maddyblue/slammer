@@ -67,11 +67,6 @@ public class DoubleList
 		this(fname, 0, 1.0);
 	}
 
-	public DoubleList(String fname, final double scale) throws IOException
-	{
-		this(fname, 0, scale);
-	}
-
 	/* skip: the number of lines to skip at the beginning of the file */
 	public DoubleList(String fname, int skip, final double scale) throws IOException
 	{

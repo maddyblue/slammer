@@ -44,6 +44,13 @@ import newmark.analysis.*;
 
 class UtilitiesPanel extends JPanel implements ActionListener
 {
+	public final static int SELECT_CMGS    = 1;
+	public final static int SELECT_GSCM    = 2;
+	public final static int SELECT_MULT    = 3;
+	public final static int SELECT_REDIGIT = 4;
+	public final static int SELECT_PEAPICK = 5;
+	public final static int SELECT_CLIP    = 6;
+
 	NewmarkTabbedPane parent;
 
 	JRadioButton cmgs = new JRadioButton("<html>Convert cm/s<sup>2</sup> to g's</html>");
@@ -296,7 +303,7 @@ class UtilitiesPanel extends JPanel implements ActionListener
 				{
 					constant1.setText("Digitization Interval (s)");
 					constant1f.setEnabled(true);
-					pane.setText("This program converts a time file (a file containing paired time and acceleration values) into a file containing a sequence of acceleration values having a constant time spacing (digitization interval) using an interpolation algorithm.  The input and output files or directories must be specified or selected using the browser.  The digitization interval for the output file must be specified in the indicated field; any value can be selected by the user, but values of 0.01-0.05 generally are appropriate.  The output file is in the format necessary to run the other programs in this package, but if the original time file had units of g's, it will be necessary to convert to cm/s/s before running other Analysis.");
+					pane.setText("This program converts a time file (a file containing paired time and acceleration values) into a file containing a sequence of acceleration values having a constant time spacing (digitization interval) using an interpolation algorithm.  The input and output files or directories must be specified or selected using the browser.  The digitization interval for the output file must be specified in the indicated field; any value can be selected by the user, but values of 0.01-0.05 generally are appropriate.  The output file is in the format necessary to run the other programs in this package, but if the original time file had units of g's, it will be necessary to convert to cm/s/s before running other analyses.");
 				}
 				else if(peapick.isSelected())
 				{
@@ -379,34 +386,34 @@ class UtilitiesPanel extends JPanel implements ActionListener
 
 				if(cmgs.isSelected())
 				{
-					sel = 1;
+					sel = SELECT_CMGS;
 					selStr = "Conversion from cm/s/s to g's";
 				}
 				else if(gscm.isSelected())
 				{
-					sel = 2;
+					sel = SELECT_GSCM;
 					selStr = "Conversion from g's to cm/s/s";
 				}
 				else if(mult.isSelected())
 				{
 					val1 = (Double)Utils.checkNum(constant1f.getText(), "constant field", null, false, null, null, false, null, false);
 					if(val1 == null) return;
-					sel = 3;
+					sel = SELECT_MULT;
 					selStr = "Multiplication by " + constant1f.getText();
 				}
 				else if(redigit.isSelected())
 				{
 					val1 = (Double)Utils.checkNum(constant1f.getText(), "Digitization Interval field", null, false, null, new Double(0), false, null, false);
 					if(val1 == null) return;
-					sel = 4;
+					sel = SELECT_REDIGIT;
 					selStr = "Redigitization to digitization interval of " + constant1f.getText();
 				}
 				else if(peapick.isSelected())
 				{
 					val1 = (Double)Utils.checkNum(constant1f.getText(), "pea picker field", null, false, null, new Double(0), false, null, false);
 					if(val1 == null) return;
-					sel = 5;
-					selStr = "Pea picking";
+					sel = SELECT_PEAPICK;
+					selStr = "Pea pick";
 				}
 				else if(clip.isSelected())
 				{
@@ -414,7 +421,7 @@ class UtilitiesPanel extends JPanel implements ActionListener
 					if(val1 == null) return;
 					val2 = (Double)Utils.checkNum(constant2f.getText(), "digitization interval field", null, false, null, null, false, null, false);
 					if(val2 == null) return;
-					sel = 6;
+					sel = SELECT_CLIP;
 					selStr = "Time clip";
 				}
 				else
@@ -471,7 +478,7 @@ class UtilitiesPanel extends JPanel implements ActionListener
 
 	private String runUtil(int sel, File s, File d, int skip, double var1, double var2) throws IOException
 	{
-		DoubleList data = new DoubleList(s.getAbsolutePath(), skip);
+		DoubleList data = new DoubleList(s.getAbsolutePath(), skip, 1.0);
 		if(data.bad())
 		{
 			return ("<br>After skipping " + skip + " lines, invalid data encountered in file " + s.getAbsolutePath() + " at point " + data.badEntry() + ".");
@@ -482,22 +489,22 @@ class UtilitiesPanel extends JPanel implements ActionListener
 
 		switch(sel)
 		{
-			case 1: // cmgs
+			case SELECT_CMGS: // cmgs
 				Utilities.CM_GS(data, o);
 				break;
-			case 2: // gscm
+			case SELECT_GSCM: // gscm
 				Utilities.GS_CM(data, o);
 				break;
-			case 3: // mult
+			case SELECT_MULT: // mult
 				Utilities.Mult(data, o, var1);
 				break;
-			case 4: // redigit
+			case SELECT_REDIGIT: // redigit
 				err = Utilities.Redigitize(data, o, var1);
 				break;
-			case 5: // peapick
+			case SELECT_PEAPICK: // peapick
 				Utilities.Peapick(data, o, var1 * Analysis.Gcmss);
 				break;
-			case 6: // clip
+			case SELECT_CLIP: // clip
 				Utilities.Clip(data, o, 0, var1, var2);
 		}
 

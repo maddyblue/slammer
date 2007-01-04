@@ -470,7 +470,7 @@ class ResultsPanel extends JPanel implements ActionListener
 									continue;
 								}
 
-								dat = new DoubleList(path, parent.Parameters.scaleOn.isSelected() ? paramScale : 1.0);
+								dat = new DoubleList(path, 0, parent.Parameters.scaleOn.isSelected() ? paramScale : 1.0);
 								if(dat.bad())
 								{
 									row[2] = "Invalid data at point " + dat.badEntry();

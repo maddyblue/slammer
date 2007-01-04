@@ -410,7 +410,7 @@ public class Newmark
 					cur[3] = path;
 					path = outpath + "/" + eq + "/" + path;
 
-					data = new DoubleList(f[i].getAbsolutePath(), 17);
+					data = new DoubleList(f[i].getAbsolutePath(), 17, 1.0);
 					if(data.bad())
 					{
 						GUIUtils.popupError("Invalid data in file " + path + " at point " + data.badEntry() + ".");
