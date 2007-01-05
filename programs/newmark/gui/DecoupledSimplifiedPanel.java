@@ -107,20 +107,20 @@ class DecoupledSimplifiedPanel extends JPanel implements ActionListener
 		calculations.setFont(GUIUtils.headerFont);
 		results.setFont(GUIUtils.headerFont);
 
-		siteper.setEnabled(false);
-		nrffact.setEnabled(false);
-		meanper.setEnabled(false);
-		dur.setEnabled(false);
-		tstm.setEnabled(false);
-		mheamhanrf.setEnabled(false);
-		kmax.setEnabled(false);
-		kykmax.setEnabled(false);
-		normdisp.setEnabled(false);
+		siteper.setEditable(false);
+		nrffact.setEditable(false);
+		meanper.setEditable(false);
+		dur.setEditable(false);
+		tstm.setEditable(false);
+		mheamhanrf.setEditable(false);
+		kmax.setEditable(false);
+		kykmax.setEditable(false);
+		normdisp.setEditable(false);
 
-		dispcm.setEnabled(false);
-		dispin.setEnabled(false);
-		medianfreq.setEnabled(false);
-		seiscoef.setEnabled(false);
+		dispcm.setEditable(false);
+		dispin.setEditable(false);
+		medianfreq.setEditable(false);
+		seiscoef.setEditable(false);
 
 		add(createPanel());
 	}
