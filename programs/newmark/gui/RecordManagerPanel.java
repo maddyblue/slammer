@@ -81,10 +81,10 @@ class RecordManagerPanel extends JPanel implements ActionListener
 	JRadioButton typeSpectra = new JRadioButton("Response Spectra");
 
 	JComboBox spectraCB = new JComboBox(new String[] { "Absolute-Acceleration", "Relative-Velocity", "Relative-Displacement", "Psuedo Absolute-Acceleration", "Psuedo Relative-Velocity" });
-	String[] spectraCBStr = new String[] { "cm/sec/sec", "cm/sec", "cm", "cm/sec/sec", "cm/sec" };
+	String[] spectraCBStr = new String[] { "cm/s/s", "cm/s", "cm", "cm/s/s", "cm/s" };
 
 	JComboBox spectraDomain = new JComboBox(new String[] { "Frequency", "Period" });
-	String[] spectraDomainStr = new String[] { "Hz", "sec" };
+	String[] spectraDomainStr = new String[] { "Hz", "s" };
 	String[] spectraDirStr = new String[] { "Highest", "Shortest" };
 
 	JLabel spectraDomainLabel = new JLabel();
@@ -484,7 +484,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 				{
 					title = "Fourier Amplitude Spectrum";
 					xAxis = "Frequency (Hz)";
-					yAxis = "Fourier Amplitude (cm/sec)";
+					yAxis = "Fourier Amplitude (cm/s)";
 					double[] arr = new double[dat.size()];
 
 					Double temp;
