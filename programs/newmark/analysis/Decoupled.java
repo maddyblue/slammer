@@ -24,7 +24,7 @@ public class Decoupled extends DeCoupledCommon
 	private static double time;
 
 
-	public static double Decoupled(double[] ain_p, double uwgt_p, double height_p, double vs_p, double damp1_p, double dt_p, double scal_p, double g_p, double vr_p, double[][] ca, boolean dv2_p, boolean dv3_p)
+	public static double Decoupled(double[] ain_p, double uwgt_p, double height_p, double vs_p, double damp1_p, double dt_p, double scal_p, double g_p, double vr_p, double[][] ca, boolean dv3_p)
 	{
 		// assign all passed parameters to the local data
 		uwgt = uwgt_p;
@@ -37,7 +37,6 @@ public class Decoupled extends DeCoupledCommon
 		scal = scal_p;
 		g = g_p;
 		vr = vr_p;
-		dv2 = dv2_p;
 		dv3 = dv3_p;
 		ain = ain_p;
 
@@ -80,8 +79,8 @@ public class Decoupled extends DeCoupledCommon
 
 		rho = uwgt / g;
 
-		if(!dv2)
-			dampf = 0.0;
+		if((vr / vs) <= 2.5)
+			dampf = 20.0 / 100.0;
 		else
 			dampf = 55.016 * Math.pow((vr / vs), -0.9904) / 100.0;
 

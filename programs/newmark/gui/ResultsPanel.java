@@ -257,7 +257,7 @@ class ResultsPanel extends JPanel implements ActionListener
 							double[][] ca;
 							double[] ain;
 							double thrust = 0, uwgt = 0, height = 0, vs = 0, damp = 0, vr = 0;
-							boolean dv2 = false, dv3 = false;
+							boolean dv3 = false;
 
 							scaleRB = paramUnit ? 1 : Analysis.CMtoIN;
 
@@ -361,27 +361,7 @@ class ResultsPanel extends JPanel implements ActionListener
 								else
 									damp = tempd.doubleValue() / 100.0;
 
-								dv2 = true;
 								dv3 = parent.Parameters.paramSoilModel.getSelectedIndex() == 1;
-
-								if(dv2)
-								{
-									tempd = (Double)Utils.checkNum(parent.Parameters.paramVr.getText(), ParametersPanel.stringVr + " field", null, false, null, null, false, null, false);
-									if(tempd == null)
-									{
-										parent.selectParameters();
-										return null;
-									}
-
-									vr = tempd.doubleValue();
-
-									if((vr / vs) <= 2.5)
-									{
-										GUIUtils.popupError("Error: Shear wave velocity of rock must be at least 2.5 times larger than Shear wave velocity of soil.");
-										parent.selectParameters();
-										return null;
-									}
-								}
 
 								// metric
 								if(paramUnit)
@@ -522,11 +502,11 @@ class ResultsPanel extends JPanel implements ActionListener
 								if(paramDecoupled)
 								{
 									// [i]scale is divided by Gcmss because the algorithm expects input data in Gs, but our input files are in cmss. this has nothing to do with, and is not affected by, the unit base being used (english or metric).
-									norm = Decoupled.Decoupled(ain, uwgt, height, vs, damp, di, scale / Analysis.Gcmss, g, vr, ca, dv2, dv3);
+									norm = Decoupled.Decoupled(ain, uwgt, height, vs, damp, di, scale / Analysis.Gcmss, g, vr, ca, dv3);
 									Analysis.graphData.setKey(row[0] + " - " + row[1] + " - " + ParametersPanel.stringDC + ", " + polarityName[NOR]);
 									xys[i - 1][DC][NOR] = Analysis.graphData;
 
-									inv = Decoupled.Decoupled(ain, uwgt, height, vs, damp, di, iscale / Analysis.Gcmss, g, vr, ca, dv2, dv3);
+									inv = Decoupled.Decoupled(ain, uwgt, height, vs, damp, di, iscale / Analysis.Gcmss, g, vr, ca, dv3);
 									Analysis.graphData.setKey(row[0] + " - " + row[1] + " - " + ParametersPanel.stringDC + ", " + polarityName[INV]);
 									xys[i - 1][DC][INV] = Analysis.graphData;
 
@@ -549,11 +529,11 @@ class ResultsPanel extends JPanel implements ActionListener
 								if(paramCoupled)
 								{
 									// [i]scale is divided by Gcmss because the algorithm expects input data in Gs, but our input files are in cmss. this has nothing to do with, and is not affected by, the unit base being used (english or metric).
-									norm = Coupled.Coupled(ain, uwgt, height, vs, damp, di, scale / Analysis.Gcmss, g, vr, ca, dv2, dv3);
+									norm = Coupled.Coupled(ain, uwgt, height, vs, damp, di, scale / Analysis.Gcmss, g, vr, ca, dv3);
 									Analysis.graphData.setKey(row[0] + " - " + row[1] + " - " + ParametersPanel.stringCP + ", " + polarityName[NOR]);
 									xys[i - 1][CP][NOR] = Analysis.graphData;
 
-									inv = Coupled.Coupled(ain, uwgt, height, vs, damp, di, iscale / Analysis.Gcmss, g, vr, ca, dv2, dv3);
+									inv = Coupled.Coupled(ain, uwgt, height, vs, damp, di, iscale / Analysis.Gcmss, g, vr, ca, dv3);
 									Analysis.graphData.setKey(row[0] + " - " + row[1] + " - " + ParametersPanel.stringCP + ", " + polarityName[INV]);
 									xys[i - 1][CP][INV] = Analysis.graphData;
 
