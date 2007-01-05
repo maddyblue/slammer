@@ -697,7 +697,7 @@ class ResultsPanel extends JPanel implements ActionListener
 
 				title = "Histogram of " + name + " Displacements (" + pname + " Polarity)";
 
-				JFreeChart hist = ChartFactory.createHistogram(title, unitDisplacement, "Number of Records", dataset, org.jfree.chart.plot.PlotOrientation.VERTICAL, false, true, false);
+				JFreeChart hist = ChartFactory.createHistogram(title, "Displacement " + unitDisplacement, "Number of Records", dataset, org.jfree.chart.plot.PlotOrientation.VERTICAL, false, true, false);
 				ChartFrame frame = new ChartFrame(title, hist);
 
 				frame.pack();
