@@ -72,7 +72,7 @@ public class Utilities extends Analysis
 		return null;
 	}
 
-	public static String Peapick(DoubleList data, FileWriter ofile, final double value) throws IOException
+	public static String Bracket(DoubleList data, FileWriter ofile, final double value) throws IOException
 	{
 		Double val;
 		int top = data.size() - 1;
@@ -179,25 +179,19 @@ public class Utilities extends Analysis
 		return "";
 	}
 
-	public static String Clip(DoubleList data, FileWriter ofile, final double clipL, final double clipR, final double dt) throws IOException
+	public static String Trim(DoubleList data, FileWriter ofile, final double clipL, final double clipR, final double dt) throws IOException
 	{
 		Double val;
 		data.reset();
+		int tStart = (int)((double)clipL / dt);
+		int tEnd = (int)((double)clipR / dt);
 
-		if(clipR < 0)
+		for(int i = 0; (val = data.each()) != null; i++)
 		{
-			int i = 0;
+			if(i < tStart || i > tEnd)
+				continue;
 
-			for(; (i < (-clipR / dt)) && ((val = data.each()) != null); i++)
-				;
-
-			while((val = data.each()) != null)
-				ofile.write(val + "\n");
-		}
-		else
-		{
-			for(int i = 0; (i <= (clipR / dt)) && ((val = data.each()) != null); i++)
-				ofile.write(val + "\n");
+			ofile.write(val + "\n");
 		}
 
 		ofile.close();

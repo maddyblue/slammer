@@ -48,8 +48,8 @@ class UtilitiesPanel extends JPanel implements ActionListener
 	public final static int SELECT_GSCM    = 2;
 	public final static int SELECT_MULT    = 3;
 	public final static int SELECT_REDIGIT = 4;
-	public final static int SELECT_PEAPICK = 5;
-	public final static int SELECT_CLIP    = 6;
+	public final static int SELECT_BRACKET = 5;
+	public final static int SELECT_TRIM    = 6;
 
 	NewmarkTabbedPane parent;
 
@@ -57,24 +57,28 @@ class UtilitiesPanel extends JPanel implements ActionListener
 	JRadioButton gscm = new JRadioButton("<html>Convert g's to cm/s<sup>2</sup></html>");
 	JRadioButton mult = new JRadioButton("Multiply by a constant");
 	JRadioButton redigit = new JRadioButton("Redigitize");
-	JRadioButton peapick = new JRadioButton("Trim records");
-	JRadioButton clip = new JRadioButton("Clip records");
+	JRadioButton peapick = new JRadioButton("Bracket records");
+	JRadioButton clip = new JRadioButton("Trim records");
 	ButtonGroup group = new ButtonGroup();
 
 	JFileChooser fcs = new JFileChooser();
 	JFileChooser fcd = new JFileChooser();
 	JLabel source = new JLabel("Source file or directory");
-	JLabel dest = new JLabel("Destination file or directory");
+	JLabel dest = new JLabel("Destination file or directory (leave blank to overwrite source file)");
 	JLabel constant1 = new JLabel(" ");
 	JLabel constant1Pre = new JLabel("");
 	JLabel constant1Post = new JLabel("");
 	JLabel constant2 = new JLabel(" ");
 	JLabel constant2Pre = new JLabel("");
 	JLabel constant2Post = new JLabel("");
+	JLabel constant3 = new JLabel(" ");
+	JLabel constant3Pre = new JLabel("");
+	JLabel constant3Post = new JLabel("");
 	JTextField sourcef = new JTextField(50);
 	JTextField destf = new JTextField(50);
 	JTextField constant1f = new JTextField(5);
 	JTextField constant2f = new JTextField(5);
+	JTextField constant3f = new JTextField(5);
 	JButton sourceb = new JButton("Browse...");
 	JButton destb = new JButton("Browse...");
 	JButton go = new JButton("Execute");
@@ -122,6 +126,7 @@ class UtilitiesPanel extends JPanel implements ActionListener
 
 		constant1f.setEnabled(false);
 		constant2f.setEnabled(false);
+		constant3f.setEnabled(false);
 
 		pane.setEditable(false);
 		pane.setContentType("text/html");
@@ -152,7 +157,7 @@ class UtilitiesPanel extends JPanel implements ActionListener
 
 		c.gridx = x++;
 		c.gridy = y;
-		c.gridheight = 10;
+		c.gridheight = 12;
 		c.anchor = GridBagConstraints.NORTHWEST;
 		gridbag.setConstraints(panel, c);
 		add(panel);
@@ -229,6 +234,20 @@ class UtilitiesPanel extends JPanel implements ActionListener
 
 		c.gridy = y++;
 		c.insets = top;
+		gridbag.setConstraints(constant3, c);
+		add(constant3);
+
+		c.gridy = y++;
+		c.insets = none;
+		panel = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
+		panel.add(constant3Pre);
+		panel.add(constant3f);
+		panel.add(constant3Post);
+		gridbag.setConstraints(panel, c);
+		add(panel);
+
+		c.gridy = y++;
+		c.insets = top;
 
 		panel = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
 		panel.add(new JLabel("Skip the first "));
@@ -286,6 +305,11 @@ class UtilitiesPanel extends JPanel implements ActionListener
 				constant2.setText(" ");
 				constant2Pre.setText("");
 				constant2Post.setText("");
+				constant3f.setText("");
+				constant3f.setEnabled(false);
+				constant3.setText(" ");
+				constant3Pre.setText("");
+				constant3Post.setText("");
 				if(cmgs.isSelected() || gscm.isSelected())
 				{
 					if(cmgs.isSelected())
@@ -309,18 +333,19 @@ class UtilitiesPanel extends JPanel implements ActionListener
 				{
 					constant1Pre.setText("Trim record between g values of ");
 					constant1f.setEnabled(true);
-					pane.setText("This program removes the points of a record from the beginning and end of the file that are less than the specified number of Gs. 50 points are added to each side for lead in time.");
+					pane.setText("This program removes the points of a record from the beginning and end of the file that are less than the specified number of g's. 50 points are added to each side for lead in time.");
 				}
 				else if(clip.isSelected())
 				{
-					constant1Pre.setText("Clip records at ");
+					constant1Pre.setText("Remove data before ");
 					constant1Post.setText(" seconds");
 					constant1f.setEnabled(true);
-					constant2.setText("Digitization Interval (s)");
+					constant2Pre.setText("Remove data after ");
+					constant2Post.setText(" seconds");
 					constant2f.setEnabled(true);
-					pane.setText("<html>This program removes all data <b>after</b> the specified time from each file. If the file is shorter than the clip location, the file will simply be copied to the destination." +
-						"<p>Using a <i>negative</i> value for the clip time will remove all data <b>before</b> the specified time. IE: to cut off the first two seconds but keep all data after two seconds, enter -2 as the clip time. If the clip time is longer than the file duration (ie: trying to remove the first 5 seconds of a 4 second file), it will be truncated to zero length.</html>"
-					);
+					constant3.setText("Digitization Interval (s)");
+					constant3f.setEnabled(true);
+					pane.setText("This program saves all data within (inclusive) the specified range. If the file is shorter than the specified range, the file will simply be copied to the destination.");
 				}
 			}
 			else if(command.equals("go"))
@@ -332,13 +357,6 @@ class UtilitiesPanel extends JPanel implements ActionListener
 				if(temp == null || temp.equals(""))
 				{
 					GUIUtils.popupError("No source specified.");
-					return;
-				}
-
-				temp = destf.getText();
-				if(temp == null || temp.equals(""))
-				{
-					GUIUtils.popupError("No destination specified.");
 					return;
 				}
 
@@ -355,7 +373,10 @@ class UtilitiesPanel extends JPanel implements ActionListener
 					return;
 				}
 
-				d = new File(destf.getText());
+				if(destf.getText() == null || destf.getText().equals(""))
+					d = s;
+				else
+					d = new File(destf.getText());
 
 				if(s.isDirectory() && d.isFile())
 				{
@@ -381,6 +402,7 @@ class UtilitiesPanel extends JPanel implements ActionListener
 
 				Double val1 = new Double(0);
 				Double val2 = new Double(0);
+				Double val3 = new Double(0);
 				int sel;
 				String selStr;
 
@@ -412,16 +434,18 @@ class UtilitiesPanel extends JPanel implements ActionListener
 				{
 					val1 = (Double)Utils.checkNum(constant1f.getText(), "pea picker field", null, false, null, new Double(0), false, null, false);
 					if(val1 == null) return;
-					sel = SELECT_PEAPICK;
+					sel = SELECT_BRACKET;
 					selStr = "Pea pick";
 				}
 				else if(clip.isSelected())
 				{
-					val1 = (Double)Utils.checkNum(constant1f.getText(), "clip time field", null, false, null, null, false, null, false);
+					val1 = (Double)Utils.checkNum(constant1f.getText(), "first clip time field", null, false, null, null, false, null, false);
 					if(val1 == null) return;
-					val2 = (Double)Utils.checkNum(constant2f.getText(), "digitization interval field", null, false, null, null, false, null, false);
+					val2 = (Double)Utils.checkNum(constant2f.getText(), "second clip time field", null, false, null, null, false, null, false);
 					if(val2 == null) return;
-					sel = SELECT_CLIP;
+					val3 = (Double)Utils.checkNum(constant3f.getText(), "digitization interval field", null, false, null, null, false, null, false);
+					if(val3 == null) return;
+					sel = SELECT_TRIM;
 					selStr = "Time clip";
 				}
 				else
@@ -435,7 +459,7 @@ class UtilitiesPanel extends JPanel implements ActionListener
 
 				if(s.isFile())
 				{
-					errors = runUtil(sel, s, d, skipLines, val1.doubleValue(), val2.doubleValue());
+					errors = runUtil(sel, s, d, skipLines, val1.doubleValue(), val2.doubleValue(), val3.doubleValue());
 				}
 				else if(s.isDirectory())
 				{
@@ -457,7 +481,7 @@ class UtilitiesPanel extends JPanel implements ActionListener
 						prog.setValue(i);
 						prog.paintImmediately(0,0,prog.getWidth(),prog.getHeight());
 
-						errors += runUtil(sel, list[i],  new File(d.getAbsolutePath() + System.getProperty("file.separator") + list[i].getName()), skipLines, val1.doubleValue(), val2.doubleValue());
+						errors += runUtil(sel, list[i],  new File(d.getAbsolutePath() + System.getProperty("file.separator") + list[i].getName()), skipLines, val1.doubleValue(), val2.doubleValue(), val3.doubleValue());
 					}
 					progFrame.dispose();
 				}
@@ -476,7 +500,7 @@ class UtilitiesPanel extends JPanel implements ActionListener
 		}
 	}
 
-	private String runUtil(int sel, File s, File d, int skip, double var1, double var2) throws IOException
+	private String runUtil(int sel, File s, File d, int skip, double var1, double var2, double var3) throws IOException
 	{
 		DoubleList data = new DoubleList(s.getAbsolutePath(), skip, 1.0);
 		if(data.bad())
@@ -501,11 +525,11 @@ class UtilitiesPanel extends JPanel implements ActionListener
 			case SELECT_REDIGIT: // redigit
 				err = Utilities.Redigitize(data, o, var1);
 				break;
-			case SELECT_PEAPICK: // peapick
-				Utilities.Peapick(data, o, var1 * Analysis.Gcmss);
+			case SELECT_BRACKET: // peapick
+				Utilities.Bracket(data, o, var1 * Analysis.Gcmss);
 				break;
-			case SELECT_CLIP: // clip
-				Utilities.Clip(data, o, 0, var1, var2);
+			case SELECT_TRIM: // clip
+				Utilities.Trim(data, o, var1, var2, var3);
 		}
 
 		if(!err.equals(""))
