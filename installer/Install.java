@@ -23,11 +23,11 @@ public class Install
 	public static void main(String[] args)
 	{
 		String javaVersion = System.getProperty("java.version");
-		if(javaVersion.compareTo("1.3") < 0)
+		if(javaVersion.compareTo("1.4") < 0)
 		{
 			System.err.println("You are running Java version "
 				+ javaVersion + ".");
-			System.err.println("This installer requires Java 1.3 or later.");
+			System.err.println("This installer requires Java 1.4 or later.");
 			System.exit(1);
 		}
 
