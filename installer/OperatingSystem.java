@@ -226,7 +226,7 @@ public abstract class OperatingSystem
 	{
 		public String getInstallDirectory(String name, String version)
 		{
-			return "/Applications/" + name + " " + version;
+			return "/Applications/" + name;
 		}
 	}
 
@@ -234,7 +234,7 @@ public abstract class OperatingSystem
 	{
 		public String getInstallDirectory(String name, String version)
 		{
-			return "C:\\Program Files\\" + name + " " + version;
+			return "C:\\Program Files\\" + name;
 		}
 
 		public OSTask[] getOSTasks(Install installer)
@@ -247,7 +247,7 @@ public abstract class OperatingSystem
 	{
 		public String getInstallDirectory(String name, String version)
 		{
-			return "C:\\" + name + " " + version;
+			return "C:\\" + name;
 		}
 	}
 
