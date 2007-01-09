@@ -92,7 +92,7 @@ public class Newmark
 			if(args[0].equals("getsql")) // {{{
 			{
 
-				FileWriter fw = new FileWriter(".." + File.separatorChar + "records" + File.separatorChar + "eq.sql");
+				FileWriter fw = new FileWriter(".." + File.separator + "records" + File.separator + "eq.sql");
 
 				Object[][] res = Utils.getDB().runQuery("select eq, record, digi_int, mom_mag, arias, dobry, pga, pgv, mean_per, epi_dist, foc_dist, rup_dist, foc_mech, location, owner, latitude, longitude, class from data order by eq, record");
 
