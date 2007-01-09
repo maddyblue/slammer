@@ -56,6 +56,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 
 	JComboBox eqList = new JComboBox();
 	JButton graph = new JButton("Graph");
+	JButton graph2 = new JButton("Graph");
 	JButton delete = new JButton("Delete selected record(s) from database");
 
 	JButton save = new JButton("Save changes");
@@ -133,6 +134,9 @@ class RecordManagerPanel extends JPanel implements ActionListener
 
 		graph.setActionCommand("graph");
 		graph.addActionListener(this);
+
+		graph2.setActionCommand("graph");
+		graph2.addActionListener(this);
 
 		managerTP.addTab("Modify Record", createModifyPanel());
 		managerTP.addTab("Graphing Options", createGraphPanel());
@@ -240,6 +244,13 @@ class RecordManagerPanel extends JPanel implements ActionListener
 			BorderFactory.createMatteBorder(0, 0, 1, 1, Color.BLACK),
 			BorderFactory.createEmptyBorder(2, 1, 2, 1)
 		);
+
+		c.gridx = x;
+		c.gridy = y++;
+		c.gridwidth = 3;
+		gridbag.setConstraints(graph2, c);
+		panel.add(graph2);
+		c.gridwidth = 1;
 
 		c.gridx = x++;
 		c.gridy = y++;
@@ -519,7 +530,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 				{
 					int index = spectraCB.getSelectedIndex();
 
-					title = spectraCB.getSelectedItem().toString() + " Response Spectra";
+					title = spectraCB.getSelectedItem().toString() + " Response Spectra at ";
 					xAxis = spectraDomain.getSelectedItem() + " (" + spectraDomainStr[spectraDomain.getSelectedIndex()] + ")";
 					yAxis = "Response (" + spectraCBStr[spectraCB.getSelectedIndex()] + ")";
 					double[] arr = new double[dat.size()];
@@ -530,6 +541,8 @@ class RecordManagerPanel extends JPanel implements ActionListener
 
 					double freqMax = Double.parseDouble(spectraHigh.getText());
 					double damp = Double.parseDouble(spectraDamp.getText()) / 100.0;
+
+					title = title + damp + "% Damping";
 
 					boolean domainFreq = true;
 
