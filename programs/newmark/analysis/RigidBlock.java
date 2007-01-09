@@ -116,11 +116,15 @@ public class RigidBlock extends Analysis
 			if(pos == disp.length - 1)
 			{
 				t = Gcmss * unitMult * disp[pos][1];
+				if(dualSlope)
+					t += g;
 			}
 			else
 			{
 				prop = (u - disp[pos][0]) / (disp[pos + 1][0] - disp[pos][0]);
 				t = Gcmss * unitMult * (disp[pos][1] - (disp[pos][1] - disp[pos + 1][1]) * prop);
+				if(dualSlope)
+					t += g;
 			}
 		}
 
