@@ -1,12 +1,10 @@
 <?xml version="1.0"?>
 
 <!--
-     This is a build.xml file for building Newmark.
+     This is a build.xml file for building Slammer.
 -->
 
-<project name="Newmark" default="def" basedir=".">
-
-
+<project name="Slammer" default="def" basedir=".">
 
 	<target name="compile">
 		<javac
@@ -15,7 +13,7 @@
 			debug="on"
 			deprecation="on"
 		>
-			<include name="newmark/**/*.java"/>
+			<include name="slammer/**/*.java"/>
 			<classpath>
 				<fileset dir="jars">
 					<include name="*.jar"/>
@@ -26,25 +24,25 @@
 
 	<target name="jar">
 		<jar
-			jarfile="newmark.jar"
-			manifest="newmark/newmark.manifest"
+			jarfile="slammer.jar"
+			manifest="slammer/slammer.manifest"
 		>
 			<fileset dir=".">
-				<include name="newmark/**/*.class"/>
-				<include name="newmark/images/*.jpg"/>
+				<include name="slammer/**/*.class"/>
+				<include name="slammer/images/*.jpg"/>
 				<include name="help/**/*"/>
 			</fileset>
 		</jar>
 	</target>
 
 	<target name="run">
-		<java fork="true" jar="newmark.jar">
+		<java fork="true" jar="slammer.jar">
 		</java>
 	</target>
 
 	<target name="clean">
 		<delete>
-			<fileset dir="." includes="newmark/**/*.class"/>
+			<fileset dir="." includes="slammer/**/*.class"/>
 		</delete>
 	</target>
 
@@ -60,7 +58,7 @@
 	<target name="test">
 
 	<exec executable="java">
-		<arg line="-jar newmark.jar test" />
+		<arg line="-jar slammer.jar test" />
 	</exec>
 
 	</target>
@@ -68,7 +66,7 @@
 	<target name="testg">
 
 	<exec executable="java">
-		<arg line="-jar newmark.jar testg" />
+		<arg line="-jar slammer.jar testg" />
 	</exec>
 
 	</target>
