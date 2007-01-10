@@ -30,15 +30,15 @@
 
 /* $Id$ */
 
-package newmark.gui;
+package slammer.gui;
 
 import javax.swing.*;
 import javax.swing.event.*;
 import java.awt.*;
 import javax.swing.border.*;
-import newmark.*;
+import slammer.*;
 
-public class NewmarkTabbedPane extends JTabbedPane
+public class SlammerTabbedPane extends JTabbedPane
 {
 	public JFrame parent;
 
@@ -59,7 +59,7 @@ public class NewmarkTabbedPane extends JTabbedPane
 	JTabbedPane Simplified = new JTabbedPane();
 	JTabbedPane Manager = new JTabbedPane();
 
-	public NewmarkTabbedPane(JFrame parent) throws Exception
+	public SlammerTabbedPane(JFrame parent) throws Exception
 	{
 		GettingStarted = new GettingStartedPanel(this);
 		SelectRecords = new SelectRecordsPanel(this);
@@ -102,7 +102,7 @@ public class NewmarkTabbedPane extends JTabbedPane
 			if(t.getSelectedIndex() == (t.getTabCount() - 1))
 			{
 				t.setSelectedIndex(last);
-				NewmarkTabbedPane.help.setVisible(true);
+				SlammerTabbedPane.help.setVisible(true);
 			}
 			last = t.getSelectedIndex();
 		}

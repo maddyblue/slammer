@@ -30,16 +30,16 @@
 
 /* $Id$ */
 
-package newmark.analysis;
+package slammer.analysis;
 
 import java.text.DecimalFormat;
-import newmark.*;
+import slammer.*;
 
 public class ImportRecords extends Analysis
 {
 	/* the algorithms/programs
 	 *
-	 * Note: the arias, dobry, redigitize, and rigorous newmark algorithms were
+	 * Note: the arias, dobry, redigitize, and rigorous slammer algorithms were
 	 * originally written by Ray Wilson in GW Basic, and then ported to C++ and
 	 * Java.
 	 */

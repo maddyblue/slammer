@@ -30,7 +30,7 @@
 
 /* $Id$ */
 
-package newmark.gui;
+package slammer.gui;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -41,7 +41,7 @@ import java.awt.event.*;
 import java.util.Vector;
 import javax.swing.table.*;
 import javax.swing.border.*;
-import newmark.*;
+import slammer.*;
 
 class ParametersTableModel extends DefaultTableModel implements TableModelListener
 {

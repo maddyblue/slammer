@@ -30,16 +30,16 @@
 
 /* $Id$ */
 
-package newmark;
+package slammer;
 
-import newmark.gui.*;
-import newmark.analysis.*;
+import slammer.gui.*;
+import slammer.analysis.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 
-public class Newmark
+public class Slammer
 {
 	// order of fields for the eq.sql file
 	public static final int DB_eq = 0;
@@ -346,7 +346,7 @@ public class Newmark
 			else if(args[0].equals("importjapan")) // {{{
 			{
 				String inpath = "/home/dolmant/Keepers";
-				String outpath = "/home/dolmant/newmark/records";
+				String outpath = "/home/dolmant/slammer/records";
 				String path;
 				File d = new File(inpath);
 				File f[] = d.listFiles();
@@ -444,12 +444,12 @@ public class Newmark
 			} // }}}
 			else if(args[0].equals("test")) // {{{
 			{
-				junit.textui.TestRunner.run(NewmarkTest.suite());
+				junit.textui.TestRunner.run(SlammerTest.suite());
 			} // }}}
 			else if(args[0].equals("testg")) // {{{
 			{
 				junit.swingui.TestRunner tr = new junit.swingui.TestRunner();
-				tr.start(new String[] { "newmark.NewmarkTest" });
+				tr.start(new String[] { "slammer.SlammerTest" });
 			} // }}}
 			else // {{{
 			{
@@ -466,10 +466,10 @@ public class Newmark
 				// if the OS supports a native LF, use it
 				UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 
-				JFrame frame = new JFrame("Newmark");
+				JFrame frame = new JFrame("Slammer");
 
 				frame.setIconImage(new ImageIcon(
-					frame.getClass().getResource("/newmark/images/icon.jpg")).getImage());
+					frame.getClass().getResource("/slammer/images/icon.jpg")).getImage());
 
 				GUIUtils.bg = frame.getBackground();
 
@@ -493,7 +493,7 @@ public class Newmark
 
 				splash.advance();
 
-				frame.getContentPane().add(new NewmarkTabbedPane(frame));
+				frame.getContentPane().add(new SlammerTabbedPane(frame));
 				frame.setSize(780,575);
 				GUIUtils.setLocationMiddle(frame);
 

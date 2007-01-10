@@ -30,14 +30,14 @@
 
 /* $Id$ */
 
-package newmark.gui;
+package slammer.gui;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 import java.util.Vector;
-import newmark.*;
+import slammer.*;
 
 class GroupFrame extends JFrame implements ActionListener
 {
@@ -53,12 +53,12 @@ class GroupFrame extends JFrame implements ActionListener
 	JComboBox exportCB = new JComboBox();
 	JComboBox changeCB = new JComboBox();
 	JFileChooser fc = new JFileChooser();
-	NewmarkTableModel model;
+	SlammerTableModel model;
 	boolean canChange = true;
 
 	public Vector list = new Vector();
 
-	public GroupFrame(NewmarkTableModel model, SelectRecordsPanel parent)
+	public GroupFrame(SlammerTableModel model, SelectRecordsPanel parent)
 	{
 		super("Group manager");
 		this.model = model;
@@ -275,25 +275,25 @@ class GroupFrame extends JFrame implements ActionListener
 					}
 
 					delimize(fw, del,
-						NewmarkTable.makeUnitName(NewmarkTable.rowEarthquake),
-						NewmarkTable.makeUnitName(NewmarkTable.rowRecord),
-						NewmarkTable.makeUnitName(NewmarkTable.rowDigInt),
-						NewmarkTable.makeUnitName(NewmarkTable.rowMagnitude),
-						NewmarkTable.makeUnitName(NewmarkTable.rowAriasInt),
-						NewmarkTable.makeUnitName(NewmarkTable.rowDuration),
-						NewmarkTable.makeUnitName(NewmarkTable.rowPGA),
-						NewmarkTable.makeUnitName(NewmarkTable.rowPGV),
-						NewmarkTable.makeUnitName(NewmarkTable.rowMeanPer),
-						NewmarkTable.makeUnitName(NewmarkTable.rowEpiDist),
-						NewmarkTable.makeUnitName(NewmarkTable.rowFocalDist),
-						NewmarkTable.makeUnitName(NewmarkTable.rowRupDist),
-						NewmarkTable.makeUnitName(NewmarkTable.rowFocMech),
-						NewmarkTable.makeUnitName(NewmarkTable.rowLocation),
-						NewmarkTable.makeUnitName(NewmarkTable.rowOwner),
-						NewmarkTable.makeUnitName(NewmarkTable.rowLat),
-						NewmarkTable.makeUnitName(NewmarkTable.rowLng),
-						NewmarkTable.makeUnitName(NewmarkTable.rowSiteClass),
-						NewmarkTable.makeUnitName(NewmarkTable.rowFile)
+						SlammerTable.makeUnitName(SlammerTable.rowEarthquake),
+						SlammerTable.makeUnitName(SlammerTable.rowRecord),
+						SlammerTable.makeUnitName(SlammerTable.rowDigInt),
+						SlammerTable.makeUnitName(SlammerTable.rowMagnitude),
+						SlammerTable.makeUnitName(SlammerTable.rowAriasInt),
+						SlammerTable.makeUnitName(SlammerTable.rowDuration),
+						SlammerTable.makeUnitName(SlammerTable.rowPGA),
+						SlammerTable.makeUnitName(SlammerTable.rowPGV),
+						SlammerTable.makeUnitName(SlammerTable.rowMeanPer),
+						SlammerTable.makeUnitName(SlammerTable.rowEpiDist),
+						SlammerTable.makeUnitName(SlammerTable.rowFocalDist),
+						SlammerTable.makeUnitName(SlammerTable.rowRupDist),
+						SlammerTable.makeUnitName(SlammerTable.rowFocMech),
+						SlammerTable.makeUnitName(SlammerTable.rowLocation),
+						SlammerTable.makeUnitName(SlammerTable.rowOwner),
+						SlammerTable.makeUnitName(SlammerTable.rowLat),
+						SlammerTable.makeUnitName(SlammerTable.rowLng),
+						SlammerTable.makeUnitName(SlammerTable.rowSiteClass),
+						SlammerTable.makeUnitName(SlammerTable.rowFile)
 					);
 
 					int incr;
@@ -343,7 +343,7 @@ class GroupFrame extends JFrame implements ActionListener
 				Utils.getDB().runUpdate("update data set select2=0 where select2=1");
 				for(int i = 1; i < res.length; i++)
 					Utils.getDB().runUpdate("update data set select2=1, analyze=" + res[i][1].toString() + " where id=" + res[i][0].toString());
-				if(model != null) model.setModel(NewmarkTable.REFRESH);
+				if(model != null) model.setModel(SlammerTable.REFRESH);
 
 				parent.updateSelectLabel();
 			}

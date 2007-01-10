@@ -30,7 +30,7 @@
 
 /* $Id$ */
 
-package newmark.gui;
+package slammer.gui;
 
 import javax.swing.*;
 import javax.swing.event.*;
@@ -40,7 +40,7 @@ import javax.swing.border.*;
 import java.util.Vector;
 import javax.swing.table.*;
 import java.io.*;
-import newmark.*;
+import slammer.*;
 
 class AddRecordsTable extends JPanel implements ActionListener
 {
@@ -53,18 +53,18 @@ class AddRecordsTable extends JPanel implements ActionListener
 	static final int valueSC = 3;
 
 	JTextField valueTextField = new JTextField(15);
-	JComboBox valueFocMech = new JComboBox(NewmarkTable.FocMechArray);
-	JComboBox valueSiteClass = new JComboBox(NewmarkTable.SiteClassArray);
-	JComboBox colChoose = new JComboBox(NewmarkTable.getColumnList(NewmarkTable.colFieldName, NewmarkTable.colImport, NewmarkTable.IMCMB));
+	JComboBox valueFocMech = new JComboBox(SlammerTable.FocMechArray);
+	JComboBox valueSiteClass = new JComboBox(SlammerTable.SiteClassArray);
+	JComboBox colChoose = new JComboBox(SlammerTable.getColumnList(SlammerTable.colFieldName, SlammerTable.colImport, SlammerTable.IMCMB));
 	JButton set = new JButton("Set");
 
 	public AddRecordsTable()
 	{
-		TableColumn c = table.getColumn(NewmarkTable.fieldArray[NewmarkTable.rowFocMech][NewmarkTable.colAbbrev]);
-		c.setCellEditor(new DefaultCellEditor(new JComboBox(NewmarkTable.FocMechArray)));
+		TableColumn c = table.getColumn(SlammerTable.fieldArray[SlammerTable.rowFocMech][SlammerTable.colAbbrev]);
+		c.setCellEditor(new DefaultCellEditor(new JComboBox(SlammerTable.FocMechArray)));
 
-		c = table.getColumn(NewmarkTable.fieldArray[NewmarkTable.rowSiteClass][NewmarkTable.colAbbrev]);
-		c.setCellEditor(new DefaultCellEditor(new JComboBox(NewmarkTable.SiteClassArray)));
+		c = table.getColumn(SlammerTable.fieldArray[SlammerTable.rowSiteClass][SlammerTable.colAbbrev]);
+		c.setCellEditor(new DefaultCellEditor(new JComboBox(SlammerTable.SiteClassArray)));
 
 		set.setActionCommand("set");
 		set.addActionListener(this);
@@ -155,16 +155,16 @@ class AddRecordsTable extends JPanel implements ActionListener
 
 				valueSel = valueTF;
 
-				for(int i = 0; i < NewmarkTable.fieldArray.length; i++)
+				for(int i = 0; i < SlammerTable.fieldArray.length; i++)
 				{
-					if(col.equals(NewmarkTable.fieldArray[NewmarkTable.rowFocMech][NewmarkTable.colFieldName]))
+					if(col.equals(SlammerTable.fieldArray[SlammerTable.rowFocMech][SlammerTable.colFieldName]))
 					{
 						valueSel = valueFM;
 						valueFocMech.setVisible(true);
 						valueTextField.setVisible(false);
 						break;
 					}
-					else if(col.equals(NewmarkTable.fieldArray[NewmarkTable.rowSiteClass][NewmarkTable.colFieldName]))
+					else if(col.equals(SlammerTable.fieldArray[SlammerTable.rowSiteClass][SlammerTable.colFieldName]))
 					{
 						valueSel = valueSC;
 						valueSiteClass.setVisible(true);
@@ -176,7 +176,7 @@ class AddRecordsTable extends JPanel implements ActionListener
 			else if(command.equals("set"))
 			{
 				int col;
-				String abbrev = NewmarkTable.getColValue(NewmarkTable.colFieldName, NewmarkTable.colAbbrev, (String)colChoose.getSelectedItem());
+				String abbrev = SlammerTable.getColValue(SlammerTable.colFieldName, SlammerTable.colAbbrev, (String)colChoose.getSelectedItem());
 				String v;
 
 				switch(valueSel)

@@ -30,7 +30,7 @@
 
 /* $Id$ */
 
-package newmark.gui;
+package slammer.gui;
 
 import javax.swing.*;
 import javax.swing.event.*;
@@ -45,14 +45,14 @@ import org.jfree.chart.axis.*;
 import org.jfree.chart.renderer.xy.StandardXYItemRenderer;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.data.Range;
-import newmark.*;
-import newmark.analysis.*;
+import slammer.*;
+import slammer.analysis.*;
 
 class RecordManagerPanel extends JPanel implements ActionListener
 {
-	NewmarkTabbedPane parent;
+	SlammerTabbedPane parent;
 
-	NewmarkTable table;
+	SlammerTable table;
 
 	JComboBox eqList = new JComboBox();
 	JButton graph = new JButton("Graph");
@@ -73,8 +73,8 @@ class RecordManagerPanel extends JPanel implements ActionListener
 	JTextField modFoc = new JTextField(5);
 	JTextField modLng = new JTextField(5);
 	JTextField modRup = new JTextField(5);
-	JComboBox  modSite = new JComboBox(NewmarkTable.SiteClassArray);
-	JComboBox  modMech = new JComboBox(NewmarkTable.FocMechArray);
+	JComboBox  modSite = new JComboBox(SlammerTable.SiteClassArray);
+	JComboBox  modMech = new JComboBox(SlammerTable.FocMechArray);
 
 	ButtonGroup TypeGroup = new ButtonGroup();
 	JRadioButton typeTime = new JRadioButton("Time Series", true);
@@ -96,11 +96,11 @@ class RecordManagerPanel extends JPanel implements ActionListener
 
 	JTabbedPane managerTP = new JTabbedPane();
 
-	public RecordManagerPanel(NewmarkTabbedPane parent) throws Exception
+	public RecordManagerPanel(SlammerTabbedPane parent) throws Exception
 	{
 		this.parent = parent;
 
-		table = new NewmarkTable(false);
+		table = new SlammerTable(false);
 
 		ListSelectionModel recordSelect = table.getSelectionModel();
 		recordSelect.addListSelectionListener(new ListSelectionListener()
@@ -396,7 +396,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 						Utils.getDB().runUpdate("update data set select1=1 where id=" + res[i][0].toString());
 				}
 
-				table.setModel(NewmarkTable.REFRESH);
+				table.setModel(SlammerTable.REFRESH);
 				recordClear();
 			}
 			else if(command.equals("graph") || command.startsWith("data"))
@@ -619,7 +619,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 				if(!error.equals(""))
 					GUIUtils.popupError(error);
 
-				table.setModel(NewmarkTable.REFRESH);
+				table.setModel(SlammerTable.REFRESH);
 			}
 		}
 		catch (Exception ex)
@@ -671,8 +671,8 @@ class RecordManagerPanel extends JPanel implements ActionListener
 					modFoc.setText(Utils.shorten(res[1][incr++]));
 					modLng.setText(Utils.shorten(res[1][incr++]));
 					modRup.setText(Utils.shorten(res[1][incr++]));
-					modSite.setSelectedItem(NewmarkTable.SiteClassArray[Integer.parseInt(Utils.shorten(res[1][incr++].toString()))]);
-					modMech.setSelectedItem(NewmarkTable.FocMechArray[Integer.parseInt(Utils.shorten(res[1][incr++].toString()))]);
+					modSite.setSelectedItem(SlammerTable.SiteClassArray[Integer.parseInt(Utils.shorten(res[1][incr++].toString()))]);
+					modMech.setSelectedItem(SlammerTable.FocMechArray[Integer.parseInt(Utils.shorten(res[1][incr++].toString()))]);
 					enable = res[1][incr++].toString().equals("1") ? true : false;
 				}
 				else

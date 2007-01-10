@@ -30,7 +30,7 @@
 
 /* $Id$ */
 
-package newmark.gui;
+package slammer.gui;
 
 import javax.swing.*;
 import javax.swing.event.*;
@@ -39,13 +39,13 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.border.*;
 import java.util.Vector;
-import newmark.*;
-import newmark.analysis.*;
+import slammer.*;
+import slammer.analysis.*;
 import java.io.*;
 
 class AddRecordsPanel extends JPanel implements ActionListener
 {
-	NewmarkTabbedPane parent;
+	SlammerTabbedPane parent;
 
 	AddRecordsTable table = new AddRecordsTable();
 
@@ -55,7 +55,7 @@ class AddRecordsPanel extends JPanel implements ActionListener
 	JButton clearSelected = new JButton("Clear highlited records from list");
 	JButton add = new JButton("Import records");
 
-	public AddRecordsPanel(NewmarkTabbedPane parent)
+	public AddRecordsPanel(SlammerTabbedPane parent)
 	{
 		this.parent = parent;
 
@@ -338,9 +338,9 @@ class AddRecordsPanel extends JPanel implements ActionListener
 
 		// a few conversions
 		pre = focmech;
-		for(int j = 0; j < NewmarkTable.FocMechArray.length; j++)
+		for(int j = 0; j < SlammerTable.FocMechArray.length; j++)
 		{
-			if(focmech.equals(NewmarkTable.FocMechArray[j]))
+			if(focmech.equals(SlammerTable.FocMechArray[j]))
 			{
 				focmech = Integer.toString(j);
 				break;
@@ -352,9 +352,9 @@ class AddRecordsPanel extends JPanel implements ActionListener
 		}
 
 		pre = siteclass;
-		for(int j = 0; j < NewmarkTable.SiteClassArray.length; j++)
+		for(int j = 0; j < SlammerTable.SiteClassArray.length; j++)
 		{
-			if(siteclass.equals(NewmarkTable.SiteClassArray[j]))
+			if(siteclass.equals(SlammerTable.SiteClassArray[j]))
 			{
 				siteclass = Integer.toString(j);
 				break;

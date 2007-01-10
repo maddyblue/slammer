@@ -30,20 +30,20 @@
 
 /* $Id$ */
 
-package newmark.gui;
+package slammer.gui;
 
 import javax.swing.*;
 import java.awt.*;
 import java.net.URL;
-import newmark.*;
+import slammer.*;
 
 class GettingStartedPanel extends JPanel
 {
-	NewmarkTabbedPane parent;
+	SlammerTabbedPane parent;
 
 	JEditorPane startedPane = new JEditorPane();
 
-	public GettingStartedPanel(NewmarkTabbedPane parent) throws Exception
+	public GettingStartedPanel(SlammerTabbedPane parent) throws Exception
 	{
 		this.parent = parent;
 

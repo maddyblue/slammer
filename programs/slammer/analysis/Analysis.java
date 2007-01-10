@@ -30,7 +30,7 @@
 
 /* $Id$ */
 
-package newmark.analysis;
+package slammer.analysis;
 
 import java.text.DecimalFormat;
 import org.jfree.data.xy.XYSeries;

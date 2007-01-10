@@ -30,10 +30,10 @@
 
 /* $Id$ */
 
-package newmark;
+package slammer;
 
 import java.io.*;
-import newmark.gui.*;
+import slammer.gui.*;
 
 public class DoubleList
 {

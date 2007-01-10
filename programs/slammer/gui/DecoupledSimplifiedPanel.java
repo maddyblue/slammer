@@ -30,7 +30,7 @@
 
 /* $Id$ */
 
-package newmark.gui;
+package slammer.gui;
 
 import javax.swing.*;
 import javax.swing.event.*;
@@ -38,12 +38,12 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.border.*;
 import java.util.Vector;
-import newmark.*;
-import newmark.analysis.*;
+import slammer.*;
+import slammer.analysis.*;
 
 class DecoupledSimplifiedPanel extends JPanel implements ActionListener
 {
-	NewmarkTabbedPane parent;
+	SlammerTabbedPane parent;
 
 	String zero = "0";
 
@@ -91,7 +91,7 @@ class DecoupledSimplifiedPanel extends JPanel implements ActionListener
 
 	Double kyd, hd, vsd, md, rockd, rd, mheaSd, meanperSd, sigdurSd, normdispSd, allowdispd;
 
-	public DecoupledSimplifiedPanel(NewmarkTabbedPane parent) throws Exception
+	public DecoupledSimplifiedPanel(SlammerTabbedPane parent) throws Exception
 	{
 		this.parent = parent;
 

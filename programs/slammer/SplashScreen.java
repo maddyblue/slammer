@@ -19,7 +19,7 @@
 
 /* $Id$ */
 
-package newmark;
+package slammer;
 
 import javax.swing.*;
 import java.awt.*;
@@ -54,7 +54,7 @@ public class SplashScreen extends JComponent
 		};
 
 		image = getToolkit().getImage(
-			getClass().getResource("/newmark/images/" +
+			getClass().getResource("/slammer/images/" +
 				images[(int)(images.length * Math.random())]
 				+ ".jpg"));
 		MediaTracker tracker = new MediaTracker(this);
@@ -122,7 +122,7 @@ public class SplashScreen extends JComponent
 
 		g.setColor(Color.black);
 
-		String str = "Starting Newmark Programs";
+		String str = "Starting Slammer Program";
 
 		g.drawString(str,
 			(getWidth() - fm.stringWidth(str)) / 2,

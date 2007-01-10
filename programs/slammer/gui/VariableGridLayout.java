@@ -21,7 +21,7 @@
 
 /* Note: this file was used from jEdit. */
 
-package newmark.gui;
+package slammer.gui;
 
 import java.awt.*;
 

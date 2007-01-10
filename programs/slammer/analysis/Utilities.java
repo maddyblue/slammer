@@ -30,13 +30,13 @@
 
 /* $Id$ */
 
-package newmark.analysis;
+package slammer.analysis;
 
 import java.text.DecimalFormat;
 import java.io.*;
 import org.jfree.data.xy.XYSeries;
-import newmark.gui.*;
-import newmark.*;
+import slammer.gui.*;
+import slammer.*;
 
 public class Utilities extends Analysis
 {

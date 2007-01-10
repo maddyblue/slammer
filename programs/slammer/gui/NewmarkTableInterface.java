@@ -30,9 +30,9 @@
 
 /* $Id$ */
 
-package newmark.gui;
+package slammer.gui;
 
-public interface NewmarkTableInterface
+public interface SlammerTableInterface
 {
 	public static final int NONE    = 0;
 

@@ -30,7 +30,7 @@
 
 /* $Id$ */
 
-package newmark;
+package slammer;
 
 import java.sql.*;
 

@@ -30,7 +30,7 @@
 
 /* $Id$ */
 
-package newmark.gui;
+package slammer.gui;
 
 import javax.swing.*;
 import javax.swing.event.*;
@@ -45,8 +45,8 @@ import org.jfree.chart.*;
 import java.text.DecimalFormat;
 import java.util.*;
 import java.io.*;
-import newmark.*;
-import newmark.analysis.*;
+import slammer.*;
+import slammer.analysis.*;
 
 class ResultsPanel extends JPanel implements ActionListener
 {
@@ -65,7 +65,7 @@ class ResultsPanel extends JPanel implements ActionListener
 
 	String polarityName[] = { "Normal", "Inverse", "Average" };
 
-	NewmarkTabbedPane parent;
+	SlammerTabbedPane parent;
 
 	JTextField decimalsTF = new JTextField("1", 2);
 
@@ -111,7 +111,7 @@ class ResultsPanel extends JPanel implements ActionListener
 	XYSeriesCollection xycol;
 	String parameters;
 
-	public ResultsPanel(NewmarkTabbedPane parent) throws Exception
+	public ResultsPanel(SlammerTabbedPane parent) throws Exception
 	{
 		this.parent = parent;
 
@@ -475,11 +475,11 @@ class ResultsPanel extends JPanel implements ActionListener
 
 								if(paramRigid)
 								{
-									norm = RigidBlock.NewmarkRigorous("norm", dat, di, ca, scale, paramDualslope, thrust, scaleRB);
+									norm = RigidBlock.SlammerRigorous("norm", dat, di, ca, scale, paramDualslope, thrust, scaleRB);
 									Analysis.graphData.setKey(row[0] + " - " + row[1] + " - " + ParametersPanel.stringRB + ", " + polarityName[NOR]);
 									xys[i - 1][RB][NOR] = Analysis.graphData;
 
-									inv = RigidBlock.NewmarkRigorous("inv", dat, di, ca, iscale, paramDualslope, thrust, scaleRB);
+									inv = RigidBlock.SlammerRigorous("inv", dat, di, ca, iscale, paramDualslope, thrust, scaleRB);
 									Analysis.graphData.setKey(row[0] + " - " + row[1] + " - " + ParametersPanel.stringRB + ", " + polarityName[INV]);
 									xys[i - 1][RB][INV] = Analysis.graphData;
 

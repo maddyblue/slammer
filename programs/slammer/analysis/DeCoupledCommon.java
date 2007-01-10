@@ -8,7 +8,7 @@
 
 /* $Id$ */
 
-package newmark.analysis;
+package slammer.analysis;
 
 
 public class DeCoupledCommon extends Analysis

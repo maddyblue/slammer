@@ -30,18 +30,18 @@
 
 /* $Id$ */
 
-package newmark.gui;
+package slammer.gui;
 
 import java.sql.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Vector;
-import newmark.*;
+import slammer.*;
 
-class NewmarkTable extends JPanel implements ActionListener, NewmarkTableInterface
+class SlammerTable extends JPanel implements ActionListener, SlammerTableInterface
 {
-	NewmarkTableModel model;
+	SlammerTableModel model;
 	JTable table;
 	boolean selectTable;
 	String selectStr;
@@ -58,7 +58,7 @@ class NewmarkTable extends JPanel implements ActionListener, NewmarkTableInterfa
 	 * from the records manager page.  If selectTable is false, the records manager
 	 * page is used.
 	 */
-	public NewmarkTable(boolean selectTable) throws Exception
+	public SlammerTable(boolean selectTable) throws Exception
 	{
 		sortList = getSortList();
 		primarySort = new JComboBox(sortList);
@@ -80,7 +80,7 @@ class NewmarkTable extends JPanel implements ActionListener, NewmarkTableInterfa
 		order.setActionCommand("sort");
 		order.addActionListener(this);
 
-		model = new NewmarkTableModel(selectTable, primarySort, secondarySort, order);
+		model = new SlammerTableModel(selectTable, primarySort, secondarySort, order);
 		table = new JTable(model);
 
 		recordButton.setActionCommand("record");
@@ -244,7 +244,7 @@ class NewmarkTable extends JPanel implements ActionListener, NewmarkTableInterfa
 		return ret;
 	}
 
-	public NewmarkTableModel getModel()
+	public SlammerTableModel getModel()
 	{
 		return model;
 	}

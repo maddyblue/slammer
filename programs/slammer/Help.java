@@ -30,7 +30,7 @@
 
 /* $Id$ */
 
-package newmark;
+package slammer;
 
 import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -45,7 +45,7 @@ import javax.swing.JSplitPane;
 import javax.swing.JFrame;
 import java.awt.*;
 import java.awt.event.*;
-import newmark.gui.*;
+import slammer.gui.*;
 
 public class Help extends JFrame
 {
@@ -56,11 +56,11 @@ public class Help extends JFrame
 	private boolean playWithLineStyle = false;
 	private String lineStyle = "Angled";
 
-	public static final String prefix = "jar:file:newmark.jar!/help/";
+	public static final String prefix = "jar:file:slammer.jar!/help/";
 
 	public Help()
 	{
-		super("Newmark Help");
+		super("Slammer Help");
 
 		//Create the nodes.
 		DefaultMutableTreeNode top = new DefaultMutableTreeNode("Help");
@@ -325,13 +325,13 @@ public class Help extends JFrame
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
-			("Newmark Analysis",
-			"terms/newmarkAnalysis.html"));
+			("Slammer Analysis",
+			"terms/slammerAnalysis.html"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
-			("Newmark Displacement",
-			"terms/newmarkDisplacement.html"));
+			("Slammer Displacement",
+			"terms/slammerDisplacement.html"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
@@ -354,67 +354,67 @@ public class Help extends JFrame
 			"terms/thrustAngle.html"));
 			category.add(book);
 
-		category = new DefaultMutableTreeNode("Newmark Documentation");
+		category = new DefaultMutableTreeNode("Slammer Documentation");
 		top.add(category);
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("Title",
-			"science/newmark.html"));
+			"science/slammer.html"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("Abstract",
-			"science/newmark.html#ABSTRACT"));
+			"science/slammer.html#ABSTRACT"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("Introduction",
-			"science/newmark.html#INTRODUCTION"));
+			"science/slammer.html#INTRODUCTION"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
-			("Past Applications Of Newmark's Method",
-			"science/newmark.html#PAST APPLICATIONS OF NEWMARK'S METHOD"));
+			("Past Applications Of Slammer's Method",
+			"science/slammer.html#PAST APPLICATIONS OF SLAMMER'S METHOD"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("Types of Sliding-Block Analysis Currently in Use",
-			"science/newmark.html#TYPES OF SLIDING-BLOCK ANALYSIS CURRENTLY IN USE"));
+			"science/slammer.html#TYPES OF SLIDING-BLOCK ANALYSIS CURRENTLY IN USE"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("Which Analysis Should Be Used?",
-			"science/newmark.html#WHICH ANALYSIS SHOULD BE USED?"));
+			"science/slammer.html#WHICH ANALYSIS SHOULD BE USED?"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
-			("Conducting A Newmark Analysis",
-			"science/newmark.html#CONDUCTING A NEWMARK ANALYSIS"));
+			("Conducting A Slammer Analysis",
+			"science/slammer.html#CONDUCTING A SLAMMER ANALYSIS"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
-			("A Simplified Newmark Method",
-			"science/newmark.html#A SIMPLIFIED NEWMARK METHOD"));
+			("A Simplified Slammer Method",
+			"science/slammer.html#A SIMPLIFIED SLAMMER METHOD"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
-			("Interpreting Newmark Displacements",
-			"science/newmark.html#INTERPRETING NEWMARK DISPLACEMENTS"));
+			("Interpreting Slammer Displacements",
+			"science/slammer.html#INTERPRETING SLAMMER DISPLACEMENTS"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("Discussion",
-			"science/newmark.html#DISCUSSION"));
+			"science/slammer.html#DISCUSSION"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("Conclusion",
-			"science/newmark.html#CONCLUSION"));
+			"science/slammer.html#CONCLUSION"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("References",
-			"science/newmark.html#REFERENCES"));
+			"science/slammer.html#REFERENCES"));
 			category.add(book);
 	}
 }

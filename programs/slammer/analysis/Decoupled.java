@@ -8,9 +8,9 @@
 
 /* $Id$ */
 
-package newmark.analysis;
+package slammer.analysis;
 
-import newmark.*;
+import slammer.*;
 
 public class Decoupled extends DeCoupledCommon
 {
@@ -114,7 +114,7 @@ public class Decoupled extends DeCoupledCommon
 		*/
 		scal *= -1.0;
 
-		// for each mode calculate constants for Newmark algorithm
+		// for each mode calculate constants for Slammer algorithm
 		//////////////////////////////////////////////////////////////////////// /
 
 		beta = 0.25;

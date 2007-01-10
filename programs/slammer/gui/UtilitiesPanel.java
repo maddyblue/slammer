@@ -30,7 +30,7 @@
 
 /* $Id$ */
 
-package newmark.gui;
+package slammer.gui;
 
 import javax.swing.*;
 import javax.swing.event.*;
@@ -39,8 +39,8 @@ import java.awt.event.*;
 import javax.swing.border.*;
 import java.util.Vector;
 import java.io.*;
-import newmark.*;
-import newmark.analysis.*;
+import slammer.*;
+import slammer.analysis.*;
 
 class UtilitiesPanel extends JPanel implements ActionListener
 {
@@ -51,7 +51,7 @@ class UtilitiesPanel extends JPanel implements ActionListener
 	public final static int SELECT_BRACKET = 5;
 	public final static int SELECT_TRIM    = 6;
 
-	NewmarkTabbedPane parent;
+	SlammerTabbedPane parent;
 
 	JRadioButton cmgs = new JRadioButton("<html>Convert cm/s<sup>2</sup> to g's</html>");
 	JRadioButton gscm = new JRadioButton("<html>Convert g's to cm/s<sup>2</sup></html>");
@@ -87,7 +87,7 @@ class UtilitiesPanel extends JPanel implements ActionListener
 
 	JTextField headerField = new JTextField(5);
 
-	public UtilitiesPanel(NewmarkTabbedPane parent)
+	public UtilitiesPanel(SlammerTabbedPane parent)
 	{
 		this.parent = parent;
 

@@ -30,17 +30,17 @@
 
 /* $Id$ */
 
-package newmark.gui;
+package slammer.gui;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import newmark.*;
+import slammer.*;
 
 public class AddRecordsTableModel extends DefaultTableModel
 {
 	public AddRecordsTableModel()
 	{
-		setColumnIdentifiers(NewmarkTable.getColumnList(NewmarkTable.colAbbrev, NewmarkTable.colImport, NewmarkTable.IMTBL));
+		setColumnIdentifiers(SlammerTable.getColumnList(SlammerTable.colAbbrev, SlammerTable.colImport, SlammerTable.IMTBL));
 	}
 
 	public boolean isCellEditable(int row, int col)
@@ -94,19 +94,19 @@ public class AddRecordsTableModel extends DefaultTableModel
 		for(int i = 0; i < getColumnCount(); i++)
 		{
 			cn = getColumnName(i);
-			if(cn.equals(NewmarkTable.fieldArray[NewmarkTable.rowImport][NewmarkTable.colAbbrev]))
+			if(cn.equals(SlammerTable.fieldArray[SlammerTable.rowImport][SlammerTable.colAbbrev]))
 			{
 				dat[i] = new Boolean(true);
 			}
-			else if(cn.equals(NewmarkTable.fieldArray[NewmarkTable.rowFile][NewmarkTable.colAbbrev]))
+			else if(cn.equals(SlammerTable.fieldArray[SlammerTable.rowFile][SlammerTable.colAbbrev]))
 			{
 				dat[i] = s;
 			}
-			else if(cn.equals(NewmarkTable.fieldArray[NewmarkTable.rowEarthquake][NewmarkTable.colAbbrev]))
+			else if(cn.equals(SlammerTable.fieldArray[SlammerTable.rowEarthquake][SlammerTable.colAbbrev]))
 			{
 				dat[i] = eq;
 			}
-			else if(cn.equals(NewmarkTable.fieldArray[NewmarkTable.rowRecord][NewmarkTable.colAbbrev]))
+			else if(cn.equals(SlammerTable.fieldArray[SlammerTable.rowRecord][SlammerTable.colAbbrev]))
 			{
 				dat[i] = name;
 			}

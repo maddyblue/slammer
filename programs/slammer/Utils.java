@@ -30,12 +30,12 @@
 
 /* $Id$ */
 
-package newmark;
+package slammer;
 
 import java.sql.*;
 import javax.swing.*;
 import java.util.Vector;
-import newmark.gui.*;
+import slammer.gui.*;
 
 public class Utils
 {

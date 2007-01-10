@@ -1,6 +1,6 @@
 /* $Id$ */
 
-package newmark.gui;
+package slammer.gui;
 
 import javax.swing.SwingUtilities;
 

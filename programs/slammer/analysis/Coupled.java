@@ -8,9 +8,9 @@
 
 /* $Id$ */
 
-package newmark.analysis;
+package slammer.analysis;
 
-import newmark.*;
+import slammer.*;
 
 public class Coupled extends DeCoupledCommon
 {
@@ -124,7 +124,7 @@ public class Coupled extends DeCoupledCommon
 		System.out.println("INITIAL" + "  " + vs + "  " + vr + "  " + damp + "  " + dampf + "  " + (damp+dampf));
 		// */
 
-		// for each mode calculate constants for Newmark algorithm
+		// for each mode calculate constants for Slammer algorithm
 		/////////////////////////////////////////////////////////////////////////
 
 		beta = 0.25;

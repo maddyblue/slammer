@@ -30,7 +30,7 @@
 
 /* $Id$ */
 
-package newmark.gui;
+package slammer.gui;
 
 import javax.swing.*;
 import javax.swing.event.*;
@@ -38,13 +38,13 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.border.*;
 import java.util.Vector;
-import newmark.*;
+import slammer.*;
 
 class SelectRecordsPanel extends JPanel implements ActionListener,TableModelListener
 {
-	NewmarkTabbedPane parent;
+	SlammerTabbedPane parent;
 
-	String[][] searchList = NewmarkTable.getSearchList();
+	String[][] searchList = SlammerTable.getSearchList();
 	JTextField[][] textFields = new JTextField[searchList.length][2];
 
 	JButton searchButton = new JButton("Search for records");
@@ -56,17 +56,17 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 	JButton selectRecord = new JButton("Add record");
 
 	JCheckBox FocMechAll = new JCheckBox("All", true);
-	JCheckBox FocMechStrikeSlip = new JCheckBox(NewmarkTable.FocMechArray[NewmarkTable.FMStrikeSlip]);
-	JCheckBox FocMechReverse = new JCheckBox(NewmarkTable.FocMechArray[NewmarkTable.FMReverse]);
-	JCheckBox FocMechNormal = new JCheckBox(NewmarkTable.FocMechArray[NewmarkTable.FMNormal]);
-	JCheckBox FocMechObliqueReverse = new JCheckBox(NewmarkTable.FMObliqueReverseLong);
-	JCheckBox FocMechObliqueNormal = new JCheckBox(NewmarkTable.FMObliqueNormalLong);
+	JCheckBox FocMechStrikeSlip = new JCheckBox(SlammerTable.FocMechArray[SlammerTable.FMStrikeSlip]);
+	JCheckBox FocMechReverse = new JCheckBox(SlammerTable.FocMechArray[SlammerTable.FMReverse]);
+	JCheckBox FocMechNormal = new JCheckBox(SlammerTable.FocMechArray[SlammerTable.FMNormal]);
+	JCheckBox FocMechObliqueReverse = new JCheckBox(SlammerTable.FMObliqueReverseLong);
+	JCheckBox FocMechObliqueNormal = new JCheckBox(SlammerTable.FMObliqueNormalLong);
 
 	JCheckBox SiteClassAll = new JCheckBox("All", true);
-	JCheckBox SiteClassHardRock = new JCheckBox(NewmarkTable.SiteClassArray[NewmarkTable.SCHardRock]);
-	JCheckBox SiteClassSoftRock = new JCheckBox(NewmarkTable.SiteClassArray[NewmarkTable.SCSoftRock]);
-	JCheckBox SiteClassStiffSoil = new JCheckBox(NewmarkTable.SiteClassArray[NewmarkTable.SCStiffSoil]);
-	JCheckBox SiteClassSoftSoil = new JCheckBox(NewmarkTable.SiteClassArray[NewmarkTable.SCSoftSoil]);
+	JCheckBox SiteClassHardRock = new JCheckBox(SlammerTable.SiteClassArray[SlammerTable.SCHardRock]);
+	JCheckBox SiteClassSoftRock = new JCheckBox(SlammerTable.SiteClassArray[SlammerTable.SCSoftRock]);
+	JCheckBox SiteClassStiffSoil = new JCheckBox(SlammerTable.SiteClassArray[SlammerTable.SCStiffSoil]);
+	JCheckBox SiteClassSoftSoil = new JCheckBox(SlammerTable.SiteClassArray[SlammerTable.SCSoftSoil]);
 
 	JButton selectNone = new JButton("Deselect all for analysis");
 	JButton selectAll = new JButton("Select all for analysis");
@@ -76,13 +76,13 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 	JButton groupManage = new JButton("Manage groups...");
 	GroupFrame groupFrame;
 
-	NewmarkTable table;
+	SlammerTable table;
 
 	JButton next = new JButton("Go to Step 2: Select Analyses");
 
 	JLabel selectLabel = new JLabel();
 
-	public SelectRecordsPanel(NewmarkTabbedPane parent) throws Exception
+	public SelectRecordsPanel(SlammerTabbedPane parent) throws Exception
 	{
 		this.parent = parent;
 
@@ -149,7 +149,7 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 		JPanel selectPanel = new JPanel(new BorderLayout());
 
 		selectPanel.add(BorderLayout.NORTH, createTabbedPanel());
-		selectPanel.add(BorderLayout.CENTER, createNewmarkTablePanel());
+		selectPanel.add(BorderLayout.CENTER, createSlammerTablePanel());
 		selectPanel.add(BorderLayout.SOUTH, selectLabel);
 
 		setLayout(new BorderLayout());
@@ -186,7 +186,7 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 	private JPanel createFocMechPanel()
 	{
 		Vector list = new Vector();
-		list.add(new JLabel(NewmarkTable.fieldArray[NewmarkTable.rowFocMech][NewmarkTable.colFieldName].toString() + ": "));
+		list.add(new JLabel(SlammerTable.fieldArray[SlammerTable.rowFocMech][SlammerTable.colFieldName].toString() + ": "));
 		list.add(FocMechAll);
 		list.add(FocMechStrikeSlip);
 		list.add(FocMechNormal);
@@ -200,7 +200,7 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 	private JPanel createSiteClassPanel()
 	{
 		Vector list = new Vector();
-		list.add(new JLabel(NewmarkTable.fieldArray[NewmarkTable.rowSiteClass][NewmarkTable.colFieldName].toString() + ": "));
+		list.add(new JLabel(SlammerTable.fieldArray[SlammerTable.rowSiteClass][SlammerTable.colFieldName].toString() + ": "));
 		list.add(SiteClassAll);
 		list.add(SiteClassHardRock);
 		list.add(SiteClassSoftRock);
@@ -314,7 +314,7 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 		return panel;
 	}
 
-	private JPanel createNewmarkTablePanel() throws Exception
+	private JPanel createSlammerTablePanel() throws Exception
 	{
 		JPanel searchTablePanel = new JPanel(new BorderLayout());
 
@@ -328,7 +328,7 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 		header.add(BorderLayout.WEST, label);
 		header.setBorder(GUIUtils.makeCompoundBorder(3, 0, 0, 0));
 
-		table = new NewmarkTable(true);
+		table = new SlammerTable(true);
 
 		JPanel footer = new JPanel(new BorderLayout());
 		Box footerEast = new Box(BoxLayout.X_AXIS);
@@ -363,7 +363,7 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 					if(record == "Select all records")
 					{
 						Utils.getDB().runUpdate("update data set select2=1, analyze=1 where eq='" + eq + "' and select2=0");
-						table.setModel(NewmarkTable.REFRESH);
+						table.setModel(SlammerTable.REFRESH);
 					}
 					else
 						table.addRecord(eq, record, true);
@@ -373,7 +373,7 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 			else if(command.equals("all"))
 			{
 				Utils.getDB().runUpdate("update data set analyze=1 where select2=1 and analyze=0");
-				table.setModel(NewmarkTable.REFRESH);
+				table.setModel(SlammerTable.REFRESH);
 				updateSelectLabel();
 			}
 			else if(command.equals("clear"))
@@ -443,7 +443,7 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 			else if(command.equals("none"))
 			{
 				Utils.getDB().runUpdate("update data set analyze=0 where select2=1 and analyze=1");
-				table.setModel(NewmarkTable.REFRESH);
+				table.setModel(SlammerTable.REFRESH);
 				updateSelectLabel();
 			}
 			else if(command.equals("search"))
@@ -478,23 +478,23 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 				}
 
 				String FocMechWhere = "";
-				String dbname = NewmarkTable.fieldArray[NewmarkTable.rowFocMech][NewmarkTable.colDBName].toString();
-				FocMechWhere += makeCheckBoxString(FocMechWhere, dbname, Integer.toString(NewmarkTable.FMStrikeSlip), FocMechStrikeSlip);
-				FocMechWhere += makeCheckBoxString(FocMechWhere, dbname, Integer.toString(NewmarkTable.FMReverse), FocMechReverse);
-				FocMechWhere += makeCheckBoxString(FocMechWhere, dbname, Integer.toString(NewmarkTable.FMNormal), FocMechNormal);
-				FocMechWhere += makeCheckBoxString(FocMechWhere, dbname, Integer.toString(NewmarkTable.FMObliqueReverse), FocMechObliqueReverse);
-				FocMechWhere += makeCheckBoxString(FocMechWhere, dbname, Integer.toString(NewmarkTable.FMObliqueNormal), FocMechObliqueNormal);
+				String dbname = SlammerTable.fieldArray[SlammerTable.rowFocMech][SlammerTable.colDBName].toString();
+				FocMechWhere += makeCheckBoxString(FocMechWhere, dbname, Integer.toString(SlammerTable.FMStrikeSlip), FocMechStrikeSlip);
+				FocMechWhere += makeCheckBoxString(FocMechWhere, dbname, Integer.toString(SlammerTable.FMReverse), FocMechReverse);
+				FocMechWhere += makeCheckBoxString(FocMechWhere, dbname, Integer.toString(SlammerTable.FMNormal), FocMechNormal);
+				FocMechWhere += makeCheckBoxString(FocMechWhere, dbname, Integer.toString(SlammerTable.FMObliqueReverse), FocMechObliqueReverse);
+				FocMechWhere += makeCheckBoxString(FocMechWhere, dbname, Integer.toString(SlammerTable.FMObliqueNormal), FocMechObliqueNormal);
 				if(FocMechWhere.equals(""))
 					FocMechAll.setSelected(true);
 				if(FocMechAll.isSelected())
 					FocMechWhere = "";
 
 				String SiteClassWhere = "";
-				dbname = NewmarkTable.fieldArray[NewmarkTable.rowSiteClass][NewmarkTable.colDBName].toString();
-				SiteClassWhere += makeCheckBoxString(SiteClassWhere, dbname, Integer.toString(NewmarkTable.SCHardRock), SiteClassHardRock);
-				SiteClassWhere += makeCheckBoxString(SiteClassWhere, dbname, Integer.toString(NewmarkTable.SCSoftRock), SiteClassSoftRock);
-				SiteClassWhere += makeCheckBoxString(SiteClassWhere, dbname, Integer.toString(NewmarkTable.SCStiffSoil), SiteClassStiffSoil);
-				SiteClassWhere += makeCheckBoxString(SiteClassWhere, dbname, Integer.toString(NewmarkTable.SCSoftSoil), SiteClassSoftSoil);
+				dbname = SlammerTable.fieldArray[SlammerTable.rowSiteClass][SlammerTable.colDBName].toString();
+				SiteClassWhere += makeCheckBoxString(SiteClassWhere, dbname, Integer.toString(SlammerTable.SCHardRock), SiteClassHardRock);
+				SiteClassWhere += makeCheckBoxString(SiteClassWhere, dbname, Integer.toString(SlammerTable.SCSoftRock), SiteClassSoftRock);
+				SiteClassWhere += makeCheckBoxString(SiteClassWhere, dbname, Integer.toString(SlammerTable.SCStiffSoil), SiteClassStiffSoil);
+				SiteClassWhere += makeCheckBoxString(SiteClassWhere, dbname, Integer.toString(SlammerTable.SCSoftSoil), SiteClassSoftSoil);
 				if(SiteClassWhere.equals(""))
 					SiteClassAll.setSelected(true);
 				if(SiteClassAll.isSelected())
@@ -516,7 +516,7 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 						else
 						{
 							searchTA.setText("Search complete. " + result + " records found.");
-							table.setModel(NewmarkTable.REFRESH);
+							table.setModel(SlammerTable.REFRESH);
 							updateSelectLabel();
 						}
 					}
@@ -555,7 +555,7 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 	{
 		int row = e.getFirstRow();
 		int column = e.getColumn();
-		NewmarkTableModel model = table.getModel();
+		SlammerTableModel model = table.getModel();
 		if(model.isCellEditable(row, column) == false) return;
 
 		try

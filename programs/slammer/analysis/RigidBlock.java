@@ -30,15 +30,15 @@
 
 /* $Id$ */
 
-package newmark.analysis;
+package slammer.analysis;
 
 import java.text.DecimalFormat;
-import newmark.*;
+import slammer.*;
 import java.io.*;
 
 public class RigidBlock extends Analysis
 {
-	public static double NewmarkRigorous(String oname, DoubleList data, final double d, final double[][] disp, final double mult, final boolean dualSlope, final double ta, final double unitMult)
+	public static double SlammerRigorous(String oname, DoubleList data, final double d, final double[][] disp, final double mult, final boolean dualSlope, final double ta, final double unitMult)
 	{
 		Double val; // current data value from input file
 		double a, n, q = 0, r = 0, s = 0, t, u = 0, v = 0, y = 0;

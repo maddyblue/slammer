@@ -30,7 +30,7 @@
 
 /* $Id$ */
 
-package newmark.gui;
+package slammer.gui;
 
 import javax.swing.*;
 import javax.swing.event.*;
@@ -38,12 +38,12 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.border.*;
 import java.util.Vector;
-import newmark.*;
-import newmark.analysis.*;
+import slammer.*;
+import slammer.analysis.*;
 
 class WhichAnalysisPanel extends JPanel implements ActionListener
 {
-	NewmarkTabbedPane parent;
+	SlammerTabbedPane parent;
 
 	String zero = "0";
 
@@ -70,7 +70,7 @@ class WhichAnalysisPanel extends JPanel implements ActionListener
 
 	public static final int tstmIndex = 4;
 
-	public WhichAnalysisPanel(NewmarkTabbedPane parent) throws Exception
+	public WhichAnalysisPanel(SlammerTabbedPane parent) throws Exception
 	{
 		this.parent = parent;
 

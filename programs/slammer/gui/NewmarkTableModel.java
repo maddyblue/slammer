@@ -30,21 +30,21 @@
 
 /* $Id$ */
 
-package newmark.gui;
+package slammer.gui;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.text.DecimalFormat;
-import newmark.*;
-import newmark.analysis.*;
+import slammer.*;
+import slammer.analysis.*;
 
-class NewmarkTableModel extends DefaultTableModel implements NewmarkTableInterface
+class SlammerTableModel extends DefaultTableModel implements SlammerTableInterface
 {
 	int currentModel;
 	boolean selectTable;
 	JComboBox primarySort, secondarySort, order;
 
-	public NewmarkTableModel(boolean selectTable, JComboBox primarySort, JComboBox secondarySort, JComboBox order) throws Exception
+	public SlammerTableModel(boolean selectTable, JComboBox primarySort, JComboBox secondarySort, JComboBox order) throws Exception
 	{
 		this.selectTable = selectTable;
 		this.primarySort = primarySort;
@@ -101,7 +101,7 @@ class NewmarkTableModel extends DefaultTableModel implements NewmarkTableInterfa
 
 		Object cols[] = new Object[ret[0].length];
 		for(int i = 0; i < cols.length; i++)
-			cols[i] = NewmarkTable.getColValue(colDBName, colAbbrev, ret[0][i].toString());
+			cols[i] = SlammerTable.getColValue(colDBName, colAbbrev, ret[0][i].toString());
 
 		Object data[][] = new Object[ret.length - 1][cols.length];
 		for(int i = 0; i < data.length; i++)
@@ -189,8 +189,8 @@ class NewmarkTableModel extends DefaultTableModel implements NewmarkTableInterfa
 		}
 
 		ret = "SELECT " + ret + " FROM data WHERE select" + (selectTable ? "2" : "1") + "=1 ORDER BY "
-			+ NewmarkTable.getColValue(colFieldName, colDBName, primarySort.getSelectedItem().toString()) + " " + primaryOrder + ","
-			+ NewmarkTable.getColValue(colFieldName, colDBName, secondarySort.getSelectedItem().toString()) + " " + secondaryOrder;
+			+ SlammerTable.getColValue(colFieldName, colDBName, primarySort.getSelectedItem().toString()) + " " + primaryOrder + ","
+			+ SlammerTable.getColValue(colFieldName, colDBName, secondarySort.getSelectedItem().toString()) + " " + secondaryOrder;
 		return ret;
 	}
 }

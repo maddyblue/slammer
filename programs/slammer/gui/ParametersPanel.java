@@ -30,7 +30,7 @@
 
 /* $Id$ */
 
-package newmark.gui;
+package slammer.gui;
 
 import javax.swing.*;
 import javax.swing.event.*;
@@ -39,12 +39,12 @@ import java.awt.event.*;
 import javax.swing.border.*;
 import java.util.Vector;
 import java.io.*;
-import newmark.*;
-import newmark.analysis.*;
+import slammer.*;
+import slammer.analysis.*;
 
 class ParametersPanel extends JPanel implements ActionListener
 {
-	NewmarkTabbedPane parent;
+	SlammerTabbedPane parent;
 
 	ButtonGroup scaleGroup = new ButtonGroup();
 	public JRadioButton scaleOff = new JRadioButton("Do not scale", true);
@@ -103,7 +103,7 @@ class ParametersPanel extends JPanel implements ActionListener
 
 	JButton next = new JButton("Go to Step 3: Perform Analyses and View Results");
 
-	public ParametersPanel(NewmarkTabbedPane parent)
+	public ParametersPanel(SlammerTabbedPane parent)
 	{
 		this.parent = parent;
 

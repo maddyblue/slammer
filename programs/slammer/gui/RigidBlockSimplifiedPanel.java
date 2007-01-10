@@ -30,7 +30,7 @@
 
 /* $Id$ */
 
-package newmark.gui;
+package slammer.gui;
 
 import javax.swing.*;
 import javax.swing.event.*;
@@ -38,12 +38,12 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.border.*;
 import java.util.Vector;
-import newmark.*;
-import newmark.analysis.*;
+import slammer.*;
+import slammer.analysis.*;
 
 class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 {
-	NewmarkTabbedPane parent;
+	SlammerTabbedPane parent;
 
 	JRadioButton Jibson1993 = new JRadioButton("Jibson (1993)");
 	JRadioButton JibsonAndOthers1998 = new JRadioButton("Jibson and others (1998, 2000)");
@@ -66,39 +66,39 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 	JEditorPane ta = new JEditorPane();
 	JButton button = new JButton("Perform Analysis");
 
-	String Jibson1993Str = "This program estimates rigid-block Newmark displacement as a function of Arias shaking intensity and critical acceleration as explained in Jibson (1993). The estimate is made using the following regression equation:"
+	String Jibson1993Str = "This program estimates rigid-block Slammer displacement as a function of Arias shaking intensity and critical acceleration as explained in Jibson (1993). The estimate is made using the following regression equation:"
 	+ "<p>log <i>D<sub>n</sub></i> = 1.460 log <i>I<sub>a</sub></i> - 6.642 log <i>a<sub>c</sub></i> + 1.546"
-	+ "<p>where <i>D<sub>n</sub></i> is Newmark displacement in centimeters, <i>I<sub>a</sub></i> is Arias Intensity in meters per second, and <i>a<sub>c</sub></i> is critical acceleration in g's. This equation was developed by conducting rigorous Newmark integrations on 11 single-component strong-motion records for several discrete values of critical acceleration. The regression model has an R<sup>2</sup> value of 87% and a model standard deviation of 0.409.</p>";
+	+ "<p>where <i>D<sub>n</sub></i> is Slammer displacement in centimeters, <i>I<sub>a</sub></i> is Arias Intensity in meters per second, and <i>a<sub>c</sub></i> is critical acceleration in g's. This equation was developed by conducting rigorous Slammer integrations on 11 single-component strong-motion records for several discrete values of critical acceleration. The regression model has an R<sup>2</sup> value of 87% and a model standard deviation of 0.409.</p>";
 
-	String JibsonAndOthers1998Str = "This program estimates rigid-block Newmark displacement as a function of Arias shaking intensity and critical acceleration as explained in Jibson and others (1998, 2000). The estimate is made using the following regression equation:"
+	String JibsonAndOthers1998Str = "This program estimates rigid-block Slammer displacement as a function of Arias shaking intensity and critical acceleration as explained in Jibson and others (1998, 2000). The estimate is made using the following regression equation:"
 	+ "<p>log <i>D<sub>n</sub></i> = 1.521 log <i>I<sub>a</sub></i> - 1.993 log <i>a<sub>c</sub></i> - 1.546"
-	+ "<p>where <i>D<sub>n</sub></i> is Newmark displacement in centimeters, <i>I<sub>a</sub></i> is Arias Intensity in meters per second, and <i>a<sub>c</sub></i> is critical acceleration in g's. This equation was developed by conducting rigorous Newmark integrations on 555 single-component strong-motion records from 13 earthquakes for several discrete values of critical acceleration. The regression model has an R<sup>2</sup> value of 87% and a model standard deviation of 0.375.</p>";
+	+ "<p>where <i>D<sub>n</sub></i> is Slammer displacement in centimeters, <i>I<sub>a</sub></i> is Arias Intensity in meters per second, and <i>a<sub>c</sub></i> is critical acceleration in g's. This equation was developed by conducting rigorous Slammer integrations on 555 single-component strong-motion records from 13 earthquakes for several discrete values of critical acceleration. The regression model has an R<sup>2</sup> value of 87% and a model standard deviation of 0.375.</p>";
 
-	String Jibson2007CAStr = "This program estimates rigid-block Newmark displacement as a function of critical acceleration ratio as explained in Jibson (2007). The estimate is made using the following regression equation:"
+	String Jibson2007CAStr = "This program estimates rigid-block Slammer displacement as a function of critical acceleration ratio as explained in Jibson (2007). The estimate is made using the following regression equation:"
 	+ "<p>log <i>D<sub>n</sub></i> = 0.215 + log [ ( 1 - <i>a<sub>c</sub></i> / <i>a<sub>max</sub></i> ) <sup>2.341</sup> ( <i>a<sub>c</sub></i> / <i>a<sub>max</sub></i> ) <sup>-1.438</sup> ]"
-	+ "<p>where <i>D<sub>n</sub></i> is Newmark displacement in centimeters, <i>a<sub>c</sub></i> is critical acceleration in g's, and <i>a<sub>max</sub></i> is horizontal peak ground acceleration (PGA) in g's. This equation was developed by conducting rigorous Newmark integrations on 2270 single-component strong-motion records from 30 earthquakes for several discrete values of critical acceleration. The regression model has an R<sup>2</sup> value of 84% and a model standard deviation of 0.510.</p>";
+	+ "<p>where <i>D<sub>n</sub></i> is Slammer displacement in centimeters, <i>a<sub>c</sub></i> is critical acceleration in g's, and <i>a<sub>max</sub></i> is horizontal peak ground acceleration (PGA) in g's. This equation was developed by conducting rigorous Slammer integrations on 2270 single-component strong-motion records from 30 earthquakes for several discrete values of critical acceleration. The regression model has an R<sup>2</sup> value of 84% and a model standard deviation of 0.510.</p>";
 
-	String Jibson2007CAMStr = "This program estimates rigid-block Newmark displacement as a function of critical acceleration ratio and magnitude as explained in Jibson (2007). The estimate is made using the following regression equation:"
+	String Jibson2007CAMStr = "This program estimates rigid-block Slammer displacement as a function of critical acceleration ratio and magnitude as explained in Jibson (2007). The estimate is made using the following regression equation:"
 	+ "<p>log <i>D<sub>n</sub></i> = -2.710 + log [ ( 1 - <i>a<sub>c</sub></i> / <i>a<sub>max</sub></i> ) <sup>2.335</sup> ( <i>a<sub>c</sub></i> / <i>a<sub>max</sub></i> ) <sup>-1.478</sup> ] + 0.424 <b>M</b>"
-	+ "<p>where <i>D<sub>n</sub></i> is Newmark displacement in centimeters, <i>a<sub>c</sub></i> is critical acceleration in g's, <i>a<sub>max</sub></i> is horizontal peak ground acceleration (PGA) in g's, and <b>M</b> is moment magnitude. This equation was developed by conducting rigorous Newmark integrations on 2270 single-component strong-motion records from 30 earthquakes for several discrete values of critical acceleration. The regression model has an R<sup>2</sup> value of 87% and a model standard deviation of 0.454.</p>";
+	+ "<p>where <i>D<sub>n</sub></i> is Slammer displacement in centimeters, <i>a<sub>c</sub></i> is critical acceleration in g's, <i>a<sub>max</sub></i> is horizontal peak ground acceleration (PGA) in g's, and <b>M</b> is moment magnitude. This equation was developed by conducting rigorous Slammer integrations on 2270 single-component strong-motion records from 30 earthquakes for several discrete values of critical acceleration. The regression model has an R<sup>2</sup> value of 87% and a model standard deviation of 0.454.</p>";
 
-	String Jibson2007AICAStr = "This program estimates rigid-block Newmark displacement as a function of Arias intensity and critical acceleration as explained in Jibson (2007). The estimate is made using the following regression equation:"
+	String Jibson2007AICAStr = "This program estimates rigid-block Slammer displacement as a function of Arias intensity and critical acceleration as explained in Jibson (2007). The estimate is made using the following regression equation:"
 	+ "<p>log <i>D<sub>n</sub></i> = 2.401 log <i>I<sub>a</sub></i> - 3.481 log <i>a<sub>c</sub></i> - 3.320"
-	+ "<p>where <i>D<sub>n</sub></i> is Newmark displacement in centimeters, <i>I<sub>a</sub></i> is Arias Intensity in meters per second, and <i>a<sub>c</sub></i> is critical acceleration in g's. This equation was developed by conducting rigorous Newmark integrations on 875 single-component strong-motion records from 30 earthquakes for several discrete values of critical acceleration. The regression model has an R<sup>2</sup> value of 71% and a model standard deviation of 0.656.</p>";
+	+ "<p>where <i>D<sub>n</sub></i> is Slammer displacement in centimeters, <i>I<sub>a</sub></i> is Arias Intensity in meters per second, and <i>a<sub>c</sub></i> is critical acceleration in g's. This equation was developed by conducting rigorous Slammer integrations on 875 single-component strong-motion records from 30 earthquakes for several discrete values of critical acceleration. The regression model has an R<sup>2</sup> value of 71% and a model standard deviation of 0.656.</p>";
 
-	String Jibson2007AICARStr = "This program estimates rigid-block Newmark displacement as a function of Arias intensity and critical acceleration ratio as explained in Jibson (2007). The estimate is made using the following regression equation:"
+	String Jibson2007AICARStr = "This program estimates rigid-block Slammer displacement as a function of Arias intensity and critical acceleration ratio as explained in Jibson (2007). The estimate is made using the following regression equation:"
 	+ "<p>log <i>D<sub>n</sub></i> = 0.561 log <i>I<sub>a</sub></i> - 3.833 log ( <i>a<sub>c</sub></i> / <i>a<sub>max</sub></i> ) - 1.474"
-	+ "<p>where <i>D<sub>n</sub></i> is Newmark displacement in centimeters, <i>I<sub>a</sub></i> is Arias Intensity in meters per second, <i>a<sub>c</sub></i> is critical acceleration in g's, and <i>a<sub>max</sub></i> is horizontal peak ground acceleration (PGA) in g's. This equation was developed by conducting rigorous Newmark integrations on 875 single-component strong-motion records from 30 earthquakes for several discrete values of critical acceleration. The regression model has an R<sup>2</sup> value of 75% and a model standard deviation of 0.616.</p>";
+	+ "<p>where <i>D<sub>n</sub></i> is Slammer displacement in centimeters, <i>I<sub>a</sub></i> is Arias Intensity in meters per second, <i>a<sub>c</sub></i> is critical acceleration in g's, and <i>a<sub>max</sub></i> is horizontal peak ground acceleration (PGA) in g's. This equation was developed by conducting rigorous Slammer integrations on 875 single-component strong-motion records from 30 earthquakes for several discrete values of critical acceleration. The regression model has an R<sup>2</sup> value of 75% and a model standard deviation of 0.616.</p>";
 
-	String AmbraseysStr = "This program estimates rigid-block Newmark displacement as a function of the critical acceleration and peak ground acceleration using the following equation as explained in Ambraseys and Menu (1988):"
+	String AmbraseysStr = "This program estimates rigid-block Slammer displacement as a function of the critical acceleration and peak ground acceleration using the following equation as explained in Ambraseys and Menu (1988):"
 	+ "<p>log <i>D<sub>n</sub></i> = 0.90 + log[ (1 - a<sub><i>c</i></sub> / a<sub><i>max</i></sub>)<sup>2.53</sup> (a<sub><i>c</i></sub> / a<sub><i>max</i></sub>)<sup>-1.09</sup> ]"
-	+ "<p>where <i>D<sub>n</sub></i> is Newmark displacement in centimeters, <i>a<sub>c</sub></i> is critical (yield) acceleration in g's, and <i>a<sub>max</sub></i> is the peak horizontal ground acceleration in g's.";
+	+ "<p>where <i>D<sub>n</sub></i> is Slammer displacement in centimeters, <i>a<sub>c</sub></i> is critical (yield) acceleration in g's, and <i>a<sub>max</sub></i> is the peak horizontal ground acceleration in g's.";
 
-	String probFailureStr = "This program estimates probability of failure as a function of estimated Newmark displacement (specified in indicated field), as described by Jibson and others (1998, 2000). The probability is estimated using the following equation:"
+	String probFailureStr = "This program estimates probability of failure as a function of estimated Slammer displacement (specified in indicated field), as described by Jibson and others (1998, 2000). The probability is estimated using the following equation:"
 	+ "<p><i>P(f)</i> = 0.335(1 - exp(-0.048 <i>D<sub>n</sub></i><sup>1.565</sup>)"
-	+ "<p>where <i>P(f)</i> is the probability of failure and <i>D<sub>n</sub></i> is Newmark displacement in centimeters. This equation was calibrated using data from the 1994 Northridge, California, earthquake and is best suited to application in southern California (Jibson and others, 1998, 2000).";
+	+ "<p>where <i>P(f)</i> is the probability of failure and <i>D<sub>n</sub></i> is Slammer displacement in centimeters. This equation was calibrated using data from the 1994 Northridge, California, earthquake and is best suited to application in southern California (Jibson and others, 1998, 2000).";
 
-	public RigidBlockSimplifiedPanel(NewmarkTabbedPane parent) throws Exception
+	public RigidBlockSimplifiedPanel(SlammerTabbedPane parent) throws Exception
 	{
 		this.parent = parent;
 
@@ -265,7 +265,7 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 					labelTwo.setText("What is the Arias Intensity (in m/s)?");
 					labelOnef.setEnabled(true);
 					labelTwof.setEnabled(true);
-					labelRes.setText("Estimated Newmark Displacement (in cm):");
+					labelRes.setText("Estimated Slammer Displacement (in cm):");
 					ta.setText(Jibson1993Str);
 				}
 				else if(JibsonAndOthers1998.isSelected())
@@ -274,7 +274,7 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 					labelTwo.setText("What is the Arias Intensity (in m/s)?");
 					labelOnef.setEnabled(true);
 					labelTwof.setEnabled(true);
-					labelRes.setText("Estimated Newmark Displacement (in cm):");
+					labelRes.setText("Estimated Slammer Displacement (in cm):");
 					ta.setText(JibsonAndOthers1998Str);
 				}
 				else if(Jibson2007CA.isSelected())
@@ -283,7 +283,7 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 					labelTwo.setText("What is the peak ground acceleration (in g's)?");
 					labelOnef.setEnabled(true);
 					labelTwof.setEnabled(true);
-					labelRes.setText("Estimated Newmark Displacement (in cm):");
+					labelRes.setText("Estimated Slammer Displacement (in cm):");
 					ta.setText(Jibson2007CAStr);
 				}
 				else if(Jibson2007CAM.isSelected())
@@ -294,7 +294,7 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 					labelOnef.setEnabled(true);
 					labelTwof.setEnabled(true);
 					labelThreef.setEnabled(true);
-					labelRes.setText("Estimated Newmark Displacement (in cm):");
+					labelRes.setText("Estimated Slammer Displacement (in cm):");
 					ta.setText(Jibson2007CAMStr);
 				}
 				else if(Jibson2007AICA.isSelected())
@@ -303,7 +303,7 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 					labelTwo.setText("What is the Arias Intensity (in m/s)?");
 					labelOnef.setEnabled(true);
 					labelTwof.setEnabled(true);
-					labelRes.setText("Estimated Newmark Displacement (in cm):");
+					labelRes.setText("Estimated Slammer Displacement (in cm):");
 					ta.setText(Jibson2007AICAStr);
 				}
 				else if(Jibson2007AICAR.isSelected())
@@ -314,7 +314,7 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 					labelOnef.setEnabled(true);
 					labelTwof.setEnabled(true);
 					labelThreef.setEnabled(true);
-					labelRes.setText("Estimated Newmark Displacement (in cm):");
+					labelRes.setText("Estimated Slammer Displacement (in cm):");
 					ta.setText(Jibson2007AICARStr);
 				}
 				else if(Ambraseys.isSelected())
@@ -323,12 +323,12 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 					labelTwo.setText("What is the peak ground acceleration (in g's)?");
 					labelOnef.setEnabled(true);
 					labelTwof.setEnabled(true);
-					labelRes.setText("Estimated Newmark Displacement (in cm):");
+					labelRes.setText("Estimated Slammer Displacement (in cm):");
 					ta.setText(AmbraseysStr);
 				}
 				else if(probFailure.isSelected())
 				{
-					labelOne.setText("What is the Newmark displacement (in cm)?");
+					labelOne.setText("What is the Slammer displacement (in cm)?");
 					labelTwo.setText(" ");
 					labelOnef.setEnabled(true);
 					labelRes.setText("Estimated probability of failure:");
@@ -415,7 +415,7 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 				}
 				else if(probFailure.isSelected())
 				{
-					Double d1 = (Double)Utils.checkNum(labelOnef.getText(), "Newmark displacement field", null, false, null, new Double(0), true, null, false);
+					Double d1 = (Double)Utils.checkNum(labelOnef.getText(), "Slammer displacement field", null, false, null, new Double(0), true, null, false);
 					if(d1 == null) return;
 
 					labelResf.setText(RigidBlockSimplified.ProbFailure(d1.doubleValue()));
