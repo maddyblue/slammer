@@ -1,21 +1,39 @@
 /*
- * Copyright (C) The Apache Software Foundation. All rights reserved.
+ * Copyright  2001,2004-2005 The Apache Software Foundation
  *
- * This software is published under the terms of the Apache Software License
- * version 1.1, a copy of which has been included with this distribution in
- * the LICENSE.txt file.
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ *
  */
+
+/*
+ * This package is based on the work done by Keiron Liddle, Aftex Software
+ * <keiron@aftexsw.com> to whom the Ant project is very grateful for his
+ * great code.
+ */
+
 package installer;
 
 /**
- * Base class for both the compress and decompress classes. Holds common arrays,
- * and static data.
- *
- * @author <a href="mailto:keiron@aftexsw.com">Keiron Liddle</a>
+ * Base class for both the compress and decompress classes.
+ * Holds common arrays, and static data.
+ * <p>
+ * This interface is public for historical purposes.
+ * You should have no need to use it.
+ * </p>
  */
-interface BZip2Constants
-{
-    int BASE_BLOCK_SIZE = 100000;
+public interface BZip2Constants {
+
+    int baseBlockSize = 100000;
     int MAX_ALPHA_SIZE = 258;
     int MAX_CODE_LEN = 23;
     int RUNA = 0;
@@ -23,11 +41,17 @@ interface BZip2Constants
     int N_GROUPS = 6;
     int G_SIZE = 50;
     int N_ITERS = 4;
-    int MAX_SELECTORS = ( 2 + ( 900000 / G_SIZE ) );
+    int MAX_SELECTORS = (2 + (900000 / G_SIZE));
     int NUM_OVERSHOOT_BYTES = 20;
 
-    int[] RAND_NUMS = new int[]
-    {
+    /**
+     * This array really shouldn't be here.
+     * Again, for historical purposes it is.
+     *
+     * <p>FIXME: This array should be in a private or package private
+     * location, since it could be modified by malicious code.</p>
+     */
+    int[] rNums = {
         619, 720, 127, 481, 931, 816, 813, 233, 566, 247,
         985, 724, 205, 454, 863, 491, 741, 242, 949, 214,
         733, 859, 335, 708, 621, 574, 73, 654, 730, 472,

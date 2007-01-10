@@ -1,22 +1,35 @@
 /*
- * Copyright (C) The Apache Software Foundation. All rights reserved.
+ * Copyright  2001-2002,2004-2005 The Apache Software Foundation
  *
- * This software is published under the terms of the Apache Software License
- * version 1.1, a copy of which has been included with this distribution in
- * the LICENSE.txt file.
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ *
  */
+
+/*
+ * This package is based on the work done by Keiron Liddle, Aftex Software
+ * <keiron@aftexsw.com> to whom the Ant project is very grateful for his
+ * great code.
+ */
+
 package installer;
 
 /**
- * A simple class the hold and calculate the CRC for sanity checking of the
- * data.
+ * A simple class the hold and calculate the CRC for sanity checking
+ * of the data.
  *
- * @author <a href="mailto:keiron@aftexsw.com">Keiron Liddle</a>
  */
-class CRC
-{
-    private static int[] CRC32_TABLE = new int[]
-    {
+final class CRC {
+    static final int crc32Table[] = {
         0x00000000, 0x04c11db7, 0x09823b6e, 0x0d4326d9,
         0x130476dc, 0x17c56b6b, 0x1a864db2, 0x1e475005,
         0x2608edb8, 0x22c9f00f, 0x2f8ad6d6, 0x2b4bcb61,
@@ -83,31 +96,45 @@ class CRC
         0xbcb4666d, 0xb8757bda, 0xb5365d03, 0xb1f740b4
     };
 
-    private int m_globalCrc;
-
-    protected CRC()
-    {
+    CRC() {
         initialiseCRC();
     }
 
-    int getFinalCRC()
-    {
-        return ~m_globalCrc;
+    void initialiseCRC() {
+        globalCrc = 0xffffffff;
     }
 
-    void initialiseCRC()
-    {
-        m_globalCrc = 0xffffffff;
+    int getFinalCRC() {
+        return ~globalCrc;
     }
 
-    void updateCRC( final int inCh )
-    {
-        int temp = ( m_globalCrc >> 24 ) ^ inCh;
-        if( temp < 0 )
-        {
+    int getGlobalCRC() {
+        return globalCrc;
+    }
+
+    void setGlobalCRC(int newCrc) {
+        globalCrc = newCrc;
+    }
+
+    void updateCRC(int inCh) {
+        int temp = (globalCrc >> 24) ^ inCh;
+        if (temp < 0) {
             temp = 256 + temp;
         }
-        m_globalCrc = ( m_globalCrc << 8 ) ^ CRC32_TABLE[ temp ];
+        globalCrc = (globalCrc << 8) ^ CRC.crc32Table[temp];
     }
+
+    void updateCRC(int inCh, int repeat) {
+        int globalCrcShadow = this.globalCrc;
+        while (repeat-- > 0) {
+            int temp = (globalCrcShadow >> 24) ^ inCh;
+            globalCrcShadow = (globalCrcShadow << 8) ^ crc32Table[(temp >= 0)
+                                                      ? temp
+                                                      : (temp + 256)];
+        }
+        this.globalCrc = globalCrcShadow;
+    }
+
+    int globalCrc;
 }
 
