@@ -497,9 +497,11 @@ public class Slammer
 				frame.setSize(780,575);
 				GUIUtils.setLocationMiddle(frame);
 
-				splash.dispose();
+				splash.advance();
 
 				frame.setVisible(true);
+
+				splash.dispose();
 
 			} // }}}
 		}

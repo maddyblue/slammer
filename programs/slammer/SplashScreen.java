@@ -118,7 +118,7 @@ public class SplashScreen extends JComponent
 		// XXX: This should not be hardcoded
 		g.setColor(Color.white);
 		g.fillRect(1,image.getHeight(this) + 1,
-			((win.getWidth() - 2) * progress) / 4,PROGRESS_HEIGHT);
+			((win.getWidth() - 2) * progress) / 5,PROGRESS_HEIGHT);
 
 		g.setColor(Color.black);
 
