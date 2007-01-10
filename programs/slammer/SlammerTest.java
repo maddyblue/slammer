@@ -30,14 +30,14 @@
 
 /* $Id$ */
 
-package newmark;
+package slammer;
 
-import newmark.*;
-import newmark.analysis.*;
+import slammer.*;
+import slammer.analysis.*;
 import java.util.*;
 import junit.framework.*;
 
-public class NewmarkTest extends TestCase
+public class SlammerTest extends TestCase
 {
 	private DoubleList dat, dat1;
 	private static final double uwgt = 18.85;
@@ -51,7 +51,7 @@ public class NewmarkTest extends TestCase
 	private static final double[][] ca = { { 0, 0.1 } };
 	private double res;
 
-	public NewmarkTest(String name)
+	public SlammerTest(String name)
 	{
 		super(name);
 	}
@@ -67,13 +67,13 @@ public class NewmarkTest extends TestCase
 		Analysis.testing = true; // this lets the swing test suite work
 		TestSuite suite = new TestSuite();
 
-		suite.addTest(new NewmarkTest("RigorousDecoupledLinear"));
-		suite.addTest(new NewmarkTest("RigorousDecoupledEquivalent"));
-		suite.addTest(new NewmarkTest("RigorousCoupledLinear"));
-		suite.addTest(new NewmarkTest("RigorousCoupledEquivalent"));
+		suite.addTest(new SlammerTest("RigorousDecoupledLinear"));
+		suite.addTest(new SlammerTest("RigorousDecoupledEquivalent"));
+		suite.addTest(new SlammerTest("RigorousCoupledLinear"));
+		suite.addTest(new SlammerTest("RigorousCoupledEquivalent"));
 
-		suite.addTest(new NewmarkTest("RigorousRigidBlockDown"));
-		suite.addTest(new NewmarkTest("RigorousRigidBlockDual"));
+		suite.addTest(new SlammerTest("RigorousRigidBlockDown"));
+		suite.addTest(new SlammerTest("RigorousRigidBlockDual"));
 
 		return suite;
 	}
@@ -104,13 +104,13 @@ public class NewmarkTest extends TestCase
 
 	public void RigorousRigidBlockDown()
 	{
-		res = RigidBlock.NewmarkRigorous("", dat1, dt, ca, scal, false, 0, 1.0);
+		res = RigidBlock.SlammerRigorous("", dat1, dt, ca, scal, false, 0, 1.0);
 		Assert.assertEquals(35.40371, res, 1e-4);
 	}
 
 	public void RigorousRigidBlockDual()
 	{
-		res = RigidBlock.NewmarkRigorous("", dat1, dt, ca, scal, true, 20, 1.0);
+		res = RigidBlock.SlammerRigorous("", dat1, dt, ca, scal, true, 20, 1.0);
 		Assert.assertEquals(35.14587, res, 1e-4);
 	}
 }
