@@ -24,7 +24,7 @@ import java.io.*;
  * the archive, and the read each entry as a normal input stream
  * using read().
  *
- * @version $Revision: 1.1 $
+ * @version $Revision: 5354 $
  * @author Timothy Gerard Endres,
  *  <a href="mailto:time@gjt.org">time@trustice.com</a>.
  * @see TarBuffer
@@ -344,7 +344,7 @@ extends		FilterInputStream
 		if ( num == -1 )
 			return num;
 		else
-			return (int) this.oneBuf[0];
+			return this.oneBuf[0];
 		}
 
 	/**

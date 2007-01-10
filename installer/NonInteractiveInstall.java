@@ -60,6 +60,7 @@ public class NonInteractiveInstall
 
 		int compCount = installer.getIntegerProperty("comp.count");
 		Vector components = new Vector(compCount);
+		Vector indicies = new Vector(compCount);
 
 		for(int i = 0; i < compCount; i++)
 		{
@@ -74,7 +75,8 @@ public class NonInteractiveInstall
 				}
 			}
 
-			components.addElement(new Integer(i));
+			components.addElement(fileset);
+			indicies.addElement(new Integer(i));
 		}
 
 		//
@@ -82,7 +84,7 @@ public class NonInteractiveInstall
 		ConsoleProgress progress = new ConsoleProgress();
 		InstallThread thread = new InstallThread(
 			installer,progress,installDir,osTasks,
-			0 /* XXX */,components);
+			0 /* XXX */,components,indicies);
 		thread.start();
 	}
 

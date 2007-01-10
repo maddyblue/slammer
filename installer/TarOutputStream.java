@@ -24,7 +24,7 @@ import java.io.*;
  * by writing to this stream using write().
  *
  *
- * @version $Revision: 1.1 $
+ * @version $Revision: 4480 $
  * @author Timothy Gerard Endres,
  *  <a href="mailto:time@gjt.org">time@trustice.com</a>.
  * @see TarBuffer

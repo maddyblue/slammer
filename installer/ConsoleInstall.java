@@ -26,16 +26,15 @@ public class ConsoleInstall
 		installer = new Install();
 
 		String appName = installer.getProperty("app.name");
-		String appVersion = installer.getProperty("app.version");
 
 		BufferedReader in = new BufferedReader(new InputStreamReader(
 			System.in));
 
-		System.out.println("*** " + appName + " " + appVersion + " installer");
+		System.out.println("*** " + appName + " installer");
 
 		OperatingSystem os = OperatingSystem.getOperatingSystem();
 
-		String installDir = os.getInstallDirectory(appName,appVersion);
+		String installDir = os.getInstallDirectory(appName);
 
 		System.out.print("Installation directory: [" + installDir + "] ");
 		System.out.flush();
@@ -71,6 +70,7 @@ public class ConsoleInstall
 
 		int compCount = installer.getIntegerProperty("comp.count");
 		Vector components = new Vector(compCount);
+		Vector indicies = new Vector(compCount);
 
 		System.out.println("*** Program components to install");
 		for(int i = 0; i < compCount; i++)
@@ -95,14 +95,17 @@ public class ConsoleInstall
 			String line = readLine(in);
 			if(line.length() == 0 || line.charAt(0) == 'y'
 				|| line.charAt(0) == 'Y')
-				components.addElement(new Integer(i));
+			{
+				components.addElement(fileset);
+				indicies.addElement(new Integer(i));
+			}
 		}
 
 		System.out.println("*** Starting installation...");
 		ConsoleProgress progress = new ConsoleProgress();
 		InstallThread thread = new InstallThread(
 			installer,progress,installDir,osTasks,
-			0 /* XXX */,components);
+			0 /* XXX */,components,indicies);
 		thread.start();
 	}
 

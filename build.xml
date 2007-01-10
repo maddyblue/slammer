@@ -1,4 +1,4 @@
-<project name="Newmark">
+<project name="Slammer">
 
 	<property name="inst" location="installer" />
 	<property name="rec" value="records" />
@@ -7,12 +7,12 @@
 	<target name="filelist">
 
 		<tar
-			destfile="${inst}/newmark-program.tar"
+			destfile="${inst}/slammer-program.tar"
 			basedir="."
 			includes="${prog}/**/*.jar"
 		/>
 
-		<tar destfile="${inst}/newmark-eq-california.tar">
+		<tar destfile="${inst}/slammer-eq-california.tar">
 			<tarfileset dir="${rec}" prefix="${rec}">
 				<include name="Cape Mendocino 1992/*" />
 				<include name="Coalinga 1983/*" />
@@ -37,13 +37,13 @@
 			</tarfileset>
 		</tar>
 
-		<tar destfile="${inst}/newmark-eq-chichi.tar">
+		<tar destfile="${inst}/slammer-eq-chichi.tar">
 			<tarfileset dir="${rec}" prefix="${rec}">
 				<include name="Chi-Chi, Taiwan 1999/*" />
 			</tarfileset>
 		</tar>
 
-		<tar destfile="${inst}/newmark-eq-international.tar">
+		<tar destfile="${inst}/slammer-eq-international.tar">
 			<tarfileset dir="${rec}" prefix="${rec}">
 				<include name="Duzce, Turkey 1999/*" />
 				<include name="Friuli, Italy 1976/*" />
@@ -55,20 +55,20 @@
 			</tarfileset>
 		</tar>
 
-		<tar destfile="${inst}/newmark-eq-otherus.tar">
+		<tar destfile="${inst}/slammer-eq-otherus.tar">
 			<tarfileset dir="${rec}" prefix="${rec}">
 				<include name="Hilo 1975/*" />
 				<include name="Nisqually 2001/*" />
 			</tarfileset>
 		</tar>
 
-		<tar destfile="${inst}/newmark-source.tar">
+		<tar destfile="${inst}/slammer-source.tar">
 			<tarfileset dir="${prog}" prefix="${prog}" excludes="*.svn">
 				<include name="build.xml" />
 				<include name="help/**" />
-				<include name="newmark/**/*.java" />
-				<include name="newmark/newmark.manifest" />
-				<include name="newmark/images/*" />
+				<include name="slammer/**/*.java" />
+				<include name="slammer/slammer.manifest" />
+				<include name="slammer/images/*" />
 			</tarfileset>
 		</tar>
 
@@ -87,11 +87,11 @@
 		<javac debug="true" srcdir="installer" />
 
 		<jar
-			jarfile="newmarkinstall.jar"
+			jarfile="slammerinstall.jar"
 			manifest="installer/install.mf"
 		>
 			<fileset dir=".">
-				<include name="installer/newmark-*.tar.bz2" />
+				<include name="installer/slammer-*.tar.bz2" />
 				<include name="installer/*.class" />
 				<include name="installer/*.html" />
 				<include name="installer/install.props" />
@@ -104,7 +104,7 @@
 	<target name="iso">
 
 		<exec executable="mkhybrid">
-			<arg line="-R -o newmarkinstall.iso newmarkinstall.jar" />
+			<arg line="-R -o slammerinstall.iso slammerinstall.jar" />
 		</exec>
 
 	</target>
@@ -116,7 +116,7 @@
 		</exec>
 
 		<exec executable="cdrecord">
-			<arg line="dev=/dev/cd0c speed=10 -data newmarkinstall.iso" />
+			<arg line="dev=/dev/cd0c speed=10 -data slammerinstall.iso" />
 		</exec>
 
 	</target>

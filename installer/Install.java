@@ -43,7 +43,7 @@ public class Install
 			System.err.println("java -jar <installer JAR>");
 			System.err.println("java -jar <installer JAR> text");
 			System.err.println("java -jar <installer JAR> auto"
-				+ " <install dir> [unix-script=<dir>] [unix-man=<dir>]");
+				+ " <install dir> [unix-script=<dir>]");
 			System.err.println("text parameter starts installer in text-only mode.");
 			System.err.println("auto parameter starts installer in non-interactive mode.");
 		}
@@ -107,6 +107,7 @@ public class Install
 				progress.advance(count);
 		}
 
+		//in.close();
 		out.close();
 	}
 

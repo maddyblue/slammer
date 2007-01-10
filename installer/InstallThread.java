@@ -23,7 +23,7 @@ public class InstallThread extends Thread
 {
 	public InstallThread(Install installer, Progress progress,
 		String installDir, OperatingSystem.OSTask[] osTasks,
-		int size, Vector components)
+		int size, Vector components, Vector indicies)
 	{
 		super("Install thread");
 
@@ -33,6 +33,7 @@ public class InstallThread extends Thread
 		this.osTasks = osTasks;
 		this.size = size;
 		this.components = components;
+		this.indicies = indicies;
 	}
 
 	public void run()
@@ -45,8 +46,7 @@ public class InstallThread extends Thread
 			// install user-selected packages
 			for(int i = 0; i < components.size(); i++)
 			{
-				String comp = installer.getProperty(
-					"comp." + ((Integer)components.elementAt(i)).toString() + ".fileset");
+				String comp = (String)components.elementAt(i);
 				System.err.println("Installing " + comp);
 				installComponent(comp);
 			}
@@ -70,7 +70,6 @@ public class InstallThread extends Thread
 		catch(IOException io)
 		{
 			progress.error(io.toString());
-			io.printStackTrace();
 			return;
 		}
 
@@ -78,11 +77,10 @@ public class InstallThread extends Thread
 
 		try
 		{
-
 			int sqllen = 0;
 
 			// start the database
-			String DBloc = installDir + File.separatorChar + "programs" + File.separatorChar + "database" + File.separatorChar + "db";
+			String DBloc = installDir + File.separator + "programs" + File.separator + "database" + File.separator + "db";
 			File f = new File(DBloc);
 			boolean newDB = !f.exists();
 
@@ -93,12 +91,12 @@ public class InstallThread extends Thread
 
 			for(int j = 0; j < components.size(); j++)
 			{
-				sqlfile = installer.getProperty("comp." + ((Integer)components.elementAt(j)).toString() + ".sql");
+				sqlfile = installer.getProperty("comp." + ((Integer)indicies.elementAt(j)).toString() + ".sql");
 
 				if(sqlfile != null)
 				{
-					String outfile = installDir + File.separatorChar
-						+ "records" + File.separatorChar + sqlfile;
+					String outfile = installDir + File.separator
+						+ "records" + File.separator + sqlfile;
 
 					InputStream in = new BufferedInputStream(
 					getClass().getResourceAsStream("/records/" + sqlfile));
@@ -111,7 +109,7 @@ public class InstallThread extends Thread
 
 					dbvect.addElement(sqlfile);
 
-					sqllen += installer.getIntegerProperty("comp." + ((Integer)components.elementAt(j)).toString() + ".sqllen");
+					sqllen += installer.getIntegerProperty("comp." + ((Integer)indicies.elementAt(j)).toString() + ".sqllen");
 				}
 			}
 
@@ -122,8 +120,8 @@ public class InstallThread extends Thread
 			{
 				sqlfile = (String)dbvect.elementAt(i);
 
-				FileReader fr = new FileReader(installDir + File.separatorChar
-					+ "records" + File.separatorChar + sqlfile);
+				FileReader fr = new FileReader(installDir + File.separator
+					+ "records" + File.separator + sqlfile);
 				String s = "";
 				String cur[] = new String[DB_LENGTH];
 				int j = 0;
@@ -193,6 +191,35 @@ public class InstallThread extends Thread
 	private OperatingSystem.OSTask[] osTasks;
 	private int size;
 	private Vector components;
+	private Vector indicies;
+
+	private void installComponent(String name) throws IOException
+	{
+		InputStream in = new BufferedInputStream(
+			getClass().getResourceAsStream(name + ".tar.bz2"));
+		// skip header bytes
+		// maybe should check if they're valid or not?
+		in.read();
+		in.read();
+
+		TarInputStream tarInput = new TarInputStream(
+			new CBZip2InputStream(in));
+		TarEntry entry;
+		while((entry = tarInput.getNextEntry()) != null)
+		{
+			if(entry.isDirectory())
+				continue;
+			String fileName = entry.getName();
+			//System.err.println(fileName);
+			String outfile = installDir + File.separator
+				+ fileName.replace('/',File.separatorChar);
+			installer.copy(tarInput,outfile,progress);
+		}
+
+		tarInput.close();
+	}
+
+	// custom database stuff
 
 	// order of fields for the eq.sql file
 	private static final int DB_eq = 0;
@@ -215,34 +242,6 @@ public class InstallThread extends Thread
 	private static final int DB_class = 17;
 	private static final int DB_LENGTH = 18;
 
-	private void installComponent(String name) throws IOException
-	{
-		InputStream in = new BufferedInputStream(
-			getClass().getResourceAsStream(name + ".tar.bz2"));
-		// skip header bytes
-		// maybe should check if they're valid or not?
-		in.read();
-		in.read();
-
-		TarInputStream tarInput = new TarInputStream(
-			new CBZip2InputStream(in));
-		TarEntry entry;
-		while((entry = tarInput.getNextEntry()) != null)
-		{
-			if(entry.isDirectory())
-				continue;
-			String fileName = entry.getName();
-			System.err.println(fileName);
-			String outfile = installDir + File.separatorChar
-				+ fileName.replace('/',File.separatorChar);
-			installer.copy(tarInput,outfile,progress);
-		}
-
-		tarInput.close();
-		in.close();
-	}
-
-	// database stuff
 	private java.sql.Connection connection = null;
 	public static final String url = "jdbc:derby:db";
 	private Vector dbvect = new Vector();

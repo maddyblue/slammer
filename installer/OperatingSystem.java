@@ -22,7 +22,7 @@ import java.util.Vector;
  */
 public abstract class OperatingSystem
 {
-	public abstract String getInstallDirectory(String name, String version);
+	public abstract String getInstallDirectory(String name);
 
 	public abstract static class OSTask
 	{
@@ -119,13 +119,18 @@ public abstract class OperatingSystem
 
 	public static class Unix extends OperatingSystem
 	{
-		public String getInstallDirectory(String name, String version)
+		public String getInstallDirectory(String name)
 		{
 			String dir = "/usr/local/share/";
 			if(!new File(dir).canWrite())
 				dir = System.getProperty("user.home");
 
-			return new File(dir,name.toLowerCase() + "/" + version).getPath();
+			return new File(dir,name.toLowerCase()).getPath();
+		}
+
+		public String getExtraClassPath()
+		{
+			return "";
 		}
 
 		public class ScriptOSTask extends OSTask
@@ -165,7 +170,7 @@ public abstract class OperatingSystem
 				FileWriter out = new FileWriter(script);
 				out.write("#!/bin/sh\n");
 				out.write("# Java heap size, in megabytes\n");
-				out.write("JAVA_HEAP_SIZE=32\n");
+				out.write("JAVA_HEAP_SIZE=128\n");
 				out.write("DEFAULT_JAVA_HOME=\""
 					+ System.getProperty("java.home")
 					+ "\"\n");
@@ -173,14 +178,12 @@ public abstract class OperatingSystem
 				out.write("JAVA_HOME=\"$DEFAULT_JAVA_HOME\"\n");
 				out.write("fi\n");
 
+				out.write("cd " + installDir + "/programs\n");
 				out.write("exec \"$JAVA_HOME"
-					+ "/bin/java\" -mx${JAVA_HEAP_SIZE}m ${"
-					+ name.toUpperCase() + "} ");
+					+ "/bin/java\" -mx${JAVA_HEAP_SIZE}m -jar slammer.jar\n");
 
-				String jar = installDir + File.separator + "programs" + File.separator
+				String jar = installDir + File.separator
 					+ name.toLowerCase() + ".jar";
-
-				out.write("-jar \"" + jar + "\" $@\n");
 
 				out.close();
 
@@ -224,28 +227,75 @@ public abstract class OperatingSystem
 
 	public static class MacOS extends Unix
 	{
-		public String getInstallDirectory(String name, String version)
+		public String getInstallDirectory(String name)
 		{
 			return "/Applications/" + name;
+		}
+
+		public String getExtraClassPath()
+		{
+			return "/System/Library/Java/:";
 		}
 	}
 
 	public static class Windows extends OperatingSystem
 	{
-		public String getInstallDirectory(String name, String version)
+		public String getInstallDirectory(String name)
 		{
 			return "C:\\Program Files\\" + name;
 		}
 
+		public class JEditLauncherOSTask extends OSTask
+		{
+			public JEditLauncherOSTask(Install installer)
+			{
+				super(installer,"jedit-launcher");
+			}
+
+			public String getDefaultDirectory(Install installer)
+			{
+				return null;
+			}
+
+			public void perform(String installDir,
+				Vector filesets)
+			{
+				if(!enabled
+					|| !filesets.contains("jedit-windows"))
+					return;
+
+				// run jEditLauncher installation
+				File executable = new File(installDir,"jedit.exe");
+				if(!executable.exists())
+					return;
+
+				String[] args = { executable.getPath(), "/i",
+					System.getProperty("java.home")
+					+ File.separator
+					+ "bin" };
+
+				try
+				{
+					Runtime.getRuntime().exec(args).waitFor();
+				}
+				catch(IOException io)
+				{
+				}
+				catch(InterruptedException ie)
+				{
+				}
+			}
+		}
+
 		public OSTask[] getOSTasks(Install installer)
 		{
-			return new OSTask[] { };
+			return new OSTask[] { /* new JEditLauncherOSTask(installer) */ };
 		}
 	}
 
 	public static class HalfAnOS extends OperatingSystem
 	{
-		public String getInstallDirectory(String name, String version)
+		public String getInstallDirectory(String name)
 		{
 			return "C:\\" + name;
 		}
@@ -253,9 +303,9 @@ public abstract class OperatingSystem
 
 	public static class VMS extends OperatingSystem
 	{
-		public String getInstallDirectory(String name, String version)
+		public String getInstallDirectory(String name)
 		{
-			return "./" + name.toLowerCase() + "/" + version;
+			return "./" + name.toLowerCase();
 		}
 	}
 

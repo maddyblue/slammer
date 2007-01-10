@@ -31,9 +31,8 @@ public class SwingInstall extends JFrame
 		osTasks = OperatingSystem.getOperatingSystem().getOSTasks(installer);
 
 		appName = installer.getProperty("app.name");
-		appVersion = installer.getProperty("app.version");
 
-		setTitle(appName + " " + appVersion + " installer");
+		setTitle(appName + " installer");
 
 		JPanel content = new JPanel(new WizardLayout());
 		setContentPane(content);
@@ -92,7 +91,6 @@ public class SwingInstall extends JFrame
 	Install installer;
 	OperatingSystem.OSTask[] osTasks;
 	String appName;
-	String appVersion;
 
 	JLabel caption;
 
@@ -111,6 +109,7 @@ public class SwingInstall extends JFrame
 	void install()
 	{
 		Vector components = new Vector();
+		Vector indicies = new Vector();
 		int size = 0;
 
 		JPanel comp = selectComponents.comp;
@@ -121,9 +120,11 @@ public class SwingInstall extends JFrame
 			if(((JCheckBox)comp.getComponent(i))
 				.getModel().isSelected())
 			{
-				components.add(new Integer(i));
 				size += installer.getIntegerProperty(
 					"comp." + ids.elementAt(i) + ".real-size");
+				components.addElement(installer.getProperty(
+					"comp." + ids.elementAt(i) + ".fileset"));
+				indicies.addElement(new Integer(i));
 			}
 		}
 
@@ -147,7 +148,7 @@ public class SwingInstall extends JFrame
 		InstallThread thread = new InstallThread(
 			installer,progress,
 			installDir,osTasks,
-			size,components);
+			size,components,indicies);
 		progress.setThread(thread);
 		thread.start();
 	}
@@ -367,7 +368,7 @@ public class SwingInstall extends JFrame
 
 			installDir = addField(directoryPanel,"Install program in:",
 				OperatingSystem.getOperatingSystem()
-				.getInstallDirectory(appName,appVersion));
+				.getInstallDirectory(appName));
 
 			for(int i = 0; i < osTasks.length; i++)
 			{
@@ -533,8 +534,8 @@ public class SwingInstall extends JFrame
 			{
 				public void run()
 				{
-					progress.setValue(0);
 					progress.setMaximum(max);
+					progress.setValue(0);
 				}
 			});
 		}

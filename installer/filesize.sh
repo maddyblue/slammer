@@ -12,7 +12,7 @@ function mk_contents {
 }
 
 function process_eq {
-	name=installer/newmark-eq-$1
+	name=installer/slammer-eq-$1
 	out=records/eq-$1.sql
 	rm -f $out
 	mk_contents $name
@@ -23,15 +23,15 @@ function process_eq {
 	done
 }
 
-mk_contents installer/newmark-program
-mk_contents installer/newmark-source
+mk_contents installer/slammer-program
+mk_contents installer/slammer-source
 
 for file in california chichi international otherus
 do
 	process_eq $file
 done
 
-for file in installer/newmark-*.tar
+for file in installer/slammer-*.tar
 do
 	echo bzip2ing $file
 	bzip2 -k $file

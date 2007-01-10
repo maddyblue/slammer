@@ -29,7 +29,7 @@ import java.io.*;
  * You should never have a need to access this class directly.
  * TarBuffers are created by Tar IO Streams.
  *
- * @version $Revision: 1.1 $
+ * @version $Revision: 4480 $
  * @author Timothy Gerard Endres,
  *  <a href="mailto:time@gjt.org">time@trustice.com</a>.
  * @see TarArchive
