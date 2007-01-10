@@ -325,13 +325,13 @@ public class Help extends JFrame
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
-			("Slammer Analysis",
-			"terms/slammerAnalysis.html"));
+			("Newmark Analysis",
+			"terms/newmarkAnalysis.html"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
-			("Slammer Displacement",
-			"terms/slammerDisplacement.html"));
+			("Newmark Displacement",
+			"terms/newmarkDisplacement.html"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
@@ -354,67 +354,67 @@ public class Help extends JFrame
 			"terms/thrustAngle.html"));
 			category.add(book);
 
-		category = new DefaultMutableTreeNode("Slammer Documentation");
+		category = new DefaultMutableTreeNode("Newmark Documentation");
 		top.add(category);
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("Title",
-			"science/slammer.html"));
+			"science/newmark.html"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("Abstract",
-			"science/slammer.html#ABSTRACT"));
+			"science/newmark.html#ABSTRACT"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("Introduction",
-			"science/slammer.html#INTRODUCTION"));
+			"science/newmark.html#INTRODUCTION"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
-			("Past Applications Of Slammer's Method",
-			"science/slammer.html#PAST APPLICATIONS OF SLAMMER'S METHOD"));
+			("Past Applications Of Newmark's Method",
+			"science/newmark.html#PAST APPLICATIONS OF NEWMARK'S METHOD"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("Types of Sliding-Block Analysis Currently in Use",
-			"science/slammer.html#TYPES OF SLIDING-BLOCK ANALYSIS CURRENTLY IN USE"));
+			"science/newmark.html#TYPES OF SLIDING-BLOCK ANALYSIS CURRENTLY IN USE"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("Which Analysis Should Be Used?",
-			"science/slammer.html#WHICH ANALYSIS SHOULD BE USED?"));
+			"science/newmark.html#WHICH ANALYSIS SHOULD BE USED?"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
-			("Conducting A Slammer Analysis",
-			"science/slammer.html#CONDUCTING A SLAMMER ANALYSIS"));
+			("Conducting A Newmark Analysis",
+			"science/newmark.html#CONDUCTING A NEWMARK ANALYSIS"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
-			("A Simplified Slammer Method",
-			"science/slammer.html#A SIMPLIFIED SLAMMER METHOD"));
+			("A Simplified Newmark Method",
+			"science/newmark.html#A SIMPLIFIED NEWMARK METHOD"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
-			("Interpreting Slammer Displacements",
-			"science/slammer.html#INTERPRETING SLAMMER DISPLACEMENTS"));
+			("Interpreting Newmark Displacements",
+			"science/newmark.html#INTERPRETING NEWMARK DISPLACEMENTS"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("Discussion",
-			"science/slammer.html#DISCUSSION"));
+			"science/newmark.html#DISCUSSION"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("Conclusion",
-			"science/slammer.html#CONCLUSION"));
+			"science/newmark.html#CONCLUSION"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("References",
-			"science/slammer.html#REFERENCES"));
+			"science/newmark.html#REFERENCES"));
 			category.add(book);
 	}
 }
