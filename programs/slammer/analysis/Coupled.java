@@ -1,12 +1,13 @@
 /*
- * Copyright (c) Yong-Woo Lee and Ellen Rathje
- * All rights reserved.
+ * Originally written by Yong-Woo Lee and Ellen Rathje for the SLAMMER project.
+ * This work has been placed into the public domain. You may use this work in
+ * any way and for any purpose you wish.
  *
- * Redistribution in any form permitted only by authorization of author.
- *
+ * THIS SOFTWARE IS PROVIDED AS-IS WITHOUT WARRANTY OF ANY KIND, NOT EVEN THE
+ * IMPLIED WARRANTY OF MERCHANTABILITY. THE AUTHOR OF THIS SOFTWARE, ASSUMES
+ * _NO_ RESPONSIBILITY FOR ANY CONSEQUENCE RESULTING FROM THE USE, MODIFICATION,
+ * OR REDISTRIBUTION OF THIS SOFTWARE.
  */
-
-/* $Id$ */
 
 package slammer.analysis;
 

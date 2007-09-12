@@ -1,5 +1,3 @@
-/* $Id$ */
-
 package slammer.gui;
 
 import javax.swing.SwingUtilities;
