@@ -8,10 +8,6 @@ app.name=Slammer
 # Info to display on first page of installer
 app.readme=readme.html
 
-# License to show on second page
-app.license.title=Public Domain
-app.license=license.html
-
 # OS-specific stuff
 ostask.unix-script.label=Install shortcut in:
 
