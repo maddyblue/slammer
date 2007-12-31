@@ -1,0 +1,6 @@
+*.class
+*~
+*.tar
+*.bz2
+slammerinstall.jar
+programs/slammer.jar
