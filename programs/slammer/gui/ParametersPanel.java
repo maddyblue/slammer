@@ -478,7 +478,6 @@ class ParametersPanel extends JPanel implements ActionListener
 		try
 		{
 			String command = e.getActionCommand();
-			System.out.println(command);
 			if(command.equals("addDispRow"))
 			{
 				dispTableModel.addRow();

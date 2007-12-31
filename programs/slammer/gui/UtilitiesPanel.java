@@ -257,7 +257,6 @@ class UtilitiesPanel extends JPanel implements ActionListener
 		try
 		{
 			String command = e.getActionCommand();
-			System.out.println(command);
 			if(command.equals("dest"))
 			{
 				if(fcd.showSaveDialog(this) == JFileChooser.APPROVE_OPTION)

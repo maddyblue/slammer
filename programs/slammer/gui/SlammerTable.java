@@ -173,7 +173,6 @@ class SlammerTable extends JPanel implements ActionListener, SlammerTableInterfa
 		try
 		{
 			String command = e.getActionCommand();
-			System.out.println(command);
 			if(command.equals("record"))
 			{
 				model.setModel(RECORD);

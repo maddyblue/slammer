@@ -329,7 +329,6 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 		try
 		{
 			String command = e.getActionCommand();
-			System.out.println(command);
 			if(command.equals("addRecord"))
 			{
 				if(eqList.getItemCount() == 0)

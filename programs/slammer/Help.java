@@ -65,18 +65,10 @@ public class Help extends JFrame
 				{
 					BookInfo book = (BookInfo)nodeInfo;
 					displayURL(book.bookURL);
-					if (DEBUG)
-					{
-						System.out.print(book.bookURL + ":  \n    ");
-					}
 				}
 				else
 				{
 					displayURL(helpURL);
-				}
-				if (DEBUG)
-				{
-					System.out.println(nodeInfo.toString());
 				}
 			}
 		});
@@ -145,10 +137,6 @@ public class Help extends JFrame
 		try
 		{
 			s = prefix + "program/introduction.html";
-			if (DEBUG)
-			{
-				System.out.println("Help URL is " + s);
-			}
 			helpURL = new URL(s);
 			displayURL(helpURL);
 		}

@@ -69,13 +69,8 @@ public class EQDatabase
 		return i;
 	}
 
-	public Object[][] runQuery(String query) throws SQLException
-	{
-		return runQuery(query, false);
-	}
-
 	// print determines if the returned results from the query are printed
-	public Object[][] runQuery(String query, boolean print) throws SQLException
+	public Object[][] runQuery(String query) throws SQLException
 	{
 		Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 		ResultSet result = null;
@@ -119,27 +114,6 @@ public class EQDatabase
 			}
 		}
 		statement.close();
-
-		// data has been assigned to array.  Return and/or print.
-
-		if(!print)
-			return array;
-
-		System.out.println(formatting(col_count, col_len));
-
-		// print the table headers and data
-		for(int i1 = 0; i1 < array.length; i1++)
-		{
-			for(int i2 = 0; i2 < array[i1].length; i2++)
-			{
-				System.out.print("|");
-				System.out.print(format(array[i1][i2], col_len[i2]));
-			}
-			System.out.println("|");
-			if(i1 == 0) System.out.println(formatting(col_count, col_len));
-		}
-
-		System.out.println(formatting(col_count, col_len));
 
 		return array;
 	}

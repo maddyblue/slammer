@@ -152,7 +152,6 @@ class ResultsPanel extends JPanel implements ActionListener
 		try
 		{
 			String command = e.getActionCommand();
-			System.out.println(command);
 			if(command.equals("analyze"))
 			{
 				final SwingWorker worker = new SwingWorker()

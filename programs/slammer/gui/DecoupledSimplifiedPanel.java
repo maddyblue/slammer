@@ -109,7 +109,6 @@ class DecoupledSimplifiedPanel extends JPanel implements ActionListener
 		try
 		{
 			String command = e.getActionCommand();
-			System.out.println(command);
 			if(command.equals("go"))
 			{
 				kyd = (Double)Utils.checkNum(ky.getText(), "Yield Acceleration field", null, false, null, new Double(0), true, null, false);

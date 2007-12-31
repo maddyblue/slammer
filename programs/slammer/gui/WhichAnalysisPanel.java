@@ -70,7 +70,6 @@ class WhichAnalysisPanel extends JPanel implements ActionListener
 		try
 		{
 			String command = e.getActionCommand();
-			System.out.println(command);
 			if(command.equals("go"))
 			{
 				hd = (Double)Utils.checkNum(h.getText(), "Vertical Thickness field", null, false, null, new Double(0), true, null, false);

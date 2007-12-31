@@ -162,7 +162,6 @@ class GroupFrame extends JFrame implements ActionListener
 		try
 		{
 			String command = e.getActionCommand();
-			System.out.println(command);
 			if(command.equals("add"))
 			{
 				canChange = false;

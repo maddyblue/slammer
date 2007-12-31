@@ -115,7 +115,6 @@ public class ProgressFrame extends JFrame implements ActionListener
 		try
 		{
 			String command = e.getActionCommand();
-			System.out.println(command);
 			if(command.equals("stop"))
 			{
 				pressed = true;

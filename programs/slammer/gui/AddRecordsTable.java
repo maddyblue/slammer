@@ -123,7 +123,6 @@ class AddRecordsTable extends JPanel implements ActionListener
 		try
 		{
 			String command = e.getActionCommand();
-			System.out.println(command);
 			if(command.equals("colChoose"))
 			{
 				String col = colChoose.getSelectedItem().toString();

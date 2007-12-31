@@ -73,7 +73,6 @@ class AddRecordsPanel extends JPanel implements ActionListener
 		try
 		{
 			String command = e.getActionCommand();
-			System.out.println(command);
 			if(command.equals("add"))
 			{
 				// popup a warning about units
