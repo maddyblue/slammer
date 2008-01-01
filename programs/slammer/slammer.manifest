@@ -1,2 +1,2 @@
 Main-Class: slammer.Slammer
-Class-path: jars/jcommon-1.0.8.jar jars/jfreechart-1.0.3.jar jars/derby-10.2.2.0.jar jars/junit-3.8.1.jar
+Class-path: jars/jcommon-1.0.12.jar jars/jfreechart-1.0.8a.jar jars/derby-10.3.2.1.jar jars/junit-3.8.1.jar
