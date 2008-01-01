@@ -26,6 +26,8 @@ class GettingStartedPanel extends JPanel
 	{
 		this.parent = parent;
 
+		startedPane.setEditable(false);
+
 		startedPane.setPage(new URL(Help.prefix + "program/gettingStarted.html"));
 
 		setLayout(new BorderLayout());
