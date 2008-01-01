@@ -441,27 +441,39 @@ class UtilitiesPanel extends JPanel implements ActionListener
 				}
 				else if(s.isDirectory())
 				{
-					JProgressBar prog = new JProgressBar();
-					prog.setStringPainted(true);
-					prog.setMinimum(0);
-
 					JFrame progFrame = new JFrame("Progress...");
-					progFrame.getContentPane().add(prog);
-					progFrame.setSize(600, 75);
-					GUIUtils.setLocationMiddle(progFrame);
-					progFrame.setVisible(true);
 
-					File list[] = s.listFiles();
-					prog.setMaximum(list.length - 1);
-					for(int i = 0; i < list.length; i++)
+					try
 					{
-						prog.setString(list[i].getAbsolutePath());
-						prog.setValue(i);
-						prog.paintImmediately(0,0,prog.getWidth(),prog.getHeight());
+						JProgressBar prog = new JProgressBar();
+						prog.setStringPainted(true);
+						prog.setMinimum(0);
 
-						errors += runUtil(sel, list[i],  new File(d.getAbsolutePath() + System.getProperty("file.separator") + list[i].getName()), skipLines, val1.doubleValue(), val2.doubleValue(), val3.doubleValue());
+						progFrame.getContentPane().add(prog);
+						progFrame.setSize(600, 75);
+						GUIUtils.setLocationMiddle(progFrame);
+						progFrame.setVisible(true);
+
+						File list[] = s.listFiles();
+						prog.setMaximum(list.length - 1);
+						for(int i = 0; i < list.length; i++)
+						{
+							if(!list[i].isFile())
+								continue;
+
+							prog.setString(list[i].getAbsolutePath());
+							prog.setValue(i);
+							prog.paintImmediately(0, 0, prog.getWidth(), prog.getHeight());
+
+							errors += runUtil(sel, list[i],  new File(d.getAbsolutePath() + System.getProperty("file.separator") + list[i].getName()), skipLines, val1.doubleValue(), val2.doubleValue(), val3.doubleValue());
+						}
+						progFrame.dispose();
 					}
-					progFrame.dispose();
+					catch (Exception ex)
+					{
+						progFrame.dispose();
+						Utils.catchException(ex);
+					}
 				}
 				else // ...uh?
 				{
