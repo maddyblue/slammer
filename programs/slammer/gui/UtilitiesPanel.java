@@ -465,7 +465,7 @@ class UtilitiesPanel extends JPanel implements ActionListener
 				}
 				else // ...uh?
 				{
-					GUIUtils.popupError("Error with source.");
+					GUIUtils.popupError("Error with program source code.");
 					return;
 				}
 
