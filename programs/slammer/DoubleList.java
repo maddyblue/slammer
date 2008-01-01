@@ -12,6 +12,7 @@
 package slammer;
 
 import java.io.*;
+import slammer.analysis.*;
 import slammer.gui.*;
 
 public class DoubleList
@@ -74,7 +75,7 @@ public class DoubleList
 				return;
 			}
 			else if(dbl.equals("")) break;
-			current.next = new DoubleListElement(new Double(Double.parseDouble(dbl) * scale));
+			current.next = new DoubleListElement(new Double(Double.parseDouble(dbl) * scale * Analysis.Gcmss));
 			current.next.prev = current;
 			current = current.next;
 			length++;

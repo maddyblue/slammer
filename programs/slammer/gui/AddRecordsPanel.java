@@ -77,7 +77,7 @@ class AddRecordsPanel extends JPanel implements ActionListener
 			{
 				// popup a warning about units
 				int n = JOptionPane.showConfirmDialog(this,
-					  "WARNING: Earthquake records MUST be in units of cm/s/s.\n"
+					  "WARNING: Earthquake records MUST be in units of g's.\n"
 					+ "Records must also have no header data.\n"
 					+ "\n"
 					+ "If you need to convert units or strip header data, use the Utilities page.\n"
