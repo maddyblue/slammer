@@ -16,7 +16,7 @@ public class DeCoupledCommon extends Analysis
 {
 	// main function parameters
 	protected static double uwgt, height, vs, damp, damp1, dt, scal, g, vr, vs1;
-	protected static boolean dv2, dv3;
+	protected static boolean dv2 = true, dv3;
 
 	// main function variables
 	protected static double Mtot, M, L, omega, beta, gamma, angle;
@@ -47,7 +47,11 @@ public class DeCoupledCommon extends Analysis
 		if(!dv2)
 			dampf = 0.0;
 		else
-			dampf = 55.016 * Math.pow((vr / vs2), -0.9904); // should this also be "/ 100.0" like it is in the main Coupled() function?
+		{
+			dampf = 55.016 * Math.pow((vr / vs2), -0.9904);
+			if(dampf > 20.0)
+				dampf = 20.0;
+		}
 
 		damp2 = dampf + 0.62 * com2 * (100.0 / Math.PI * (4.0 * ((gameff2 - gamref * Math.log((gamref + gameff2) / gamref)) / (gameff2 * gameff2 / (gameff2 + gamref))) - 2.0)) + 1.0;
 
