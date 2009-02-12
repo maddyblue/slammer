@@ -435,23 +435,16 @@ public class Slammer
 				SplashScreen splash = new SplashScreen();
 
 				Utils.startDB();
-
 				splash.advance();
 
 				Utils.getDB().runUpdate("update data set select1=0, select2=0");
-
 				splash.advance();
 
 				// if the OS supports a native LF, use it
 				UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-
 				JFrame frame = new JFrame("Slammer");
-
 				frame.setIconImage(new ImageIcon(
 					frame.getClass().getResource("/slammer/images/icon.jpg")).getImage());
-
-				GUIUtils.bg = frame.getBackground();
-
 				splash.advance();
 
 				frame.addWindowListener(new WindowAdapter() {
@@ -475,13 +468,10 @@ public class Slammer
 				frame.getContentPane().add(new SlammerTabbedPane(frame));
 				frame.setSize(780,575);
 				GUIUtils.setLocationMiddle(frame);
-
 				splash.advance();
 
 				frame.setVisible(true);
-
 				splash.dispose();
-
 			} // }}}
 		}
 		catch(Exception ex)
