@@ -300,9 +300,9 @@ class UtilitiesPanel extends JPanel implements ActionListener
 				}
 				else if(peapick.isSelected())
 				{
-					constant1Pre.setText("Trim record between g values of ");
+					constant1Pre.setText("Trim record between values of ");
 					constant1f.setEnabled(true);
-					pane.setText("This program removes the points of a record from the beginning and end of the file that are less than the specified number of g's. 50 points are added to each side for lead in time.");
+					pane.setText("This program removes the points of a record from the beginning and end of the file that are less than the specified number, which should be in the same units as the file. 50 points are added to each side for lead in time.");
 				}
 				else if(clip.isSelected())
 				{
@@ -507,7 +507,7 @@ class UtilitiesPanel extends JPanel implements ActionListener
 				err = Utilities.Redigitize(data, o, var1);
 				break;
 			case SELECT_BRACKET: // peapick
-				Utilities.Bracket(data, o, var1 * Analysis.Gcmss);
+				Utilities.Bracket(data, o, var1);
 				break;
 			case SELECT_TRIM: // clip
 				Utilities.Trim(data, o, var1, var2, var3);
