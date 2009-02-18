@@ -42,7 +42,7 @@ public class Utilities extends Analysis
 		return null;
 	}
 
-	public static String Bracket(DoubleList data, FileWriter ofile, final double value) throws IOException
+	public static String Bracket(DoubleList data, FileWriter ofile, final double value, final int pad) throws IOException
 	{
 		Double val;
 		int top = data.size() - 1;
@@ -53,7 +53,7 @@ public class Utilities extends Analysis
 		{
 			if(Math.abs(val.doubleValue()) >= value)
 			{
-				indexl = index - 50;
+				indexl = index - pad;
 				if(indexl < 0)
 					indexl = 0;
 				break;
@@ -67,7 +67,7 @@ public class Utilities extends Analysis
 		{
 			if(Math.abs(val.doubleValue()) >= value)
 			{
-				indexr = index + 50;
+				indexr = index + pad;
 				if(indexr > top)
 					indexr = top;
 				break;

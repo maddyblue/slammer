@@ -38,8 +38,13 @@ public class DoubleList
 		this(fname, 0, 1.0);
 	}
 
+	public DoubleList(String fname, int skip, double scale) throws IOException
+	{
+		this(fname, skip, scale, false);
+	}
+
 	/* skip: the number of lines to skip at the beginning of the file */
-	public DoubleList(String fname, int skip, final double scale) throws IOException
+	public DoubleList(String fname, int skip, final double scale, final boolean nomult) throws IOException
 	{
 		head = new DoubleListElement();
 		current = head;
@@ -66,7 +71,9 @@ public class DoubleList
 				return;
 			}
 			else if(dbl.equals("")) break;
-			current.next = new DoubleListElement(new Double(Double.parseDouble(dbl) * scale * Analysis.Gcmss));
+			current.next = new DoubleListElement(new Double(Double.parseDouble(dbl)));
+			if(!nomult)
+				current.val *= scale * Analysis.Gcmss;
 			current.next.prev = current;
 			current = current.next;
 			length++;

@@ -27,7 +27,7 @@ class UtilitiesPanel extends JPanel implements ActionListener
 	JRadioButton gscm = new JRadioButton("<html>Convert g's to cm/s<sup>2</sup></html>");
 	JRadioButton mult = new JRadioButton("Multiply by a constant");
 	JRadioButton redigit = new JRadioButton("Redigitize");
-	JRadioButton peapick = new JRadioButton("Bracket records");
+	JRadioButton bracket = new JRadioButton("Bracket records");
 	JRadioButton clip = new JRadioButton("Trim records");
 	ButtonGroup group = new ButtonGroup();
 
@@ -68,21 +68,21 @@ class UtilitiesPanel extends JPanel implements ActionListener
 		gscm.setActionCommand("change");
 		mult.setActionCommand("change");
 		redigit.setActionCommand("change");
-		peapick.setActionCommand("change");
+		bracket.setActionCommand("change");
 		clip.setActionCommand("change");
 
 		cmgs.addActionListener(this);
 		gscm.addActionListener(this);
 		mult.addActionListener(this);
 		redigit.addActionListener(this);
-		peapick.addActionListener(this);
+		bracket.addActionListener(this);
 		clip.addActionListener(this);
 
 		group.add(cmgs);
 		group.add(gscm);
 		group.add(mult);
 		group.add(redigit);
-		group.add(peapick);
+		group.add(bracket);
 		group.add(clip);
 
 		sourceb.setActionCommand("source");
@@ -122,7 +122,7 @@ class UtilitiesPanel extends JPanel implements ActionListener
 		panel.add(cmgs);
 		panel.add(mult);
 		panel.add(redigit);
-		panel.add(peapick);
+		panel.add(bracket);
 		panel.add(clip);
 
 		c.gridx = x++;
@@ -298,11 +298,15 @@ class UtilitiesPanel extends JPanel implements ActionListener
 					constant1f.setEnabled(true);
 					pane.setText("This program converts a time file (a file containing paired time and acceleration values) into a file containing a sequence of acceleration values having a constant time spacing (digitization interval) using an interpolation algorithm.  The input and output files or directories must be specified or selected using the browser.  The digitization interval for the output file must be specified in the indicated field; any value can be selected by the user, but values of 0.01-0.05 generally are appropriate.  The output file is in the format necessary to run the other programs in this package, but if the original time file had units of g's, it will be necessary to convert to cm/s/s before running other analyses.");
 				}
-				else if(peapick.isSelected())
+				else if(bracket.isSelected())
 				{
 					constant1Pre.setText("Trim record between values of ");
 					constant1f.setEnabled(true);
-					pane.setText("This program removes the points of a record from the beginning and end of the file that are less than the specified number, which should be in the same units as the file. 50 points are added to each side for lead in time.");
+					constant2Pre.setText("Add ");
+					constant2Post.setText(" points to each side for lead-in and -out time.");
+					constant2f.setEnabled(true);
+					constant2f.setText("0");
+					pane.setText("This program removes the points of a record from the beginning and end of the file that have a magnitude less than the specified number, which should be in the same units as the file.");
 				}
 				else if(clip.isSelected())
 				{
@@ -399,12 +403,14 @@ class UtilitiesPanel extends JPanel implements ActionListener
 					sel = SELECT_REDIGIT;
 					selStr = "Redigitization to digitization interval of " + constant1f.getText();
 				}
-				else if(peapick.isSelected())
+				else if(bracket.isSelected())
 				{
-					val1 = (Double)Utils.checkNum(constant1f.getText(), "pea picker field", null, false, null, new Double(0), false, null, false);
+					val1 = (Double)Utils.checkNum(constant1f.getText(), "bracket value field", null, false, null, new Double(0), true, null, false);
 					if(val1 == null) return;
+					val2 = (Double)Utils.checkNum(constant2f.getText(), "bracket lead-in field", null, false, null, new Double(0), true, null, false);
+					if(val2 == null) return;
 					sel = SELECT_BRACKET;
-					selStr = "Pea pick";
+					selStr = "Bracket";
 				}
 				else if(clip.isSelected())
 				{
@@ -483,7 +489,7 @@ class UtilitiesPanel extends JPanel implements ActionListener
 
 	private String runUtil(int sel, File s, File d, int skip, double var1, double var2, double var3) throws IOException
 	{
-		DoubleList data = new DoubleList(s.getAbsolutePath(), skip, 1.0);
+		DoubleList data = new DoubleList(s.getAbsolutePath(), skip, 1.0, true);
 		if(data.bad())
 		{
 			return ("<br>After skipping " + skip + " lines, invalid data encountered in file " + s.getAbsolutePath() + " at point " + data.badEntry() + ".");
@@ -506,8 +512,8 @@ class UtilitiesPanel extends JPanel implements ActionListener
 			case SELECT_REDIGIT: // redigit
 				err = Utilities.Redigitize(data, o, var1);
 				break;
-			case SELECT_BRACKET: // peapick
-				Utilities.Bracket(data, o, var1);
+			case SELECT_BRACKET: // bracket
+				Utilities.Bracket(data, o, var1, (int)var2);
 				break;
 			case SELECT_TRIM: // clip
 				Utilities.Trim(data, o, var1, var2, var3);
