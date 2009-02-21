@@ -33,7 +33,7 @@ class UtilitiesPanel extends JPanel implements ActionListener
 
 	JFileChooser fcs = new JFileChooser();
 	JFileChooser fcd = new JFileChooser();
-	JLabel source = new JLabel("Source file or directory");
+	JLabel source = new JLabel("Source files and directories");
 	JLabel dest = new JLabel("Destination file or directory (leave blank to overwrite source file)");
 	JLabel constant1 = new JLabel(" ");
 	JLabel constant1Pre = new JLabel("");
@@ -54,6 +54,7 @@ class UtilitiesPanel extends JPanel implements ActionListener
 	JButton go = new JButton("Execute");
 	JTextField skip = new JTextField("0", 4);
 	JEditorPane pane = new JEditorPane();
+	JScrollPane spane = new JScrollPane(pane);
 
 	JTextField headerField = new JTextField(5);
 
@@ -62,6 +63,8 @@ class UtilitiesPanel extends JPanel implements ActionListener
 		this.parent = parent;
 
 		fcs.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+		fcs.setMultiSelectionEnabled(true);
+		sourcef.setEditable(false);
 		fcd.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 
 		cmgs.setActionCommand("change");
@@ -239,8 +242,8 @@ class UtilitiesPanel extends JPanel implements ActionListener
 		c.weightx = 1;
 		c.weighty = 1;
 		c.fill = GridBagConstraints.BOTH;
-		gridbag.setConstraints(pane, c);
-		add(pane);
+		gridbag.setConstraints(spane, c);
+		add(spane);
 	}
 
 	public void actionPerformed(java.awt.event.ActionEvent e)
@@ -259,7 +262,16 @@ class UtilitiesPanel extends JPanel implements ActionListener
 			{
 				if(fcs.showOpenDialog(this) == JFileChooser.APPROVE_OPTION)
 				{
-					sourcef.setText(fcs.getSelectedFile().getAbsolutePath());
+					File files[] = fcs.getSelectedFiles();
+					String sf = "";
+					for(int i = 0; i < files.length; i++)
+					{
+						if(i > 0)
+							sf += ", ";
+
+						sf += files[i].getAbsolutePath();
+					}
+					sourcef.setText(sf);
 				}
 			}
 			else if(command.equals("change"))
@@ -323,42 +335,25 @@ class UtilitiesPanel extends JPanel implements ActionListener
 			}
 			else if(command.equals("go"))
 			{
+				File sources[], source, dest, d;
 				String temp;
-				File s, d;
 
-				temp = sourcef.getText();
+				sources = fcs.getSelectedFiles();
+				if(sources == null || sources.length == 0)
+				{
+					GUIUtils.popupError("No sources specified.");
+					return;
+				}
+
+				temp = destf.getText();
 				if(temp == null || temp.equals(""))
-				{
-					GUIUtils.popupError("No source specified.");
-					return;
-				}
-
-				s = new File(sourcef.getText());
-				if(!s.exists() || !s.canRead())
-				{
-					GUIUtils.popupError(s.getAbsolutePath() + " does not exist or is not readable.");
-					return;
-				}
-
-				if(!s.isFile() && !s.isDirectory())
-				{
-					GUIUtils.popupError(s.getAbsolutePath() + " is invalid.");
-					return;
-				}
-
-				if(destf.getText() == null || destf.getText().equals(""))
-					d = s;
+					dest = null;
 				else
-					d = new File(destf.getText());
+					dest = new File(temp);
 
-				if(s.isDirectory() && d.isFile())
+				if(dest != null && (sources.length > 1 || !sources[0].isFile()) && dest.isFile())
 				{
-					GUIUtils.popupError("If the source is a directory the destination must also be a directory.");
-					return;
-				}
-				else if(s.isFile() && d.isDirectory())
-				{
-					GUIUtils.popupError("If the source is a file the destination must also be a file.");
+					GUIUtils.popupError("Destination must be a directory.");
 					return;
 				}
 
@@ -370,7 +365,7 @@ class UtilitiesPanel extends JPanel implements ActionListener
 				{
 					Double doub = (Double)Utils.checkNum(temp, "skip lines field", null, false, null, new Double(0), true, null, false);
 					if(doub == null) return;
-					skipLines = (int)doub.doubleValue();
+					skipLines = doub.intValue();
 				}
 
 				Double val1 = new Double(0);
@@ -432,53 +427,55 @@ class UtilitiesPanel extends JPanel implements ActionListener
 				int ret;
 				String errors = "";
 
-				if(s.isFile())
-				{
-					errors = runUtil(sel, s, d, skipLines, val1.doubleValue(), val2.doubleValue(), val3.doubleValue());
-				}
-				else if(s.isDirectory())
-				{
-					JFrame progFrame = new JFrame("Progress...");
+				JFrame progFrame = new JFrame("Progress...");
+				JProgressBar prog = new JProgressBar();
+				prog.setStringPainted(true);
+				prog.setMinimum(0);
+				prog.setMaximum(sources.length);
 
-					try
+				progFrame.getContentPane().add(prog);
+				progFrame.setSize(600, 75);
+				GUIUtils.setLocationMiddle(progFrame);
+				progFrame.setVisible(true);
+
+				for(int i = 0; i < sources.length; i++)
+				{
+					source = sources[i];
+					prog.setString(source.getAbsolutePath());
+					prog.setValue(i);
+					prog.paintImmediately(0, 0, prog.getWidth(), prog.getHeight());
+
+					if(source.isFile())
 					{
-						JProgressBar prog = new JProgressBar();
-						prog.setStringPainted(true);
-						prog.setMinimum(0);
+						errors = runUtil(sel, source, dest, skipLines, val1.doubleValue(), val2.doubleValue(), val3.doubleValue());
+					}
+					else if(source.isDirectory())
+					{
+						File list[] = source.listFiles();
 
-						progFrame.getContentPane().add(prog);
-						progFrame.setSize(600, 75);
-						GUIUtils.setLocationMiddle(progFrame);
-						progFrame.setVisible(true);
-
-						File list[] = s.listFiles();
-						prog.setMaximum(list.length - 1);
-						for(int i = 0; i < list.length; i++)
+						if(dest == null)
+							d = null;
+						else
 						{
-							if(!list[i].isFile())
+							d = new File(dest, source.getName());
+							d.mkdirs();
+						}
+
+						for(int j = 0; j < list.length; j++)
+						{
+							if(!list[j].isFile())
 								continue;
 
-							prog.setString(list[i].getAbsolutePath());
-							prog.setValue(i);
+							prog.setString(list[j].getAbsolutePath());
 							prog.paintImmediately(0, 0, prog.getWidth(), prog.getHeight());
 
-							errors += runUtil(sel, list[i],  new File(d.getAbsolutePath() + System.getProperty("file.separator") + list[i].getName()), skipLines, val1.doubleValue(), val2.doubleValue(), val3.doubleValue());
+							errors += runUtil(sel, list[j], d, skipLines, val1.doubleValue(), val2.doubleValue(), val3.doubleValue());
 						}
-						progFrame.dispose();
 					}
-					catch (Exception ex)
-					{
-						progFrame.dispose();
-						Utils.catchException(ex);
-					}
-				}
-				else // ...uh?
-				{
-					GUIUtils.popupError("Error with program source code.");
-					return;
 				}
 
-				pane.setText(selStr + " on " + d.getAbsolutePath() + (errors.equals("") ? " complete." : (" NOT complete.<p>Errors:" + errors)));
+				progFrame.dispose();
+				pane.setText(selStr + (errors.equals("") ? " complete." : (" NOT complete.<p>Errors:" + errors)));
 			}
 		}
 		catch (Exception ex)
@@ -489,38 +486,60 @@ class UtilitiesPanel extends JPanel implements ActionListener
 
 	private String runUtil(int sel, File s, File d, int skip, double var1, double var2, double var3) throws IOException
 	{
+		File dest;
+
+		if(!s.exists() || !s.canRead())
+			return "<br>" + s.getAbsolutePath() + " does not exist or is not readable.\n";
+		else if(!s.isFile())
+			return "<br>" + s.getAbsolutePath() + " is invalid.\n";
+
+		if(d == null)
+			dest = s;
+		else if(d.isDirectory())
+			dest = new File(d, s.getName());
+		else
+			dest = d;
+
 		DoubleList data = new DoubleList(s.getAbsolutePath(), skip, 1.0, true);
 		if(data.bad())
 		{
 			return ("<br>After skipping " + skip + " lines, invalid data encountered in file " + s.getAbsolutePath() + " at point " + data.badEntry() + ".");
 		}
 
-		FileWriter o = new FileWriter(d);
 		String err = "";
 
-		switch(sel)
+		try
 		{
-			case SELECT_CMGS: // cmgs
-				Utilities.CM_GS(data, o);
-				break;
-			case SELECT_GSCM: // gscm
-				Utilities.GS_CM(data, o);
-				break;
-			case SELECT_MULT: // mult
-				Utilities.Mult(data, o, var1);
-				break;
-			case SELECT_REDIGIT: // redigit
-				err = Utilities.Redigitize(data, o, var1);
-				break;
-			case SELECT_BRACKET: // bracket
-				Utilities.Bracket(data, o, var1, (int)var2);
-				break;
-			case SELECT_TRIM: // clip
-				Utilities.Trim(data, o, var1, var2, var3);
-		}
+			FileWriter o = new FileWriter(dest);
 
-		if(!err.equals(""))
-			err = "<br>" + err + " in file " + s.getAbsolutePath() + ".\n";
+			switch(sel)
+			{
+				case SELECT_CMGS: // cmgs
+					Utilities.CM_GS(data, o);
+					break;
+				case SELECT_GSCM: // gscm
+					Utilities.GS_CM(data, o);
+					break;
+				case SELECT_MULT: // mult
+					Utilities.Mult(data, o, var1);
+					break;
+				case SELECT_REDIGIT: // redigit
+					err = Utilities.Redigitize(data, o, var1);
+					break;
+				case SELECT_BRACKET: // bracket
+					Utilities.Bracket(data, o, var1, (int)var2);
+					break;
+				case SELECT_TRIM: // clip
+					Utilities.Trim(data, o, var1, var2, var3);
+			}
+
+			if(!err.equals(""))
+				err = "<br>" + err + " in file " + s.getAbsolutePath() + ".\n";
+		}
+		catch (Exception ex)
+		{
+			err = "<br>" + ex + ".\n";
+		}
 
 		return err;
 	}
