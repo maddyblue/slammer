@@ -34,6 +34,7 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 	JTextField labelThreef = new JTextField(15);
 	JLabel labelResf = new JLabel(" ");
 	JEditorPane ta = new JEditorPane();
+	JScrollPane sta = new JScrollPane(ta);
 	JButton button = new JButton("Perform Analysis");
 
 	String Jibson1993Str = "This program estimates rigid-block Newmark displacement as a function of Arias shaking intensity and critical acceleration as explained in Jibson (1993). The estimate is made using the following regression equation:"
@@ -196,7 +197,6 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 		gridbag.setConstraints(labelResf, c);
 		add(labelResf);
 
-		//*
 		c.gridx = 0;
 		c.gridy = y;
 		c.insets = none;
@@ -204,9 +204,8 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 		c.weightx = 1;
 		c.weighty = 1;
 		c.fill = GridBagConstraints.BOTH;
-		gridbag.setConstraints(ta, c);
-		add(ta);
-		//*/
+		gridbag.setConstraints(sta, c);
+		add(sta);
 	}
 
 	public void actionPerformed(java.awt.event.ActionEvent e)
