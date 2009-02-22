@@ -49,7 +49,7 @@ public class DoubleList
 		head = new DoubleListElement();
 		current = head;
 		FileReader file = new FileReader(fname);
-		String dbl = "";
+		Double dbl;
 		length = 0;
 
 		char c;
@@ -64,16 +64,22 @@ public class DoubleList
 
 		while(file.ready())
 		{
-			dbl = nextDouble(file);
-			if(dbl == null)
+			try
+			{
+				dbl = nextDouble(file);
+			}
+			catch (NumberFormatException nfe)
 			{
 				bad = length + 1;
 				return;
 			}
-			else if(dbl.equals("")) break;
-			current.next = new DoubleListElement(new Double(Double.parseDouble(dbl)));
+
+			if(dbl == null)
+				break;
+
+			current.next = new DoubleListElement(dbl);
 			if(!nomult)
-				current.val *= scale * Analysis.Gcmss;
+				current.next.val *= scale * Analysis.Gcmss;
 			current.next.prev = current;
 			current = current.next;
 			length++;
@@ -83,9 +89,9 @@ public class DoubleList
 		current = head;
 	}
 
-	private String nextDouble(FileReader file) throws IOException
+	private Double nextDouble(FileReader file) throws IOException
 	{
-		String string = "";
+		StringBuilder string = new StringBuilder(32);
 		boolean stop = false;
 		char temp;
 
@@ -118,28 +124,19 @@ public class DoubleList
 				case '.':
 				case '-':
 				case '+':
-					string += temp;
+					string.append(temp);
 					break;
 				default:
-					string += temp;
+					string.append(temp);
 					stop = true;
 					break;
 			}
 		}
-		try
-		{
-			string = string.trim();
-			if(string.equals("")) return "";
 
-			// just to throw a NumberFormatException, if needed
-			Double.valueOf(string);
-
-			return string;
-		}
-		catch (NumberFormatException e)
-		{
+		if(string.length() == 0)
 			return null;
-		}
+
+		return Double.valueOf(string.toString());
 	}
 
 	public void reset()
