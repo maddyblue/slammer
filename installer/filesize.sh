@@ -33,6 +33,8 @@ done
 
 for file in installer/slammer-*.tar
 do
-	echo bzip2ing $file
-	bzip2 -k $file
+	if [ $file -nt $file.bz2 ]; then
+		echo bzip2ing $file
+		bzip2 -kf $file
+	fi
 done

@@ -1,6 +1,6 @@
 <project name="Slammer">
 
-	<property name="inst" location="installer" />
+	<property name="inst" value="installer" />
 	<property name="rec" value="records" />
 	<property name="prog" value="programs" />
 
@@ -63,12 +63,24 @@
 		</tar>
 
 		<tar destfile="${inst}/slammer-source.tar">
-			<tarfileset dir="${prog}" prefix="${prog}" excludes="*.svn">
+			<tarfileset dir="${prog}" prefix="${prog}">
 				<include name="build.xml" />
 				<include name="help/**" />
 				<include name="slammer/**/*.java" />
 				<include name="slammer/slammer.manifest" />
 				<include name="slammer/images/*" />
+			</tarfileset>
+			<tarfileset dir="${inst}" prefix="${inst}" excludes="*.tar*">
+				<include name="*.html" />
+				<include name="*.java" />
+				<include name="filesize.sh" />
+				<include name="install.mf" />
+				<include name="install.props" />
+				<include name="slammer-*" />
+			</tarfileset>
+			<tarfileset dir=".">
+				<include name="build.xml" />
+				<include name="org/**" />
 			</tarfileset>
 		</tar>
 

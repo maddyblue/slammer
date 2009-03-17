@@ -1,5 +1,5 @@
-programs/jars/derby-10.2.2.0.jar
-programs/jars/jcommon-1.0.8.jar
-programs/jars/jfreechart-1.0.3.jar
+programs/jars/derby-10.3.2.1.jar
+programs/jars/jcommon-1.0.12.jar
+programs/jars/jfreechart-1.0.8a.jar
 programs/jars/junit-3.8.1.jar
 programs/slammer.jar
