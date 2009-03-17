@@ -1,7 +1,9 @@
-*.class
-*~
-*.tar
 *.bz2
-slammerinstall.jar
-programs/slammer.jar
+*.class
+*.orig
+*.swp
+*.tar
+*~
 programs/database
+programs/slammer.jar
+slammerinstall.jar
