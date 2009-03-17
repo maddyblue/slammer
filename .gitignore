@@ -4,6 +4,6 @@
 *.swp
 *.tar
 *~
-programs/database/*
+programs/database
 programs/slammer.jar
 slammerinstall.jar
