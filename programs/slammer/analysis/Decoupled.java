@@ -1,13 +1,4 @@
-/*
- * Originally written by Yong-Woo Lee and Ellen Rathje for the SLAMMER project.
- * This work has been placed into the public domain. You may use this work in
- * any way and for any purpose you wish.
- *
- * THIS SOFTWARE IS PROVIDED AS-IS WITHOUT WARRANTY OF ANY KIND, NOT EVEN THE
- * IMPLIED WARRANTY OF MERCHANTABILITY. THE AUTHOR OF THIS SOFTWARE, ASSUMES
- * _NO_ RESPONSIBILITY FOR ANY CONSEQUENCE RESULTING FROM THE USE, MODIFICATION,
- * OR REDISTRIBUTION OF THIS SOFTWARE.
- */
+/* This file is in the public domain. */
 
 package slammer.analysis;
 
@@ -23,7 +14,6 @@ public class Decoupled extends DeCoupledCommon
 	private static double acc1, acc2;
 
 	private static double time;
-
 
 	public static double Decoupled(double[] ain_p, double uwgt_p, double height_p, double vs_p, double damp1_p, double dt_p, double scal_p, double g_p, double vr_p, double[][] ca, boolean dv3_p)
 	{
@@ -80,33 +70,9 @@ public class Decoupled extends DeCoupledCommon
 
 		rho = uwgt / g;
 
-		if((vr / vs) <= 2.5)
-			dampf = 20.0 / 100.0;
-		else
-			dampf = 55.016 * Math.pow((vr / vs), -0.9904) / 100.0;
-
-		/* Helpful debugging output
-		int i;
-		System.out.println("Density : " + rho);
-		System.out.println("Height : " + height);
-
-		if(nmu==1)
-		{
-			System.out.println("Yield Acceleration Coeff. : " + mu[0]);
-		}
-		else
-		{
-			for(i = 1; i <= nmu; i++)
-			{
-				System.out.println("Yield Acceleration Coeff.: " + mu[i-1] + "   over Displacement " + disp[i-1]);
-			}
-		}
-
-		System.out.println("Dynamic Properties");
-		System.out.println("Shear Wave Velocity" + "  " + "Damping Ratio");
-		System.out.println("Soil" + "  " + "Rock" + "  " + "Soil" + "  " + "Foundation" + "  " + "Total");
-		System.out.println("INITIAL" + "  " + vs + "  " + vr + "  " + damp + "  " + dampf + "  " + (damp+dampf));
-		// */
+		dampf = 55.016 * Math.pow((vr / vs), -0.9904) / 100.0;
+		if(dampf > 0.2)
+			dampf = 0.2;
 
 		/* The following block appears in the original code. We will do the same
 		 * thing by using a scaling factor multiplier.
@@ -138,6 +104,29 @@ public class Decoupled extends DeCoupledCommon
 		// For Equivalent Linear
 		if(dv3)
 			d_eq();
+
+		/* Helpful debugging output
+		int i;
+		System.out.println("Density : " + rho);
+		System.out.println("Height : " + height);
+
+		if(nmu==1)
+		{
+			System.out.println("Yield Acceleration Coeff. : " + mu[0]);
+		}
+		else
+		{
+			for(i = 1; i <= nmu; i++)
+			{
+				System.out.println("Yield Acceleration Coeff.: " + mu[i-1] + "   over Displacement " + disp[i-1]);
+			}
+		}
+
+		System.out.println("Dynamic Properties");
+		System.out.println("Shear Wave Velocity" + "  " + "Damping Ratio");
+		System.out.println("Soil" + "  " + "Rock" + "  " + "Soil" + "  " + "Foundation" + "  " + "Total");
+		System.out.println("INITIAL" + "  " + vs + "  " + vr + "  " + damp + "  " + dampf + "  " + (damp+dampf));
+		// */
 
 		omega = Math.PI * vs / (2.0 * height);
 
@@ -300,7 +289,7 @@ public class Decoupled extends DeCoupledCommon
 	{
 		int t = 0;
 
-		while(n > 5 || o > 5)
+		while(n > 5.0 || o > 5.0)
 		{
 			for(j = 1; j <= npts; j++)
 			{

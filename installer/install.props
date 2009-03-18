@@ -17,39 +17,39 @@ ostask.unix-script.label=Install shortcut in:
 comp.count=6
 
 comp.0.name=Slammer program (check only on initial install)
-comp.0.disk-size=4
-comp.0.real-size=4356
+comp.0.disk-size=5
+comp.0.real-size=4635
 comp.0.fileset=slammer-program
 
 comp.1.name=California records
-comp.1.disk-size=71
-comp.1.real-size=69692
+comp.1.disk-size=110
+comp.1.real-size=109366
 comp.1.fileset=slammer-eq-california
 comp.1.sql=eq-california.sql
 comp.1.sqllen=1239
 
 comp.2.name=Chi-Chi, Taiwan earthquake records
-comp.2.disk-size=167
-comp.2.real-size=169849
+comp.2.disk-size=173
+comp.2.real-size=174988
 comp.2.fileset=slammer-eq-chichi
 comp.2.sql=eq-chichi.sql
 comp.2.sqllen=630
 
 comp.3.name=International records
-comp.3.disk-size=54
-comp.3.real-size=54974
+comp.3.disk-size=61
+comp.3.real-size=60834
 comp.3.fileset=slammer-eq-international
 comp.3.sql=eq-international.sql
 comp.3.sqllen=337
 
 comp.4.name=Other US records
-comp.4.disk-size=16
-comp.4.real-size=16062
+comp.4.disk-size=41
+comp.4.real-size=41422
 comp.4.fileset=slammer-eq-otherus
 comp.4.sql=eq-otherus.sql
 comp.4.sqllen=176
 
 comp.5.name=Source code
 comp.5.disk-size=2
-comp.5.real-size=1154
+comp.5.real-size=1134
 comp.5.fileset=slammer-source

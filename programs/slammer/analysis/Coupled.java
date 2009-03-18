@@ -1,13 +1,4 @@
-/*
- * Originally written by Yong-Woo Lee and Ellen Rathje for the SLAMMER project.
- * This work has been placed into the public domain. You may use this work in
- * any way and for any purpose you wish.
- *
- * THIS SOFTWARE IS PROVIDED AS-IS WITHOUT WARRANTY OF ANY KIND, NOT EVEN THE
- * IMPLIED WARRANTY OF MERCHANTABILITY. THE AUTHOR OF THIS SOFTWARE, ASSUMES
- * _NO_ RESPONSIBILITY FOR ANY CONSEQUENCE RESULTING FROM THE USE, MODIFICATION,
- * OR REDISTRIBUTION OF THIS SOFTWARE.
- */
+/* This file is in the public domain. */
 
 package slammer.analysis;
 
@@ -97,33 +88,9 @@ public class Coupled extends DeCoupledCommon
 		rho = uwgt / g;
 		nmu = ca.length;
 
-		if((vr / vs) <= 2.5)
-			dampf = 20.0 / 100.0;
-		else
-			dampf = 55.016 * Math.pow((vr / vs), -0.9904) / 100.0;
-
-		/* Helpful debugging output
-		int i;
-		System.out.println("Density : " + rho);
-		System.out.println("Height : " + height);
-
-		if(nmu==1)
-		{
-			System.out.println("Yield Acceleration Coeff. : " + mu[0]);
-		}
-		if(!(nmu==1))
-		{
-			for(i=1;i<=nmu;i++)
-			{
-				System.out.println("Yield Acceleration Coeff.: " + mu[i-1] + "   over Displacement " + disp[i-1]);
-			}
-		}
-
-		System.out.println("Dynamic Properties");
-		System.out.println("Shear Wave Velocity" + "  " + "Damping Ratio");
-		System.out.println("Soil" + "  " + "Rock" + "  " + "Soil" + "  " + "Foundation" + "  " + "Total");
-		System.out.println("INITIAL" + "  " + vs + "  " + vr + "  " + damp + "  " + dampf + "  " + (damp+dampf));
-		// */
+		dampf = 55.016 * Math.pow((vr / vs), -0.9904) / 100.0;
+		if(dampf > 0.2)
+			dampf = 0.2;
 
 		// for each mode calculate constants for Slammer algorithm
 		/////////////////////////////////////////////////////////////////////////
@@ -148,6 +115,29 @@ public class Coupled extends DeCoupledCommon
 
 		if(dv3)
 			c_eq();
+
+		/* Helpful debugging output
+		int i;
+		System.out.println("Density : " + rho);
+		System.out.println("Height : " + height);
+
+		if(nmu==1)
+		{
+			System.out.println("Yield Acceleration Coeff. : " + mu[0]);
+		}
+		if(!(nmu==1))
+		{
+			for(i=1;i<=nmu;i++)
+			{
+				System.out.println("Yield Acceleration Coeff.: " + mu[i-1] + "   over Displacement " + disp[i-1]);
+			}
+		}
+
+		System.out.println("Dynamic Properties");
+		System.out.println("Shear Wave Velocity" + "  " + "Damping Ratio");
+		System.out.println("Soil" + "  " + "Rock" + "  " + "Soil" + "  " + "Foundation" + "  " + "Total");
+		System.out.println("INITIAL" + "  " + vs + "  " + vr + "  " + damp + "  " + dampf + "  " + (damp+dampf));
+		// */
 
 		// Loop for time steps in time histories
 

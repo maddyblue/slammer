@@ -1,17 +1,9 @@
-/*
- * Originally written by Matt Jibson for the SLAMMER project. This work has been
- * placed into the public domain. You may use this work in any way and for any
- * purpose you wish.
- *
- * THIS SOFTWARE IS PROVIDED AS-IS WITHOUT WARRANTY OF ANY KIND, NOT EVEN THE
- * IMPLIED WARRANTY OF MERCHANTABILITY. THE AUTHOR OF THIS SOFTWARE, ASSUMES
- * _NO_ RESPONSIBILITY FOR ANY CONSEQUENCE RESULTING FROM THE USE, MODIFICATION,
- * OR REDISTRIBUTION OF THIS SOFTWARE.
- */
+/* This file is in the public domain. */
 
 package slammer;
 
 import java.io.*;
+import slammer.analysis.*;
 import slammer.gui.*;
 
 public class DoubleList
@@ -46,13 +38,18 @@ public class DoubleList
 		this(fname, 0, 1.0);
 	}
 
+	public DoubleList(String fname, int skip, double scale) throws IOException
+	{
+		this(fname, skip, scale, false);
+	}
+
 	/* skip: the number of lines to skip at the beginning of the file */
-	public DoubleList(String fname, int skip, final double scale) throws IOException
+	public DoubleList(String fname, int skip, final double scale, final boolean nomult) throws IOException
 	{
 		head = new DoubleListElement();
 		current = head;
 		FileReader file = new FileReader(fname);
-		String dbl = "";
+		Double dbl;
 		length = 0;
 
 		char c;
@@ -67,14 +64,22 @@ public class DoubleList
 
 		while(file.ready())
 		{
-			dbl = nextDouble(file);
-			if(dbl == null)
+			try
+			{
+				dbl = nextDouble(file);
+			}
+			catch (NumberFormatException nfe)
 			{
 				bad = length + 1;
 				return;
 			}
-			else if(dbl.equals("")) break;
-			current.next = new DoubleListElement(new Double(Double.parseDouble(dbl) * scale));
+
+			if(dbl == null)
+				break;
+
+			current.next = new DoubleListElement(dbl);
+			if(!nomult)
+				current.next.val *= scale * Analysis.Gcmss;
 			current.next.prev = current;
 			current = current.next;
 			length++;
@@ -84,9 +89,9 @@ public class DoubleList
 		current = head;
 	}
 
-	private String nextDouble(FileReader file) throws IOException
+	private Double nextDouble(FileReader file) throws IOException
 	{
-		String string = "";
+		StringBuilder string = new StringBuilder(32);
 		boolean stop = false;
 		char temp;
 
@@ -119,28 +124,19 @@ public class DoubleList
 				case '.':
 				case '-':
 				case '+':
-					string += temp;
+					string.append(temp);
 					break;
 				default:
-					string += temp;
+					string.append(temp);
 					stop = true;
 					break;
 			}
 		}
-		try
-		{
-			string = string.trim();
-			if(string.equals("")) return "";
 
-			// just to throw a NumberFormatException, if needed
-			Double.valueOf(string);
-
-			return string;
-		}
-		catch (NumberFormatException e)
-		{
+		if(string.length() == 0)
 			return null;
-		}
+
+		return Double.valueOf(string.toString());
 	}
 
 	public void reset()

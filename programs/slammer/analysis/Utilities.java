@@ -1,13 +1,4 @@
-/*
- * Originally written by Matt Jibson for the SLAMMER project. This work has been
- * placed into the public domain. You may use this work in any way and for any
- * purpose you wish.
- *
- * THIS SOFTWARE IS PROVIDED AS-IS WITHOUT WARRANTY OF ANY KIND, NOT EVEN THE
- * IMPLIED WARRANTY OF MERCHANTABILITY. THE AUTHOR OF THIS SOFTWARE, ASSUMES
- * _NO_ RESPONSIBILITY FOR ANY CONSEQUENCE RESULTING FROM THE USE, MODIFICATION,
- * OR REDISTRIBUTION OF THIS SOFTWARE.
- */
+/* This file is in the public domain. */
 
 package slammer.analysis;
 
@@ -51,7 +42,7 @@ public class Utilities extends Analysis
 		return null;
 	}
 
-	public static String Bracket(DoubleList data, FileWriter ofile, final double value) throws IOException
+	public static String Bracket(DoubleList data, FileWriter ofile, final double value, final int pad) throws IOException
 	{
 		Double val;
 		int top = data.size() - 1;
@@ -62,7 +53,7 @@ public class Utilities extends Analysis
 		{
 			if(Math.abs(val.doubleValue()) >= value)
 			{
-				indexl = index - 50;
+				indexl = index - pad;
 				if(indexl < 0)
 					indexl = 0;
 				break;
@@ -76,7 +67,7 @@ public class Utilities extends Analysis
 		{
 			if(Math.abs(val.doubleValue()) >= value)
 			{
-				indexr = index + 50;
+				indexr = index + pad;
 				if(indexr > top)
 					indexr = top;
 				break;
