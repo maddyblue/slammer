@@ -34,29 +34,30 @@ public interface SlammerTableInterface
 	public static final Boolean FALSE = Boolean.FALSE;
 
 	public static final Object[][] fieldArray = {
-		//                                                                sort          select    manager
-		// Field name                 units   abbrev         DB name      field  search display   display   import
-		{ "Import",                   "",     "Import",      "",          FALSE, FALSE, NONEO,    NONEO,    IMTBLO  },
-		{ "File",                     "",     "File",        "",          FALSE, FALSE, NONEO,    NONEO,    IMTBLO  },
-		{ "Earthquake",               "",     "Earthquake",  "EQ",        TRUE,  FALSE, RSBOTHO,  RSBOTHO,  IMBOTHO },
-		{ "Record",                   "",     "Record",      "RECORD",    TRUE,  FALSE, RSBOTHO,  RSBOTHO,  IMTBLO  },
-		{ "Digitization Interval",    "s",    "Dig. Int.",   "DIGI_INT",  FALSE, FALSE, NONEO,    RECORDO,  IMBOTHO },
-		{ "Moment Magnitude",         "",     "Magnitude",   "MOM_MAG",   TRUE,  TRUE,  RECORDO,  RECORDO,  IMBOTHO },
-		{ "Arias Intensity",          "m/s",  "Arias Int.",  "ARIAS",     TRUE,  TRUE,  RECORDO,  RECORDO,  NONEO   },
-		{ "Duration<sub>5-95%</sub>", "s",    "Duration",    "DOBRY",     TRUE,  TRUE,  RECORDO,  RECORDO,  NONEO   },
-		{ "Peak Acceleration",        "g",    "PGA",         "PGA",       TRUE,  TRUE,  RECORDO,  RECORDO,  NONEO   },
-		{ "Peak Velocity",            "cm/s", "PGV",         "PGV",       TRUE,  TRUE,  RECORDO,  RECORDO,  NONEO   },
-		{ "Mean Period",              "s",    "Mean Per.",   "MEAN_PER",  TRUE,  TRUE,  RECORDO,  RECORDO,  NONEO   },
-		{ "Epicentral Distance",      "km",   "Epi. Dist.",  "EPI_DIST",  TRUE,  TRUE,  RECORDO,  RECORDO,  IMBOTHO },
-		{ "Focal Distance",           "km",   "Focal Dist.", "FOC_DIST",  TRUE,  TRUE,  RECORDO,  RECORDO,  IMBOTHO },
-		{ "Rupture Distance",         "km",   "Rup. Dist",   "RUP_DIST",  TRUE,  TRUE,  RECORDO,  RECORDO,  IMBOTHO },
-		{ "Focal Mechanism",          "",     "Foc. Mech.",  "FOC_MECH",  TRUE,  FALSE, RECORDO,  RECORDO,  IMBOTHO },
-		{ "Location",                 "",     "Location",    "LOCATION",  TRUE,  FALSE, STATIONO, STATIONO, IMBOTHO },
-		{ "Owner",                    "",     "Owner",       "OWNER",     TRUE,  FALSE, STATIONO, STATIONO, IMBOTHO },
-		{ "Latitude",                 "",     "Lat.",        "LATITUDE",  TRUE,  FALSE, STATIONO, STATIONO, IMBOTHO },
-		{ "Longitude",                "",     "Long.",       "LONGITUDE", TRUE,  FALSE, STATIONO, STATIONO, IMBOTHO },
-		{ "Site Classification",      "",     "Site Class.", "CLASS",     TRUE,  FALSE, STATIONO, STATIONO, IMBOTHO },
-		{ "Analyze",                  "",     "Analyze",     "ANALYZE",   FALSE, FALSE, RSBOTHO,  NONEO,    NONEO   }
+		//                                                                          sort          select    manager
+		// Field name                           units   abbrev         DB name      field  search display   display   import
+		{ "Import",                             "",     "Import",      "",          FALSE, FALSE, NONEO,    NONEO,    IMTBLO  },
+		{ "File",                               "",     "File",        "",          FALSE, FALSE, NONEO,    NONEO,    IMTBLO  },
+		{ "Earthquake",                         "",     "Earthquake",  "EQ",        TRUE,  FALSE, RSBOTHO,  RSBOTHO,  IMBOTHO },
+		{ "Record",                             "",     "Record",      "RECORD",    TRUE,  FALSE, RSBOTHO,  RSBOTHO,  IMTBLO  },
+		{ "Digitization Interval",              "s",    "Dig. Int.",   "DIGI_INT",  FALSE, FALSE, NONEO,    RECORDO,  IMBOTHO },
+		{ "Moment Magnitude",                   "",     "Magnitude",   "MOM_MAG",   TRUE,  TRUE,  RECORDO,  RECORDO,  IMBOTHO },
+		{ "Arias Intensity",                    "m/s",  "Arias Int.",  "ARIAS",     TRUE,  TRUE,  RECORDO,  RECORDO,  NONEO   },
+		{ "Duration<sub>5-95%</sub>",           "s",    "Duration",    "DOBRY",     TRUE,  TRUE,  RECORDO,  RECORDO,  NONEO   },
+		{ "Peak Acceleration",                  "g",    "PGA",         "PGA",       TRUE,  TRUE,  RECORDO,  RECORDO,  NONEO   },
+		{ "Peak Velocity",                      "cm/s", "PGV",         "PGV",       TRUE,  TRUE,  RECORDO,  RECORDO,  NONEO   },
+		{ "Mean Period",                        "s",    "Mean Per.",   "MEAN_PER",  TRUE,  TRUE,  RECORDO,  RECORDO,  NONEO   },
+		{ "Epicentral Distance",                "km",   "Epi. Dist.",  "EPI_DIST",  TRUE,  TRUE,  RECORDO,  RECORDO,  IMBOTHO },
+		{ "Focal Distance",                     "km",   "Focal Dist.", "FOC_DIST",  TRUE,  TRUE,  RECORDO,  RECORDO,  IMBOTHO },
+		{ "Rupture Distance",                   "km",   "Rup. Dist",   "RUP_DIST",  TRUE,  TRUE,  RECORDO,  RECORDO,  IMBOTHO },
+		{ "V<sub>S</sub><sup>30</sup>",         "m/s",  "Vs30",        "VS30",      TRUE,  TRUE,  STATIONO, STATIONO, IMBOTHO },
+		{ "Site Classification (Geomatrix C3)", "",     "Site Class.", "CLASS",     TRUE,  FALSE, STATIONO, STATIONO, IMBOTHO },
+		{ "Focal Mechanism",                    "",     "Foc. Mech.",  "FOC_MECH",  TRUE,  FALSE, RECORDO,  RECORDO,  IMBOTHO },
+		{ "Location",                           "",     "Location",    "LOCATION",  TRUE,  FALSE, STATIONO, STATIONO, IMBOTHO },
+		{ "Owner",                              "",     "Owner",       "OWNER",     TRUE,  FALSE, STATIONO, STATIONO, IMBOTHO },
+		{ "Latitude",                           "",     "Lat.",        "LATITUDE",  TRUE,  FALSE, STATIONO, STATIONO, IMBOTHO },
+		{ "Longitude",                          "",     "Long.",       "LONGITUDE", TRUE,  FALSE, STATIONO, STATIONO, IMBOTHO },
+		{ "Analyze",                            "",     "Analyze",     "ANALYZE",   FALSE, FALSE, RSBOTHO,  NONEO,    NONEO   }
 	};
 
 	public static final int colFieldName      = 0;
@@ -83,13 +84,14 @@ public interface SlammerTableInterface
 	public static final int rowEpiDist    = 11;
 	public static final int rowFocalDist  = 12;
 	public static final int rowRupDist    = 13;
-	public static final int rowFocMech    = 14;
-	public static final int rowLocation   = 15;
-	public static final int rowOwner      = 16;
-	public static final int rowLat        = 17;
-	public static final int rowLng        = 18;
-	public static final int rowSiteClass  = 19;
-	public static final int rowAnalyze    = 20;
+	public static final int rowVS30       = 14;
+	public static final int rowSiteClass  = 15;
+	public static final int rowFocMech    = 16;
+	public static final int rowLocation   = 17;
+	public static final int rowOwner      = 18;
+	public static final int rowLat        = 19;
+	public static final int rowLng        = 20;
+	public static final int rowAnalyze    = 21;
 
 	// Focal Mech codes
 	public static final int FMStrikeSlip     = 1;
@@ -111,16 +113,18 @@ public interface SlammerTableInterface
 	};
 
 	// Site Class codes
-	public static final int SCHardRock  = 1;
-	public static final int SCSoftRock  = 2;
-	public static final int SCStiffSoil = 3;
-	public static final int SCSoftSoil  = 4;
+	public static final int SCA = 1;
+	public static final int SCB = 2;
+	public static final int SCC = 3;
+	public static final int SCD = 4;
+	public static final int SCE = 5;
 
 	public static final String[] SiteClassArray = {
 		"",
-		"Hard rock",
-		"Soft rock",
-		"Stiff soil",
-		"Soft soil",
+		"A",
+		"B",
+		"C",
+		"D",
+		"E"
 	};
 }

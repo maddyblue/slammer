@@ -12,25 +12,26 @@ import java.io.*;
 public class Slammer
 {
 	// order of fields for the eq.sql file
-	public static final int DB_eq = 0;
-	public static final int DB_record = 1;
-	public static final int DB_digi_int = 2;
-	public static final int DB_mom_mag = 3;
-	public static final int DB_arias = 4;
-	public static final int DB_dobry = 5;
-	public static final int DB_pga = 6;
-	public static final int DB_pgv = 7;
-	public static final int DB_mean_per = 8;
-	public static final int DB_epi_dist = 9;
-	public static final int DB_foc_dist = 10;
-	public static final int DB_rup_dist = 11;
-	public static final int DB_foc_mech = 12;
-	public static final int DB_location = 13;
-	public static final int DB_owner = 14;
-	public static final int DB_latitude = 15;
-	public static final int DB_longitude = 16;
-	public static final int DB_class = 17;
-	public static final int DB_LENGTH = 18;
+	public static final int DB_eq        = 0;
+	public static final int DB_record    = 1;
+	public static final int DB_digi_int  = 2;
+	public static final int DB_mom_mag   = 3;
+	public static final int DB_arias     = 4;
+	public static final int DB_dobry     = 5;
+	public static final int DB_pga       = 6;
+	public static final int DB_pgv       = 7;
+	public static final int DB_mean_per  = 8;
+	public static final int DB_epi_dist  = 9;
+	public static final int DB_foc_dist  = 10;
+	public static final int DB_rup_dist  = 11;
+	public static final int DB_vs30      = 12;
+	public static final int DB_class     = 13;
+	public static final int DB_foc_mech  = 14;
+	public static final int DB_location  = 15;
+	public static final int DB_owner     = 16;
+	public static final int DB_latitude  = 17;
+	public static final int DB_longitude = 18;
+	public static final int DB_LENGTH    = 19;
 
 	// order of fields for the EQdata.txt file
 	public static final int EQDAT_eq = 0;
@@ -64,7 +65,7 @@ public class Slammer
 
 				FileWriter fw = new FileWriter(".." + File.separator + "records" + File.separator + "eq.sql");
 
-				Object[][] res = Utils.getDB().runQuery("select eq, record, digi_int, mom_mag, arias, dobry, pga, pgv, mean_per, epi_dist, foc_dist, rup_dist, foc_mech, location, owner, latitude, longitude, class from data order by eq, record");
+				Object[][] res = Utils.getDB().runQuery("select eq, record, digi_int, mom_mag, arias, dobry, pga, pgv, mean_per, epi_dist, foc_dist, rup_dist, vs30, class, foc_mech, location, owner, latitude, longitude from data order by eq, record");
 
 				if(res == null || res.length <= 1)
 				{
@@ -124,12 +125,13 @@ public class Slammer
 					+ "epi_dist  double               ,"
 					+ "foc_dist  double               ,"
 					+ "rup_dist  double               ,"
+					+ "vs30      double               ,"
+					+ "class     smallint     not null,"
 					+ "foc_mech  smallint     not null,"
 					+ "location  varchar(100) not null,"
 					+ "owner     varchar(100) not null,"
 					+ "latitude  double               ,"
 					+ "longitude double               ,"
-					+ "class     smallint     not null,"
 					+ "change    smallint     not null,"
 					+ "path      varchar(255) not null,"
 					+ "select1   smallint     not null,"
@@ -278,7 +280,7 @@ public class Slammer
 
 							path = ".." + File.separatorChar + "records" + File.separator + cur[DB_eq] + File.separator + cur[DB_record];
 
-							q = "insert into data (eq, record, digi_int, mom_mag, arias, dobry, pga, pgv, mean_per, epi_dist, foc_dist, rup_dist, foc_mech, location, owner, latitude, longitude, class, change, path, select1, analyze, select2) values ('" +
+							q = "insert into data (eq, record, digi_int, mom_mag, arias, dobry, pga, pgv, mean_per, epi_dist, foc_dist, rup_dist, vs30, class, foc_mech, location, owner, latitude, longitude, change, path, select1, analyze, select2) values ('" +
 								cur[DB_eq] + "', '" +
 								cur[DB_record] + "', " +
 								cur[DB_digi_int] + ", " +
@@ -291,12 +293,13 @@ public class Slammer
 								Utils.nullify(cur[DB_epi_dist]) + ", " +
 								Utils.nullify(cur[DB_foc_dist]) + ", " +
 								Utils.nullify(cur[DB_rup_dist]) + ", " +
+								Utils.nullify(cur[DB_vs30]) + ", " +
+								cur[DB_class] + ", " +
 								cur[DB_foc_mech] + ", '" +
 								cur[DB_location] + "', '" +
 								cur[DB_owner] + "', " +
 								Utils.nullify(cur[DB_latitude]) + ", " +
 								Utils.nullify(cur[DB_longitude]) + ", " +
-								cur[DB_class] + ", " +
 								0 + ", '" +
 								path + "', 0, 0, 0)";
 							Utils.getDB().runUpdate(q);
@@ -312,105 +315,6 @@ public class Slammer
 
 				Utils.closeDB();
 				fr.close();
-			} // }}}
-			else if(args[0].equals("importjapan")) // {{{
-			{
-				String inpath = "/home/dolmant/Keepers";
-				String outpath = "/home/dolmant/slammer/records";
-				String path;
-				File d = new File(inpath);
-				File f[] = d.listFiles();
-				String cur[] = new String[13];
-				double di;
-				DoubleList data;
-				Double db;
-				String eq = "Niigata-Ken-Chuetsu, Japan 2004";
-				BufferedReader br;
-				FileWriter fw = new FileWriter(outpath + "/EQdata-japan.txt");
-				String line[];
-
-				cur[0] = eq;
-
-				cur[10] = ""; // epi dist
-				cur[11] = ""; // foc dist
-				cur[12] = ""; // rup dist
-				cur[2] = "0"; // foc mech
-				cur[4] = ""; // location
-				cur[5] = ""; // owner
-				cur[8] = "0"; // class
-
-				for(int i = 0; i < f.length; i++)
-				{
-					br = new BufferedReader(new FileReader(f[i]));
-
-					br.readLine();
-					br.readLine();
-					br.readLine();
-					br.readLine();
-
-					line = br.readLine().split("[ \t]+"); // mag
-					cur[1] = line[1];
-
-					line = br.readLine().split("[ \t]+"); // station name
-					cur[3] = line[2];
-
-					line = br.readLine().split("[ \t]+"); // lat
-					cur[6] = line[2];
-
-					line = br.readLine().split("[ \t]+"); // long
-					cur[7] = line[2];
-
-					br.readLine();
-					br.readLine();
-
-					line = br.readLine().split("[ \t]+"); // di
-					di = 1.0 / Double.parseDouble(line[2].substring(0, 3));
-					cur[9] = Double.toString(di);
-
-					br.readLine();
-
-					line = br.readLine().split("[ \t]+"); // dir
-					path = cur[3] + "-";
-
-					if(line[1].equals("E-W") || line[1].equals("5"))
-						path += "090";
-					else
-						path += "000";
-
-					cur[3] = path;
-					path = outpath + "/" + eq + "/" + path;
-
-					data = new DoubleList(f[i].getAbsolutePath(), 17, 1.0);
-					if(data.bad())
-					{
-						GUIUtils.popupError("Invalid data in file " + path + " at point " + data.badEntry() + ".");
-						continue;
-					}
-
-					for(int j = 0; j < cur.length; j++)
-					{
-						if(j > 0)
-							fw.write("\t");
-
-						fw.write(cur[j]);
-					}
-
-					fw.write("\n");
-
-					data.reset();
-
-					double avg = 0;
-					while((db = data.each()) != null)
-						avg += db.doubleValue();
-
-					avg /= data.size();
-
-					Utilities.Shift(data, new FileWriter(path), 2000.0 / 8388608.0, -avg);
-
-					System.out.println(path);
-				}
-
-				fw.close();
 			} // }}}
 			else if(args[0].equals("test")) // {{{
 			{
@@ -457,7 +361,10 @@ public class Slammer
 				splash.advance();
 
 				frame.getContentPane().add(new SlammerTabbedPane(frame));
-				frame.setSize(780,575);
+				Dimension screen = frame.getToolkit().getScreenSize();
+				int x = (int) (screen.width * 0.8), y = (int) (screen.height * 0.8);
+
+				frame.setSize(x, y);
 				GUIUtils.setLocationMiddle(frame);
 				splash.advance();
 

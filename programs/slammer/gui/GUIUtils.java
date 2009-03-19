@@ -89,6 +89,6 @@ public class GUIUtils
 	{
 		Dimension screen = f.getToolkit().getScreenSize();
 		Dimension size = f.getSize();
-		f.setLocation((screen.width - size.width) / 2,	(screen.height - size.height) / 2);
+		f.setLocation((screen.width - size.width) / 2, (screen.height - size.height) / 2);
 	}
 }

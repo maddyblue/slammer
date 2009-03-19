@@ -43,6 +43,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 	JTextField modFoc = new JTextField(5);
 	JTextField modLng = new JTextField(5);
 	JTextField modRup = new JTextField(5);
+	JTextField modVs = new JTextField(5);
 	JComboBox  modSite = new JComboBox(SlammerTable.SiteClassArray);
 	JComboBox  modMech = new JComboBox(SlammerTable.FocMechArray);
 
@@ -182,10 +183,12 @@ class RecordManagerPanel extends JPanel implements ActionListener
 		south.add(modLng);
 		south.add(new JLabel("Rupture distance (km) [optional]"));
 		south.add(modRup);
-		south.add(new JLabel("     Site Class [optional]"));
-		south.add(modSite);
+		south.add(new JLabel("     Vs30 (m/s) [optional]"));
+		south.add(modVs);
 		south.add(new JLabel("Focal Mechanism [optional]"));
 		south.add(modMech);
+		south.add(new JLabel("     Site Class [optional]"));
+		south.add(modSite);
 
 		panel.add(BorderLayout.SOUTH, south);
 
@@ -577,6 +580,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 					Utils.nullify(modEpi.getText()),
 					Utils.nullify(modFoc.getText()),
 					Utils.nullify(modRup.getText()),
+					Utils.nullify(modVs.getText()),
 					modMech.getSelectedItem().toString(),
 					modLoc.getText(),
 					modOwn.getText(),
@@ -616,7 +620,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 
 			try
 			{
-				res = Utils.getDB().runQuery("select path, eq, record, digi_int, location, mom_mag, owner, epi_dist, latitude, foc_dist, longitude, rup_dist, class, foc_mech, change from data where eq='" + eq + "' and record='" + record + "'");
+				res = Utils.getDB().runQuery("select path, eq, record, digi_int, location, mom_mag, owner, epi_dist, latitude, foc_dist, longitude, rup_dist, vs30, class, foc_mech, change from data where eq='" + eq + "' and record='" + record + "'");
 			}
 			catch(Exception ex)
 			{
@@ -640,6 +644,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 					modFoc.setText(Utils.shorten(res[1][incr++]));
 					modLng.setText(Utils.shorten(res[1][incr++]));
 					modRup.setText(Utils.shorten(res[1][incr++]));
+					modVs.setText(Utils.shorten(res[1][incr++]));
 					modSite.setSelectedItem(SlammerTable.SiteClassArray[Integer.parseInt(Utils.shorten(res[1][incr++].toString()))]);
 					modMech.setSelectedItem(SlammerTable.FocMechArray[Integer.parseInt(Utils.shorten(res[1][incr++].toString()))]);
 					enable = res[1][incr++].toString().equals("1") ? true : false;
@@ -671,6 +676,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 		modFoc.setEditable(b);
 		modLng.setEditable(b);
 		modRup.setEditable(b);
+		modVs.setEditable(b);
 		modSite.setEnabled(b);
 		modMech.setEnabled(b);
 		save.setEnabled(b);
@@ -690,6 +696,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 		modFoc.setText("");
 		modLng.setText("");
 		modRup.setText("");
+		modVs.setText("");
 		modSite.setSelectedItem("");
 		modMech.setSelectedItem("");
 

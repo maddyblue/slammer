@@ -84,7 +84,7 @@ class AddRecordsPanel extends JPanel implements ActionListener
 						if(edit != null) edit.stopCellEditing();
 
 				// ok, the user says they are all in cm/s/s, continue
-				String file, eq, record, di, mag, epidist, focdist, rupdist, focmech, loc, owner, lat, lng, siteclass;
+				String file, eq, record, di, mag, epidist, focdist, rupdist, vs30, focmech, loc, owner, lat, lng, siteclass;
 				String arias, dobry, pga, pgv, meanper;
 				String status = "", error;
 
@@ -122,6 +122,7 @@ class AddRecordsPanel extends JPanel implements ActionListener
 					epidist = Utils.nullify(m.getValueAt(i, incr++).toString());
 					focdist = Utils.nullify(m.getValueAt(i, incr++).toString());
 					rupdist = Utils.nullify(m.getValueAt(i, incr++).toString());
+					vs30 = Utils.nullify(m.getValueAt(i, incr++).toString());
 					focmech = m.getValueAt(i, incr++).toString();
 					loc = Utils.addQuote(m.getValueAt(i, incr++).toString());
 					owner = Utils.addQuote(m.getValueAt(i, incr++).toString());
@@ -133,7 +134,7 @@ class AddRecordsPanel extends JPanel implements ActionListener
 					prog.setValue(i);
 					prog.paintImmediately(0,0,prog.getWidth(),prog.getHeight());
 
-					error = manipRecord(true, file, eq, record, di, mag, epidist, focdist, rupdist, focmech, loc, owner, lat, lng, siteclass);
+					error = manipRecord(true, file, eq, record, di, mag, epidist, focdist, rupdist, vs30, focmech, loc, owner, lat, lng, siteclass);
 
 					if(error.equals(""))
 						m.setValueAt(new Boolean(false), i, 0);
@@ -174,7 +175,7 @@ class AddRecordsPanel extends JPanel implements ActionListener
 		}
 	}
 
-	public static String manipRecord(boolean add, String file, String eq, String record, String di, String mag, String epidist, String focdist, String rupdist, String focmech, String loc, String owner, String lat, String lng, String siteclass) throws Exception
+	public static String manipRecord(boolean add, String file, String eq, String record, String di, String mag, String epidist, String focdist, String rupdist, String vs30, String focmech, String loc, String owner, String lat, String lng, String siteclass) throws Exception
 	{
 		double dig_int = 0;
 		String arias, dobry, pga, pgv, meanper;
@@ -262,6 +263,15 @@ class AddRecordsPanel extends JPanel implements ActionListener
 			}
 		}
 
+		if(!vs30.equals("null"))
+		{
+			ret = Utils.checkNum(vs30, "Vs30 field", null, false, null, new Double(0), true, null, true);
+			if(ret.getClass().getName().equals("java.lang.String"))
+			{
+				errors += ret.toString() + "\n";
+			}
+		}
+
 		if(!lat.equals("null"))
 		{
 			ret = Utils.checkNum(lat, "Latitude field", new Double(90), true, null, new Double(-90), true, null, true);
@@ -338,7 +348,7 @@ class AddRecordsPanel extends JPanel implements ActionListener
 		{
 			// add it to the db
 			String q = "insert into data " +
-				"(eq, record, digi_int, mom_mag, arias, dobry, pga, pgv, mean_per, epi_dist, foc_dist, rup_dist, foc_mech, location, owner, latitude, longitude, class, change, path, select1, analyze, select2) values ( '" +
+				"(eq, record, digi_int, mom_mag, arias, dobry, pga, pgv, mean_per, epi_dist, foc_dist, rup_dist, vs30, foc_mech, location, owner, latitude, longitude, class, change, path, select1, analyze, select2) values ( '" +
 				eq + "', '" +
 				record + "', " +
 				di + ", " +
@@ -351,6 +361,7 @@ class AddRecordsPanel extends JPanel implements ActionListener
 				epidist + ", " +
 				focdist + ", " +
 				rupdist + ", " +
+				vs30 + ", " +
 				focmech + ", '" +
 				loc + "', '" +
 				owner + "', " +
@@ -380,6 +391,7 @@ class AddRecordsPanel extends JPanel implements ActionListener
 				+ " , epi_dist= "  + epidist
 				+ " , foc_dist= "  + focdist
 				+ " , rup_dist= "  + rupdist
+				+ " , vs30= "      + vs30
 				+ " , foc_mech= "  + focmech
 				+ " , location='"  + loc
 				+ "', owner='"     + owner

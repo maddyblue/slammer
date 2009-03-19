@@ -33,10 +33,11 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 	JCheckBox FocMechObliqueNormal = new JCheckBox(SlammerTable.FMObliqueNormalLong);
 
 	JCheckBox SiteClassAll = new JCheckBox("All", true);
-	JCheckBox SiteClassHardRock = new JCheckBox(SlammerTable.SiteClassArray[SlammerTable.SCHardRock]);
-	JCheckBox SiteClassSoftRock = new JCheckBox(SlammerTable.SiteClassArray[SlammerTable.SCSoftRock]);
-	JCheckBox SiteClassStiffSoil = new JCheckBox(SlammerTable.SiteClassArray[SlammerTable.SCStiffSoil]);
-	JCheckBox SiteClassSoftSoil = new JCheckBox(SlammerTable.SiteClassArray[SlammerTable.SCSoftSoil]);
+	JCheckBox SiteClassA = new JCheckBox(SlammerTable.SiteClassArray[SlammerTable.SCA]);
+	JCheckBox SiteClassB = new JCheckBox(SlammerTable.SiteClassArray[SlammerTable.SCB]);
+	JCheckBox SiteClassC = new JCheckBox(SlammerTable.SiteClassArray[SlammerTable.SCC]);
+	JCheckBox SiteClassD = new JCheckBox(SlammerTable.SiteClassArray[SlammerTable.SCD]);
+	JCheckBox SiteClassE = new JCheckBox(SlammerTable.SiteClassArray[SlammerTable.SCE]);
 
 	JButton selectNone = new JButton("Deselect all for analysis");
 	JButton selectAll = new JButton("Select all for analysis");
@@ -70,10 +71,11 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 		FocMechObliqueNormal.setActionCommand("focMechOther");
 
 		SiteClassAll.setActionCommand("SiteClassAll");
-		SiteClassHardRock.setActionCommand("siteClassOther");
-		SiteClassSoftRock.setActionCommand("siteClassOther");
-		SiteClassStiffSoil.setActionCommand("siteClassOther");
-		SiteClassSoftSoil.setActionCommand("siteClassOther");
+		SiteClassA.setActionCommand("siteClassOther");
+		SiteClassB.setActionCommand("siteClassOther");
+		SiteClassC.setActionCommand("siteClassOther");
+		SiteClassD.setActionCommand("siteClassOther");
+		SiteClassE.setActionCommand("siteClassOther");
 
 		FocMechAll.addActionListener(this);
 		FocMechStrikeSlip.addActionListener(this);
@@ -83,10 +85,11 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 		FocMechObliqueNormal.addActionListener(this);
 
 		SiteClassAll.addActionListener(this);
-		SiteClassHardRock.addActionListener(this);
-		SiteClassSoftRock.addActionListener(this);
-		SiteClassStiffSoil.addActionListener(this);
-		SiteClassSoftSoil.addActionListener(this);
+		SiteClassA.addActionListener(this);
+		SiteClassB.addActionListener(this);
+		SiteClassC.addActionListener(this);
+		SiteClassD.addActionListener(this);
+		SiteClassE.addActionListener(this);
 
 		Utils.addEQList(eqList);
 		Utils.updateRecordList(recordList, eqList);
@@ -144,12 +147,12 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 		selectHeaderVector.add(BorderLayout.WEST, createParmsPanel());
 
 		Vector checkBoxesVector = new Vector(2);
-		checkBoxesVector.add(createFocMechPanel());
+		checkBoxesVector.add(createSiteClassPanel());
 
 		JPanel ret = new JPanel(new BorderLayout());
 		ret.add(BorderLayout.NORTH, selectHeaderVector);
 		ret.add(BorderLayout.WEST, GUIUtils.makeRecursiveLayoutDown(checkBoxesVector));
-		ret.add(BorderLayout.SOUTH, createSiteClassPanel());
+		ret.add(BorderLayout.SOUTH, createFocMechPanel());
 		return ret;
 	}
 
@@ -172,10 +175,11 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 		Vector list = new Vector();
 		list.add(new JLabel(SlammerTable.fieldArray[SlammerTable.rowSiteClass][SlammerTable.colFieldName].toString() + ": "));
 		list.add(SiteClassAll);
-		list.add(SiteClassHardRock);
-		list.add(SiteClassSoftRock);
-		list.add(SiteClassStiffSoil);
-		list.add(SiteClassSoftSoil);
+		list.add(SiteClassA);
+		list.add(SiteClassB);
+		list.add(SiteClassC);
+		list.add(SiteClassD);
+		list.add(SiteClassE);
 
 		return GUIUtils.makeRecursiveLayoutRight(list);
 	}
@@ -364,10 +368,11 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 				FocMechObliqueNormal.setSelected(false);
 
 				SiteClassAll.setSelected(true);
-				SiteClassHardRock.setSelected(false);
-				SiteClassSoftRock.setSelected(false);
-				SiteClassStiffSoil.setSelected(false);
-				SiteClassSoftSoil.setSelected(false);
+				SiteClassA.setSelected(false);
+				SiteClassB.setSelected(false);
+				SiteClassC.setSelected(false);
+				SiteClassD.setSelected(false);
+				SiteClassE.setSelected(false);
 			}
 			else if(command.equals("deleteSelected"))
 			{
@@ -460,10 +465,11 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 
 				String SiteClassWhere = "";
 				dbname = SlammerTable.fieldArray[SlammerTable.rowSiteClass][SlammerTable.colDBName].toString();
-				SiteClassWhere += makeCheckBoxString(SiteClassWhere, dbname, Integer.toString(SlammerTable.SCHardRock), SiteClassHardRock);
-				SiteClassWhere += makeCheckBoxString(SiteClassWhere, dbname, Integer.toString(SlammerTable.SCSoftRock), SiteClassSoftRock);
-				SiteClassWhere += makeCheckBoxString(SiteClassWhere, dbname, Integer.toString(SlammerTable.SCStiffSoil), SiteClassStiffSoil);
-				SiteClassWhere += makeCheckBoxString(SiteClassWhere, dbname, Integer.toString(SlammerTable.SCSoftSoil), SiteClassSoftSoil);
+				SiteClassWhere += makeCheckBoxString(SiteClassWhere, dbname, Integer.toString(SlammerTable.SCA), SiteClassA);
+				SiteClassWhere += makeCheckBoxString(SiteClassWhere, dbname, Integer.toString(SlammerTable.SCB), SiteClassB);
+				SiteClassWhere += makeCheckBoxString(SiteClassWhere, dbname, Integer.toString(SlammerTable.SCC), SiteClassC);
+				SiteClassWhere += makeCheckBoxString(SiteClassWhere, dbname, Integer.toString(SlammerTable.SCD), SiteClassD);
+				SiteClassWhere += makeCheckBoxString(SiteClassWhere, dbname, Integer.toString(SlammerTable.SCE), SiteClassE);
 				if(SiteClassWhere.equals(""))
 					SiteClassAll.setSelected(true);
 				if(SiteClassAll.isSelected())
@@ -503,10 +509,11 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 			{
 				if(SiteClassAll.isSelected())
 				{
-					SiteClassHardRock.setSelected(false);
-					SiteClassSoftRock.setSelected(false);
-					SiteClassStiffSoil.setSelected(false);
-					SiteClassSoftSoil.setSelected(false);
+					SiteClassA.setSelected(false);
+					SiteClassB.setSelected(false);
+					SiteClassC.setSelected(false);
+					SiteClassD.setSelected(false);
+					SiteClassE.setSelected(false);
 				}
 			}
 			else if(command.equals("siteClassOther"))
