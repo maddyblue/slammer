@@ -9,7 +9,7 @@ import java.util.Vector;
 
 public class GUIUtils
 {
-	public static final Font headerFont = new Font("Dialoug", Font.BOLD, 16);
+	public static final Font headerFont = new Font(null, Font.BOLD, 16);
 	public static Color bg = new Color(204,204,204);
 
 	public static void popupError(String er)
