@@ -84,11 +84,4 @@ public class GUIUtils
 		if(size != 0) return width;
 		else return 0;
 	}
-
-	public static void setLocationMiddle(JFrame f)
-	{
-		Dimension screen = f.getToolkit().getScreenSize();
-		Dimension size = f.getSize();
-		f.setLocation((screen.width - size.width) / 2, (screen.height - size.height) / 2);
-	}
 }

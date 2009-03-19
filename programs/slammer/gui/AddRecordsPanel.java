@@ -99,7 +99,7 @@ class AddRecordsPanel extends JPanel implements ActionListener
 				JFrame progFrame = new JFrame("Import progress...");
 				progFrame.getContentPane().add(prog);
 				progFrame.setSize(600, 75);
-				GUIUtils.setLocationMiddle(progFrame);
+				progFrame.setLocationRelativeTo(null);
 				progFrame.setVisible(true);
 
 				int incr;

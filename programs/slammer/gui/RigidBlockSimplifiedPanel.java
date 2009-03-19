@@ -21,8 +21,7 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 	JRadioButton Jibson2007CAM = new JRadioButton("Jibson (2007) Critical acceleration ratio and magnitude");
 	JRadioButton Jibson2007AICA = new JRadioButton("Jibson (2007) Arias intensity and critical acceleration");
 	JRadioButton Jibson2007AICAR = new JRadioButton("Jibson (2007) Arias intensity and critical acceleration ratio");
-	JRadioButton Ambraseys = new JRadioButton("Ambraseys and Menu (1998)");
-	JRadioButton probFailure = new JRadioButton("Probability of Failure");
+	JRadioButton Ambraseys = new JRadioButton("Ambraseys and Menu (1988)");
 	ButtonGroup group = new ButtonGroup();
 
 	JLabel labelOne = new JLabel(" ");
@@ -65,10 +64,6 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 	+ "<p>log <i>D<sub>n</sub></i> = 0.90 + log[ (1 - a<sub><i>c</i></sub> / a<sub><i>max</i></sub>)<sup>2.53</sup> (a<sub><i>c</i></sub> / a<sub><i>max</i></sub>)<sup>-1.09</sup> ]"
 	+ "<p>where <i>D<sub>n</sub></i> is Newmark displacement in centimeters, <i>a<sub>c</sub></i> is critical (yield) acceleration in g's, and <i>a<sub>max</sub></i> is the peak horizontal ground acceleration in g's.";
 
-	String probFailureStr = "This program estimates probability of failure as a function of estimated Newmark displacement (specified in indicated field), as described by Jibson and others (1998, 2000). The probability is estimated using the following equation:"
-	+ "<p><i>P(f)</i> = 0.335(1 - exp(-0.048 <i>D<sub>n</sub></i><sup>1.565</sup>)"
-	+ "<p>where <i>P(f)</i> is the probability of failure and <i>D<sub>n</sub></i> is Newmark displacement in centimeters. This equation was calibrated using data from the 1994 Northridge, California, earthquake and is best suited to application in southern California (Jibson and others, 1998, 2000).";
-
 	public RigidBlockSimplifiedPanel(SlammerTabbedPane parent) throws Exception
 	{
 		this.parent = parent;
@@ -80,7 +75,6 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 		group.add(Jibson2007AICA);
 		group.add(Jibson2007AICAR);
 		group.add(Ambraseys);
-		group.add(probFailure);
 
 		Jibson1993.setActionCommand("change");
 		Jibson1993.addActionListener(this);
@@ -96,8 +90,6 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 		Jibson2007AICAR.addActionListener(this);
 		Ambraseys.setActionCommand("change");
 		Ambraseys.addActionListener(this);
-		probFailure.setActionCommand("change");
-		probFailure.addActionListener(this);
 
 		labelOnef.setEnabled(false);
 		labelTwof.setEnabled(false);
@@ -126,14 +118,13 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 
 		JPanel panel = new JPanel(new GridLayout(0, 1));
 
-		panel.add(Jibson1993);
-		panel.add(JibsonAndOthers1998);
 		panel.add(Jibson2007CA);
 		panel.add(Jibson2007CAM);
 		panel.add(Jibson2007AICA);
 		panel.add(Jibson2007AICAR);
+		panel.add(JibsonAndOthers1998);
+		panel.add(Jibson1993);
 		panel.add(Ambraseys);
-		panel.add(probFailure);
 
 		c.gridx = x++;
 		c.gridy = y;
@@ -294,14 +285,6 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 					labelRes.setText("Estimated Newmark Displacement (in cm):");
 					ta.setText(AmbraseysStr);
 				}
-				else if(probFailure.isSelected())
-				{
-					labelOne.setText("What is the Newmark displacement (in cm)?");
-					labelTwo.setText(" ");
-					labelOnef.setEnabled(true);
-					labelRes.setText("Estimated probability of failure:");
-					ta.setText(probFailureStr);
-				}
 			}
 			else if(command.equals("do"))
 			{
@@ -380,13 +363,6 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 					if(d2 == null) return;
 
 					labelResf.setText(RigidBlockSimplified.AmbraseysAndMenu(d2.doubleValue(), d1.doubleValue()));
-				}
-				else if(probFailure.isSelected())
-				{
-					Double d1 = (Double)Utils.checkNum(labelOnef.getText(), "Newmark displacement field", null, false, null, new Double(0), true, null, false);
-					if(d1 == null) return;
-
-					labelResf.setText(RigidBlockSimplified.ProbFailure(d1.doubleValue()));
 				}
 				else
 				{

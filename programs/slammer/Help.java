@@ -94,7 +94,7 @@ public class Help extends JFrame
 		getContentPane().add(splitPane, BorderLayout.CENTER);
 
 		pack();
-		GUIUtils.setLocationMiddle(this);
+		setLocationRelativeTo(null);
 	}
 
 	private class BookInfo

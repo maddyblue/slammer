@@ -23,7 +23,7 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 
 	JComboBox eqList = new JComboBox();
 	JComboBox recordList = new JComboBox();
-	JButton selectRecord = new JButton("Add record");
+	JButton selectRecord = new JButton("Select record(s)");
 
 	JCheckBox FocMechAll = new JCheckBox("All", true);
 	JCheckBox FocMechStrikeSlip = new JCheckBox(SlammerTable.FocMechArray[SlammerTable.FMStrikeSlip]);

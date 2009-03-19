@@ -363,7 +363,7 @@ public class Slammer
 				frame.getContentPane().add(new SlammerTabbedPane(frame));
 				Dimension screen = frame.getToolkit().getScreenSize();
 				frame.setSize((int)(screen.width * 0.8), (int)(screen.height * 0.8));
-				GUIUtils.setLocationMiddle(frame);
+				frame.setLocationRelativeTo(null);
 				splash.advance();
 
 				frame.setVisible(true);

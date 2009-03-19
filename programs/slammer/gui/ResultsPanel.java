@@ -12,6 +12,7 @@ import java.util.Vector;
 import org.jfree.data.xy.*;
 import org.jfree.data.statistics.HistogramDataset;
 import org.jfree.chart.*;
+import org.jfree.chart.axis.*;
 import java.text.DecimalFormat;
 import java.util.*;
 import java.io.*;
@@ -123,7 +124,7 @@ class ResultsPanel extends JPanel implements ActionListener
 		analysisDisp[RB] = new JCheckBox(ParametersPanel.stringRB);
 		analysisDisp[DC] = new JCheckBox(ParametersPanel.stringDC);
 		analysisDisp[CP] = new JCheckBox(ParametersPanel.stringCP);
-		analysisHist[RB] = new JRadioButton(ParametersPanel.stringRB, true);
+		analysisHist[RB] = new JRadioButton(ParametersPanel.stringRB);
 		analysisHist[DC] = new JRadioButton(ParametersPanel.stringDC);
 		analysisHist[CP] = new JRadioButton(ParametersPanel.stringCP);
 
@@ -136,6 +137,8 @@ class ResultsPanel extends JPanel implements ActionListener
 		add(BorderLayout.NORTH, createHeader());
 		add(BorderLayout.CENTER, createTable());
 		add(BorderLayout.SOUTH, createGraphs());
+
+		clearOutput();
 	}
 
 	public void actionPerformed(java.awt.event.ActionEvent e) // {{{
@@ -196,6 +199,9 @@ class ResultsPanel extends JPanel implements ActionListener
 							boolean paramRigid = parent.Parameters.typeRigid.isSelected();
 							boolean paramDecoupled = parent.Parameters.typeDecoupled.isSelected();
 							boolean paramCoupled = parent.Parameters.typeCoupled.isSelected();
+
+							graphDisp(paramRigid, paramDecoupled, paramCoupled);
+
 							if(!paramRigid && !paramDecoupled && !paramCoupled)
 							{
 								parent.selectParameters();
@@ -648,6 +654,9 @@ class ResultsPanel extends JPanel implements ActionListener
 					if(analysisHist[i].isSelected())
 						analysis = i;
 
+				if(analysis == -1)
+					return;
+
 				pname = polarityName[polarity];
 
 				Double Bins = (Double)Utils.checkNum(outputBins.getText(), "output bins field", null, false, null, new Double(0), false, null, false);
@@ -668,6 +677,7 @@ class ResultsPanel extends JPanel implements ActionListener
 
 				JFreeChart hist = ChartFactory.createHistogram(title, "Displacement " + unitDisplacement, "Number of Records", dataset, org.jfree.chart.plot.PlotOrientation.VERTICAL, false, true, false);
 				ChartFrame frame = new ChartFrame(title, hist);
+				((NumberAxis)(hist.getXYPlot().getRangeAxis())).setTickUnit(new NumberTickUnit(1.0));
 
 				frame.pack();
 				frame.setLocationRelativeTo(null);
@@ -680,16 +690,29 @@ class ResultsPanel extends JPanel implements ActionListener
 				int polarity = polarityNorDisp.isSelected() ? NOR : INV;
 				String pname = polarityName[polarity];
 
-				String name = "Displacement versus time";
+				String name = "";
+				boolean first = true;
 
 				for(int i = 0; i < analysisDisp.length; i++)
 				{
 					if(analysisDisp[i].isSelected() && dataVect[i][polarity] != null)
 					{
+						if(first)
+							first = false;
+						else
+							name += ", ";
+
+						name += analysisDisp[i].getText();
+
 						for(int j = 0; j < dataVect[i][polarity].size(); j++)
 							xysc.addSeries(xys[j][i][polarity]);
 					}
 				}
+
+				if(first)
+					return;
+
+				name += " Displacement versus Time";
 
 				JFreeChart chart = ChartFactory.createXYLineChart(name, "Time (s)", "Displacement--" + pname + " polarity " + unitDisplacement, xysc, org.jfree.chart.plot.PlotOrientation.VERTICAL, plotDisplacementLegend.isSelected(), true, false);
 
@@ -915,12 +938,6 @@ class ResultsPanel extends JPanel implements ActionListener
 
 		c.gridx = x++;
 		c.gridy = y++;
-		c.gridheight = 3;
-		gridbag.setConstraints(saveResultsOutput, c);
-		panel.add(saveResultsOutput);
-
-		c.gridheight = 1;
-		c.gridx = x++;
 		gridbag.setConstraints(outputDelTab, c);
 		panel.add(outputDelTab);
 
@@ -931,6 +948,12 @@ class ResultsPanel extends JPanel implements ActionListener
 		c.gridy = y;
 		gridbag.setConstraints(outputDelComma, c);
 		panel.add(outputDelComma);
+
+		c.gridx = x++;
+		c.gridy = 0;
+		c.gridheight = 3;
+		gridbag.setConstraints(saveResultsOutput, c);
+		panel.add(saveResultsOutput);
 
 		c.gridx = x;
 		label = new JLabel(" ");
@@ -947,10 +970,26 @@ class ResultsPanel extends JPanel implements ActionListener
 	{
 		dataVect = null;
 		xys = null;
+		graphDisp(false, false, false);
 
 		int rows = outputTableModel.getRowCount();
 		while(--rows >= 0)
 			outputTableModel.removeRow(rows);
+	}
+
+	private void graphDisp(boolean rigid, boolean decoupled, boolean coupled)
+	{
+		boolean any = rigid || decoupled || coupled;
+
+		analysisDisp[RB].setEnabled(rigid);
+		analysisHist[RB].setEnabled(rigid);
+		analysisDisp[DC].setEnabled(decoupled);
+		analysisHist[DC].setEnabled(decoupled);
+		analysisDisp[CP].setEnabled(coupled);
+		analysisHist[CP].setEnabled(coupled);
+
+		plotHistogram.setEnabled(any);
+		plotDisplacement.setEnabled(any);
 	}
 
 	private void changeDecimal()

@@ -435,7 +435,7 @@ class UtilitiesPanel extends JPanel implements ActionListener
 
 				progFrame.getContentPane().add(prog);
 				progFrame.setSize(600, 75);
-				GUIUtils.setLocationMiddle(progFrame);
+				progFrame.setLocationRelativeTo(null);
 				progFrame.setVisible(true);
 
 				for(int i = 0; i < sources.length; i++)

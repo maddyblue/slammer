@@ -12,7 +12,7 @@ import slammer.*;
 class GroupFrame extends JFrame implements ActionListener
 {
 	SelectRecordsPanel parent;
-	JButton retrieveB = new JButton("Retrieve");
+	JButton retrieveB = new JButton("Retrieve group");
 	JComboBox deleteCB = new JComboBox();
 	JButton addGroupB = new JButton("Add group");
 	JTextField addField = new JTextField(5);
@@ -109,8 +109,7 @@ class GroupFrame extends JFrame implements ActionListener
 		}
 
 		pack();
-
-		GUIUtils.setLocationMiddle(this);
+		setLocationRelativeTo(null);
 	}
 
 
