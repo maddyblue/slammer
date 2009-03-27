@@ -112,6 +112,15 @@ public interface SlammerTableInterface
 		"Obl. reverse"
 	};
 
+	public static final String[] FocMechShort = {
+		"",
+		"SS",
+		"N",
+		"R",
+		"NO",
+		"RO"
+	};
+
 	// Site Class codes
 	public static final int SCA = 1;
 	public static final int SCB = 2;

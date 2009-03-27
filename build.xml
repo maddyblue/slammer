@@ -18,7 +18,7 @@
 				<include name="Coalinga 1983/*" />
 				<include name="Coyote Lake 1979/*" />
 				<include name="Daly City 1957/*" />
-				<include name="El Centro 1940/*" />
+				<include name="Imperial Valley 1940/*" />
 				<include name="Imperial Valley 1979/*" />
 				<include name="Kern County 1952/*" />
 				<include name="Landers 1992/*" />
@@ -50,14 +50,12 @@
 				<include name="Kobe, Japan 1995/*" />
 				<include name="Kocaeli, Turkey 1999/*" />
 				<include name="Nahanni, Canada 1985/*" />
-				<include name="Niigata-Ken-Chuetsu, Japan 2004/*" />
 				<include name="Tabas, Iran 1978/*" />
 			</tarfileset>
 		</tar>
 
 		<tar destfile="${inst}/slammer-eq-otherus.tar">
 			<tarfileset dir="${rec}" prefix="${rec}">
-				<include name="Hilo 1975/*" />
 				<include name="Nisqually 2001/*" />
 			</tarfileset>
 		</tar>
@@ -81,6 +79,8 @@
 			<tarfileset dir=".">
 				<include name="build.xml" />
 				<include name="org/**" />
+				<include name="records/eq.sql" />
+				<include name="records/EQdata.txt" />
 			</tarfileset>
 		</tar>
 

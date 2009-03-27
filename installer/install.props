@@ -22,34 +22,34 @@ comp.0.real-size=4816
 comp.0.fileset=slammer-program
 
 comp.1.name=California records
-comp.1.disk-size=110
-comp.1.real-size=109366
+comp.1.disk-size=61
+comp.1.real-size=60009
 comp.1.fileset=slammer-eq-california
 comp.1.sql=eq-california.sql
-comp.1.sqllen=1239
+comp.1.sqllen=1225
 
 comp.2.name=Chi-Chi, Taiwan earthquake records
-comp.2.disk-size=173
-comp.2.real-size=174988
+comp.2.disk-size=113
+comp.2.real-size=114234
 comp.2.fileset=slammer-eq-chichi
 comp.2.sql=eq-chichi.sql
 comp.2.sqllen=630
 
 comp.3.name=International records
-comp.3.disk-size=61
-comp.3.real-size=60834
+comp.3.disk-size=9
+comp.3.real-size=8616
 comp.3.fileset=slammer-eq-international
 comp.3.sql=eq-international.sql
-comp.3.sqllen=337
+comp.3.sqllen=115
 
 comp.4.name=Other US records
-comp.4.disk-size=41
-comp.4.real-size=41422
+comp.4.disk-size=38
+comp.4.real-size=38324
 comp.4.fileset=slammer-eq-otherus
 comp.4.sql=eq-otherus.sql
-comp.4.sqllen=176
+comp.4.sqllen=165
 
 comp.5.name=Source code
 comp.5.disk-size=22
-comp.5.real-size=12621
+comp.5.real-size=13104
 comp.5.fileset=slammer-source

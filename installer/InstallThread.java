@@ -157,7 +157,27 @@ public class InstallThread extends Thread
 
 								progress.advance(1);
 
-								q = "insert into data (eq, record, digi_int, mom_mag, arias, dobry, pga, pgv, mean_per, epi_dist, foc_dist, rup_dist, foc_mech, location, owner, latitude, longitude, class, change, path, select1, analyze, select2) values ('" + cur[DB_eq] + "', '" + cur[DB_record] + "', " + cur[DB_digi_int] + ", " + nullify(cur[DB_mom_mag]) + ", " + cur[DB_arias] + ", " + cur[DB_dobry] + ", " + cur[DB_pga] + ", " + cur[DB_pgv] + ", " + cur[DB_mean_per] + ", " + nullify(cur[DB_epi_dist]) + ", " + nullify(cur[DB_foc_dist]) + ", " + nullify(cur[DB_rup_dist]) + ", " + cur[DB_foc_mech] + ", '" + cur[DB_location] + "', '" + cur[DB_owner] + "', " + nullify(cur[DB_latitude]) + ", " + nullify(cur[DB_longitude]) + ", " + cur[DB_class] + ", " + 0 + ", '" + path + "', 0, 0, 0)";
+								q = "insert into data (eq, record, digi_int, mom_mag, arias, dobry, pga, pgv, mean_per, epi_dist, foc_dist, rup_dist, vs30, class, foc_mech, location, owner, latitude, longitude, change, path, select1, analyze, select2) values ('" +
+									cur[DB_eq] + "', '" +
+									cur[DB_record] + "', " +
+									cur[DB_digi_int] + ", " +
+									cur[DB_mom_mag] + ", " +
+									cur[DB_arias] + ", " +
+									cur[DB_dobry] + ", " +
+									cur[DB_pga] + ", " +
+									cur[DB_pgv] + ", " +
+									cur[DB_mean_per] + ", " +
+									cur[DB_epi_dist] + ", " +
+									cur[DB_foc_dist] + ", " +
+									nullify(cur[DB_rup_dist]) + ", " +
+									cur[DB_vs30] + ", " +
+									cur[DB_class] + ", " +
+									cur[DB_foc_mech] + ", '" +
+									cur[DB_location] + "', '" +
+									cur[DB_owner] + "', " +
+									cur[DB_latitude] + ", " +
+									cur[DB_longitude] + ", " +
+									"0, '" + path + "', 0, 0, 0)";
 								runUpdate(q);
 								System.out.println("adding " + cur[0] + " - " + cur[1]);
 							}
@@ -222,25 +242,26 @@ public class InstallThread extends Thread
 	// custom database stuff
 
 	// order of fields for the eq.sql file
-	private static final int DB_eq = 0;
-	private static final int DB_record = 1;
-	private static final int DB_digi_int = 2;
-	private static final int DB_mom_mag = 3;
-	private static final int DB_arias = 4;
-	private static final int DB_dobry = 5;
-	private static final int DB_pga = 6;
-	private static final int DB_pgv = 7;
-	private static final int DB_mean_per = 8;
-	private static final int DB_epi_dist = 9;
-	private static final int DB_foc_dist = 10;
-	private static final int DB_rup_dist = 11;
-	private static final int DB_foc_mech = 12;
-	private static final int DB_location = 13;
-	private static final int DB_owner = 14;
-	private static final int DB_latitude = 15;
-	private static final int DB_longitude = 16;
-	private static final int DB_class = 17;
-	private static final int DB_LENGTH = 18;
+	public static final int DB_eq        = 0;
+	public static final int DB_record    = 1;
+	public static final int DB_digi_int  = 2;
+	public static final int DB_mom_mag   = 3;
+	public static final int DB_arias     = 4;
+	public static final int DB_dobry     = 5;
+	public static final int DB_pga       = 6;
+	public static final int DB_pgv       = 7;
+	public static final int DB_mean_per  = 8;
+	public static final int DB_epi_dist  = 9;
+	public static final int DB_foc_dist  = 10;
+	public static final int DB_rup_dist  = 11;
+	public static final int DB_vs30      = 12;
+	public static final int DB_class     = 13;
+	public static final int DB_foc_mech  = 14;
+	public static final int DB_location  = 15;
+	public static final int DB_owner     = 16;
+	public static final int DB_latitude  = 17;
+	public static final int DB_longitude = 18;
+	public static final int DB_LENGTH    = 19;
 
 	private java.sql.Connection connection = null;
 	public static final String url = "jdbc:derby:db";

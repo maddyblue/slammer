@@ -1,1239 +1,1225 @@
-Cape Mendocino 1992	CPM-000	0.02	7.1	5.958	6.2	1.497	125.5	0.36	10.5	14.6	8.5	3	Cape Mendocino	CGS	40.348	-124.352	1
-Cape Mendocino 1992	CPM-090	0.02	7.1	2.389	9.8	1.039	41.3	0.35	10.5	14.6	8.5	3	Cape Mendocino	CGS	40.348	-124.352	1
-Cape Mendocino 1992	EUR-000	0.02	7.1	0.303	20.8	0.154	20.3	0.75	52.5	53.5	44.6	3	Eureka, Myrtle and West	CGS	40.802	-124.148	2
-Cape Mendocino 1992	EUR-090	0.02	7.1	0.331	19.8	0.178	28.3	1.08	52.5	53.5	44.6	3	Eureka, Myrtle and West	CGS	40.802	-124.148	2
-Cape Mendocino 1992	FOR-000	0.02	7.1	0.261	18.7	0.116	30.1	1.03	28.8	30.6	23.6	3	Fortuna, 701 S. Fortuna Blvd.	CGS	40.584	-124.145	2
-Cape Mendocino 1992	FOR-090	0.02	7.1	0.239	18.2	0.114	21.7	1.11	28.8	30.6	23.6	3	Fortuna, 701 S. Fortuna Blvd.	CGS	40.584	-124.145	2
-Cape Mendocino 1992	PET-000	0.02	7.1	3.416	17.7	0.59	48.3	0.54	4.9	11.3	9.5	3	Petrolia	CGS	40.324	-124.286	3
-Cape Mendocino 1992	PET-090	0.02	7.1	3.822	16.1	0.662	90.1	0.68	4.9	11.3	9.5	3	Petrolia	CGS	40.324	-124.286	3
-Cape Mendocino 1992	RIO-270	0.02	7.1	1.523	15.3	0.385	43.8	0.54	21.9	24.2	18.5	3	Rio Dell overpass	CGS	40.503	-124.099	3
-Cape Mendocino 1992	RIO-360	0.02	7.1	2.491	10.9	0.549	42.1	0.44	21.9	24.2	18.5	3	Rio Dell overpass	CGS	40.503	-124.099	3
-Cape Mendocino 1992	SHL-000	0.02	7.1	0.551	16.1	0.229	7.1	0.18	36.7	38.1	33.8	3	Shelter Cove Airport	CGS	40.026	-124.069	2
-Cape Mendocino 1992	SHL-090	0.02	7.1	0.494	17.5	0.189	6.8	0.18	36.7	38.1	33.8	3	Shelter Cove Airport	CGS	40.026	-124.069	2
-Coalinga 1983	C01-000	0.01	6.4	0.158	25.5	0.09	10.7	0.9	53.9	54.8	41.6	5	Parkfield, Cholame 1E	CGS	35.743	-120.277	3
-Coalinga 1983	C01-090	0.01	6.4	0.231	19.7	0.089	15.3	0.89	53.9	54.8	41.6	5	Parkfield, Cholame 1E	CGS	35.743	-120.277	3
-Coalinga 1983	C02-000	0.01	6.4	0.241	14.2	0.109	11.1	0.65	55.0	55.9	42.8	5	Parkfield, Cholame 2WA	CGS	35.733	-120.286	3
-Coalinga 1983	C02-090	0.01	6.4	0.195	15.0	0.114	9.8	0.59	55.0	55.9	42.8	5	Parkfield, Cholame 2WA	CGS	35.733	-120.286	3
-Coalinga 1983	C03-000	0.01	6.4	0.154	17.7	0.098	7.6	0.62	56.0	56.9	43.9	5	Parkfield, Cholame 3W	CGS	35.724	-120.294	3
-Coalinga 1983	C03-090	0.01	6.4	0.129	16.0	0.084	8.3	0.6	56.0	56.9	43.9	5	Parkfield, Cholame 3W	CGS	35.724	-120.294	3
-Coalinga 1983	C04-000	0.01	6.4	0.262	11.0	0.136	11.4	0.54	56.6	57.5	44.7	5	Parkfield, Cholame 4W	CGS	35.718	-120.304	3
-Coalinga 1983	C04-090	0.01	6.4	0.27	13.0	0.136	9.1	0.49	56.6	57.5	44.7	5	Parkfield, Cholame 4W	CGS	35.718	-120.304	3
-Coalinga 1983	C05-270	0.01	6.4	0.258	12.6	0.147	10.8	0.47	58.9	59.7	46.0	5	Parkfield, Cholame 5W	CGS	35.697	-120.328	3
-Coalinga 1983	C05-360	0.01	6.4	0.257	14.6	0.131	10.0	0.57	58.9	59.7	46.0	5	Parkfield, Cholame 5W	CGS	35.697	-120.328	3
-Coalinga 1983	C06-000	0.01	6.4	0.291	12.2	0.126	11.0	0.53	60.4	61.2	47.3	5	Parkfield, Cholame 6W	CGS	35.684	-120.342	3
-Coalinga 1983	C06-090	0.01	6.4	0.216	12.6	0.102	9.9	0.59	60.4	61.2	47.3	5	Parkfield, Cholame 6W	CGS	35.684	-120.342	3
-Coalinga 1983	C08-000	0.01	6.4	0.174	14.9	0.098	8.6	0.57	61.9	62.7	49.0	5	Parkfield, Cholame 8W	CGS	35.671	-120.359	3
-Coalinga 1983	C08-270	0.01	6.4	0.176	12.5	0.1	8.0	0.56	61.9	62.7	49.0	5	Parkfield, Cholame 8W	CGS	35.671	-120.359	3
-Coalinga 1983	C12-270	0.01	6.4	0.041	21.4	0.04	4.2	0.8	65.8	66.6	50.7	5	Parkfield, Cholame 12W	CGS	35.639	-120.404	2
-Coalinga 1983	C12-360	0.01	6.4	0.052	20.2	0.053	5.5	0.86	65.8	66.6	50.7	5	Parkfield, Cholame 12W	CGS	35.639	-120.404	2
-Coalinga 1983	C4A-000	0.01	6.4	0.076	12.8	0.047	5.0	0.53	57.8	58.7	55.2	5	Parkfield, Cholame 4AW	CGS	35.707	-120.316	3
-Coalinga 1983	C4A-090	0.01	6.4	0.082	13.3	0.078	8.0	0.62	57.8	58.7	55.2	5	Parkfield, Cholame 4AW	CGS	35.707	-120.316	3
-Coalinga 1983	CAK-270	0.01	6.4	0.738	12.4	0.227	23.5	0.68	30.5	32.1	25.5	5	Cantua Creek School	CGS	36.503	-120.32	3
-Coalinga 1983	CAK-360	0.01	6.4	1.151	11.6	0.281	25.9	0.57	30.5	32.1	25.5	5	Cantua Creek School	CGS	36.503	-120.32	3
-Coalinga 1983	COH-000	0.01	6.4	0.451	17.0	0.14	13.7	0.68	47.2	48.2	36.4	5	Parkfield, Fault zone 3	CGS	35.803	-120.334	3
-Coalinga 1983	COH-090	0.01	6.4	0.666	15.8	0.164	24.5	0.9	47.2	48.2	36.4	5	Parkfield, Fault zone 3	CGS	35.803	-120.334	3
-Coalinga 1983	COW-000	0.01	6.4	0.639	17.3	0.194	23.3	0.99	52.2	53.1	40.4	5	Parkfield, Fault zone 1	CGS	35.758	-120.307	3
-Coalinga 1983	COW-090	0.01	6.4	0.382	22.4	0.11	17.8	0.98	52.2	53.1	40.4	5	Parkfield, Fault zone 1	CGS	35.758	-120.307	3
-Coalinga 1983	GH2-000	0.01	6.4	0.1	10.9	0.072	6.5	0.54	42.8	44.0	32.3	5	Parkfield, Gold Hill 2E	CGS	35.843	-120.348	3
-Coalinga 1983	GH2-090	0.01	6.4	0.108	9.7	0.076	7.7	0.59	42.8	44.0	32.3	5	Parkfield, Gold Hill 2E	CGS	35.843	-120.348	3
-Coalinga 1983	GH3-000	0.01	6.4	0.117	13.7	0.094	11.3	0.8	39.7	40.9	29.2	5	Parkfield, Gold Hill 3E	CGS	35.87	-120.334	3
-Coalinga 1983	GH3-090	0.01	6.4	0.09	14.8	0.072	6.5	0.58	39.7	40.9	29.2	5	Parkfield, Gold Hill 3E	CGS	35.87	-120.334	3
-Coalinga 1983	PG1-000	0.01	6.4	0.319	18.0	0.119	16.8	1.1	45.8	46.9	46.5	5	Parkfield, Gold Hill 1W	CGS	35.818	-120.378	3
-Coalinga 1983	PG1-090	0.01	6.4	0.145	19.3	0.065	10.1	1.02	45.8	46.9	46.5	5	Parkfield, Gold Hill 1W	CGS	35.818	-120.378	3
-Coalinga 1983	PG2-000	0.01	6.4	0.13	21.0	0.083	11.3	0.96	46.6	47.7	36.6	5	Parkfield, Gold Hill 2W	CGS	35.812	-120.391	2
-Coalinga 1983	PG2-090	0.01	6.4	0.127	19.5	0.074	11.4	0.92	46.6	47.7	36.6	5	Parkfield, Gold Hill 2W	CGS	35.812	-120.391	2
-Coalinga 1983	PG3-000	0.01	6.4	0.16	10.0	0.137	11.3	0.65	48.7	49.7	38.8	5	Parkfield, Gold Hill 3W	CGS	35.796	-120.411	2
-Coalinga 1983	PG3-090	0.01	6.4	0.153	13.3	0.122	9.1	0.59	48.7	49.7	38.8	5	Parkfield, Gold Hill 3W	CGS	35.796	-120.411	2
-Coalinga 1983	PG4-000	0.01	6.4	0.068	19.6	0.056	8.4	0.72	50.5	51.5	41.0	5	Parkfield, Gold Hill 4W	CGS	35.785	-120.444	2
-Coalinga 1983	PG4-090	0.01	6.4	0.08	18.6	0.097	6.5	0.59	50.5	51.5	41.0	5	Parkfield, Gold Hill 4W	CGS	35.785	-120.444	2
-Coalinga 1983	PG5-000	0.01	6.4	0.116	20.9	0.073	8.6	0.76	52.8	53.7	43.7	5	Parkfield, Gold Hill 5W	CGS	35.77	-120.477	2
-Coalinga 1983	PG5-090	0.01	6.4	0.095	22.5	0.054	6.1	0.69	52.8	53.7	43.7	5	Parkfield, Gold Hill 5W	CGS	35.77	-120.477	2
-Coalinga 1983	PG6-000	0.01	6.4	0.075	21.2	0.059	8.1	0.69	57.0	57.9	48.0	5	Parkfield, Gold Hill 6W	CGS	35.738	-120.507	3
-Coalinga 1983	PG6-090	0.01	6.4	0.077	21.1	0.069	7.4	0.63	57.0	57.9	48.0	5	Parkfield, Gold Hill 6W	CGS	35.738	-120.507	3
-Coalinga 1983	PGD-065	0.01	6.4	0.394	10.6	0.161	16.3	0.54	31.3	32.9	24.6	5	Parkfield, Vineyard Canyon 2E	CGS	35.973	-120.467	1
-Coalinga 1983	PRK-090	0.01	6.4	0.276	18.4	0.11	12.1	0.7	37.9	39.2	29.5	5	Parkfield, Fault zone 12	CGS	35.899	-120.433	3
-Coalinga 1983	PRK-180	0.01	6.4	0.39	15.8	0.112	14.5	0.81	37.9	39.2	29.5	5	Parkfield, Fault zone 12	CGS	35.899	-120.433	3
-Coalinga 1983	PV1-000	0.01	6.4	0.378	10.6	0.167	20.7	0.83	33.5	35.0	26.7	5	Parkfield, Vineyard Canyon 1E	CGS	35.957	-120.481	3
-Coalinga 1983	PV1-090	0.01	6.4	0.428	10.4	0.23	27.4	0.81	33.5	35.0	26.7	5	Parkfield, Vineyard Canyon 1E	CGS	35.957	-120.481	3
-Coalinga 1983	PVP-045	0.0050	6.4	1.571	8.1	0.38	32.4	0.61	11.0	14.9	8.5	5	Pleasant Valley P.P., bldg.	USGS	36.31	-120.25	3
-Coalinga 1983	PVP-135	0.0050	6.4	1.004	11.3	0.285	19.1	0.46	11.0	14.9	8.5	5	Pleasant Valley P.P., bldg.	USGS	36.31	-120.25	3
-Coalinga 1983	PVY-045	0.0050	6.4	4.137	8.1	0.592	60.2	0.55	11.0	14.9	8.5	5	Pleasant Valley P.P., yard	USGS	36.31	-120.25	3
-Coalinga 1983	PVY-135	0.0050	6.4	3.847	9.0	0.551	36.5	0.39	11.0	14.9	8.5	5	Pleasant Valley P.P., yard	USGS	36.31	-120.25	3
-Coalinga 1983	SC2-000	0.01	6.4	0.07	14.6	0.061	8.4	0.73	46.5	47.6	34.4	5	Parkfield, Stone Corral 2E	CGS	35.81	-120.282	1
-Coalinga 1983	SC2-090	0.01	6.4	0.07	16.8	0.095	7.1	0.67	46.5	47.6	34.4	5	Parkfield, Stone Corral 2E	CGS	35.81	-120.282	1
-Coalinga 1983	SC3-000	0.01	6.4	0.136	10.7	0.151	8.7	0.47	44.0	45.1	31.8	5	Parkfield, Stone Corral 3E	CGS	35.833	-120.27	1
-Coalinga 1983	SC3-090	0.01	6.4	0.124	9.9	0.106	8.0	0.35	44.0	45.1	31.8	5	Parkfield, Stone Corral 3E	CGS	35.833	-120.27	1
-Coalinga 1983	SC4-000	0.01	6.4	0.08	11.7	0.063	8.2	0.77	41.5	42.7	29.6	5	Parkfield, Stone Corral 4E	CGS	35.855	-120.281	1
-Coalinga 1983	SC4-090	0.01	6.4	0.072	13.8	0.072	6.8	0.67	41.5	42.7	29.6	5	Parkfield, Stone Corral 4E	CGS	35.855	-120.281	1
-Coalinga 1983	SCN-045	0.01	6.4	0.286	9.2	0.166	16.3	0.74	32.6	34.1	27.7	5	Slack Canyon	CGS	36.034	-120.59	1
-Coalinga 1983	SCN-315	0.01	6.4	0.229	11.6	0.153	13.3	0.84	32.6	34.1	27.7	5	Slack Canyon	CGS	36.034	-120.59	1
-Coalinga 1983	TM3-000	0.01	6.4	0.042	17.8	0.044	4.4	0.68	51.2	52.2	38.4	5	Parkfield, Cholame 3E	CGS	35.77	-120.247	1
-Coalinga 1983	TM3-090	0.01	6.4	0.054	17.2	0.056	6.5	0.75	51.2	52.2	38.4	5	Parkfield, Cholame 3E	CGS	35.77	-120.247	1
-Coalinga 1983	VC1-000	0.01	6.4	0.104	15.0	0.081	8.2	0.73	36.4	37.7	29.5	5	Parkfield, Vineyard Canyon 1W	CGS	35.934	-120.497	3
-Coalinga 1983	VC1-090	0.01	6.4	0.186	12.6	0.087	11.1	0.7	36.4	37.7	29.5	5	Parkfield, Vineyard Canyon 1W	CGS	35.934	-120.497	3
-Coalinga 1983	VC2-000	0.01	6.4	0.115	13.2	0.073	7.4	0.49	37.6	38.9	30.7	5	Parkfield, Vineyard Canyon 2W	CGS	35.927	-120.509	3
-Coalinga 1983	VC2-090	0.01	6.4	0.11	12.5	0.083	6.9	0.45	37.6	38.9	30.7	5	Parkfield, Vineyard Canyon 2W	CGS	35.927	-120.509	3
-Coalinga 1983	VC4-000	0.01	6.4	0.047	11.3	0.064	6.5	0.72	41.5	42.7	34.6	5	Parkfield, Vineyard Canyon 4W	CGS	35.905	-120.55	2
-Coalinga 1983	VC4-090	0.01	6.4	0.031	14.1	0.046	4.2	0.72	41.5	42.7	34.6	5	Parkfield, Vineyard Canyon 4W	CGS	35.905	-120.55	2
-Coalinga 1983	VC5-090	0.01	6.4	0.08	16.8	0.062	6.9	0.78	44.1	45.2	37.1	5	Parkfield, Vineyard Canyon 5W	CGS	35.885	-120.565	2
-Coalinga 1983	VC6-000	0.01	6.4	0.087	18.4	0.054	9.5	0.81	48.0	49.0	41.0	5	Parkfield, Vineyard Canyon 6W	CGS	35.861	-120.6	3
-Coalinga 1983	VC6-090	0.01	6.4	0.073	20.5	0.076	5.4	0.5	48.0	49.0	41.0	5	Parkfield, Vineyard Canyon 6W	CGS	35.861	-120.6	3
-Coalinga 1983	VYC-020	0.01	6.4	0.253	15.5	0.098	11.8	0.78	39.1	40.4	32.3	5	Parkfield, Vineyard Canyon 3W	CGS	35.922	-120.534	1
-Coalinga 1983	VYC-110	0.01	6.4	0.219	14.8	0.137	13.6	0.77	39.1	40.4	32.3	5	Parkfield, Vineyard Canyon 3W	CGS	35.922	-120.534	1
-Coalinga 1983	Z02-000	0.01	6.4	0.309	16.4	0.116	22.7	0.98	49.0	50.0	37.9	5	Parkfield, Fault zone 2	CGS	35.787	-120.334	3
-Coalinga 1983	Z02-090	0.01	6.4	0.333	22.0	0.133	19.4	1.05	49.0	50.0	37.9	5	Parkfield, Fault zone 2	CGS	35.787	-120.334	3
-Coalinga 1983	Z04-000	0.01	6.4	0.157	20.9	0.067	12.6	0.99	44.0	45.1	34.3	5	Parkfield, Fault zone 4	CGS	35.836	-120.395	2
-Coalinga 1983	Z04-090	0.01	6.4	0.398	16.9	0.12	20.4	0.96	44.0	45.1	34.3	5	Parkfield, Fault zone 4	CGS	35.836	-120.395	2
-Coalinga 1983	Z06-000	0.01	6.4	0.082	21.4	0.055	9.2	1.14	42.0	43.2	32.8	5	Parkfield, Fault zone 6	CGS	35.859	-120.42	2
-Coalinga 1983	Z06-090	0.01	6.4	0.082	22.9	0.056	11.6	1.17	42.0	43.2	32.8	5	Parkfield, Fault zone 6	CGS	35.859	-120.42	2
-Coalinga 1983	Z07-000	0.01	6.4	0.301	15.7	0.122	21.3	0.95	40.4	41.6	31.0	5	Parkfield, Fault zone 7	CGS	35.871	-120.404	3
-Coalinga 1983	Z07-090	0.01	6.4	0.229	17.4	0.119	15.0	0.9	40.4	41.6	31.0	5	Parkfield, Fault zone 7	CGS	35.871	-120.404	3
-Coalinga 1983	Z08-000	0.01	6.4	0.268	9.8	0.131	17.2	0.76	39.2	40.5	29.6	5	Parkfield, Fault zone 8	CGS	35.878	-120.381	2
-Coalinga 1983	Z08-090	0.01	6.4	0.254	11.2	0.116	14.2	0.54	39.2	40.5	29.6	5	Parkfield, Fault zone 8	CGS	35.878	-120.381	2
-Coalinga 1983	Z09-000	0.01	6.4	0.066	18.0	0.057	9.3	1.05	40.4	41.6	31.9	5	Parkfield, Fault zone 9	CGS	35.879	-120.445	2
-Coalinga 1983	Z09-090	0.01	6.4	0.067	16.7	0.05	8.8	0.94	40.4	41.6	31.9	5	Parkfield, Fault zone 9	CGS	35.879	-120.445	2
-Coalinga 1983	Z10-000	0.01	6.4	0.171	20.7	0.073	14.9	1.15	40.6	41.8	30.4	5	Parkfield, Fault zone 10	CGS	35.872	-120.422	3
-Coalinga 1983	Z10-090	0.01	6.4	0.21	14.3	0.131	16.4	0.97	40.6	41.8	30.4	5	Parkfield, Fault zone 10	CGS	35.872	-120.422	3
-Coalinga 1983	Z11-000	0.01	6.4	0.105	10.7	0.097	11.7	0.73	37.5	38.8	28.4	5	Parkfield, Fault zone 11	CGS	35.896	-120.398	2
-Coalinga 1983	Z11-090	0.01	6.4	0.091	13.1	0.087	6.5	0.59	37.5	38.8	28.4	5	Parkfield, Fault zone 11	CGS	35.896	-120.398	2
-Coalinga 1983	Z14-000	0.01	6.4	1.497	8.9	0.282	40.8	0.91	37.7	39.0	29.9	5	Parkfield, Fault zone 14	CGS	35.908	-120.458	3
-Coalinga 1983	Z14-090	0.01	6.4	0.881	13.0	0.274	28.4	0.84	37.7	39.0	29.9	5	Parkfield, Fault zone 14	CGS	35.908	-120.458	3
-Coalinga 1983	Z15-000	0.01	6.4	0.457	14.0	0.168	21.1	0.78	37.1	38.4	29.9	5	Parkfield, Fault zone 15	CGS	35.921	-120.481	2
-Coalinga 1983	Z15-090	0.01	6.4	0.25	19.2	0.117	14.1	0.65	37.1	38.4	29.9	5	Parkfield, Fault zone 15	CGS	35.921	-120.481	2
-Coalinga 1983	Z16-000	0.01	6.4	0.363	11.2	0.195	17.7	0.52	35.6	37.0	28.1	5	Parkfield, Fault zone 16	CGS	35.927	-120.456	3
-Coalinga 1983	Z16-090	0.01	6.4	0.276	11.9	0.122	11.9	0.45	35.6	37.0	28.1	5	Parkfield, Fault zone 16	CGS	35.927	-120.456	3
-Coyote Lake 1979	B12-220	0.01	5.7	0.073	12.8	0.077	15.1	0.55	56.0	57.0	39.0	1	Bear Valley, Station 12, Williams Ranch	USGS	36.658	-121.249	2
-Coyote Lake 1979	B12-310	0.01	5.7	0.085	10.0	0.089	9.0	0.53	56.0	57.0	39.0	1	Bear Valley, Station 12, Williams Ranch	USGS	36.658	-121.249	2
-Coyote Lake 1979	B14-220	0.01	5.7	0.064	12.4	0.079	9.1	0.52	74.0	75.0	58.0	1	Bear Valley, Station 14, Upper Butts Ranch	USGS	36.569	-121.043	2
-Coyote Lake 1979	B14-310	0.01	5.7	0.033	14.2	0.047	10.8	0.48	74.0	75.0	58.0	1	Bear Valley, Station 14, Upper Butts Ranch	USGS	36.569	-121.043	2
-Coyote Lake 1979	CYC-160	0.01	5.7	0.175	8.2	0.139	14.1	0.45	2.0	10.0	1.6	1	Coyote Lake Dam, SW abut	CGS	37.118	-121.55	1
-Coyote Lake 1979	CYC-250	0.01	5.7	0.307	4.0	0.246	23.6	0.47	2.0	10.0	1.6	1	Coyote Lake Dam, SW abut	CGS	37.118	-121.55	1
-Coyote Lake 1979	G01-230	0.01	5.7	0.076	7.9	0.093	9.3	0.27	16.0	19.0	8.0	1	Gilroy Array #1, Gavilan College tank grnds.	CGS	36.973	-121.572	1
-Coyote Lake 1979	G01-320	0.01	5.7	0.084	6.0	0.118	9.8	0.31	16.0	19.0	8.0	1	Gilroy Array #1, Gavilan College tank grnds.	CGS	36.973	-121.572	1
-Coyote Lake 1979	G02-050	0.01	5.7	0.261	7.7	0.199	13.8	0.41	14.0	17.0	7.0	1	Gilroy Array #2, Mission Trails Motel	CGS	36.982	-121.556	3
-Coyote Lake 1979	G02-140	0.01	5.7	0.42	4.0	0.252	32.0	0.51	14.0	17.0	7.0	1	Gilroy Array #2, Mission Trails Motel	CGS	36.982	-121.556	3
-Coyote Lake 1979	G03-050	0.01	5.7	0.408	8.2	0.246	30.9	0.6	13.0	16.0	5.0	1	Gilroy Array #3, Sewer Farm A	CGS	36.987	-121.536	3
-Coyote Lake 1979	G03-140	0.01	5.7	0.373	9.0	0.254	33.2	0.69	13.0	16.0	5.0	1	Gilroy Array #3, Sewer Farm A	CGS	36.987	-121.536	3
-Coyote Lake 1979	G04-270	0.01	5.7	0.598	8.5	0.233	60.8	0.55	12.0	15.0	3.0	1	Gilroy Array #4, San Ysidro School	CGS	37.001	-121.522	3
-Coyote Lake 1979	G04-360	0.01	5.7	0.503	11.7	0.257	41.0	0.69	12.0	15.0	3.0	1	Gilroy Array #4, San Ysidro School	CGS	37.001	-121.522	3
-Coyote Lake 1979	G06-230	0.01	5.7	0.739	3.1	0.422	43.7	0.71	2.0	10.0	1.2	1	Gilroy Array #6, San Ysidro Microwave Site         	CGS	37.026	-121.484	2
-Coyote Lake 1979	G06-320	0.01	5.7	0.493	4.2	0.305	24.8	0.42	2.0	10.0	1.2	1	Gilroy Array #6, San Ysidro Microwave Site         	CGS	37.026	-121.484	2
-Coyote Lake 1979	HVR-150	0.01	5.7	0.021	12.8	0.039	19.1	0.55	30.0	31.0	30.0	1	Halls Valley, Grant Park	CGS	37.338	-121.714	3
-Coyote Lake 1979	HVR-240	0.01	5.7	0.023	12.2	0.048	8.0	0.53	30.0	31.0	30.0	1	Halls Valley, Grant Park	CGS	37.338	-121.714	3
-Coyote Lake 1979	SJB-213	0.01	5.7	0.074	9.4	0.104	10.8	0.49	28.0	30.0	16.0	1	San Juan Bautista, 24 Polk	CGS	36.846	-121.536	2
-Coyote Lake 1979	SJB-303	0.01	5.7	0.051	10.2	0.09	11.8	0.56	28.0	30.0	16.0	1	San Juan Bautista, 24 Polk	CGS	36.846	-121.536	2
-Coyote Lake 1979	SJW-160	0.01	5.7	0.049	10.7	0.099	16.9	0.58	50.0	51.0	38.0	1	Salinas, John and Work St.	CGS	36.671	-121.642	3
-Coyote Lake 1979	SJW-250	0.01	5.7	0.056	10.9	0.097	14.5	0.57	50.0	51.0	38.0	1	Salinas, John and Work St.	CGS	36.671	-121.642	3
-Daly City 1957	GGP-010	0.01	5.3	0.022	2.6	0.077	3.9	0.3	12.0	13.0	11.0	3	Golden Gate Park	USGS	37.77	-122.48	1
-Daly City 1957	GGP-100	0.01	5.3	0.031	2.4	0.104	8.9	0.25	12.0	13.0	11.0	3	Golden Gate Park	USGS	37.77	-122.48	1
-El Centro 1940	EC9-180	0.01	7.0	1.705	24.1	0.313	29.9	0.54	11.4	19.6	8.3	1	El Centro Array #9	USGS	32.794	-115.549	3
-El Centro 1940	EC9-270	0.01	7.0	1.195	24.0	0.215	29.8	0.61	11.4	19.6	8.3	1	El Centro Array #9	USGS	32.794	-115.549	3
-Imperial Valley 1979	AEP-045	0.01	6.5	1.146	7.1	0.327	42.8	0.67	2.0	12.3	8.5	1	Aeropuerto Mexicali	UCSD	32.651	-115.332	3
-Imperial Valley 1979	AEP-315	0.01	6.5	0.832	7.0	0.26	24.8	0.34	2.0	12.3	8.5	1	Aeropuerto Mexicali	UCSD	32.651	-115.332	3
-Imperial Valley 1979	AGR-003	0.01	6.5	1.511	13.1	0.37	36.4	0.56	4.0	12.7	12.9	1	Agrarias	UCSD	32.621	-115.301	3
-Imperial Valley 1979	AGR-273	0.01	6.5	1.001	12.7	0.221	42.5	0.75	4.0	12.7	12.9	1	Agrarias	UCSD	32.621	-115.301	3
-Imperial Valley 1979	BCR-140	0.01	6.5	3.9	9.7	0.587	43.7	0.49	6.0	12.0	5.4	1	Bonds Corner, Hwys 115 & 98	USGS	32.693	-115.338	3
-Imperial Valley 1979	BCR-230	0.01	6.5	6.004	9.8	0.786	48.6	0.47	6.0	12.0	5.4	1	Bonds Corner, Hwys 115 & 98	USGS	32.693	-115.338	3
-Imperial Valley 1979	BRA-225	0.01	6.5	0.306	15.0	0.165	34.7	0.9	42.0	43.0	8.0	1	Brawley Airport	USGS	32.988	-115.509	3
-Imperial Valley 1979	BRA-315	0.01	6.5	0.446	14.5	0.221	37.5	0.68	42.0	43.0	8.0	1	Brawley Airport	USGS	32.988	-115.509	3
-Imperial Valley 1979	CAL-225	0.01	6.5	0.148	26.7	0.128	15.5	0.65	57.0	58.0	21.1	1	Calipatria Fire Station	USGS	33.13	-115.52	3
-Imperial Valley 1979	CAL-315	0.01	6.5	0.102	25.4	0.079	12.9	0.74	57.0	58.0	21.1	1	Calipatria Fire Station	USGS	33.13	-115.52	3
-Imperial Valley 1979	CC4-045	0.01	6.5	0.118	11.4	0.116	12.6	0.63	84.0	85.0	44.4	1	Coachella Canal, Station 4, Siphon 15	USGS	33.36	-115.59	3
-Imperial Valley 1979	CC4-135	0.01	6.5	0.203	10.4	0.128	15.9	0.62	84.0	85.0	44.4	1	Coachella Canal, Station 4, Siphon 15	USGS	33.36	-115.59	3
-Imperial Valley 1979	CHI-012	0.01	6.5	1.168	20.0	0.27	25.4	0.57	19.0	22.5	28.7	1	Chihuahua	UCSD	32.484	-115.24	3
-Imperial Valley 1979	CHI-282	0.01	6.5	1.187	22.0	0.254	29.8	0.71	19.0	22.5	28.7	1	Chihuahua	UCSD	32.484	-115.24	3
-Imperial Valley 1979	CLX-225	0.01	6.5	0.857	11.1	0.275	18.3	0.44	15.0	18.0	10.7	1	Calexico Fire Station	USGS	32.669	-115.492	3
-Imperial Valley 1979	CLX-315	0.01	6.5	0.748	15.4	0.201	16.3	0.42	15.0	18.0	10.7	1	Calexico Fire Station	USGS	32.669	-115.492	3
-Imperial Valley 1979	CMP-015	0.01	6.5	0.392	21.7	0.186	13.9	0.39	23.0	26.0	32.6	1	Compuertas	UCSD	32.572	-115.083	3
-Imperial Valley 1979	CMP-285	0.01	6.5	0.171	22.7	0.147	9.4	0.36	23.0	26.0	32.6	1	Compuertas	UCSD	32.572	-115.083	3
-Imperial Valley 1979	CPE-147	0.01	6.5	1.222	29.7	0.169	11.6	0.39	24.0	26.9	26.5	1	Cerro Prieto	UCSD	32.42	-115.301	2
-Imperial Valley 1979	CPE-237	0.01	6.5	1.34	36.2	0.157	18.7	0.58	24.0	26.9	26.5	1	Cerro Prieto	UCSD	32.42	-115.301	2
-Imperial Valley 1979	DLT-262	0.01	6.5	2.398	51.0	0.238	25.9	0.62	33.0	35.1	43.6	1	Delta	UCSD	32.356	-115.195	3
-Imperial Valley 1979	DLT-352	0.01	6.5	3.29	50.3	0.351	33.0	0.68	33.0	35.1	43.6	1	Delta	UCSD	32.356	-115.195	3
-Imperial Valley 1979	E10-050	0.01	6.5	0.572	13.1	0.172	45.5	0.93	27.0	29.0	10.3	1	El Centro Array 10, Community Hospital	USGS	32.78	-115.567	3
-Imperial Valley 1979	E10-320	0.01	6.5	0.694	12.0	0.226	41.4	0.92	27.0	29.0	10.3	1	El Centro Array 10, Community Hospital	USGS	32.78	-115.567	3
-Imperial Valley 1979	E11-140	0.01	6.5	1.993	9.0	0.362	35.3	0.45	27.0	29.0	13.8	1	El Centro Array 11, McCabe Union School	USGS	32.752	-115.594	3
-Imperial Valley 1979	E11-230	0.01	6.5	1.619	8.0	0.382	39.7	0.42	27.0	29.0	13.8	1	El Centro Array 11, McCabe Union School	USGS	32.752	-115.594	3
-Imperial Valley 1979	E12-140	0.01	6.5	0.394	19.8	0.141	17.6	0.67	30.0	32.0	19.7	1	El Centro Array 12, 907 Brockman	USGS	32.718	-115.637	3
-Imperial Valley 1979	E12-230	0.01	6.5	0.33	19.8	0.116	19.5	0.59	30.0	32.0	19.7	1	El Centro Array 12, 907 Brockman	USGS	32.718	-115.637	3
-Imperial Valley 1979	E13-140	0.01	6.5	0.272	21.5	0.117	14.9	0.6	34.0	35.0	23.6	1	El Centro Array 13, Strobel residence	USGS	32.709	-115.683	3
-Imperial Valley 1979	E13-230	0.01	6.5	0.266	22.3	0.139	14.2	0.49	34.0	35.0	23.6	1	El Centro Array 13, Strobel residence	USGS	32.709	-115.683	3
-Imperial Valley 1979	EC1-140	0.01	6.5	0.278	15.2	0.142	14.5	0.37	37.0	38.0	21.1	1	El Centro Array 1, Borchard Ranches	USGS	32.96	-115.319	3
-Imperial Valley 1979	EC1-230	0.01	6.5	0.219	20.7	0.139	11.4	0.35	37.0	38.0	21.1	1	El Centro Array 1, Borchard Ranches	USGS	32.96	-115.319	3
-Imperial Valley 1979	EC2-140	0.01	6.5	1.279	8.9	0.315	31.4	0.49	31.0	33.0	14.6	1	El Centro Array 2, Keystone Rd.	USGS	32.916	-115.366	3
-Imperial Valley 1979	EC2-230	0.01	6.5	1.003	11.8	0.413	27.9	0.33	31.0	33.0	14.6	1	El Centro Array 2, Keystone Rd.	USGS	32.916	-115.366	3
-Imperial Valley 1979	EC3-140	0.01	6.5	1.145	11.7	0.267	46.7	0.63	28.0	30.0	11.9	1	El Centro Array 3, Pine Union School	USGS	32.894	-115.38	4
-Imperial Valley 1979	EC3-230	0.01	6.5	0.694	14.2	0.222	37.0	0.48	28.0	30.0	11.9	1	El Centro Array 3, Pine Union School	USGS	32.894	-115.38	4
-Imperial Valley 1979	EC4-140	0.01	6.5	1.334	6.6	0.493	38.0	0.68	26.0	28.0	6.0	1	El Centro Array 4, 2905 Anderson Rd.	USGS	32.864	-115.432	3
-Imperial Valley 1979	EC4-230	0.01	6.5	0.943	10.3	0.357	77.7	1.29	26.0	28.0	6.0	1	El Centro Array 4, 2905 Anderson Rd.	USGS	32.864	-115.432	3
-Imperial Valley 1979	EC5-140	0.01	6.5	1.659	8.3	0.527	43.8	0.67	28.0	30.0	2.8	1	El Centro Array 5, 2802 James	USGS	32.855	-115.466	3
-Imperial Valley 1979	EC5-230	0.01	6.5	1.69	9.5	0.374	88.1	1.23	28.0	30.0	2.8	1	El Centro Array 5, 2802 James	USGS	32.855	-115.466	3
-Imperial Valley 1979	EC6-140	0.01	6.5	1.495	11.5	0.376	62.8	0.94	27.0	29.0	0.1	1	El Centro Array 6, 551 Huston Rd.	USGS	32.839	-115.487	3
-Imperial Valley 1979	EC6-230	0.01	6.5	1.784	8.3	0.437	106.1	1.29	27.0	29.0	0.1	1	El Centro Array 6, 551 Huston Rd.	USGS	32.839	-115.487	3
-Imperial Valley 1979	EC7-140	0.01	6.5	0.861	6.8	0.333	44.7	0.97	26.0	28.0	1.5	1	El Centro Array 7, Imperial Valley College	USGS	32.829	-115.504	3
-Imperial Valley 1979	EC7-230	0.01	6.5	1.717	4.8	0.463	106.4	1.32	26.0	28.0	1.5	1	El Centro Array 7, Imperial Valley College	USGS	32.829	-115.504	3
-Imperial Valley 1979	EC8-140	0.01	6.5	1.6	6.8	0.61	52.7	0.61	27.0	29.0	5.2	1	El Centro Array 8, 95 E. Cruikshank Rd.	USGS	32.811	-115.532	3
-Imperial Valley 1979	EC8-230	0.01	6.5	1.504	5.8	0.466	50.1	0.47	27.0	29.0	5.2	1	El Centro Array 8, 95 E. Cruikshank Rd.	USGS	32.811	-115.532	3
-Imperial Valley 1979	EDA-270	0.01	6.5	1.733	7.1	0.352	68.7	0.5	26.0	28.0	6.6	1	El Centro differential array	USGS	32.796	-115.535	3
-Imperial Valley 1979	EDA-360	0.01	6.5	2.12	6.6	0.487	41.9	0.55	26.0	28.0	6.6	1	El Centro differential array	USGS	32.796	-115.535	3
-Imperial Valley 1979	EMO-000	0.0050	6.5	0.858	8.2	0.314	71.8	1.05	21.4	24.6	0.5	1	Meloland Overpass	CGS	32.773	-115.447	3
-Imperial Valley 1979	EMO-270	0.0050	6.5	1.08	6.7	0.296	90.4	1.77	21.4	24.6	0.5	1	Meloland Overpass	CGS	32.773	-115.447	3
-Imperial Valley 1979	HLT-225	0.01	6.5	0.876	11.9	0.251	44.0	0.63	19.0	21.0	6.9	1	Holtville Post Office	USGS	32.812	-115.377	3
-Imperial Valley 1979	HLT-315	0.01	6.5	0.847	13.1	0.217	48.9	0.71	19.0	21.0	6.9	1	Holtville Post Office	USGS	32.812	-115.377	3
-Imperial Valley 1979	NIL-090	0.0050	6.5	0.182	21.7	0.109	11.6	0.56	71.9	72.9	35.9	1	Niland Fire Station	CGS	33.239	-115.512	3
-Imperial Valley 1979	NIL-360	0.0050	6.5	0.111	26.2	0.069	8.7	0.54	71.9	72.9	35.9	1	Niland Fire Station	CGS	33.239	-115.512	3
-Imperial Valley 1979	PTC-045	0.01	6.5	0.031	12.1	0.043	3.7	0.37	52.0	53.0	33.0	1	Plaster City	USGS	32.79	-115.86	3
-Imperial Valley 1979	PTC-135	0.01	6.5	0.057	11.4	0.057	5.6	0.38	52.0	53.0	33.0	1	Plaster City	USGS	32.79	-115.86	3
-Imperial Valley 1979	PTS-225	0.01	6.5	0.204	18.2	0.109	17.6	0.66	47.0	48.0	14.8	1	El Centro, Parachute Test Site	USGS	32.93	-115.7	2
-Imperial Valley 1979	PTS-315	0.01	6.5	0.223	17.0	0.204	14.6	0.58	47.0	48.0	14.8	1	El Centro, Parachute Test Site	USGS	32.93	-115.7	2
-Imperial Valley 1979	QKP-085	0.0050	6.5	1.025	15.7	0.309	36.2	0.57	14.0	18.5	23.6	1	Cucapah	UCSD	32.545	-115.235	3
-Imperial Valley 1979	SHP-000	0.01	6.5	1.034	10.0	0.287	19.6	0.32	13.0	17.8	11.1	1	SAHOP Casa Flores	UCSD	32.618	-115.428	3
-Imperial Valley 1979	SHP-270	0.01	6.5	2.737	7.5	0.506	31.0	0.34	13.0	17.8	11.1	1	SAHOP Casa Flores	UCSD	32.618	-115.428	3
-Imperial Valley 1979	SM8-045	0.01	6.5	0.088	11.8	0.11	4.6	0.28	57.0	58.0	27.1	1	Superstition Mountain, Site 8	USGS	32.955	-115.823	2
-Imperial Valley 1979	SM8-135	0.01	6.5	0.206	6.7	0.193	9.2	0.24	57.0	58.0	27.1	1	Superstition Mountain, Site 8	USGS	32.955	-115.823	2
-Imperial Valley 1979	VCT-075	0.0050	6.5	0.195	19.4	0.122	6.4	0.29	44.0	45.6	54.1	1	Victoria	UCSD	32.289	-115.103	3
-Imperial Valley 1979	VCT-345	0.0050	6.5	0.244	17.1	0.167	8.4	0.28	44.0	45.6	54.1	1	Victoria	UCSD	32.289	-115.103	3
-Imperial Valley 1979	WSM-090	0.0050	6.5	0.122	24.7	0.074	21.7	1.15	55.1	56.4	15.1	1	Westmorland Fire Station	CGS	33.037	-115.623	3
-Imperial Valley 1979	WSM-180	0.0050	6.5	0.119	25.2	0.11	22.1	1.05	55.1	56.4	15.1	1	Westmorland Fire Station	CGS	33.037	-115.623	3
-Kern County 1952	HLY-090	0.01	7.5	0.087	31.3	0.044	6.0	0.83	121.0	122.0	120.5	5	Los Angeles, Hollywood Stor. Bldg. Grounds	CGS	34.089	-118.338	3
-Kern County 1952	HLY-180	0.01	7.5	0.094	29.0	0.057	5.2	0.64	121.0	122.0	120.5	5	Los Angeles, Hollywood Stor. Bldg. Grounds	CGS	34.089	-118.338	3
-Kern County 1952	PAS-180	0.01	7.5	0.058	27.8	0.045	5.5	0.84	127.0	128.0	127.0	5	Pasadena, CIT Athenaeum	CGS	34.14	-118.12	2
-Kern County 1952	PAS-270	0.01	7.5	0.113	29.1	0.053	9.2	0.94	127.0	128.0	127.0	5	Pasadena, CIT Athenaeum	CGS	34.14	-118.12	2
-Kern County 1952	PEL-090	0.0050	7.5	0.098	32.4	0.042	7.4	0.97	121.0	122.0	120.5	5	Los Angeles, Hollywood Storage lot	USGS	34.089	-118.338	3
-Kern County 1952	PEL-180	0.0050	7.5	0.098	28.9	0.058	6.2	0.69	121.0	122.0	120.5	5	Los Angeles, Hollywood Storage lot	USGS	34.089	-118.338	3
-Kern County 1952	SBC-042	0.01	7.5	0.212	23.1	0.088	21.3	0.96	89.0	90.0	89.0	5	Santa Barbara Courthouse	USGS	34.42	-119.7	2
-Kern County 1952	SBC-132	0.01	7.5	0.242	23.9	0.129	41.3	1.13	89.0	90.0	89.0	5	Santa Barbara Courthouse	USGS	34.42	-119.7	2
-Kern County 1952	TLS-021	0.05	7.5	2.703	151.5	0.156	77.4	2.0	40.0	43.0	40.0	5	Taft, Lincoln School	USGS	35.15	-119.46	2
-Kern County 1952	TLS-111	0.01	7.5	0.093	3.5	0.144	3.0	0.13	40.0	43.0	40.0	5	Taft, Lincoln School	USGS	35.15	-119.46	2
-Landers 1992	29P-000	0.02	7.3	0.117	30.7	0.08	3.8	0.23	44.8	44.8	42.2	1	Twentynine Palms, Joshua Tree N.M. 	CGS	34.021	-116.009	1
-Landers 1992	29P-090	0.02	7.3	0.106	30.9	0.06	5.0	0.23	44.8	44.8	42.2	1	Twentynine Palms, Joshua Tree N.M. 	CGS	34.021	-116.009	1
-Landers 1992	ABY-000	0.02	7.3	0.565	29.8	0.115	18.4	0.65	74.0	74.0	69.2	1	Amboy	CGS	34.56	-115.743	1
-Landers 1992	ABY-090	0.02	7.3	0.755	25.2	0.146	20.0	0.59	74.0	74.0	69.2	1	Amboy	CGS	34.56	-115.743	1
-Landers 1992	ARC-009	0.02	7.3	0.083	30.4	0.046	9.8	1.09	148.1	148.1	135.5	1	Arcadia, 180 Campus Dr.	USC	34.13	-118.036	3
-Landers 1992	ARC-279	0.02	7.3	0.085	30.0	0.051	12.6	1.09	148.1	148.1	135.5	1	Arcadia, 180 Campus Dr.	USC	34.13	-118.036	3
-Landers 1992	BAD-000	0.02	7.3	0.144	28.2	0.057	15.8	1.26	137.4	137.4	128.3	1	Covina, 1271 W. Badillo	USC	34.087	-117.915	3
-Landers 1992	BAD-270	0.02	7.3	0.095	26.6	0.046	7.5	1.05	137.4	137.4	128.3	1	Covina, 1271 W. Badillo	USC	34.087	-117.915	3
-Landers 1992	BAK-050	0.02	7.3	0.24	26.3	0.108	9.4	0.49	121.7	121.7	88.5	1	Baker Fire Station	CGS	35.271	-116.066	2
-Landers 1992	BAK-140	0.02	7.3	0.264	20.0	0.106	11.0	0.57	121.7	121.7	88.5	1	Baker Fire Station	CGS	35.271	-116.066	2
-Landers 1992	BOR-000	0.02	7.3	0.223	12.4	0.119	13.0	0.63	141.6	141.6	90.6	1	Boron Fire Station	CGS	35.002	-117.65	2
-Landers 1992	BOR-090	0.02	7.3	0.171	14.1	0.09	9.7	0.69	141.6	141.6	90.6	1	Boron Fire Station	CGS	35.002	-117.65	2
-Landers 1992	BPK-090	0.02	7.3	0.109	25.3	0.045	11.5	1.26	152.0	152.0	148.6	1	Buena Park, 6625 La Palma Ave.	USC	33.847	-118.018	3
-Landers 1992	BPK-180	0.02	7.3	0.067	25.1	0.052	8.8	1.09	152.0	152.0	148.6	1	Buena Park, 6625 La Palma Ave.	USC	33.847	-118.018	3
-Landers 1992	BRC-000	0.02	7.3	0.07	24.0	0.051	10.0	1.17	145.9	145.9	142.8	1	La Habra, 950 Briarcliff Dr.	USC	33.921	-117.973	3
-Landers 1992	BRC-090	0.02	7.3	0.096	24.9	0.053	9.5	1.13	145.9	145.9	142.8	1	La Habra, 950 Briarcliff Dr.	USC	33.921	-117.973	3
-Landers 1992	BUE-250	0.02	7.3	0.078	35.7	0.049	7.2	0.9	175.1	175.1	162.1	1	Burbank, 542 N. Buena Vista	USC	34.168	-118.332	3
-Landers 1992	BUE-340	0.02	7.3	0.161	25.8	0.068	10.4	1.14	175.1	175.1	162.1	1	Burbank, 542 N. Buena Vista	USC	34.168	-118.332	3
-Landers 1992	BVH-000	0.02	7.3	0.208	21.3	0.132	21.9	0.75	93.3	93.3	36.1	1	Barstow, Vineyard & H St.	CGS	34.887	-117.047	2
-Landers 1992	BVH-090	0.02	7.3	0.218	18.2	0.135	25.8	0.91	93.3	93.3	36.1	1	Barstow, Vineyard & H St.	CGS	34.887	-117.047	2
-Landers 1992	CAS-000	0.02	7.3	0.146	22.3	0.065	12.2	1.07	166.5	166.5	161.2	1	Compton, 14637 Castlegate St.	USC	33.899	-118.196	3
-Landers 1992	CAS-270	0.02	7.3	0.164	21.7	0.063	13.1	0.92	166.5	166.5	161.2	1	Compton, 14637 Castlegate St.	USC	33.899	-118.196	3
-Landers 1992	CLW-LN	0.0025	7.3	1.215	10.4	0.283	25.6	0.42			21.2	1	Coolwater	SCE			2
-Landers 1992	CLW-TR	0.0025	7.3	2.173	8.2	0.417	42.3	0.56			21.2	1	Coolwater	SCE			2
-Landers 1992	COM-140	0.02	7.3	0.097	29.0	0.058	8.4	1.05	141.6	141.6	136.0	1	Hacienda Heights, 16750 Colima Rd.	USC	33.99	-117.943	3
-Landers 1992	COM-230	0.02	7.3	0.081	28.1	0.046	5.6	0.83	141.6	141.6	136.0	1	Hacienda Heights, 16750 Colima Rd.	USC	33.99	-117.943	3
-Landers 1992	DEL-000	0.02	7.3	0.14	28.0	0.054	14.1	1.0	159.3	159.3	155.8	1	Lakewood, 6701 Del Amo Blvd.	USC	33.846	-118.099	3
-Landers 1992	DEL-090	0.02	7.3	0.163	27.4	0.05	12.9	1.19	159.3	159.3	155.8	1	Lakewood, 6701 Del Amo Blvd.	USC	33.846	-118.099	3
-Landers 1992	DSP-000	0.02	7.3	0.707	31.8	0.171	20.3	0.53	29.1	29.1	23.2	1	Desert Hot Springs	CGS	33.962	-116.509	2
-Landers 1992	DSP-090	0.02	7.3	0.678	32.0	0.154	20.9	0.75	29.1	29.1	23.2	1	Desert Hot Springs	CGS	33.962	-116.509	2
-Landers 1992	DWN-000	0.02	7.3	0.123	44.8	0.051	18.3	1.26	163.3	163.3	157.0	1	Downey, County Maint. Bldg.	CGS	33.924	-118.167	3
-Landers 1992	DWN-090	0.02	7.3	0.092	49.9	0.039	11.4	1.14	163.3	163.3	157.0	1	Downey, County Maint. Bldg.	CGS	33.924	-118.167	3
-Landers 1992	EJS-030	0.02	7.3	0.086	30.3	0.06	5.9	0.75	156.6	156.6	150.4	1	Santa Fe Springs, 11500 E. Joslin St.	USC	33.944	-118.087	3
-Landers 1992	EJS-120	0.02	7.3	0.096	26.8	0.047	9.2	1.04	156.6	156.6	150.4	1	Santa Fe Springs, 11500 E. Joslin St.	USC	33.944	-118.087	3
-Landers 1992	EUC-022	0.02	7.3	0.187	27.8	0.069	14.7	1.04	149.7	149.7	148.8	1	Fountain Valley, Euclid	USC	33.719	-117.938	3
-Landers 1992	EUC-292	0.02	7.3	0.144	26.2	0.058	10.3	0.93	149.7	149.7	148.8	1	Fountain Valley, Euclid	USC	33.719	-117.938	3
-Landers 1992	FEA-000	0.02	7.3	0.096	24.8	0.051	7.0	0.66	124.0	124.0	121.9	1	Featherly Park, Park Maint. Bldg.	CGS	33.869	-117.709	2
-Landers 1992	FEA-090	0.02	7.3	0.093	25.7	0.052	4.5	0.53	124.0	124.0	121.9	1	Featherly Park, Park Maint. Bldg.	CGS	33.869	-117.709	2
-Landers 1992	FTI-000	0.02	7.3	0.227	13.5	0.114	9.8	0.32	118.8	118.8	64.2	1	Fort Irwin	CGS	35.268	-116.684	2
-Landers 1992	FTI-090	0.02	7.3	0.229	13.5	0.122	16.4	0.5	118.8	118.8	64.2	1	Fort Irwin	CGS	35.268	-116.684	2
-Landers 1992	GLP-177	0.02	7.3	0.064	25.6	0.044	6.4	0.51	165.7	165.7	147.9	1	Glendale, 320 Las Palmas Ave.	USC	34.2	-118.231	3
-Landers 1992	GLP-267	0.02	7.3	0.081	25.1	0.071	4.1	0.47	165.7	165.7	147.9	1	Glendale, 320 Las Palmas Ave.	USC	34.2	-118.231	3
-Landers 1992	H05-000	0.02	7.3	0.264	33.2	0.081	5.5	0.35	74.0	74.0	69.5	1	Hemet, Stetson Ave. Fire Station	CGS	33.729	-116.979	3
-Landers 1992	H05-090	0.02	7.3	0.239	31.9	0.097	5.8	0.39	74.0	74.0	69.5	1	Hemet, Stetson Ave. Fire Station	CGS	33.729	-116.979	3
-Landers 1992	HOS-090	0.01	7.3	0.391	35.5	0.078	19.9	1.07	81.0	81.0	80.5	1	San Bernadino, E & Hospitality	CGS	34.065	-117.292	3
-Landers 1992	HOS-180	0.01	7.3	0.384	38.6	0.087	14.6	0.9	81.0	81.0	80.5	1	San Bernadino, E & Hospitality	CGS	34.065	-117.292	3
-Landers 1992	IND-000	0.02	7.3	0.285	35.9	0.104	9.6	0.65	61.1	61.1	55.7	1	Indio, Coachella Canal	CGS	33.717	-116.155	3
-Landers 1992	IND-090	0.02	7.3	0.33	37.9	0.109	15.1	0.91	61.1	61.1	55.7	1	Indio, Coachella Canal	CGS	33.717	-116.155	3
-Landers 1992	JOS-000	0.02	7.3	1.646	27.2	0.274	27.5	0.73	14.6	14.6	11.6	1	Joshua Tree, Fire Station	CGS	34.13	-116.314	2
-Landers 1992	JOS-090	0.02	7.3	2.349	26.1	0.284	43.4	0.78	14.6	14.6	11.6	1	Joshua Tree, Fire Station	CGS	34.13	-116.314	2
-Landers 1992	LCN-000	0.0050	7.3	6.583	13.8	0.785	32.1	0.17	42.2	42.2	1.1	1	Lucerne	SCE	34.5675	-116.6122	1
-Landers 1992	LCN-275	0.0050	7.3	6.962	13.1	0.721	97.7	0.32	42.2	42.2	1.1	1	Lucerne	SCE	34.5675	-116.6122	1
-Landers 1992	MCF-000	0.0050	7.3	0.362	34.6	0.126	6.8	0.38			27.8	1	Mission Creek Fault	USGS			2
-Landers 1992	MCF-090	0.0050	7.3	0.277	40.2	0.125	23.6	0.67			27.8	1	Mission Creek Fault	USGS			2
-Landers 1992	MVH-000	0.0050	7.3	0.959	31.0	0.188	16.3	0.59	23.0	23.0	19.3	1	Morongo Valley, Fire Station	USGS	34.05	-116.58	2
-Landers 1992	MVH-090	0.0050	7.3	0.91	32.1	0.14	20.6	0.67	23.0	23.0	19.3	1	Morongo Valley, Fire Station	USGS	34.05	-116.58	2
-Landers 1992	NPS-000	0.0050	7.3	0.639	36.3	0.136	11.2	0.52	34.4	34.4	24.2	1	North Palm Springs	USGS	33.92	-116.54	2
-Landers 1992	NPS-090	0.0050	7.3	0.694	37.0	0.134	14.2	0.67	34.4	34.4	24.2	1	North Palm Springs	USGS	33.92	-116.54	2
-Landers 1992	OAK-080	0.02	7.3	0.068	26.4	0.039	5.2	0.88	134.0	134.0	122.2	1	Glendora, 120 N. Oakbank	USC	34.137	-117.883	2
-Landers 1992	OAK-170	0.02	7.3	0.121	24.6	0.063	9.9	0.82	134.0	134.0	122.2	1	Glendora, 120 N. Oakbank	USC	34.137	-117.883	2
-Landers 1992	OBR-000	0.02	7.3	0.113	46.4	0.043	15.5	1.01	162.2	162.2	151.4	1	Los Angeles, Obregon Park	CGS	34.037	-118.178	2
-Landers 1992	OBR-090	0.02	7.3	0.116	35.1	0.065	7.6	0.88	162.2	162.2	151.4	1	Los Angeles, Obregon Park	CGS	34.037	-118.178	2
-Landers 1992	OR2-010	0.02	7.3	0.105	27.7	0.055	9.4	0.93	165.2	165.2	164.5	1	Long Beach, Orange Ave.	USC	33.881	-118.176	3
-Landers 1992	OR2-280	0.02	7.3	0.159	25.2	0.061	11.1	1.09	165.2	165.2	164.5	1	Long Beach, Orange Ave.	USC	33.881	-118.176	3
-Landers 1992	PMN-000	0.02	7.3	0.157	23.1	0.067	12.8	1.21	122.6	122.6	117.0	1	Pomona, 4th & Locust St.	CGS	34.056	-117.748	3
-Landers 1992	PMN-090	0.02	7.3	0.12	28.4	0.044	8.6	1.02	122.6	122.6	117.0	1	Pomona, 4th & Locust St.	CGS	34.056	-117.748	3
-Landers 1992	PSA-000	0.02	7.3	0.337	39.4	0.076	11.0	0.71	43.7	43.7	37.5	1	Palm Springs Airport	CGS	33.829	-116.512	3
-Landers 1992	PSA-090	0.02	7.3	0.392	35.8	0.089	13.8	0.86	43.7	43.7	37.5	1	Palm Springs Airport	CGS	33.829	-116.512	3
-Landers 1992	SIL-000	0.02	7.3	0.074	30.0	0.05	3.8	0.26	56.1	56.1	51.7	1	Silent Valley, Poppet Flat	CDMD	33.851	-116.852	1
-Landers 1992	SIL-090	0.02	7.3	0.069	31.7	0.04	5.0	0.34	56.1	56.1	51.7	1	Silent Valley, Poppet Flat	CDMD	33.851	-116.852	1
-Landers 1992	TAR-000	0.02	7.3	0.124	35.8	0.066	9.4	0.57	193.8	193.8	175.6	1	Tarzana, Cedar Hill Nursery A	CGS	34.16	-118.534	2
-Landers 1992	TAR-090	0.02	7.3	0.078	38.7	0.043	5.5	0.71	193.8	193.8	175.6	1	Tarzana, Cedar Hill Nursery A	CGS	34.16	-118.534	2
-Landers 1992	W70-000	0.02	7.3	0.1	24.5	0.055	9.5	0.99	173.3	173.3	167.8	1	Los Angeles, 924 W. 70th St.	USC	33.976	-118.289	3
-Landers 1992	W70-270	0.02	7.3	0.101	24.9	0.049	11.3	1.19	173.3	173.3	167.8	1	Los Angeles, 924 W. 70th St.	USC	33.976	-118.289	3
-Landers 1992	WAI-200	0.02	7.3	0.105	25.0	0.056	9.5	0.92	158.5	158.5	153.3	1	Huntington Beach, 16081 Waikiki Lane	USC	33.727	-118.044	3
-Landers 1992	WAI-290	0.02	7.3	0.117	22.4	0.059	10.8	1.01	158.5	158.5	153.3	1	Huntington Beach, 16081 Waikiki Lane	USC	33.727	-118.044	3
-Landers 1992	YER-270	0.02	7.3	0.925	17.6	0.245	51.4	0.91	84.2	84.2	24.9	1	Yermo Fire Station	CGS	34.904	-116.823	3
-Landers 1992	YER-360	0.02	7.3	0.677	18.9	0.152	29.7	0.65	84.2	84.2	24.9	1	Yermo Fire Station	CGS	34.904	-116.823	3
-Loma Prieta 1989	A07-000	0.0050	6.9	0.289	14.7	0.156	16.2	0.65	62.8	65.1	47.7	5	Upper Crystal Springs Res., Pulgas, APEEL 7	CGS	37.484	-122.313	2
-Loma Prieta 1989	A07-090	0.0050	6.9	0.176	16.0	0.088	15.7	0.77	62.8	65.1	47.7	5	Upper Crystal Springs Res., Pulgas, APEEL 7	CGS	37.484	-122.313	2
-Loma Prieta 1989	A09-137	0.0050	6.9	0.217	20.6	0.113	15.7	1.09	62.0	64.4	46.9	5	APEEL 9, Crystal Springs Res.	CGS	37.47	-122.32	3
-Loma Prieta 1989	A09-227	0.0050	6.9	0.204	16.2	0.104	18.1	0.91	62.0	64.4	46.9	5	APEEL 9, Crystal Springs Res.	CGS	37.47	-122.32	3
-Loma Prieta 1989	A10-000	0.0050	6.9	0.209	16.3	0.103	14.2	0.93	62.8	65.1	47.8	5	APEEL 10, Skyline, Upper Crystal Springs Res.	CGS	37.465	-122.342	2
-Loma Prieta 1989	A10-090	0.0050	6.9	0.255	15.1	0.088	24.3	1.01	62.8	65.1	47.8	5	APEEL 10, Skyline, Upper Crystal Springs Res.	CGS	37.465	-122.342	2
-Loma Prieta 1989	A2E-000	0.0050	6.9	0.423	12.8	0.171	14.2	0.58	71.2	73.3	57.4	5	APEEL 2E, Hayward Muir School	CGS	37.657	-122.082	3
-Loma Prieta 1989	A2E-090	0.0050	6.9	0.29	12.9	0.139	11.7	0.58	71.2	73.3	57.4	5	APEEL 2E, Hayward Muir School	CGS	37.657	-122.082	3
-Loma Prieta 1989	A3E-000	0.0050	6.9	0.078	17.4	0.078	5.6	0.42	70.7	72.8	57.1	5	APEEL 3E, Hayward, CSUH	CGS	37.657	-122.061	2
-Loma Prieta 1989	A3E-090	0.0050	6.9	0.102	18.4	0.084	6.4	0.53	70.7	72.8	57.1	5	APEEL 3E, Hayward, CSUH	CGS	37.657	-122.061	2
-Loma Prieta 1989	ADD-250	0.0050	6.9	0.836	10.5	0.244	18.0	0.47	27.0	32.0	19.3	5	Anderson Dam, downstream	USGS	37.166	-121.628	2
-Loma Prieta 1989	ADD-340	0.0050	6.9	0.84	10.9	0.243	19.3	0.48	27.0	32.0	19.3	5	Anderson Dam, downstream	USGS	37.166	-121.628	2
-Loma Prieta 1989	ADL-250	0.0050	6.9	0.094	15.7	0.061	12.0	1.24	27.0	32.0	19.7	5	Anderson Dam, left abutment	USGS	37.166	-121.628	2
-Loma Prieta 1989	ADL-340	0.0050	6.9	0.09	13.4	0.08	9.8	0.82	27.0	32.0	19.7	5	Anderson Dam, left abutment	USGS	37.166	-121.628	2
-Loma Prieta 1989	AGW-000	0.0050	6.9	0.442	18.4	0.172	25.0	0.64	40.7	44.2	46.9	5	Agnews State Hospital	CGS	37.398	-121.952	2
-Loma Prieta 1989	AGW-090	0.0050	6.9	0.375	21.4	0.159	17.6	0.97	40.7	44.2	46.9	5	Agnews State Hospital	CGS	37.398	-121.952	2
-Loma Prieta 1989	BER-000	0.0050	6.9	0.063	16.9	0.057	9.0	0.81	98.8	100.3	83.6	5	Berkeley, Lawrence Lab	CGS	37.876	-122.249	2
-Loma Prieta 1989	BER-090	0.0050	6.9	0.147	8.0	0.117	21.0	0.88	98.8	100.3	83.6	5	Berkeley, Lawrence Lab	CGS	37.876	-122.249	2
-Loma Prieta 1989	BES-000	0.0050	6.9	0.12	12.2	0.108	11.8	0.66	65.1	67.4	49.9	5	Belmont, Envirotech	USGS	37.512	-122.308	2
-Loma Prieta 1989	BES-090	0.0050	6.9	0.177	10.3	0.11	16.2	0.8	65.1	67.4	49.9	5	Belmont, Envirotech	USGS	37.512	-122.308	2
-Loma Prieta 1989	BRN-000	0.0050	6.9	5.333	9.0	0.453	51.3	0.46	9.5	19.7	10.3	5	Branciforte Dr.	UCSC	37.0475	-121.9865	1
-Loma Prieta 1989	BRN-090	0.0050	6.9	5.27	9.8	0.501	44.4	0.34	9.5	19.7	10.3	5	Branciforte Dr.	UCSC	37.0475	-121.9865	1
-Loma Prieta 1989	CLD-195	0.0050	6.9	0.352	13.4	0.16	12.8	0.41	30.9	35.4	22.3	5	Coyote Lake Dam, Downstream	CGS	37.124	-121.551	2
-Loma Prieta 1989	CLD-285	0.0050	6.9	0.464	11.4	0.179	23.0	0.54	30.9	35.4	22.3	5	Coyote Lake Dam, Downstream	CGS	37.124	-121.551	2
-Loma Prieta 1989	CLF-000	0.02	6.9	0.092	10.3	0.075	11.4	0.77	99.0	101.0	78.5	5	San Francisco, Cliff House	CGS	37.78	-122.51	1
-Loma Prieta 1989	CLF-090	0.02	6.9	0.136	7.3	0.108	21.0	1.06	99.0	101.0	78.5	5	San Francisco, Cliff House	CGS	37.78	-122.51	1
-Loma Prieta 1989	CPT-000	0.02	6.9	4.382	12.2	0.472	36.4	0.5	9.0	20.0	15.8	5	Capitola Fire Station, 405 Capitola Ave.	CGS	36.973	-121.953	3
-Loma Prieta 1989	CPT-090	0.02	6.9	2.373	13.2	0.398	31.6	0.49	9.0	20.0	15.8	5	Capitola Fire Station, 405 Capitola Ave.	CGS	36.973	-121.953	3
-Loma Prieta 1989	CRL-000	0.02	6.9	3.256	6.9	0.63	55.9	0.48	7.0	19.0	5.3	5	Corralitos, Koinonia Campground	CGS	37.046	-121.803	2
-Loma Prieta 1989	CRL-090	0.02	6.9	2.572	8.0	0.479	46.3	0.62	7.0	19.0	5.3	5	Corralitos, Koinonia Campground	CGS	37.046	-121.803	2
-Loma Prieta 1989	CYC-195	0.0050	6.9	0.428	15.7	0.151	16.4	0.6	30.7	35.2	21.8	5	Coyote Lake Dam, SW abut	CGS	37.118	-121.55	1
-Loma Prieta 1989	CYC-285	0.0050	6.9	1.503	12.2	0.484	39.7	0.6	30.7	35.2	21.8	5	Coyote Lake Dam, SW abut	CGS	37.118	-121.55	1
-Loma Prieta 1989	DHT-000	0.02	6.9	0.14	8.8	0.098	10.6	0.49	92.0	94.0	71.6	5	San Francisco, Diamond Heights, Digby St.	CGS	37.74	-122.43	2
-Loma Prieta 1989	DHT-090	0.02	6.9	0.106	9.4	0.113	14.2	0.64	92.0	94.0	71.6	5	San Francisco, Diamond Heights, Digby St.	CGS	37.74	-122.43	2
-Loma Prieta 1989	EMY-260	0.0050	6.9	0.914	8.9	0.26	40.6	1.11	97.0	99.0	76.7	5	Emeryville, 6363 Christie Ave.	USGS	37.844	-122.295	4
-Loma Prieta 1989	EMY-350	0.0050	6.9	0.528	15.4	0.214	21.5	0.92	97.0	99.0	76.7	5	Emeryville, 6363 Christie Ave.	USGS	37.844	-122.295	4
-Loma Prieta 1989	FRE-090	0.0050	6.9	0.324	17.8	0.194	10.6	0.56	56.0	59.0	38.1	5	Fremont, Emerson Ct.	CGS	37.535	-121.929	2
-Loma Prieta 1989	FRE-180	0.0050	6.9	0.336	17.8	0.145	10.6	0.48	56.0	59.0	38.1	5	Fremont, Emerson Ct.	CGS	37.535	-121.929	2
-Loma Prieta 1989	G01-000	0.0050	6.9	1.056	6.5	0.411	31.6	0.29	28.3	33.2	11.2	5	Gilroy Array #1, Gavilan College tank grnds.	CGS	36.973	-121.572	1
-Loma Prieta 1989	G01-090	0.0050	6.9	1.68	3.7	0.473	33.9	0.39	28.3	33.2	11.2	5	Gilroy Array #1, Gavilan College tank grnds.	CGS	36.973	-121.572	1
-Loma Prieta 1989	G02-000	0.0050	6.9	1.197	11.0	0.367	32.9	0.54	29.5	34.2	12.7	5	Gilroy Array #2, Mission Trails Motel	CGS	36.982	-121.556	3
-Loma Prieta 1989	G02-090	0.0050	6.9	1.211	9.5	0.322	39.1	0.76	29.5	34.2	12.7	5	Gilroy Array #2, Mission Trails Motel	CGS	36.982	-121.556	3
-Loma Prieta 1989	G03-000	0.0050	6.9	2.088	6.4	0.555	35.7	0.37	31.1	35.6	14.0	5	Gilroy Array #3, Sewer Farm A	CGS	36.987	-121.536	3
-Loma Prieta 1989	G03-090	0.0050	6.9	1.349	11.4	0.367	44.7	0.62	31.1	35.6	14.0	5	Gilroy Array #3, Sewer Farm A	CGS	36.987	-121.536	3
-Loma Prieta 1989	G04-000	0.0050	6.9	1.242	13.8	0.417	38.8	0.58	32.1	36.5	16.1	5	Gilroy Array #4, San Ysidro School	CGS	37.001	-121.522	3
-Loma Prieta 1989	G04-090	0.0050	6.9	0.954	14.8	0.212	37.8	0.76	32.1	36.5	16.1	5	Gilroy Array #4, San Ysidro School	CGS	37.001	-121.522	3
-Loma Prieta 1989	G06-000	0.0050	6.9	0.223	12.9	0.126	12.7	0.54	35.3	39.3	19.9	5	Gilroy Array #6, San Ysidro Microwave Site         	CGS	37.026	-121.484	2
-Loma Prieta 1989	G06-090	0.0050	6.9	0.442	12.6	0.17	14.2	0.46	35.3	39.3	19.9	5	Gilroy Array #6, San Ysidro Microwave Site         	CGS	37.026	-121.484	2
-Loma Prieta 1989	GGB-270	0.0050	6.9	0.512	6.0	0.243	35.3	0.97	100.0	102.0	79.3	5	Golden Gate Bridge	USGS	37.806	-122.472	2
-Loma Prieta 1989	GGB-360	0.0050	6.9	0.288	7.5	0.127	17.7	0.74	100.0	102.0	79.3	5	Golden Gate Bridge	USGS	37.806	-122.472	2
-Loma Prieta 1989	GIL-067	0.0050	6.9	0.904	5.0	0.357	28.9	0.37	28.7	33.5	11.6	5	Gilroy, Gavilan College Science Bldg.	CGS	36.973	-121.568	2
-Loma Prieta 1989	GIL-337	0.0050	6.9	0.701	4.8	0.325	22.3	0.32	28.7	33.5	11.6	5	Gilroy, Gavilan College Science Bldg.	CGS	36.973	-121.568	2
-Loma Prieta 1989	GMR-000	0.0050	6.9	0.784	11.5	0.226	16.4	0.36	39.7	43.3	24.2	5	Gilroy Array #7, Mantelli Ranch                    	CGS	37.033	-121.434	3
-Loma Prieta 1989	GMR-090	0.0050	6.9	0.842	9.1	0.323	16.6	0.38	39.7	43.3	24.2	5	Gilroy Array #7, Mantelli Ranch                    	CGS	37.033	-121.434	3
-Loma Prieta 1989	GOF-090	0.0050	6.9	0.71	8.9	0.284	41.6	0.79	27.8	32.7	12.7	5	Gilroy, Historic Building	CGS	37.009	-121.569	3
-Loma Prieta 1989	GOF-180	0.0050	6.9	0.494	12.9	0.241	24.1	0.59	27.8	32.7	12.7	5	Gilroy, Historic Building	CGS	37.009	-121.569	3
-Loma Prieta 1989	HAD-165	0.0050	6.9	0.821	11.8	0.282	44.8	0.91	45.0	48.0	25.4	5	Hollister Airport Differential Array	USGS	36.888	-121.413	3
-Loma Prieta 1989	HAD-255	0.0050	6.9	1.064	13.1	0.287	37.1	0.81	45.0	48.0	25.4	5	Hollister Airport Differential Array	USGS	36.888	-121.413	3
-Loma Prieta 1989	HCH-090	0.0050	6.9	0.819	17.4	0.257	39.4	0.98	47.0	50.0	28.1	5	Hollister City Hall	USGS	36.851	-121.402	3
-Loma Prieta 1989	HCH-180	0.0050	6.9	1.081	12.1	0.221	44.5	1.11	47.0	50.0	28.1	5	Hollister City Hall	USGS	36.851	-121.402	3
-Loma Prieta 1989	HSP-000	0.02	6.9	2.222	16.5	0.369	63.3	0.96	48.0	51.0	28.6	5	Hollister, South and Pine Streets	CGS	36.848	-121.397	3
-Loma Prieta 1989	HSP-090	0.02	6.9	0.791	29.7	0.178	30.7	0.91	48.0	51.0	28.6	5	Hollister, South and Pine Streets	CGS	36.848	-121.397	3
-Loma Prieta 1989	HVR-000	0.0050	6.9	0.258	16.2	0.134	15.4	0.68	35.6	39.6	31.6	5	Halls Valley, Grant Park	CGS	37.338	-121.714	3
-Loma Prieta 1989	HVR-090	0.0050	6.9	0.249	13.7	0.102	13.5	0.68	35.6	39.6	31.6	5	Halls Valley, Grant Park	CGS	37.338	-121.714	3
-Loma Prieta 1989	HWB-220	0.0050	6.9	0.405	10.9	0.159	15.1	0.54	72.8	74.8	58.9	5	Hayward BART station	CGS	37.67	-122.09	2
-Loma Prieta 1989	HWB-310	0.0050	6.9	0.278	13.2	0.156	10.6	0.37	72.8	74.8	58.9	5	Hayward BART station	CGS	37.67	-122.09	2
-Loma Prieta 1989	LGP-000	0.0050	6.9	7.869	10.2	0.563	94.8	0.79	18.8	25.5	6.1	5	Los Gatos Pres. Cent.	UCSC	37.1724	-122.0114	1
-Loma Prieta 1989	LGP-090	0.0050	6.9	3.089	7.8	0.605	50.9	0.56	18.8	25.5	6.1	5	Los Gatos Pres. Cent.	UCSC	37.1724	-122.0114	1
-Loma Prieta 1989	MCH-000	0.0050	6.9	0.081	13.2	0.073	3.3	0.31	48.8	51.8	44.8	5	Monterey City Hall	CGS	36.597	-121.897	1
-Loma Prieta 1989	MCH-090	0.0050	6.9	0.058	11.9	0.063	5.8	0.38	48.8	51.8	44.8	5	Monterey City Hall	CGS	36.597	-121.897	1
-Loma Prieta 1989	MEN-270	0.0050	6.9	0.276	15.5	0.107	20.8	0.99	66.2	68.4	51.2	5	Foster City, 355 Menhaden	USGS	37.555	-122.248	4
-Loma Prieta 1989	MEN-360	0.0050	6.9	0.257	13.2	0.116	20.3	0.95	66.2	68.4	51.2	5	Foster City, 355 Menhaden	USGS	37.555	-122.248	4
-Loma Prieta 1989	MPV-020	0.0050	6.9	0.519	16.6	0.294	23.5	0.8	54.0	57.0	33.4	5	Menlo Park VA Hospital	VA	37.468	-122.157	3
-Loma Prieta 1989	MPV-110	0.0050	6.9	0.31	25.1	0.119	15.4	1.06	54.0	57.0	33.4	5	Menlo Park VA Hospital	VA	37.468	-122.157	3
-Loma Prieta 1989	MSJ-000	0.0050	6.9	0.268	18.2	0.124	10.9	0.53	54.9	57.6	43.0	5	Fremont, Mission San Jose	CGS	37.53	-121.919	2
-Loma Prieta 1989	MSJ-090	0.0050	6.9	0.252	16.7	0.106	8.8	0.43	54.9	57.6	43.0	5	Fremont, Mission San Jose	CGS	37.53	-121.919	2
-Loma Prieta 1989	NAS-180	0.0050	6.9	0.339	5.0	0.268	22.0	0.77	95.0	96.6	75.2	5	Alameda Naval Air Station	BYU	37.75	-122.23	3
-Loma Prieta 1989	NAS-270	0.0050	6.9	0.48	5.5	0.209	42.6	1.13	95.0	96.6	75.2	5	Alameda Naval Air Station	BYU	37.75	-122.23	3
-Loma Prieta 1989	OHW-035	0.02	6.9	0.722	8.7	0.287	41.1	0.89	94.0	96.0	74.4	5	Oakland, outer harbor wharf, 14th St.	CGS	37.813	-122.314	4
-Loma Prieta 1989	OHW-305	0.02	6.9	0.99	7.0	0.271	42.3	0.87	94.0	96.0	74.4	5	Oakland, outer harbor wharf, 14th St.	CGS	37.813	-122.314	4
-Loma Prieta 1989	OK2-200	0.02	6.9	0.406	11.9	0.191	20.2	0.77	92.0	94.0	71.5	5	Oakland, 2-story office building	CGS	37.806	-122.267	4
-Loma Prieta 1989	OK2-290	0.02	6.9	0.656	12.7	0.243	38.0	0.89	92.0	94.0	71.5	5	Oakland, 2-story office building	CGS	37.806	-122.267	4
-Loma Prieta 1989	PAE-000	0.0050	6.9	0.539	23.1	0.204	21.9	1.16	50.7	53.6	36.1	5	Palo Alto, 1900 Embarcadero	USGS	37.453	-122.112	3
-Loma Prieta 1989	PAE-090	0.0050	6.9	1.138	19.4	0.213	39.5	1.18	50.7	53.6	36.1	5	Palo Alto, 1900 Embarcadero	USGS	37.453	-122.112	3
-Loma Prieta 1989	PAV-212	0.0050	6.9	0.823	13.0	0.386	40.8	0.82	47.0	50.0	26.4	5	Palo Alto VA Hospital	VA	37.4	-122.14	3
-Loma Prieta 1989	PAV-302	0.0050	6.9	0.761	13.9	0.348	22.9	0.85	47.0	50.0	26.4	5	Palo Alto VA Hospital	VA	37.4	-122.14	3
-Loma Prieta 1989	PHT-270	0.02	6.9	0.054	11.1	0.061	14.3	1.08	97.0	99.0	76.2	5	San Francisco, Pacific Heights fire station	CGS	37.79	-122.43	1
-Loma Prieta 1989	PHT-360	0.02	6.9	0.04	12.4	0.047	9.8	0.95	97.0	99.0	76.2	5	San Francisco, Pacific Heights fire station	CGS	37.79	-122.43	1
-Loma Prieta 1989	PJH-045	0.0050	6.9	0.047	10.6	0.084	8.3	0.65	92.6	94.2	78.3	5	Piedmont Junior High School	CGS	37.821	-122.234	1
-Loma Prieta 1989	PJH-315	0.0050	6.9	0.05	11.1	0.071	9.2	0.62	92.6	94.2	78.3	5	Piedmont Junior High School	CGS	37.821	-122.234	1
-Loma Prieta 1989	PRS-000	0.02	6.9	0.155	10.5	0.1	13.5	0.67	98.0	100.0	77.5	5	San Francisco, Presidio, Arguello Dr. vista	CGS	37.792	-122.457	1
-Loma Prieta 1989	PRS-090	0.02	6.9	0.265	8.6	0.199	33.5	0.84	98.0	100.0	77.5	5	San Francisco, Presidio, Arguello Dr. vista	CGS	37.792	-122.457	1
-Loma Prieta 1989	PTB-207	0.0050	6.9	0.063	10.0	0.071	11.5	0.87	104.3	105.7	88.6	5	Point Bonita	CGS	37.822	-122.527	1
-Loma Prieta 1989	PTB-297	0.0050	6.9	0.089	8.4	0.072	12.6	1.09	104.3	105.7	88.6	5	Point Bonita	CGS	37.822	-122.527	1
-Loma Prieta 1989	RCH-190	0.0050	6.9	0.204	12.0	0.124	17.1	0.82	107.8	109.2	93.1	5	Richmond City Hall	CGS	37.935	-122.342	3
-Loma Prieta 1989	RCH-280	0.0050	6.9	0.162	13.7	0.106	14.2	0.72	107.8	109.2	93.1	5	Richmond City Hall	CGS	37.935	-122.342	3
-Loma Prieta 1989	RDW-043	0.0050	6.9	1.306	8.4	0.278	53.0	1.03	63.0	66.0	42.3	5	Redwood City, APEEL Array 2	USGS	37.52	-122.25	4
-Loma Prieta 1989	RDW-133	0.0050	6.9	0.743	11.8	0.227	35.2	0.92	63.0	66.0	42.3	5	Redwood City, APEEL Array 2	USGS	37.52	-122.25	4
-Loma Prieta 1989	RNH-000	0.02	6.9	0.055	13.9	0.08	7.4	0.69	95.0	97.0	74.4	5	San Francisco, Rincon Hill, Fremont & Harrison 	CGS	37.786	-122.391	1
-Loma Prieta 1989	RNH-090	0.02	6.9	0.068	11.5	0.09	11.6	0.86	95.0	97.0	74.4	5	San Francisco, Rincon Hill, Fremont & Harrison 	CGS	37.786	-122.391	1
-Loma Prieta 1989	SCZ-000	0.02	6.9	2.666	9.5	0.442	22.7	0.28	16.0	24.0	20.0	5	Santa Cruz, UCSC Lick Observatory	CGS	37.001	-122.06	1
-Loma Prieta 1989	SCZ-090	0.02	6.9	2.044	9.7	0.409	22.1	0.22	16.0	24.0	20.0	5	Santa Cruz, UCSC Lick Observatory	CGS	37.001	-122.06	1
-Loma Prieta 1989	SFO-000	0.0050	6.9	0.857	10.8	0.236	25.5	0.54	79.6	81.5	64.4	5	San Francisco International Airport	CGS	37.622	-122.398	3
-Loma Prieta 1989	SFO-090	0.0050	6.9	0.902	11.3	0.329	28.1	0.56	79.6	81.5	64.4	5	San Francisco International Airport	CGS	37.622	-122.398	3
-Loma Prieta 1989	SG3-261	0.0050	6.9	0.085	14.4	0.073	10.2	0.83	53.5	56.2	34.7	5	SAGO South, Surface	CGS	36.753	-121.395	2
-Loma Prieta 1989	SG3-351	0.0050	6.9	0.095	18.3	0.067	9.7	0.91	53.5	56.2	34.7	5	SAGO South, Surface	CGS	36.753	-121.395	2
-Loma Prieta 1989	SGI-270	0.0050	6.9	0.037	16.3	0.036	7.3	0.61	49.0	52.0	30.6	5	Hollister, SAGO Vault	USGS	36.765	-121.446	1
-Loma Prieta 1989	SGI-360	0.0050	6.9	0.042	15.4	0.06	8.3	0.6	49.0	52.0	30.6	5	Hollister, SAGO Vault	USGS	36.765	-121.446	1
-Loma Prieta 1989	SJW-160	0.0050	6.9	0.151	21.5	0.091	10.4	0.73	45.8	49.0	32.6	5	Salinas, John and Work St.	CGS	36.671	-121.642	3
-Loma Prieta 1989	SJW-250	0.0050	6.9	0.238	20.3	0.112	15.9	0.63	45.8	49.0	32.6	5	Salinas, John and Work St.	CGS	36.671	-121.642	3
-Loma Prieta 1989	SNV-270	0.0050	6.9	0.668	21.2	0.215	34.5	1.53	43.0	47.0	23.2	5	Sunnyvale, 1695 Colton Ave.	USGS	37.34	-121.756	3
-Loma Prieta 1989	SNV-360	0.0050	6.9	0.786	25.3	0.219	33.1	1.4	43.0	47.0	23.2	5	Sunnyvale, 1695 Colton Ave.	USGS	37.34	-121.756	3
-Loma Prieta 1989	SSF-115	0.0050	6.9	0.048	12.1	0.056	7.1	0.61	84.0	85.8	68.2	5	South San Francisco, Sierra Point	CGS	37.675	-122.388	1
-Loma Prieta 1989	SSF-205	0.0050	6.9	0.078	9.5	0.105	8.7	0.54	84.0	85.8	68.2	5	South San Francisco, Sierra Point	CGS	37.675	-122.388	1
-Loma Prieta 1989	STG-000	0.0050	6.9	1.452	9.4	0.512	41.2	0.64	27.7	32.7	13.0	5	Saratoga, Aloha Ave.	CGS	37.255	-122.031	2
-Loma Prieta 1989	STG-090	0.0050	6.9	1.088	8.3	0.324	42.6	0.55	27.7	32.7	13.0	5	Saratoga, Aloha Ave.	CGS	37.255	-122.031	2
-Loma Prieta 1989	SUL-270	0.0050	6.9	0.578	12.5	0.202	36.7	0.87	51.0	54.0	30.9	5	Stanford University, SLAC	USGS	37.419	-122.205	3
-Loma Prieta 1989	SUL-360	0.0050	6.9	0.937	11.6	0.288	28.0	0.67	51.0	54.0	30.9	5	Stanford University, SLAC	USGS	37.419	-122.205	3
-Loma Prieta 1989	SUP-090	0.01	6.9	0.591	12.2	0.22	21.2	0.7	51.0	54.0	30.2	5	Stanford University, Parking garage	USGS	37.432	-122.172	3
-Loma Prieta 1989	SUP-360	0.01	6.9	0.615	12.5	0.26	33.2	0.86	51.0	54.0	30.2	5	Stanford University, Parking garage	USGS	37.432	-122.172	3
-Loma Prieta 1989	TGH-000	0.02	6.9	0.026	11.0	0.052	6.9	0.63	97.0	99.0	76.2	5	San Francisco, Telegraph Hill, Stockton St. fire	CGS	37.803	-122.408	1
-Loma Prieta 1989	TGH-090	0.02	6.9	0.046	9.5	0.092	10.5	0.78	97.0	99.0	76.2	5	San Francisco, Telegraph Hill, Stockton St. fire	CGS	37.803	-122.408	1
-Loma Prieta 1989	TIB-180	0.0050	6.9	0.403	11.6	0.195	20.0	0.77	92.6	94.2	77.4	5	Oakland, Title and Trust	USGS	37.81	-122.27	3
-Loma Prieta 1989	TIB-270	0.0050	6.9	0.646	12.5	0.244	36.1	0.88	92.6	94.2	77.4	5	Oakland, Title and Trust	USGS	37.81	-122.27	3
-Loma Prieta 1989	TRI-000	0.02	6.9	0.144	6.0	0.1	15.6	1.02	98.0	100.0	77.3	5	Treasure Island Naval Base, fire station	CGS	37.825	-122.373	4
-Loma Prieta 1989	TRI-090	0.02	6.9	0.361	4.5	0.159	33.3	1.12	98.0	100.0	77.3	5	Treasure Island Naval Base, fire station	CGS	37.825	-122.373	4
-Loma Prieta 1989	UC2-000	0.0050	6.9	0.836	9.0	0.309	10.3	0.2	16.8	24.1	18.1	5	U.C. Santa Cruz	UCSC	37.0002	-122.0625	2
-Loma Prieta 1989	UC2-090	0.0050	6.9	1.561	8.6	0.396	13.4	0.22	16.8	24.1	18.1	5	U.C. Santa Cruz	UCSC	37.0002	-122.0625	2
-Loma Prieta 1989	WAH-000	0.0050	6.9	3.67	10.5	0.37	27.6	0.28	12.9	21.6	16.9	5	Walter's House	UCSC	36.9701	-121.9965	3
-Loma Prieta 1989	WAH-090	0.0050	6.9	6.211	11.0	0.638	38.0	0.27	12.9	21.6	16.9	5	Walter's House	UCSC	36.9701	-121.9965	3
-Loma Prieta 1989	WDS-000	0.0050	6.9	0.108	16.8	0.08	13.9	1.14	55.0	57.7	39.9	5	Woodside Fire Station	CGS	37.429	-122.258	2
-Loma Prieta 1989	WDS-090	0.0050	6.9	0.127	15.4	0.082	17.1	0.91	55.0	57.7	39.9	5	Woodside Fire Station	CGS	37.429	-122.258	2
-Loma Prieta 1989	WVC-000	0.0050	6.9	1.081	11.1	0.255	42.4	0.86	28.4	33.3	13.7	5	Saratoga, West Valley College	CGS	37.27	-122.01	2
-Loma Prieta 1989	WVC-270	0.0050	6.9	1.237	10.7	0.332	61.5	0.97	28.4	33.3	13.7	5	Saratoga, West Valley College	CGS	37.27	-122.01	2
-Loma Prieta 1989	YBI-000	0.02	6.9	0.016	21.7	0.029	4.5	0.64	96.0	98.0	75.3	5	Yerba Buena Island	CGS	37.807	-122.361	1
-Loma Prieta 1989	YBI-090	0.02	6.9	0.043	8.3	0.067	14.8	0.9	96.0	98.0	75.3	5	Yerba Buena Island	CGS	37.807	-122.361	1
-Mammoth Lakes-1 1980	CVK-090	0.0050	6.3	2.256	9.2	0.416	23.2	0.32	2.6	9.4		5	Convict Creek	CGS	37.614	-118.831	3
-Mammoth Lakes-1 1980	CVK-180	0.0050	6.3	2.621	9.3	0.442	23.1	0.24	2.6	9.4		5	Convict Creek	CGS	37.614	-118.831	3
-Mammoth Lakes-1 1980	LUL-000	0.0050	6.3	1.325	10.9	0.43	23.4	0.37	11.5	14.6		5	Long Valley dam, Upr. L. Abut.	CGS	37.588	-118.703	1
-Mammoth Lakes-1 1980	LUL-090	0.0050	6.3	0.723	10.8	0.271	13.9	0.42	11.5	14.6		5	Long Valley dam, Upr. L. Abut.	CGS	37.588	-118.703	1
-Mammoth Lakes-1 1980	MLS-270	0.0050	6.3	0.678	7.6	0.321	15.6	0.25	12.8	15.6		5	Mammoth Lakes, High School 	CGS	37.641	-118.963	3
-Mammoth Lakes-1 1980	MLS-360	0.0050	6.3	0.792	8.2	0.239	14.4	0.25	12.8	15.6		5	Mammoth Lakes, High School 	CGS	37.641	-118.963	3
-Mammoth Lakes-2 1980	BEN-270	0.0050	6.0	0.133	12.3	0.109	7.0	0.42	45.9	46.3		5	Benton	CGS	37.818	-118.475	3
-Mammoth Lakes-2 1980	BEN-360	0.0050	6.0	0.145	9.1	0.175	11.2	0.37	45.9	46.3		5	Benton	CGS	37.818	-118.475	3
-Mammoth Lakes-2 1980	BPL-070	0.0050	6.0	0.081	8.8	0.091	5.5	0.25	18.4	19.4		5	Bishop, Paradise Lodge	CGS	37.481	-118.602	1
-Mammoth Lakes-2 1980	BPL-160	0.0050	6.0	0.099	6.6	0.114	5.3	0.19	18.4	19.4		5	Bishop, Paradise Lodge	CGS	37.481	-118.602	1
-Mammoth Lakes-2 1980	CVK-090	0.0050	6.0	0.394	6.8	0.266	19.0	0.39	12.8	14.2		5	Convict Creek	CGS	37.614	-118.831	3
-Mammoth Lakes-2 1980	CVK-180	0.0050	6.0	0.511	4.9	0.316	16.2	0.31	12.8	14.2		5	Convict Creek	CGS	37.614	-118.831	3
-Mammoth Lakes-2 1980	LUL-000	0.0050	6.0	1.502	6.5	0.921	28.9	0.41	13.5	14.9		5	Long Valley dam, Upr. L. Abut.	CGS	37.588	-118.703	1
-Mammoth Lakes-2 1980	LUL-090	0.0050	6.0	1.234	7.1	0.408	34.1	0.56	13.5	14.9		5	Long Valley dam, Upr. L. Abut.	CGS	37.588	-118.703	1
-Morgan Hill 1984	A01-040	0.0050	6.2	0.065	21.3	0.046	3.4	0.52	55.4	56.1	54.1	1	Foster City, Redwood Shores, APEEL 1	CGS	37.545	-122.231	4
-Morgan Hill 1984	A01-310	0.0050	6.2	0.076	19.0	0.068	3.9	0.49	55.4	56.1	54.1	1	Foster City, Redwood Shores, APEEL 1	CGS	37.545	-122.231	4
-Morgan Hill 1984	AND-250	0.0050	6.2	0.683	6.8	0.423	25.3	0.43	16.5	18.7	2.6	1	Anderson Dam, downstream	USGS	37.166	-121.628	2
-Morgan Hill 1984	AND-340	0.0050	6.2	0.847	5.2	0.289	27.6	0.56	16.5	18.7	2.6	1	Anderson Dam, downstream	USGS	37.166	-121.628	2
-Morgan Hill 1984	CPT-042	0.0050	6.2	0.163	17.2	0.099	4.9	0.32	44.5	45.3	38.1	1	Capitola Fire Station, 405 Capitola Ave.	CGS	36.973	-121.953	3
-Morgan Hill 1984	CPT-132	0.0050	6.2	0.236	13.5	0.142	8.2	0.42	44.5	45.3	38.1	1	Capitola Fire Station, 405 Capitola Ave.	CGS	36.973	-121.953	3
-Morgan Hill 1984	CRL-220	0.0050	6.2	0.065	11.1	0.081	6.4	0.54	31.3	32.5	22.7	1	Corralitos, Koinonia Campground	CGS	37.046	-121.803	2
-Morgan Hill 1984	CRL-310	0.0050	6.2	0.094	9.3	0.109	10.8	0.62	31.3	32.5	22.7	1	Corralitos, Koinonia Campground	CGS	37.046	-121.803	2
-Morgan Hill 1984	CYC-195	0.0050	6.2	2.886	4.1	0.711	51.6	0.42	24.1	25.6	0.1	1	Coyote Lake Dam, SW abut	CGS	37.118	-121.55	1
-Morgan Hill 1984	CYC-285	0.0050	6.2	3.85	3.2	1.298	80.8	0.55	24.1	25.6	0.1	1	Coyote Lake Dam, SW abut	CGS	37.118	-121.55	1
-Morgan Hill 1984	G01-230	0.0050	6.2	0.053	9.6	0.069	3.0	0.21	38.5	39.5	16.2	1	Gilroy Array #1, Gavilan College tank grnds.	CGS	36.973	-121.572	1
-Morgan Hill 1984	G01-320	0.0050	6.2	0.059	8.9	0.098	2.9	0.24	38.5	39.5	16.2	1	Gilroy Array #1, Gavilan College tank grnds.	CGS	36.973	-121.572	1
-Morgan Hill 1984	G02-000	0.0050	6.2	0.161	16.4	0.162	5.0	0.39	37.9	38.9	15.1	1	Gilroy Array #2, Mission Trails Motel	CGS	36.982	-121.556	3
-Morgan Hill 1984	G02-090	0.0050	6.2	0.247	11.8	0.212	12.6	0.4	37.9	38.9	15.1	1	Gilroy Array #2, Mission Trails Motel	CGS	36.982	-121.556	3
-Morgan Hill 1984	G03-000	0.0050	6.2	0.336	16.0	0.194	11.4	0.44	38.0	39.0	14.6	1	Gilroy Array #3, Sewer Farm A	CGS	36.987	-121.536	3
-Morgan Hill 1984	G03-090	0.0050	6.2	0.338	20.3	0.2	12.5	0.59	38.0	39.0	14.6	1	Gilroy Array #3, Sewer Farm A	CGS	36.987	-121.536	3
-Morgan Hill 1984	G04-270	0.0050	6.2	0.714	13.2	0.224	19.4	0.55	37.0	38.0	12.8	1	Gilroy Array #4, San Ysidro School	CGS	37.001	-121.522	3
-Morgan Hill 1984	G04-360	0.0050	6.2	0.771	12.5	0.348	17.6	0.48	37.0	38.0	12.8	1	Gilroy Array #4, San Ysidro School	CGS	37.001	-121.522	3
-Morgan Hill 1984	G06-000	0.0050	6.2	0.38	7.3	0.222	11.4	0.35	35.9	36.9	11.8	1	Gilroy Array #6, San Ysidro Microwave Site         	CGS	37.026	-121.484	2
-Morgan Hill 1984	G06-090	0.0050	6.2	0.871	6.5	0.292	36.7	0.63	35.9	36.9	11.8	1	Gilroy Array #6, San Ysidro Microwave Site         	CGS	37.026	-121.484	2
-Morgan Hill 1984	GIL-067	0.0050	6.2	0.057	8.6	0.114	3.6	0.21	38.6	39.6	16.2	1	Gilroy, Gavilan College Science Bldg.	CGS	36.973	-121.568	2
-Morgan Hill 1984	GIL-337	0.0050	6.2	0.054	8.2	0.095	2.9	0.22	38.6	39.6	16.2	1	Gilroy, Gavilan College Science Bldg.	CGS	36.973	-121.568	2
-Morgan Hill 1984	GMR-000	0.0050	6.2	0.283	9.4	0.19	7.4	0.29	37.6	38.6	14.0	1	Gilroy Array #7, Mantelli Ranch                    	CGS	37.033	-121.434	3
-Morgan Hill 1984	GMR-090	0.0050	6.2	0.204	10.7	0.113	6.0	0.31	37.6	38.6	14.0	1	Gilroy Array #7, Mantelli Ranch                    	CGS	37.033	-121.434	3
-Morgan Hill 1984	HAD-165	0.0050	6.2	0.128	20.3	0.089	8.7	0.57	52.4	53.1	28.3	1	Hollister Airport Differential Array	USGS	36.888	-121.413	3
-Morgan Hill 1984	HAD-255	0.0050	6.2	0.183	18.0	0.088	11.9	0.63	52.4	53.1	28.3	1	Hollister Airport Differential Array	USGS	36.888	-121.413	3
-Morgan Hill 1984	HCH-001	0.0050	6.2	0.123	21.4	0.071	7.4	0.7	56.5	57.2	32.5	1	Hollister City Hall	USGS	36.851	-121.402	3
-Morgan Hill 1984	HCH-271	0.0050	6.2	0.153	20.5	0.071	9.0	0.74	56.5	57.2	32.5	1	Hollister City Hall	USGS	36.851	-121.402	3
-Morgan Hill 1984	HD1-165	0.0050	6.2	0.141	18.0	0.096	9.7	0.57	52.4	53.1	28.3	1	Hollister Differential Array #1	USGS	36.888	-121.413	3
-Morgan Hill 1984	HD1-255	0.0050	6.2	0.176	16.3	0.088	11.6	0.63	52.4	53.1	28.3	1	Hollister Differential Array #1	USGS	36.888	-121.413	3
-Morgan Hill 1984	HD3-165	0.0050	6.2	0.136	22.9	0.078	7.3	0.53	52.4	53.1	28.3	1	Hollister Differential Array #3	USGS	36.888	-121.413	3
-Morgan Hill 1984	HD3-255	0.0050	6.2	0.142	22.9	0.081	9.9	0.75	52.4	53.1	28.3	1	Hollister Differential Array #3	USGS	36.888	-121.413	3
-Morgan Hill 1984	HD4-165	0.0050	6.2	0.192	24.0	0.098	10.2	0.55	52.4	53.1	28.3	1	Hollister Differential Array #4	USGS	36.888	-121.413	3
-Morgan Hill 1984	HD4-255	0.0050	6.2	0.17	21.1	0.092	10.2	0.66	52.4	53.1	28.3	1	Hollister Differential Array #4	USGS	36.888	-121.413	3
-Morgan Hill 1984	HD5-165	0.0050	6.2	0.144	25.5	0.098	10.3	0.61	52.4	53.1	28.3	1	Hollister Differential Array #5	USGS	36.888	-121.413	3
-Morgan Hill 1984	HD5-255	0.0050	6.2	0.172	20.9	0.101	11.5	0.69	52.4	53.1	28.3	1	Hollister Differential Array #5	USGS	36.888	-121.413	3
-Morgan Hill 1984	HVR-150	0.0050	6.2	0.431	15.3	0.156	12.5	0.53	4.4	9.7	3.4	1	Halls Valley, Grant Park	CGS	37.338	-121.714	3
-Morgan Hill 1984	HVR-240	0.0050	6.2	0.869	10.6	0.312	39.4	0.62	4.4	9.7	3.4	1	Halls Valley, Grant Park	CGS	37.338	-121.714	3
-Morgan Hill 1984	LBN-090	0.0050	6.2	0.036	15.7	0.051	5.8	0.89	79.1	79.6	64.4	1	Los Banos	CGS	37.106	-120.825	3
-Morgan Hill 1984	LBN-180	0.0050	6.2	0.038	18.1	0.057	8.5	1.01	79.1	79.6	64.4	1	Los Banos	CGS	37.106	-120.825	3
-Morgan Hill 1984	SCZ-050	0.0050	6.2	0.024	7.8	0.039	2.1	0.29	48.2	49.0	44.1	1	Santa Cruz, UCSC Lick Observatory	CGS	37.001	-122.06	1
-Morgan Hill 1984	SCZ-320	0.0050	6.2	0.08	7.6	0.076	3.6	0.33	48.2	49.0	44.1	1	Santa Cruz, UCSC Lick Observatory	CGS	37.001	-122.06	1
-Morgan Hill 1984	SJB-213	0.0050	6.2	0.029	19.1	0.044	4.3	0.65	53.0	53.7	30.3	1	San Juan Bautista, 24 Polk	CGS	36.846	-121.536	2
-Morgan Hill 1984	SJB-303	0.0050	6.2	0.031	19.0	0.036	4.4	0.72	53.0	53.7	30.3	1	San Juan Bautista, 24 Polk	CGS	36.846	-121.536	2
-Morgan Hill 1984	SJL-270	0.0050	6.2	0.184	17.6	0.081	6.5	0.47	58.7	59.3	34.9	1	San Justo Dam, Left Abut.	USGS	36.815	-121.447	3
-Morgan Hill 1984	SJL-360	0.0050	6.2	0.1	19.6	0.07	5.1	0.47	58.7	59.3	34.9	1	San Justo Dam, Left Abut.	USGS	36.815	-121.447	3
-Morgan Hill 1984	SJR-270	0.0050	6.2	0.102	21.4	0.078	7.0	0.6	57.5	58.2	34.9	1	San Justo Dam, Rt. Abut.	USGS	36.827	-121.445	3
-Morgan Hill 1984	SJR-360	0.0050	6.2	0.103	21.3	0.06	5.8	0.56	57.5	58.2	34.9	1	San Justo Dam, Rt. Abut.	USGS	36.827	-121.445	3
-Morgan Hill 1984	WVE-000	0.0050	6.2	0.063	17.2	0.098	4.6	0.41	29.7	30.9	28.7	1	Saratoga, WVC E. Wall	CGS	37.27	-122.01	2
-N. Palm Springs 1986	ARM-270	0.0050	6.0	0.085	6.5	0.103	5.2	0.22	46.2	47.4	45.6	5	Anza, Red Mountain	USGS	33.64	-116.86	1
-N. Palm Springs 1986	ARM-360	0.0050	6.0	0.074	6.3	0.129	3.4	0.21	46.2	47.4	45.6	5	Anza, Red Mountain	USGS	33.64	-116.86	1
-N. Palm Springs 1986	ARS-270	0.0050	6.0	0.063	7.7	0.106	2.6	0.15	48.3	49.4	43.8	5	Santa Rosa Mountain	USGS	33.57	-116.52	1
-N. Palm Springs 1986	ARS-360	0.0050	6.0	0.046	8.4	0.103	2.2	0.14	48.3	49.4	43.8	5	Santa Rosa Mountain	USGS	33.57	-116.52	1
-N. Palm Springs 1986	ATL-270	0.0050	6.0	0.06	5.6	0.11	6.5	0.45	58.8	59.7	55.4	5	Anza, Tule Canyon	USGS	33.47	-116.64	2
-N. Palm Springs 1986	ATL-360	0.0050	6.0	0.058	9.5	0.095	7.5	0.43	58.8	59.7	55.4	5	Anza, Tule Canyon	USGS	33.47	-116.64	2
-N. Palm Springs 1986	AZF-225	0.0050	6.0	0.044	5.9	0.099	5.8	0.24	49.6	50.7	46.7	5	Anza Fire Station	USGS	33.556	-116.673	1
-N. Palm Springs 1986	AZF-315	0.0050	6.0	0.021	6.8	0.067	4.0	0.33	49.6	50.7	46.7	5	Anza Fire Station	USGS	33.556	-116.673	1
-N. Palm Springs 1986	CAB-180	0.0050	6.0	0.255	8.1	0.217	7.6	0.28	18.2	21.0	16.3	5	Cabazon	USGS	33.92	-116.78	3
-N. Palm Springs 1986	CAB-270	0.0050	6.0	0.35	6.9	0.213	16.3	0.31	18.2	21.0	16.3	5	Cabazon	USGS	33.92	-116.78	3
-N. Palm Springs 1986	CFR-225	0.0050	6.0	0.113	7.6	0.153	7.4	0.32	36.0	37.5	35.3	5	Cranston Fire Station	USGS	33.74	-116.84	2
-N. Palm Springs 1986	CFR-315	0.0050	6.0	0.191	6.1	0.169	11.7	0.38	36.0	37.5	35.3	5	Cranston Fire Station	USGS	33.74	-116.84	2
-N. Palm Springs 1986	CLI-082	0.0050	6.0	0.028	9.9	0.042	3.5	0.47	64.3	65.1	57.4	5	Colton Interchange, Vault	CDOT	34.06	-117.3	3
-N. Palm Springs 1986	CLI-352	0.0050	6.0	0.03	9.6	0.065	4.1	0.47	64.3	65.1	57.4	5	Colton Interchange, Vault	CDOT	34.06	-117.3	3
-N. Palm Springs 1986	CLJ-000	0.0050	6.0	0.0070	21.8	0.021	1.3	0.38	89.9	90.5	82.8	5	Rancho Cucamonga, Law & Justice Center	CGS	34.104	-117.574	2
-N. Palm Springs 1986	CLJ-090	0.0050	6.0	0.0070	26.2	0.019	1.1	0.42	89.9	90.5	82.8	5	Rancho Cucamonga, Law & Justice Center	CGS	34.104	-117.574	2
-N. Palm Springs 1986	DSP-000	0.0050	6.0	1.197	6.6	0.331	29.5	0.4	10.1	14.5	8.0	5	Desert Hot Springs	CGS	33.962	-116.509	2
-N. Palm Springs 1986	DSP-090	0.0050	6.0	0.896	7.4	0.271	15.7	0.32	10.1	14.5	8.0	5	Desert Hot Springs	CGS	33.962	-116.509	2
-N. Palm Springs 1986	FVR-045	0.0050	6.0	0.133	10.3	0.129	6.4	0.36	21.6	24.0	15.8	5	Fun Valley Reservoir	USGS	33.93	-116.39	2
-N. Palm Springs 1986	FVR-135	0.0050	6.0	0.161	10.0	0.119	10.6	0.4	21.6	24.0	15.8	5	Fun Valley Reservoir	USGS	33.93	-116.39	2
-N. Palm Springs 1986	H01-000	0.0050	6.0	0.02	9.6	0.053	1.8	0.15	65.8	66.6	63.3	5	Murrieta Hot Springs, Collins Ranch	CGS	33.599	-117.132	1
-N. Palm Springs 1986	H01-090	0.0050	6.0	0.021	7.0	0.049	1.3	0.14	65.8	66.6	63.3	5	Murrieta Hot Springs, Collins Ranch	CGS	33.599	-117.132	1
-N. Palm Springs 1986	H02-000	0.0050	6.0	0.032	9.4	0.07	2.0	0.13	60.2	61.1	57.6	5	Winchester Bergman Ranch	CGS	33.64	-117.094	1
-N. Palm Springs 1986	H02-090	0.0050	6.0	0.045	8.7	0.093	1.8	0.13	60.2	61.1	57.6	5	Winchester Bergman Ranch	CGS	33.64	-117.094	1
-N. Palm Springs 1986	H04-000	0.0050	6.0	0.074	11.5	0.106	3.8	0.29	49.3	50.4	46.8	5	Winchester Page Bros R	CGS	33.718	-117.021	3
-N. Palm Springs 1986	H04-090	0.0050	6.0	0.082	10.1	0.11	4.3	0.35	49.3	50.4	46.8	5	Winchester Page Bros R	CGS	33.718	-117.021	3
-N. Palm Springs 1986	H05-270	0.0050	6.0	0.147	11.0	0.144	4.8	0.28	45.6	46.8	43.3	5	Hemet, Stetson Ave. Fire Station	CGS	33.729	-116.979	3
-N. Palm Springs 1986	H05-360	0.0050	6.0	0.124	11.5	0.132	4.9	0.21	45.6	46.8	43.3	5	Hemet, Stetson Ave. Fire Station	CGS	33.729	-116.979	3
-N. Palm Springs 1986	H06-270	0.0050	6.0	0.05	17.4	0.069	3.1	0.38	42.1	43.4	39.6	5	San Jacinto Valley Cemetery	CGS	33.76	-116.96	3
-N. Palm Springs 1986	H06-360	0.0050	6.0	0.048	17.0	0.063	4.3	0.46	42.1	43.4	39.6	5	San Jacinto Valley Cemetery	CGS	33.76	-116.96	3
-N. Palm Springs 1986	H08-000	0.0050	6.0	0.336	8.3	0.25	9.7	0.28	33.5	35.1	32.0	5	San Jacinto, Soboda	CGS	33.8	-116.88	2
-N. Palm Springs 1986	H08-090	0.0050	6.0	0.352	7.0	0.239	9.2	0.29	33.5	35.1	32.0	5	San Jacinto, Soboda	CGS	33.8	-116.88	2
-N. Palm Springs 1986	HCP-045	0.0050	6.0	0.139	5.8	0.24	7.4	0.24	37.2	38.6	34.9	5	Hurkey Creek Park	USGS	33.67	-116.68	2
-N. Palm Springs 1986	HCP-135	0.0050	6.0	0.146	4.6	0.187	9.1	0.34	37.2	38.6	34.9	5	Hurkey Creek Park	USGS	33.67	-116.68	2
-N. Palm Springs 1986	HES-002	0.0050	6.0	0.019	16.5	0.041	2.4	0.38	79.0	79.7	75.9	5	Hesperia	CGS	34.405	-117.313	2
-N. Palm Springs 1986	HES-092	0.0050	6.0	0.016	20.9	0.037	1.8	0.28	79.0	79.7	75.9	5	Hesperia	CGS	34.405	-117.313	2
-N. Palm Springs 1986	IND-000	0.0050	6.0	0.049	17.8	0.053	5.3	0.52	52.4	53.4	45.7	5	Indio, Coachella Canal	CGS	33.717	-116.155	3
-N. Palm Springs 1986	IND-090	0.0050	6.0	0.046	19.3	0.05	3.2	0.41	52.4	53.4	45.7	5	Indio, Coachella Canal	CGS	33.717	-116.155	3
-N. Palm Springs 1986	INO-225	0.0050	6.0	0.072	18.6	0.064	6.6	0.5	46.1	47.3	39.6	5	Indio, S. Cal. Gas Co.	USGS	33.75	-116.21	3
-N. Palm Springs 1986	INO-315	0.0050	6.0	0.194	13.4	0.117	12.3	0.6	46.1	47.3	39.6	5	Indio, S. Cal. Gas Co.	USGS	33.75	-116.21	3
-N. Palm Springs 1986	JOS-000	0.0050	6.0	0.047	13.5	0.052	3.7	0.56	30.7	32.4	29.8	5	Joshua Tree, Fire Station	CGS	34.13	-116.314	2
-N. Palm Springs 1986	JOS-090	0.0050	6.0	0.052	12.0	0.065	3.9	0.42	30.7	32.4	29.8	5	Joshua Tree, Fire Station	CGS	34.13	-116.314	2
-N. Palm Springs 1986	LDR-000	0.0050	6.0	0.063	10.8	0.081	4.3	0.31	34.4	35.9	38.2	5	Landers Fire Station	CGS	34.274	-116.392	3
-N. Palm Springs 1986	LDR-090	0.0050	6.0	0.072	10.5	0.098	4.6	0.35	34.4	35.9	38.2	5	Landers Fire Station	CGS	34.274	-116.392	3
-N. Palm Springs 1986	LMR-162	0.0050	6.0	0.029	8.0	0.061	1.5	0.13	79.0	79.7	73.7	5	Lake Mathews Dike Toe	CGS	33.854	-117.444	1
-N. Palm Springs 1986	LMR-252	0.0050	6.0	0.02	10.7	0.046	0.8	0.12	79.0	79.7	73.7	5	Lake Mathews Dike Toe	CGS	33.854	-117.444	1
-N. Palm Springs 1986	MVH-045	0.0050	6.0	0.655	5.1	0.218	31.4	0.93	6.1	12.1	10.1	5	Morongo Valley, Fire Station	USGS	34.05	-116.58	2
-N. Palm Springs 1986	MVH-135	0.0050	6.0	0.623	6.3	0.205	41.1	1.36	6.1	12.1	10.1	5	Morongo Valley, Fire Station	USGS	34.05	-116.58	2
-N. Palm Springs 1986	NPS-210	0.0050	6.0	2.007	4.6	0.594	73.3	0.62	10.9	15.1	8.2	5	North Palm Springs	USGS	33.92	-116.54	2
-N. Palm Springs 1986	NPS-300	0.0050	6.0	1.573	5.1	0.694	33.8	0.34	10.9	15.1	8.2	5	North Palm Springs	USGS	33.92	-116.54	2
-N. Palm Springs 1986	PLC-258	0.0050	6.0	0.05	12.1	0.075	2.4	0.17	75.3	76.0	71.9	5	Puerta La Cruz, USFS st. bldg.	CGS	33.324	-116.683	2
-N. Palm Springs 1986	PLC-348	0.0050	6.0	0.031	13.0	0.055	1.8	0.14	75.3	76.0	71.9	5	Puerta La Cruz, USFS st. bldg.	CGS	33.324	-116.683	2
-N. Palm Springs 1986	PSA-000	0.0050	6.0	0.301	13.6	0.158	12.4	0.48	20.9	23.3	16.6	5	Palm Springs Airport	CGS	33.829	-116.512	3
-N. Palm Springs 1986	PSA-090	0.0050	6.0	0.323	15.6	0.187	12.2	0.42	20.9	23.3	16.6	5	Palm Springs Airport	CGS	33.829	-116.512	3
-N. Palm Springs 1986	RIV-180	0.0050	6.0	0.016	15.5	0.051	1.2	0.17	77.6	78.3	71.1	5	Riverside, Airport	CGS	33.951	-117.446	2
-N. Palm Springs 1986	RIV-270	0.0050	6.0	0.016	12.4	0.04	1.0	0.16	77.6	78.3	71.1	5	Riverside, Airport	CGS	33.951	-117.446	2
-N. Palm Springs 1986	SIL-000	0.0050	6.0	0.095	6.8	0.139	3.9	0.15	28.0	29.9	25.8	5	Silent Valley, Poppet Flat	CDMD	33.851	-116.852	1
-N. Palm Springs 1986	SIL-090	0.0050	6.0	0.058	7.0	0.113	4.0	0.19	28.0	29.9	25.8	5	Silent Valley, Poppet Flat	CDMD	33.851	-116.852	1
-N. Palm Springs 1986	SNY-225	0.0050	6.0	0.09	9.2	0.093	3.9	0.29	50.4	51.5	44.4	5	Sunnymead	USGS	33.95	-117.15	3
-N. Palm Springs 1986	SNY-315	0.0050	6.0	0.114	8.3	0.128	5.1	0.32	50.4	51.5	44.4	5	Sunnymead	USGS	33.95	-117.15	3
-N. Palm Springs 1986	TFS-000	0.0050	6.0	0.094	12.9	0.121	6.9	0.36	75.1	75.8	73.2	5	Temecula Fire Station	CGS	33.496	-117.149	3
-N. Palm Springs 1986	TFS-090	0.0050	6.0	0.053	11.2	0.098	4.6	0.45	75.1	75.8	73.2	5	Temecula Fire Station	CGS	33.496	-117.149	3
-N. Palm Springs 1986	WWT-180	0.0050	6.0	1.768	5.4	0.492	34.7	0.35	4.9	11.5	7.3	5	Whitewater Trout Farm	USGS	33.99	-116.66	1
-N. Palm Springs 1986	WWT-270	0.0050	6.0	2.138	3.4	0.612	31.5	0.31	4.9	11.5	7.3	5	Whitewater Trout Farm	USGS	33.99	-116.66	1
-Northridge 1994	116-090	0.02	6.7	0.412	22.9	0.198	15.9	0.45	41.0	45.0	41.5	3	Los Angeles, 116th St. School	CGS	33.929	-118.26	2
-Northridge 1994	116-360	0.02	6.7	0.331	19.9	0.142	13.4	0.45	41.0	45.0	41.5	3	Los Angeles, 116th St. School	CGS	33.929	-118.26	2
-Northridge 1994	AHM-000	0.0050	6.7	0.13	23.2	0.075	11.4	0.54	70.0	72.0	68.7	3	Anaheim, 2000 W. Ball Rd.	USC	33.817	-117.951	3
-Northridge 1994	AHM-090	0.0050	6.7	0.121	24.4	0.067	14.2	0.64	70.0	72.0	68.7	3	Anaheim, 2000 W. Ball Rd.	USC	33.817	-117.951	3
-Northridge 1994	ALF-000	0.0050	6.7	0.329	13.2	0.125	28.2	0.39	39.0	43.4	35.8	3	Alhambra, Fremont School	CGS	34.07	-118.05	2
-Northridge 1994	ALF-090	0.0050	6.7	0.363	14.0	0.17	12.3	0.37	39.0	43.4	35.8	3	Alhambra, Fremont School	CGS	34.07	-118.05	2
-Northridge 1994	ALH-090	0.02	6.7	0.192	21.3	0.101	11.0	0.6	39.0	43.0	43.9	3	Alhambra, 900 S. Fremont St.	USGS	34.085	-118.149	4
-Northridge 1994	ALH-360	0.02	6.7	0.127	18.6	0.08	5.1	0.47	39.0	43.0	43.9	3	Alhambra, 900 S. Fremont St.	USGS	34.085	-118.149	4
-Northridge 1994	ANB-000	0.02	6.7	0.031	17.5	0.046	3.4	0.39	63.0	65.8	45.9	3	Antelope Buttes	CGS	34.758	-118.361	1
-Northridge 1994	ANB-090	0.02	6.7	0.029	15.2	0.068	4.3	0.41	63.0	65.8	45.9	3	Antelope Buttes	CGS	34.758	-118.361	1
-Northridge 1994	ANC-000	0.02	6.7	0.074	12.7	0.067	3.2	0.26	79.0	81.3	68.5	3	Anacapa Island	CGS	34.016	-119.362	2
-Northridge 1994	ANC-270	0.02	6.7	0.022	15.4	0.037	1.8	0.31	79.0	81.3	68.5	3	Anacapa Island	CGS	34.016	-119.362	2
-Northridge 1994	ANV-000	0.01	6.7	0.093	16.1	0.06	5.7	0.51	52.0	55.4	36.8	3	Anaverde Valley, City Ranch	CGS	34.58	-118.199	3
-Northridge 1994	ANV-090	0.01	6.7	0.028	15.7	0.044	4.0	0.59	52.0	55.4	36.8	3	Anaverde Valley, City Ranch	CGS	34.58	-118.199	3
-Northridge 1994	ARA-172	0.0050	6.7	0.158	21.4	0.092	20.6	0.55	45.0	49.0	39.6	3	Arcadia, 855 Arcadia Ave.	USC	34.127	-118.059	3
-Northridge 1994	ARA-262	0.0050	6.7	0.197	17.7	0.094	19.0	0.58	45.0	49.0	39.6	3	Arcadia, 855 Arcadia Ave.	USC	34.127	-118.059	3
-Northridge 1994	ARC-009	0.0050	6.7	0.134	20.9	0.091	20.0	0.46	47.0	51.0	41.1	3	Arcadia, 180 Campus Dr.	USC	34.13	-118.036	3
-Northridge 1994	ARC-279	0.0050	6.7	0.178	17.6	0.118	15.4	0.52	47.0	51.0	41.1	3	Arcadia, 180 Campus Dr.	USC	34.13	-118.036	3
-Northridge 1994	ARL-090	0.02	6.7	1.528	13.1	0.344	39.6	0.62	10.0	21.0	9.1	3	Arleta, Nordhoff Ave. Fire Station	CGS	34.236	-118.439	2
-Northridge 1994	ARL-360	0.02	6.7	1.176	13.5	0.308	23.0	0.56	10.0	21.0	9.1	3	Arleta, Nordhoff Ave. Fire Station	CGS	34.236	-118.439	2
-Northridge 1994	BAD-000	0.0050	6.7	0.117	19.8	0.105	8.7	0.44	59.0	62.0	53.3	3	Covina, 1271 W. Badillo	USC	34.087	-117.915	3
-Northridge 1994	BAD-270	0.0050	6.7	0.13	17.7	0.082	9.2	0.55	59.0	62.0	53.3	3	Covina, 1271 W. Badillo	USC	34.087	-117.915	3
-Northridge 1994	BCY-060	0.0050	6.7	0.222	11.8	0.113	11.3	0.44	22.0	29.0	16.8	3	Burbank, 1250 Howard Rd.	USC	34.204	-118.302	2
-Northridge 1994	BCY-330	0.0050	6.7	0.338	8.2	0.159	10.6	0.32	22.0	29.0	16.8	3	Burbank, 1250 Howard Rd.	USC	34.204	-118.302	2
-Northridge 1994	BHA-090	0.02	6.7	0.681	20.8	0.239	14.9	0.54	28.0	33.0	30.1	3	Los Angeles, Baldwin Hills	CGS	34.009	-118.361	2
-Northridge 1994	BHA-360	0.02	6.7	0.622	17.8	0.168	17.4	0.54	28.0	33.0	30.1	3	Los Angeles, Baldwin Hills	CGS	34.009	-118.361	2
-Northridge 1994	BIR-090	0.0050	6.7	0.344	19.5	0.142	52.8	0.47	49.0	53.0	49.0	3	Downey, 12500 Birchdale	USC	33.92	-118.137	3
-Northridge 1994	BIR-180	0.0050	6.7	0.331	19.6	0.162	53.9	0.45	49.0	53.0	49.0	3	Downey, 12500 Birchdale	USC	33.92	-118.137	3
-Northridge 1994	BLD-090	0.01	6.7	0.096	14.2	0.08	3.7	0.34	81.0	83.2	71.0	3	Mt. Baldy, Elementary School	CGS	34.233	-117.661	1
-Northridge 1994	BLD-180	0.01	6.7	0.081	14.0	0.07	4.4	0.33	81.0	83.2	71.0	3	Mt. Baldy, Elementary School	CGS	34.233	-117.661	1
-Northridge 1994	BMC-270	0.0050	6.7	0.316	15.3	0.157	13.2	0.39	42.0	46.1	41.6	3	Los Angeles, Bulk Mail Center	USGS	33.996	-118.162	3
-Northridge 1994	BMC-360	0.0050	6.7	0.47	12.4	0.265	19.4	0.39	42.0	46.1	41.6	3	Los Angeles, Bulk Mail Center	USGS	33.996	-118.162	3
-Northridge 1994	BPK-090	0.0050	6.7	0.26	21.5	0.15	11.6	0.51	63.0	66.0	62.1	3	Buena Park, 6625 La Palma Ave.	USC	33.847	-118.018	3
-Northridge 1994	BPK-180	0.0050	6.7	0.251	21.1	0.094	12.1	0.53	63.0	66.0	62.1	3	Buena Park, 6625 La Palma Ave.	USC	33.847	-118.018	3
-Northridge 1994	BRC-000	0.0050	6.7	0.181	16.8	0.107	9.0	0.49	61.0	64.0	59.7	3	La Habra, 950 Briarcliff Dr.	USC	33.921	-117.973	3
-Northridge 1994	BRC-090	0.0050	6.7	0.223	16.2	0.209	11.8	0.46	61.0	64.0	59.7	3	La Habra, 950 Briarcliff Dr.	USC	33.921	-117.973	3
-Northridge 1994	BRD-042	0.0050	6.7	0.163	15.4	0.122	13.9	0.38	67.0	69.6	65.6	3	Brea Dam, downstream	USGS	33.889	-117.926	3
-Northridge 1994	BRD-132	0.0050	6.7	0.262	12.0	0.194	9.4	0.35	67.0	69.6	65.6	3	Brea Dam, downstream	USGS	33.889	-117.926	3
-Northridge 1994	BVA-195	0.0050	6.7	0.452	10.8	0.187	23.7	0.63	18.0	25.7	16.3	3	Brentwood VA Hospital	VA	34.063	-118.463	2
-Northridge 1994	BVA-285	0.0050	6.7	0.477	11.2	0.165	17.6	0.65	18.0	25.7	16.3	3	Brentwood VA Hospital	VA	34.063	-118.463	2
-Northridge 1994	CAM-180	0.02	6.7	0.491	33.8	0.125	10.9	0.8	50.0	53.0	39.6	3	Camarillo	CGS	34.208	-119.079	3
-Northridge 1994	CAM-270	0.02	6.7	0.407	38.0	0.121	11.8	0.82	50.0	53.0	39.6	3	Camarillo	CGS	34.208	-119.079	3
-Northridge 1994	CAS-000	0.0050	6.7	0.205	22.7	0.091	8.2	0.5	47.0	51.0	47.2	3	Compton, 14637 Castlegate St.	USC	33.899	-118.196	3
-Northridge 1994	CAS-270	0.0050	6.7	0.24	23.7	0.125	10.2	0.48	47.0	51.0	47.2	3	Compton, 14637 Castlegate St.	USC	33.899	-118.196	3
-Northridge 1994	CAT-090	0.0050	6.7	0.097	25.2	0.098	8.4	0.55	51.0	54.0	50.7	3	Carson, 25536 Catskill Ave.	USC	33.812	-118.27	3
-Northridge 1994	CAT-180	0.0050	6.7	0.111	22.3	0.091	7.5	0.42	51.0	54.0	50.7	3	Carson, 25536 Catskill Ave.	USC	33.812	-118.27	3
-Northridge 1994	CCN-090	0.02	6.7	1.19	13.6	0.256	21.2	0.53	20.0	27.0	23.7	3	Los Angeles, Century City CC North	CGS	34.063	-118.418	2
-Northridge 1994	CCN-360	0.02	6.7	0.764	14.7	0.222	25.2	0.62	20.0	27.0	23.7	3	Los Angeles, Century City CC North	CGS	34.063	-118.418	2
-Northridge 1994	CDA-180	0.0050	6.7	0.207	27.4	0.091	17.5	0.51	50.0	53.0	69.3	3	Carson, Del Amo Elem. School	USC	33.836	-118.24	3
-Northridge 1994	CDA-270	0.0050	6.7	0.228	26.6	0.088	15.3	0.54	50.0	53.0	69.3	3	Carson, Del Amo Elem. School	USC	33.836	-118.24	3
-Northridge 1994	CEN-155	0.0050	6.7	0.983	12.8	0.447	17.9	0.31	25.0	32.0	28.7	3	Los Angeles, 3960 Centinela St.	USC	34.001	-118.431	3
-Northridge 1994	CEN-245	0.0050	6.7	1.024	12.6	0.322	42.6	0.54	25.0	32.0	28.7	3	Los Angeles, 3960 Centinela St.	USC	34.001	-118.431	3
-Northridge 1994	CLJ-000	0.02	6.7	0.057	24.2	0.072	4.0	0.44	90.0	92.0	81.7	3	Rancho Cucamonga, Law & Justice Center	CGS	34.104	-117.574	2
-Northridge 1994	CLJ-090	0.02	6.7	0.045	24.9	0.046	3.3	0.45	90.0	92.0	81.7	3	Rancho Cucamonga, Law & Justice Center	CGS	34.104	-117.574	2
-Northridge 1994	CND-041	0.0050	6.7	0.146	11.8	0.101	9.7	0.44	72.0	74.5	50.0	3	Brea, Carbon Canyon Dam, left abut.	ACOE	33.916	-117.842	1
-Northridge 1994	CND-131	0.0050	6.7	0.177	12.6	0.12	8.0	0.4	72.0	74.5	50.0	3	Brea, Carbon Canyon Dam, left abut.	ACOE	33.916	-117.842	1
-Northridge 1994	CNP-106	0.0050	6.7	2.034	13.9	0.355	35.1	0.52	6.0	20.0	15.4	3	Canoga Park, 7769 Topanga Canyon Blvd.	USC	34.212	-118.606	3
-Northridge 1994	CNP-196	0.0050	6.7	2.867	12.1	0.393	72.5	0.69	6.0	20.0	15.4	3	Canoga Park, 7769 Topanga Canyon Blvd.	USC	34.212	-118.606	3
-Northridge 1994	COM-140	0.0050	6.7	0.11	23.6	0.076	14.7	0.52	60.0	63.0	57.0	3	Hacienda Heights, 16750 Colima Rd.	USC	33.99	-117.943	3
-Northridge 1994	COM-230	0.0050	6.7	0.069	27.5	0.046	9.3	0.53	60.0	63.0	57.0	3	Hacienda Heights, 16750 Colima Rd.	USC	33.99	-117.943	3
-Northridge 1994	CS1-232	0.0050	6.7	2.744	9.8	0.373	117.2	1.56	12.0	23.0	5.8	3	Sylmar, Converter Station	LADWP	34.311	-118.49	3
-Northridge 1994	CS1-322	0.0050	6.7	3.51	5.2	0.58	107.1	1.36	12.0	23.0	5.8	3	Sylmar, Converter Station	LADWP	34.311	-118.49	3
-Northridge 1994	CS2-052	0.0050	6.7	5.867	15.6	0.611	112.0	1.16	12.0	23.0	5.8	3	Sylmar, Converter Station	LADWP	34.311	-118.49	3
-Northridge 1994	CS2-142	0.0050	6.7	5.302	7.9	0.897	104.8	1.0	12.0	23.0	5.8	3	Sylmar, Converter Station	LADWP	34.311	-118.49	3
-Northridge 1994	CSS-000	0.01	6.7	0.053	14.0	0.069	4.0	0.45	113.0	115.0	102.5	3	San Bernadino, CSUSB grounds	CGS	34.183	-117.321	3
-Northridge 1994	CSS-090	0.01	6.7	0.031	17.0	0.034	2.8	0.43	113.0	115.0	102.5	3	San Bernadino, CSUSB grounds	CGS	34.183	-117.321	3
-Northridge 1994	CWC-180	0.0050	6.7	1.229	15.0	0.306	24.3	0.53	12.0	22.0	12.9	3	North Hollywood, 6850 Coldwater Canyon Ave.	USC	34.194	-118.412	2
-Northridge 1994	CWC-270	0.0050	6.7	1.199	16.0	0.256	31.3	0.54	12.0	22.0	12.9	3	North Hollywood, 6850 Coldwater Canyon Ave.	USC	34.194	-118.412	2
-Northridge 1994	CYP-053	0.0050	6.7	0.502	10.9	0.215	18.5	0.41	32.0	38.0	30.5	3	Los Angeles, Divine Savior School, 624 Cypress	USC	34.088	-118.222	2
-Northridge 1994	CYP-143	0.0050	6.7	0.272	9.8	0.155	10.1	0.37	32.0	38.0	30.5	3	Los Angeles, Divine Savior School, 624 Cypress	USC	34.088	-118.222	2
-Northridge 1994	DEL-000	0.0050	6.7	0.349	21.3	0.134	10.8	0.45	57.0	60.0	57.1	3	Lakewood, 6701 Del Amo Blvd.	USC	33.846	-118.099	3
-Northridge 1994	DEL-090	0.0050	6.7	0.355	21.8	0.126	9.1	0.49	57.0	60.0	57.1	3	Lakewood, 6701 Del Amo Blvd.	USC	33.846	-118.099	3
-Northridge 1994	DFL-191	0.0050	6.7	0.231	11.3	0.119	13.8	0.52	74.0	76.4	71.1	3	Yorba Linda, Diemer Filter Plant	MWD	33.913	-117.819	2
-Northridge 1994	DFL-281	0.0050	6.7	0.078	14.3	0.075	7.6	0.4	74.0	76.4	71.1	3	Yorba Linda, Diemer Filter Plant	MWD	33.913	-117.819	2
-Northridge 1994	DUA-090	0.0050	6.7	0.062	18.3	0.079	6.2	0.41	56.0	59.0	48.3	3	Duarte, 237 Mel Canyon Rd.	USC	34.15	-117.94	2
-Northridge 1994	DUA-180	0.0050	6.7	0.026	18.9	0.031	7.9	0.39	56.0	59.0	48.3	3	Duarte, 237 Mel Canyon Rd.	USC	34.15	-117.94	2
-Northridge 1994	DWN-090	0.02	6.7	0.563	20.2	0.177	10.0	0.48	47.0	50.0	46.9	3	Downey, County Maint. Bldg.	CGS	33.924	-118.167	3
-Northridge 1994	DWN-360	0.02	6.7	0.568	17.5	0.223	13.0	0.43	47.0	50.0	46.9	3	Downey, County Maint. Bldg.	CGS	33.924	-118.167	3
-Northridge 1994	ECC-080	0.0050	6.7	0.668	9.6	0.229	26.0	0.69	20.0	27.0	10.0	3		LADWP	34.259	-118.336	2
-Northridge 1994	ECC-350	0.0050	6.7	0.405	8.9	0.211	18.6	0.44	20.0	27.0	10.0	3		LADWP	34.259	-118.336	2
-Northridge 1994	EJS-030	0.0050	6.7	0.36	16.3	0.133	18.6	0.33	51.0	55.0	50.3	3	Santa Fe Springs, 11500 E. Joslin St.	USC	33.944	-118.087	3
-Northridge 1994	EJS-120	0.0050	6.7	0.307	17.7	0.134	9.1	0.33	51.0	55.0	50.3	3	Santa Fe Springs, 11500 E. Joslin St.	USC	33.944	-118.087	3
-Northridge 1994	ELD-168	0.0050	6.7	0.772	7.6	0.363	27.4	0.43	40.0	44.0	18.3	3			34.562	-118.628	3
-Northridge 1994	ELD-258	0.0050	6.7	0.792	8.1	0.352	32.7	0.48	40.0	44.0	18.3	3			34.562	-118.628	3
-Northridge 1994	ELZ-000	0.01	6.7	0.246	12.2	0.114	8.2	0.41	52.0	55.4	35.7	3	Elizabeth Lake	CGS	34.662	-118.387	3
-Northridge 1994	ELZ-090	0.01	6.7	0.247	10.8	0.155	7.3	0.41	52.0	55.4	35.7	3	Elizabeth Lake	CGS	34.662	-118.387	3
-Northridge 1994	ERD-190	0.02	6.7	0.686	7.3	0.226	18.1	0.44	7.0	20.2	20.4	3	Encino Reservoir Dam	LADWP	34.15	-118.51	2
-Northridge 1994	ERD-280	0.02	6.7	0.363	7.9	0.176	19.5	0.43	7.0	20.2	20.4	3	Encino Reservoir Dam	LADWP	34.15	-118.51	2
-Northridge 1994	FAI-095	0.0050	6.7	0.24	24.4	0.125	16.4	0.7	50.0	53.0	44.7	3	El Monte, 11338 Fairview Ave.	USC	34.093	-118.019	3
-Northridge 1994	FAI-185	0.0050	6.7	0.319	16.0	0.158	18.5	0.46	50.0	53.0	44.7	3	El Monte, 11338 Fairview Ave.	USC	34.093	-118.019	3
-Northridge 1994	FAR-000	0.0050	6.7	0.679	9.0	0.285	17.9	0.48	16.0	25.0	21.1	3	Los Angeles, 700 N. Faring Rd.	USC	34.09	-118.435	3
-Northridge 1994	FAR-090	0.0050	6.7	0.86	10.5	0.265	30.0	0.49	16.0	25.0	21.1	3	Los Angeles, 700 N. Faring Rd.	USC	34.09	-118.435	3
-Northridge 1994	FEA-000	0.02	6.7	0.137	11.0	0.104	7.7	0.45	86.0	88.1	84.5	3	Featherly Park, Park Maint. Bldg.	CGS	33.869	-117.709	2
-Northridge 1994	FEA-090	0.02	6.7	0.126	12.6	0.1	5.8	0.4	86.0	88.1	84.5	3	Featherly Park, Park Maint. Bldg.	CGS	33.869	-117.709	2
-Northridge 1994	FIG-058	0.0050	6.7	0.257	15.9	0.129	28.3	0.43	34.0	39.0	31.1	3	Los Angeles, 5921 N. Figueroa St.	USC	34.111	-118.189	2
-Northridge 1994	FIG-328	0.0050	6.7	0.414	12.6	0.164	23.1	0.37	34.0	39.0	31.1	3	Los Angeles, 5921 N. Figueroa St.	USC	34.111	-118.189	2
-Northridge 1994	FLE-144	0.0050	6.7	0.525	12.7	0.171	12.9	0.42	29.0	35.0	27.3	3	Los Angeles, 3036 Fletcher Dr.	USC	34.115	-118.244	3
-Northridge 1994	FLE-234	0.0050	6.7	0.669	12.4	0.245	35.1	0.53	29.0	35.0	27.3	3	Los Angeles, 3036 Fletcher Dr.	USC	34.115	-118.244	3
-Northridge 1994	FLO-020	0.0050	6.7	0.12	21.5	0.098	7.3	0.46	68.0	71.0	65.4	3	Brea, 200 S. Flower Ave.	USC	33.916	-117.896	3
-Northridge 1994	FLO-290	0.0050	6.7	0.183	14.9	0.103	8.4	0.46	68.0	71.0	65.4	3	Brea, 200 S. Flower Ave.	USC	33.916	-117.896	3
-Northridge 1994	FSD-265	0.02	6.7	0.436	13.2	0.21	19.6	0.48	34.0	39.0	15.5	3	Lake Piru, Santa Felicia Dam	CGS	34.46	-118.753	1
-Northridge 1994	FSD-355	0.02	6.7	0.629	9.2	0.27	36.7	0.71	34.0	39.0	15.5	3	Lake Piru, Santa Felicia Dam	CGS	34.46	-118.753	1
-Northridge 1994	GGS-000	0.0050	6.7	0.25	20.1	0.106	20.5	0.5	68.0	70.0	66.8	3	Garden Grove, 6861 Santa Rita	USC	33.79	-118.012	3
-Northridge 1994	GGS-270	0.0050	6.7	0.265	19.0	0.104	25.7	0.54	68.0	70.0	66.8	3	Garden Grove, 6861 Santa Rita	USC	33.79	-118.012	3
-Northridge 1994	GLE-170	0.0050	6.7	0.366	18.8	0.133	15.1	0.61	23.0	30.0	12.8	3	Sunland, 10965 Mt. Gleason Ave.	USC	34.269	-118.303	2
-Northridge 1994	GLE-260	0.0050	6.7	0.47	13.7	0.157	17.7	0.69	23.0	30.0	12.8	3	Sunland, 10965 Mt. Gleason Ave.	USC	34.269	-118.303	2
-Northridge 1994	GLP-177	0.0050	6.7	1.213	9.5	0.38	19.3	0.27	29.0	34.0	22.2	3	Glendale, 320 Las Palmas Ave.	USC	34.2	-118.231	3
-Northridge 1994	GLP-267	0.0050	6.7	0.632	11.8	0.207	8.9	0.25	29.0	34.0	22.2	3	Glendale, 320 Las Palmas Ave.	USC	34.2	-118.231	3
-Northridge 1994	GPK-000	0.0050	6.7	0.407	11.5	0.166	13.5	0.5	25.0	31.4	23.8	3	Los Angeles, Griffith Park (#141)	USGS	34.118	-118.299	2
-Northridge 1994	GPK-270	0.0050	6.7	1.535	8.8	0.288	29.8	0.43	25.0	31.4	23.8	3	Los Angeles, Griffith Park (#141)	USGS	34.118	-118.299	2
-Northridge 1994	GR2-090	0.0050	6.7	0.755	13.0	0.253	25.0	0.46	33.0	38.0	34.1	3	Los Angeles, 4312 S. Grand Ave.	USC	34.005	-118.279	3
-Northridge 1994	GR2-180	0.0050	6.7	0.706	14.4	0.279	22.1	0.45	33.0	38.0	34.1	3	Los Angeles, 4312 S. Grand Ave.	USC	34.005	-118.279	3
-Northridge 1994	GRA-074	0.0050	6.7	0.109	24.2	0.074	7.0	0.55	64.0	66.0	57.3	3	Covina, 656 S. Grand Ave.	USC	34.078	-117.871	3
-Northridge 1994	GRA-344	0.0050	6.7	0.116	22.9	0.068	10.9	0.55	64.0	66.0	57.3	3	Covina, 656 S. Grand Ave.	USC	34.078	-117.871	3
-Northridge 1994	GRN-180	0.0050	6.7	0.44	15.6	0.141	11.3	0.34	43.0	47.0	39.3	3	San Gabriel, 600 E. Grand Ave.	USC	34.091	-118.093	1
-Northridge 1994	GRN-270	0.0050	6.7	0.466	13.4	0.257	11.9	0.36	43.0	47.0	39.3	3	San Gabriel, 600 E. Grand Ave.	USC	34.091	-118.093	1
-Northridge 1994	GVR-024	0.0050	6.7	0.213	13.7	0.111	8.7	0.38	43.0	47.0	41.1	3	Garvey Reservoir, Earth Dam Abutment (#709)	USGS	34.05	-118.114	2
-Northridge 1994	GVR-114	0.0050	6.7	0.233	12.7	0.138	9.2	0.34	43.0	47.0	41.1	3	Garvey Reservoir, Earth Dam Abutment (#709)	USGS	34.05	-118.114	2
-Northridge 1994	HEM-000	0.01	6.7	0.05	20.6	0.064	4.6	0.54	150.0	151.0	144.5	3	Hemet, Ryan Airfield	CGS	33.731	-117.023	3
-Northridge 1994	HEM-090	0.01	6.7	0.057	18.7	0.046	4.8	0.55	150.0	151.0	144.5	3	Hemet, Ryan Airfield	CGS	33.731	-117.023	3
-Northridge 1994	HLC-090	0.0050	6.7	0.478	15.8	0.137	13.0	0.5	21.0	28.0	23.3	3	Hollywood, 8023 Willoughby Ave.	USC	34.088	-118.365	2
-Northridge 1994	HLC-180	0.0050	6.7	0.958	13.3	0.252	29.4	0.69	21.0	28.0	23.3	3	Hollywood, 8023 Willoughby Ave.	USC	34.088	-118.365	2
-Northridge 1994	HLY-090	0.02	6.7	0.942	12.5	0.231	18.4	0.48	23.0	29.0	24.2	3	Los Angeles, Hollywood Stor. Bldg. Grounds	CGS	34.089	-118.338	3
-Northridge 1994	HLY-360	0.02	6.7	2.009	11.0	0.389	22.4	0.38	23.0	29.0	24.2	3	Los Angeles, Hollywood Stor. Bldg. Grounds	CGS	34.089	-118.338	3
-Northridge 1994	HNB-000	0.02	6.7	0.096	38.8	0.091	5.5	0.58	79.0	81.3	77.5	3	Huntington Beach, Lake St. Fire Station	CGS	33.662	-117.997	3
-Northridge 1994	HNB-090	0.02	6.7	0.093	45.1	0.07	5.7	0.63	79.0	81.3	77.5	3	Huntington Beach, Lake St. Fire Station	CGS	33.662	-117.997	3
-Northridge 1994	HNC-270	0.0050	6.7	0.238	15.1	0.112	16.4	0.48	74.0	76.4	73.2	3	Huntington Beach	USGS	33.697	-118.023	3
-Northridge 1994	HNC-360	0.0050	6.7	0.253	14.0	0.12	10.6	0.45	74.0	76.4	73.2	3	Huntington Beach	USGS	33.697	-118.023	3
-Northridge 1994	HOS-000	0.01	6.7	0.124	23.3	0.096	6.5	0.5	116.0	118.0	107.7	3	San Bernadino, E & Hospitality	CGS	34.065	-117.292	3
-Northridge 1994	HOS-090	0.01	6.7	0.105	21.9	0.085	5.9	0.57	116.0	118.0	107.7	3	San Bernadino, E & Hospitality	CGS	34.065	-117.292	3
-Northridge 1994	ING-000	0.02	6.7	0.176	28.9	0.091	7.1	0.49	42.0	46.1	42.4	3	Inglewood, Union Oil Yard	CGS	33.905	-118.279	2
-Northridge 1994	ING-090	0.02	6.7	0.229	25.6	0.101	10.2	0.62	42.0	46.1	42.4	3	Inglewood, Union Oil Yard	CGS	33.905	-118.279	2
-Northridge 1994	JAB-220	0.0050	6.7	0.197	21.5	0.1	47.5	0.46	45.0	48.0	44.3	3	Bell Gardens, 7420 Jaboneria	USC	33.965	-118.158	3
-Northridge 1994	JAB-310	0.0050	6.7	0.138	22.0	0.065	8.2	0.58	45.0	48.0	44.3	3	Bell Gardens, 7420 Jaboneria	USC	33.965	-118.158	3
-Northridge 1994	JFG-022	0.0050	6.7	3.264	6.9	0.571	77.1	0.79	12.0	22.5	5.9	3	Jensen Filtration Plant, Generator Room	MWD	34.312	-118.496	3
-Northridge 1994	JFG-292	0.0050	6.7	6.566	5.7	0.998	70.4	0.57	12.0	22.5	5.9	3	Jensen Filtration Plant, Generator Room	MWD	34.312	-118.496	3
-Northridge 1994	JFP-022	0.0050	6.7	2.577	12.6	0.396	102.8	1.31	12.0	22.5	5.9	3	Jensen Filtration Plant	MWD	34.312	-118.496	3
-Northridge 1994	JFP-112	0.0050	6.7	5.278	6.3	0.628	105.5	1.0	12.0	22.5	5.9	3	Jensen Filtration Plant	MWD	34.312	-118.496	3
-Northridge 1994	KAG-090	0.02	6.7	1.611	10.4	0.301	31.1	0.68	18.0	25.0	7.0	3	Pacoima, Kagel Canyon	CGS	34.288	-118.375	2
-Northridge 1994	KAG-360	0.02	6.7	1.798	9.9	0.433	51.2	0.67	18.0	25.0	7.0	3	Pacoima, Kagel Canyon	CGS	34.288	-118.375	2
-Northridge 1994	L01-000	0.02	6.7	0.165	15.6	0.087	9.4	0.6	53.0	56.3	34.9	3	Lake Hughes #1, Fire Station #78	CGS	34.674	-118.43	3
-Northridge 1994	L01-090	0.02	6.7	0.112	17.9	0.077	9.5	0.66	53.0	56.3	34.9	3	Lake Hughes #1, Fire Station #78	CGS	34.674	-118.43	3
-Northridge 1994	L04-000	0.02	6.7	0.076	14.5	0.058	6.6	0.36	49.0	53.0	30.5	3	Lake Hughes #4, Camp Mendenhall	CGS	34.65	-118.478	2
-Northridge 1994	L04-090	0.02	6.7	0.08	14.3	0.084	6.4	0.28	49.0	52.6	30.5	3	Lake Hughes #4, Camp Mendenhall	CGS	34.65	-118.478	2
-Northridge 1994	L09-000	0.02	6.7	0.197	9.6	0.158	8.6	0.25	44.0	48.0	23.9	3	Lake Hughes #9	CGS	34.608	-118.558	1
-Northridge 1994	L09-090	0.02	6.7	0.235	8.1	0.226	14.2	0.25	44.0	48.0	23.9	3	Lake Hughes #9	CGS	34.608	-118.558	1
-Northridge 1994	L12-000	0.01	6.7	0.469	9.8	0.258	11.0	0.22	40.0	44.3	19.7	3	Lake Hughes #12A	CGS	34.571	-118.56	2
-Northridge 1994	L12-090	0.01	6.7	0.334	9.8	0.174	11.8	0.25	40.0	44.3	19.7	3	Lake Hughes #12A	CGS	34.571	-118.56	2
-Northridge 1994	L4B-000	0.02	6.7	0.017	15.6	0.037	3.1	0.46	49.0	53.0	30.5	3	Lake Hughes #4B, Camp Mendenhall	CGS	34.65	-118.477	2
-Northridge 1994	L4B-090	0.02	6.7	0.038	13.9	0.063	5.4	0.31	49.0	52.6	30.5	3	Lake Hughes #4B, Camp Mendenhall	CGS	34.65	-118.477	2
-Northridge 1994	LBH-090	0.02	6.7	0.06	37.8	0.036	4.9	0.84	58.0	61.0	57.8	3	Long Beach, City Hall Grounds 	CGS	33.768	-118.196	2
-Northridge 1994	LBH-360	0.02	6.7	0.067	41.4	0.051	4.0	0.61	58.0	61.0	57.8	3	Long Beach, City Hall Grounds 	CGS	33.768	-118.196	2
-Northridge 1994	LBR-000	0.02	6.7	0.113	29.4	0.065	4.8	0.55	52.0	55.4	52.1	3	Long Beach, Rancho Los Cerritos	CGS	33.84	-118.194	3
-Northridge 1994	LBR-090	0.02	6.7	0.166	33.0	0.069	8.2	0.68	52.0	55.4	52.1	3	Long Beach, Rancho Los Cerritos	CGS	33.84	-118.194	3
-Northridge 1994	LCT-000	0.01	6.7	1.059	13.0	0.316	14.1	0.33	38.0	42.5	36.7	3	Los Angeles, City Terrace	CGS	34.053	-118.171	1
-Northridge 1994	LCT-090	0.01	6.7	0.881	12.5	0.263	12.8	0.31	38.0	42.5	36.7	3	Los Angeles, City Terrace	CGS	34.053	-118.171	1
-Northridge 1994	LDF-026	0.02	6.7	1.039	6.6	0.273	61.3	1.1	11.0	21.4	6.0	3	Los Angeles Dam, Foundation	LADWP	34.295	-118.479	2
-Northridge 1994	LDF-116	0.02	6.7	0.876	8.0	0.32	44.1	0.98	11.0	21.4	6.0	3	Los Angeles Dam, Foundation	LADWP	34.295	-118.479	2
-Northridge 1994	LDM-064	0.0050	6.7	1.772	6.7	0.511	63.7	0.87	11.0	21.4	6.0	3	Los Angeles Dam	USGS	34.3	-118.48	2
-Northridge 1994	LDM-334	0.0050	6.7	1.378	6.5	0.349	50.8	0.8	11.0	21.4	6.0	3	Los Angeles Dam	USGS	34.3	-118.48	2
-Northridge 1994	LDN-022	0.02	6.7	7.42	7.3	0.604	107.9	0.76	11.0	21.4	5.9	3	Los Angeles Dam	LADWP	34.3	-118.487	2
-Northridge 1994	LDN-292	0.02	6.7	7.059	6.9	0.685	71.5	0.52	11.0	21.4	5.9	3	Los Angeles Dam	LADWP	34.3	-118.487	2
-Northridge 1994	LNC-090	0.02	6.7	0.068	30.0	0.064	5.3	0.72	66.0	68.0	51.0	3	Lancaster, Fox Airfield Grounds	CGS	34.739	-118.214	3
-Northridge 1994	LNC-360	0.02	6.7	0.092	24.4	0.081	7.0	0.73	66.0	68.0	51.0	3	Lancaster, Fox Airfield Grounds	CGS	34.739	-118.214	3
-Northridge 1994	LOA-092	0.0050	6.7	0.198	24.7	0.08	33.7	0.64	39.0	43.0	40.2	3	Lawndale, 14801 Osage Ave.	USC	33.897	-118.346	3
-Northridge 1994	LOA-182	0.0050	6.7	0.235	24.5	0.147	19.2	0.59	39.0	43.0	40.2	3	Lawndale, 14801 Osage Ave.	USC	33.897	-118.346	3
-Northridge 1994	LOS-000	0.0050	6.7	1.947	6.3	0.407	44.1	0.59	26.0	32.0	11.4	3	Canyon Country, 16628 W. Lost Canyon Rd.	USC	34.419	-118.426	3
-Northridge 1994	LOS-270	0.0050	6.7	2.013	5.9	0.472	42.7	0.55	26.0	32.0	11.4	3	Canyon Country, 16628 W. Lost Canyon Rd.	USC	34.419	-118.426	3
-Northridge 1994	LPS-090	0.01	6.7	0.191	22.9	0.103	12.1	0.66	31.0	36.4	31.3	3	Los Angeles, Pico & Sentous	CGS	34.043	-118.271	3
-Northridge 1994	LPS-180	0.01	6.7	0.268	17.4	0.186	14.2	0.61	31.0	36.4	31.3	3	Los Angeles, Pico & Sentous	CGS	34.043	-118.271	3
-Northridge 1994	LRK-000	0.01	6.7	0.059	19.0	0.06	6.3	0.55	60.0	62.9	45.7	3	Littlerock, Brainard Canyon	CGS	34.486	-117.98	1
-Northridge 1994	LRK-090	0.01	6.7	0.066	12.6	0.072	6.1	0.57	60.0	62.9	45.7	3	Littlerock, Brainard Canyon	CGS	34.486	-117.98	1
-Northridge 1994	LRP-210	0.0050	6.7	0.298	10.8	0.167	8.6	0.29	61.0	63.9	46.7	3	Littlerock, Post Office	USGS	34.52	-117.99	3
-Northridge 1994	LRP-300	0.0050	6.7	0.227	10.0	0.123	11.3	0.44	61.0	63.9	46.7	3	Littlerock, Post Office	USGS	34.52	-117.99	3
-Northridge 1994	LST-090	0.0050	6.7	0.232	21.4	0.099	17.0	0.72	29.0	35.0	29.8	3	Los Angeles, 2628 W. 15th St.	USC	34.045	-118.298	2
-Northridge 1994	LST-180	0.0050	6.7	0.288	19.5	0.174	15.0	0.59	29.0	35.0	29.8	3	Los Angeles, 2628 W. 15th St.	USC	34.045	-118.298	2
-Northridge 1994	LSU-258	0.0050	6.7	0.316	12.0	0.141	12.7	0.51	31.0	36.4	30.7	3	Los Angeles, 1111 Sunset	USGS	34.067	-118.248	2
-Northridge 1994	LSU-348	0.0050	6.7	0.242	13.7	0.137	14.6	0.57	31.0	36.4	30.7	3	Los Angeles, 1111 Sunset	USGS	34.067	-118.248	2
-Northridge 1994	LTH-000	0.01	6.7	0.464	14.2	0.184	20.0	0.47	32.0	37.2	31.4	3	Los Angeles, Temple & Hope	CGS	34.059	-118.246	2
-Northridge 1994	LTH-090	0.01	6.7	0.334	16.2	0.126	13.9	0.5	32.0	37.2	31.4	3	Los Angeles, Temple & Hope	CGS	34.059	-118.246	2
-Northridge 1994	LV1-000	0.02	6.7	0.083	13.7	0.089	7.8	0.5	51.0	54.4	36.0	3	Leona Valley #1	CGS	34.594	-118.242	2
-Northridge 1994	LV1-090	0.02	6.7	0.064	13.6	0.073	7.1	0.51	51.0	54.4	36.0	3	Leona Valley #1	CGS	34.594	-118.242	2
-Northridge 1994	LV2-000	0.02	6.7	0.085	15.3	0.091	7.5	0.5	51.0	54.4	36.0	3	Leona Valley #2	CGS	34.595	-118.243	3
-Northridge 1994	LV2-090	0.02	6.7	0.064	14.9	0.063	7.3	0.53	51.0	54.4	36.0	3	Leona Valley #2	CGS	34.595	-118.243	3
-Northridge 1994	LV3-000	0.02	6.7	0.103	14.6	0.084	8.5	0.52	51.0	54.4	36.1	3	Leona Valley #3	CGS	34.596	-118.243	1
-Northridge 1994	LV3-090	0.02	6.7	0.079	15.4	0.106	8.1	0.55	51.0	54.4	36.1	3	Leona Valley #3	CGS	34.596	-118.243	1
-Northridge 1994	LV4-000	0.02	6.7	0.113	14.4	0.079	8.7	0.77	51.0	54.4	36.3	3	Leona Valley #4	CGS	34.598	-118.242	3
-Northridge 1994	LV4-090	0.02	6.7	0.091	17.2	0.057	8.0	0.79	51.0	54.4	36.3	3	Leona Valley #4	CGS	34.598	-118.242	3
-Northridge 1994	LV5-000	0.02	6.7	0.296	14.5	0.146	14.9	0.64	51.0	54.4	36.5	3	Leona Valley #5, Ritter Ranch	CGS	34.6	-118.241	3
-Northridge 1994	LV5-090	0.02	6.7	0.201	17.5	0.092	10.4	0.61	51.0	54.4	36.5	3	Leona Valley #5, Ritter Ranch	CGS	34.6	-118.241	3
-Northridge 1994	LV6-000	0.02	6.7	0.199	12.9	0.131	10.1	0.41	52.0	55.4	36.7	3	Leona Valley #6	CGS	34.604	-118.244	3
-Northridge 1994	LV6-090	0.02	6.7	0.345	11.6	0.178	14.5	0.38	52.0	55.4	36.7	3	Leona Valley #6	CGS	34.604	-118.244	3
-Northridge 1994	MAN-000	0.0050	6.7	0.224	28.5	0.155	21.6	0.68	38.0	43.0	39.6	3	Manhattan Beach, 1400 Manhattan Beach Blvd.	USC	33.886	-118.389	3
-Northridge 1994	MAN-090	0.0050	6.7	0.195	25.2	0.124	11.4	0.65	38.0	43.0	39.6	3	Manhattan Beach, 1400 Manhattan Beach Blvd.	USC	33.886	-118.389	3
-Northridge 1994	MBU-090	0.02	6.7	0.24	18.3	0.13	8.5	0.47	32.0	37.0	34.2	3	Malibu, Point Dume	CGS	34.013	-118.8	2
-Northridge 1994	MBU-360	0.02	6.7	0.17	18.2	0.094	9.5	0.57	32.0	37.0	34.2	3	Malibu, Point Dume	CGS	34.013	-118.8	2
-Northridge 1994	MCN-000	0.0050	6.7	0.345	8.5	0.184	10.2	0.23	19.0	26.9	25.3	3	Malibu Canyon, Monte Nido Fire Station	USGS	34.087	-118.693	2
-Northridge 1994	MCN-090	0.0050	6.7	0.309	9.2	0.164	10.9	0.22	19.0	26.9	25.3	3	Malibu Canyon, Monte Nido Fire Station	USGS	34.087	-118.693	2
-Northridge 1994	MJH-000	0.02	6.7	0.038	18.3	0.037	4.5	0.72	101.0	103.0	89.0	3	Mojave, Highways 14 & 58	CGS	35.07	-118.175	3
-Northridge 1994	MJH-090	0.02	6.7	0.027	19.1	0.053	4.1	0.49	101.0	103.0	89.0	3	Mojave, Highways 14 & 58	CGS	35.07	-118.175	3
-Northridge 1994	MJO-000	0.02	6.7	0.033	19.1	0.05	3.0	0.37	94.0	96.0	82.0	3	Mojave, Oak Creek Canyon	CGS	35.042	-118.377	2
-Northridge 1994	MJO-090	0.02	6.7	0.042	14.3	0.059	3.5	0.32	94.0	96.0	82.0	3	Mojave, Oak Creek Canyon	CGS	35.042	-118.377	2
-Northridge 1994	MPK-090	0.02	6.7	0.781	17.0	0.193	20.2	0.58	33.0	38.0	24.2	3	Moorpark	CGS	34.288	-118.881	3
-Northridge 1994	MPK-180	0.02	6.7	0.943	14.9	0.292	21.0	0.48	33.0	38.0	24.2	3	Moorpark	CGS	34.288	-118.881	3
-Northridge 1994	MSM-070	0.0050	6.7	0.634	9.4	0.215	18.7	0.5	15.0	24.0	20.9	3	Los Angeles, 12001 Chalon Rd.	USC	34.086	-118.481	2
-Northridge 1994	MSM-160	0.0050	6.7	0.662	7.2	0.19	28.9	0.64	15.0	24.0	20.9	3	Los Angeles, 12001 Chalon Rd.	USC	34.086	-118.481	2
-Northridge 1994	MTL-206	0.0050	6.7	0.331	10.6	0.177	10.4	0.39	46.0	50.0	43.8	3	Montibello, 1105 Bluff Rd.	USC	33.99	-118.114	4
-Northridge 1994	MTL-296	0.0050	6.7	0.196	13.8	0.13	7.3	0.4	46.0	50.0	43.8	3	Montibello, 1105 Bluff Rd.	USC	33.99	-118.114	4
-Northridge 1994	MTW-090	0.02	6.7	0.226	11.7	0.133	5.4	0.23	45.0	48.0	35.6	3	Mount Wilson, Caltech Seismic Station	CGS	34.224	-118.057	1
-Northridge 1994	MTW-360	0.02	6.7	0.305	8.9	0.233	8.3	0.23	45.0	48.0	35.6	3	Mount Wilson, Caltech Seismic Station	CGS	34.224	-118.057	1
-Northridge 1994	MU2-035	0.0050	6.7	3.071	7.6	0.628	32.4	0.32	15.0	25.0	18.6	3	Beverly Hills, 12520 Mulholland Dr.	USC	34.127	-118.405	2
-Northridge 1994	MU2-125	0.0050	6.7	2.393	7.9	0.45	35.4	0.33	15.0	25.0	18.6	3	Beverly Hills, 12520 Mulholland Dr.	USC	34.127	-118.405	2
-Northridge 1994	MUL-009	0.0050	6.7	3.121	9.9	0.444	71.2	0.75	13.0	23.0	17.5	3	Beverly Hills, 14145 Mulholland Dr.	USC	34.132	-118.44	2
-Northridge 1994	MUL-279	0.0050	6.7	4.55	8.3	0.487	60.9	0.65	13.0	23.0	17.5	3	Beverly Hills, 14145 Mulholland Dr.	USC	34.132	-118.44	2
-Northridge 1994	N20-000	0.02	6.7	0.928	8.6	0.32	52.2	0.72	19.0	27.0	19.3	3			34.138	-118.359	2
-Northridge 1994	N20-090	0.02	6.7	0.465	12.3	0.13	33.4	0.52	19.0	27.0	19.3	3			34.138	-118.359	2
-Northridge 1994	NBC-000	0.01	6.7	0.103	43.2	0.081	7.4	0.6	86.0	88.1	84.5	3	Newport Beach, Newport Blvd. & Coast Hwy.	CGS	33.623	-117.931	2
-Northridge 1994	NBC-090	0.01	6.7	0.133	42.4	0.106	7.0	0.55	86.0	88.1	84.5	3	Newport Beach, Newport Blvd. & Coast Hwy.	CGS	33.623	-117.931	2
-Northridge 1994	NBI-090	0.02	6.7	0.097	50.9	0.061	5.3	0.67	87.0	89.1	85.7	3	Newport Beach, Irvine Ave. Fire Station	CGS	33.634	-117.902	2
-Northridge 1994	NBI-180	0.02	6.7	0.075	50.0	0.041	4.3	0.75	87.0	89.1	85.7	3	Newport Beach, Irvine Ave. Fire Station	CGS	33.634	-117.902	2
-Northridge 1994	NCH-000	0.01	6.7	0.098	28.0	0.069	13.5	1.25	71.0	73.5	50.2	3	Neenach, Sacatara Creek	CGS	34.848	-118.536	2
-Northridge 1994	NCH-090	0.01	6.7	0.074	32.7	0.056	9.8	1.14	71.0	73.5	50.2	3	Neenach, Sacatara Creek	CGS	34.848	-118.536	2
-Northridge 1994	NHO-180	0.0050	6.7	0.111	13.4	0.097	12.2	0.33	54.0	57.0	47.9	3	Baldwin Park, 3699 N. Holly Ave.	USC	34.1	-117.974	3
-Northridge 1994	NHO-270	0.0050	6.7	0.123	14.0	0.136	7.3	0.42	54.0	57.0	47.9	3	Baldwin Park, 3699 N. Holly Ave.	USC	34.1	-117.974	3
-Northridge 1994	NOR-000	0.0050	6.7	0.168	16.9	0.087	8.1	0.48	55.0	58.2	53.8	3	Norwalk, 12400 Imperial Hwy.	USGS	33.915	-118.067	3
-Northridge 1994	NOR-090	0.0050	6.7	0.088	18.0	0.056	7.9	0.49	55.0	58.2	53.8	3	Norwalk, 12400 Imperial Hwy.	USGS	33.915	-118.067	3
-Northridge 1994	NWH-090	0.02	6.7	4.365	5.9	0.583	75.6	0.53	20.0	27.0	5.6	3	Newhall, LA County Fire Station	CGS	34.39	-118.53	3
-Northridge 1994	NWH-360	0.02	6.7	5.677	5.5	0.59	96.4	0.7	20.0	27.0	5.6	3	Newhall, LA County Fire Station	CGS	34.39	-118.53	3
-Northridge 1994	NYA-090	0.0050	6.7	0.46	10.1	0.223	12.9	0.37	27.0	33.0	18.1	3	La Crescenta, 4747 New York Ave.	USC	34.238	-118.254	3
-Northridge 1994	NYA-180	0.0050	6.7	0.297	11.1	0.153	14.1	0.35	27.0	33.0	18.1	3	La Crescenta, 4747 New York Ave.	USC	34.238	-118.254	3
-Northridge 1994	OAK-080	0.0050	6.7	0.05	20.7	0.047	7.2	0.45	61.0	64.0	53.6	3	Glendora, 120 N. Oakbank	USC	34.137	-117.883	2
-Northridge 1994	OAK-170	0.0050	6.7	0.089	17.1	0.093	5.7	0.43	61.0	64.0	53.6	3	Glendora, 120 N. Oakbank	USC	34.137	-117.883	2
-Northridge 1994	OBR-090	0.02	6.7	1.121	11.4	0.355	14.9	0.3	39.0	43.0	37.5	3	Los Angeles, Obregon Park	CGS	34.037	-118.178	2
-Northridge 1994	OBR-360	0.02	6.7	1.439	12.0	0.408	31.1	0.33	39.0	43.0	37.5	3	Los Angeles, Obregon Park	CGS	34.037	-118.178	2
-Northridge 1994	ORN-000	0.0050	6.7	0.168	13.4	0.109	7.6	0.33	68.0	70.6	65.0	3	Orange County Reservoir, Earth Dam Abut.	USGS	33.936	-117.884	2
-Northridge 1994	ORN-090	0.0050	6.7	0.19	13.2	0.116	8.0	0.34	68.0	70.6	65.0	3	Orange County Reservoir, Earth Dam Abut.	USGS	33.936	-117.884	2
-Northridge 1994	ORR-090	0.02	6.7	2.792	9.1	0.568	52.6	0.55	41.0	45.0	18.7	3	Castaic, Old Ridge Route	CGS	34.564	-118.642	2
-Northridge 1994	ORR-360	0.02	6.7	3.168	8.7	0.514	52.3	0.7	41.0	45.0	18.7	3	Castaic, Old Ridge Route	CGS	34.564	-118.642	2
-Northridge 1994	PAR-L	0.0050	6.7	3.197	6.8	0.563	75.0	0.96	25.0	31.4	6.5	3	Pardee Substation	SCE	34.435	-118.582	3
-Northridge 1994	PAR-T	0.0050	6.7	1.894	8.3	0.339	72.3	1.13	25.0	31.4	6.5	3	Pardee Substation	SCE	34.435	-118.582	3
-Northridge 1994	PDA-104	0.02	6.7	8.813	5.8	1.585	54.4	0.33	19.0	26.9	6.3	3	Pacoima Dam, abutment	CGS	34.334	-118.396	1
-Northridge 1994	PDA-194	0.02	6.7	8.598	6.0	1.285	104.2	0.45	19.0	26.9	6.3	3	Pacoima Dam, abutment	CGS	34.334	-118.396	1
-Northridge 1994	PDD-175	0.02	6.7	0.936	4.3	0.415	45.8	0.47	18.6	26.2	8.0	3	Pacoima Dam, downstream	CGS	34.335	-118.398	1
-Northridge 1994	PDD-265	0.02	6.7	0.732	4.1	0.434	32.2	0.5	18.6	26.2	8.0	3	Pacoima Dam, downstream	CGS	34.335	-118.398	1
-Northridge 1994	PDR-000	0.0050	6.7	0.333	21.7	0.144	13.8	0.71	29.0	35.0	32.1	3	Playa Del Rey, 8505 Saran Dr.	USC	33.96	-118.432	2
-Northridge 1994	PDR-270	0.0050	6.7	0.209	32.0	0.071	14.9	1.07	29.0	35.0	32.1	3	Playa Del Rey, 8505 Saran Dr.	USC	33.96	-118.432	2
-Northridge 1994	PHN-090	0.02	6.7	0.231	60.2	0.103	11.3	0.92	62.0	64.8	51.3	3	Port Hueneme, Naval Laboratory	CGS	34.145	-119.206	3
-Northridge 1994	PHN-180	0.02	6.7	0.182	54.2	0.086	9.6	0.91	62.0	64.8	51.3	3	Port Hueneme, Naval Laboratory	CGS	34.145	-119.206	3
-Northridge 1994	PHX-000	0.01	6.7	0.06	23.3	0.057	4.1	0.55	98.0	100.0	85.1	3	Phelan, Wilson Ranch Road	CGS	34.467	-117.52	2
-Northridge 1994	PHX-090	0.01	6.7	0.049	30.5	0.047	5.0	0.6	98.0	100.0	85.1	3	Phelan, Wilson Ranch Road	CGS	34.467	-117.52	2
-Northridge 1994	PLM-270	0.01	6.7	0.099	18.2	0.067	8.2	0.74	56.0	59.1	40.5	3	Palmdale, Hwy. 14 & Palmdale Blvd.	CGS	34.581	-118.135	3
-Northridge 1994	PLM-360	0.01	6.7	0.105	15.8	0.061	7.3	0.6	56.0	59.1	40.5	3	Palmdale, Hwy. 14 & Palmdale Blvd.	CGS	34.581	-118.135	3
-Northridge 1994	PMG-090	0.02	6.7	0.696	14.9	0.144	16.2	0.61	54.0	57.0	45.4	3	Point Mugu, Naval Air Station	CGS	34.113	-119.119	3
-Northridge 1994	PMG-360	0.02	6.7	0.764	14.1	0.178	13.2	0.43	54.0	57.0	45.4	3	Point Mugu, Naval Air Station	CGS	34.113	-119.119	3
-Northridge 1994	PML-000	0.02	6.7	0.254	10.4	0.134	10.2	0.4	50.0	53.5	41.5	3	Point Mugu, Laguna Peak	CGS	34.109	-119.065	3
-Northridge 1994	PML-090	0.02	6.7	0.611	9.3	0.223	19.1	0.4	50.0	53.5	41.5	3	Point Mugu, Laguna Peak	CGS	34.109	-119.065	3
-Northridge 1994	PRD-090	0.0050	6.7	0.451	13.0	0.193	15.8	0.37	90.0	92.0	86.1	3	Prado Dam, Earth Dam	USGS	33.89	-117.641	3
-Northridge 1994	PRD-360	0.0050	6.7	0.423	12.7	0.186	10.6	0.35	90.0	92.0	86.1	3	Prado Dam, Earth Dam	USGS	33.89	-117.641	3
-Northridge 1994	PSD-180	0.0050	6.7	0.75	8.7	0.261	16.7	0.36	43.0	47.0	35.9	3	Pasadena, 1150 N. Sierra Madre Villa Ave.	USC	34.169	-118.078	3
-Northridge 1994	PSD-270	0.0050	6.7	0.53	9.5	0.188	13.3	0.33	43.0	47.0	35.9	3	Pasadena, 1150 N. Sierra Madre Villa Ave.	USC	34.169	-118.078	3
-Northridge 1994	PSW-090	0.0050	6.7	0.404	14.5	0.146	10.0	0.38	35.0	39.8	29.7	3	Pasadena, 535 S. Wilson Ave.	USGS	34.149	-118.172	3
-Northridge 1994	PSW-360	0.0050	6.7	0.35	12.8	0.164	13.4	0.38	35.0	39.8	29.7	3	Pasadena, 535 S. Wilson Ave.	USGS	34.149	-118.172	3
-Northridge 1994	PUR-145	0.0050	6.7	2.101	12.0	0.396	57.3	0.57	21.0	28.3	25.1	3	Los Angeles, 1955 1/2 Purdue Ave.	USGS	34.04	-118.445	3
-Northridge 1994	PUR-235	0.0050	6.7	2.516	10.5	0.441	70.2	0.7	21.0	28.3	25.1	3	Los Angeles, 1955 1/2 Purdue Ave.	USGS	34.04	-118.445	3
-Northridge 1994	PVR-120	0.0050	6.7	0.243	18.4	0.12	12.3	0.54	53.0	56.3	52.5	3	Palos Verdes Reservoir, Earth Dam Abut.	USGS	33.772	-118.319	3
-Northridge 1994	PVR-210	0.0050	6.7	0.396	19.1	0.14	16.5	0.61	53.0	56.3	52.5	3	Palos Verdes Reservoir, Earth Dam Abut.	USGS	33.772	-118.319	3
-Northridge 1994	RCN-000	0.01	6.7	0.049	17.7	0.051	5.9	0.37	89.0	91.0	79.6	3	Rancho Cucamonga, Deer Canyon	CGS	34.169	-117.579	1
-Northridge 1994	RCN-090	0.01	6.7	0.102	16.7	0.071	4.1	0.33	89.0	91.0	79.6	3	Rancho Cucamonga, Deer Canyon	CGS	34.169	-117.579	1
-Northridge 1994	RIM-015	0.0050	6.7	0.218	14.7	0.095	8.1	0.45	61.0	64.0	56.5	3	La Puente, 504 Rimgrove Ave.	USC	34.026	-117.918	3
-Northridge 1994	RIM-105	0.0050	6.7	0.191	16.7	0.116	14.0	0.5	61.0	64.0	56.5	3	La Puente, 504 Rimgrove Ave.	USC	34.026	-117.918	3
-Northridge 1994	RIN-228	0.0050	6.7	7.389	7.0	0.842	174.8	0.77	10.0	21.0	7.5	3	Rinaldi Receiving Station	LADWP	34.281	-118.479	3
-Northridge 1994	RIN-318	0.0050	6.7	3.993	8.0	0.48	81.3	0.65	10.0	21.0	7.5	3	Rinaldi Receiving Station	LADWP	34.281	-118.479	3
-Northridge 1994	RIV-270	0.02	6.7	0.044	11.3	0.064	3.1	0.26	105.0	106.7	98.7	3	Riverside, Airport	CGS	33.951	-117.446	2
-Northridge 1994	RIV-360	0.02	6.7	0.04	12.9	0.059	2.9	0.24	105.0	106.7	98.7	3	Riverside, Airport	CGS	33.951	-117.446	2
-Northridge 1994	RLH-090	0.02	6.7	0.151	18.8	0.116	9.1	0.49	50.0	53.0	49.6	3	Rolling Hills Estate, Rancho Vista School	CGS	33.787	-118.356	2
-Northridge 1994	RLH-360	0.02	6.7	0.129	18.2	0.106	5.8	0.44	50.0	53.0	49.6	3	Rolling Hills Estate, Rancho Vista School	CGS	33.787	-118.356	2
-Northridge 1994	RO3-000	0.0050	6.7	1.461	13.9	0.273	32.3	0.51	11.0	22.0	10.4	3	Sun Valley, 13248 Roscoe Blvd.	USC	34.221	-118.421	3
-Northridge 1994	RO3-090	0.0050	6.7	1.47	16.8	0.447	42.6	0.76	11.0	22.0	10.4	3	Sun Valley, 13248 Roscoe Blvd.	USC	34.221	-118.421	3
-Northridge 1994	ROA-000	0.02	6.7	0.059	22.6	0.075	4.7	0.35	80.0	82.2	63.8	3	Rosamond, Airport	CGS	34.87	-118.206	2
-Northridge 1994	ROA-090	0.02	6.7	0.04	20.5	0.04	3.5	0.47	80.0	82.2	63.8	3	Rosamond, Airport	CGS	34.87	-118.206	2
-Northridge 1994	RPH-000	0.02	6.7	0.052	13.3	0.073	5.0	0.45	53.0	56.3	52.5	3	Rancho Palos Verdes, Hawthorne Blvd.	CGS	33.746	-118.396	1
-Northridge 1994	RPH-090	0.02	6.7	0.054	17.8	0.054	3.4	0.41	53.0	56.3	52.5	3	Rancho Palos Verdes, Hawthorne Blvd.	CGS	33.746	-118.396	1
-Northridge 1994	RPV-005	0.0050	6.7	0.252	13.3	0.156	12.3	0.4	55.0	59.0	54.7	3	Rancho Palos Verdes, 30511 Luconia Dr.	USC	33.74	-118.335	3
-Northridge 1994	RPV-095	0.0050	6.7	0.148	14.6	0.124	9.1	0.43	55.0	59.0	54.7	3	Rancho Palos Verdes, 30511 Luconia Dr.	USC	33.74	-118.335	3
-Northridge 1994	RSE-044	0.0050	6.7	2.0	10.8	0.404	31.9	0.42	17.0	26.0	16.1	3		LADWP	34.176	-118.36	3
-Northridge 1994	RSE-314	0.0050	6.7	1.868	9.3	0.49	25.1	0.39	17.0	26.0	16.1	3		LADWP	34.176	-118.36	3
-Northridge 1994	SBG-000	0.02	6.7	0.187	20.0	0.078	7.1	0.56	123.1	124.5	111.3	3	Goleta Station, U.C. Santa Barbara	USGS	34.422	-119.851	3
-Northridge 1994	SBG-090	0.02	6.7	0.146	25.6	0.069	6.6	0.63	123.1	124.5	111.3	3	Goleta Station, U.C. Santa Barbara	USGS	34.422	-119.851	3
-Northridge 1994	SBO-270	0.0050	6.7	0.034	19.0	0.036	6.5	0.7	116.0	117.5	107.3	3	San Bernadino, Government Center	USGS	34.106	-117.287	3
-Northridge 1994	SBO-360	0.0050	6.7	0.032	17.8	0.039	6.4	0.63	116.0	117.5	107.3	3	San Bernadino, Government Center	USGS	34.106	-117.287	3
-Northridge 1994	SCC-166	0.0050	6.7	0.947	7.0	0.263	25.8	0.46	14.0	23.6	19.5	3	Sepulveda Canyon Control Facility	USGS	34.097	-118.478	3
-Northridge 1994	SCC-256	0.0050	6.7	3.048	6.3	0.464	31.3	0.35	14.0	23.6	19.5	3	Sepulveda Canyon Control Facility	USGS	34.097	-118.478	3
-Northridge 1994	SCE-018	0.0050	6.7	4.51	7.2	0.827	115.7	0.75	11.0	22.0	6.4	3	Sylmar, Converter Station East	LADWP	34.295	-118.481	3
-Northridge 1994	SCE-288	0.0050	6.7	2.916	7.6	0.492	72.8	0.75	11.0	22.0	6.4	3	Sylmar, Converter Station East	LADWP	34.295	-118.481	3
-Northridge 1994	SCR-000	0.01	6.7	0.981	7.8	0.252	28.0	0.44	14.1	23.2	22.2	3	Stone Canyon Reservoir	MWD	34.1062	-118.4542	2
-Northridge 1994	SCR-090	0.01	6.7	1.065	8.0	0.388	38.0	0.38	14.1	23.2	22.2	3	Stone Canyon Reservoir	MWD	34.1062	-118.4542	2
-Northridge 1994	SER-000	0.0050	6.7	0.029	20.4	0.039	5.6	0.44	80.0	82.0	77.5	3	Villa Park, 17852 Serrano Ave.	USC	33.821	-117.818	3
-Northridge 1994	SER-270	0.0050	6.7	0.055	20.6	0.045	6.5	0.51	80.0	82.0	77.5	3	Villa Park, 17852 Serrano Ave.	USC	33.821	-117.818	3
-Northridge 1994	SJF-000	0.01	6.7	0.113	22.2	0.081	8.2	0.75	154.0	155.2	153.0	3	San Jacinto, CDF Fire Station	CGS	33.787	-116.958	3
-Northridge 1994	SJF-090	0.01	6.7	0.13	29.3	0.099	7.7	0.7	154.0	155.2	153.0	3	San Jacinto, CDF Fire Station	CGS	33.787	-116.958	3
-Northridge 1994	SMA-090	0.02	6.7	0.231	12.1	0.125	7.9	0.35	39.0	43.0	35.0	3	San Marino, Southwestern Academy 	CGS	34.115	-118.13	2
-Northridge 1994	SMA-360	0.02	6.7	0.333	14.0	0.151	6.8	0.31	39.0	43.0	35.0	3	San Marino, Southwestern Academy 	CGS	34.115	-118.13	2
-Northridge 1994	SMI-000	0.0050	6.7	3.672	6.0	0.905	53.3	0.52	13.0	23.0	14.1	3	Simi Valley, 6334 Katherine Rd.	USC	34.264	-118.666	3
-Northridge 1994	SMI-090	0.0050	6.7	4.137	6.8	0.531	56.0	0.46	13.0	23.0	14.1	3	Simi Valley, 6334 Katherine Rd.	USC	34.264	-118.666	3
-Northridge 1994	SMN-090	0.02	6.7	2.86	8.8	0.883	41.2	0.42	23.0	29.0	27.0	3	Santa Monica, City Hall Grounds	CGS	34.011	-118.49	2
-Northridge 1994	SMN-360	0.02	6.7	1.183	11.3	0.37	25.2	0.54	23.0	29.0	27.0	3	Santa Monica, City Hall Grounds	CGS	34.011	-118.49	2
-Northridge 1994	SND-000	0.01	6.7	0.105	17.6	0.098	8.7	0.58	62.0	64.8	39.7	3	Sandberg, Bald Mountain	CGS	34.743	-118.724	1
-Northridge 1994	SND-090	0.01	6.7	0.15	16.1	0.091	12.2	0.67	62.0	64.8	39.7	3	Sandberg, Bald Mountain	CGS	34.743	-118.724	1
-Northridge 1994	SOK-000	0.02	6.7	3.025	10.0	0.446	55.7	0.61	9.0	21.0	15.5	3	Sherman Oaks	CGS	34.154	-118.465	3
-Northridge 1994	SOK-090	0.02	6.7	1.038	23.9	0.214	29.5	0.68	9.0	21.0	15.5	3	Sherman Oaks	CGS	34.154	-118.465	3
-Northridge 1994	SOR-225	0.0050	6.7	0.081	20.8	0.065	8.9	0.55	57.0	60.0	51.6	3	West Covina, 1307 S. Orange Ave.	USC	34.064	-117.952	3
-Northridge 1994	SOR-315	0.0050	6.7	0.088	20.3	0.068	5.9	0.56	57.0	60.0	51.6	3	West Covina, 1307 S. Orange Ave.	USC	34.064	-117.952	3
-Northridge 1994	SPP-000	0.02	6.7	0.141	15.8	0.101	5.7	0.42	58.0	61.0	57.2	3	San Pedro, Palos Verdes	CGS	33.722	-118.309	2
-Northridge 1994	SPP-090	0.02	6.7	0.121	15.0	0.095	6.6	0.46	58.0	61.0	57.2	3	San Pedro, Palos Verdes	CGS	33.722	-118.309	2
-Northridge 1994	SSA-000	0.0050	6.7	1.432	6.9	0.342	24.6	0.3	16.0	24.8	17.6	3	Santa Susana, Liquid Metal Engr. Center	USGS	34.231	-118.713	3
-Northridge 1994	SSA-090	0.0050	6.7	0.783	9.6	0.245	14.3	0.32	16.0	24.8	17.6	3	Santa Susana, Liquid Metal Engr. Center	USGS	34.231	-118.713	3
-Northridge 1994	STC-090	0.0050	6.7	2.05	16.7	0.348	34.1	0.63	2.0	19.0	12.7	3	Northridge, 17645 Saticoy St.	USC	34.209	-118.517	3
-Northridge 1994	STC-180	0.0050	6.7	4.683	11.5	0.458	60.6	0.68	2.0	19.0	12.7	3	Northridge, 17645 Saticoy St.	USC	34.209	-118.517	3
-Northridge 1994	STN-020	0.0050	6.7	1.141	11.6	0.469	31.3	0.47	25.0	31.0	27.2	3	Los Angeles, 5360 Saturn St.	USC	34.046	-118.355	3
-Northridge 1994	STN-110	0.0050	6.7	1.607	8.6	0.431	42.7	0.46	25.0	31.0	27.2	3	Los Angeles, 5360 Saturn St.	USC	34.046	-118.355	3
-Northridge 1994	SUN-190	0.0050	6.7	1.898	8.3	0.472	28.3	0.32	19.0	27.0	24.7	3	Pacific Palisades, 17281 Sunset Blvd.	USC	34.042	-118.554	2
-Northridge 1994	SUN-280	0.0050	6.7	0.67	11.6	0.196	19.4	0.34	19.0	27.0	24.7	3	Pacific Palisades, 17281 Sunset Blvd.	USC	34.042	-118.554	2
-Northridge 1994	SYL-090	0.02	6.7	2.609	7.1	0.604	77.6	0.8	16.0	24.0	5.1	3	Sylmar, County Hosp. Parking Lot	CGS	34.326	-118.444	3
-Northridge 1994	SYL-360	0.02	6.7	5.016	5.3	0.843	129.9	0.77	16.0	24.0	5.1	3	Sylmar, County Hosp. Parking Lot	CGS	34.326	-118.444	3
-Northridge 1994	TAR-000	0.02	6.7	16.709	12.6	0.99	78.7	0.41	5.0	19.6	16.3	3	Tarzana, Cedar Hill Nursery A	CGS	34.16	-118.534	2
-Northridge 1994	TAR-090	0.02	6.7	22.765	10.6	1.779	116.6	0.37	5.0	19.6	16.3	3	Tarzana, Cedar Hill Nursery A	CGS	34.16	-118.534	2
-Northridge 1994	TMI-240	0.0050	6.7	0.411	14.7	0.148	13.3	0.44	58.0	61.0	57.4	3	Terminal Island, 954 S. Seaside Ave.	USC	33.736	-118.269	3
-Northridge 1994	TMI-330	0.0050	6.7	0.491	14.5	0.187	16.6	0.43	58.0	61.0	57.4	3	Terminal Island, 954 S. Seaside Ave.	USC	33.736	-118.269	3
-Northridge 1994	TOP-000	0.0050	6.7	1.054	8.8	0.333	15.9	0.31	15.0	24.2	22.9	3	Topanga Fire Station	USGS	34.084	-118.599	2
-Northridge 1994	TOP-270	0.0050	6.7	0.519	10.2	0.195	12.7	0.27	15.0	24.2	22.9	3	Topanga Fire Station	USGS	34.084	-118.599	2
-Northridge 1994	TUJ-262	0.0050	6.7	0.452	11.2	0.172	8.6	0.25	30.0	36.0	19.3	3	Big Tujunga Station, Angeles National Forest	USC	34.286	-118.225	2
-Northridge 1994	TUJ-352	0.0050	6.7	0.541	9.5	0.254	13.3	0.28	30.0	36.0	19.3	3	Big Tujunga Station, Angeles National Forest	USC	34.286	-118.225	2
-Northridge 1994	TUS-135	0.0050	6.7	0.093	25.0	0.068	3.8	0.4	85.0	87.0	83.8	3	Tustin, 13014 E. Sycamore	USC	33.728	-117.825	3
-Northridge 1994	TUS-225	0.0050	6.7	0.076	23.3	0.071	5.8	0.42	85.0	87.0	83.8	3	Tustin, 13014 E. Sycamore	USC	33.728	-117.825	3
-Northridge 1994	UCL-090	0.02	6.7	0.874	11.3	0.278	22.0	0.35	18.0	25.0	22.8	3	Los Angeles, UCLA Grounds	CGS	34.068	-118.439	2
-Northridge 1994	UCL-360	0.02	6.7	1.646	10.2	0.474	22.7	0.37	18.0	25.0	22.8	3	Los Angeles, UCLA Grounds	CGS	34.068	-118.439	2
-Northridge 1994	VAS-090	0.02	6.7	0.319	7.4	0.14	12.4	0.38	37.0	41.0	22.8	3	Vasquez Rocks Park	CGS	34.49	-118.32	2
-Northridge 1994	VAS-360	0.02	6.7	0.375	8.3	0.151	18.5	0.41	37.0	41.0	22.8	3	Vasquez Rocks Park	CGS	34.49	-118.32	2
-Northridge 1994	VCS-090	0.0050	6.7	0.28	18.4	0.12	13.9	0.51	37.0	41.0	36.9	3	Los Angeles, 2369 E. Vernon Ave.	USC	34.004	-118.23	3
-Northridge 1994	VCS-180	0.0050	6.7	0.29	18.0	0.149	10.8	0.41	37.0	41.0	36.9	3	Los Angeles, 2369 E. Vernon Ave.	USC	34.004	-118.23	3
-Northridge 1994	VEN-090	0.02	6.7	0.177	41.0	0.054	7.8	0.99	70.0	72.0	57.0	3	Ventura, Harbor & California	CGS	34.276	-119.293	3
-Northridge 1994	VEN-360	0.02	6.7	0.19	36.5	0.075	12.1	0.93	70.0	72.0	57.0	3	Ventura, Harbor & California	CGS	34.276	-119.293	3
-Northridge 1994	VLA-195	0.0050	6.7	0.452	10.8	0.187	21.5	0.63	18.0	26.2	22.9	3	Los Angeles, VA Hospital Bldg. 259	USGS	34.063	-118.463	3
-Northridge 1994	VLA-285	0.0050	6.7	0.476	11.2	0.165	19.0	0.64	18.0	26.2	22.9	3	Los Angeles, VA Hospital Bldg. 259	USGS	34.063	-118.463	3
-Northridge 1994	VLO-000	0.0050	6.7	0.087	16.9	0.064	5.9	0.46	62.0	64.8	61.6	3	Long Beach, VA Hospital	VA	33.777	-118.115	3
-Northridge 1994	VLO-090	0.0050	6.7	0.102	17.2	0.069	8.7	0.51	62.0	64.8	61.6	3	Long Beach, VA Hospital	VA	33.777	-118.115	3
-Northridge 1994	VSP-000	0.0050	6.7	7.118	8.5	0.941	70.4	0.45	7.0	20.2	9.1	3	Sepulveda VA Hospital Bldg. 40	USGS	34.249	-118.478	3
-Northridge 1994	VSP-090	0.0050	6.7	4.789	8.2	0.753	75.6	0.6	7.0	20.2	9.1	3	Sepulveda VA Hospital Bldg. 40	USGS	34.249	-118.478	3
-Northridge 1994	VTA-000	0.0050	6.7	0.288	16.4	0.136	22.8	0.48	31.0	36.0	31.9	3	Los Angeles, 3620 S. Vermont Ave.	USC	34.023	-118.293	3
-Northridge 1994	VTA-090	0.0050	6.7	0.102	22.6	0.065	16.7	0.51	31.0	36.0	31.9	3	Los Angeles, 3620 S. Vermont Ave.	USC	34.023	-118.293	3
-Northridge 1994	WAI-200	0.0050	6.7	0.107	22.9	0.09	7.7	0.46	71.0	73.0	69.7	3	Huntington Beach, 16081 Waikiki Lane	USC	33.727	-118.044	3
-Northridge 1994	WAI-290	0.0050	6.7	0.147	20.1	0.076	10.2	0.51	71.0	73.0	69.7	3	Huntington Beach, 16081 Waikiki Lane	USC	33.727	-118.044	3
-Northridge 1994	WAT-180	0.01	6.7	0.196	23.2	0.089	6.5	0.5	50.0	53.5	52.2	3	Carson, Water St.	USC	33.836	-118.24	3
-Northridge 1994	WAT-270	0.01	6.7	0.215	22.8	0.086	8.1	0.52	50.0	53.5	52.2	3	Carson, Water St.	USC	33.836	-118.24	3
-Northridge 1994	WBA-090	0.0050	6.7	0.229	12.2	0.119	18.3	0.38	53.0	56.3	51.4	3	Whittier, 7215 Bright Ave.	USGS	33.976	-118.036	3
-Northridge 1994	WBA-180	0.0050	6.7	0.29	11.4	0.153	31.3	0.43	53.0	56.3	51.4	3	Whittier, 7215 Bright Ave.	USGS	33.976	-118.036	3
-Northridge 1994	WHT-000	0.0050	6.7	0.063	12.2	0.075	7.8	0.55	52.0	55.0	49.1	3	Whittier, 6302 S. Alta Dr.	USC	34.015	-118.029	2
-Northridge 1994	WHT-090	0.0050	6.7	0.034	17.4	0.044	20.7	0.45	52.0	55.0	49.1	3	Whittier, 6302 S. Alta Dr.	USC	34.015	-118.029	2
-Northridge 1994	WIL-208	0.0050	6.7	0.231	14.0	0.155	12.3	0.45	31.0	36.4	31.3	3	Los Angeles, 1100 Wilshire	USGS	34.052	-118.263	3
-Northridge 1994	WIL-298	0.0050	6.7	0.272	14.2	0.144	12.2	0.49	31.0	36.4	31.3	3	Los Angeles, 1100 Wilshire	USGS	34.052	-118.263	3
-Northridge 1994	WOD-245	0.02	6.7	0.788	12.8	0.21	47.4	0.76	26.0	32.0	21.6	3			34.24	-118.82	2
-Northridge 1994	WOD-335	0.02	6.7	0.751	10.5	0.22	34.5	0.69	26.0	32.0	21.6	3			34.24	-118.82	2
-Northridge 1994	WON-095	0.01	6.7	0.143	8.8	0.112	8.7	0.33	18.2	26.3	22.7	3	Los Angeles, Wonderland Ave.	USC	34.114	-118.38	1
-Northridge 1994	WON-185	0.01	6.7	0.201	6.7	0.172	11.8	0.46	18.2	26.3	22.7	3	Los Angeles, Wonderland Ave.	USC	34.114	-118.38	1
-Northridge 1994	WPI-046	0.0050	6.7	1.573	8.7	0.42	118.2	1.6	22.0	29.0	5.2	3	Newhall, 26835 W. Pico Canyon Rd.	USC	34.391	-118.622	2
-Northridge 1994	WPI-316	0.0050	6.7	1.009	14.4	0.358	75.2	1.26	22.0	29.0	5.2	3	Newhall, 26835 W. Pico Canyon Rd.	USC	34.391	-118.622	2
-Northridge 1994	WST-000	0.0050	6.7	1.248	10.1	0.43	28.5	0.34	26.0	33.0	26.8	3	Los Angeles, 607 Westmorland Ave.	USC	34.082	-118.298	2
-Northridge 1994	WST-270	0.0050	6.7	1.379	9.4	0.33	38.1	0.35	26.0	33.0	26.8	3	Los Angeles, 607 Westmorland Ave.	USC	34.082	-118.298	2
-Northridge 1994	WVA-235	0.0050	6.7	0.816	13.8	0.255	36.3	0.59	19.0	26.9	23.8	3	Los Angeles, Wadswoth VA Hospital	USGS	34.054	-118.453	3
-Northridge 1994	WVA-325	0.0050	6.7	0.702	11.5	0.256	20.4	0.41	19.0	26.9	23.8	3	Los Angeles, Wadswoth VA Hospital	USGS	34.054	-118.453	3
-Northridge 1994	WWJ-090	0.01	6.7	0.055	11.9	0.056	5.0	0.55	76.0	78.3	64.0	3	Wrightwood, Jackson Flat	CGS	34.381	-117.737	1
-Northridge 1994	WWJ-360	0.01	6.7	0.034	18.8	0.037	3.5	0.6	76.0	78.3	64.0	3	Wrightwood, Jackson Flat	CGS	34.381	-117.737	1
-Northridge 1994	WWN-000	0.01	6.7	0.026	20.1	0.042	3.2	0.4	93.0	95.0	81.2	3	Wrightwood, Nielsen Ranch	CGS	34.314	-117.545	2
-Northridge 1994	WWN-090	0.01	6.7	0.032	19.0	0.042	2.8	0.37	93.0	95.0	81.2	3	Wrightwood, Nielsen Ranch	CGS	34.314	-117.545	2
-Northridge 1994	WWS-000	0.01	6.7	0.089	14.4	0.06	3.7	0.3	83.0	85.0	71.0	3	Wrightwood, Swarthout Valley	CGS	34.369	-117.658	2
-Northridge 1994	WWS-090	0.01	6.7	0.049	20.8	0.047	3.7	0.38	83.0	85.0	71.0	3	Wrightwood, Swarthout Valley	CGS	34.369	-117.658	2
-Parkfield 1966	C02-065	0.05	6.1	1.638	4.1	0.485	65.0	0.77	31.0	31.0	6.6	1	Parkfield, Cholame 2WA	CGS	35.733	-120.286	3
-Parkfield 1966	C05-085	0.05	6.1	0.959	5.1	0.447	46.8	0.39	32.0	32.0	9.3	1	Parkfield, Cholame 5W	CGS	35.697	-120.328	3
-Parkfield 1966	C05-355	0.01	6.1	0.626	7.4	0.367	21.7	0.42	32.0	32.0	9.3	1	Parkfield, Cholame 5W	CGS	35.697	-120.328	3
-Parkfield 1966	C08-050	0.01	6.1	0.262	13.7	0.218	18.5	0.5	34.0	34.0	13.0	1	Parkfield, Cholame 8W	CGS	35.671	-120.359	3
-Parkfield 1966	C08-320	0.01	6.1	0.293	12.7	0.272	20.2	0.43	34.0	34.0	13.0	1	Parkfield, Cholame 8W	CGS	35.671	-120.359	3
-Parkfield 1966	C12-050	0.01	6.1	0.054	28.5	0.059	5.8	0.71	41.1	41.0	14.7	1	Parkfield, Cholame 12W	CGS	35.639	-120.404	2
-Parkfield 1966	C12-320	0.01	6.1	0.06	26.6	0.063	7.0	0.84	41.1	41.0	14.7	1	Parkfield, Cholame 12W	CGS	35.639	-120.404	2
-Parkfield 1966	TM2-205	0.01	6.1	0.361	5.0	0.338	18.7	0.45	41.0	41.0	16.6	1	Temblor, Station 2	CGS	35.751	-120.259	2
-Parkfield 1966	TM2-295	0.01	6.1	0.23	6.7	0.261	13.8	0.46	41.0	41.0	16.6	1	Temblor, Station 2	CGS	35.751	-120.259	2
-San Fernando 1971	CND-130	0.01	6.6	0.091	18.3	0.07	2.7	0.29	75.1	75.6	66.4	3	Brea, Carbon Canyon Dam, left abut.	ACOE	33.916	-117.842	1
-San Fernando 1971	CND-220	0.01	6.6	0.114	17.1	0.071	3.9	0.31	75.1	75.6	66.4	3	Brea, Carbon Canyon Dam, left abut.	ACOE	33.916	-117.842	1
-San Fernando 1971	FSD-172	0.0050	6.6	0.197	23.5	0.148	9.4	0.57	32.6	33.7	27.5	3	Lake Piru, Santa Felicia Dam	CGS	34.46	-118.753	1
-San Fernando 1971	FSD-262	0.0050	6.6	0.198	16.3	0.152	6.5	0.36	32.6	33.7	27.5	3	Lake Piru, Santa Felicia Dam	CGS	34.46	-118.753	1
-San Fernando 1971	FTR-056	0.01	6.6	0.044	12.8	0.071	4.7	0.31	32.8	33.9	29.1	3	Fairmont Dam	CGS	34.704	-118.426	1
-San Fernando 1971	FTR-326	0.01	6.6	0.06	12.4	0.109	6.4	0.39	32.8	33.9	29.1	3	Fairmont Dam	CGS	34.704	-118.426	1
-San Fernando 1971	L01-021	0.01	6.6	0.237	14.2	0.145	17.3	0.72	29.5	30.7	25.8	3	Lake Hughes #1, Fire Station #78	CGS	34.674	-118.43	3
-San Fernando 1971	L01-111	0.01	6.6	0.185	17.1	0.11	14.0	0.58	29.5	30.7	25.8	3	Lake Hughes #1, Fire Station #78	CGS	34.674	-118.43	3
-San Fernando 1971	L04-111	0.01	6.6	0.249	12.7	0.192	5.7	0.2	29.5	30.7	24.2	3	Lake Hughes #4, Camp Mendenhall	USGS	34.65	-118.478	2
-San Fernando 1971	L04-201	0.01	6.6	0.207	12.9	0.153	8.4	0.26	29.5	30.7	24.2	3	Lake Hughes #4, Camp Mendenhall	USGS	34.65	-118.478	2
-San Fernando 1971	L09-021	0.01	6.6	0.151	9.4	0.157	4.6	0.22	26.7	28.0	23.5	3	Lake Hughes #9	USGS	34.608	-118.558	1
-San Fernando 1971	L09-291	0.01	6.6	0.107	11.8	0.134	3.9	0.21	26.7	28.0	23.5	3	Lake Hughes #9	USGS	34.608	-118.558	1
-San Fernando 1971	L12-021	0.01	6.6	0.925	10.7	0.366	17.1	0.23	23.2	24.7	20.3	3	Lake Hughes #12	CGS	34.571	-118.56	2
-San Fernando 1971	L12-291	0.01	6.6	0.785	11.9	0.283	12.9	0.21	23.2	24.7	20.3	3	Lake Hughes #12	CGS	34.571	-118.56	2
-San Fernando 1971	OPP-000	0.0050	6.6	0.059	7.2	0.084	7.9	0.5	53.1	53.8	48.1	3	Oso Pump Plant, Gorman	CDWR	34.808	-118.72	3
-San Fernando 1971	OPP-270	0.0050	6.6	0.045	7.1	0.105	6.8	0.55	53.1	53.8	48.1	3	Oso Pump Plant, Gorman	CDWR	34.808	-118.72	3
-San Fernando 1971	ORR-021	0.01	6.6	0.684	14.5	0.324	15.7	0.36	28.1	29.3	24.9	3	Castaic, Old Ridge Route	CGS	34.564	-118.642	2
-San Fernando 1971	ORR-291	0.01	6.6	0.946	15.4	0.268	25.9	0.49	28.1	29.3	24.9	3	Castaic, Old Ridge Route	CGS	34.564	-118.642	2
-San Fernando 1971	PAS-000	0.01	6.6	0.127	13.6	0.088	6.4	0.5	39.6	40.5	31.7	3	Pasadena, CIT Athenaeum	CGS	34.14	-118.12	2
-San Fernando 1971	PAS-090	0.01	6.6	0.21	12.3	0.11	13.3	0.65	39.6	40.5	31.7	3	Pasadena, CIT Athenaeum	CGS	34.14	-118.12	2
-San Fernando 1971	PDA-164	0.01	6.6	8.901	7.0	1.226	112.5	0.48	8.5	12.0	2.7	3	Pacoima Dam, abutment	CGS	34.334	-118.396	1
-San Fernando 1971	PDA-254	0.01	6.6	7.924	7.3	1.16	54.3	0.37	8.5	12.0	2.7	3	Pacoima Dam, abutment	CGS	34.334	-118.396	1
-San Fernando 1971	PEL-090	0.01	6.6	0.651	10.5	0.21	18.9	0.53	36.2	37.2	21.2	3	Los Angeles, Hollywood Storage lot	USGS	34.089	-118.338	3
-San Fernando 1971	PEL-180	0.01	6.6	0.447	11.2	0.174	14.9	0.35	36.2	37.2	21.2	3	Los Angeles, Hollywood Storage lot	USGS	34.089	-118.338	3
-San Fernando 1971	PFS-120	0.01	6.6	0.235	18.2	0.109	26.2	0.76	33.0	34.1	33.0	3	Palmdale Fire Station	USGS	34.58	-118.11	2
-San Fernando 1971	PFS-210	0.01	6.6	0.174	19.0	0.132	20.8	0.67	33.0	34.1	33.0	3	Palmdale Fire Station	USGS	34.58	-118.11	2
-San Fernando 1971	PPP-000	0.01	6.6	0.151	13.7	0.102	4.8	0.24	45.4	46.2	38.9	3	Pearblossom Pump	CDWR	34.51	-117.92	2
-San Fernando 1971	PPP-270	0.01	6.6	0.248	13.6	0.136	5.6	0.22	45.4	46.2	38.9	3	Pearblossom Pump	CDWR	34.51	-117.92	2
-San Fernando 1971	PSL-180	0.01	6.6	0.112	11.9	0.089	5.3	0.27	35.9	36.9	19.1	3	Pasadena, Old Seismology Lab	USGS	34.15	-118.17	1
-San Fernando 1971	PSL-270	0.01	6.6	0.337	6.2	0.202	10.9	0.32	35.9	36.9	19.1	3	Pasadena, Old Seismology Lab	USGS	34.15	-118.17	1
-San Fernando 1971	PUD-055	0.01	6.6	0.048	13.4	0.074	4.0	0.39	65.0	65.5	50.4	3	Puddingstone Dam, abut	CGS	34.091	-117.808	3
-San Fernando 1971	PUD-325	0.01	6.6	0.04	14.1	0.065	3.2	0.36	65.0	65.5	50.4	3	Puddingstone Dam, abut	CGS	34.091	-117.808	3
-San Fernando 1971	SAD-003	0.01	6.6	0.282	11.3	0.151	4.8	0.19	42.7	43.5	27.0	3	Santa Anita Dam	LAFC	34.19	-118.02	1
-San Fernando 1971	SAD-273	0.01	6.6	0.303	11.0	0.212	6.3	0.19	42.7	43.5	27.0	3	Santa Anita Dam	LAFC	34.19	-118.02	1
-San Fernando 1971	SOD-015	0.01	6.6	0.055	14.3	0.058	2.9	0.29	71.4	71.9	58.1	3	San Antonio Dam	ACOE	34.17	-117.68	2
-San Fernando 1971	SOD-285	0.01	6.6	0.105	13.0	0.079	3.5	0.27	71.4	71.9	58.1	3	San Antonio Dam	ACOE	34.17	-117.68	2
-San Fernando 1971	TEH-090	0.01	6.6	0.016	8.8	0.053	2.0	0.21	70.7	71.2	68.0	3	Tehachapi Pump Plant	CDWR	34.942	-118.827	1
-San Fernando 1971	TEH-180	0.01	6.6	0.0040	9.5	0.025	1.0	0.23	70.7	71.2	68.0	3	Tehachapi Pump Plant	CDWR	34.942	-118.827	1
-San Fernando 1971	WND-143	0.0050	6.6	0.119	17.2	0.1	9.3	0.48	53.2	53.9	45.1	3	Whittier Narrows Dam	ACOE	34.03	-118.05	3
-San Fernando 1971	WND-233	0.0050	6.6	0.171	21.3	0.107	9.7	0.44	53.2	53.9	45.1	3	Whittier Narrows Dam	ACOE	34.03	-118.05	3
-San Fernando 1971	WTW-025	0.0050	6.6	0.039	11.2	0.061	2.6	0.32	71.0	71.5	60.3	3	Wrightwood, 6074 Park Dr.	USGS	34.36	-117.63	2
-San Fernando 1971	WTW-295	0.0050	6.6	0.027	11.5	0.044	3.3	0.35	71.0	71.5	60.3	3	Wrightwood, 6074 Park Dr.	USGS	34.36	-117.63	2
-Santa Barbara 1978	GOL-000	0.0050	6.0	0.299	4.0	0.291	39.5	0.33	20.0	23.7		5	SCE Goleta substation	KIN	34.467	-119.885	3
-Santa Barbara 1978	GOL-090	0.0050	6.0	0.27	4.1	0.241	35.0	0.26	20.0	23.7		5	SCE Goleta substation	KIN	34.467	-119.885	3
-Santa Barbara 1978	SBC-132	0.01	6.0	0.086	7.5	0.102	7.3	0.55	2.7	13.0		5	Santa Barbara Courthouse	USGS	34.42	-119.7	2
-Santa Barbara 1978	SBC-222	0.01	6.0	0.229	4.6	0.203	16.4	0.56	2.7	13.0		5	Santa Barbara Courthouse	USGS	34.42	-119.7	2
-Santa Barbara 1978	SBG-090	0.0050	6.0	0.846	10.0	0.292	31.0	0.71	15.6	20.1	3.2	5	Goleta Station, U.C. Santa Barbara	USGS	34.422	-119.851	3
-Santa Barbara 1978	SBG-180	0.05	6.0	0.93	10.2	0.338	48.1	0.74	15.6	20.1	3.2	5	Goleta Station, U.C. Santa Barbara	USGS	34.422	-119.851	3
-Santa Barbara 1978	SBN-000	0.0050	6.0	0.889	7.2	0.419	34.5	0.55	15.4	20.0		5	U.C. Santa Barbara, North Hall	CGS	34.41	-119.85	3
-Santa Barbara 1978	SBN-090	0.0050	6.0	0.611	6.4	0.283	25.0	0.45	15.4	20.0		5	U.C. Santa Barbara, North Hall	CGS	34.41	-119.85	3
-Superstition Hills 1987	BCR-140	0.01	6.5	0.888	10.6	0.281	31.4	0.44	59.5	60.5	39.0	1	Bonds Corner, Hwys 115 & 98	USGS	32.693	-115.338	3
-Superstition Hills 1987	BCR-230	0.01	6.5	1.122	9.9	0.274	30.2	0.57	59.5	60.5	39.0	1	Bonds Corner, Hwys 115 & 98	USGS	32.693	-115.338	3
-Superstition Hills 1987	BRA-225	0.01	6.5	0.223	13.5	0.156	13.4	0.44	27.0	29.1	18.2	1	Brawley Airport	USGS	32.988	-115.509	3
-Superstition Hills 1987	BRA-315	0.01	6.5	0.249	14.0	0.116	17.5	0.46	27.0	29.1	18.2	1	Brawley Airport	USGS	32.988	-115.509	3
-Superstition Hills 1987	CAL-225	0.01	6.5	0.478	13.9	0.233	100.6	0.42	24.4	26.7	27.8	1	Calipatria Fire Station	USGS	33.13	-115.52	3
-Superstition Hills 1987	CAL-315	0.01	6.5	0.69	13.2	0.305	64.0	0.41	24.4	26.7	27.8	1	Calipatria Fire Station	USGS	33.13	-115.52	3
-Superstition Hills 1987	CC3-045	0.01	6.5	0.061	13.8	0.077	10.0	0.42	47.3	48.5	51.2	1	Coachella Canal, Station 3, Siphon 24	USGS	33.51	-115.77	3
-Superstition Hills 1987	CC3-135	0.01	6.5	0.079	13.4	0.085	18.0	0.53	47.3	48.5	51.2	1	Coachella Canal, Station 3, Siphon 24	USGS	33.51	-115.77	3
-Superstition Hills 1987	CLX-225	0.01	6.5	0.663	11.2	0.204	46.0	0.6	53.0	54.1	28.9	1	Calexico Fire Station	USGS	32.669	-115.492	3
-Superstition Hills 1987	CLX-315	0.01	6.5	0.602	11.5	0.21	24.8	0.46	53.0	54.1	28.9	1	Calexico Fire Station	USGS	32.669	-115.492	3
-Superstition Hills 1987	E13-140	0.01	6.5	0.251	12.1	0.167	19.2	0.53	42.4	43.8	19.5	1	El Centro Array 13, Strobel residence	USGS	32.709	-115.683	3
-Superstition Hills 1987	E13-230	0.01	6.5	0.36	11.3	0.186	50.3	0.59	42.4	43.8	19.5	1	El Centro Array 13, Strobel residence	USGS	32.709	-115.683	3
-Superstition Hills 1987	EC1-140	0.01	6.5	0.143	10.8	0.086	38.6	1.06	44.7	46.0	35.6	1	El Centro Array 1, Borchard Ranches	USGS	32.96	-115.319	3
-Superstition Hills 1987	EC1-230	0.01	6.5	0.093	11.2	0.083	19.0	0.33	44.7	46.0	35.6	1	El Centro Array 1, Borchard Ranches	USGS	32.96	-115.319	3
-Superstition Hills 1987	ICC-000	0.0050	6.5	1.063	16.0	0.358	46.1	0.63	37.9	39.4	13.9	1	El Centro, Imperial Co. Center grounds	CGS	32.793	-115.562	3
-Superstition Hills 1987	ICC-090	0.0050	6.5	0.675	19.0	0.258	41.0	0.93	37.9	39.4	13.9	1	El Centro, Imperial Co. Center grounds	CGS	32.793	-115.562	3
-Superstition Hills 1987	OCW-225	0.01	6.5	0.124	15.0	0.079	11.6	0.5	33.7	35.4	28.9	1	Ocotillo Wells, Burro Bend Cafe	USGS	33.14	-116.13	3
-Superstition Hills 1987	OCW-315	0.01	6.5	0.184	14.9	0.107	13.7	0.46	33.7	35.4	28.9	1	Ocotillo Wells, Burro Bend Cafe	USGS	33.14	-116.13	3
-Superstition Hills 1987	POE-270	0.01	6.5	2.094	13.8	0.446	35.8	0.48	2.7	11.1	12.4	1	Poe Road--temporary	USGS	33.097	-115.751	3
-Superstition Hills 1987	POE-360	0.01	6.5	1.751	13.6	0.3	32.8	0.48	2.7	11.1	12.4	1	Poe Road--temporary	USGS	33.097	-115.751	3
-Superstition Hills 1987	PTC-045	0.01	6.5	0.36	13.6	0.146	34.0	0.49	33.5	35.2	21.8	1	Plaster City	USGS	32.79	-115.86	3
-Superstition Hills 1987	PTC-135	0.01	6.5	0.539	12.5	0.183	41.7	0.48	33.5	35.2	21.8	1	Plaster City	USGS	32.79	-115.86	3
-Superstition Hills 1987	PTS-225	0.01	6.5	4.15	10.1	0.456	197.1	1.13	18.4	21.3	0.1	1	El Centro, Parachute Test Site	USGS	32.93	-115.7	2
-Superstition Hills 1987	PTS-315	0.01	6.5	3.035	10.9	0.517	235.9	0.65	18.4	21.3	0.1	1	El Centro, Parachute Test Site	USGS	32.93	-115.7	2
-Superstition Hills 1987	SM8-045	0.01	6.5	3.813	12.0	0.73	338.8	0.33	14.9	18.4	5.9	1	Superstition Mountain, Site 8	USGS	32.955	-115.823	2
-Superstition Hills 1987	SM8-135	0.01	6.5	6.762	12.2	0.896	130.4	0.4	14.9	18.4	5.9	1	Superstition Mountain, Site 8	USGS	32.955	-115.823	2
-Superstition Hills 1987	SSW-225	0.01	6.5	0.264	12.9	0.137	25.7	0.47	18.0	21.0	25.6	1	Salton Sea Wildlife Refuge	USGS	33.18	-115.62	4
-Superstition Hills 1987	SSW-315	0.01	6.5	0.381	14.1	0.143	30.4	0.68	18.0	21.0	25.6	1	Salton Sea Wildlife Refuge	USGS	33.18	-115.62	4
-Superstition Hills 1987	WLA-090	0.01	6.5	0.484	15.7	0.187	103.6	0.5	22.9	25.3	24.7	1	Wildlife Liquefaction Array	USGS	33.1	-115.53	3
-Superstition Hills 1987	WLA-360	0.01	6.5	0.765	13.7	0.207	148.1	0.98	22.9	25.3	24.7	1	Wildlife Liquefaction Array	USGS	33.1	-115.53	3
-Superstition Hills 1987	WSM-090	0.0050	6.5	0.803	19.6	0.172	23.5	0.57	15.1	18.6	13.3	1	Westmorland Fire Station	CGS	33.037	-115.623	3
-Superstition Hills 1987	WSM-180	0.0050	6.5	1.177	16.9	0.211	31.2	0.71	15.1	18.6	13.3	1	Westmorland Fire Station	CGS	33.037	-115.623	3
-Westmorland 1981	BRA-225	0.0050	5.8	0.265	8.2	0.169	12.7	0.41	20.8	21.2		1	Brawley Airport	USGS	32.988	-115.509	3
-Westmorland 1981	BRA-315	0.0050	5.8	0.186	8.4	0.171	5.8	0.24	20.8	21.2		1	Brawley Airport	USGS	32.988	-115.509	3
-Westmorland 1981	NIL-000	0.0050	5.8	0.121	12.6	0.105	5.6	0.28	17.4	17.9		1	Niland Fire Station	CGS	33.239	-115.512	3
-Westmorland 1981	NIL-090	0.0050	5.8	0.174	11.4	0.176	6.6	0.26	17.4	17.9		1	Niland Fire Station	CGS	33.239	-115.512	3
-Westmorland 1981	PTS-225	0.0050	5.8	0.707	15.2	0.242	39.3	0.82	23.0	23.3		1	El Centro, Parachute Test Site	USGS	32.93	-115.7	2
-Westmorland 1981	PTS-315	0.0050	5.8	0.491	18.5	0.155	26.7	0.74	23.0	23.3		1	El Centro, Parachute Test Site	USGS	32.93	-115.7	2
-Westmorland 1981	SM8-045	0.0050	5.8	0.038	11.1	0.071	3.6	0.28	25.5	25.8		1	Superstition Mountain, Site 8	USGS	32.955	-115.823	2
-Westmorland 1981	SM8-135	0.0050	5.8	0.079	8.1	0.116	5.0	0.3	25.5	25.8		1	Superstition Mountain, Site 8	USGS	32.955	-115.823	2
-Westmorland 1981	SSW-225	0.0050	5.8	0.523	8.4	0.199	16.4	0.4	5.9	7.1		1	Salton Sea Wildlife Refuge	USGS	33.18	-115.62	4
-Westmorland 1981	SSW-315	0.0050	5.8	0.513	9.2	0.176	12.4	0.39	5.9	7.1		1	Salton Sea Wildlife Refuge	USGS	33.18	-115.62	4
-Westmorland 1981	WSM-090	0.0050	5.8	1.756	6.7	0.368	48.7	0.58	10.9	11.6		1	Westmorland Fire Station	CGS	33.037	-115.623	3
-Westmorland 1981	WSM-180	0.0050	5.8	1.912	5.9	0.496	34.3	0.51	10.9	11.6		1	Westmorland Fire Station	CGS	33.037	-115.623	3
-Whittier Narrows 1987	116-270	0.0050	6.0	0.463	9.5	0.294	17.6	0.39	22.3	24.2	22.5	5	Los Angeles, 116th St. School	CGS	33.929	-118.26	2
-Whittier Narrows 1987	116-360	0.0050	6.0	0.877	6.6	0.396	21.0	0.27	22.3	24.2	22.5	5	Los Angeles, 116th St. School	CGS	33.929	-118.26	2
-Whittier Narrows 1987	AHM-000	0.02	6.0	0.065	13.9	0.06	6.5	0.4	29.6	31.1	24.4	5	Anaheim, 2000 W. Ball Rd.	USC	33.817	-117.951	3
-Whittier Narrows 1987	AHM-090	0.02	6.0	0.047	13.5	0.055	3.4	0.35	29.6	31.1	24.4	5	Anaheim, 2000 W. Ball Rd.	USC	33.817	-117.951	3
-Whittier Narrows 1987	ALF-180	0.0050	6.0	0.805	5.3	0.333	22.0	0.39	6.7	11.6	13.2	5	Alhambra, Fremont School	CGS	34.07	-118.15	2
-Whittier Narrows 1987	ALF-270	0.0050	6.0	0.875	5.8	0.414	16.3	0.29	6.7	11.6	13.2	5	Alhambra, Fremont School	CGS	34.07	-118.15	2
-Whittier Narrows 1987	ALT-000	0.0050	6.0	0.399	4.5	0.299	11.4	0.31	12.9	16.0	17.5	5	Altadena, Eaton Canyon	CGS	34.177	-118.096	3
-Whittier Narrows 1987	ALT-090	0.0050	6.0	0.186	8.1	0.151	5.8	0.24	12.9	16.0	17.5	5	Altadena, Eaton Canyon	CGS	34.177	-118.096	3
-Whittier Narrows 1987	ANG-000	0.02	6.0	0.105	10.6	0.089	4.0	0.34	36.5	37.7	34.5	5	Angeles National Forest, Mill Creek	USC	34.39	-118.08	3
-Whittier Narrows 1987	ANG-090	0.02	6.0	0.074	11.5	0.071	3.2	0.29	36.5	37.7	34.5	5	Angeles National Forest, Mill Creek	USC	34.39	-118.08	3
-Whittier Narrows 1987	ARC-009	0.02	6.0	0.862	3.1	0.3	21.2	0.34	8.6	12.8	12.2	5	Arcadia, 180 Campus Dr.	USC	34.13	-118.036	3
-Whittier Narrows 1987	ARC-279	0.02	6.0	0.202	10.5	0.163	7.1	0.28	8.6	12.8	12.2	5	Arcadia, 180 Campus Dr.	USC	34.13	-118.036	3
-Whittier Narrows 1987	ARL-180	0.0050	6.0	0.109	13.0	0.093	5.4	0.37	38.5	39.7	38.9	5	Arleta, Nordhoff Ave. Fire Station	CGS	34.236	-118.439	2
-Whittier Narrows 1987	ARL-270	0.0050	6.0	0.1	14.1	0.091	4.7	0.41	38.5	39.7	38.9	5	Arleta, Nordhoff Ave. Fire Station	CGS	34.236	-118.439	2
-Whittier Narrows 1987	BAD-000	0.02	6.0	0.155	12.0	0.134	7.7	0.39	15.4	18.1	14.2	5	Covina, 1271 W. Badillo	USC	34.087	-117.915	3
-Whittier Narrows 1987	BAD-270	0.02	6.0	0.079	15.3	0.081	4.1	0.37	15.4	18.1	14.2	5	Covina, 1271 W. Badillo	USC	34.087	-117.915	3
-Whittier Narrows 1987	BHA-000	0.0050	6.0	0.227	13.6	0.142	8.7	0.35	26.7	28.3	27.0	5	Los Angeles, Baldwin Hills	CGS	34.009	-118.361	2
-Whittier Narrows 1987	BHA-090	0.0050	6.0	0.267	14.4	0.159	8.0	0.35	26.7	28.3	27.0	5	Los Angeles, Baldwin Hills	CGS	34.009	-118.361	2
-Whittier Narrows 1987	BIR-090	0.02	6.0	0.447	9.6	0.243	13.9	0.29	16.6	19.1	56.8	5	Downey, 12500 Birchdale	USC	33.92	-118.137	3
-Whittier Narrows 1987	BIR-180	0.02	6.0	0.944	3.8	0.299	37.9	0.51	16.6	19.1	56.8	5	Downey, 12500 Birchdale	USC	33.92	-118.137	3
-Whittier Narrows 1987	BMC-010	0.0050	6.0	0.831	7.2	0.328	13.9	0.31	10.9	14.5	11.4	5	Los Angeles, Bulk Mail Center	USGS	33.996	-118.162	3
-Whittier Narrows 1987	BMC-280	0.0050	6.0	1.226	5.5	0.446	35.6	0.48	10.9	14.5	11.4	5	Los Angeles, Bulk Mail Center	USGS	33.996	-118.162	3
-Whittier Narrows 1987	BRC-000	0.02	6.0	0.215	7.9	0.183	9.9	0.37	18.4	20.7	13.5	5	La Habra, 950 Briarcliff Dr.	USC	33.921	-117.973	3
-Whittier Narrows 1987	BRC-090	0.02	6.0	0.116	11.0	0.131	7.4	0.38	18.4	20.7	13.5	5	La Habra, 950 Briarcliff Dr.	USC	33.921	-117.973	3
-Whittier Narrows 1987	BRD-040	0.0050	6.0	0.191	9.1	0.163	6.2	0.25	23.4	25.3	23.3	5	Brea Dam, downstream	USGS	33.889	-117.926	3
-Whittier Narrows 1987	BRD-130	0.0050	6.0	0.417	7.0	0.313	14.5	0.27	23.4	25.3	23.3	5	Brea Dam, downstream	USGS	33.889	-117.926	3
-Whittier Narrows 1987	BRG-180	0.0050	6.0	0.31	8.7	0.165	13.2	0.49	9.3	13.3	15.5	5	Pasadena, Brown Gym	CGS	34.12	-118.15	3
-Whittier Narrows 1987	BRG-270	0.0050	6.0	0.191	11.1	0.149	9.1	0.47	9.3	13.3	15.5	5	Pasadena, Brown Gym	CGS	34.12	-118.15	3
-Whittier Narrows 1987	BRI-090	0.0050	6.0	0.207	7.9	0.184	10.3	0.42	9.3	13.3	15.5	5	Pasadena, CIT Bridge lab	CGS	34.12	-118.15	3
-Whittier Narrows 1987	BRI-360	0.0050	6.0	0.295	7.1	0.147	15.0	0.54	9.3	13.3	15.5	5	Pasadena, CIT Bridge lab	CGS	34.12	-118.15	3
-Whittier Narrows 1987	BRL-040	0.0050	6.0	0.112	13.8	0.118	6.3	0.32	23.4	25.3	23.3	5	Brea Dam, left abut.	USGS	33.89	-117.93	3
-Whittier Narrows 1987	BRL-130	0.0050	6.0	0.186	10.0	0.149	10.2	0.36	23.4	25.3	23.3	5	Brea Dam, left abut.	USGS	33.89	-117.93	3
-Whittier Narrows 1987	BUE-250	0.02	6.0	0.343	9.8	0.233	15.9	0.38	14.4	17.3	23.7	5	Burbank, N. Buena Vista	USC	34.168	-118.168	3
-Whittier Narrows 1987	BUE-340	0.02	6.0	0.386	9.2	0.19	11.5	0.38	14.4	17.3	23.7	5	Burbank, N. Buena Vista	USC	34.168	-118.168	3
-Whittier Narrows 1987	CAS-000	0.02	6.0	0.68	8.0	0.332	27.1	0.51	21.0	23.0	16.9	5	Compton, 14637 Castlegate St.	USC	33.899	-118.196	3
-Whittier Narrows 1987	CAS-270	0.02	6.0	0.536	8.4	0.333	13.7	0.31	21.0	23.0	16.9	5	Compton, 14637 Castlegate St.	USC	33.899	-118.196	3
-Whittier Narrows 1987	CAT-090	0.02	6.0	0.042	20.6	0.042	3.8	0.43	32.8	34.1	28.1	5	Carson, 25536 Catskill Ave.	USC	33.812	-118.27	3
-Whittier Narrows 1987	CAT-180	0.02	6.0	0.038	22.8	0.059	2.4	0.38	32.8	34.1	28.1	5	Carson, 25536 Catskill Ave.	USC	33.812	-118.27	3
-Whittier Narrows 1987	CCB-270	0.0050	6.0	0.232	8.7	0.177	8.1	0.33	9.3	13.3	15.5	5	Pasadena, CIT, California Blvd.	CGS	34.12	-118.15	3
-Whittier Narrows 1987	CCB-360	0.0050	6.0	0.618	5.0	0.271	15.4	0.35	9.3	13.3	15.5	5	Pasadena, CIT, California Blvd.	CGS	34.12	-118.15	3
-Whittier Narrows 1987	CCN-000	0.0050	6.0	0.065	17.1	0.078	3.1	0.31	31.3	32.7	31.4	5	Los Angeles, Century City CC North	CGS	34.063	-118.418	2
-Whittier Narrows 1987	CCN-090	0.0050	6.0	0.153	15.7	0.111	6.2	0.34	31.3	32.7	31.4	5	Los Angeles, Century City CC North	CGS	34.063	-118.418	2
-Whittier Narrows 1987	CCS-000	0.0050	6.0	0.049	20.2	0.051	3.5	0.4	31.1	32.5	31.3	5	Los Angeles, Century City CC South	CGS	34.062	-118.416	3
-Whittier Narrows 1987	CCS-090	0.0050	6.0	0.064	17.2	0.063	5.4	0.45	31.1	32.5	31.3	5	Los Angeles, Century City CC South	CGS	34.062	-118.416	3
-Whittier Narrows 1987	CEN-155	0.02	6.0	0.058	14.8	0.059	3.1	0.26	33.2	34.5	27.7	5	Los Angeles, 3960 Centinela St.	USC	34.001	-118.431	3
-Whittier Narrows 1987	CEN-245	0.02	6.0	0.027	13.2	0.044	2.6	0.3	33.2	34.5	27.7	5	Los Angeles, 3960 Centinela St.	USC	34.001	-118.431	3
-Whittier Narrows 1987	CIR-090	0.0050	6.0	0.313	7.9	0.239	8.4	0.27	9.3	13.3	15.5	5	Pasadena, CIT Indust. Rel	CGS	34.12	-118.15	3
-Whittier Narrows 1987	CIR-180	0.0050	6.0	0.459	5.6	0.228	13.8	0.33	9.3	13.3	15.5	5	Pasadena, CIT Indust. Rel	CGS	34.12	-118.15	3
-Whittier Narrows 1987	CLJ-090	0.0050	6.0	0.04	15.0	0.06	1.5	0.17	46.9	47.9	44.3	5	Rancho Cucamonga, Law & Justice Center	CGS	34.104	-117.574	2
-Whittier Narrows 1987	CLJ-360	0.0050	6.0	0.041	15.0	0.05	1.4	0.18	46.9	47.9	44.3	5	Rancho Cucamonga, Law & Justice Center	CGS	34.104	-117.574	2
-Whittier Narrows 1987	CND-040	0.0050	6.0	0.217	7.3	0.2	6.5	0.26	27.2	28.8	26.8	5	Brea, Carbon Canyon Dam, left abut.	ACOE	33.916	-117.842	1
-Whittier Narrows 1987	CND-130	0.0050	6.0	0.196	6.8	0.221	8.7	0.26	27.2	28.8	26.8	5	Brea, Carbon Canyon Dam, left abut.	ACOE	33.916	-117.842	1
-Whittier Narrows 1987	CNP-106	0.02	6.0	0.181	14.5	0.139	7.9	0.34	51.4	52.3	47.4	5	Canoga Park, 7769 Topanga Canyon Blvd.	USC	34.212	-118.606	3
-Whittier Narrows 1987	CNP-196	0.02	6.0	0.225	11.5	0.116	8.1	0.35	51.4	52.3	47.4	5	Canoga Park, 7769 Topanga Canyon Blvd.	USC	34.212	-118.606	3
-Whittier Narrows 1987	CO2-092	0.02	6.0	0.349	10.5	0.177	14.2	0.38	32.1	33.5	28.7	5	Studio City, Coldwater Canyon	USC	34.146	-118.412	3
-Whittier Narrows 1987	CO2-182	0.02	6.0	0.451	8.3	0.231	13.8	0.36	32.1	33.5	28.7	5	Studio City, Coldwater Canyon	USC	34.146	-118.412	3
-Whittier Narrows 1987	COM-140	0.02	6.0	0.226	11.4	0.195	8.8	0.29	14.8	17.6	10.5	5	Hacienda Heights, 16750 Colima Rd.	USC	33.99	-117.943	3
-Whittier Narrows 1987	COM-230	0.02	6.0	0.191	11.2	0.201	6.5	0.26	14.8	17.6	10.5	5	Hacienda Heights, 16750 Colima Rd.	USC	33.99	-117.943	3
-Whittier Narrows 1987	CWC-180	0.02	6.0	0.195	11.1	0.116	6.2	0.44	34.1	35.4	30.8	5	North Hollywood, 6850 Coldwater Canyon Ave.	USC	34.194	-118.412	2
-Whittier Narrows 1987	CWC-270	0.02	6.0	0.283	10.2	0.25	14.3	0.4	34.1	35.4	30.8	5	North Hollywood, 6850 Coldwater Canyon Ave.	USC	34.194	-118.412	2
-Whittier Narrows 1987	CYP-053	0.02	6.0	0.168	8.1	0.156	8.1	0.36	13.5	16.5	11.4	5	Los Angeles, Divine Savior School, 624 Cypress	USC	34.088	-118.222	2
-Whittier Narrows 1987	CYP-143	0.02	6.0	0.113	9.8	0.137	9.1	0.49	13.5	16.5	11.4	5	Los Angeles, Divine Savior School, 624 Cypress	USC	34.088	-118.222	2
-Whittier Narrows 1987	DEL-000	0.02	6.0	0.644	11.2	0.277	28.5	0.6	23.9	25.7	20.9	5	Lakewood, 6701 Del Amo Blvd.	USC	33.846	-118.099	3
-Whittier Narrows 1987	DEL-090	0.02	6.0	0.272	12.0	0.178	11.8	0.36	23.9	25.7	20.9	5	Lakewood, 6701 Del Amo Blvd.	USC	33.846	-118.099	3
-Whittier Narrows 1987	DWN-180	0.0050	6.0	0.433	9.3	0.221	28.8	0.59	17.2	19.7	18.3	5	Downey, County Maint. Bldg.	CGS	33.924	-118.167	3
-Whittier Narrows 1987	DWN-270	0.0050	6.0	0.233	12.3	0.141	13.4	0.48	17.2	19.7	18.3	5	Downey, County Maint. Bldg.	CGS	33.924	-118.167	3
-Whittier Narrows 1987	EJS-048	0.02	6.0	1.301	5.8	0.426	38.7	0.39	13.0	16.1	10.8	5	Santa Fe Springs, 11500 E. Joslin St.	USC	33.944	-118.087	3
-Whittier Narrows 1987	EJS-318	0.02	6.0	1.28	6.0	0.443	22.2	0.3	13.0	16.1	10.8	5	Santa Fe Springs, 11500 E. Joslin St.	USC	33.944	-118.087	3
-Whittier Narrows 1987	EUC-022	0.02	6.0	0.067	16.3	0.071	4.1	0.37	40.1	41.2	35.0	5	Fountain Valley, Euclid	USC	33.719	-117.938	3
-Whittier Narrows 1987	EUC-292	0.02	6.0	0.052	17.6	0.062	6.0	0.46	40.1	41.2	35.0	5	Fountain Valley, Euclid	USC	33.719	-117.938	3
-Whittier Narrows 1987	FAI-000	0.02	6.0	0.176	11.4	0.12	6.7	0.34	6.6	11.6	9.8	5	El Monte, 11338 Fairview Ave.	USC	34.093	-118.019	3
-Whittier Narrows 1987	FAI-270	0.02	6.0	0.483	8.8	0.228	14.9	0.42	6.6	11.6	9.8	5	El Monte, 11338 Fairview Ave.	USC	34.093	-118.019	3
-Whittier Narrows 1987	FAR-000	0.02	6.0	0.023	10.1	0.048	2.2	0.28	33.0	34.3	28.5	5	Los Angeles, 700 N. Faring Rd.	USC	34.09	-118.435	3
-Whittier Narrows 1987	FAR-090	0.02	6.0	0.033	10.9	0.053	3.0	0.28	33.0	34.3	28.5	5	Los Angeles, 700 N. Faring Rd.	USC	34.09	-118.435	3
-Whittier Narrows 1987	FEA-000	0.0050	6.0	0.052	9.3	0.071	3.6	0.31	40.3	41.4	38.6	5	Featherly Park, Park Maint. Bldg.	CGS	33.869	-117.709	2
-Whittier Narrows 1987	FEA-090	0.0050	6.0	0.07	7.0	0.087	5.1	0.32	40.3	41.4	38.6	5	Featherly Park, Park Maint. Bldg.	CGS	33.869	-117.709	2
-Whittier Narrows 1987	FIG-058	0.02	6.0	0.152	8.6	0.151	8.0	0.34	11.6	15.0	11.4	5	Los Angeles, 5921 N. Figueroa St.	USC	34.111	-118.189	2
-Whittier Narrows 1987	FIG-328	0.02	6.0	0.397	5.7	0.166	13.1	0.5	11.6	15.0	11.4	5	Los Angeles, 5921 N. Figueroa St.	USC	34.111	-118.189	2
-Whittier Narrows 1987	FLE-144	0.02	6.0	0.445	7.7	0.171	19.3	0.52	16.4	19.0	14.4	5	Los Angeles, 3036 Fletcher Dr.	USC	34.115	-118.244	3
-Whittier Narrows 1987	FLE-234	0.02	6.0	0.37	6.5	0.213	12.5	0.39	16.4	19.0	14.4	5	Los Angeles, 3036 Fletcher Dr.	USC	34.115	-118.244	3
-Whittier Narrows 1987	FLO-020	0.02	6.0	0.128	9.4	0.115	7.1	0.39	23.3	25.2	17.9	5	Brea, 200 S. Flower Ave.	USC	33.916	-117.896	3
-Whittier Narrows 1987	GAR-060	0.0050	6.0	0.954	5.7	0.374	15.5	0.27	3.1	10.0	10.5	5	Garvey Reservoir Control Building	MWD	34.05	-118.11	2
-Whittier Narrows 1987	GAR-330	0.0050	6.0	1.148	3.6	0.477	19.9	0.28	3.1	10.0	10.5	5	Garvey Reservoir Control Building	MWD	34.05	-118.11	2
-Whittier Narrows 1987	GLE-180	0.02	6.0	0.063	11.0	0.089	4.5	0.42	31.0	32.4	27.5	5	Sunland, 10965 Mt. Gleason Ave.	USC	34.269	-118.303	2
-Whittier Narrows 1987	GLE-270	0.02	6.0	0.054	12.3	0.072	4.0	0.44	31.0	32.4	27.5	5	Sunland, 10965 Mt. Gleason Ave.	USC	34.269	-118.303	2
-Whittier Narrows 1987	GLP-177	0.02	6.0	0.431	6.5	0.296	17.5	0.34	20.8	22.9	19.0	5	Glendale, 320 Las Palmas Ave.	USC	34.2	-118.231	3
-Whittier Narrows 1987	GLP-267	0.02	6.0	0.252	7.3	0.166	8.7	0.29	20.8	22.9	19.0	5	Glendale, 320 Las Palmas Ave.	USC	34.2	-118.231	3
-Whittier Narrows 1987	GR2-090	0.02	6.0	0.385	8.8	0.191	8.7	0.25	19.5	21.7	14.5	5	Los Angeles, 4312 S. Grand Ave.	USC	34.005	-118.279	3
-Whittier Narrows 1987	GR2-180	0.02	6.0	0.282	11.1	0.149	8.5	0.3	19.5	21.7	14.5	5	Los Angeles, 4312 S. Grand Ave.	USC	34.005	-118.279	3
-Whittier Narrows 1987	GRA-015	0.02	6.0	0.092	17.5	0.076	5.5	0.45	19.3	21.5	17.1	5	Covina, 656 S. Grand Ave.	USC	34.078	-117.871	3
-Whittier Narrows 1987	GRA-105	0.02	6.0	0.084	18.9	0.068	4.1	0.43	19.3	21.5	17.1	5	Covina, 656 S. Grand Ave.	USC	34.078	-117.871	3
-Whittier Narrows 1987	GRN-180	0.02	6.0	0.831	5.1	0.304	23.1	0.51	3.6	10.2	9.0	5	San Gabriel, 600 E. Grand Ave.	USC	34.091	-118.093	1
-Whittier Narrows 1987	GRN-270	0.02	6.0	0.376	8.3	0.199	11.4	0.29	3.6	10.2	9.0	5	San Gabriel, 600 E. Grand Ave.	USC	34.091	-118.093	1
-Whittier Narrows 1987	HLB-000	0.0050	6.0	0.068	23.7	0.058	4.2	0.56	35.8	37.0	34.2	5	Long Beach, Harbor Admin.	CGS	33.754	-118.2	3
-Whittier Narrows 1987	HLB-090	0.0050	6.0	0.086	24.9	0.071	7.3	0.59	35.8	37.0	34.2	5	Long Beach, Harbor Admin.	CGS	33.754	-118.2	3
-Whittier Narrows 1987	HLY-000	0.0050	6.0	0.257	11.5	0.221	9.0	0.31	24.2	26.0	25.2	5	Los Angeles, Hollywood Stor. Bldg. Grounds	CGS	34.089	-118.338	3
-Whittier Narrows 1987	HLY-090	0.0050	6.0	0.159	13.8	0.124	6.9	0.4	24.2	26.0	25.2	5	Los Angeles, Hollywood Stor. Bldg. Grounds	CGS	34.089	-118.338	3
-Whittier Narrows 1987	ING-000	0.0050	6.0	0.5	7.7	0.299	9.0	0.21	25.3	27.0	25.2	5	Inglewood, Union Oil Yard	CGS	33.905	-118.279	2
-Whittier Narrows 1987	ING-090	0.0050	6.0	0.339	11.3	0.247	18.1	0.44	25.3	27.0	25.2	5	Inglewood, Union Oil Yard	CGS	33.905	-118.279	2
-Whittier Narrows 1987	JAB-207	0.02	6.0	0.372	8.2	0.219	18.8	0.4	12.9	16.0	9.8	5	Bell Gardens, 7420 Jaboneria	USC	33.965	-118.158	3
-Whittier Narrows 1987	JAB-297	0.02	6.0	0.578	10.4	0.212	21.9	0.44	12.9	16.0	9.8	5	Bell Gardens, 7420 Jaboneria	USC	33.965	-118.158	3
-Whittier Narrows 1987	KAG-000	0.0050	6.0	0.137	11.5	0.166	6.2	0.38	37.1	38.3	37.9	5	Pacoima, Kagel Canyon	CGS	34.288	-118.375	2
-Whittier Narrows 1987	KAG-090	0.0050	6.0	0.189	9.7	0.164	6.8	0.36	37.1	38.3	37.9	5	Pacoima, Kagel Canyon	CGS	34.288	-118.375	2
-Whittier Narrows 1987	KEC-270	0.0050	6.0	0.174	11.6	0.152	5.1	0.28	9.3	13.3	15.5	5	Pasadena, CIT Keck Lab	CGS	34.12	-118.15	3
-Whittier Narrows 1987	KEC-360	0.0050	6.0	0.267	5.2	0.188	14.1	0.5	9.3	13.3	15.5	5	Pasadena, CIT Keck Lab	CGS	34.12	-118.15	3
-Whittier Narrows 1987	KRE-090	0.0050	6.0	0.087	3.4	0.112	8.0	0.46	9.3	13.3	17.4	5	Pasadena, CIT, Kresge Lab	CGS	34.148	-118.171	3
-Whittier Narrows 1987	KRE-360	0.0050	6.0	0.049	6.2	0.089	3.7	0.32	9.3	13.3	17.4	5	Pasadena, CIT, Kresge Lab	CGS	34.148	-118.171	3
-Whittier Narrows 1987	LAS-160	0.02	6.0	0.025	7.1	0.065	2.3	0.23	65.5	66.2	46.3	5	Malibu, Las Flores Canyon	USC	34.024	-118.787	2
-Whittier Narrows 1987	LAS-250	0.02	6.0	0.022	7.4	0.055	2.2	0.22	65.5	66.2	46.3	5	Malibu, Las Flores Canyon	USC	34.024	-118.787	2
-Whittier Narrows 1987	LBR-000	0.0050	6.0	0.259	10.6	0.159	16.9	0.53	26.7	28.3	26.0	5	Long Beach, Rancho Los Cerritos	CGS	33.84	-118.194	3
-Whittier Narrows 1987	LBR-090	0.0050	6.0	0.368	9.9	0.194	17.1	0.48	26.7	28.3	26.0	5	Long Beach, Rancho Los Cerritos	CGS	33.84	-118.194	3
-Whittier Narrows 1987	LMD-010	0.0050	6.0	0.038	11.4	0.067	2.5	0.3	69.9	70.5	69.5	5	Lancaster, Medical Office	CGS	34.688	-118.156	3
-Whittier Narrows 1987	LMD-100	0.0050	6.0	0.046	10.7	0.071	2.8	0.29	69.9	70.5	69.5	5	Lancaster, Medical Office	CGS	34.688	-118.156	3
-Whittier Narrows 1987	LOA-092	0.02	6.0	0.047	12.5	0.066	5.3	0.46	30.7	32.1	25.1	5	Lawndale, 14801 Osage Ave.	USC	33.897	-118.346	3
-Whittier Narrows 1987	LOA-182	0.02	6.0	0.052	12.2	0.053	5.4	0.46	30.7	32.1	25.1	5	Lawndale, 14801 Osage Ave.	USC	33.897	-118.346	3
-Whittier Narrows 1987	LOS-000	0.02	6.0	0.11	8.8	0.109	7.4	0.34	51.0	51.9	46.4	5	Canyon Country, 16628 W. Lost Canyon Rd.	USC	34.419	-118.426	3
-Whittier Narrows 1987	LOS-270	0.02	6.0	0.09	8.6	0.103	7.0	0.43	51.0	51.9	46.4	5	Canyon Country, 16628 W. Lost Canyon Rd.	USC	34.419	-118.426	3
-Whittier Narrows 1987	LUR-090	0.0050	6.0	0.747	7.0	0.36	9.8	0.22	9.3	13.3	15.5	5	Pasadena, CIT, Lura St.	CGS	34.12	-118.15	3
-Whittier Narrows 1987	LUR-180	0.0050	6.0	0.946	5.4	0.352	18.1	0.3	9.3	13.3	15.5	5	Pasadena, CIT, Lura St.	CGS	34.12	-118.15	3
-Whittier Narrows 1987	LV5-000	0.0050	6.0	0.03	13.9	0.047	2.0	0.28	61.6	62.3	61.3	5	Leona Valley #5, Ritter Ranch	CGS	34.6	-118.241	3
-Whittier Narrows 1987	LV5-090	0.0050	6.0	0.026	13.8	0.056	2.7	0.3	61.6	62.3	61.3	5	Leona Valley #5, Ritter Ranch	CGS	34.6	-118.241	3
-Whittier Narrows 1987	LV6-000	0.0050	6.0	0.022	14.1	0.036	1.6	0.23	62.1	62.8	64.8	5	Leona Valley #6	CGS	34.604	-118.244	3
-Whittier Narrows 1987	LV6-090	0.0050	6.0	0.027	14.4	0.053	1.9	0.25	62.1	62.8	64.8	5	Leona Valley #6	CGS	34.604	-118.244	3
-Whittier Narrows 1987	MAN-090	0.02	6.0	0.058	20.5	0.054	5.8	0.54	34.6	35.9	28.9	5	Manhattan Beach, 1400 Manhattan Beach Blvd.	USC	33.886	-118.389	3
-Whittier Narrows 1987	MTW-000	0.0050	6.0	0.147	10.1	0.123	3.3	0.19	18.2	20.5	21.2	5	Mount Wilson, Caltech Seismic Station	CGS	34.224	-118.057	1
-Whittier Narrows 1987	MTW-090	0.0050	6.0	0.261	8.3	0.186	4.6	0.16	18.2	20.5	21.2	5	Mount Wilson, Caltech Seismic Station	CGS	34.224	-118.057	1
-Whittier Narrows 1987	MU2-032	0.02	6.0	0.081	11.7	0.089	5.2	0.3	31.0	32.4	27.2	5	Beverly Hills, 12520 Mulholland Dr.	USC	34.127	-118.405	2
-Whittier Narrows 1987	MU2-122	0.02	6.0	0.131	9.6	0.138	6.5	0.3	31.0	32.4	27.2	5	Beverly Hills, 12520 Mulholland Dr.	USC	34.127	-118.405	2
-Whittier Narrows 1987	MUD-090	0.0050	6.0	0.22	11.0	0.137	9.4	0.43	9.3	13.3	15.5	5	Pasadena, CIT Mudd Lab	CGS	34.12	-118.15	3
-Whittier Narrows 1987	MUD-360	0.0050	6.0	0.31	8.9	0.163	15.1	0.51	9.3	13.3	15.5	5	Pasadena, CIT Mudd Lab	CGS	34.12	-118.15	3
-Whittier Narrows 1987	MUL-009	0.02	6.0	0.103	16.1	0.104	6.5	0.45	34.2	35.5	30.3	5	Beverly Hills, 14145 Mulholland Dr.	USC	34.132	-118.44	2
-Whittier Narrows 1987	MUL-279	0.02	6.0	0.171	8.9	0.126	10.4	0.46	34.2	35.5	30.3	5	Beverly Hills, 14145 Mulholland Dr.	USC	34.132	-118.44	2
-Whittier Narrows 1987	NHO-180	0.02	6.0	0.135	8.4	0.127	8.5	0.38	10.6	14.2	11.9	5	Baldwin Park, 3699 N. Holly Ave.	USC	34.1	-117.974	3
-Whittier Narrows 1987	NHO-270	0.02	6.0	0.059	11.9	0.061	4.4	0.39	10.6	14.2	11.9	5	Baldwin Park, 3699 N. Holly Ave.	USC	34.1	-117.974	3
-Whittier Narrows 1987	NOR-090	0.0050	6.0	0.131	12.5	0.091	9.3	0.38	16.2	18.8	15.4	5	Norwalk, 12400 Imperial Hwy.	USGS	33.915	-118.067	3
-Whittier Narrows 1987	NOR-360	0.0050	6.0	0.341	9.6	0.24	21.6	0.51	16.2	18.8	15.4	5	Norwalk, 12400 Imperial Hwy.	USGS	33.915	-118.067	3
-Whittier Narrows 1987	NWH-180	0.0050	6.0	0.034	17.1	0.044	2.9	0.41	55.3	56.1	55.2	5	Newhall, LA County Fire Station	CGS	34.39	-118.53	3
-Whittier Narrows 1987	NWH-270	0.0050	6.0	0.044	14.6	0.06	2.9	0.4	55.3	56.1	55.2	5	Newhall, LA County Fire Station	CGS	34.39	-118.53	3
-Whittier Narrows 1987	NYA-090	0.02	6.0	0.13	5.9	0.134	11.5	0.4	25.4	27.1	22.7	5	La Crescenta, 4747 New York Ave.	USC	34.238	-118.254	3
-Whittier Narrows 1987	NYA-180	0.02	6.0	0.237	3.7	0.141	10.9	0.48	25.4	27.1	22.7	5	La Crescenta, 4747 New York Ave.	USC	34.238	-118.254	3
-Whittier Narrows 1987	OAK-080	0.02	6.0	0.069	12.7	0.092	3.4	0.31	20.0	22.1	21.0	5	Glendora, 120 N. Oakbank	USC	34.137	-117.883	2
-Whittier Narrows 1987	OAK-170	0.02	6.0	0.103	12.6	0.11	4.9	0.32	20.0	22.1	21.0	5	Glendora, 120 N. Oakbank	USC	34.137	-117.883	2
-Whittier Narrows 1987	OBR-270	0.0050	6.0	1.05	8.0	0.45	16.1	0.27	9.5	13.4	13.9	5	Los Angeles, Obregon Park	CGS	34.037	-118.178	2
-Whittier Narrows 1987	OBR-360	0.0050	6.0	1.266	7.2	0.4	22.9	0.26	9.5	13.4	13.9	5	Los Angeles, Obregon Park	CGS	34.037	-118.178	2
-Whittier Narrows 1987	OLD-000	0.02	6.0	0.418	4.7	0.231	10.5	0.28	12.2	15.5	14.5	5	Pasadena, Old House Rd.	USC	34.171	-118.079	3
-Whittier Narrows 1987	OLD-090	0.02	6.0	0.287	6.9	0.258	8.2	0.28	12.2	15.5	14.5	5	Pasadena, Old House Rd.	USC	34.171	-118.079	3
-Whittier Narrows 1987	OR2-010	0.02	6.0	0.551	8.3	0.255	32.9	0.65	21.9	23.9	18.3	5	Long Beach, Orange Ave.	USC	33.881	-118.176	3
-Whittier Narrows 1987	OR2-280	0.02	6.0	0.307	11.8	0.149	10.5	0.37	21.9	23.9	18.3	5	Long Beach, Orange Ave.	USC	33.881	-118.176	3
-Whittier Narrows 1987	ORN-006	0.0050	6.0	0.26	8.1	0.185	10.2	0.29	22.7	24.6	23.0	5	Orange County Reservoir, Earth Dam Abut.	USGS	33.936	-117.884	2
-Whittier Narrows 1987	ORN-096	0.0050	6.0	0.206	9.6	0.198	6.1	0.22	22.7	24.6	23.0	5	Orange County Reservoir, Earth Dam Abut.	USGS	33.936	-117.884	2
-Whittier Narrows 1987	ORR-000	0.0050	6.0	0.081	13.1	0.071	4.3	0.42	76.1	76.7	78.3	5	Castaic, Old Ridge Route	CGS	34.564	-118.642	2
-Whittier Narrows 1987	ORR-090	0.0050	6.0	0.086	11.6	0.065	4.5	0.42	76.1	76.7	78.3	5	Castaic, Old Ridge Route	CGS	34.564	-118.642	2
-Whittier Narrows 1987	PAS-180	0.0050	6.0	0.217	6.8	0.174	11.6	0.47	9.5	13.4	15.4	5	Pasadena, CIT Athenaeum	CGS	34.14	-118.12	2
-Whittier Narrows 1987	PAS-270	0.0050	6.0	0.101	11.0	0.101	6.0	0.41	9.5	13.4	15.4	5	Pasadena, CIT Athenaeum	CGS	34.14	-118.12	2
-Whittier Narrows 1987	PKC-045	0.02	6.0	0.174	10.4	0.119	7.9	0.3	37.8	39.0	34.0	5	Pacoima, Kagel Canyon, USC	USC	34.25	-118.42	2
-Whittier Narrows 1987	PKC-315	0.02	6.0	0.16	7.1	0.133	5.5	0.26	37.8	39.0	34.0	5	Pacoima, Kagel Canyon, USC	USC	34.25	-118.42	2
-Whittier Narrows 1987	PMN-012	0.0050	6.0	0.034	15.3	0.067	3.4	0.28	30.6	32.0	28.8	5	Pomona, 4th & Locust St.	CGS	34.056	-117.748	3
-Whittier Narrows 1987	PMN-102	0.0050	6.0	0.034	14.2	0.056	2.4	0.3	30.6	32.0	28.8	5	Pomona, 4th & Locust St.	CGS	34.056	-117.748	3
-Whittier Narrows 1987	REC-090	0.0050	6.0	0.045	23.0	0.058	3.0	0.45	31.8	33.2	30.5	5	Long Beach, Recreation Park	CGS	33.778	-118.133	3
-Whittier Narrows 1987	REC-180	0.0050	6.0	0.06	22.5	0.051	6.9	0.55	31.8	33.2	30.5	5	Long Beach, Recreation Park	CGS	33.778	-118.133	3
-Whittier Narrows 1987	RGR-000	0.0050	6.0	0.046	7.7	0.07	3.8	0.39	86.7	87.2	86.0	5	Rosamond, Goode Ranch	CGS	34.827	-118.265	3
-Whittier Narrows 1987	RGR-090	0.0050	6.0	0.032	9.4	0.065	3.2	0.34	86.7	87.2	86.0	5	Rosamond, Goode Ranch	CGS	34.827	-118.265	3
-Whittier Narrows 1987	RIM-015	0.02	6.0	0.163	11.2	0.143	6.2	0.34	15.4	18.1	11.9	5	La Puente, 504 Rimgrove Ave.	USC	34.026	-117.918	3
-Whittier Narrows 1987	RIM-105	0.02	6.0	0.152	14.2	0.118	5.9	0.34	15.4	18.1	11.9	5	La Puente, 504 Rimgrove Ave.	USC	34.026	-117.918	3
-Whittier Narrows 1987	RIV-180	0.0050	6.0	0.024	15.4	0.05	1.4	0.17	59.7	60.5	56.8	5	Riverside, Airport	CGS	33.951	-117.446	2
-Whittier Narrows 1987	RIV-270	0.0050	6.0	0.031	12.0	0.047	1.4	0.17	59.7	60.5	56.8	5	Riverside, Airport	CGS	33.951	-117.446	2
-Whittier Narrows 1987	RO2-090	0.02	6.0	0.161	12.6	0.105	7.2	0.4	37.9	39.1	33.0	5	Panorama City, Roscoe 	USC	34.222	-118.442	2
-Whittier Narrows 1987	RO2-180	0.02	6.0	0.187	11.3	0.108	7.3	0.39	37.9	39.1	33.0	5	Panorama City, Roscoe 	USC	34.222	-118.442	2
-Whittier Narrows 1987	RO3-000	0.02	6.0	0.286	8.3	0.202	8.4	0.3	36.2	37.4	32.6	5	Sun Valley, 13248 Roscoe Blvd.	USC	34.221	-118.421	3
-Whittier Narrows 1987	RO3-090	0.02	6.0	0.228	8.9	0.223	13.4	0.36	36.2	37.4	32.6	5	Sun Valley, 13248 Roscoe Blvd.	USC	34.221	-118.421	3
-Whittier Narrows 1987	SAY-045	0.02	6.0	0.042	13.9	0.051	4.3	0.41	42.8	43.8	38.6	5	Sylmar, Sayre St.	USC	34.306	-118.438	2
-Whittier Narrows 1987	SAY-315	0.02	6.0	0.037	14.6	0.046	2.7	0.39	42.8	43.8	38.6	5	Sylmar, Sayre St.	USC	34.306	-118.438	2
-Whittier Narrows 1987	SER-000	0.02	6.0	0.02	11.3	0.046	1.4	0.23	35.9	37.1	30.1	5	Villa Park, 17852 Serrano Ave.	USC	33.821	-117.818	3
-Whittier Narrows 1987	SER-270	0.02	6.0	0.05	10.0	0.072	2.6	0.27	35.9	37.1	30.1	5	Villa Park, 17852 Serrano Ave.	USC	33.821	-117.818	3
-Whittier Narrows 1987	SMA-270	0.0050	6.0	0.131	11.4	0.128	5.6	0.27	7.6	12.2	14.7	5	San Marino, Southwestern Academy 	CGS	34.115	-118.13	2
-Whittier Narrows 1987	SMA-360	0.0050	6.0	0.303	7.4	0.204	12.8	0.42	7.6	12.2	14.7	5	San Marino, Southwestern Academy 	CGS	34.115	-118.13	2
-Whittier Narrows 1987	SOR-225	0.02	6.0	0.188	11.3	0.137	10.5	0.39	11.7	15.1	10.5	5	West Covina, 1307 S. Orange Ave.	USC	34.064	-117.952	3
-Whittier Narrows 1987	SOR-315	0.02	6.0	0.191	10.6	0.179	7.3	0.28	11.7	15.1	10.5	5	West Covina, 1307 S. Orange Ave.	USC	34.064	-117.952	3
-Whittier Narrows 1987	STC-090	0.02	6.0	0.24	16.4	0.161	8.6	0.35	43.6	44.6	39.8	5	Northridge, 17645 Saticoy St.	USC	34.209	-118.517	3
-Whittier Narrows 1987	STC-180	0.02	6.0	0.16	19.8	0.118	5.1	0.37	43.6	44.6	39.8	5	Northridge, 17645 Saticoy St.	USC	34.209	-118.517	3
-Whittier Narrows 1987	STN-020	0.02	6.0	0.111	11.4	0.099	6.0	0.28	25.5	27.2	20.8	5	Los Angeles, 5360 Saturn St.	USC	34.046	-118.355	3
-Whittier Narrows 1987	STN-110	0.02	6.0	0.14	12.0	0.141	4.5	0.24	25.5	27.2	20.8	5	Los Angeles, 5360 Saturn St.	USC	34.046	-118.355	3
-Whittier Narrows 1987	SUN-190	0.02	6.0	0.036	11.5	0.063	2.1	0.22	43.9	44.9	38.6	5	Pacific Palisades, 17281 Sunset Blvd.	USC	34.042	-118.554	2
-Whittier Narrows 1987	SUN-280	0.02	6.0	0.025	12.9	0.038	2.0	0.29	43.9	44.9	38.6	5	Pacific Palisades, 17281 Sunset Blvd.	USC	34.042	-118.554	2
-Whittier Narrows 1987	SUV-220	0.02	6.0	0.038	10.3	0.075	3.4	0.32	32.8	34.1	29.3	5	Sun Valley, 8943 Glenoaks Blvd.	USC	34.235	-118.367	2
-Whittier Narrows 1987	SUV-310	0.02	6.0	0.054	8.1	0.074	3.3	0.24	32.8	34.1	29.3	5	Sun Valley, 8943 Glenoaks Blvd.	USC	34.235	-118.367	2
-Whittier Narrows 1987	SYL-000	0.0050	6.0	0.056	14.9	0.065	4.4	0.39	44.7	45.7	47.7	5	Sylmar, County Hosp. Parking Lot	CGS	34.326	-118.444	3
-Whittier Narrows 1987	SYL-090	0.0050	6.0	0.059	13.7	0.055	3.2	0.36	44.7	45.7	47.7	5	Sylmar, County Hosp. Parking Lot	CGS	34.326	-118.444	3
-Whittier Narrows 1987	TAR-000	0.0050	6.0	1.952	6.5	0.449	20.1	0.32	43.4	44.4	43.0	5	Tarzana, Cedar Hill Nursery A	CGS	34.16	-118.534	2
-Whittier Narrows 1987	TAR-090	0.0050	6.0	2.43	4.9	0.644	22.9	0.3	43.4	44.4	43.0	5	Tarzana, Cedar Hill Nursery A	CGS	34.16	-118.534	2
-Whittier Narrows 1987	TOR-090	0.02	6.0	0.029	28.2	0.031	2.6	0.53	36.8	38.0	31.4	5	Torrance, W. 226th St.	USC	33.823	-118.356	4
-Whittier Narrows 1987	TOR-180	0.02	6.0	0.032	24.1	0.051	2.4	0.43	36.8	38.0	31.4	5	Torrance, W. 226th St.	USC	33.823	-118.356	4
-Whittier Narrows 1987	TUJ-262	0.02	6.0	0.116	10.6	0.126	4.5	0.19	28.4	29.9	25.5	5	Big Tujunga Station, Angeles National Forest	USC	34.286	-118.225	2
-Whittier Narrows 1987	TUJ-352	0.02	6.0	0.153	8.0	0.178	6.6	0.21	28.4	29.9	25.5	5	Big Tujunga Station, Angeles National Forest	USC	34.286	-118.225	2
-Whittier Narrows 1987	VAS-000	0.0050	6.0	0.027	9.1	0.06	2.1	0.2	52.5	53.4	52.4	5	Vasquez Rocks Park	CGS	34.49	-118.32	2
-Whittier Narrows 1987	VAS-090	0.0050	6.0	0.028	8.4	0.06	2.3	0.19	52.5	53.4	52.4	5	Vasquez Rocks Park	CGS	34.49	-118.32	2
-Whittier Narrows 1987	VCS-083	0.02	6.0	0.186	11.9	0.146	13.1	0.39	15.3	18.0	10.8	5	Los Angeles, 2369 E. Vernon Ave.	USC	34.004	-118.23	3
-Whittier Narrows 1987	VCS-173	0.02	6.0	0.219	11.1	0.175	8.8	0.36	15.3	18.0	10.8	5	Los Angeles, 2369 E. Vernon Ave.	USC	34.004	-118.23	3
-Whittier Narrows 1987	VER-007	0.0050	6.0	0.698	8.0	0.273	18.4	0.45	13.1	16.2	13.1	5	Vernon, 4814 Loma Vista Ave.	USGS	34.0	-118.2	3
-Whittier Narrows 1987	VER-277	0.0050	6.0	0.592	8.2	0.245	20.3	0.43	13.1	16.2	13.1	5	Vernon, 4814 Loma Vista Ave.	USGS	34.0	-118.2	3
-Whittier Narrows 1987	W70-000	0.02	6.0	0.348	11.2	0.198	19.3	0.54	15.3	18.0	16.3	5	Los Angeles, 924 W. 70th St.	USC	33.976	-118.289	3
-Whittier Narrows 1987	W70-270	0.02	6.0	0.286	11.2	0.151	8.6	0.4	15.3	18.0	16.3	5	Los Angeles, 924 W. 70th St.	USC	33.976	-118.289	3
-Whittier Narrows 1987	WAT-180	0.02	6.0	0.19	15.2	0.104	9.0	0.5	29.1	30.6	24.5	5	Carson, Water St.	USC	33.836	-118.24	3
-Whittier Narrows 1987	WAT-270	0.02	6.0	0.203	14.1	0.133	11.5	0.59	29.1	30.6	24.5	5	Carson, Water St.	USC	33.836	-118.24	3
-Whittier Narrows 1987	WBA-090	0.0050	6.0	1.313	2.7	0.619	28.1	0.32	10.1	13.9	11.2	5	Whittier, 7215 Bright Ave.	USGS	33.976	-118.036	3
-Whittier Narrows 1987	WBA-180	0.0050	6.0	0.812	3.4	0.389	26.3	0.4	10.1	13.9	11.2	5	Whittier, 7215 Bright Ave.	USGS	33.976	-118.036	3
-Whittier Narrows 1987	WND-062	0.0050	6.0	0.516	9.3	0.23	14.4	0.31	4.4	10.5	10.0	5	Whittier Narrows Dam	ACOE	34.03	-118.05	3
-Whittier Narrows 1987	WND-152	0.0050	6.0	0.686	7.5	0.297	14.1	0.22	4.4	10.5	10.0	5	Whittier Narrows Dam	ACOE	34.03	-118.05	3
-Whittier Narrows 1987	WPI-046	0.02	6.0	0.091	12.3	0.088	5.7	0.4	62.0	62.7	57.1	5	Newhall, 26835 W. Pico Canyon Rd.	USC	34.391	-118.622	2
-Whittier Narrows 1987	WPI-316	0.02	6.0	0.069	11.0	0.055	3.8	0.36	62.0	62.7	57.1	5	Newhall, 26835 W. Pico Canyon Rd.	USC	34.391	-118.622	2
-Whittier Narrows 1987	WST-000	0.02	6.0	0.483	6.3	0.214	9.8	0.27	20.3	22.4	16.6	5	Los Angeles, 607 Westmorland Ave.	USC	34.082	-118.298	2
-Whittier Narrows 1987	WST-270	0.02	6.0	0.251	8.6	0.199	6.1	0.26	20.3	22.4	16.6	5	Los Angeles, 607 Westmorland Ave.	USC	34.082	-118.298	2
+Cape Mendocino 1992	CPM-000	0.02	7.1	5.958	6.2	1.497	125.5	0.36	10.4	14.1	7.0	514.0	1	3	Cape Mendocino	CGS	40.348	-124.352
+Cape Mendocino 1992	CPM-090	0.02	7.1	2.389	9.8	1.039	41.3	0.35	10.4	14.1	7.0	514.0	1	3	Cape Mendocino	CGS	40.348	-124.352
+Cape Mendocino 1992	EUR-000	0.02	7.1	0.303	20.8	0.154	20.3	0.75	53.3	54.2	42.0	339.0	4	3	Eureka, Myrtle and West	CGS	40.802	-124.148
+Cape Mendocino 1992	EUR-090	0.02	7.1	0.331	19.8	0.178	28.3	1.08	53.3	54.2	42.0	339.0	4	3	Eureka, Myrtle and West	CGS	40.802	-124.148
+Cape Mendocino 1992	FOR-000	0.02	7.1	0.261	18.7	0.116	30.1	1.03	29.6	31.0	20.0	457.0	4	3	Fortuna, 701 S. Fortuna Blvd.	CGS	40.584	-124.145
+Cape Mendocino 1992	FOR-090	0.02	7.1	0.239	18.2	0.114	21.7	1.11	29.6	31.0	20.0	457.0	4	3	Fortuna, 701 S. Fortuna Blvd.	CGS	40.584	-124.145
+Cape Mendocino 1992	PET-000	0.02	7.1	3.416	17.7	0.59	48.3	0.54	4.5	10.5	8.2	713.0	2	3	Petrolia	CGS	40.324	-124.286
+Cape Mendocino 1992	PET-090	0.02	7.1	3.822	16.1	0.662	90.1	0.68	4.5	10.5	8.2	713.0	2	3	Petrolia	CGS	40.324	-124.286
+Cape Mendocino 1992	RIO-270	0.02	7.1	1.523	15.3	0.385	43.8	0.54	22.6	24.6	14.3	312.0	3	3	Rio Dell overpass	CGS	40.503	-124.099
+Cape Mendocino 1992	RIO-360	0.02	7.1	2.491	10.9	0.549	42.1	0.44	22.6	24.6	14.3	312.0	3	3	Rio Dell overpass	CGS	40.503	-124.099
+Cape Mendocino 1992	SHL-000	0.02	7.1	0.551	16.1	0.229	7.2	0.18	36.3	37.5	28.8	514.0	2	3	Shelter Cove Airport	CGS	40.026	-124.069
+Cape Mendocino 1992	SHL-090	0.02	7.1	0.494	17.5	0.189	6.9	0.18	36.3	37.5	28.8	514.0	2	3	Shelter Cove Airport	CGS	40.026	-124.069
+Coalinga 1983	C01-000	0.01	6.4	0.158	25.5	0.09	10.7	0.9	54.6	54.8197956946211	43.7	339.0	4	5	Parkfield, Cholame 1E	CGS	35.743	-120.277
+Coalinga 1983	C01-090	0.01	6.4	0.231	19.7	0.089	15.3	0.89	54.0	54.8197956946211	43.0	339.0	4	5	Parkfield, Cholame 1E	CGS	35.743	-120.277
+Coalinga 1983	C02-000	0.01	6.4	0.241	14.2	0.109	11.1	0.65	55.7	55.9016994374947	44.7	185.0	4	5	Parkfield, Cholame 2WA	CGS	35.733	-120.29
+Coalinga 1983	C02-090	0.01	6.4	0.195	15.0	0.114	9.8	0.59	55.7	55.9016994374947	44.7	185.0	4	5	Parkfield, Cholame, 2WA	CGS	35.733	-120.29
+Coalinga 1983	C03-000	0.01	6.4	0.154	17.7	0.098	7.6	0.62	56.7	56.8	45.7	339.0	3	5	Parkfield, Cholame 3W	CGS	35.724	-120.294
+Coalinga 1983	C03-090	0.01	6.4	0.129	16.0	0.084	8.3	0.6	56.7	56.8	45.7	339.0	3	5	Parkfield, Cholame 3W	CGS	35.724	-120.294
+Coalinga 1983	C04-000	0.01	6.4	0.262	11.0	0.136	11.4	0.54	57.3	57.4766039358625	46.4	438.0	2	5	Parkfield, Cholame, 4W	CGS	35.718	-120.304
+Coalinga 1983	C04-090	0.01	6.4	0.27	13.0	0.136	9.1	0.49	57.3	57.4766039358625	46.4	438.0	2	5	Parkfield, Cholame, 4W	CGS	35.718	-120.304
+Coalinga 1983	C05-270	0.01	6.4	0.258	12.6	0.147	10.8	0.47	59.7	59.8	48.7	290.0	2	5	Parkfield, Cholame, 5W	CGS	35.697	-120.328
+Coalinga 1983	C05-360	0.01	6.4	0.257	14.6	0.131	10.0	0.57	59.7	59.8	48.7	290.0	2	5	Parkfield, Cholame, 5W	CGS	35.697	-120.328
+Coalinga 1983	C06-000	0.01	6.4	0.291	12.2	0.126	11.0	0.53	61.2	61.3	50.2	339.0	3	5	Parkfield, Cholame, 6W	CGS	35.684	-120.342
+Coalinga 1983	C06-090	0.01	6.4	0.216	12.6	0.102	9.9	0.59	61.2	61.3	50.2	339.0	3	5	Parkfield, Cholame, 6W	CGS	35.684	-120.342
+Coalinga 1983	C08-000	0.01	6.4	0.174	14.9	0.098	8.6	0.57	62.7	62.9	51.8	257.0	4	5	Parkfield, Cholame, 8W	CGS	35.671	-120.359
+Coalinga 1983	C08-270	0.01	6.4	0.176	12.5	0.1	8.0	0.56	62.7	62.9	51.8	257.0	4	5	Parkfield, Cholame, 8W	CGS	35.671	-120.359
+Coalinga 1983	C12-270	0.01	6.4	0.041	21.4	0.04	4.2	0.8	66.6	66.8	55.8	409.0	4	5	Parkfield, Cholame 12W	CGS	35.639	-120.404
+Coalinga 1983	C12-360	0.01	6.4	0.052	20.2	0.053	5.5	0.86	66.6	66.8	55.8	409.0	4	5	Parkfield, Cholame 12W	CGS	35.639	-120.404
+Coalinga 1983	C4A-000	0.01	6.4	0.076	12.8	0.047	5.0	0.53	58.5	58.6586736979281	47.6	339.0	3	5	Parkfield, Cholame 4AW	CGS	35.707	-120.316
+Coalinga 1983	C4A-090	0.01	6.4	0.082	13.3	0.078	8.0	0.62	58.5	58.6586736979281	47.6	339.0	3	5	Parkfield, Cholame 4AW	CGS	35.707	-120.316
+Coalinga 1983	CAK-270	0.01	6.4	0.738	12.4	0.227	23.5	0.68	30.1	30.4	24.0	271.0	4	5	Cantua Creek School	CGS	36.503	-120.32
+Coalinga 1983	CAK-360	0.01	6.4	1.151	11.6	0.281	25.9	0.57	30.1	30.4	24.0	271.0	4	5	Cantua Creek School	CGS	36.503	-120.32
+Coalinga 1983	COH-000	0.01	6.4	0.451	17.0	0.14	13.7	0.68	47.9	48.1	37.2	371.0	4	5	Parkfield, Fault zone 3	CGS	35.803	-120.334
+Coalinga 1983	COH-090	0.01	6.4	0.666	15.8	0.164	24.5	0.9	47.9	48.1	37.2	371.0	4	5	Parkfield, Fault zone 3	CGS	35.803	-120.334
+Coalinga 1983	COW-000	0.01	6.4	0.639	17.3	0.194	23.3	0.99	52.9	53.1492238889713	42.0	339.0	4	5	Parkfield, Fault zone 1	CGS	35.758	-120.307
+Coalinga 1983	COW-090	0.01	6.4	0.382	22.4	0.11	17.8	0.98	52.9	53.1492238889713	42.0	339.0	4	5	Parkfield, Fault zone 1	CGS	35.758	-120.307
+Coalinga 1983	GH2-000	0.01	6.4	0.1	10.9	0.072	6.5	0.54	43.5	43.8	33.1	339.0	2	5	Parkfield, Gold Hill 2E	CGS	35.843	-120.348
+Coalinga 1983	GH2-090	0.01	6.4	0.108	9.7	0.076	7.7	0.59	43.5	43.8	33.1	339.0	2	5	Parkfield, Gold Hill 2E	CGS	35.843	-120.348
+Coalinga 1983	GH3-000	0.01	6.4	0.117	13.7	0.094	11.3	0.8	40.5	40.7	30.1	371.0	1	5	Parkfield, Gold Hill 3E	CGS	35.87	-120.334
+Coalinga 1983	GH3-090	0.01	6.4	0.09	14.8	0.072	6.5	0.58	40.5	40.7	30.1	371.0	1	5	Parkfield, Gold Hill 3E	CGS	35.87	-120.334
+Coalinga 1983	PG1-000	0.01	6.4	0.319	18.0	0.119	16.8	1.1	46.6	46.8	36.2	339.0	4	5	Parkfield, Gold Hill 1W	CGS	35.818	-120.378
+Coalinga 1983	PG1-090	0.01	6.4	0.145	19.3	0.065	10.1	1.02	46.6	46.8	36.2	339.0	4	5	Parkfield, Gold Hill 1W	CGS	35.818	-120.378
+Coalinga 1983	PG2-000	0.01	6.4	0.13	21.0	0.083	11.3	0.96	47.4	47.6	37.0	376.0	2	5	Parkfield, Gold Hill 2W	CGS	35.812	-120.391
+Coalinga 1983	PG2-090	0.01	6.4	0.127	19.5	0.074	11.4	0.92	47.4	47.6	37.0	376.0	2	5	Parkfield, Gold Hill 2W	CGS	35.812	-120.391
+Coalinga 1983	PG3-000	0.01	6.4	0.16	10.0	0.137	11.3	0.65	49.5	49.7160939736822	39.1	438.0	2	5	Parkfield, Gold Hill 3W	CGS	35.796	-120.411
+Coalinga 1983	PG3-090	0.01	6.4	0.153	13.3	0.122	9.1	0.59	49.5	49.7160939736822	39.1	438.0	2	5	Parkfield, Gold Hill 3W	CGS	35.796	-120.411
+Coalinga 1983	PG4-000	0.01	6.4	0.068	19.6	0.056	8.4	0.72	51.3	51.4805788623244	41.1	438.0	2	5	Parkfield, Gold Hill 4W	CGS	35.785	-120.444
+Coalinga 1983	PG4-090	0.01	6.4	0.08	18.6	0.097	6.5	0.59	51.3	51.4805788623244	41.1	438.0	2	5	Parkfield, Gold Hill 4W	CGS	35.785	-120.444
+Coalinga 1983	PG5-000	0.01	6.4	0.116	20.9	0.073	8.6	0.76	53.7	53.9	43.6	438.0	2	5	Parkfield, Gold Hill 5W	CGS	35.77	-120.477
+Coalinga 1983	PG5-090	0.01	6.4	0.095	22.5	0.054	6.1	0.69	53.7	53.9	43.6	438.0	2	5	Parkfield, Gold Hill 5W	CGS	35.77	-120.477
+Coalinga 1983	PG6-000	0.01	6.4	0.075	21.2	0.059	8.1	0.69	57.9	58.1	47.9	438.0	3	5	Parkfield, Gold Hill 6W	CGS	35.738	-120.507
+Coalinga 1983	PG6-090	0.01	6.4	0.077	21.1	0.069	7.4	0.63	57.9	58.1	47.9	438.0	3	5	Parkfield, Gold Hill 6W	CGS	35.738	-120.507
+Coalinga 1983	PGD-065	0.01	6.4	0.394	10.6	0.161	16.3	0.54	32.2	32.5	24.4	713.0	1	5	Parkfield, Vineyard Canyon 2E	CGS	35.973	-120.467
+Coalinga 1983	PRK-090	0.01	6.4	0.276	18.4	0.11	12.1	0.7	38.8	39.1	29.3	339.0	3	5	Parkfield, Fault zone 12	CGS	35.899	-120.433
+Coalinga 1983	PRK-180	0.01	6.4	0.39	15.8	0.112	14.5	0.81	38.8	39.1	29.3	339.0	3	5	Parkfield, Fault zone 12	CGS	35.899	-120.433
+Coalinga 1983	PV1-000	0.01	6.4	0.378	10.6	0.167	20.7	0.83	34.4	34.7	26.4	339.0	3	5	Parkfield, Vineyard Canyon 1E	CGS	35.957	-120.481
+Coalinga 1983	PV1-090	0.01	6.4	0.428	10.4	0.23	27.4	0.81	34.4	34.7	26.4	339.0	3	5	Parkfield, Vineyard Canyon 1E	CGS	35.957	-120.481
+Coalinga 1983	PVB-045	0.0050	6.4	1.571	8.1	0.38	32.4	0.61	10.0	11.0	8.4	257.0	4	5	Pleasant Valley P.P., bldg.	USGS	36.308	-120.249
+Coalinga 1983	PVB-135	0.0050	6.4	1.004	11.3	0.285	19.1	0.46	10.0	11.0	8.4	257.0	4	5	Pleasant Valley P.P., bldg.	USGS	36.308	-120.249
+Coalinga 1983	PVY-045	0.0050	6.4	4.137	8.1	0.592	60.2	0.55	10.0	11.0	8.4	257.0	1	5	Pleasant Valley P.P., yard	USGS	36.308	-120.249
+Coalinga 1983	PVY-135	0.0050	6.4	3.847	9.0	0.551	36.5	0.39	10.0	11.0	8.4	257.0	1	5	Pleasant Valley P.P., yard	USGS	36.308	-120.249
+Coalinga 1983	SC2-000	0.01	6.4	0.07	14.6	0.061	8.4	0.73	47.1	47.4	36.4	376.0	1	5	Parkfield, Stone Corral 2E	CGS	35.81	-120.282
+Coalinga 1983	SC2-090	0.01	6.4	0.07	16.8	0.095	7.1	0.67	47.1	47.4	36.4	376.0	1	5	Parkfield, Stone Corral 2E	CGS	35.81	-120.282
+Coalinga 1983	SC3-000	0.01	6.4	0.136	10.7	0.151	8.7	0.47	44.7	44.9	34.0	376.0	1	5	Parkfield, Stone Corral 3E	CGS	35.833	-120.27
+Coalinga 1983	SC3-090	0.01	6.4	0.124	9.9	0.106	8.0	0.35	44.7	44.9	34.0	376.0	1	5	Parkfield, Stone Corral 3E	CGS	35.833	-120.27
+Coalinga 1983	SC4-000	0.01	6.4	0.08	11.7	0.063	8.2	0.77	42.1	42.4	31.6	376.0	1	5	Parkfield, Stone Corral 4E	CGS	35.855	-120.281
+Coalinga 1983	SC4-090	0.01	6.4	0.072	13.8	0.072	6.8	0.67	42.1	42.4	31.6	376.0	1	5	Parkfield, Stone Corral 4E	CGS	35.855	-120.281
+Coalinga 1983	SCN-045	0.01	6.4	0.286	9.2	0.166	16.3	0.74	33.5	33.8	27.5	685.0	1	5	Slack Canyon	CGS	36.034	-120.59
+Coalinga 1983	SCN-315	0.01	6.4	0.229	11.6	0.153	13.3	0.84	33.5	33.8	27.5	685.0	1	5	Slack Canyon	CGS	36.034	-120.59
+Coalinga 1983	TM2-000	0.01	6.4	0.014	17.6	0.026	3.0	0.64	53.8	54.0	42.9	376.0	2	5	Parkfield, Cholame 2E	CGS	35.751	-120.259
+Coalinga 1983	TM2-090	0.01	6.4	0.025	16.5	0.037	5.4	0.87	53.8	54.0	42.9	376.0	2	5	Parkfield, Cholame 2E	CGS	35.751	-120.259
+Coalinga 1983	TM3-000	0.01	6.4	0.042	17.8	0.044	4.4	0.68	51.8	52.0	41.0	376.0	1	5	Parkfield, Cholame 3E	CGS	35.77	-120.247
+Coalinga 1983	TM3-090	0.01	6.4	0.054	17.2	0.056	6.5	0.75	51.8	52.0	41.0	376.0	1	5	Parkfield, Cholame 3E	CGS	35.77	-120.247
+Coalinga 1983	VC1-000	0.01	6.4	0.104	15.0	0.081	8.2	0.73	37.3	37.6	29.1	376.0	3	5	Parkfield, Vineyard Canyon 1W	CGS	35.934	-120.497
+Coalinga 1983	VC1-090	0.01	6.4	0.186	12.6	0.087	11.1	0.7	37.3	37.6	29.1	376.0	3	5	Parkfield, Vineyard Canyon 1W	CGS	35.934	-120.497
+Coalinga 1983	VC2-000	0.01	6.4	0.115	13.2	0.073	7.4	0.49	38.5	38.7	30.4	339.0	2	5	Parkfield, Vineyard Canyon 2W	CGS	35.927	-120.509
+Coalinga 1983	VC2-090	0.01	6.4	0.11	12.5	0.083	6.9	0.45	38.5	38.7	30.4	339.0	2	5	Parkfield, Vineyard Canyon 2W	CGS	35.927	-120.509
+Coalinga 1983	VC4-000	0.01	6.4	0.047	11.3	0.064	6.5	0.72	42.4	42.687820276983	33.3	376.0	2	5	Parkfield, Vineyard Canyon 4W	CGS	35.905	-120.55
+Coalinga 1983	VC4-090	0.01	6.4	0.031	14.1	0.046	4.2	0.72	42.4	42.687820276983	33.3	376.0	2	5	Parkfield, Vineyard Canyon 4W	CGS	35.905	-120.55
+Coalinga 1983	VC5-090	0.01	6.4	0.08	16.8	0.062	6.9	0.78	45.0	45.2	36.9	376.0	1	5	Parkfield, Vineyard Canyon 5W	CGS	35.885	-120.565
+Coalinga 1983	VC6-000	0.01	6.4	0.087	18.4	0.054	9.5	0.81	48.9	49.2	40.9	438.0	3	5	Parkfield, Vineyard Canyon 6W	CGS	35.861	-120.6
+Coalinga 1983	VC6-090	0.01	6.4	0.073	20.5	0.076	5.4	0.5	48.9	49.2	40.9	438.0	3	5	Parkfield, Vineyard Canyon 6W	CGS	35.861	-120.6
+Coalinga 1983	VYC-020	0.01	6.4	0.253	15.5	0.098	11.8	0.78	40.0	40.3	32.2	297.0	1	5	Parkfield, Vineyard Canyon 3W	CGS	35.922	-120.534
+Coalinga 1983	VYC-110	0.01	6.4	0.219	14.8	0.137	13.6	0.77	40.0	40.3	32.2	297.0	1	5	Parkfield, Vineyard Canyon 3W	CGS	35.922	-120.534
+Coalinga 1983	Z02-000	0.01	6.4	0.309	16.4	0.116	22.7	0.98	49.7	49.9	39.0	339.0	4	5	Parkfield, Fault zone 2	CGS	35.787	-120.334
+Coalinga 1983	Z02-090	0.01	6.4	0.333	22.0	0.133	19.4	1.05	49.7	49.9	39.0	339.0	4	5	Parkfield, Fault zone 2	CGS	35.787	-120.334
+Coalinga 1983	Z04-000	0.01	6.4	0.157	20.9	0.067	12.6	0.99	44.8	45.1220566907139	34.6	339.0	2	5	Parkfield, Fault zone 4	CGS	35.836	-120.395
+Coalinga 1983	Z04-090	0.01	6.4	0.398	16.9	0.12	20.4	0.96	44.8	45.1220566907139	34.6	339.0	2	5	Parkfield, Fault zone 4	CGS	35.836	-120.395
+Coalinga 1983	Z06-000	0.01	6.4	0.082	21.4	0.055	9.2	1.14	42.8	43.0	32.9	438.0	2	5	Parkfield, Fault zone 6	CGS	35.859	-120.42
+Coalinga 1983	Z06-090	0.01	6.4	0.082	22.9	0.056	11.6	1.17	42.8	43.0	32.9	438.0	2	5	Parkfield, Fault zone 6	CGS	35.859	-120.42
+Coalinga 1983	Z07-000	0.01	6.4	0.301	15.7	0.122	21.3	0.95	41.2	41.4	31.2	371.0	3	5	Parkfield, Fault zone 7	CGS	35.871	-120.404
+Coalinga 1983	Z07-090	0.01	6.4	0.229	17.4	0.119	15.0	0.9	41.2	41.4	31.2	371.0	3	5	Parkfield, Fault zone 7	CGS	35.871	-120.404
+Coalinga 1983	Z08-000	0.01	6.4	0.268	9.8	0.131	17.2	0.76	40.0	40.3	29.9	376.0	2	5	Parkfield, Fault zone 8	CGS	35.878	-120.381
+Coalinga 1983	Z08-090	0.01	6.4	0.254	11.2	0.116	14.2	0.54	40.0	40.3	29.9	376.0	2	5	Parkfield, Fault zone 8	CGS	35.878	-120.381
+Coalinga 1983	Z09-000	0.01	6.4	0.066	18.0	0.057	9.3	1.05	41.2	41.5	31.7	438.0	2	5	Parkfield, Fault zone 9	CGS	35.879	-120.445
+Coalinga 1983	Z09-090	0.01	6.4	0.067	16.7	0.05	8.8	0.94	41.2	41.5	31.7	438.0	2	5	Parkfield, Fault zone 9	CGS	35.879	-120.445
+Coalinga 1983	Z10-000	0.01	6.4	0.171	20.7	0.073	14.9	1.15	41.4	41.7	31.6	438.0	4	5	Parkfield, Fault zone 10	CGS	35.872	-120.422
+Coalinga 1983	Z10-090	0.01	6.4	0.21	14.3	0.131	16.4	0.97	41.4	41.7	31.6	438.0	4	5	Parkfield, Fault zone 10	CGS	35.872	-120.422
+Coalinga 1983	Z11-000	0.01	6.4	0.105	10.7	0.097	11.7	0.73	38.3	38.6	28.5	376.0	4	5	Parkfield, Fault zone 11	CGS	35.896	-120.398
+Coalinga 1983	Z11-090	0.01	6.4	0.091	13.1	0.087	6.5	0.59	38.3	38.6	28.5	376.0	4	5	Parkfield, Fault zone 11	CGS	35.896	-120.398
+Coalinga 1983	Z14-000	0.01	6.4	1.497	8.9	0.282	40.8	0.91	38.5	38.8	29.5	339.0	3	5	Parkfield, Fault zone 14	CGS	35.908	-120.458
+Coalinga 1983	Z14-090	0.01	6.4	0.881	13.0	0.274	28.4	0.84	38.5	38.8	29.5	339.0	3	5	Parkfield, Fault zone 14	CGS	35.908	-120.458
+Coalinga 1983	Z15-000	0.01	6.4	0.457	14.0	0.168	21.1	0.78	38.0	38.3	29.4	376.0	4	5	Parkfield, Fault zone 15	CGS	35.921	-120.481
+Coalinga 1983	Z15-090	0.01	6.4	0.25	19.2	0.117	14.1	0.65	38.0	38.3	29.4	376.0	4	5	Parkfield, Fault zone 15	CGS	35.921	-120.481
+Coalinga 1983	Z16-000	0.01	6.4	0.363	11.2	0.195	17.7	0.52	36.5	36.8	27.7	339.0	3	5	Parkfield, Fault zone 16	CGS	35.927	-120.456
+Coalinga 1983	Z16-090	0.01	6.4	0.276	11.9	0.122	11.9	0.45	36.5	36.8	27.7	339.0	3	5	Parkfield, Fault zone 16	CGS	35.927	-120.456
+Coyote Lake 1979	BVU-220	0.01	5.7	0.064	12.4	0.079	9.1	0.52	71.0	71.7	58.0	376.0	2	1	Bear Valley #14 Upper Butts Ranch	USGS	36.569	-121.043
+Coyote Lake 1979	BVU-310	0.01	5.7	0.033	14.2	0.047	10.8	0.48	71.0	71.7	58.0	376.0	2	1	Bear Valley #14 Upper Butts Ranch	USGS	36.569	-121.043
+Coyote Lake 1979	BVW-220	0.01	5.7	0.073	12.8	0.077	15.1	0.55	53.0	53.9	39.0	331.0	3	1	Bear Valley #12 Williams Ranch	USGS	36.658	-121.249
+Coyote Lake 1979	BVW-310	0.01	5.7	0.085	10.0	0.089	9.0	0.53	53.0	53.9	39.0	321.0	3	1	Bear Valley #12 Williams Ranch	USGS	36.658	-121.249
+Coyote Lake 1979	CYC-160	0.0050	5.7	0.189	8.5	0.157	10.8	0.43	8.0	11.3	6.1	597.0	1	1	Coyote Lake Dam, SW abut	CGS	37.118	-121.55
+Coyote Lake 1979	CYC-250	0.0050	5.7	0.359	5.4	0.279	20.3	0.48	8.0	11.3	6.1	597.0	1	1	Coyote Lake Dam, SW abut	CGS	37.118	-121.55
+Coyote Lake 1979	G01-230	0.0050	5.7	0.064	7.3	0.103	3.4	0.2	12.6	14.9	10.7	1428.0	1	1	Gilroy Array #1, Gavilan College tank grnds.	CGS	36.973	-121.572
+Coyote Lake 1979	G01-320	0.0050	5.7	0.08	5.8	0.132	8.3	0.3	12.6	14.9	10.7	1428.0	1	1	Gilroy Array #1, Gavilan College tank grnds.	CGS	36.973	-121.572
+Coyote Lake 1979	G02-050	0.0050	5.7	0.287	7.5	0.211	11.0	0.37	10.9	13.6	9.0	271.0	4	1	Gilroy Array #2, Mission Trails Motel	CGS	36.982	-121.556
+Coyote Lake 1979	G02-140	0.0050	5.7	0.513	4.2	0.339	24.9	0.53	10.9	13.6	9.0	271.0	4	1	Gilroy Array #2, Mission Trails Motel	CGS	36.982	-121.556
+Coyote Lake 1979	G03-050	0.0050	5.7	0.405	8.9	0.272	18.7	0.58	9.6	12.5	7.4	350.0	4	1	Gilroy Array #3, Sewer Farm A	CGS	36.987	-121.536
+Coyote Lake 1979	G03-140	0.0050	5.7	0.387	8.6	0.229	28.8	0.6	9.6	12.5	7.4	350.0	4	1	Gilroy Array #3, Sewer Farm A	CGS	36.987	-121.536
+Coyote Lake 1979	G04-270	0.0050	5.7	0.624	8.4	0.248	23.1	0.55	7.7	11.1	5.7	222.0	4	1	Gilroy Array #4, San Ysidro School	CGS	37.001	-121.522
+Coyote Lake 1979	G04-360	0.0050	5.7	0.5	11.5	0.271	26.3	0.65	7.7	11.1	5.7	222.0	4	1	Gilroy Array #4, San Ysidro School	CGS	37.001	-121.522
+Coyote Lake 1979	G06-230	0.0050	5.7	0.775	3.2	0.434	49.2	0.67	4.4	9.1	3.1	663.0	1	1	Gilroy Array #6, San Ysidro Microwave Site         	CGS	37.026	-121.484
+Coyote Lake 1979	G06-320	0.0050	5.7	0.68	3.6	0.316	24.5	0.4	4.4	9.1	3.1	663.0	1	1	Gilroy Array #6, San Ysidro Microwave Site         	CGS	37.026	-121.484
+Coyote Lake 1979	HVR-150	0.0050	5.7	0.018	21.5	0.039	2.2	0.46	36.3	37.2	33.8	282.0	3	1	Halls Valley, Grant Park	CGS	37.338	-121.714
+Coyote Lake 1979	HVR-240	0.0050	5.7	0.02	17.6	0.05	4.8	0.49	36.3	37.2	33.8	282.0	3	1	Halls Valley, Grant Park	CGS	37.338	-121.714
+Coyote Lake 1979	SJ3-067	0.0050	5.7	0.059	7.9	0.097	5.9	0.4	23.9	25.2	20.7	371.0	4	1	SJB Overpass, Bent 3 g.l.	CGS	36.862	-121.578
+Coyote Lake 1979	SJ3-337	0.0050	5.7	0.121	6.9	0.124	7.6	0.46	23.9	25.2	20.7	371.0	4	1	SJB Overpass, Bent 3 g.l.	CGS	36.862	-121.578
+Coyote Lake 1979	SJ5-067	0.0050	5.7	0.052	8.2	0.073	5.6	0.42	23.9	25.2	20.7	371.0	4	1	SJB Overpass, Bent 5 g.l.	CGS	36.862	-121.578
+Coyote Lake 1979	SJ5-337	0.0050	5.7	0.091	6.8	0.114	7.4	0.46	23.9	25.2	20.7	371.0	4	1	SJB Overpass, Bent 5 g.l.	CGS	36.862	-121.578
+Coyote Lake 1979	SJB-213	0.0050	5.7	0.115	11.0	0.108	7.6	0.48	23.2	24.6	19.7	371.0	4	1	San Juan Bautista, 24 Polk	CGS	36.846	-121.536
+Coyote Lake 1979	SJB-303	0.0050	5.7	0.098	15.1	0.107	7.5	0.56	23.2	24.6	19.7	371.0	4	1	San Juan Bautista, 24 Polk	CGS	36.846	-121.536
+Coyote Lake 1979	SJW-160	0.01	5.7	0.049	10.7	0.099	16.9	0.58	48.0	49.0	38.0	271.0	4	1	Salinas, John and Work St.	CGS	36.671	-121.642
+Coyote Lake 1979	SJW-250	0.01	5.7	0.056	10.9	0.097	14.5	0.57	48.0	49.0	38.0	271.0	4	1	Salinas, John and Work St.	CGS	36.671	-121.642
+Daly City 1957	GGP-010	0.0050	5.3	0.03	3.9	0.095	3.9	0.23	11.1	13.7	11.1	874.0	1	3	Golden Gate Park	USGS	37.77	-122.48
+Daly City 1957	GGP-100	0.0050	5.3	0.055	3.7	0.112	4.6	0.21	11.1	13.7	11.1	874.0	1	3	Golden Gate Park	USGS	37.77	-122.48
+Imperial Valley 1940	ELC-180	0.01	7.0	1.705	24.1	0.313	29.9	0.54	13.0	15.7	6.1	213.0	4	1	El Centro Array #9	USGS	32.794	-115.549
+Imperial Valley 1940	ELC-270	0.01	7.0	1.195	24.0	0.215	29.8	0.61	13.0	15.7	6.1	213.0	4	1	El Centro Array #9	USGS	32.794	-115.549
+Imperial Valley 1979	AEP-045	0.01	6.5	1.146	7.1	0.327	42.8	0.67	2.5	10.3	0.3	275.0	4	1	Aeropuerto Mexicali	UCSD	32.651	-115.332
+Imperial Valley 1979	AEP-315	0.01	6.5	0.832	7.0	0.26	24.8	0.34	2.5	10.3	0.3	275.0	4	1	Aeropuerto Mexicali	UCSD	32.651	-115.332
+Imperial Valley 1979	AGR-003	0.01	6.5	1.511	13.1	0.37	36.4	0.56	2.6	10.3	0.7	275.0	4	1	Agrarias	UCSD	32.621	-115.301
+Imperial Valley 1979	AGR-273	0.01	6.5	1.001	12.7	0.221	42.5	0.75	2.6	10.3	0.7	275.0	4	1	Agrarias	UCSD	32.621	-115.301
+Imperial Valley 1979	BCR-140	0.0050	6.5	3.904	9.7	0.588	45.2	0.49	6.2	11.7	2.7	223.0	4	1	Bonds Corner, Hwys 115 & 98	USGS	32.6932	-115.338
+Imperial Valley 1979	BCR-230	0.0050	6.5	5.99	9.8	0.775	45.9	0.47	6.2	11.7	2.7	223.0	4	1	Bonds Corner, Hwys 115 & 98	USGS	32.6932	-115.338
+Imperial Valley 1979	BRA-225	0.0050	6.5	0.3	14.9	0.16	36.2	0.89	43.2	44.3	10.4	209.0	4	1	Brawley airport	USGS	32.991	-115.513
+Imperial Valley 1979	BRA-315	0.0050	6.5	0.441	14.0	0.22	38.3	0.68	43.2	44.3	10.4	209.0	4	1	Brawley airport	USGS	32.991	-115.513
+Imperial Valley 1979	CAL-225	0.0050	6.5	0.147	25.1	0.128	15.4	0.65	57.1	58.0	24.6	206.0	4	1	Calipatria Fire Station	USGS	33.1266	-115.516
+Imperial Valley 1979	CAL-315	0.0050	6.5	0.1	23.3	0.078	13.3	0.73	57.1	58.0	24.6	206.0	4	1	Calipatria Fire Station	USGS	33.1266	-115.516
+Imperial Valley 1979	CC4-045	0.0050	6.5	0.116	11.1	0.115	12.5	0.63	83.9	84.5	50.1	345.0	4	1	Coachella Canal, Station 4, Siphon 15	USGS	33.36	-115.59
+Imperial Valley 1979	CC4-135	0.0050	6.5	0.201	10.0	0.128	15.8	0.61	83.9	84.5	50.1	345.0	4	1	Coachella Canal, Station 4, Siphon 15	USGS	33.36	-115.59
+Imperial Valley 1979	CHI-012	0.01	6.5	1.168	20.0	0.27	25.4	0.57	18.9	21.4	7.3	275.0	4	1	Chihuahua	UCSD	32.484	-115.24
+Imperial Valley 1979	CHI-282	0.01	6.5	1.187	22.0	0.254	29.8	0.71	18.9	21.4	7.3	275.0	4	1	Chihuahua	UCSD	32.484	-115.24
+Imperial Valley 1979	CMP-015	0.01	6.5	0.392	21.7	0.186	13.9	0.39	22.4	24.6	15.3	275.0	4	1	Compuertas	UCSD	32.573	-115.083
+Imperial Valley 1979	CMP-285	0.01	6.5	0.171	22.7	0.147	9.4	0.36	22.4	24.6	15.3	275.0	4	1	Compuertas	UCSD	32.573	-115.083
+Imperial Valley 1979	CPE-147	0.01	6.5	1.222	29.7	0.169	11.6	0.39	24.8	26.7	15.2	660.0	1	1	Cerro Prieto	UCSD	32.421	-115.301
+Imperial Valley 1979	CPE-237	0.01	6.5	1.34	36.2	0.157	18.7	0.58	24.8	26.7	15.2	660.0	1	1	Cerro Prieto	UCSD	32.421	-115.301
+Imperial Valley 1979	CXO-225	0.0050	6.5	0.851	11.0	0.275	21.2	0.44	17.7	20.3	10.5	231.0	4	1	Calexico Fire Station	USGS	32.6695	-115.493
+Imperial Valley 1979	CXO-315	0.0050	6.5	0.731	14.6	0.202	16.0	0.41	17.7	20.3	10.5	231.0	4	1	Calexico Fire Station	USGS	32.6695	-115.493
+Imperial Valley 1979	DLT-262	0.01	6.5	2.398	51.0	0.238	25.9	0.62	33.7	35.2	22.0	275.0	4	1	Delta	UCSD	32.356	-115.195
+Imperial Valley 1979	DLT-352	0.01	6.5	3.29	50.3	0.351	33.0	0.68	33.7	35.2	22.0	275.0	4	1	Delta	UCSD	32.356	-115.195
+Imperial Valley 1979	E01-140	0.0050	6.5	0.274	15.0	0.139	15.8	0.37	35.2	36.6	21.7	237.0	4	1	El Centro Array 1, Borchard Ranches	USGS	32.96	-115.319
+Imperial Valley 1979	E01-230	0.0050	6.5	0.214	19.6	0.134	10.7	0.35	35.2	36.6	21.7	237.0	4	1	El Centro Array 1, Borchard Ranches	USGS	32.96	-115.319
+Imperial Valley 1979	E02-140	0.0050	6.5	1.265	8.9	0.315	31.5	0.49	31.0	32.3	15.3	189.0	4	1	El Centro Array 2, Keystone Rd.	USGS	32.916	-115.366
+Imperial Valley 1979	E02-230	0.01	6.5	1.003	11.8	0.413	27.9	0.33	31.0	32.3	15.3	189.0	4	1	El Centro Array 2, Keystone Rd.	USGS	32.916	-115.366
+Imperial Valley 1979	E03-140	0.0050	6.5	1.133	11.9	0.266	47.1	0.62	28.7	30.3	12.9	163.0	4	1	El Centro Array 3, Pine Union School	USGS	32.894	-115.38
+Imperial Valley 1979	E03-230	0.0050	6.5	0.683	14.2	0.221	39.4	0.47	28.7	30.3	12.9	163.0	4	1	El Centro Array 3, Pine Union School	USGS	32.894	-115.38
+Imperial Valley 1979	E04-140	0.0050	6.5	1.335	6.7	0.485	37.4	0.68	27.1	28.9	7.1	209.0	4	1	El Centro Array 4, 2905 Anderson Rd.	USGS	32.864	-115.432
+Imperial Valley 1979	E04-230	0.0050	6.5	0.932	10.3	0.36	76.6	1.27	27.1	28.9	7.1	209.0	4	1	El Centro Array 4, 2905 Anderson Rd.	USGS	32.864	-115.432
+Imperial Valley 1979	E05-140	0.0050	6.5	1.655	8.2	0.519	46.9	0.67	27.8	29.5	4.0	206.0	4	1	El Centro Array 5, 2802 James	USGS	32.855	-115.466
+Imperial Valley 1979	E05-230	0.0050	6.5	1.658	9.4	0.379	90.5	1.21	27.8	29.5	4.0	206.0	4	1	El Centro Array 5, 2802 James	USGS	32.855	-115.466
+Imperial Valley 1979	E06-140	0.0050	6.5	1.487	11.5	0.41	64.8	0.94	27.5	29.2	1.4	203.0	4	1	El Centro Array 6, 551 Huston Rd.	USGS	32.839	-115.487
+Imperial Valley 1979	E06-230	0.0050	6.5	1.755	8.5	0.439	109.8	1.27	27.5	29.2	1.4	203.0	4	1	El Centro Array 6, 551 Huston Rd.	USGS	32.839	-115.487
+Imperial Valley 1979	E07-140	0.0050	6.5	0.859	6.8	0.338	47.6	0.96	27.6	29.4	0.6	211.0	4	1	El Centro Array 7, Imperial Valley College	USGS	32.829	-115.504
+Imperial Valley 1979	E07-230	0.0050	6.5	1.697	4.8	0.463	109.2	1.3	27.6	29.4	0.6	211.0	4	1	El Centro Array 7, Imperial Valley College	USGS	32.829	-115.504
+Imperial Valley 1979	E08-140	0.0050	6.5	1.59	6.8	0.602	54.2	0.61	28.1	29.8	3.9	206.0	4	1	El Centro Array 8, 95 E. Cruikshank Rd.	USGS	32.811	-115.532
+Imperial Valley 1979	E08-230	0.0050	6.5	1.484	5.8	0.454	49.1	0.47	28.1	29.78	3.9	206.0	4	1	El Centro Array 8, 95 E. Cruikshank Rd.	USGS	32.811	-115.532
+Imperial Valley 1979	E10-050	0.0050	6.5	0.568	12.8	0.171	47.1	0.92	26.3	28.1	6.2	203.0	4	1	El Centro Array 10, Community Hospital	USGS	32.781	-115.536
+Imperial Valley 1979	E10-320	0.0050	6.5	0.671	12.0	0.224	40.9	0.89	26.3	28.1	6.2	203.0	4	1	El Centro Array 10, Community Hospital	USGS	32.781	-115.536
+Imperial Valley 1979	E11-140	0.0050	6.5	1.959	8.7	0.364	34.5	0.44	29.4	31.1	12.5	196.0	4	1	El Centro Array 11, McCabe Union School	USGS	32.752	-115.594
+Imperial Valley 1979	E11-230	0.0050	6.5	1.614	7.9	0.38	42.1	0.42	29.4	31.1	12.5	196.0	4	1	El Centro Array 11, McCabe Union School	USGS	32.752	-115.594
+Imperial Valley 1979	E12-140	0.0050	6.5	0.381	19.1	0.143	17.6	0.65	32.0	33.5	17.9	197.0	4	1	El Centro Array 12, 907 Brockman	USGS	32.718	-115.637
+Imperial Valley 1979	E12-230	0.0050	6.5	0.328	19.4	0.116	21.7	0.59	32.0	33.5	17.9	197.0	4	1	El Centro Array 12, 907 Brockman	USGS	32.718	-115.637
+Imperial Valley 1979	E13-140	0.0050	6.5	0.265	21.4	0.117	14.7	0.59	36.0	37.3	22.0	250.0	4	1	El Centro Array 13, Strobel residence	USGS	32.709	-115.683
+Imperial Valley 1979	E13-230	0.0050	6.5	0.257	21.2	0.139	13.0	0.47	36.0	37.3	22.0	250.0	4	1	El Centro Array 13, Strobel residence	USGS	32.709	-115.683
+Imperial Valley 1979	ECC-002	0.0050	7.5	0.749	10.4	0.213	37.6	0.88	29.1	30.7	7.3	192.0	4	1	El Centro County Center FF	CGS	32.793	-115.562
+Imperial Valley 1979	ECC-092	0.0050	8.5	0.724	13.2	0.235	68.8	1.26	29.1	30.7	7.3	192.0	4	1	El Centro County Center FF	CGS	32.793	-115.562
+Imperial Valley 1979	EDA-270	0.0050	6.5	1.712	7.0	0.352	71.2	0.5	27.2	29.0	5.1	202.0	4	1	El Centro differential array	USGS	32.796	-115.535
+Imperial Valley 1979	EDA-360	0.0050	6.5	2.106	6.6	0.48	40.4	0.55	27.2	29.0	5.1	202.0	4	1	El Centro differential array	USGS	32.796	-115.535
+Imperial Valley 1979	EMO-000	0.0050	6.5	0.858	8.2	0.314	71.8	1.05	19.4	21.8	0.1	186.0	4	1	Meloland Overpass	CGS	32.773	-115.447
+Imperial Valley 1979	EMO-270	0.0050	6.5	1.08	6.7	0.296	90.4	1.77	19.4	21.8	0.1	186.0	4	1	Meloland Overpass	CGS	32.773	-115.447
+Imperial Valley 1979	HVP-225	0.0050	6.5	0.868	11.8	0.253	48.7	0.62	19.8	22.2	7.7	203.0	4	1	Holtville Post Office	USGS	32.812	-115.377
+Imperial Valley 1979	HVP-315	0.0050	6.5	0.842	13.1	0.221	49.8	0.7	19.8	22.2	7.7	203.0	4	1	Holtville Post Office	USGS	32.812	-115.377
+Imperial Valley 1979	NIL-090	0.0050	6.5	0.182	21.7	0.109	11.6	0.56	68.9	69.6	36.9	208.0	4	1	Niland Fire Station	CGS	33.239	-115.512
+Imperial Valley 1979	NIL-360	0.0050	6.5	0.111	26.2	0.069	8.7	0.54	68.9	69.6	36.9	208.0	4	1	Niland Fire Station	CGS	33.239	-115.512
+Imperial Valley 1979	PLS-045	0.0050	6.5	0.03	10.8	0.042	3.2	0.36	54.3	55.2	30.3	345.0	4	1	Plaster City	USGS	32.79	-115.86
+Imperial Valley 1979	PLS-135	0.0050	6.5	0.056	10.7	0.057	4.9	0.38	54.3	55.2	30.3	345.0	4	1	Plaster City	USGS	32.79	-115.86
+Imperial Valley 1979	PTS-225	0.0050	6.5	0.202	17.9	0.111	18.0	0.66	48.6	49.6	12.7	349.0	4	1	El Centro, Parachute Test Site	USGS	32.929	-115.701
+Imperial Valley 1979	PTS-315	0.0050	6.5	0.221	16.9	0.204	15.5	0.58	48.6	49.6	12.7	349.0	4	1	El Centro, Parachute Test Site	USGS	32.929	-115.701
+Imperial Valley 1979	QKP-085	0.0050	6.5	1.025	15.7	0.309	36.2	0.57	12.9	16.3	1.1	275.0	4	1	Cucapah	UCSD	32.545	-115.235
+Imperial Valley 1979	SHP-000	0.01	6.5	1.034	10.0	0.287	19.6	0.32	12.4	15.9	9.6	339.0	3	1	SAHOP Casa Flores	UCSD	32.618	-115.436
+Imperial Valley 1979	SHP-270	0.01	6.5	2.737	7.5	0.506	31.0	0.34	12.4	15.9	9.6	339.0	3	1	SAHOP Casa Flores	UCSD	32.618	-115.436
+Imperial Valley 1979	SUP-045	0.0050	6.5	0.086	11.6	0.109	5.1	0.28	59.5	60.4	24.6	362.0	2	1	Superstition Mountain, Site 8	USGS	32.955	-115.825
+Imperial Valley 1979	SUP-135	0.0050	6.5	0.202	6.7	0.195	8.7	0.24	59.5	60.4	24.6	362.0	2	1	Superstition Mountain, Site 8	USGS	32.955	-115.825
+Imperial Valley 1979	VCT-075	0.0050	6.5	0.195	19.4	0.122	6.4	0.29	43.9	45.0	31.9	275.0	4	1	Victoria	UCSD	32.289	-115.103
+Imperial Valley 1979	VCT-345	0.0050	6.5	0.244	17.1	0.167	8.4	0.28	43.9	45.0	31.9	275.0	4	1	Victoria	UCSD	32.289	-115.103
+Imperial Valley 1979	WSM-090	0.0050	6.5	0.122	24.7	0.074	21.7	1.15	52.8	53.7	15.3	194.0	4	1	Westmorland Fire Station	CGS	33.037	-115.623
+Imperial Valley 1979	WSM-180	0.0050	6.5	0.119	25.2	0.11	22.1	1.05	52.8	53.7	15.3	194.0	4	1	Westmorland Fire Station	CGS	33.037	-115.623
+Kern County 1952	PAS-180	0.01	7.5	0.058	27.8	0.045	5.5	0.84	125.8	126.8	125.6	415.0	4	5	Pasadena, CIT Athenaeum	CGS	34.139	-118.121
+Kern County 1952	PAS-270	0.01	7.5	0.113	29.1	0.053	9.2	0.94	125.8	126.8	125.6	415.0	4	5	Pasadena, CIT Athenaeum	CGS	34.139	-118.121
+Kern County 1952	PEL-090	0.0050	7.5	0.098	32.4	0.042	7.4	0.97	118.3	119.3	117.8	317.0	4	5	Los Angeles, Hollywood Stor. Bldg. Grounds	CGS	34.089	-118.339
+Kern County 1952	PEL-180	0.0050	7.5	0.098	28.9	0.058	6.2	0.69	118.3	119.3	117.8	317.0	4	5	Los Angeles, Hollywood Stor. Bldg. Grounds	CGS	34.089	-118.339
+Kern County 1952	SBA-042	0.01	7.5	0.214	27.6	0.087	12.1	0.83	88.4	89.8	82.2	515.0	4	5	Santa Barbara Courthouse	USGS	34.423	-119.7
+Kern County 1952	SBA-132	0.01	7.5	0.251	31.9	0.127	15.5	0.97	88.4	89.8	82.2	515.0	4	5	Santa Barbara Courthouse	USGS	34.423	-119.7
+Kern County 1952	TAF-021	0.01	7.5	0.541	30.3	0.156	15.5	0.54	43.5	46.2	38.9	385.0	4	5	Taft, Lincoln School	USGS	35.15	-119.46
+Kern County 1952	TAF-111	0.01	7.5	0.587	28.8	0.178	17.9	0.53	43.5	46.2	38.9	385.0	4	5	Taft, Lincoln School	USGS	35.15	-119.46
+Landers 1992	29P-000	0.02	7.3	0.117	30.7	0.08	3.8	0.23	44.1	44.7	41.4	685.0	1	1	Twentynine Palms, Joshua Tree N.M. 	CGS	34.021	-116.009
+Landers 1992	29P-090	0.02	7.3	0.106	30.9	0.06	5.0	0.23	44.1	44.7	41.4	685.0	1	1	Twentynine Palms, Joshua Tree N.M. 	CGS	34.021	-116.009
+Landers 1992	ABY-000	0.02	7.3	0.565	29.8	0.115	18.4	0.65	75.2	75.5	69.2	271.0	2	1	Amboy	CGS	34.56	-115.743
+Landers 1992	ABY-090	0.02	7.3	0.755	25.2	0.146	20.0	0.59	75.2	75.5	69.2	271.0	2	1	Amboy	CGS	34.56	-115.743
+Landers 1992	BAD-000	0.02	7.3	0.144	28.2	0.057	15.8	1.26	136.8	137.0	128.1	271.0	4	1	Covina, 1271 W. Badillo	USC	34.087	-117.915
+Landers 1992	BAD-270	0.02	7.3	0.095	26.6	0.046	7.5	1.05	136.8	137.0	128.1	271.0	4	1	Covina, 1271 W. Badillo	USC	34.087	-117.915
+Landers 1992	BAK-050	0.02	7.3	0.24	26.3	0.108	9.4	0.49	123.9	124.1	87.9	271.0	4	1	Baker Fire Station	CGS	35.271	-116.066
+Landers 1992	BAK-140	0.02	7.3	0.264	20.0	0.106	11.0	0.57	123.9	124.1	87.9	271.0	4	1	Baker Fire Station	CGS	35.271	-116.066
+Landers 1992	BFS-000	0.02	7.3	0.223	12.4	0.119	13.0	0.63	142.6	142.8	89.7	345.0	4	1	Boron Fire Station	CGS	35.002	-117.65
+Landers 1992	BFS-090	0.02	7.3	0.171	14.1	0.09	9.7	0.69	142.6	142.8	89.7	345.0	4	1	Boron Fire Station	CGS	35.002	-117.65
+Landers 1992	BPK-090	0.02	7.3	0.109	25.3	0.045	11.5	1.26	151.1	151.3	150.1	309.0	4	1	Buena Park, 6625 La Palma Ave.	USC	33.847	-118.018
+Landers 1992	BPK-180	0.02	7.3	0.067	25.1	0.052	8.8	1.09	151.1	151.3	150.1	309.0	4	1	Buena Park, 6625 La Palma Ave.	USC	33.847	-118.018
+Landers 1992	BRC-000	0.02	7.3	0.07	24.0	0.051	10.0	1.17	145.1	145.2	143.1	361.0	3	1	La Habra, 950 Briarcliff Dr.	USC	33.921	-117.973
+Landers 1992	BRC-090	0.02	7.3	0.096	24.9	0.053	9.5	1.13	145.1	145.2	143.1	361.0	3	1	La Habra, 950 Briarcliff Dr.	USC	33.921	-117.973
+Landers 1992	BRS-000	0.02	7.3	0.208	21.3	0.132	21.9	0.75	94.8	95.0	34.9	371.0	4	1	Barstow, Vineyard & H St.	CGS	34.887	-117.047
+Landers 1992	BRS-090	0.02	7.3	0.218	18.2	0.135	25.8	0.91	94.8	95.0	34.9	371.0	4	1	Barstow, Vineyard & H St.	CGS	34.887	-117.047
+Landers 1992	BUE-250	0.02	7.3	0.078	35.7	0.049	7.2	0.9	174.5	174.6	157.9	271.0	4	1	Burbank, 542 N. Buena Vista	USC	34.168	-118.331
+Landers 1992	BUE-340	0.02	7.3	0.161	25.8	0.068	10.4	1.14	174.5	174.6	157.9	271.0	4	1	Burbank, 542 N. Buena Vista	USC	34.168	-118.331
+Landers 1992	CAM-009	0.02	7.3	0.083	30.4	0.046	9.8	1.09	147.5	147.7	135.2	368.0	4	1	Arcadia, 180 Campus Dr.	USC	34.13	-118.036
+Landers 1992	CAM-279	0.02	7.3	0.085	30.0	0.051	12.6	1.09	147.5	147.7	135.2	368.0	4	1	Arcadia, 180 Campus Dr.	USC	34.13	-118.036
+Landers 1992	CAS-000	0.02	7.3	0.146	22.3	0.065	12.2	1.07	165.7	165.9	161.2	309.0	4	1	Compton, 14637 Castlegate St.	USC	33.899	-118.196
+Landers 1992	CAS-270	0.02	7.3	0.164	21.7	0.063	13.1	0.92	165.7	165.9	161.2	309.0	4	1	Compton, 14637 Castlegate St.	USC	33.899	-118.196
+Landers 1992	CLW-LN	0.0025	7.3	1.215	10.4	0.283	25.6	0.42	82.1	82.4	19.7	271.0	4	1	Coolwater	SCE	34.7851	-116.858
+Landers 1992	CLW-TR	0.0025	7.3	2.173	8.2	0.417	42.3	0.56	82.1	82.4	19.7	271.0	4	1	Coolwater	SCE	34.7851	-116.858
+Landers 1992	COM-140	0.02	7.3	0.097	29.0	0.058	8.4	1.05	140.1	141.0	136.3	337.0	3	1	Hacienda Heights, 16750 Colima Rd.	USC	33.99	-117.943
+Landers 1992	COM-230	0.02	7.3	0.081	28.1	0.046	5.6	0.83	140.1	141.0	136.3	337.0	3	1	Hacienda Heights, 16750 Colima Rd.	USC	33.99	-117.943
+Landers 1992	DEL-000	0.02	7.3	0.14	28.0	0.054	14.1	1.0	158.4	158.5	157.4	235.0	4	1	Lakewood, 6701 Del Amo Blvd.	USC	33.846	-118.099
+Landers 1992	DEL-090	0.02	7.3	0.163	27.4	0.05	12.9	1.19	158.4	158.5	157.4	235.0	4	1	Lakewood, 6701 Del Amo Blvd.	USC	33.846	-118.099
+Landers 1992	DSP-000	0.02	7.3	0.707	31.8	0.171	20.3	0.53	27.3	28.2	21.8	345.0	4	1	Desert Hot Springs	CGS	33.962	-116.509
+Landers 1992	DSP-090	0.02	7.3	0.678	32.0	0.154	20.9	0.75	27.3	28.2	21.8	345.0	4	1	Desert Hot Springs	CGS	33.962	-116.509
+Landers 1992	DWN-000	0.02	7.3	0.123	44.8	0.051	18.3	1.26	162.5	162.7	157.5	272.0	4	1	Downey, County Maint. Bldg.	CGS	33.924	-118.167
+Landers 1992	DWN-090	0.02	7.3	0.092	49.9	0.039	11.4	1.14	162.5	162.7	157.5	272.0	4	1	Downey, County Maint. Bldg.	CGS	33.924	-118.167
+Landers 1992	EJS-030	0.02	7.3	0.086	30.3	0.06	5.9	0.75	154.8	155.0	150.1	309.0	4	1	Santa Fe Springs, 11500 E. Joslin St.	USC	33.944	-118.087
+Landers 1992	EJS-120	0.02	7.3	0.096	26.8	0.047	9.2	1.04	154.8	155.0	150.1	309.0	4	1	Santa Fe Springs, 11500 E. Joslin St.	USC	33.944	-118.087
+Landers 1992	EUC-022	0.02	7.3	0.187	27.8	0.069	14.7	1.04	148.5	148.7	146.9	270.0	4	1	Fountain Valley, Euclid	USC	33.719	-117.937
+Landers 1992	EUC-292	0.02	7.3	0.144	26.2	0.058	10.3	0.93	148.5	148.7	146.9	270.0	4	1	Fountain Valley, Euclid	USC	33.719	-117.937
+Landers 1992	FEA-000	0.02	7.3	0.096	24.8	0.051	7.0	0.66	123.0	123.2	121.8	309.0	3	1	Featherly Park, Park Maint. Bldg.	CGS	33.869	-117.709
+Landers 1992	FEA-090	0.02	7.3	0.093	25.7	0.052	4.5	0.53	123.0	123.2	121.8	309.0	3	1	Featherly Park, Park Maint. Bldg.	CGS	33.869	-117.709
+Landers 1992	FTI-000	0.02	7.3	0.227	13.5	0.114	9.8	0.32	121.0	121.2	63.0	345.0	4	1	Fort Irwin	CGS	35.268	-116.684
+Landers 1992	FTI-090	0.02	7.3	0.229	13.5	0.122	16.4	0.5	121.0	121.2	63.0	345.0	4	1	Fort Irwin	CGS	35.268	-116.684
+Landers 1992	GLP-177	0.02	7.3	0.064	25.6	0.044	6.4	0.51	165.2	165.4	148.1	446.0	3	1	Glendale, 3320 Las Palmas Ave.	USC	34.2	-118.231
+Landers 1992	GLP-267	0.02	7.3	0.081	25.1	0.071	4.1	0.47	165.2	165.4	148.1	446.0	3	1	Glendale, 3320 Las Palmas Ave.	USC	34.2	-118.231
+Landers 1992	H05-000	0.02	7.3	0.264	33.2	0.081	5.5	0.35	72.5	72.9	68.7	339.0	4	1	Hemet, Stetson Ave. Fire Station	CGS	33.729	-116.979
+Landers 1992	H05-090	0.02	7.3	0.239	31.9	0.097	5.8	0.39	72.5	72.9	68.7	339.0	4	1	Hemet, Stetson Ave. Fire Station	CGS	33.729	-116.979
+Landers 1992	HOS-090	0.01	7.3	0.391	35.5	0.078	19.9	1.07	80.3	80.6	79.8	271.0	4	1	San Bernadino, E & Hospitality	CGS	34.065	-117.292
+Landers 1992	HOS-180	0.01	7.3	0.384	38.6	0.087	14.6	0.9	80.3	80.6	79.8	271.0	4	1	San Bernadino, E & Hospitality	CGS	34.065	-117.292
+Landers 1992	IND-000	0.02	7.3	0.285	35.9	0.104	9.6	0.65	59.7	60.1	54.3	345.0	4	1	Indio, Coachella Canal	CGS	33.717	-116.155
+Landers 1992	IND-090	0.02	7.3	0.33	37.9	0.109	15.1	0.91	59.7	60.1	54.3	345.0	4	1	Indio, Coachella Canal	CGS	33.717	-116.155
+Landers 1992	JOS-000	0.02	7.3	1.646	27.2	0.274	27.5	0.73	13.7	15.4	11.0	379.0	3	1	Joshua Tree, Fire Station	CGS	34.13	-116.314
+Landers 1992	JOS-090	0.02	7.3	2.349	26.1	0.284	43.4	0.78	13.7	15.4	11.0	379.0	3	1	Joshua Tree, Fire Station	CGS	34.13	-116.314
+Landers 1992	LCN-260	0.0050	7.3	6.98	13.1	0.727	146.7	0.31	44.0	44.6	2.2	685.0	1	1	Lucerne	SCE	34.568	-116.612
+Landers 1992	LCN-345	0.0050	7.3	6.588	13.9	0.789	32.5	0.17	44.0	44.6	2.2	685.0	1	1	Lucerne	SCE	34.568	-116.612
+Landers 1992	MCF-000	0.0050	7.3	0.362	34.6	0.126	6.8	0.38	32.9	33.6	27.0	345.0	4	1	Mission Creek Fault	USGS	33.905	-116.419
+Landers 1992	MCF-090	0.0050	7.3	0.277	40.2	0.125	23.6	0.67	32.9	33.6	27.0	345.0	4	1	Mission Creek Fault	USGS	33.905	-116.419
+Landers 1992	MVH-000	0.0050	7.3	0.959	31.0	0.188	16.3	0.59	21.3	22.4	17.3	345.0	3	1	Morongo Valley, Fire Station	USGS	34.049	-116.578
+Landers 1992	MVH-090	0.0050	7.3	0.91	32.1	0.14	20.6	0.67	21.3	22.4	17.3	345.0	3	1	Morongo Valley, Fire Station	USGS	34.049	-116.578
+Landers 1992	NPS-000	0.0050	7.3	0.639	36.3	0.136	11.2	0.52	32.3	33.0	26.8	345.0	4	1	North Palm Springs	USGS	33.924	-116.543
+Landers 1992	NPS-090	0.0050	7.3	0.694	37.0	0.134	14.2	0.67	32.3	33.0	26.8	345.0	4	1	North Palm Springs	USGS	33.924	-116.543
+Landers 1992	OAK-080	0.02	7.3	0.068	26.4	0.039	5.2	0.88	133.4	133.6	122.6	446.0	4	1	Glendora, 120 N. Oakbank	USC	34.137	-117.883
+Landers 1992	OAK-170	0.02	7.3	0.121	24.6	0.063	9.9	0.82	133.4	133.6	122.6	446.0	4	1	Glendora, 120 N. Oakbank	USC	34.137	-117.883
+Landers 1992	OBR-000	0.02	7.3	0.113	46.4	0.043	15.5	1.01	161.5	161.7	151.7	349.0	4	1	Los Angeles, Obregon Park	CGS	34.037	-118.178
+Landers 1992	OBR-090	0.02	7.3	0.116	35.1	0.065	7.6	0.88	161.5	161.7	151.7	349.0	4	1	Los Angeles, Obregon Park	CGS	34.037	-118.178
+Landers 1992	OR2-010	0.02	7.3	0.105	27.7	0.055	9.4	0.93	164.3	164.5	160.9	270.0	4	1	Long Beach, Orange Ave.	USC	33.881	-118.176
+Landers 1992	OR2-280	0.02	7.3	0.159	25.2	0.061	11.1	1.09	164.3	164.5	160.9	270.0	4	1	Long Beach, Orange Ave.	USC	33.881	-118.176
+Landers 1992	PMN-000	0.02	7.3	0.157	23.1	0.067	12.8	1.21	121.9	122.1	117.5	230.0	4	1	Pomona, 4th & Locust St.	CGS	34.056	-117.748
+Landers 1992	PMN-090	0.02	7.3	0.12	28.4	0.044	8.6	1.02	121.9	122.1	117.5	230.0	4	1	Pomona, 4th & Locust St.	CGS	34.056	-117.748
+Landers 1992	PSA-000	0.02	7.3	0.337	39.4	0.076	11.0	0.71	41.9	42.5	36.2	208.0	4	1	Palm Springs Airport	CGS	33.829	-116.512
+Landers 1992	PSA-090	0.02	7.3	0.392	35.8	0.089	13.8	0.86	41.9	42.5	36.2	208.0	4	1	Palm Springs Airport	CGS	33.829	-116.512
+Landers 1992	SIL-000	0.02	7.3	0.074	30.0	0.05	3.8	0.26	54.6	55.0	50.9	685.0	1	1	Silent Valley, Poppet Flat	CGS	33.851	-116.852
+Landers 1992	SIL-090	0.02	7.3	0.069	31.7	0.04	5.0	0.34	54.6	55.0	50.9	685.0	1	1	Silent Valley, Poppet Flat	CGS	33.851	-116.852
+Landers 1992	TAR-000	0.02	7.3	0.124	35.8	0.066	9.4	0.57	193.2	193.3	175.7	257.0	2	1	Tarzana, Cedar Hill Nursery A	CGS	34.16	-118.534
+Landers 1992	TAR-090	0.02	7.3	0.078	38.7	0.043	5.5	0.71	193.2	193.3	175.7	257.0	2	1	Tarzana, Cedar Hill Nursery A	CGS	34.16	-118.534
+Landers 1992	W70-000	0.02	7.3	0.1	24.5	0.055	9.5	0.99	172.6	172.7	164.0	294.0	4	1	Los Angeles, 924 W. 70th St.	USC	33.976	-118.289
+Landers 1992	W70-270	0.02	7.3	0.101	24.9	0.049	11.3	1.19	172.6	172.7	164.0	294.0	4	1	Los Angeles, 924 W. 70th St.	USC	33.976	-118.289
+Landers 1992	WAI-200	0.02	7.3	0.105	25.0	0.056	9.5	0.92	157.5	157.6	156.0	235.0	4	1	Huntington Beach, 16081 Waikiki Lane	USC	33.727	-118.044
+Landers 1992	WAI-290	0.02	7.3	0.117	22.4	0.059	10.8	1.01	157.5	157.6	156.0	235.0	4	1	Huntington Beach, 16081 Waikiki Lane	USC	33.727	-118.044
+Landers 1992	YER-270	0.02	7.3	0.925	17.6	0.245	51.4	0.91	86.0	86.3	23.6	354.0	4	1	Yermo Fire Station	CGS	34.904	-116.823
+Landers 1992	YER-360	0.02	7.3	0.677	18.9	0.152	29.7	0.65	86.0	86.3	23.6	354.0	4	1	Yermo Fire Station	CGS	34.904	-116.823
+Loma Prieta 1989	A01-000	0.0050	6.9	1.176	23.2	0.268	25.5	0.76	64.0	66.4	43.9	116.0	5	5	Foster City, Redwood Shores, APEEL 1	USGS	37.545	-122.231
+Loma Prieta 1989	A01-090	0.0050	6.9	1.782	14.6	0.294	45.8	0.92	64.0	66.4	43.9	116.0	5	5	Foster City, Redwood Shores, APEEL 1	USGS	37.545	-122.231
+Loma Prieta 1989	A02-043	0.0050	6.9	1.253	8.4	0.274	53.4	1.03	63.5	65.9	43.2	133.0	4	5	Redwood City, APEEL 2	USGS	37.528	-122.256
+Loma Prieta 1989	A02-133	0.0050	6.9	0.711	11.8	0.22	34.3	0.92	63.5	65.9	43.2	133.0	4	5	Redwood City, APEEL 2	USGS	37.528	-122.256
+Loma Prieta 1989	A07-000	0.0050	6.9	0.289	14.7	0.156	16.2	0.65	62.3	64.7	41.9	415.0	1	5	Upper Crystal Springs Res., Pulgas, APEEL 7	CGS	37.484	-122.313
+Loma Prieta 1989	A07-090	0.0050	6.9	0.176	16.0	0.088	15.7	0.77	62.3	64.7	41.9	415.0	1	5	Upper Crystal Springs Res., Pulgas, APEEL 7	CGS	37.484	-122.313
+Loma Prieta 1989	A09-137	0.0050	6.9	0.217	20.6	0.113	15.7	1.09	61.5	63.9	41.0	450.0	4	5	APEEL 9, Crystal Springs Res.	CGS	37.47	-122.32
+Loma Prieta 1989	A09-227	0.0050	6.9	0.204	16.2	0.104	18.1	0.91	61.5	63.9	41.0	450.0	4	5	APEEL 9, Crystal Springs Res.	CGS	37.47	-122.32
+Loma Prieta 1989	A10-000	0.0050	6.9	0.209	16.3	0.103	14.2	0.93	62.3	64.7	41.9	392.0	1	5	APEEL 10, Skyline, Upper Crystal Springs Res.	CGS	37.465	-122.342
+Loma Prieta 1989	A10-090	0.0050	6.9	0.255	15.1	0.088	24.3	1.01	62.3	64.7	41.9	392.0	1	5	APEEL 10, Skyline, Upper Crystal Springs Res.	CGS	37.465	-122.342
+Loma Prieta 1989	A2E-000	0.0050	6.9	0.423	12.8	0.171	14.2	0.58	70.8	72.9	52.7	271.0	4	5	APEEL 2E, Hayward Muir School	CGS	37.657	-122.082
+Loma Prieta 1989	A2E-090	0.0050	6.9	0.29	12.9	0.139	11.7	0.58	70.8	72.9	52.7	271.0	4	5	APEEL 2E, Hayward Muir School	CGS	37.657	-122.082
+Loma Prieta 1989	A3E-000	0.0050	6.9	0.078	17.4	0.078	5.6	0.42	70.4	72.5	52.5	517.0	1	5	APEEL 3E, Hayward, CSUH	CGS	37.657	-122.061
+Loma Prieta 1989	A3E-090	0.0050	6.9	0.102	18.4	0.084	6.4	0.53	70.4	72.5	52.5	517.0	1	5	APEEL 3E, Hayward, CSUH	CGS	37.657	-122.061
+Loma Prieta 1989	ADL-250	0.0050	6.9	0.093	15.6	0.064	12.1	1.24	26.6	31.8	20.3	489.0	1	5	Anderson Dam, left abutment	USGS	37.166	-121.628
+Loma Prieta 1989	ADL-340	0.0050	6.9	0.087	12.7	0.077	10.0	0.82	26.6	31.8	20.3	489.0	1	5	Anderson Dam, left abutment	USGS	37.166	-121.628
+Loma Prieta 1989	AGW-000	0.0050	6.9	0.442	18.4	0.172	25.0	0.64	40.1	43.8	24.6	240.0	1	5	Agnews State Hospital	CGS	37.397	-121.952
+Loma Prieta 1989	AGW-090	0.0050	6.9	0.375	21.4	0.159	17.6	0.97	40.1	43.8	24.6	240.0	1	5	Agnews State Hospital	CGS	37.397	-121.952
+Loma Prieta 1989	AND-250	0.0050	6.9	0.797	10.5	0.244	20.3	0.47	26.6	31.8	20.3	489.0	4	5	Anderson Dam, downstream	USGS	37.166	-121.628
+Loma Prieta 1989	AND-340	0.0050	6.9	0.801	10.8	0.24	18.4	0.48	26.6	31.8	20.3	489.0	4	5	Anderson Dam, downstream	USGS	37.166	-121.628
+Loma Prieta 1989	BES-075	0.0050	6.9	0.177	10.3	0.11	16.2	0.8	64.6	66.9	44.1	628.0	1	5	Belmont, Envirotech	CGS	37.512	-122.308
+Loma Prieta 1989	BES-345	0.0050	6.9	0.12	12.2	0.108	11.8	0.66	64.6	66.9	44.1	628.0	1	5	Belmont, Envirotech	CGS	37.512	-122.308
+Loma Prieta 1989	BRK-000	0.0050	6.9	0.063	16.9	0.057	9.0	0.81	98.4	100.0	79.3	597.0	1	5	Berkeley, Lawrence Lab	CGS	37.876	-122.249
+Loma Prieta 1989	BRK-090	0.0050	6.9	0.147	8.0	0.117	21.0	0.88	98.4	100.0	79.3	597.0	1	5	Berkeley, Lawrence Lab	CGS	37.876	-122.249
+Loma Prieta 1989	BRN-000	0.0050	6.9	5.363	9.0	0.481	55.7	0.46	9.0	19.7	10.7	376.0	1	5	Branciforte Dr.	UCSC	37.047	-121.984
+Loma Prieta 1989	BRN-090	0.0050	6.9	5.302	9.8	0.526	42.1	0.34	9.0	19.7	10.7	376.0	1	5	Branciforte Dr.	UCSC	37.047	-121.984
+Loma Prieta 1989	BV7-220	0.0050	6.9	0.027	13.4	0.046	3.5	0.38	88.2	89.9	68.2	597.0	2	5	Bear Valley #7 Pinnacles	USGS	36.483	-121.18
+Loma Prieta 1989	BV7-310	0.0050	6.9	0.026	12.6	0.041	2.8	0.4	88.2	89.9	68.2	597.0	2	5	Bear Valley #7 Pinnacles	USGS	36.483	-121.18
+Loma Prieta 1989	BVC-220	0.0050	6.9	0.088	17.6	0.069	9.0	0.77	73.7	75.7	53.6	391.0	3	5	Bear Valley #5 Callens Ranch	USGS	36.673	-121.195
+Loma Prieta 1989	BVC-310	0.0050	6.9	0.088	17.8	0.071	10.0	0.74	73.7	75.7	53.6	391.0	3	5	Bear Valley #5 Callens Ranch	USGS	36.673	-121.195
+Loma Prieta 1989	BVF-220	0.0050	6.9	0.149	16.0	0.072	7.4	0.46	81.2	83.0	61.7	339.0	2	5	Bear Valley Fire Station #1	USGS	36.573	-121.184
+Loma Prieta 1989	BVF-310	0.0050	6.9	0.109	16.2	0.076	4.9	0.36	81.2	83.0	61.7	339.0	2	5	Bear Valley Fire Station #1	USGS	36.573	-121.184
+Loma Prieta 1989	BVR-220	0.0050	6.9	0.278	18.0	0.121	8.1	0.44	86.9	88.6	67.5	304.0	2	5	Bear Valley #10 Webb Residence	USGS	36.532	-121.143
+Loma Prieta 1989	BVR-310	0.0050	6.9	0.194	19.6	0.086	8.6	0.5	86.9	88.6	67.5	304.0	2	5	Bear Valley #10 Webb Residence	USGS	36.532	-121.143
+Loma Prieta 1989	BVU-220	0.0050	6.9	0.203	16.8	0.084	9.7	0.43	91.4	93.1	71.4	376.0	2	5	Bear Valley #14 Upper Butts Ranch	USGS	36.569	-121.043
+Loma Prieta 1989	BVU-310	0.0050	6.9	0.191	18.4	0.098	7.8	0.42	91.4	93.1	71.4	376.0	2	5	Bear Valley #14 Upper Butts Ranch	USGS	36.569	-121.043
+Loma Prieta 1989	BVW-220	0.0050	6.9	0.473	16.0	0.157	20.9	0.9	70.7	72.8	51.0	331.0	3	5	Bear Valley #12 Williams Ranch	USGS	36.358	-121.249
+Loma Prieta 1989	BVW-310	0.0050	6.9	0.501	16.4	0.17	21.8	0.89	70.7	72.8	51.0	331.0	3	5	Bear Valley #12 Williams Ranch	USGS	36.358	-121.249
+Loma Prieta 1989	CAP-000	0.0050	6.9	4.376	11.9	0.529	35.0	0.49	99.2	20.0	15.2	289.0	3	5	Capitola Fire Station, 405 Capitola Ave.	CGS	36.973	-121.953
+Loma Prieta 1989	CAP-090	0.0050	6.9	2.374	13.2	0.443	29.2	0.49	9.8	20.0	15.2	289.0	3	5	Capitola Fire Station, 405 Capitola Ave.	CGS	36.973	-121.953
+Loma Prieta 1989	CFH-000	0.0050	6.9	0.09	10.1	0.075	10.8	0.76	99.0	100.1	78.7	713.0	1	5	San Francisco, Cliff House	CGS	37.778	-122.513
+Loma Prieta 1989	CFH-090	0.0050	6.9	0.133	7.3	0.108	19.8	1.04	99.2	100.1	78.7	713.0	1	5	San Francisco, Cliff House	CGS	37.778	-122.513
+Loma Prieta 1989	CLD-195	0.0050	6.9	0.352	13.4	0.16	12.8	0.41	30.9	35.5	20.8	295.0	4	5	Coyote Lake Dam, Downstream	CGS	37.124	-121.551
+Loma Prieta 1989	CLD-285	0.0050	6.9	0.464	11.4	0.179	23.0	0.54	30.9	35.5	20.8	295.0	4	5	Coyote Lake Dam, Downstream	CGS	37.124	-121.551
+Loma Prieta 1989	CLR-090	0.0050	6.9	0.101	17.6	0.07	8.7	0.58	46.3	49.5	35.5	514.0	3	5	Calaveras Reservoir	USGS	37.452	-121.807
+Loma Prieta 1989	CLR-180	0.0050	6.9	0.231	12.9	0.116	10.4	0.53	46.3	49.5	35.5	514.0	3	5	Calaveras Reservoir	USGS	37.452	-121.807
+Loma Prieta 1989	CLS-000	0.0050	6.9	3.239	6.9	0.644	55.2	0.48	7.2	18.9	3.9	462.0	2	5	Corralitos, Koinonia Campground	CGS	37.046	-121.803
+Loma Prieta 1989	CLS-090	0.0050	6.9	2.532	7.9	0.479	45.2	0.62	7.2	18.9	3.9	462.0	2	5	Corralitos, Koinonia Campground	CGS	37.046	-121.803
+Loma Prieta 1989	CYC-195	0.0050	6.9	0.428	15.7	0.151	16.4	0.6	30.8	35.4	20.3	597.0	1	5	Coyote Lake Dam, SW abut	CGS	37.118	-121.55
+Loma Prieta 1989	CYC-285	0.0050	6.9	1.503	12.2	0.484	39.7	0.6	30.8	35.4	20.3	597.0	1	5	Coyote Lake Dam, SW abut	CGS	37.118	-121.55
+Loma Prieta 1989	DFS-270	0.0050	6.9	0.162	16.8	0.073	12.0	0.8	74.5	76.5	58.8	271.0	4	5	Dublin Fire Station	USGS	37.709	-121.932
+Loma Prieta 1989	DFS-360	0.0050	6.9	0.147	18.4	0.075	15.1	0.96	74.5	76.5	58.8	271.0	4	5	Dublin Fire Station	USGS	37.709	-121.932
+Loma Prieta 1989	DMH-000	0.0050	6.9	0.139	8.7	0.098	10.0	0.49	91.7	93.4	71.3	583.0	1	5	San Francisco, Diamond Heights, Digby St.	CGS	37.74	-122.432
+Loma Prieta 1989	DMH-090	0.0050	6.9	0.104	9.2	0.113	13.2	0.62	91.7	93.4	71.3	583.0	1	5	San Francisco, Diamond Heights, Digby St.	CGS	37.74	-122.432
+Loma Prieta 1989	DUM-267	0.02	6.9	0.27	24.8	0.129	19.9	1.13	55.0	57.7	35.5	275.0	4	5	Dumbarton Bridge West End	USGS	37.492	-122.136
+Loma Prieta 1989	DUM-357	0.02	6.9	0.314	19.9	0.127	21.5	1.05	55.0	57.7	35.5	275.0	4	5	Dumbarton Bridge West End	USGS	37.492	-122.136
+Loma Prieta 1989	EMY-260	0.0050	6.9	0.914	8.9	0.26	41.1	1.11	96.5	98.1	77.0	199.0	5	5	Emeryville, 6363 Christie Ave.	USGS	37.844	-122.295
+Loma Prieta 1989	EMY-350	0.0050	6.9	0.525	15.0	0.215	21.5	0.92	96.5	98.1	77.0	199.0	5	5	Emeryville, 6363 Christie Ave.	USGS	37.844	-122.295
+Loma Prieta 1989	FMS-090	0.0050	6.9	0.311	17.2	0.192	12.5	0.56	55.2	57.9	39.9	285.0	2	5	Fremont, Emerson Ct.	CGS	37.535	-121.929
+Loma Prieta 1989	FMS-180	0.0050	6.9	0.323	17.9	0.141	12.5	0.49	55.2	57.9	39.9	285.0	2	5	Fremont, Emerson Ct.	CGS	37.535	-121.929
+Loma Prieta 1989	FRE-000	0.0050	6.9	0.268	18.2	0.124	10.9	0.53	54.5	57.3	39.5	368.0	2	5	Fremont, Mission San Jose	CGS	37.53	-121.919
+Loma Prieta 1989	FRE-090	0.0050	6.9	0.252	16.7	0.106	8.8	0.43	54.5	57.3	39.5	368.0	2	5	Fremont, Mission San Jose	CGS	37.53	-121.919
+Loma Prieta 1989	G01-000	0.0050	6.9	1.056	6.5	0.411	31.6	0.29	28.6	33.6	9.6	1428.0	1	5	Gilroy Array #1, Gavilan College tank grnds.	CGS	36.973	-121.572
+Loma Prieta 1989	G01-090	0.0050	6.9	1.68	3.7	0.473	33.9	0.39	28.6	33.6	9.6	1428.0	1	5	Gilroy Array #1, Gavilan College tank grnds.	CGS	36.973	-121.572
+Loma Prieta 1989	G02-000	0.0050	6.9	1.197	11.0	0.367	32.9	0.54	29.8	34.5	11.1	271.0	4	5	Gilroy Array #2, Mission Trails Motel	CGS	36.982	-121.556
+Loma Prieta 1989	G02-090	0.0050	6.9	1.211	9.5	0.322	39.1	0.76	29.8	34.5	11.1	271.0	4	5	Gilroy Array #2, Mission Trails Motel	CGS	36.982	-121.556
+Loma Prieta 1989	G03-000	0.0050	6.9	2.088	6.4	0.555	35.7	0.37	31.4	35.9	12.8	350.0	4	5	Gilroy Array #3, Sewer Farm A	CGS	36.987	-121.536
+Loma Prieta 1989	G03-090	0.0050	6.9	1.349	11.4	0.367	44.7	0.62	31.4	35.9	12.8	350.0	4	5	Gilroy Array #3, Sewer Farm A	CGS	36.987	-121.536
+Loma Prieta 1989	G04-000	0.0050	6.9	1.242	13.8	0.417	38.8	0.58	32.4	36.8	14.3	222.0	4	5	Gilroy Array #4, San Ysidro School	CGS	37.001	-121.522
+Loma Prieta 1989	G04-090	0.0050	6.9	0.954	14.8	0.212	37.8	0.76	32.4	36.8	14.3	222.0	4	5	Gilroy Array #4, San Ysidro School	CGS	37.001	-121.522
+Loma Prieta 1989	G06-000	0.0050	6.9	0.223	12.9	0.126	12.7	0.54	35.5	39.6	18.3	663.0	1	5	Gilroy Array #6, San Ysidro Microwave Site         	CGS	37.026	-121.484
+Loma Prieta 1989	G06-090	0.0050	6.9	0.442	12.6	0.17	14.2	0.46	35.5	39.6	18.3	663.0	1	5	Gilroy Array #6, San Ysidro Microwave Site         	CGS	37.026	-121.484
+Loma Prieta 1989	GGB-270	0.0050	6.9	0.484	5.9	0.233	38.0	0.96	100.2	101.7	79.8	642.0	1	5	Golden Gate Bridge	USGS	37.808	-122.476
+Loma Prieta 1989	GGB-360	0.0050	6.9	0.273	7.4	0.123	17.7	0.74	100.2	101.7	79.8	642.0	1	5	Golden Gate Bridge	USGS	37.808	-122.476
+Loma Prieta 1989	GIL-067	0.0050	6.9	0.904	5.0	0.357	28.9	0.37	29.0	33.8	10.0	730.0	2	5	Gilroy, Gavilan College Science Bldg.	CGS	36.973	-121.568
+Loma Prieta 1989	GIL-337	0.0050	6.9	0.701	4.8	0.325	22.3	0.32	29.0	33.8	10.0	730.0	2	5	Gilroy, Gavilan College Science Bldg.	CGS	36.973	-121.568
+Loma Prieta 1989	GMR-000	0.0050	6.9	0.784	11.5	0.226	16.4	0.36	39.9	43.6	22.7	334.0	2	5	Gilroy Array #7, Mantelli Ranch                    	CGS	37.033	-121.434
+Loma Prieta 1989	GMR-090	0.0050	6.9	0.842	9.1	0.323	16.6	0.38	39.9	43.6	22.7	334.0	2	5	Gilroy Array #7, Mantelli Ranch                    	CGS	37.033	-121.434
+Loma Prieta 1989	GOF-160	0.0050	6.9	0.71	8.9	0.284	41.6	0.79	28.1	33.1	11.0	339.0	4	5	Gilroy, Historic Building	CGS	37.009	-121.569
+Loma Prieta 1989	GOF-250	0.0050	6.9	0.494	12.9	0.241	24.1	0.59	28.1	33.1	11.0	339.0	4	5	Gilroy, Historic Building	CGS	37.009	-121.569
+Loma Prieta 1989	HCH-090	0.0050	6.9	0.816	17.4	0.247	38.4	0.98	47.9	50.1	27.6	199.0	4	5	Hollister City Hall	USGS	36.851	-121.402
+Loma Prieta 1989	HCH-180	0.0050	6.9	1.061	13.6	0.215	45.0	1.11	47.9	50.1	27.6	199.0	4	5	Hollister City Hall	USGS	36.851	-121.402
+Loma Prieta 1989	HDA-165	0.0050	6.9	0.801	12.4	0.269	43.9	0.91	45.1	48.4	24.8	216.0	4	5	Hollister Airport Differential Array	USGS	36.888	-121.413
+Loma Prieta 1989	HDA-255	0.0050	6.9	1.036	13.2	0.279	35.4	0.81	45.1	48.4	24.8	216.0	4	5	Hollister Airport Differential Array	USGS	36.888	-121.413
+Loma Prieta 1989	HSP-000	0.0050	6.9	2.205	16.4	0.371	62.3	0.95	48.2	51.3	27.9	371.0	4	5	Hollister, South and Pine Streets	CGS	36.848	-121.397
+Loma Prieta 1989	HSP-090	0.0050	6.9	0.774	28.8	0.177	28.9	0.9	48.2	51.3	27.9	371.0	4	5	Hollister, South and Pine Streets	CGS	36.848	-121.397
+Loma Prieta 1989	HVR-000	0.0050	6.9	0.258	16.2	0.134	15.4	0.68	36.3	40.3	30.5	282.0	3	5	Halls Valley, Grant Park	CGS	37.338	-121.714
+Loma Prieta 1989	HVR-090	0.0050	6.9	0.249	13.7	0.102	13.5	0.68	36.3	40.3	30.5	282.0	3	5	Halls Valley, Grant Park	CGS	37.338	-121.714
+Loma Prieta 1989	HWB-220	0.0050	6.9	0.405	10.9	0.159	15.1	0.54	72.3	74.4	54.2	371.0	4	5	Hayward BART station	CGS	37.67	-122.086
+Loma Prieta 1989	HWB-310	0.0050	6.9	0.278	13.2	0.156	10.6	0.37	72.3	74.4	54.2	371.0	4	5	Hayward BART station	CGS	37.67	-122.086
+Loma Prieta 1989	HYN-064	0.0050	6.9	0.041	20.0	0.05	5.8	0.55	73.2	75.2	55.1	735.0	2	5	Hayward City Hall, North	USGS	37.679	-122.082
+Loma Prieta 1989	HYN-334	0.0050	6.9	0.04	15.2	0.052	5.7	0.36	73.2	75.2	55.1	735.0	2	5	Hayward City Hall, North	USGS	37.679	-122.082
+Loma Prieta 1989	LCS-000	0.02	6.9	0.048	13.1	0.057	5.3	0.51	68.9	71.1	48.4	713.0	1	5	Lower Crystal Springs Dam, Downstream	CGS	37.529	-122.361
+Loma Prieta 1989	LCS-090	0.02	6.9	0.105	12.9	0.087	10.2	0.66	68.9	71.1	48.4	713.0	1	5	Lower Crystal Springs Dam, Downstream	CGS	37.529	-122.361
+Loma Prieta 1989	LEX-000	0.01	6.9	1.863	4.3	0.42	73.5	0.89	20.4	26.8	5.0	1070.0	1	5	Los Gatos, Lexington Dam	CGS	37.202	-121.991
+Loma Prieta 1989	LEX-090	0.01	6.9	1.758	4.1	0.433	86.3	0.98	20.4	26.8	5.0	1070.0	1	5	Los Gatos, Lexington Dam	CGS	37.202	-121.991
+Loma Prieta 1989	LGP-000	0.0050	6.9	8.37	10.1	0.966	108.8	0.8	18.5	25.4	3.9	478.0	1	5	Los Gatos Pres. Cent.	UCSC	37.1724	-122.0114
+Loma Prieta 1989	LGP-090	0.0050	6.9	3.281	7.5	0.587	48.0	0.56	18.5	25.4	3.9	478.0	1	5	Los Gatos Pres. Cent.	UCSC	37.1724	-122.0114
+Loma Prieta 1989	LKS-270	0.0050	6.9	0.542	9.1	0.137	20.3	0.88	114.9	116.2	94.6	170.0	5	5	Larkspur Ferry Terminal	USGS	37.946	-122.508
+Loma Prieta 1989	LKS-360	0.0050	6.9	0.239	12.1	0.096	13.8	0.89	114.9	116.2	94.6	170.0	5	5	Larkspur Ferry Terminal	USGS	37.946	-122.508
+Loma Prieta 1989	LOB-000	0.0050	6.9	2.662	9.5	0.45	18.7	0.28	16.3	23.9	18.4	714.0	1	5	Santa Cruz, UCSC Lick Observatory	CGS	37.001	-122.06
+Loma Prieta 1989	LOB-090	0.0050	6.9	2.039	9.7	0.395	17.6	0.22	16.3	23.9	18.4	714.0	1	5	Santa Cruz, UCSC Lick Observatory	CGS	37.001	-122.06
+Loma Prieta 1989	MCH-000	0.0050	6.9	0.081	13.2	0.073	3.3	0.31	49.4	52.4	44.4	685.0	1	5	Monterey City Hall	CGS	36.597	-121.897
+Loma Prieta 1989	MCH-090	0.0050	6.9	0.058	11.9	0.063	5.8	0.38	49.4	52.4	44.4	685.0	1	5	Monterey City Hall	CGS	36.597	-121.897
+Loma Prieta 1989	MEN-270	0.0050	6.9	0.276	15.5	0.107	20.8	0.99	65.7	68.0	45.6	126.0	5	5	Foster City, 355 Menhaden	USGS	37.555	-122.248
+Loma Prieta 1989	MEN-360	0.0050	6.9	0.257	13.2	0.116	20.3	0.95	65.7	68.0	45.6	126.0	5	5	Foster City, 355 Menhaden	USGS	37.555	-122.248
+Loma Prieta 1989	NAS-180	0.0050	6.9	0.339	5.0	0.268	22.0	0.77	90.8	92.4	71.0	190.0	5	5	Alameda Naval Air Station Hanger	BYU	37.785	-122.303
+Loma Prieta 1989	NAS-270	0.0050	6.9	0.48	5.5	0.209	42.6	1.13	90.8	92.4	71.0	190.0	5	5	Alameda Naval Air Station Hanger	BYU	37.785	-122.303
+Loma Prieta 1989	OHW-000	0.02	6.9	0.725	8.7	0.287	40.9	0.89	94.0	95.6	74.3	249.0	4	5	Oakland, outer harbor wharf, 14th St.	CGS	37.813	-122.314
+Loma Prieta 1989	OHW-270	0.02	6.9	0.986	7.0	0.269	41.7	0.87	94.0	95.6	74.3	249.0	4	5	Oakland, outer harbor wharf, 14th St.	CGS	37.813	-122.314
+Loma Prieta 1989	OLE-000	0.02	6.9	0.308	13.0	0.161	18.7	0.81	137.6	138.8	117.1	339.0	2	5	Olema, Point Reyes Station	CGS	38.043	-122.797
+Loma Prieta 1989	OLE-090	0.02	6.9	0.287	14.5	0.102	16.3	0.85	137.6	138.8	117.1	339.0	2	5	Olema, Point Reyes Station	CGS	38.043	-122.797
+Loma Prieta 1989	PAE-055	0.0050	6.9	1.138	19.4	0.213	39.5	1.18	50.2	53.1	30.8	210.0	4	5	Palo Alto, 1900 Embarcadero	USGS	37.453	-122.112
+Loma Prieta 1989	PAE-325	0.0050	6.9	0.539	23.1	0.204	21.9	1.16	50.2	53.1	30.8	210.0	4	5	Palo Alto, 1900 Embarcadero	USGS	37.453	-122.112
+Loma Prieta 1989	PHT-270	0.0050	6.9	0.052	9.7	0.061	13.3	1.05	96.3	97.9	76.1	1250.0	1	5	San Francisco, Pacific Heights fire station	CGS	37.79	-122.429
+Loma Prieta 1989	PHT-360	0.0050	6.9	0.038	10.8	0.047	9.2	0.91	96.3	97.9	76.1	1250.0	1	5	San Francisco, Pacific Heights fire station	CGS	37.79	-122.429
+Loma Prieta 1989	PJH-045	0.0050	6.9	0.047	10.6	0.084	8.3	0.65	92.2	93.9	73.0	895.0	1	5	Piedmont Junior High School	CGS	37.821	-122.234
+Loma Prieta 1989	PJH-315	0.0050	6.9	0.05	11.1	0.071	9.2	0.62	92.2	93.9	73.0	895.0	1	5	Piedmont Junior High School	CGS	37.821	-122.234
+Loma Prieta 1989	PRS-000	0.0050	6.9	0.154	10.2	0.099	13.1	0.67	97.8	99.3	77.4	595.0	1	5	San Francisco, Presidio, Arguello Dr. vista	CGS	37.792	-122.457
+Loma Prieta 1989	PRS-090	0.0050	6.9	0.264	8.7	0.2	32.2	0.83	97.8	99.3	77.4	595.0	1	5	San Francisco, Presidio, Arguello Dr. vista	CGS	37.792	-122.457
+Loma Prieta 1989	PTB-207	0.0050	6.9	0.063	10.0	0.071	11.5	0.87	103.9	105.4	83.5	1316.0	1	5	Point Bonita	CGS	37.822	-122.527
+Loma Prieta 1989	PTB-297	0.0050	6.9	0.089	8.4	0.072	12.6	1.09	103.9	105.4	83.5	1316.0	1	5	Point Bonita	CGS	37.822	-122.527
+Loma Prieta 1989	RCH-190	0.0050	6.9	0.204	12.0	0.124	17.1	0.82	107.5	108.9	87.9	260.0	4	5	Richmond City Hall	CGS	37.935	-122.342
+Loma Prieta 1989	RCH-280	0.0050	6.9	0.162	13.7	0.106	14.2	0.72	107.5	108.9	87.9	260.0	4	5	Richmond City Hall	CGS	37.935	-122.342
+Loma Prieta 1989	RIN-000	0.0050	6.9	0.055	13.7	0.078	6.8	0.68	94.3	95.9	74.1	873.0	1	5	San Francisco, Rincon Hill, Fremont & Harrison 	CGS	37.786	-122.391
+Loma Prieta 1989	RIN-090	0.0050	6.9	0.066	11.4	0.092	10.5	0.84	94.3	95.9	74.1	873.0	1	5	San Francisco, Rincon Hill, Fremont & Harrison 	CGS	37.786	-122.391
+Loma Prieta 1989	SFO-000	0.0050	6.9	0.857	10.8	0.236	25.5	0.54	79.1	81.0	58.7	190.0	4	5	San Francisco International Airport	CGS	37.622	-122.398
+Loma Prieta 1989	SFO-090	0.0050	6.9	0.902	11.3	0.329	28.1	0.56	79.1	81.0	58.7	190.0	4	5	San Francisco International Airport	CGS	37.622	-122.398
+Loma Prieta 1989	SFS-270	0.0050	6.9	0.063	9.7	0.072	10.6	0.62	88.4	90.1	68.2	339.0	2	5	San Francisco, 1295 Shafter	USGS	37.728	-122.385
+Loma Prieta 1989	SFS-360	0.0050	6.9	0.096	10.6	0.106	8.1	0.41	88.4	90.1	68.2	339.0	2	5	San Francisco, 1295 Shafter	USGS	37.728	-122.385
+Loma Prieta 1989	SG3-261	0.0050	6.9	0.085	14.4	0.073	10.2	0.83	53.9	56.7	34.3	685.0	1	5	SAGO South, Surface	CGS	36.753	-121.395
+Loma Prieta 1989	SG3-351	0.0050	6.9	0.095	18.3	0.067	9.7	0.91	53.9	56.7	34.3	685.0	1	5	SAGO South, Surface	CGS	36.753	-121.395
+Loma Prieta 1989	SGI-270	0.0050	6.9	0.037	16.3	0.036	7.3	0.61	49.5	52.5	30.2	685.0	1	5	Hollister, SAGO Vault	USGS	36.765	-121.446
+Loma Prieta 1989	SGI-360	0.0050	6.9	0.042	15.4	0.06	8.3	0.6	49.5	52.5	30.2	685.0	1	5	Hollister, SAGO Vault	USGS	36.765	-121.446
+Loma Prieta 1989	SJT-225	0.02	6.9	1.308	10.1	0.275	25.3	0.31	20.1	26.66	14.7	672.0	1	5	San Jose, Santa Teresa Hills	CGS	37.21	-121.803
+Loma Prieta 1989	SJT-315	0.02	6.9	1.001	10.1	0.228	21.6	0.36	20.1	26.66	14.7	672.0	1	5	San Jose, Santa Teresa Hills	CGS	37.21	-121.803
+Loma Prieta 1989	SJW-160	0.0050	6.9	0.151	21.5	0.091	10.4	0.73	46.4	49.6	32.8	271.0	4	5	Salinas, John and Work St.	CGS	36.671	-121.642
+Loma Prieta 1989	SJW-250	0.0050	6.9	0.238	20.3	0.112	15.9	0.63	46.4	49.6	32.8	271.0	4	5	Salinas, John and Work St.	CGS	36.671	-121.642
+Loma Prieta 1989	SLC-270	0.0050	6.9	0.546	12.5	0.194	37.4	0.86	51.2	54.1	30.9	425.0	1	5	Stanford University, SLAC	USGS	37.419	-122.205
+Loma Prieta 1989	SLC-360	0.0050	6.9	0.896	11.6	0.278	29.1	0.67	51.2	54.1	30.9	425.0	1	5	Stanford University, SLAC	USGS	37.419	-122.205
+Loma Prieta 1989	SPG-090	0.01	6.9	0.591	12.2	0.22	21.2	0.7	50.5	53.5	30.4	371.0	4	5	Stanford University, Parking garage	USGS	37.432	-122.172
+Loma Prieta 1989	SPG-360	0.0050	6.9	0.603	11.3	0.254	38.6	0.89	50.5	53.5	30.4	371.0	4	5	Stanford University, Parking garage	USGS	37.432	-122.172
+Loma Prieta 1989	SSF-115	0.0050	6.9	0.048	12.1	0.056	7.1	0.61	83.5	85.3	63.2	1021.0	1	5	South San Francisco, Sierra Point	CGS	37.675	-122.388
+Loma Prieta 1989	SSF-205	0.0050	6.9	0.078	9.5	0.105	8.7	0.54	83.5	85.3	63.2	1021.0	1	5	South San Francisco, Sierra Point	CGS	37.675	-122.388
+Loma Prieta 1989	STG-000	0.0050	6.9	1.452	9.4	0.512	41.2	0.64	27.2	32.4	8.5	371.0	4	5	Saratoga, Aloha Ave.	CGS	37.255	-122.031
+Loma Prieta 1989	STG-090	0.0050	6.9	1.088	8.3	0.324	42.6	0.55	27.2	32.4	8.5	371.0	4	5	Saratoga, Aloha Ave.	CGS	37.255	-122.031
+Loma Prieta 1989	SUF-090	0.0050	6.9	0.116	15.7	0.085	9.0	0.52	61.9	64.3	47.6	401.0	4	5	Sunol, Forest Fire Station	USGS	37.597	-121.88
+Loma Prieta 1989	SUF-180	0.0050	6.9	0.112	21.7	0.065	10.1	0.59	61.9	64.3	47.6	401.0	4	5	Sunol, Forest Fire Station	USGS	37.597	-121.88
+Loma Prieta 1989	SVL-270	0.0050	6.9	0.651	21.2	0.207	37.0	1.54	42.1	45.6	24.2	268.0	4	5	Sunnyvale, 1695 Colton Ave.	USGS	37.402	-122.025
+Loma Prieta 1989	SVL-360	0.0050	6.9	0.756	25.3	0.209	36.0	1.4	42.1	45.6	24.2	268.0	4	5	Sunnyvale, 1695 Colton Ave.	USGS	37.34	-121.756
+Loma Prieta 1989	TIB-200	0.0050	6.9	0.403	11.6	0.195	20.0	0.77	91.7	93.3	72.2	306.0	4	5	Oakland, Title & Trust	CGS	37.806	-122.267
+Loma Prieta 1989	TIB-290	0.0050	6.9	0.646	12.5	0.244	36.1	0.88	91.7	93.3	72.2	306.0	4	5	Oakland, Title & Trust	CGS	37.806	-122.267
+Loma Prieta 1989	TLH-000	0.0050	6.9	0.016	9.3	0.036	3.4	0.54	96.7	98.3	76.5	713.0	1	5	San Francisco, Telegraph Hill, Stockton St. fire	CGS	37.803	-122.408
+Loma Prieta 1989	TLH-090	0.0050	6.9	0.028	8.2	0.077	6.7	0.74	96.7	98.3	76.5	713.0	1	5	San Francisco, Telegraph Hill, Stockton St. fire	CGS	37.803	-122.408
+Loma Prieta 1989	TRI-000	0.0050	6.9	0.143	5.8	0.1	15.6	1.02	97.4	99.0	77.4	155.0	5	5	Treasure Island Naval Base, fire station	CGS	37.825	-122.373
+Loma Prieta 1989	TRI-090	0.0050	6.9	0.358	4.4	0.159	33.1	1.11	97.4	99.0	77.4	155.0	5	5	Treasure Island Naval Base, fire station	CGS	37.825	-122.373
+Loma Prieta 1989	UC2-000	0.0050	6.9	0.856	9.0	0.311	12.8	0.2	16.5	24.1	18.5	714.0	2	5	U.C. Santa Cruz	UCSC	37.001	-122.0625
+Loma Prieta 1989	UC2-090	0.0050	6.9	1.583	8.6	0.386	15.6	0.22	16.5	24.1	18.5	714.0	2	5	U.C. Santa Cruz	UCSC	37.001	-122.0625
+Loma Prieta 1989	UCS-045	0.0050	6.9	0.042	15.2	0.076	10.5	0.96	97.5	99.1	78.4	478.0	2	5	Berkeley, Strawberry Canyon	USGS	37.87	-122.24
+Loma Prieta 1989	UCS-135	0.0050	6.9	0.027	13.1	0.048	4.3	0.7	97.5	99.1	78.4	478.0	2	5	Berkeley, Strawberry Canyon	USGS	37.87	-122.24
+Loma Prieta 1989	WAH-000	0.0050	6.9	3.707	10.5	0.398	31.2	0.28	12.6	21.5	17.5	376.0	2	5	Walter's House	UCSC	36.972	-121.995
+Loma Prieta 1989	WAH-090	0.0050	6.9	6.275	11.0	0.672	35.2	0.27	12.6	21.5	17.5	376.0	2	5	Walter's House	UCSC	36.972	-121.995
+Loma Prieta 1989	WDS-000	0.0050	6.9	0.108	16.8	0.08	13.9	1.14	54.5	57.2	34.1	454.0	2	5	Woodside Fire Station	CGS	37.429	-122.258
+Loma Prieta 1989	WDS-090	0.0050	6.9	0.127	15.4	0.082	17.1	0.91	54.5	57.2	34.1	454.0	2	5	Woodside Fire Station	CGS	37.429	-122.258
+Loma Prieta 1989	WVC-000	0.0050	6.9	1.081	11.1	0.255	42.4	0.86	27.1	32.2	9.3	371.0	4	5	Saratoga, West Valley College	CGS	37.262	-122.009
+Loma Prieta 1989	WVC-270	0.0050	6.9	1.237	10.7	0.332	61.5	0.97	27.1	32.2	9.3	371.0	4	5	Saratoga, West Valley College	CGS	37.262	-122.009
+Loma Prieta 1989	YBI-000	0.0050	6.9	0.016	14.4	0.029	4.2	0.62	95.2	96.8	75.2	660.0	1	5	Yerba Buena Island	CGS	37.807	-122.361
+Loma Prieta 1989	YBI-090	0.0050	6.9	0.041	8.0	0.068	13.6	0.86	95.2	96.8	75.2	660.0	1	5	Yerba Buena Island	CGS	37.807	-122.361
+Mammoth Lakes-1 1980	CVK-090	0.0050	6.1	2.256	9.2	0.416	23.2	0.32	1.4	9.1	6.6	339.0	3	4	Convict Creek	CGS	37.614	-118.831
+Mammoth Lakes-1 1980	CVK-180	0.0050	6.1	2.621	9.3	0.442	23.1	0.24	1.4	9.1	6.6	339.0	3	4	Convict Creek	CGS	37.614	-118.831
+Mammoth Lakes-1 1980	LUL-000	0.0050	6.1	1.325	10.9	0.43	23.4	0.37	12.7	15.5	15.5	345.0	1	4	Long Valley dam, Upr. L. Abut.	CGS	37.588	-118.705
+Mammoth Lakes-1 1980	LUL-090	0.0050	6.1	0.723	10.8	0.271	13.9	0.42	12.7	15.5	15.5	345.0	1	4	Long Valley dam, Upr. L. Abut.	CGS	37.588	-118.705
+Mammoth Lakes-1 1980	MLS-254	0.0050	6.1	0.678	7.6	0.321	15.6	0.25	10.9	14.1	4.7	371.0	4	4	Mammoth Lakes, High School 	CGS	37.641	-118.963
+Mammoth Lakes-1 1980	MLS-344	0.0050	6.1	0.792	8.2	0.239	14.4	0.25	10.9	14.1	4.7	371.0	4	4	Mammoth Lakes, High School 	CGS	37.641	-118.963
+Mammoth Lakes-2 1980	BEN-270	0.0050	5.9	0.133	12.3	0.109	7.0	0.42	46.5	48.6		271.0	4	1	Benton	CGS	37.818	-118.475
+Mammoth Lakes-2 1980	BEN-360	0.0050	5.9	0.145	9.1	0.175	11.2	0.37	46.5	48.6		271.0	4	1	Benton	CGS	37.818	-118.475
+Mammoth Lakes-2 1980	BPL-070	0.0050	5.9	0.081	8.8	0.091	5.5	0.25	20.0	24.4		345.0	1	1	Bishop, Paradise Lodge	CGS	37.481	-118.602
+Mammoth Lakes-2 1980	BPL-160	0.0050	5.9	0.099	6.6	0.114	5.3	0.19	20.0	24.4		345.0	1	1	Bishop, Paradise Lodge	CGS	37.481	-118.602
+Mammoth Lakes-2 1980	CVK-090	0.0050	5.9	0.394	6.8	0.266	19.0	0.39	12.0	18.5		339.0	3	1	Convict Creek	CGS	37.614	-118.831
+Mammoth Lakes-2 1980	CVK-180	0.0050	5.9	0.511	4.9	0.316	16.2	0.31	12.0	18.5		339.0	3	1	Convict Creek	CGS	37.614	-118.831
+Mammoth Lakes-2 1980	FIS-000	0.0050	5.9	1.029	4.0	0.395	14.3	0.24	12.0	18.5		339.0	3	1	Fish & Game	USGS	37.614	-118.83
+Mammoth Lakes-2 1980	FIS-090	0.0050	5.9	0.512	5.0	0.4	14.8	0.34	12.0	18.5		339.0	3	1	Fish & Game	USGS	37.614	-118.83
+Mammoth Lakes-2 1980	LUL-000	0.0050	5.9	1.502	6.5	0.921	28.9	0.41	14.0	19.8		345.0	1	1	Long Valley dam, Upr. L. Abut.	CGS	37.588	-118.705
+Mammoth Lakes-2 1980	LUL-090	0.0050	5.9	1.234	7.1	0.408	34.1	0.56	14.0	19.8		345.0	1	1	Long Valley dam, Upr. L. Abut.	CGS	37.588	-118.705
+Morgan Hill 1984	A01-040	0.0050	6.2	0.065	21.3	0.046	3.4	0.52	54.3	55.0	53.9	116.0	5	1	Foster City, Redwood Shores, APEEL 1	CGS	37.545	-122.231
+Morgan Hill 1984	A01-310	0.0050	6.2	0.076	19.0	0.068	3.9	0.49	54.3	55.0	53.9	116.0	5	1	Foster City, Redwood Shores, APEEL 1	CGS	37.545	-122.231
+Morgan Hill 1984	AND-250	0.0050	6.2	0.683	6.8	0.423	25.3	0.43	16.7	18.6534179173684	3.3	489.0	4	1	Anderson Dam, downstream	USGS	37.166	-121.628
+Morgan Hill 1984	AND-340	0.0050	6.2	0.847	5.2	0.289	27.6	0.56	16.7	18.6534179173684	3.3	189.0	4	1	Anderson Dam, downstream	USGS	37.166	-121.628
+Morgan Hill 1984	CAP-042	0.0050	6.2	0.163	17.2	0.099	4.9	0.32	43.6	44.4	39.1	289.0	2	1	Capitola Fire Station, 405 Capitola Ave.	CGS	36.973	-121.953
+Morgan Hill 1984	CAP-132	0.0050	6.2	0.236	13.5	0.142	8.2	0.42	43.6	44.4	39.1	289.0	2	1	Capitola Fire Station, 405 Capitola Ave.	CGS	36.973	-121.953
+Morgan Hill 1984	CLS-220	0.0050	6.2	0.065	11.1	0.081	6.4	0.54	30.1	31.2	23.2	462.0	1	1	Corralitos, Koinonia Campground	CGS	37.046	-121.803
+Morgan Hill 1984	CLS-310	0.0050	6.2	0.094	9.3	0.109	10.8	0.62	30.1	31.2	23.2	462.0	1	1	Corralitos, Koinonia Campground	CGS	37.046	-121.803
+Morgan Hill 1984	CYC-195	0.0050	6.2	2.886	4.1	0.711	51.6	0.42	24.6	26.0	0.5	597.0	1	1	Coyote Lake Dam, SW abut	CGS	37.118	-121.55
+Morgan Hill 1984	CYC-285	0.0050	6.2	3.85	3.2	1.298	80.8	0.55	24.6	26.0	0.5	597.0	1	1	Coyote Lake Dam, SW abut	CGS	37.118	-121.55
+Morgan Hill 1984	G01-230	0.0050	6.2	0.053	9.6	0.069	3.0	0.21	38.6	39.6	14.9	1428.0	1	1	Gilroy Array #1, Gavilan College tank grnds.	CGS	36.973	-121.572
+Morgan Hill 1984	G01-320	0.0050	6.2	0.059	8.9	0.098	2.9	0.24	38.6	39.6	14.9	1428.0	1	1	Gilroy Array #1, Gavilan College tank grnds.	CGS	36.973	-121.572
+Morgan Hill 1984	G02-000	0.0050	6.2	0.161	16.4	0.162	5.0	0.39	38.1	39.0	13.7	271.0	4	1	Gilroy Array #2, Mission Trails Motel	CGS	36.982	-121.556
+Morgan Hill 1984	G02-090	0.0050	6.2	0.247	11.8	0.212	12.6	0.4	38.1	39.0	13.7	271.0	4	1	Gilroy Array #2, Mission Trails Motel	CGS	36.982	-121.556
+Morgan Hill 1984	G03-000	0.0050	6.2	0.336	16.0	0.194	11.4	0.44	38.2	39.1	13.0	350.0	4	1	Gilroy Array #3, Sewer Farm A	CGS	36.987	-121.536
+Morgan Hill 1984	G03-090	0.0050	6.2	0.338	20.3	0.2	12.5	0.59	38.2	39.1	13.0	350.0	4	1	Gilroy Array #3, Sewer Farm A	CGS	36.987	-121.536
+Morgan Hill 1984	G04-270	0.0050	6.2	0.714	13.2	0.224	19.4	0.55	37.3	38.2	11.5	222.0	4	1	Gilroy Array #4, San Ysidro School	CGS	37.001	-121.522
+Morgan Hill 1984	G04-360	0.0050	6.2	0.771	12.5	0.348	17.6	0.48	37.3	38.2	11.5	222.0	4	1	Gilroy Array #4, San Ysidro School	CGS	37.001	-121.522
+Morgan Hill 1984	G06-000	0.0050	6.2	0.38	7.3	0.222	11.4	0.35	36.3	37.3	9.9	663.0	1	1	Gilroy Array #6, San Ysidro Microwave Site         	CGS	37.026	-121.484
+Morgan Hill 1984	G06-090	0.0050	6.2	0.871	6.5	0.292	36.7	0.63	36.3	37.3	9.9	663.0	1	1	Gilroy Array #6, San Ysidro Microwave Site         	CGS	37.026	-121.484
+Morgan Hill 1984	GIL-067	0.0050	6.2	0.057	8.6	0.114	3.6	0.21	38.7	39.7	14.8	730.0	2	1	Gilroy, Gavilan College Science Bldg.	CGS	36.973	-121.568
+Morgan Hill 1984	GIL-337	0.0050	6.2	0.054	8.2	0.095	2.9	0.22	38.7	39.7	14.8	730.0	2	1	Gilroy, Gavilan College Science Bldg.	CGS	36.973	-121.568
+Morgan Hill 1984	GMR-000	0.0050	6.2	0.283	9.4	0.19	7.4	0.29	38.2	39.1	12.1	334.0	2	1	Gilroy Array #7, Mantelli Ranch                    	CGS	37.033	-121.434
+Morgan Hill 1984	GMR-090	0.0050	6.2	0.204	10.7	0.113	6.0	0.31	38.2	39.1	12.1	334.0	2	1	Gilroy Array #7, Mantelli Ranch                    	CGS	37.033	-121.434
+Morgan Hill 1984	HCH-001	0.0050	6.2	0.123	21.4	0.071	7.4	0.7	57.1	57.7	30.8	199.0	4	1	Hollister City Hall	USGS	36.851	-121.402
+Morgan Hill 1984	HCH-271	0.0050	6.2	0.153	20.5	0.071	9.0	0.74	57.1	57.7	30.8	199.0	4	1	Hollister City Hall	USGS	36.851	-121.402
+Morgan Hill 1984	HD1-255	0.0050	6.2	0.176	16.3	0.088	11.6	0.63	52.8	53.5	26.4	216.0	4	1	Hollister Differential Array #1	USGS	36.888	-121.413
+Morgan Hill 1984	HD1-345	0.0050	6.2	0.141	18.0	0.096	9.7	0.57	52.8	53.5	26.4	216.0	4	1	Hollister Differential Array #1	USGS	36.888	-121.413
+Morgan Hill 1984	HD3-255	0.0050	6.2	0.142	22.9	0.081	9.9	0.75	52.8	53.5	26.4	216.0	4	1	Hollister Differential Array #3	USGS	36.888	-121.413
+Morgan Hill 1984	HD3-345	0.0050	6.2	0.136	22.9	0.078	7.3	0.53	52.8	53.5	26.4	216.0	4	1	Hollister Differential Array #3	USGS	36.888	-121.413
+Morgan Hill 1984	HD4-255	0.0050	6.2	0.17	21.1	0.092	10.2	0.66	52.8	53.5	26.4	216.0	4	1	Hollister Differential Array #4	USGS	36.888	-121.413
+Morgan Hill 1984	HD4-345	0.0050	6.2	0.192	24.0	0.098	10.2	0.55	52.8	53.5	26.4	216.0	4	1	Hollister Differential Array #4	USGS	36.888	-121.413
+Morgan Hill 1984	HD5-165	0.0050	6.2	0.144	25.5	0.098	10.3	0.61	52.8	53.5	26.4	216.0	4	1	Hollister Differential Array #5	USGS	36.888	-121.413
+Morgan Hill 1984	HD5-255	0.0050	6.2	0.172	20.9	0.101	11.5	0.69	52.8	53.5	26.4	216.0	4	1	Hollister Differential Array #5	USGS	36.888	-121.413
+Morgan Hill 1984	HDA-255	0.0050	6.2	0.183	18.0	0.088	11.9	0.63	52.4	53.1174171058797	28.3	216.0	4	1	Hollister Airport Differential Array	USGS	36.888	-121.413
+Morgan Hill 1984	HDA-345	0.0050	6.2	0.128	20.3	0.089	8.7	0.57	52.4	53.1174171058797	28.3	216.0	4	1	Hollister Airport Differential Array	USGS	36.888	-121.413
+Morgan Hill 1984	HVR-150	0.0050	6.2	0.431	15.3	0.156	12.5	0.53	3.9	9.4	3.5	282.0	3	1	Halls Valley, Grant Park	CGS	37.338	-121.714
+Morgan Hill 1984	HVR-240	0.0050	6.2	0.869	10.6	0.312	39.4	0.62	3.9	9.4	3.5	282.0	3	1	Halls Valley, Grant Park	CGS	37.338	-121.714
+Morgan Hill 1984	LBN-090	0.0050	6.2	0.036	15.7	0.051	5.8	0.89	80.3	80.7	63.2	271.0	4	1	Los Banos	CGS	37.106	-120.825
+Morgan Hill 1984	LBN-180	0.0050	6.2	0.038	18.1	0.057	8.5	1.01	80.3	80.7	63.2	271.0	4	1	Los Banos	CGS	37.106	-120.825
+Morgan Hill 1984	LOB-050	0.0050	6.2	0.024	7.8	0.039	2.1	0.29	46.9	47.7	45.5	714.0	1	1	Santa Cruz, UCSC Lick Observatory	CGS	37.001	-122.06
+Morgan Hill 1984	LOB-320	0.0050	6.2	0.08	7.6	0.076	3.6	0.33	46.9	47.7	45.5	714.0	1	1	Santa Cruz, UCSC Lick Observatory	CGS	37.001	-122.06
+Morgan Hill 1984	SJB-213	0.0050	6.2	0.029	19.1	0.044	4.3	0.65	51.5	52.2	27.2	371.0	4	1	San Juan Bautista, 24 Polk	CGS	36.846	-121.536
+Morgan Hill 1984	SJB-303	0.0050	6.2	0.031	19.0	0.036	4.4	0.72	51.5	52.2	27.2	371.0	4	1	San Juan Bautista, 24 Polk	CGS	36.846	-121.536
+Morgan Hill 1984	SJL-270	0.0050	6.2	0.184	17.6	0.081	6.5	0.47	57.7	58.4	31.9	623.0	1	1	San Justo Dam, Left Abut.	USGS	36.827	-121.445
+Morgan Hill 1984	SJL-360	0.0050	6.2	0.1	19.6	0.07	5.1	0.47	57.7	58.4	31.9	623.0	1	1	San Justo Dam, Left Abut.	USGS	36.827	-121.445
+Morgan Hill 1984	SJR-270	0.0050	6.2	0.102	21.4	0.078	7.0	0.6	57.7	58.4	31.9	623.0	1	1	San Justo Dam, Rt. Abut.	USGS	36.827	-121.445
+Morgan Hill 1984	SJR-360	0.0050	6.2	0.103	21.3	0.06	5.8	0.56	57.7	58.4	31.9	623.0	1	1	San Justo Dam, Rt. Abut.	USGS	36.827	-121.445
+Morgan Hill 1984	WVE-000	0.0050	6.2	0.063	17.2	0.098	4.6	0.41	28.2	29.5	28.1	371.0	4	1	Saratoga, WVC E. Wall	CGS	37.262	-122.009
+N. Palm Springs 1986	ARM-270	0.0050	6.1	0.085	6.5	0.103	5.2	0.22	46.2	47.5	38.4	685.0	1	5	Anza, Red Mountain	USGS	33.64	-116.86
+N. Palm Springs 1986	ARM-360	0.0050	6.1	0.074	6.3	0.129	3.4	0.21	46.2	47.5	38.4	685.0	1	5	Anza, Red Mountain	USGS	33.64	-116.86
+N. Palm Springs 1986	ARS-270	0.0050	6.1	0.063	7.7	0.106	2.6	0.15	49.0	50.2	39.1	685.0	1	5	Santa Rosa Mountain	USGS	33.568	-116.51
+N. Palm Springs 1986	ARS-360	0.0050	6.1	0.046	8.4	0.103	2.2	0.14	49.0	50.2	39.1	685.0	1	5	Santa Rosa Mountain	USGS	33.568	-116.51
+N. Palm Springs 1986	ATL-270	0.0050	6.1	0.06	5.6	0.11	6.5	0.45	60.2	61.2	52.1	685.0	1	5	Anza, Tule Canyon	USGS	33.4593	-116.644
+N. Palm Springs 1986	ATL-360	0.0050	6.1	0.058	9.5	0.095	7.5	0.43	60.2	61.2	52.1	685.0	1	5	Anza, Tule Canyon	USGS	33.4593	-116.644
+N. Palm Springs 1986	AZF-225	0.0050	6.1	0.044	5.9	0.099	5.8	0.24	49.8	51.0	42.4	339.0	3	5	Anza Fire Station	USGS	33.5558	-116.674
+N. Palm Springs 1986	AZF-315	0.0050	6.1	0.021	6.8	0.067	4.0	0.33	49.8	51.0	42.4	339.0	3	5	Anza Fire Station	USGS	33.5558	-116.674
+N. Palm Springs 1986	CAB-180	0.0050	6.1	0.255	8.1	0.217	7.6	0.28	18.2	21.2	7.8	345.0	4	5	Cabazon	USGS	33.918	-116.782
+N. Palm Springs 1986	CAB-270	0.0050	6.1	0.35	6.9	0.213	16.3	0.31	18.2	21.2	7.8	345.0	4	5	Cabazon	USGS	33.918	-116.782
+N. Palm Springs 1986	CFR-225	0.0050	6.1	0.113	7.6	0.153	7.4	0.32	35.9	37.4726566979177	27.5	371.0	2	5	Cranston Fire Station	USGS	33.738	-116.838
+N. Palm Springs 1986	CFR-315	0.0050	6.1	0.191	6.1	0.169	11.7	0.38	35.9	37.4726566979177	27.5	371.0	2	5	Cranston Fire Station	USGS	33.738	-116.838
+N. Palm Springs 1986	CLI-082	0.0050	6.1	0.028	9.9	0.042	3.5	0.47	63.8	64.8	52.4	275.0	4	5	Colton Interchange, Vault	CDOT	34.06	-117.3
+N. Palm Springs 1986	CLI-352	0.0050	6.1	0.03	9.6	0.065	4.1	0.47	63.8	64.8	52.4	275.0	4	5	Colton Interchange, Vault	CDOT	34.06	-117.3
+N. Palm Springs 1986	CLJ-000	0.0050	6.1	0.0070	21.8	0.021	1.3	0.38	89.5	90.2	78.1	390.0	4	5	Rancho Cucamonga, Law & Justice Center	CGS	34.104	-117.574
+N. Palm Springs 1986	CLJ-090	0.0050	6.1	0.0070	26.2	0.019	1.1	0.42	89.5	90.2	78.1	390.0	4	5	Rancho Cucamonga, Law & Justice Center	CGS	34.104	-117.574
+N. Palm Springs 1986	DSP-000	0.0050	6.1	1.197	6.6	0.331	29.5	0.4	10.4	15.1	6.8	345.0	4	5	Desert Hot Springs	CGS	33.962	-116.509
+N. Palm Springs 1986	DSP-090	0.0050	6.1	0.896	7.4	0.271	15.7	0.32	10.4	15.1	6.8	345.0	4	5	Desert Hot Springs	CGS	33.962	-116.509
+N. Palm Springs 1986	FVR-045	0.0050	6.1	0.133	10.3	0.129	6.4	0.36	22.2	24.8	14.2	345.0	3	5	Fun Valley Reservoir	USGS	33.925	-116.389
+N. Palm Springs 1986	FVR-135	0.0050	6.1	0.161	10.0	0.119	10.6	0.4	22.2	24.8	14.2	345.0	3	5	Fun Valley Reservoir	USGS	33.925	-116.389
+N. Palm Springs 1986	H01-000	0.0050	6.1	0.02	9.6	0.053	1.8	0.15	65.6	66.5	54.8	685.0	1	5	Murrieta Hot Springs, Collins Ranch	CGS	33.599	-117.132
+N. Palm Springs 1986	H01-090	0.0050	6.1	0.021	7.0	0.049	1.3	0.14	65.6	66.5	54.8	685.0	1	5	Murrieta Hot Springs, Collins Ranch	CGS	33.599	-117.132
+N. Palm Springs 1986	H02-000	0.0050	6.1	0.032	9.4	0.07	2.0	0.13	59.9	60.9	49.1	685.0	1	5	Winchester Bergman Ranch	CGS	33.64	-117.094
+N. Palm Springs 1986	H02-090	0.0050	6.1	0.045	8.7	0.093	1.8	0.13	59.9	60.9	49.1	685.0	1	5	Winchester Bergman Ranch	CGS	33.64	-117.094
+N. Palm Springs 1986	H04-000	0.0050	6.1	0.074	11.5	0.106	3.8	0.29	49.2	50.4	38.2	339.0	4	5	Winchester Page Bros R	CGS	33.718	-117.022
+N. Palm Springs 1986	H04-090	0.0050	6.1	0.082	10.1	0.11	4.3	0.35	49.2	50.4	38.2	339.0	4	5	Winchester Page Bros R	CGS	33.718	-117.022
+N. Palm Springs 1986	H05-270	0.0050	6.1	0.147	11.0	0.144	4.8	0.28	45.4	46.7	34.7	339.0	4	5	Hemet, Stetson Ave. Fire Station	CGS	33.729	-116.979
+N. Palm Springs 1986	H05-360	0.0050	6.1	0.124	11.5	0.132	4.9	0.21	45.4	46.7	34.7	339.0	4	5	Hemet, Stetson Ave. Fire Station	CGS	33.729	-116.979
+N. Palm Springs 1986	H06-270	0.0050	6.1	0.05	17.4	0.069	3.1	0.38	41.8	43.2	31.0	339.0	4	5	San Jacinto Valley Cemetery	CGS	33.76	-116.96
+N. Palm Springs 1986	H06-360	0.0050	6.1	0.048	17.0	0.063	4.3	0.46	41.8	43.2	31.0	339.0	4	5	San Jacinto Valley Cemetery	CGS	33.76	-116.96
+N. Palm Springs 1986	H08-000	0.0050	6.1	0.336	8.3	0.25	9.7	0.28	33.5	35.3	23.3	371.0	2	5	San Jacinto, Soboda	CGS	33.797	-116.88
+N. Palm Springs 1986	H08-090	0.0050	6.1	0.352	7.0	0.239	9.2	0.29	33.5	35.3	23.3	371.0	2	5	San Jacinto, Soboda	CGS	33.797	-116.88
+N. Palm Springs 1986	HCP-045	0.0050	6.1	0.139	5.8	0.24	7.4	0.24	36.6	38.2	29.8	339.0	2	5	Hurkey Creek Park	USGS	33.6758	-116.68
+N. Palm Springs 1986	HCP-135	0.0050	6.1	0.146	4.6	0.187	9.1	0.34	36.6	38.2	29.8	339.0	2	5	Hurkey Creek Park	USGS	33.6758	-116.68
+N. Palm Springs 1986	HES-002	0.0050	6.1	0.019	16.5	0.041	2.4	0.38	82.6	83.3	73.0	345.0	4	5	Hesperia	CGS	34.448	-117.327
+N. Palm Springs 1986	HES-092	0.0050	6.1	0.016	20.9	0.037	1.8	0.28	82.6	83.3	73.0	345.0	4	5	Hesperia	CGS	34.448	-117.327
+N. Palm Springs 1986	IND-000	0.0050	6.1	0.049	17.8	0.053	5.3	0.52	52.7	53.8	41.9	345.0	4	5	Indio, Coachella Canal	CGS	33.717	-116.155
+N. Palm Springs 1986	IND-090	0.0050	6.1	0.046	19.3	0.05	3.2	0.41	52.7	53.8	41.9	345.0	4	5	Indio, Coachella Canal	CGS	33.717	-116.155
+N. Palm Springs 1986	INO-225	0.0050	6.1	0.072	18.6	0.064	6.6	0.5	46.3	47.6	35.6	208.0	4	5	Indio, S. Cal. Gas Co.	USGS	33.747	-116.214
+N. Palm Springs 1986	INO-315	0.0050	6.1	0.194	13.4	0.117	12.3	0.6	46.3	47.6	35.6	208.0	4	5	Indio, S. Cal. Gas Co.	USGS	33.747	-116.214
+N. Palm Springs 1986	JOS-000	0.0050	6.1	0.047	13.5	0.052	3.7	0.56	31.0	32.9	26.9	379.0	3	5	Joshua Tree, Fire Station	CGS	34.13	-116.314
+N. Palm Springs 1986	JOS-090	0.0050	6.1	0.052	12.0	0.065	3.9	0.42	31.0	32.9	26.9	379.0	3	5	Joshua Tree, Fire Station	CGS	34.13	-116.314
+N. Palm Springs 1986	LDR-000	0.0050	6.1	0.063	10.8	0.081	4.3	0.31	36.6	38.2	35.4	345.0	4	5	Landers Fire Station	CGS	34.274	-116.392
+N. Palm Springs 1986	LDR-090	0.0050	6.1	0.072	10.5	0.098	4.6	0.35	36.6	38.2	35.4	345.0	4	5	Landers Fire Station	CGS	34.274	-116.392
+N. Palm Springs 1986	LMR-162	0.0050	6.1	0.029	8.0	0.061	1.5	0.13	79.2	80.0	66.7	685.0	1	5	Lake Mathews Dike Toe	CGS	33.852	-117.451
+N. Palm Springs 1986	LMR-252	0.0050	6.1	0.02	10.7	0.046	0.8	0.12	79.2	80.0	66.7	685.0	1	5	Lake Mathews Dike Toe	CGS	33.852	-117.451
+N. Palm Springs 1986	MVH-045	0.0050	6.1	0.655	5.1	0.218	31.4	0.93	6.3	12.7	12.1	345.0	3	5	Morongo Valley, Fire Station	USGS	34.049	-116.578
+N. Palm Springs 1986	MVH-135	0.0050	6.1	0.623	6.3	0.205	41.1	1.36	6.3	12.7	12.1	345.0	3	5	Morongo Valley, Fire Station	USGS	34.049	-116.578
+N. Palm Springs 1986	NPS-210	0.0050	6.1	2.007	4.6	0.594	73.3	0.62	10.6	15.3	4.0	345.0	4	5	North Palm Springs	USGS	33.924	-116.543
+N. Palm Springs 1986	NPS-300	0.0050	6.1	1.573	5.1	0.694	33.8	0.34	10.6	15.3	4.0	345.0	4	5	North Palm Springs	USGS	33.924	-116.543
+N. Palm Springs 1986	PLC-258	0.0050	6.1	0.05	12.1	0.075	2.4	0.17	75.5	76.3	67.5	371.0	2	5	Puerta La Cruz, USFS st. bldg.	CGS	33.324	-116.683
+N. Palm Springs 1986	PLC-348	0.0050	6.1	0.031	13.0	0.055	1.8	0.14	75.5	76.3	67.5	371.0	2	5	Puerta La Cruz, USFS st. bldg.	CGS	33.324	-116.683
+N. Palm Springs 1986	PSA-000	0.0050	6.1	0.301	13.6	0.158	12.4	0.48	21.1	23.8	10.8	208.0	4	5	Palm Springs Airport	CGS	33.829	-116.512
+N. Palm Springs 1986	PSA-090	0.0050	6.1	0.323	15.6	0.187	12.2	0.42	21.1	23.8	10.8	208.0	4	5	Palm Springs Airport	CGS	33.829	-116.512
+N. Palm Springs 1986	RIV-180	0.0050	6.1	0.016	15.5	0.051	1.2	0.17	77.2	78.0	65.0	371.0	2	5	Riverside, Airport	CGS	33.951	-117.446
+N. Palm Springs 1986	RIV-270	0.0050	6.1	0.016	12.4	0.04	1.0	0.16	77.2	78.0	65.0	371.0	2	5	Riverside, Airport	CGS	33.951	-117.446
+N. Palm Springs 1986	SIL-000	0.0050	6.1	0.095	6.8	0.139	3.9	0.15	27.7	29.8	17.0	685.0	1	5	Silent Valley, Poppet Flat	CGS	33.851	-116.852
+N. Palm Springs 1986	SIL-090	0.0050	6.1	0.058	7.0	0.113	4.0	0.19	27.7	29.8	17.0	685.0	1	5	Silent Valley, Poppet Flat	CGS	33.851	-116.852
+N. Palm Springs 1986	SNY-225	0.0050	6.1	0.09	9.2	0.093	3.9	0.29	50.1	51.3	37.9	271.0	4	5	Sunnymead	USGS	33.946	-117.151
+N. Palm Springs 1986	SNY-315	0.0050	6.1	0.114	8.3	0.128	5.1	0.32	50.1	51.3	37.9	271.0	4	5	Sunnymead	USGS	33.946	-117.151
+N. Palm Springs 1986	TFS-000	0.0050	6.1	0.094	12.9	0.121	6.9	0.36	75.0	75.8169506113244	64.8	371.0	2	5	Temecula Fire Station	CGS	33.496	-117.149
+N. Palm Springs 1986	TFS-090	0.0050	6.1	0.053	11.2	0.098	4.6	0.45	75.0	75.8169506113244	64.8	371.0	2	5	Temecula Fire Station	CGS	33.496	-117.149
+N. Palm Springs 1986	WWT-180	0.0050	6.1	1.768	5.4	0.492	34.7	0.35	4.2	11.8	6.0	345.0	3	5	Whitewater Trout Farm	USGS	33.99	-116.656
+N. Palm Springs 1986	WWT-270	0.0050	6.1	2.138	3.4	0.612	31.5	0.31	4.2	11.8	6.0	345.0	3	5	Whitewater Trout Farm	USGS	33.99	-116.656
+Northridge 1994	116-090	0.02	6.7	0.403	19.5	0.208	10.3	0.43	41.0	44.6	41.2	301.0	4	3	Los Angeles, 116th St. School	CGS	33.929	-118.26
+Northridge 1994	116-360	0.02	6.7	0.325	17.9	0.133	13.6	0.43	41.0	44.6	41.2	301.0	4	3	Los Angeles, 116th St. School	CGS	33.929	-118.26
+Northridge 1994	141-270	0.0050	6.7	1.519	8.9	0.289	26.6	0.43	25.4	30.9	23.8	1016.0	1	3	Los Angeles, Griffith Park (#141)	USGS	34.118	-118.299
+Northridge 1994	141-360	0.0050	6.7	0.409	11.9	0.164	13.5	0.51	25.4	30.9	23.8	1016.0	1	3	Los Angeles, Griffith Park (#141)	USGS	34.118	-118.299
+Northridge 1994	ACI-000	0.02	6.7	0.074	12.3	0.067	3.2	0.26	77.4	79.3	68.9	822.0	1	3	Anacapa Island	CGS	34.016	-119.362
+Northridge 1994	ACI-270	0.02	6.7	0.021	13.9	0.037	1.8	0.3	77.4	79.3	68.9	822.0	1	3	Anacapa Island	CGS	34.016	-119.362
+Northridge 1994	ALF-090	0.02	6.7	0.192	21.3	0.101	11.0	0.6	39.0	43.0	43.9	550.0	4	3	Alhambra, 900 S. Fremont St.	USGS	34.085	-118.149
+Northridge 1994	ALF-360	0.02	6.7	0.127	18.6	0.08	5.1	0.47	39.0	43.0	43.9	550.0	4	3	Alhambra, 900 S. Fremont St.	USGS	34.085	-118.149
+Northridge 1994	ALH-090	0.02	6.7	0.192	21.2	0.101	10.9	0.6	40.2	43.8	36.8	550.0	4	3	Alhambra, Fremont School	CGS	34.07	-118.15
+Northridge 1994	ALH-360	0.02	6.7	0.127	18.5	0.08	5.0	0.47	40.2	43.8	36.8	550.0	4	3	Alhambra, Fremont School	CGS	34.07	-118.15
+Northridge 1994	ANA-090	0.01	6.7	0.028	13.8	0.044	4.0	0.59	52.9	55.7	38.0	446.0	4	3	Anaverde Valley, City Ranch	CGS	34.58	-118.199
+Northridge 1994	ANA-180	0.01	6.7	0.092	15.5	0.06	5.7	0.51	52.9	55.7	38.0	446.0	4	3	Anaverde Valley, City Ranch	CGS	34.58	-118.199
+Northridge 1994	ARC-172	0.01	6.7	0.151	17.8	0.104	7.5	0.53	46.4	49.6	39.7	309.0	4	3	Arcadia, 855 Arcadia Ave.	USC	34.127	-118.059
+Northridge 1994	ARC-262	0.01	6.7	0.188	15.0	0.083	10.2	0.56	46.4	49.6	39.7	309.0	4	3	Arcadia, 855 Arcadia Ave.	USC	34.127	-118.059
+Northridge 1994	ARL-090	0.02	6.7	1.523	13.0	0.344	40.7	0.61	11.1	20.7	8.7	298.0	4	3	Arleta, Nordhoff Ave. Fire Station	CGS	34.236	-118.439
+Northridge 1994	ARL-360	0.02	6.7	1.172	13.5	0.308	23.5	0.55	11.1	20.7	8.7	298.0	4	3	Arleta, Nordhoff Ave. Fire Station	CGS	34.236	-118.439
+Northridge 1994	ATB-000	0.02	6.7	0.03	15.2	0.046	3.6	0.36	64.0	66.3	46.9	822.0	1	3	Antelope Buttes	CGS	34.758	-118.361
+Northridge 1994	ATB-090	0.02	6.7	0.029	13.8	0.068	4.3	0.39	64.0	66.3	46.9	822.0	1	3	Antelope Buttes	CGS	34.758	-118.361
+Northridge 1994	BAD-000	0.01	6.7	0.113	17.4	0.1	5.8	0.44	60.3	62.8	53.5	271.0	4	3	Covina, 1271 W. Badillo	USC	34.087	-117.915
+Northridge 1994	BAD-270	0.01	6.7	0.126	14.8	0.08	6.9	0.54	60.3	62.8	53.5	271.0	4	3	Covina, 1271 W. Badillo	USC	34.087	-117.915
+Northridge 1994	BAL-090	0.01	6.7	0.095	14.0	0.08	3.7	0.34	82.2	84.1	71.5	339.0	2	3	Mt. Baldy, Elementary School	CGS	34.233	-117.661
+Northridge 1994	BAL-180	0.01	6.7	0.08	12.8	0.07	4.4	0.33	82.2	84.1	71.5	339.0	2	3	Mt. Baldy, Elementary School	CGS	34.233	-117.661
+Northridge 1994	BER-000	0.01	6.7	0.03	15.2	0.034	2.7	0.43	113.5	114.9	103.2	345.0	4	3	San Bernardino, CSUSB grounds	CGS	34.183	-117.321
+Northridge 1994	BER-090	0.01	6.7	0.052	12.5	0.069	4.0	0.44	113.5	114.9	103.2	345.0	4	3	San Bernardino, CSUSB grounds	CGS	34.183	-117.321
+Northridge 1994	BIR-090	0.01	6.7	0.328	15.5	0.165	12.1	0.46	49.9	52.9	48.9	245.0	4	3	Downey, 12500 Birchdale	USC	33.92	-118.137
+Northridge 1994	BIR-180	0.01	6.7	0.315	17.7	0.171	8.1	0.44	49.9	52.9	48.9	245.0	4	3	Downey, 12500 Birchdale	USC	33.92	-118.137
+Northridge 1994	BLD-090	0.02	6.7	0.671	16.6	0.239	14.8	0.51	28.2	33.2	29.9	297.0	2	3	Los Angeles, Baldwin Hills	CGS	34.009	-118.361
+Northridge 1994	BLD-360	0.02	6.7	0.615	17.3	0.168	17.4	0.52	28.2	33.2	29.9	297.0	2	3	Los Angeles, Baldwin Hills	CGS	34.009	-118.361
+Northridge 1994	BLF-206	0.01	6.7	0.324	10.6	0.179	9.4	0.39	47.1	50.3	45.0	405.0	4	3	Montibello, 1105 Bluff Rd.	USC	33.99	-118.114
+Northridge 1994	BLF-296	0.01	6.7	0.191	13.8	0.129	5.9	0.4	47.1	50.3	45.0	405.0	4	3	Montibello, 1105 Bluff Rd.	USC	33.99	-118.114
+Northridge 1994	BPK-090	0.01	6.7	0.247	17.7	0.139	10.7	0.49	63.5	65.9	62.0	309.0	4	3	Buena Park, 6625 La Palma Ave.	USC	33.847	-118.018
+Northridge 1994	BPK-180	0.01	6.7	0.238	17.3	0.095	8.1	0.51	63.5	65.9	62.0	309.0	4	3	Buena Park, 6625 La Palma Ave.	USC	33.847	-118.018
+Northridge 1994	BRC-000	0.01	6.7	0.175	13.9	0.109	8.2	0.48	62.2	64.6	59.6	361.0	3	3	La Habra, 950 Briarcliff Dr.	USC	33.921	-117.973
+Northridge 1994	BRC-090	0.01	6.7	0.215	14.3	0.206	12.3	0.45	62.2	64.6	59.6	361.0	3	3	La Habra, 950 Briarcliff Dr.	USC	33.921	-117.973
+Northridge 1994	BRD-042	0.0050	6.7	0.163	15.4	0.122	13.9	0.38	67.0	69.6419413859206	65.6	371.0	4	3	Brea Dam, downstream	USGS	33.89	-117.927
+Northridge 1994	BRD-132	0.0050	6.7	0.262	12.0	0.194	9.4	0.35	67.0	69.6419413859206	65.6	371.0	4	3	Brea Dam, downstream	USGS	33.89	-117.927
+Northridge 1994	BVA-195	0.0050	6.7	0.451	11.4	0.186	23.7	0.64	18.0	25.1	22.5	417.0	4	3	Brentwood VA Hospital	VA	34.063	-118.463
+Northridge 1994	BVA-285	0.0050	6.7	0.477	12.7	0.164	18.0	0.66	18.0	25.1	22.5	417.0	4	3	Brentwood VA Hospital	VA	34.063	-118.463
+Northridge 1994	CAM-009	0.01	6.7	0.127	17.5	0.089	4.7	0.44	48.4	51.5	41.4	368.0	4	3	Arcadia, 180 Campus Dr.	USC	34.13	-118.036
+Northridge 1994	CAM-279	0.01	6.7	0.172	15.7	0.11	8.1	0.52	48.4	51.5	41.4	368.0	4	3	Arcadia, 180 Campus Dr.	USC	34.13	-118.036
+Northridge 1994	CAS-000	0.01	6.7	0.2	21.5	0.088	6.9	0.51	47.5	50.6	47.0	309.0	4	3	Compton, 14637 Castlegate St.	USC	33.899	-118.196
+Northridge 1994	CAS-270	0.01	6.7	0.234	23.3	0.136	7.1	0.49	47.5	50.6	47.0	309.0	4	3	Compton, 14637 Castlegate St.	USC	33.899	-118.196
+Northridge 1994	CAT-090	0.01	6.7	0.09	21.4	0.087	8.0	0.52	51.0	54.0	50.4	361.0	4	3	Carson, 25536 Catskill Ave.	USC	33.812	-118.27
+Northridge 1994	CAT-180	0.01	6.7	0.105	19.0	0.083	4.9	0.41	51.0	54.0	50.4	361.0	4	3	Carson, 25536 Catskill Ave.	USC	33.812	-118.27
+Northridge 1994	CBN-041	0.0050	6.7	0.146	11.8	0.101	9.7	0.44	72.0	74.4647567645259	50.0	235.0	1	3	Brea, Carbon Canyon Dam, left abut.	ACOE	33.9121	-117.838
+Northridge 1994	CBN-131	0.0050	6.7	0.177	12.6	0.12	8.0	0.4	72.0	74.4647567645259	50.0	235.0	1	3	Brea, Carbon Canyon Dam, left abut.	ACOE	33.9121	-117.838
+Northridge 1994	CCN-090	0.02	6.7	1.179	13.2	0.256	21.3	0.52	20.2	26.7	23.4	278.0	4	3	Los Angeles, Century City CC North	CGS	34.063	-118.418
+Northridge 1994	CCN-360	0.02	6.7	0.755	13.6	0.222	25.1	0.61	20.2	26.7	23.4	278.0	4	3	Los Angeles, Century City CC North	CGS	34.063	-118.418
+Northridge 1994	CDF-000	0.01	6.7	0.112	21.6	0.081	8.2	0.75	154.4	155.4	147.6	271.0	4	3	San Jacinto, CDF Fire Station	CGS	33.787	-116.958
+Northridge 1994	CDF-090	0.01	6.7	0.129	28.8	0.099	7.7	0.69	154.4	155.4	147.6	271.0	4	3	San Jacinto, CDF Fire Station	CGS	33.787	-116.958
+Northridge 1994	CEN-155	0.01	6.7	0.937	10.7	0.465	19.4	0.3	25.4	30.9	28.3	235.0	4	3	Los Angeles, 3960 Centinela St.	USC	34.001	-118.431
+Northridge 1994	CEN-245	0.01	6.7	0.994	12.4	0.322	22.9	0.53	25.4	30.9	28.3	235.0	4	3	Los Angeles, 3960 Centinela St.	USC	34.001	-118.431
+Northridge 1994	CHL-070	0.01	6.7	0.615	9.1	0.225	16.6	0.5	14.9	23.0	20.5	740.0	2	3	Los Angeles, 12001 Chalon Rd.	USC	34.086	-118.481
+Northridge 1994	CHL-160	0.01	6.7	0.647	6.9	0.185	27.1	0.64	14.9	23.0	20.5	740.0	2	3	Los Angeles, 12001 Chalon Rd.	USC	34.086	-118.481
+Northridge 1994	CLJ-000	0.02	6.7	0.057	24.2	0.072	4.0	0.44	90.0	92.0	81.7	390.0	4	3	Rancho Cucamonga, Law & Justice Center	CGS	34.104	-117.574
+Northridge 1994	CLJ-090	0.02	6.7	0.045	24.9	0.046	3.3	0.45	90.0	92.0	81.7	390.0	4	3	Rancho Cucamonga, Law & Justice Center	CGS	34.104	-117.574
+Northridge 1994	CMR-180	0.02	6.7	0.49	33.5	0.125	10.9	0.8	48.3	51.4	40.3	235.0	2	3	Camarillo	CGS	34.208	-119.079
+Northridge 1994	CMR-270	0.02	6.7	0.407	37.6	0.121	11.8	0.82	48.3	51.4	40.3	235.0	2	3	Camarillo	CGS	34.208	-119.079
+Northridge 1994	CNP-106	0.01	6.7	1.956	12.0	0.356	32.1	0.51	4.9	18.2	14.7	268.0	4	3	Canoga Park, 7769 Topanga Canyon Blvd.	USC	34.212	-118.606
+Northridge 1994	CNP-196	0.01	6.7	2.787	10.4	0.42	60.8	0.69	4.9	18.2	14.7	268.0	4	3	Canoga Park, 7769 Topanga Canyon Blvd.	USC	34.212	-118.606
+Northridge 1994	COM-140	0.01	6.7	0.102	18.9	0.067	4.8	0.46	61.2	63.7	57.0	337.0	3	3	Hacienda Heights, 16750 Colima Rd.	USC	33.99	-117.943
+Northridge 1994	COM-230	0.01	6.7	0.062	20.8	0.056	3.2	0.47	61.2	63.7	57.0	337.0	3	3	Hacienda Heights, 16750 Colima Rd.	USC	33.99	-117.943
+Northridge 1994	CUC-090	0.01	6.7	0.1	15.4	0.071	4.1	0.32	89.8	91.5	80.0	822.0	1	3	Rancho Cucamonga, Deer Canyon	CGS	34.169	-117.579
+Northridge 1994	CUC-180	0.01	6.7	0.048	15.5	0.051	5.9	0.37	89.8	91.5	80.0	822.0	1	3	Rancho Cucamonga, Deer Canyon	CGS	34.169	-117.579
+Northridge 1994	CWC-180	0.01	6.7	1.204	15.0	0.298	25.0	0.54	13.1	21.9	12.5	446.0	3	3	North Hollywood, 6850 Coldwater Canyon Ave.	USC	34.194	-118.412
+Northridge 1994	CWC-270	0.01	6.7	1.179	16.4	0.271	22.2	0.56	13.1	21.9	12.5	446.0	3	3	North Hollywood, 6850 Coldwater Canyon Ave.	USC	34.194	-118.412
+Northridge 1994	CYP-053	0.01	6.7	0.49	10.8	0.21	17.3	0.41	33.3	37.6	30.7	446.0	3	3	Los Angeles, Divine Savior School, 624 Cypress	USC	34.088	-118.222
+Northridge 1994	CYP-143	0.01	6.7	0.266	9.9	0.149	10.0	0.38	33.3	37.6	30.7	446.0	3	3	Los Angeles, Divine Savior School, 624 Cypress	USC	34.088	-118.222
+Northridge 1994	DEL-000	0.01	6.7	0.339	20.8	0.138	11.2	0.46	58.0	60.6	56.9	235.0	4	3	Lakewood, 6701 Del Amo Blvd.	USC	33.846	-118.099
+Northridge 1994	DEL-090	0.01	6.7	0.346	21.2	0.123	10.4	0.49	58.0	60.6	56.9	235.0	4	3	Lakewood, 6701 Del Amo Blvd.	USC	33.846	-118.099
+Northridge 1994	DWN-090	0.02	6.7	0.55	17.3	0.158	13.8	0.45	47.5	50.6	46.7	272.0	4	3	Downey, County Maint. Bldg.	CGS	33.924	-118.167
+Northridge 1994	DWN-360	0.02	6.7	0.559	14.4	0.23	11.4	0.42	47.5	50.6	46.7	272.0	4	3	Downey, County Maint. Bldg.	CGS	33.924	-118.167
+Northridge 1994	EJS-030	0.01	6.7	0.345	14.6	0.135	9.4	0.32	52.0	54.8	50.2	309.0	4	3	Santa Fe Springs, 11500 E. Joslin St.	USC	33.944	-118.087
+Northridge 1994	EJS-120	0.01	6.7	0.293	14.6	0.123	7.0	0.32	52.0	54.8	50.2	309.0	4	3	Santa Fe Springs, 11500 E. Joslin St.	USC	33.944	-118.087
+Northridge 1994	ELI-090	0.01	6.7	0.245	10.0	0.155	7.3	0.41	53.0	55.9	36.6	235.0	4	3	Elizabeth Lake	CGS	34.662	-118.387
+Northridge 1994	ELI-180	0.01	6.7	0.244	11.7	0.109	8.9	0.41	53.0	55.9	36.6	235.0	4	3	Elizabeth Lake	CGS	34.662	-118.387
+Northridge 1994	FAI-095	0.01	6.7	0.226	20.9	0.122	9.8	0.65	50.8	53.8	44.5	309.0	4	3	El Monte, 11338 Fairview Ave.	USC	34.093	-118.019
+Northridge 1994	FAI-185	0.01	6.7	0.31	15.9	0.163	8.9	0.45	50.8	53.8	44.5	309.0	4	3	El Monte, 11338 Fairview Ave.	USC	34.093	-118.019
+Northridge 1994	FAR-000	0.01	6.7	0.667	8.8	0.273	15.8	0.48	17.0	24.4	20.8	255.0	2	3	Los Angeles, 700 N. Faring Rd.	USC	34.089	-118.435
+Northridge 1994	FAR-090	0.01	6.7	0.845	10.3	0.242	29.8	0.5	17.0	24.4	20.8	225.0	2	3	Los Angeles, 700 N. Faring Rd.	USC	34.089	-118.435
+Northridge 1994	FEA-000	0.02	6.7	0.136	10.4	0.104	7.7	0.45	86.5	88.2	82.3	309.0	3	3	Featherly Park, Park Maint. Bldg.	CGS	33.869	-117.709
+Northridge 1994	FEA-090	0.02	6.7	0.125	10.9	0.1	5.8	0.39	86.5	88.2	82.3	309.0	3	3	Featherly Park, Park Maint. Bldg.	CGS	33.869	-117.709
+Northridge 1994	FIG-058	0.01	6.7	0.243	13.1	0.128	9.6	0.43	35.2	39.3	31.2	405.0	3	3	Los Angeles, 5921 N. Figueroa St.	USC	34.111	-118.189
+Northridge 1994	FIG-328	0.01	6.7	0.398	11.9	0.174	9.1	0.37	35.2	39.3	31.2	405.0	3	3	Los Angeles, 5921 N. Figueroa St.	USC	34.111	-118.189
+Northridge 1994	FLE-144	0.01	6.7	0.51	11.7	0.162	10.7	0.42	30.3	35.0	27.3	446.0	4	3	Los Angeles, 3036 Fletcher Dr.	USC	34.115	-118.244
+Northridge 1994	FLE-234	0.01	6.7	0.65	11.8	0.24	26.2	0.53	30.3	35.0	27.3	446.0	4	3	Los Angeles, 3036 Fletcher Dr.	USC	34.115	-118.244
+Northridge 1994	FLO-020	0.01	6.7	0.114	17.6	0.106	6.6	0.44	68.7	70.9	65.4	309.0	4	3	Brea, 200 S. Flower Ave.	USC	33.916	-117.896
+Northridge 1994	FLO-290	0.01	6.7	0.176	12.2	0.108	9.2	0.45	68.7	70.9	65.4	309.0	4	3	Brea, 200 S. Flower Ave.	USC	33.916	-117.896
+Northridge 1994	FSD-265	0.02	6.7	0.436	13.2	0.21	19.6	0.48	34.0	39.0	15.5	376.0	2	3	Lake Piru, Santa Felicia Dam	CGS	34.46	-118.753
+Northridge 1994	FSD-355	0.02	6.7	0.629	9.2	0.27	36.7	0.71	34.0	39.0	15.5	376.0	2	3	Lake Piru, Santa Felicia Dam	CGS	34.46	-118.753
+Northridge 1994	GAR-000	0.01	6.7	0.234	19.1	0.104	8.8	0.48	68.1	70.3	66.6	235.0	4	3	Garden Grove, 6861 Santa Rita	USC	33.79	-118.012
+Northridge 1994	GAR-270	0.01	6.7	0.248	15.6	0.103	10.1	0.53	68.1	70.3	66.6	235.0	4	3	Garden Grove, 6861 Santa Rita	USC	33.79	-118.012
+Northridge 1994	GLE-170	0.01	6.7	0.352	15.8	0.127	13.8	0.59	24.1	29.8	13.4	446.0	3	3	Sunland, 10965 Mt. Gleason Ave.	USC	34.269	-118.303
+Northridge 1994	GLE-260	0.01	6.7	0.459	11.8	0.157	14.5	0.69	24.1	29.8	13.4	446.0	3	3	Sunland, 10965 Mt. Gleason Ave.	USC	34.269	-118.303
+Northridge 1994	GLP-177	0.01	6.7	1.173	9.5	0.357	12.2	0.27	29.7	34.5	22.2	446.0	3	3	Glendale, 320 Las Palmas Ave.	USC	34.2	-118.231
+Northridge 1994	GLP-267	0.01	6.7	0.61	11.5	0.206	7.5	0.25	29.7	34.5	22.2	446.0	3	3	Glendale, 320 Las Palmas Ave.	USC	34.2	-118.231
+Northridge 1994	GR2-090	0.01	6.7	0.733	11.6	0.29	18.0	0.45	33.8	38.0	34.0	309.0	4	3	Los Angeles, 4312 S. Grand Ave.	USC	34.005	-118.279
+Northridge 1994	GR2-180	0.01	6.7	0.686	13.7	0.264	20.4	0.45	33.8	38.0	34.0	309.0	4	3	Los Angeles, 4312 S. Grand Ave.	USC	34.005	-118.279
+Northridge 1994	GRA-074	0.01	6.7	0.105	19.5	0.066	7.1	0.54	64.5	66.8	57.5	405.0	3	3	Covina, 656 S. Grand Ave.	USC	34.078	-117.871
+Northridge 1994	GRA-344	0.01	6.7	0.113	18.9	0.062	6.9	0.54	64.5	66.8	57.5	405.0	3	3	Covina, 656 S. Grand Ave.	USC	34.078	-117.871
+Northridge 1994	GRN-180	0.01	6.7	0.424	14.6	0.141	9.6	0.33	44.3	47.7	39.3	401.0	4	3	San Gabriel, 600 E. Grand Ave.	USC	34.091	-118.093
+Northridge 1994	GRN-270	0.01	6.7	0.447	13.0	0.256	9.8	0.36	44.3	47.7	39.3	401.0	4	3	San Gabriel, 600 E. Grand Ave.	USC	34.091	-118.093
+Northridge 1994	HEM-000	0.01	6.7	0.05	20.5	0.064	4.6	0.54	150.8	151.9	144.7	339.0	4	3	Hemet, Ryan Airfield	CGS	33.731	-117.023
+Northridge 1994	HEM-090	0.01	6.7	0.057	18.6	0.046	4.8	0.55	150.8	151.9	144.7	339.0	4	3	Hemet, Ryan Airfield	CGS	33.731	-117.023
+Northridge 1994	HNT-000	0.02	6.7	0.091	27.8	0.091	5.5	0.54	79.4	81.2526922630875	77.5	371.0	4	3	Huntington Beach, Lake St. Fire Station	CGS	33.662	-117.997
+Northridge 1994	HNT-090	0.02	6.7	0.086	28.0	0.07	5.7	0.56	79.4	81.2526922630875	77.5	371.0	4	3	Huntington Beach, Lake St. Fire Station	CGS	33.662	-117.997
+Northridge 1994	HOS-090	0.01	6.7	0.099	17.0	0.085	5.9	0.55	117.3	118.6	108.3	271.0	4	3	San Bernardino, E & Hospitality	CGS	34.065	-117.292
+Northridge 1994	HOS-180	0.01	6.7	0.116	16.2	0.096	6.5	0.47	117.3	118.6	108.3	271.0	4	3	San Bernardino, E & Hospitality	CGS	34.065	-117.292
+Northridge 1994	HOW-060	0.01	6.7	0.217	11.7	0.12	9.5	0.44	23.2	29.1	16.9	822.0	2	3	Burbank, 1250 Howard Rd.	USC	34.204	-118.302
+Northridge 1994	HOW-330	0.01	6.7	0.329	8.0	0.163	8.5	0.32	23.2	29.1	16.9	822.0	2	3	Burbank, 1250 Howard Rd.	USC	34.204	-118.302
+Northridge 1994	ING-000	0.02	6.7	0.167	21.7	0.091	7.2	0.44	42.0	45.5	42.2	316.0	4	3	Inglewood, Union Oil Yard	CGS	33.905	-118.279
+Northridge 1994	ING-090	0.02	6.7	0.219	19.0	0.101	10.2	0.59	42.0	45.5	42.2	316.0	4	3	Inglewood, Union Oil Yard	CGS	33.905	-118.279
+Northridge 1994	JAB-220	0.01	6.7	0.186	17.0	0.098	7.4	0.45	45.3	48.5	44.1	309.0	4	3	Bell Gardens, 7420 Jaboneria	USC	33.965	-118.158
+Northridge 1994	JAB-310	0.01	6.7	0.133	20.0	0.068	7.7	0.57	45.3	48.5	44.1	309.0	4	3	Bell Gardens, 7420 Jaboneria	USC	33.965	-118.158
+Northridge 1994	JEN-022	0.0050	6.7	3.241	6.9	0.571	76.0	0.79	13.0	21.8	5.4	373.0	2	3	Jensen Filtration Plant	MWD	34.312	-118.496
+Northridge 1994	JEN-292	0.0050	6.7	6.528	5.7	1.024	66.8	0.58	13.0	21.8	5.4	373.0	2	3	Jensen Filtration Plant	MWD	34.312	-118.496
+Northridge 1994	JFP-022	0.0050	6.7	3.241	6.9	0.571	76.0	0.79	13.0	21.8	5.4	526.0	1	3	Jensen Filtration Plant, Generator Room	MWD	34.313	-118.498
+Northridge 1994	JFP-292	0.0050	6.7	6.526	5.7	1.024	68.0	0.58	13.0	21.8	5.4	526.0	1	3	Jensen Filtration Plant, Generator Room	MWD	34.313	-118.498
+Northridge 1994	KAT-000	0.01	6.7	3.581	6.0	0.877	40.9	0.52	12.2	21.3	13.4	557.0	2	3	Simi Valley, 6334 Katherine Rd.	USC	34.264	-118.666
+Northridge 1994	KAT-090	0.01	6.7	4.058	6.6	0.64	37.8	0.46	12.2	21.3	13.4	557.0	2	3	Simi Valley, 6334 Katherine Rd.	USC	34.264	-118.666
+Northridge 1994	L01-000	0.02	6.7	0.163	13.9	0.087	9.4	0.59	53.3	56.1	35.8	425.0	2	3	Lake Hughes #1, Fire Station #78	CGS	34.674	-118.43
+Northridge 1994	L01-090	0.02	6.7	0.11	16.1	0.077	9.5	0.65	53.3	56.1	35.8	425.0	2	3	Lake Hughes #1, Fire Station #78	CGS	34.674	-118.43
+Northridge 1994	L04-000	0.02	6.7	0.076	14.1	0.057	6.6	0.36	49.9	52.9	31.7	822.0	1	3	Lake Hughes #4, Camp Mendenhall	CGS	34.65	-118.478
+Northridge 1994	L04-090	0.02	6.7	0.079	13.1	0.084	6.4	0.27	49.9	52.9	31.7	822.0	1	3	Lake Hughes #4, Camp Mendenhall	CGS	34.65	-118.478
+Northridge 1994	L09-000	0.02	6.7	0.195	9.3	0.165	8.4	0.25	44.8	48.1	25.4	671.0	2	3	Lake Hughes #9	CGS	34.608	-118.558
+Northridge 1994	L09-090	0.02	6.7	0.234	7.9	0.217	10.4	0.25	44.8	48.1	25.4	671.0	2	3	Lake Hughes #9	CGS	34.608	-118.558
+Northridge 1994	L12-090	0.01	6.7	0.333	9.8	0.174	11.8	0.25	40.7	44.2831796509691	21.4	602.0	2	3	Lake Hughes #12A	CGS	34.571	-118.56
+Northridge 1994	L12-180	0.01	6.7	0.468	9.8	0.257	9.0	0.22	40.7	44.2831796509691	21.4	602.0	2	3	Lake Hughes #12A	CGS	34.571	-118.56
+Northridge 1994	L4B-000	0.02	6.7	0.016	14.2	0.037	3.2	0.45	49.9	52.9	31.7	554.0	2	3	Lake Hughes #4B, Camp Mendenhall	CGS	34.65	-118.477
+Northridge 1994	L4B-090	0.02	6.7	0.038	12.7	0.063	5.4	0.31	49.9	52.9	31.7	554.0	2	3	Lake Hughes #4B, Camp Mendenhall	CGS	34.65	-118.477
+Northridge 1994	LA0-000	0.01	6.7	0.983	8.1	0.261	27.5	0.44	14.4	22.7	19.1	706.0	1	3	Los Angeles 00	UCSB	34.106	-118.454
+Northridge 1994	LA0-090	0.01	6.7	1.068	8.0	0.388	38.0	0.39	14.4	22.7	19.1	706.0	1	3	Los Angeles 00	UCSB	34.106	-118.454
+Northridge 1994	LAC-090	0.01	6.7	0.873	11.6	0.263	12.8	0.3	39.2	42.9	36.6	365.0	1	3	Los Angeles, City Terrace	CGS	34.053	-118.171
+Northridge 1994	LAC-180	0.01	6.7	1.052	11.9	0.316	14.1	0.32	39.2	42.9	36.6	365.0	1	3	Los Angeles, City Terrace	CGS	34.053	-118.171
+Northridge 1994	LAN-090	0.02	6.7	0.068	29.3	0.064	5.3	0.71	67.0	69.3	52.1	271.0	4	3	Lancaster, Fox Airfield Grounds	CGS	34.739	-118.214
+Northridge 1994	LAN-360	0.02	6.7	0.092	24.3	0.081	7.1	0.73	67.0	69.3	52.1	271.0	4	3	Lancaster, Fox Airfield Grounds	CGS	34.739	-118.214
+Northridge 1994	LBC-090	0.02	6.7	0.058	33.6	0.036	5.0	0.83	58.8	61.4	57.7	381.0	4	3	Long Beach, City Hall Grounds 	CGS	33.768	-118.196
+Northridge 1994	LBC-360	0.02	6.7	0.063	31.2	0.051	4.0	0.57	58.8	61.4	57.7	381.0	4	3	Long Beach, City Hall Grounds 	CGS	33.768	-118.196
+Northridge 1994	LBR-000	0.02	6.7	0.106	25.4	0.065	4.8	0.5	52.5	55.3624421426656	51.9	405.0	4	3	Long Beach, Rancho Los Cerritos	CGS	33.84	-118.194
+Northridge 1994	LBR-090	0.02	6.7	0.153	25.8	0.069	8.2	0.6	52.5	55.3624421426656	51.9	405.0	4	3	Long Beach, Rancho Los Cerritos	CGS	33.84	-118.194
+Northridge 1994	LDM-064	0.0050	6.7	1.772	6.7	0.511	63.7	0.87	11.8	21.1	5.9	629.0	1	3	Los Angeles Dam	LADWP	34.294	-118.483
+Northridge 1994	LDM-334	0.0050	6.7	1.378	6.5	0.349	50.8	0.8	11.8	21.1	5.9	629.0	1	3	Los Angeles Dam	LADWP	34.294	-118.483
+Northridge 1994	LIT-090	0.01	6.7	0.066	11.9	0.072	6.1	0.57	61.3	63.7	46.6	822.0	1	3	Littlerock, Brainard Canyon	CGS	34.486	-117.98
+Northridge 1994	LIT-180	0.01	6.7	0.058	17.6	0.06	6.3	0.54	61.3	63.7	46.6	822.0	1	3	Littlerock, Brainard Canyon	CGS	34.486	-117.98
+Northridge 1994	LLN-270	0.0050	6.7	0.054	27.5	0.046	4.4	0.66	121.3	122.6	112.4	275.0	4	3	Loma Linda VA Hospital, North	USGS	34.051	-117.25
+Northridge 1994	LLN-360	0.0050	6.7	0.065	28.6	0.057	6.4	0.68	121.3	122.6	112.4	275.0	4	3	Loma Linda VA Hospital, North	USGS	34.051	-117.25
+Northridge 1994	LLS-270	0.0050	6.7	0.057	23.5	0.057	4.7	0.58	121.3	122.6	112.4	275.0	4	3	Loma Linda VA Hospital, South	USGS	34.048	-117.251
+Northridge 1994	LLS-360	0.0050	6.7	0.05	27.5	0.042	4.7	0.63	121.3	122.6	112.4	275.0	4	3	Loma Linda VA Hospital, South	USGS	34.048	-117.251
+Northridge 1994	LOA-092	0.01	6.7	0.188	22.8	0.084	8.3	0.64	39.3	43.1	39.9	361.0	4	3	Lawndale, 14801 Osage Ave.	USC	33.897	-118.346
+Northridge 1994	LOA-182	0.01	6.7	0.227	23.3	0.153	8.0	0.59	39.3	43.1	39.9	361.0	4	3	Lawndale, 14801 Osage Ave.	USC	33.897	-118.346
+Northridge 1994	LOS-000	0.01	6.7	1.914	6.3	0.41	43.0	0.59	26.5	31.8	12.4	309.0	3	3	Canyon Country, 16628 W. Lost Canyon Rd.	USC	34.419	-118.426
+Northridge 1994	LOS-270	0.01	6.7	1.976	5.6	0.482	45.4	0.56	26.5	31.8	12.4	309.0	3	3	Canyon Country, 16628 W. Lost Canyon Rd.	USC	34.419	-118.426
+Northridge 1994	LUC-005	0.01	6.7	0.247	12.6	0.167	9.9	0.39	55.6	58.3	54.5	509.0	1	3	Rancho Palos Verdes, 30511 Luconia Dr.	USC	33.74	-118.335
+Northridge 1994	LUC-095	0.01	6.7	0.144	13.1	0.118	9.3	0.42	55.6	58.3	54.5	509.0	1	3	Rancho Palos Verdes, 30511 Luconia Dr.	USC	33.74	-118.335
+Northridge 1994	LV1-000	0.02	6.7	0.082	12.4	0.089	7.8	0.5	51.8	54.7	37.2	685.0	1	3	Leona Valley #1	CGS	34.594	-118.242
+Northridge 1994	LV1-090	0.02	6.7	0.063	11.5	0.073	7.1	0.5	51.8	54.7	37.2	685.0	1	3	Leona Valley #1	CGS	34.594	-118.242
+Northridge 1994	LV2-000	0.02	6.7	0.084	13.6	0.091	7.5	0.49	51.9	54.8	37.2	446.0	2	3	Leona Valley #2	CGS	34.595	-118.243
+Northridge 1994	LV2-090	0.02	6.7	0.063	12.5	0.063	7.3	0.53	51.9	54.8	37.2	446.0	2	3	Leona Valley #2	CGS	34.595	-118.243
+Northridge 1994	LV3-000	0.02	6.7	0.101	12.9	0.084	8.5	0.51	52.0	54.8	37.3	685.0	1	3	Leona Valley #3	CGS	34.596	-118.243
+Northridge 1994	LV3-090	0.02	6.7	0.077	13.6	0.106	8.1	0.54	52.0	54.8	37.3	685.0	1	3	Leona Valley #3	CGS	34.596	-118.243
+Northridge 1994	LV4-000	0.02	6.7	0.112	12.1	0.079	8.7	0.77	52.2	55.1	37.6	446.0	2	3	Leona Valley #4	CGS	34.598	-118.242
+Northridge 1994	LV4-090	0.02	6.7	0.088	14.7	0.057	8.0	0.78	52.2	55.1	37.6	446.0	2	3	Leona Valley #4	CGS	34.598	-118.242
+Northridge 1994	LV5-000	0.02	6.7	0.292	12.6	0.147	14.9	0.64	52.4	55.3	37.8	446.0	3	3	Leona Valley #5, Ritter Ranch	CGS	34.6	-118.241
+Northridge 1994	LV5-090	0.02	6.7	0.197	16.1	0.092	10.4	0.61	52.4	55.3	37.8	446.0	3	3	Leona Valley #5, Ritter Ranch	CGS	34.6	-118.241
+Northridge 1994	LV6-090	0.02	6.7	0.342	10.3	0.178	14.5	0.38	52.7	55.5	38.0	327.0	4	3	Leona Valley #6	CGS	34.604	-118.244
+Northridge 1994	LV6-360	0.02	6.7	0.197	11.7	0.131	10.1	0.41	52.7	55.5	38.0	327.0	4	3	Leona Valley #6	CGS	34.604	-118.244
+Northridge 1994	MAL-090	0.02	6.7	0.237	17.6	0.13	8.5	0.46	31.2	35.8	33.7	350.0	2	3	Malibu, Point Dume	CGS	34.013	-118.8
+Northridge 1994	MAL-360	0.02	6.7	0.168	16.8	0.084	8.9	0.56	31.2	35.8	33.7	350.0	2	3	Malibu, Point Dume	CGS	34.013	-118.8
+Northridge 1994	MAN-000	0.01	6.7	0.207	20.3	0.201	13.7	0.61	38.7	42.5	39.3	405.0	3	3	Manhattan Beach, 1400 Manhattan Beach Blvd.	USC	33.886	-118.389
+Northridge 1994	MAN-090	0.01	6.7	0.181	18.8	0.128	14.6	0.6	38.7	42.5	39.3	405.0	3	3	Manhattan Beach, 1400 Manhattan Beach Blvd.	USC	33.886	-118.389
+Northridge 1994	MCN-270	0.0050	6.7	0.306	9.5	0.162	7.3	0.22	19.2	26.0	25.6	660.0	1	3	Malibu Canyon, Monte Nido Fire Station	USGS	34.087	-118.693
+Northridge 1994	MCN-360	0.0050	6.7	0.341	8.7	0.179	8.4	0.24	19.2	26.0	25.6	660.0	1	3	Malibu Canyon, Monte Nido Fire Station	USGS	34.087	-118.694
+Northridge 1994	MEL-090	0.01	6.7	0.06	16.6	0.079	3.4	0.4	57.0	59.6	48.6	446.0	2	3	Duarte, 237 Mel Canyon Rd.	USC	34.15	-117.939
+Northridge 1994	MEL-180	0.01	6.7	0.024	15.8	0.028	2.4	0.37	57.0	59.6	48.6	446.0	2	3	Duarte, 237 Mel Canyon Rd.	USC	34.15	-117.939
+Northridge 1994	MJH-000	0.02	6.7	0.038	17.8	0.037	4.5	0.72	102.2	103.7	85.4	309.0	4	3	Mojave, Highways 14 & 58	CGS	35.07	-118.175
+Northridge 1994	MJH-090	0.02	6.7	0.027	16.8	0.053	4.1	0.48	102.2	103.7	85.4	309.0	4	3	Mojave, Highways 14 & 58	CGS	35.07	-118.175
+Northridge 1994	MJO-000	0.02	6.7	0.03	12.6	0.05	3.1	0.36	94.5	96.1	75.8	339.0	2	3	Mojave, Oak Creek Canyon	CGS	35.042	-118.377
+Northridge 1994	MJO-090	0.02	6.7	0.041	13.6	0.059	3.4	0.31	94.5	96.1	75.8	339.0	2	3	Mojave, Oak Creek Canyon	CGS	35.042	-118.377
+Northridge 1994	MRP-090	0.02	6.7	0.774	16.1	0.193	20.3	0.58	31.5	36.0	24.8	405.0	4	3	Moorpark, Fire Station	CGS	34.288	-118.881
+Northridge 1994	MRP-180	0.02	6.7	0.939	14.2	0.292	20.9	0.47	31.5	36.0	24.8	405.0	4	3	Moorpark, Fire Station	CGS	34.288	-118.881
+Northridge 1994	MTW-000	0.02	6.7	0.305	8.8	0.234	7.7	0.23	45.8	49.0	35.9	822.0	1	3	Mount Wilson, Caltech Seismic Station	CGS	34.224	-118.057
+Northridge 1994	MTW-090	0.02	6.7	0.222	10.8	0.134	5.9	0.23	45.8	49.0	35.9	822.0	1	3	Mount Wilson, Caltech Seismic Station	CGS	34.224	-118.057
+Northridge 1994	MU2-035	0.01	6.7	2.992	7.6	0.617	40.9	0.32	16.3	23.9	18.4	546.0	1	3	Beverly Hills, 12520 Mulholland Dr.	USC	34.127	-118.405
+Northridge 1994	MU2-125	0.01	6.7	2.337	7.8	0.444	30.2	0.33	16.3	23.9	18.4	546.0	1	3	Beverly Hills, 12520 Mulholland Dr.	USC	34.127	-118.405
+Northridge 1994	MUL-009	0.01	6.7	3.075	9.2	0.416	58.9	0.75	13.4	22.0	17.2	356.0	1	3	Beverly Hills, 14145 Mulholland Dr.	USC	34.132	-118.439
+Northridge 1994	MUL-279	0.01	6.7	4.499	8.4	0.516	62.8	0.64	13.4	22.0	17.2	356.0	1	3	Beverly Hills, 14145 Mulholland Dr.	USC	34.132	-118.439
+Northridge 1994	NBI-000	0.02	6.7	0.061	22.3	0.041	4.1	0.58	87.6	89.3	85.5	405.0	2	3	Newport Beach, Irvine Ave. Fire Station	CGS	33.634	-117.902
+Northridge 1994	NBI-090	0.02	6.7	0.084	21.3	0.061	5.3	0.55	87.6	89.3	85.5	405.0	2	3	Newport Beach, Irvine Ave. Fire Station	CGS	33.634	-117.902
+Northridge 1994	NEE-090	0.01	6.7	0.07	26.3	0.056	9.8	1.09	71.5	73.6	51.9	309.0	4	3	Neenach, Sacatara Creek	CGS	34.848	-118.536
+Northridge 1994	NEE-180	0.01	6.7	0.096	26.4	0.069	13.5	1.25	71.5	73.6	51.9	309.0	4	3	Neenach, Sacatara Creek	CGS	34.848	-118.536
+Northridge 1994	NEW-090	0.01	6.7	0.125	23.2	0.103	5.9	0.48	86.7	88.4	84.5	371.0	4	3	Newport Beach, Newport Blvd. & Coast Hwy.	CGS	33.623	-117.931
+Northridge 1994	NEW-180	0.01	6.7	0.096	25.8	0.085	6.3	0.54	86.7	88.4	84.5	371.0	4	3	Newport Beach, Newport Blvd. & Coast Hwy.	CGS	33.623	-117.931
+Northridge 1994	NHO-180	0.01	6.7	0.107	13.2	0.09	3.9	0.33	54.7	57.4	48.0	309.0	4	3	Baldwin Park, 3699 N. Holly Ave.	USC	34.1	-117.974
+Northridge 1994	NHO-270	0.01	6.7	0.119	14.6	0.123	8.2	0.42	54.7	57.4	48.0	309.0	4	3	Baldwin Park, 3699 N. Holly Ave.	USC	34.1	-117.974
+Northridge 1994	NOR-090	0.0050	6.7	0.088	18.0	0.056	7.9	0.49	55.0	58.1893461039046	53.8	270.0	4	3	Norwalk, 12400 Imperial Hwy.	USGS	33.915	-118.067
+Northridge 1994	NOR-360	0.0050	6.7	0.168	16.9	0.087	8.1	0.48	55.0	58.1893461039046	53.8	270.0	4	3	Norwalk, 12400 Imperial Hwy.	USGS	33.915	-118.067
+Northridge 1994	NWH-090	0.02	6.7	4.362	5.9	0.583	75.8	0.52	20.3	26.8	5.9	269.0	4	3	Newhall, LA County Fire Station	CGS	34.387	-118.533
+Northridge 1994	NWH-360	0.02	6.7	5.669	5.5	0.59	97.7	0.7	20.3	26.8	5.9	269.0	4	3	Newhall, LA County Fire Station	CGS	34.387	-118.533
+Northridge 1994	NYA-090	0.01	6.7	0.448	9.7	0.178	12.6	0.38	27.8	32.9	18.5	446.0	3	3	La Crescenta, 4747 New York Ave.	USC	34.238	-118.254
+Northridge 1994	NYA-180	0.01	6.7	0.289	11.0	0.159	11.3	0.35	27.8	32.9	18.5	446.0	3	3	La Crescenta, 4747 New York Ave.	USC	34.238	-118.254
+Northridge 1994	OAK-080	0.01	6.7	0.046	16.5	0.04	3.1	0.42	62.2	64.7	53.9	446.0	4	3	Glendora, 120 N. Oakbank	USC	34.137	-117.883
+Northridge 1994	OAK-170	0.01	6.7	0.084	14.4	0.092	4.9	0.42	62.2	64.7	53.9	446.0	4	3	Glendora, 120 N. Oakbank	USC	34.137	-117.883
+Northridge 1994	OBR-090	0.02	6.7	1.104	10.9	0.355	16.8	0.27	39.4	43.1	37.4	349.0	4	3	Los Angeles, Obregon Park	CGS	34.037	-118.178
+Northridge 1994	OBR-360	0.02	6.7	1.407	11.3	0.563	24.8	0.3	39.4	43.1	37.4	349.0	4	3	Los Angeles, Obregon Park	CGS	34.037	-118.178
+Northridge 1994	ORN-000	0.0050	6.7	0.168	13.4	0.109	7.6	0.33	68.0	70.6045324324154	65.0	376.0	2	3	Orange County Reservoir, Earth Dam Abut.	USGS	33.9354	-117.884
+Northridge 1994	ORN-090	0.0050	6.7	0.19	13.2	0.116	8.0	0.34	68.0	70.6045324324154	65.0	376.0	2	3	Orange County Reservoir, Earth Dam Abut.	USGS	33.9354	-117.884
+Northridge 1994	ORR-090	0.02	6.7	2.789	9.1	0.568	52.6	0.54	40.7	44.3	20.7	450.0	2	3	Castaic, Old Ridge Route	CGS	34.564	-118.642
+Northridge 1994	ORR-360	0.02	6.7	3.165	8.5	0.514	52.2	0.7	40.7	44.3	20.7	450.0	2	3	Castaic, Old Ridge Route	CGS	34.564	-118.642
+Northridge 1994	PAC-175	0.02	6.7	0.936	4.3	0.415	45.8	0.47	20.4	26.9	7.0	2016.0	1	3	Pacoima Dam, downstream	CGS	34.334	-118.396
+Northridge 1994	PAC-265	0.02	6.7	0.732	4.1	0.434	32.2	0.5	20.4	26.9	7.0	2016.0	1	3	Pacoima Dam, downstream	CGS	34.334	-118.396
+Northridge 1994	PAR-L	0.0050	6.7	3.095	6.7	0.657	75.2	0.94	25.7	31.1	7.5	345.0	4	3	Pardee Substation	SCE	34.435	-118.582
+Northridge 1994	PAR-T	0.0050	6.7	1.781	7.4	0.406	43.6	1.02	25.7	31.1	7.5	345.0	4	3	Pardee Substation	SCE	34.435	-118.582
+Northridge 1994	PEL-090	0.02	6.7	0.937	12.0	0.231	18.3	0.48	23.6	29.4	24.0	317.0	4	3	Los Angeles, Hollywood Stor. Bldg. Grounds	CGS	34.089	-118.339
+Northridge 1994	PEL-360	0.02	6.7	2.006	10.6	0.358	27.5	0.37	23.6	29.4	24.0	317.0	4	3	Los Angeles, Hollywood Stor. Bldg. Grounds	CGS	34.089	-118.339
+Northridge 1994	PHE-090	0.01	6.7	0.049	28.4	0.047	5.0	0.59	99.4	100.9	85.9	309.0	4	3	Phelan, Wilson Ranch Road	CGS	34.467	-117.52
+Northridge 1994	PHE-180	0.01	6.7	0.06	22.2	0.057	4.1	0.55	99.4	100.9	85.9	309.0	4	3	Phelan, Wilson Ranch Road	CGS	34.467	-117.52
+Northridge 1994	PHP-000	0.01	6.7	0.105	15.8	0.061	7.3	0.6	56.8	59.4	41.7	552.0	3	3	Palmdale, Hwy. 14 & Palmdale Blvd.	CGS	34.581	-118.135
+Northridge 1994	PHP-270	0.01	6.7	0.099	18.1	0.067	8.3	0.74	56.8	59.4	41.7	552.0	3	3	Palmdale, Hwy. 14 & Palmdale Blvd.	CGS	34.581	-118.135
+Northridge 1994	PIC-090	0.01	6.7	0.185	20.2	0.103	12.1	0.62	31.7	36.2	31.3	270.0	4	3	Los Angeles, Pico & Sentous	CGS	34.043	-118.271
+Northridge 1994	PIC-180	0.01	6.7	0.263	14.8	0.186	14.2	0.58	31.7	36.2	31.3	270.0	4	3	Los Angeles, Pico & Sentous	CGS	34.043	-118.271
+Northridge 1994	PKC-090	0.02	6.7	1.607	10.1	0.301	31.3	0.67	19.3	26.0	7.3	508.0	2	3	Pacoima, Kagel Canyon	CGS	34.296	-118.375
+Northridge 1994	PKC-360	0.02	6.7	1.795	9.8	0.433	51.6	0.66	19.3	26.0	7.3	508.0	2	3	Pacoima, Kagel Canyon	CGS	34.296	-118.375
+Northridge 1994	PTH-090	0.02	6.7	0.183	21.5	0.103	7.9	0.59	60.4	62.9	51.8	271.0	4	3	Port Hueneme, Naval Laboratory	CGS	34.145	-119.206
+Northridge 1994	PTH-180	0.02	6.7	0.145	24.4	0.086	7.7	0.66	60.4	62.9	51.8	271.0	4	3	Port Hueneme, Naval Laboratory	CGS	34.145	-119.206
+Northridge 1994	PTM-000	0.02	6.7	0.252	10.3	0.134	10.2	0.39	48.3	51.4	41.9	376.0	1	3	Point Mugu, Laguna Peak	CGS	34.109	-119.065
+Northridge 1994	PTM-090	0.02	6.7	0.609	9.1	0.223	19.1	0.4	48.3	51.4	41.9	376.0	1	3	Point Mugu, Laguna Peak	CGS	34.109	-119.065
+Northridge 1994	PUL-104	0.02	6.7	8.741	5.4	1.585	54.8	0.33	20.4	26.8700576850888	7.0	2016.0	1	3	Pacoima Dam, abutment	CGS	34.334	-118.396
+Northridge 1994	PUL-194	0.02	6.7	8.6	6.0	1.285	103.7	0.45	20.4	26.8700576850888	7.0	2016.0	1	3	Pacoima Dam, abutment	CGS	34.334	-118.396
+Northridge 1994	RAN-000	0.02	6.7	0.051	11.6	0.073	5.0	0.44	53.2	56.0	52.2	478.0	1	3	Rancho Palos Verdes, Hawthorne Blvd.	CGS	33.746	-118.396
+Northridge 1994	RAN-090	0.02	6.7	0.053	14.6	0.054	3.5	0.39	53.2	56.0	52.2	478.0	1	3	Rancho Palos Verdes, Hawthorne Blvd.	CGS	33.746	-118.396
+Northridge 1994	RHE-090	0.02	6.7	0.151	18.1	0.116	9.1	0.49	50.0	53.0	49.3	376.0	1	3	Rolling Hills Estate, Rancho Vista School	CGS	33.787	-118.356
+Northridge 1994	RHE-360	0.02	6.7	0.129	18.2	0.106	5.8	0.44	50.0	53.0	49.3	376.0	1	3	Rolling Hills Estate, Rancho Vista School	CGS	33.787	-118.356
+Northridge 1994	RIM-015	0.01	6.7	0.21	12.5	0.109	7.9	0.43	61.9	64.3	56.6	309.0	4	3	La Puente, 504 Rimgrove Ave.	USC	34.026	-117.918
+Northridge 1994	RIM-105	0.01	6.7	0.18	13.6	0.129	9.7	0.46	61.9	64.3	56.6	309.0	4	3	La Puente, 504 Rimgrove Ave.	USC	34.026	-117.918
+Northridge 1994	RIV-180	0.02	6.7	0.039	12.3	0.059	2.8	0.24	106.0	107.4	99.0	371.0	2	3	Riverside, Airport	CGS	33.951	-117.446
+Northridge 1994	RIV-270	0.02	6.7	0.044	9.9	0.064	3.1	0.26	106.0	107.4	99.0	371.0	2	3	Riverside, Airport	CGS	33.951	-117.446
+Northridge 1994	RMA-000	0.02	6.7	0.057	19.8	0.075	4.7	0.34	80.5	82.4	64.8	345.0	4	3	Rosamond, Airport	CGS	34.87	-118.206
+Northridge 1994	RMA-090	0.02	6.7	0.039	15.7	0.04	3.5	0.46	80.5	82.4	64.8	345.0	4	3	Rosamond, Airport	CGS	34.87	-118.206
+Northridge 1994	RO3-000	0.01	6.7	1.423	12.4	0.303	22.2	0.51	11.0	22.0	10.4	309.0	4	3	Sun Valley, 13248 Roscoe Blvd.	USC	34.221	-118.421
+Northridge 1994	RO3-090	0.01	6.7	1.445	17.0	0.444	38.2	0.77	11.0	22.0	10.4	309.0	4	3	Sun Valley, 13248 Roscoe Blvd.	USC	34.221	-118.421
+Northridge 1994	RRS-228	0.01	6.7	7.506	7.2	0.825	160.3	0.76	10.9	20.6	6.5	282.0	2	3	Rinaldi Receiving Station	LADWP	34.281	-118.478
+Northridge 1994	RRS-318	0.01	6.7	4.232	9.3	0.487	74.6	0.63	10.9	20.6	6.5	282.0	2	3	Rinaldi Receiving Station	LADWP	34.281	-118.478
+Northridge 1994	SAL-000	0.01	6.7	0.06	9.6	0.089	7.5	0.55	52.8	55.6	49.1	376.0	1	3	Whittier, 6302 S. Alta Dr.	USC	34.015	-118.029
+Northridge 1994	SAL-090	0.01	6.7	0.031	13.8	0.052	3.3	0.43	52.8	55.6	49.1	376.0	1	3	Whittier, 6302 S. Alta Dr.	USC	34.015	-118.029
+Northridge 1994	SAN-090	0.01	6.7	0.149	14.1	0.091	12.2	0.67	61.8	64.2	41.6	822.0	2	3	Sandberg, Bald Mountain	CGS	34.743	-118.724
+Northridge 1994	SAN-180	0.01	6.7	0.104	15.9	0.098	8.7	0.56	61.8	64.2	41.6	822.0	2	3	Sandberg, Bald Mountain	CGS	34.743	-118.724
+Northridge 1994	SAP-000	0.02	6.7	0.138	12.8	0.101	5.7	0.4	58.4	61.0327780786685	57.0	376.0	1	3	San Pedro, Palos Verdes	CGS	33.722	-118.309
+Northridge 1994	SAP-090	0.02	6.7	0.119	13.4	0.095	6.6	0.45	58.4	61.0327780786685	57.0	376.0	1	3	San Pedro, Palos Verdes	CGS	33.722	-118.309
+Northridge 1994	SAR-000	0.01	6.7	0.319	17.1	0.136	18.6	0.67	29.6	34.4	31.7	405.0	4	3	Playa Del Rey, 8505 Saran Dr.	USC	33.96	-118.432
+Northridge 1994	SAR-270	0.01	6.7	0.191	22.5	0.076	13.7	0.96	29.6	34.4	31.7	405.0	4	3	Playa Del Rey, 8505 Saran Dr.	USC	33.96	-118.432
+Northridge 1994	SBG-000	0.02	6.7	0.187	20.0	0.078	7.1	0.56	121.6	122.9	109.1	339.0	4	3	Goleta Station, U.C. Santa Barbara	USGS	34.422	-119.851
+Northridge 1994	SBG-090	0.02	6.7	0.146	25.6	0.069	6.6	0.63	121.6	122.9	109.1	339.0	4	3	Goleta Station, U.C. Santa Barbara	USGS	34.422	-119.851
+Northridge 1994	SBO-270	0.0050	6.7	0.036	27.3	0.035	3.7	0.76	117.2	118.5	107.7	271.0	4	3	San Bernardino, Government Center	USGS	34.106	-117.287
+Northridge 1994	SBO-360	0.0050	6.7	0.033	29.7	0.039	4.7	0.71	117.2	118.5	107.7	271.0	4	3	San Bernardino, Government Center	USGS	34.106	-117.287
+Northridge 1994	SCE-018	0.0050	6.7	4.498	6.9	0.828	117.5	0.75	13.6	22.2	5.2	371.0	4	3	Sylmar, Converter Station East	LADWP	34.312	-118.481
+Northridge 1994	SCE-288	0.0050	6.7	2.9	7.5	0.493	74.7	0.74	13.6	22.2	5.2	371.0	4	3	Sylmar, Converter Station East	LADWP	34.312	-118.481
+Northridge 1994	SCR-000	0.01	6.7	0.981	7.8	0.252	28.0	0.44	14.4	22.7	19.1	438.0	1	3	Stone Canyon Reservoir	MWD	34.1062	-118.4542
+Northridge 1994	SCR-090	0.01	6.7	1.065	8.0	0.388	38.0	0.38	14.4	22.7	19.1	438.0	1	3	Stone Canyon Reservoir	MWD	34.1062	-118.4542
+Northridge 1994	SCS-052	0.0050	6.7	5.833	15.1	0.612	117.5	1.16	13.1	21.9	5.4	251.0	2	3	Sylmar, Converter Station	LADWP	34.311	-118.49
+Northridge 1994	SCS-142	0.0050	6.7	5.284	7.5	0.897	102.2	0.99	13.1	21.9	5.4	251.0	2	3	Sylmar, Converter Station	LADWP	34.311	-118.49
+Northridge 1994	SEA-000	0.01	6.7	0.11	18.9	0.061	5.8	0.5	66.1	68.4	64.8	371.0	4	3	Seal Beach	CGS	33.757	-118.084
+Northridge 1994	SEA-090	0.01	6.7	0.176	16.0	0.084	6.8	0.46	66.1	68.4	64.8	371.0	4	3	Seal Beach	CGS	33.757	-118.084
+Northridge 1994	SER-000	0.01	6.7	0.027	16.0	0.043	3.1	0.42	80.3	82.1	77.6	309.0	4	3	Villa Park, 17852 Serrano Ave.	USC	33.821	-117.818
+Northridge 1994	SER-270	0.01	6.7	0.051	15.9	0.045	3.8	0.48	80.3	82.1	77.6	309.0	4	3	Villa Park, 17852 Serrano Ave.	USC	33.821	-117.818
+Northridge 1994	SMA-090	0.02	6.7	0.23	11.9	0.116	7.3	0.34	40.3	44.0	35.0	379.0	4	3	San Marino, Southwestern Academy 	CGS	34.115	-118.13
+Northridge 1994	SMA-360	0.02	6.7	0.33	12.4	0.15	7.5	0.3	40.3	44.0	35.0	379.0	4	3	San Marino, Southwestern Academy 	CGS	34.115	-118.13
+Northridge 1994	SMV-180	0.01	6.7	0.739	8.5	0.245	12.3	0.36	44.0	47.4	36.1	455.0	3	3	Pasadena, 1150 N. Sierra Madre Villa Ave.	USC	34.168	-118.078
+Northridge 1994	SMV-270	0.01	6.7	0.521	9.6	0.174	9.5	0.33	44.0	47.4	36.1	455.0	3	3	Pasadena, 1150 N. Sierra Madre Villa Ave.	USC	34.168	-118.078
+Northridge 1994	SOR-225	0.01	6.7	0.079	19.3	0.063	5.9	0.56	57.6	60.2	51.7	309.0	4	3	West Covina, 1307 S. Orange Ave.	USC	34.064	-117.952
+Northridge 1994	SOR-315	0.01	6.7	0.085	19.7	0.067	5.9	0.56	57.6	60.2	51.7	309.0	4	3	West Covina, 1307 S. Orange Ave.	USC	34.064	-117.952
+Northridge 1994	SSA-090	0.0050	6.7	0.894	8.3	0.289	16.7	0.33	14.7	22.8	16.7	715.0	1	3	Santa Susana, Liquid Metal Engr. Center	USGS	34.232	-118.713
+Northridge 1994	SSA-360	0.0050	6.7	0.841	7.4	0.232	16.1	0.38	14.7	22.8	16.7	715.0	1	3	Santa Susana, Liquid Metal Engr. Center	USGS	34.232	-118.713
+Northridge 1994	SSE-240	0.01	6.7	0.402	14.2	0.133	13.7	0.44	58.5	61.1	57.2	230.0	4	3	Terminal Island, 954 S. Seaside Ave.	USC	33.736	-118.269
+Northridge 1994	SSE-330	0.01	6.7	0.481	13.4	0.194	12.1	0.43	58.5	61.1	57.2	230.0	4	3	Terminal Island, 954 S. Seaside Ave.	USC	33.736	-118.269
+Northridge 1994	STC-090	0.01	6.7	1.969	15.6	0.368	28.9	0.6	3.4	17.8	12.1	281.0	4	3	Northridge, 17645 Saticoy St.	USC	34.209	-118.517
+Northridge 1994	STC-180	0.01	6.7	4.602	10.6	0.477	61.5	0.67	3.4	17.8	12.1	281.0	4	3	Northridge, 17645 Saticoy St.	USC	34.209	-118.517
+Northridge 1994	STM-090	0.02	6.7	2.847	8.8	0.883	41.7	0.41	22.5	28.5	26.5	336.0	4	3	Santa Monica, City Hall Grounds	CGS	34.011	-118.49
+Northridge 1994	STM-360	0.02	6.7	1.179	10.7	0.37	25.1	0.53	22.5	28.5	26.5	336.0	4	3	Santa Monica, City Hall Grounds	CGS	34.011	-118.49
+Northridge 1994	STN-020	0.01	6.7	1.118	11.5	0.474	34.5	0.47	25.5	31.0	27.0	309.0	4	3	Los Angeles, 5360 Saturn St.	USC	34.046	-118.355
+Northridge 1994	STN-110	0.01	6.7	1.583	8.8	0.439	39.1	0.46	25.5	31.0	27.0	309.0	4	3	Los Angeles, 5360 Saturn St.	USC	34.046	-118.355
+Northridge 1994	SUN-190	0.01	6.7	1.843	8.0	0.469	31.0	0.32	18.2	25.3	24.1	446.0	2	3	Pacific Palisades, 17281 Sunset Blvd.	USC	34.042	-118.554
+Northridge 1994	SUN-280	0.01	6.7	0.647	10.5	0.197	14.9	0.34	18.2	25.3	24.1	446.0	2	3	Pacific Palisades, 17281 Sunset Blvd.	USC	34.042	-118.554
+Northridge 1994	SYC-135	0.01	6.7	0.085	18.4	0.07	4.0	0.36	85.8	87.6	83.7	235.0	4	3	Tustin, 13014 E. Sycamore	USC	33.728	-117.824
+Northridge 1994	SYC-225	0.01	6.7	0.068	16.3	0.074	4.4	0.38	85.8	87.6	83.7	235.0	4	3	Tustin, 13014 E. Sycamore	USC	33.728	-117.824
+Northridge 1994	SYL-090	0.02	6.7	2.606	6.8	0.604	78.3	0.79	16.8	24.2	5.3	441.0	4	3	Sylmar, County Hosp. Parking Lot	CGS	34.326	-118.444
+Northridge 1994	SYL-360	0.02	6.7	5.014	5.3	0.843	130.3	0.76	16.8	24.2	5.3	441.0	4	3	Sylmar, County Hosp. Parking Lot	CGS	34.326	-118.444
+Northridge 1994	TAR-090	0.02	6.7	22.758	10.5	1.779	116.6	0.37	5.4	18.3	15.6	257.0	2	3	Tarzana, Cedar Hill Nursery A	CGS	34.16	-118.534
+Northridge 1994	TAR-360	0.02	6.7	16.699	12.6	0.99	78.0	0.41	5.4	18.3	15.6	257.0	2	3	Tarzana, Cedar Hill Nursery A	CGS	34.16	-118.534
+Northridge 1994	TEM-090	0.01	6.7	0.329	14.6	0.126	13.9	0.48	32.7	37.1	31.5	376.0	1	3	Los Angeles, Temple & Hope	CGS	34.059	-118.246
+Northridge 1994	TEM-180	0.01	6.7	0.46	13.3	0.184	20.0	0.47	32.7	37.1	31.5	376.0	1	3	Los Angeles, Temple & Hope	CGS	34.059	-118.246
+Northridge 1994	TOP-270	0.0050	6.7	0.51	10.1	0.193	12.0	0.27	14.2	22.5	22.3	376.0	2	3	Topanga Fire Station	USGS	34.084	-118.599
+Northridge 1994	TOP-360	0.0050	6.7	1.039	8.8	0.332	15.6	0.31	14.2	22.5	22.3	376.0	2	3	Topanga Fire Station	USGS	34.084	-118.599
+Northridge 1994	TUJ-262	0.01	6.7	0.428	10.7	0.163	8.1	0.25	31.6	36.1	19.7	446.0	1	3	Big Tujunga Station, Angeles National Forest	USC	34.286	-118.225
+Northridge 1994	TUJ-352	0.01	6.7	0.519	9.4	0.245	12.7	0.29	31.6	36.1	19.7	446.0	1	3	Big Tujunga Station, Angeles National Forest	USC	34.286	-118.225
+Northridge 1994	UCL-090	0.02	6.7	0.875	11.3	0.278	22.0	0.35	18.6	25.6	22.5	398.0	4	3	Los Angeles, UCLA Grounds	CGS	34.068	-118.439
+Northridge 1994	UCL-360	0.02	6.7	1.646	10.2	0.474	22.5	0.37	18.6	25.6	22.5	398.0	4	3	Los Angeles, UCLA Grounds	CGS	34.068	-118.439
+Northridge 1994	UNI-005	0.01	6.7	1.372	10.4	0.493	31.2	0.38	36.5	40.5	34.2	376.0	1	3	Los Angeles, University Hospital	CGS	34.062	-118.198
+Northridge 1994	UNI-095	0.01	6.7	0.539	12.3	0.214	10.8	0.3	36.5	40.5	34.2	376.0	1	3	Los Angeles, University Hospital	CGS	34.062	-118.198
+Northridge 1994	VAS-000	0.02	6.7	0.374	8.3	0.151	18.6	0.41	38.1	41.9	23.6	996.0	1	3	Vasquez Rocks Park	CGS	34.492	-118.327
+Northridge 1994	VAS-090	0.02	6.7	0.319	7.3	0.139	11.2	0.38	38.1	41.9	23.6	996.0	1	3	Vasquez Rocks Park	CGS	34.492	-118.327
+Northridge 1994	VEN-090	0.02	6.7	0.175	39.1	0.054	7.9	0.99	68.4	70.6	58.0	271.0	4	3	Ventura, Harbor & California	CGS	34.276	-119.293
+Northridge 1994	VEN-360	0.02	6.7	0.189	34.7	0.075	12.1	0.92	68.4	70.6	58.0	271.0	4	3	Ventura, Harbor & California	CGS	34.276	-119.293
+Northridge 1994	VER-090	0.01	6.7	0.263	14.3	0.12	9.2	0.48	37.3	41.2	36.8	309.0	4	3	Los Angeles, 2369 E. Vernon Ave.	USC	34.004	-118.23
+Northridge 1994	VER-180	0.01	6.7	0.277	15.9	0.153	10.1	0.4	37.3	41.2	36.8	309.0	4	3	Los Angeles, 2369 E. Vernon Ave.	USC	34.004	-118.23
+Northridge 1994	VRM-000	0.01	6.7	0.279	16.2	0.164	10.7	0.48	32.1	36.5	32.3	270.0	4	3	Los Angeles, 3620 S. Vermont Ave.	USC	34.021	-118.287
+Northridge 1994	VRM-090	0.01	6.7	0.097	21.6	0.071	6.2	0.51	32.1	36.5	32.3	270.0	4	3	Los Angeles, 3620 S. Vermont Ave.	USC	34.021	-118.287
+Northridge 1994	VSP-270	0.0050	6.7	4.718	8.2	0.749	78.1	0.6	8.5	19.5	8.4	380.0	4	3	Sepulveda VA Hospital Bldg. 40	USGS	34.249	-118.478
+Northridge 1994	VSP-360	0.0050	6.7	6.987	8.5	0.934	76.2	0.46	8.5	19.5	8.4	380.0	4	3	Sepulveda VA Hospital Bldg. 40	USGS	34.249	-118.478
+Northridge 1994	W15-090	0.01	6.7	0.226	20.8	0.104	11.5	0.71	29.6	34.4	29.7	405.0	3	3	Los Angeles, 2628 W. 15th St.	USC	34.045	-118.298
+Northridge 1994	W15-180	0.01	6.7	0.28	18.3	0.159	13.4	0.59	29.6	34.4	29.7	405.0	3	3	Los Angeles, 2628 W. 15th St.	USC	34.045	-118.298
+Northridge 1994	WAI-200	0.01	6.7	0.104	22.0	0.086	5.0	0.45	71.1	73.2	69.5	235.0	4	3	Huntington Beach, 16081 Waikiki Lane	USC	33.727	-118.044
+Northridge 1994	WAI-290	0.01	6.7	0.143	18.8	0.069	7.4	0.51	71.1	73.2	69.5	235.0	4	3	Huntington Beach, 16081 Waikiki Lane	USC	33.727	-118.044
+Northridge 1994	WAT-180	0.01	6.7	0.196	23.2	0.089	6.5	0.5	50.3	53.3	49.8	161.0	4	3	Carson, Water St.	USC	33.836	-118.24
+Northridge 1994	WAT-270	0.01	6.7	0.215	22.8	0.086	8.1	0.52	50.3	53.3	49.8	161.0	4	3	Carson, Water St.	USC	33.836	-118.24
+Northridge 1994	WBA-000	0.01	6.7	0.119	18.4	0.072	5.3	0.52	70.5	72.6	68.6	235.0	4	3	Anaheim, 2000 W. Ball Rd.	USC	33.817	-117.951
+Northridge 1994	WBA-090	0.01	6.7	0.112	19.7	0.066	5.2	0.61	70.5	72.6	68.6	235.0	4	3	Anaheim, 2000 W. Ball Rd.	USC	33.817	-117.951
+Northridge 1994	WIL-090	0.01	6.7	0.465	15.5	0.136	12.8	0.5	21.8	27.9	23.1	235.0	4	3	Hollywood, 8023 Willoughby Ave.	USC	34.088	-118.365
+Northridge 1994	WIL-180	0.01	6.7	0.943	12.8	0.246	33.5	0.69	21.8	27.9	23.1	235.0	4	3	Hollywood, 8023 Willoughby Ave.	USC	34.088	-118.365
+Northridge 1994	WON-095	0.01	6.7	0.143	8.8	0.112	8.7	0.33	19.0	25.8	20.3	1223.0	1	3	Los Angeles, Wonderland Ave.	USC	34.114	-118.38
+Northridge 1994	WON-185	0.01	6.7	0.201	6.7	0.172	11.8	0.46	19.0	25.8	20.3	1223.0	1	3	Los Angeles, Wonderland Ave.	USC	34.114	-118.38
+Northridge 1994	WPI-046	0.01	6.7	1.544	6.6	0.455	92.7	1.59	21.6	27.8	5.5	286.0	2	3	Newhall, 26835 W. Pico Canyon Rd.	USC	34.391	-118.622
+Northridge 1994	WPI-316	0.01	6.7	0.973	9.2	0.325	67.4	1.25	21.6	27.8	5.5	286.0	2	3	Newhall, 26835 W. Pico Canyon Rd.	USC	34.391	-118.622
+Northridge 1994	WRI-090	0.01	6.7	0.048	19.8	0.047	3.7	0.38	84.4	86.2	71.7	339.0	4	3	Wrightwood, Swarthout Valley	CGS	34.369	-117.658
+Northridge 1994	WRI-180	0.01	6.7	0.087	13.9	0.06	3.7	0.3	84.4	86.2	71.7	339.0	4	3	Wrightwood, Swarthout Valley	CGS	34.369	-117.658
+Northridge 1994	WST-000	0.01	6.7	1.217	10.0	0.404	20.9	0.34	27.3	32.4	26.7	315.0	4	3	Los Angeles, 607 Westmoreland Ave.	USC	34.082	-118.298
+Northridge 1994	WST-270	0.01	6.7	1.352	9.2	0.362	21.0	0.36	27.3	32.4	26.7	315.0	4	3	Los Angeles, 607 Westmoreland Ave.	USC	34.082	-118.298
+Northridge 1994	WVN-235	0.0050	6.7	0.821	15.0	0.254	32.8	0.63	19.6	26.2	23.6	392.0	4	3	Los Angeles, Wadsworth VA Hospital, North	USGS	34.052	-118.451
+Northridge 1994	WVN-325	0.0050	6.7	0.695	13.3	0.253	18.7	0.44	19.6	26.2	23.6	392.0	4	3	Los Angeles, Wadsworth VA Hospital, North	USGS	34.052	-118.451
+Northridge 1994	WVS-235	0.0050	6.7	0.856	13.5	0.303	33.0	0.59	19.6	26.2	23.6	414.0	4	3	Los Angeles, Wadsworth VA Hospital, South	USGS	34.052	-118.451
+Northridge 1994	WVS-325	0.0050	6.7	1.077	10.5	0.383	21.2	0.45	19.6	26.2	23.6	414.0	4	3	Los Angeles, Wadsworth VA Hospital, South	USGS	34.052	-118.451
+Northridge 1994	WWJ-090	0.01	6.7	0.055	11.8	0.056	5.0	0.55	77.6	79.5	64.7	822.0	1	3	Wrightwood, Jackson Flat	CGS	34.381	-117.737
+Northridge 1994	WWJ-180	0.01	6.7	0.034	18.4	0.037	3.5	0.59	77.6	79.5	64.7	822.0	1	3	Wrightwood, Jackson Flat	CGS	34.381	-117.737
+Northridge 1994	WWN-090	0.01	6.7	0.032	19.0	0.042	2.8	0.37	93.6	95.2	81.7	345.0	3	3	Wrightwood, Nielsen Ranch	CGS	34.314	-117.545
+Northridge 1994	WWN-180	0.01	6.7	0.026	20.1	0.042	3.2	0.4	93.6	95.2	81.7	345.0	3	3	Wrightwood, Nielsen Ranch	CGS	34.314	-117.545
+Parkfield 1966	C02-065	0.01	6.2	1.783	7.0	0.476	75.0	0.83	31.0	32.6	6.3	185.0	4	1	Parkfield, Cholame, 2WA	CGS	35.733	-120.29
+Parkfield 1966	C05-085	0.01	6.2	0.858	6.4	0.442	24.6	0.44	32.6	34.1	9.6	290.0	2	1	Parkfield, Cholame, 5W	CGS	35.697	-120.328
+Parkfield 1966	C05-355	0.01	6.2	0.626	7.4	0.367	21.7	0.42	32.6	34.1	9.6	290.0	2	1	Parkfield, Cholame, 5W	CGS	35.697	-120.328
+Parkfield 1966	C08-050	0.01	6.2	0.314	13.1	0.246	10.2	0.39	34.0	35.5	12.9	257.0	4	1	Parkfield, Cholame, 8W	CGS	35.671	-120.359
+Parkfield 1966	C08-320	0.01	6.2	0.381	10.6	0.273	11.4	0.38	34.0	35.5	12.9	257.0	4	1	Parkfield, Cholame, 8W	CGS	35.671	-120.359
+Parkfield 1966	C12-050	0.01	6.2	0.054	28.5	0.059	5.8	0.71	36.2	37.5	17.6	409.0	4	1	Parkfield, Cholame 12W	CGS	35.639	-120.404
+Parkfield 1966	C12-320	0.01	6.2	0.06	26.6	0.063	7.0	0.84	36.2	37.5	17.6	409.0	4	1	Parkfield, Cholame 12W	CGS	35.639	-120.404
+Parkfield 1966	TMB-205	0.01	6.2	0.451	4.4	0.357	21.6	0.41	40.3	41.5	16.0	528.0	1	1	Temblor, pre-1969	CGS	35.71	-120.17
+Parkfield 1966	TMB-295	0.01	6.2	0.306	5.4	0.272	15.1	0.4	40.3	41.5	16.0	528.0	1	1	Temblor, pre-1969	CGS	35.751	-120.259
+San Fernando 1971	CND-130	0.01	6.6	0.091	18.3	0.07	2.7	0.29	78.9	80.0	61.8	235.0	1	3	Brea, Carbon Canyon Dam, left abut.	ACOE	33.9121	-117.838
+San Fernando 1971	CND-220	0.01	6.6	0.114	17.1	0.071	3.9	0.31	78.9	80.0	61.8	235.0	1	3	Brea, Carbon Canyon Dam, left abut.	ACOE	33.9121	-117.838
+San Fernando 1971	FSD-172	0.0050	6.6	0.197	23.5	0.148	9.4	0.57	32.6	33.6654125178944	27.5	389.0	1	3	Lake Piru, Santa Felicia Dam	CGS	34.46	-118.753
+San Fernando 1971	FSD-262	0.0050	6.6	0.198	16.3	0.152	6.5	0.36	32.6	33.6654125178944	27.5	389.0	1	3	Lake Piru, Santa Felicia Dam	CGS	34.46	-118.753
+San Fernando 1971	FTR-056	0.01	6.6	0.044	12.8	0.071	4.7	0.31	29.4	32.2	30.2	685.0	1	3	Fairmont Dam	CGS	34.704	-118.426
+San Fernando 1971	FTR-326	0.01	6.6	0.06	12.4	0.109	6.4	0.39	29.4	32.2	30.2	685.0	1	3	Fairmont Dam	CGS	34.704	-118.426
+San Fernando 1971	L01-021	0.01	6.6	0.237	14.2	0.145	17.3	0.72	29.5	30.6732782727898	25.8	425.0	2	3	Lake Hughes #1, Fire Station #78	CGS	34.674	-118.43
+San Fernando 1971	L01-111	0.01	6.6	0.185	17.1	0.11	14.0	0.58	29.5	30.6732782727898	25.8	425.0	2	3	Lake Hughes #1, Fire Station #78	CGS	34.674	-118.43
+San Fernando 1971	L04-111	0.01	6.6	0.249	12.7	0.192	5.7	0.2	24.2	27.5	25.1	822.0	1	3	Lake Hughes #4, Camp Mendenhall	CGS	34.65	-118.478
+San Fernando 1971	L04-201	0.01	6.6	0.207	12.9	0.153	8.4	0.26	24.2	27.5	25.1	822.0	1	3	Lake Hughes #4, Camp Mendenhall	CGS	34.65	-118.478
+San Fernando 1971	L09-021	0.01	6.6	0.151	9.4	0.157	4.6	0.22	23.1	26.5	22.6	671.0	2	3	Lake Hughes #9	CGS	34.608	-118.558
+San Fernando 1971	L09-291	0.01	6.6	0.107	11.8	0.134	3.9	0.21	23.1	26.5	22.6	671.0	2	3	Lake Hughes #9	CGS	34.608	-118.558
+San Fernando 1971	L12-021	0.01	6.6	0.925	10.7	0.366	17.1	0.23	20.0	23.9	19.3	602.0	2	3	Lake Hughes #12	USGS	34.571	-118.56
+San Fernando 1971	L12-291	0.01	6.6	0.785	11.9	0.283	12.9	0.21	20.0	23.9	19.3	602.0	2	3	Lake Hughes #12	USGS	34.571	-118.56
+San Fernando 1971	OPP-000	0.0050	6.6	0.059	7.2	0.084	7.9	0.5	49.8	51.5	46.8	308.0	3	3	Oso Pump Plant, Gorman	CDWR	34.808	-118.72
+San Fernando 1971	OPP-270	0.0050	6.6	0.045	7.1	0.105	6.8	0.55	49.8	51.5	46.8	308.0	3	3	Oso Pump Plant, Gorman	CDWR	34.808	-118.72
+San Fernando 1971	ORR-021	0.01	6.6	0.684	14.5	0.324	15.7	0.36	28.1	29.329336848964	24.9	450.0	2	3	Castaic, Old Ridge Route	CGS	34.564	-118.642
+San Fernando 1971	ORR-291	0.01	6.6	0.946	15.4	0.268	25.9	0.49	28.1	29.329336848964	24.9	450.0	2	3	Castaic, Old Ridge Route	CGS	34.564	-118.642
+San Fernando 1971	PAS-000	0.01	6.6	0.127	13.6	0.088	6.4	0.5	39.6	40.4816007588633	31.7	415.0	4	3	Pasadena, CIT Athenaeum	CGS	34.139	-118.121
+San Fernando 1971	PAS-090	0.01	6.6	0.21	12.3	0.11	13.3	0.65	39.6	40.4816007588633	31.7	415.0	4	3	Pasadena, CIT Athenaeum	CGS	34.139	-118.121
+San Fernando 1971	PDL-120	0.01	6.6	0.312	17.4	0.121	12.3	0.6	31.6	34.2	29.0	453.0	4	3	Palmdale Fire Station	USGS	34.58	-118.11
+San Fernando 1971	PDL-210	0.01	6.6	0.238	17.3	0.151	8.1	0.49	31.6	34.2	29.0	453.0	4	3	Palmdale Fire Station	USGS	34.58	-118.11
+San Fernando 1971	PEL-090	0.01	6.6	0.651	10.5	0.21	18.9	0.53	39.5	41.6	22.8	317.0	4	3	Los Angeles, Hollywood Stor. Bldg. Grounds	CGS	34.089	-118.339
+San Fernando 1971	PEL-180	0.01	6.6	0.447	11.2	0.174	14.9	0.35	39.5	41.6	22.8	317.0	4	3	Los Angeles, Hollywood Stor. Bldg. Grounds	CGS	34.089	-118.339
+San Fernando 1971	PPP-000	0.01	6.6	0.151	13.7	0.102	4.8	0.24	45.4	47.2	39.0	529.0	2	3	Pearblossom Pump	CDWR	34.5083	-117.922
+San Fernando 1971	PPP-270	0.01	6.6	0.248	13.6	0.136	5.6	0.22	45.4	47.2	39.0	529.0	2	3	Pearblossom Pump	CDWR	34.5083	-117.922
+San Fernando 1971	PSL-180	0.01	6.6	0.112	11.9	0.089	5.3	0.27	39.2	41.3	21.5	969.0	1	3	Pasadena, Old Seismology Lab	USGS	34.1486	-118.171
+San Fernando 1971	PSL-270	0.01	6.6	0.337	6.2	0.202	10.9	0.32	39.2	41.3	21.5	969.0	1	3	Pasadena, Old Seismology Lab	USGS	34.1486	-118.171
+San Fernando 1971	PUD-055	0.01	6.6	0.048	13.4	0.074	4.0	0.39	67.6	68.9	52.6	597.0	2	3	Puddingstone Dam, abut	CGS	34.091	-117.808
+San Fernando 1971	PUD-325	0.01	6.6	0.04	14.1	0.065	3.2	0.36	67.6	68.9	52.6	597.0	2	3	Puddingstone Dam, abut	CGS	34.091	-117.808
+San Fernando 1971	PUL-164	0.01	6.6	8.901	7.0	1.226	112.5	0.48	11.9	17.6	1.8	2016.0	1	3	Pacoima Dam, abutment	CGS	34.334	-118.396
+San Fernando 1971	PUL-254	0.01	6.6	7.924	7.3	1.16	54.3	0.37	11.9	17.6	1.8	2016.0	1	3	Pacoima Dam, abutment	CGS	34.334	-118.396
+San Fernando 1971	SAD-003	0.01	6.6	0.282	11.3	0.151	4.8	0.19	45.9	47.7	30.7	685.0	1	3	Santa Anita Dam	LAFC	34.185	-118.018
+San Fernando 1971	SAD-273	0.01	6.6	0.303	11.0	0.212	6.3	0.19	45.9	47.7	30.7	685.0	1	3	Santa Anita Dam	LAFC	34.185	-118.018
+San Fernando 1971	SOD-015	0.01	6.6	0.055	14.3	0.058	2.9	0.29	74.6	75.8	61.7	446.0	1	3	San Antonio Dam	ACOE	34.155	-117.675
+San Fernando 1971	SOD-285	0.01	6.6	0.105	13.0	0.079	3.5	0.27	74.6	75.8	61.7	446.0	1	3	San Antonio Dam	ACOE	34.155	-117.675
+San Fernando 1971	TEH-090	0.01	6.6	0.016	8.8	0.053	2.0	0.21	67.6	68.9	63.8	670.0	1	3	Tehachapi Pump Plant	CDWR	34.9417	-118.827
+San Fernando 1971	TEH-180	0.01	6.6	0.0040	9.5	0.025	1.0	0.23	67.6	68.9	63.8	670.0	1	3	Tehachapi Pump Plant	CDWR	34.9417	-118.827
+San Fernando 1971	WND-143	0.0050	6.6	0.119	17.2	0.1	9.3	0.48	57.1	58.6	39.5	299.0	4	3	Whittier Narrows Dam	ACOE	34.02	-118.053
+San Fernando 1971	WND-233	0.0050	6.6	0.171	21.3	0.107	9.7	0.44	57.1	58.6	39.5	299.0	4	3	Whittier Narrows Dam	ACOE	34.02	-118.053
+San Fernando 1971	WTW-025	0.0050	6.6	0.039	11.2	0.061	2.6	0.32	72.2	73.3	62.2	486.0	4	3	Wrightwood, 6074 Park Dr.	USGS	34.36	-117.63
+San Fernando 1971	WTW-295	0.0050	6.6	0.027	11.5	0.044	3.3	0.35	72.2	73.3	62.2	486.0	4	3	Wrightwood, 6074 Park Dr.	USGS	34.36	-117.63
+Santa Barbara 1978	CAD-250	0.01	5.9	0.021	4.8	0.072	6.3	0.63	34.0	36.3	27.4	438.0	2	5	Cachuma Dam toe	USGS	34.58	-119.98
+Santa Barbara 1978	CAD-340	0.01	5.9	0.012	7.3	0.034	2.7	0.61	34.0	36.3	27.4	438.0	2	5	Cachuma Dam toe	USGS	34.58	-119.98
+Santa Barbara 1978	SBA-132	0.01	5.9	0.086	7.5	0.102	7.3	0.55	3.2	13.1	12.2	515.0	4	5	Santa Barbara Courthouse	USGS	34.423	-119.7
+Santa Barbara 1978	SBA-222	0.01	5.9	0.229	4.6	0.203	16.4	0.56	3.2	13.1	12.2	515.0	4	5	Santa Barbara Courthouse	USGS	34.423	-119.7
+Superstition Hills 1987	BCR-140	0.01	6.5	0.888	10.6	0.281	31.4	0.44	59.5	60.4718942980952	39.0	223.0	4	1	Bonds Corner, Hwys 115 & 98	USGS	32.6932	-115.338
+Superstition Hills 1987	BCR-230	0.01	6.5	1.122	9.9	0.274	30.2	0.57	59.5	60.4718942980952	39.0	223.0	4	1	Bonds Corner, Hwys 115 & 98	USGS	32.6932	-115.338
+Superstition Hills 1987	BRA-225	0.01	6.5	0.223	13.5	0.156	13.4	0.44	29.9	31.2	17.0	209.0	4	1	Brawley airport	USGS	32.991	-115.513
+Superstition Hills 1987	BRA-315	0.01	6.5	0.249	14.0	0.116	17.5	0.46	29.9	31.2	17.0	209.0	4	1	Brawley airport	USGS	32.991	-115.513
+Superstition Hills 1987	CAL-225	0.01	6.5	0.337	11.8	0.18	15.5	0.4	31.6	32.9	27.0	206.0	4	1	Calipatria Fire Station	USGS	33.1266	-115.516
+Superstition Hills 1987	CAL-315	0.01	6.5	0.539	11.6	0.247	14.6	0.39	31.6	32.9	27.0	206.0	4	1	Calipatria Fire Station	USGS	33.1266	-115.516
+Superstition Hills 1987	CXO-225	0.01	6.5	0.663	11.2	0.204	46.0	0.6	53.0	54.0888158494896	28.9	231.0	4	1	Calexico Fire Station	USGS	32.6695	-115.493
+Superstition Hills 1987	CXO-315	0.01	6.5	0.602	11.5	0.21	24.8	0.46	53.0	54.0888158494896	28.9	231.0	4	1	Calexico Fire Station	USGS	32.6695	-115.493
+Superstition Hills 1987	E01-140	0.01	6.5	0.143	10.8	0.086	38.6	1.06	44.7	45.9857586650476	35.6	237.0	4	1	El Centro Array 1, Borchard Ranches	USGS	32.96	-115.319
+Superstition Hills 1987	E01-230	0.01	6.5	0.093	11.2	0.083	19.0	0.33	44.7	45.9857586650476	35.6	237.0	4	1	El Centro Array 1, Borchard Ranches	USGS	32.96	-115.319
+Superstition Hills 1987	E13-140	0.01	6.5	0.251	12.1	0.167	19.2	0.53	42.4	43.753399867896	19.5	250.0	4	1	El Centro Array 13, Strobel residence	USGS	32.709	-115.683
+Superstition Hills 1987	E13-230	0.01	6.5	0.36	11.3	0.186	50.3	0.59	42.4	43.753399867896	19.5	250.0	4	1	El Centro Array 13, Strobel residence	USGS	32.709	-115.683
+Superstition Hills 1987	ICC-000	0.0050	6.5	1.063	16.0	0.358	46.1	0.63	35.8	36.9	18.2	192.0	4	1	El Centro, Imperial Co. Center grounds	CGS	32.793	-115.562
+Superstition Hills 1987	ICC-090	0.0050	6.5	0.675	19.0	0.258	41.0	0.93	35.8	36.9	18.2	192.0	4	1	El Centro, Imperial Co. Center grounds	CGS	32.793	-115.562
+Superstition Hills 1987	IVW-090	0.0050	6.5	0.695	34.0	0.181	30.0	0.89	29.4	30.8	23.9	208.0	4	1	Wildlife Liquefaction Array	USGS	33.1	-115.53
+Superstition Hills 1987	IVW-360	0.0050	6.5	1.229	28.7	0.207	34.7	1.16	29.4	30.8	23.9	208.0	4	1	Wildlife Liquefaction Array	USGS	33.1	-115.53
+Superstition Hills 1987	KRN-270	0.01	6.5	0.303	14.0	0.121	19.1	0.79	19.3	21.3	18.5	208.0	4	1	Kornbloom Road--temporary	USGS	33.125	-115.665
+Superstition Hills 1987	KRN-360	0.01	6.5	0.301	12.6	0.136	31.0	0.84	19.3	21.3	18.5	208.0	4	1	Kornbloom Road--temporary	USGS	33.125	-115.665
+Superstition Hills 1987	PLS-045	0.01	6.5	0.299	13.3	0.121	9.5	0.46	26.0	27.5	22.2	345.0	4	1	Plaster City	USGS	32.79	-115.86
+Superstition Hills 1987	PLS-135	0.01	6.5	0.632	11.3	0.186	20.8	0.52	26.0	27.5	22.2	345.0	4	1	Plaster City	USGS	32.79	-115.86
+Superstition Hills 1987	POE-270	0.01	6.5	2.094	13.8	0.446	35.8	0.48	11.2	14.4	11.2	208.0	4	1	Poe Road--temporary	USGS	33.097	-115.751
+Superstition Hills 1987	POE-360	0.01	6.5	1.751	13.6	0.3	32.8	0.48	11.2	14.4	11.2	208.0	4	1	Poe Road--temporary	USGS	33.097	-115.751
+Superstition Hills 1987	PTS-225	0.01	6.5	3.73	10.3	0.455	112.0	1.11	16.0	18.4	1.0	349.0	4	1	El Centro, Parachute Test Site	USGS	32.929	-115.701
+Superstition Hills 1987	PTS-315	0.01	6.5	1.703	11.1	0.377	43.9	0.66	16.0	18.4	1.0	349.0	4	1	El Centro, Parachute Test Site	USGS	32.929	-115.701
+Superstition Hills 1987	SUP-045	0.01	6.5	3.704	12.3	0.682	32.5	0.33	7.5	11.7	5.6	362.0	2	1	Superstition Mountain, Site 8	USGS	32.955	-115.825
+Superstition Hills 1987	SUP-135	0.01	6.5	6.03	12.2	0.894	42.2	0.38	7.5	11.7	5.6	362.0	2	1	Superstition Mountain, Site 8	USGS	32.955	-115.825
+Superstition Hills 1987	WLF-225	0.01	6.5	0.177	11.9	0.119	8.0	0.49	26.5	28.0	25.9	191.0	4	1	Salton Sea Wildlife Refuge	USGS	33.1774	-115.616
+Superstition Hills 1987	WLF-315	0.01	6.5	0.36	13.0	0.167	18.0	0.63	26.5	28.0	25.9	191.0	4	1	Salton Sea Wildlife Refuge	USGS	33.1774	-115.616
+Superstition Hills 1987	WSM-090	0.0050	6.5	0.803	19.6	0.172	23.5	0.57	19.5	21.5	13.0	194.0	4	1	Westmorland Fire Station	CGS	33.037	-115.623
+Superstition Hills 1987	WSM-180	0.0050	6.5	1.177	16.9	0.211	31.2	0.71	19.5	21.5	13.0	194.0	4	1	Westmorland Fire Station	CGS	33.037	-115.623
+Westmorland 1981	BRA-225	0.0050	5.9	0.265	8.2	0.169	12.7	0.41	15.7	15.9	15.4	209.0	4	1	Brawley airport	USGS	32.991	-115.513
+Westmorland 1981	BRA-315	0.0050	5.9	0.186	8.4	0.171	5.8	0.24	15.7	15.9	15.4	209.0	4	1	Brawley airport	USGS	32.991	-115.513
+Westmorland 1981	NIL-000	0.0050	5.9	0.121	12.6	0.105	5.6	0.28	18.5	18.6	15.3	208.0	4	1	Niland Fire Station	CGS	33.239	-115.512
+Westmorland 1981	NIL-090	0.0050	5.9	0.174	11.4	0.176	6.6	0.26	18.5	18.6	15.3	208.0	4	1	Niland Fire Station	CGS	33.239	-115.512
+Westmorland 1981	PTS-225	0.0050	5.9	0.707	15.2	0.242	39.3	0.82	20.5	20.6	16.7	349.0	4	1	El Centro, Parachute Test Site	USGS	32.929	-115.701
+Westmorland 1981	PTS-315	0.0050	5.9	0.491	18.5	0.155	26.7	0.74	20.5	20.6	16.7	349.0	4	1	El Centro, Parachute Test Site	USGS	32.929	-115.701
+Westmorland 1981	SUP-045	0.0050	5.9	0.038	11.1	0.071	3.6	0.28	25.0	25.1	19.4	362.0	2	1	Superstition Mountain, Site 8	USGS	32.955	-115.825
+Westmorland 1981	SUP-135	0.0050	5.9	0.079	8.1	0.116	5.0	0.3	25.0	25.1	19.4	362.0	2	1	Superstition Mountain, Site 8	USGS	32.955	-115.825
+Westmorland 1981	WLF-225	0.0050	5.9	0.523	8.4	0.199	16.4	0.4	8.6	8.9	7.8	191.0	4	1	Salton Sea Wildlife Refuge	USGS	33.1774	-115.616
+Westmorland 1981	WLF-315	0.0050	5.9	0.513	9.2	0.176	12.4	0.39	8.6	8.9	7.8	191.0	4	1	Salton Sea Wildlife Refuge	USGS	33.1774	-115.616
+Westmorland 1981	WSM-090	0.0050	5.9	1.756	6.7	0.368	48.7	0.58	7.0	7.4	6.5	194.0	4	1	Westmorland Fire Station	CGS	33.037	-115.623
+Westmorland 1981	WSM-180	0.0050	5.9	1.912	5.9	0.496	34.3	0.51	7.0	7.4	6.5	194.0	4	1	Westmorland Fire Station	CGS	33.037	-115.623
+Whittier Narrows 1987	116-270	0.0050	6.0	0.463	9.5	0.294	17.6	0.39	21.3	25.8	23.3	301.0	4	5	Los Angeles, 116th St. School	CGS	33.929	-118.26
+Whittier Narrows 1987	116-360	0.0050	6.0	0.877	6.6	0.396	21.0	0.27	21.3	25.8	23.3	301.0	4	5	Los Angeles, 116th St. School	CGS	33.929	-118.26
+Whittier Narrows 1987	ALH-180	0.0050	6.0	0.805	5.3	0.333	22.0	0.39	6.8	16.1	14.7	550.0	4	5	Alhambra, Fremont School	CGS	34.07	-118.15
+Whittier Narrows 1987	ALH-270	0.0050	6.0	0.875	5.8	0.414	16.3	0.29	6.8	16.1	14.7	550.0	4	5	Alhambra, Fremont School	CGS	34.07	-118.15
+Whittier Narrows 1987	ALT-000	0.0050	6.0	0.399	4.5	0.299	11.4	0.31	14.3	20.4	19.5	371.0	4	5	Altadena, Eaton Canyon	CGS	34.177	-118.096
+Whittier Narrows 1987	ALT-090	0.0050	6.0	0.186	8.1	0.151	5.8	0.24	14.3	20.4	19.5	371.0	4	5	Altadena, Eaton Canyon	CGS	34.177	-118.096
+Whittier Narrows 1987	ANG-000	0.02	6.0	0.105	10.6	0.089	4.0	0.34	37.9	40.6	36.8	685.0	2	5	Angeles National Forest, Mill Creek	USC	34.39	-118.08
+Whittier Narrows 1987	ANG-090	0.02	6.0	0.074	11.5	0.071	3.2	0.29	37.9	40.6	36.8	685.0	2	5	Angeles National Forest, Mill Creek	USC	34.39	-118.08
+Whittier Narrows 1987	ARL-180	0.0050	6.0	0.109	13.0	0.093	5.4	0.37	39.0	41.6	37.0	298.0	4	5	Arleta, Nordhoff Ave. Fire Station	CGS	34.236	-118.439
+Whittier Narrows 1987	ARL-270	0.0050	6.0	0.1	14.1	0.091	4.7	0.41	39.0	41.6	37.0	298.0	4	5	Arleta, Nordhoff Ave. Fire Station	CGS	34.236	-118.439
+Whittier Narrows 1987	BAD-000	0.02	6.0	0.155	12.0	0.134	7.7	0.39	15.9	21.6	18.6	271.0	4	5	Covina, 1271 W. Badillo	USC	34.087	-117.915
+Whittier Narrows 1987	BAD-270	0.02	6.0	0.079	15.3	0.081	4.1	0.37	15.9	21.6	18.6	271.0	4	5	Covina, 1271 W. Badillo	USC	34.087	-117.915
+Whittier Narrows 1987	BIR-090	0.02	6.0	0.447	9.6	0.243	13.9	0.29	15.9	21.1	20.8	245.0	4	5	Downey, 12500 Birchdale	USC	33.92	-118.137
+Whittier Narrows 1987	BIR-180	0.02	6.0	0.944	3.8	0.299	37.9	0.51	15.9	21.1	20.8	245.0	4	5	Downey, 12500 Birchdale	USC	33.92	-118.137
+Whittier Narrows 1987	BLD-000	0.0050	6.0	0.227	13.6	0.142	8.7	0.35	26.2	30.0	25.9	297.0	2	5	Los Angeles, Baldwin Hills	CGS	34.009	-118.361
+Whittier Narrows 1987	BLD-090	0.0050	6.0	0.267	14.4	0.159	8.0	0.35	26.2	30.0	25.9	297.0	2	5	Los Angeles, Baldwin Hills	CGS	34.009	-118.361
+Whittier Narrows 1987	BRC-000	0.02	6.0	0.215	7.9	0.183	9.9	0.37	17.4	22.7	20.3	361.0	3	5	La Habra, 950 Briarcliff Dr.	USC	33.921	-117.973
+Whittier Narrows 1987	BRC-090	0.02	6.0	0.116	11.0	0.131	7.4	0.38	17.4	22.7	20.3	361.0	3	5	La Habra, 950 Briarcliff Dr.	USC	33.921	-117.973
+Whittier Narrows 1987	BRD-040	0.0050	6.0	0.191	9.1	0.163	6.2	0.25	22.7	27.0	24.0	371.0	4	5	Brea Dam, downstream	USGS	33.89	-117.927
+Whittier Narrows 1987	BRD-130	0.0050	6.0	0.417	7.0	0.313	14.5	0.27	22.7	27.0	24.0	371.0	4	5	Brea Dam, downstream	USGS	33.89	-117.927
+Whittier Narrows 1987	BRG-180	0.0050	6.0	0.31	8.7	0.165	13.2	0.49	10.7	18.1	17.3	371.0	4	5	Pasadena, Brown Gym	CGS	34.14	-118.12
+Whittier Narrows 1987	BRG-270	0.0050	6.0	0.191	11.1	0.149	9.1	0.47	10.7	18.1	17.3	371.0	4	5	Pasadena, Brown Gym	CGS	34.14	-118.12
+Whittier Narrows 1987	BRI-090	0.0050	6.0	0.207	7.9	0.184	10.3	0.42	10.7	18.1	17.3	371.0	4	5	Pasadena, CIT Bridge lab	CGS	34.14	-118.12
+Whittier Narrows 1987	BRI-360	0.0050	6.0	0.295	7.1	0.147	15.0	0.54	10.7	18.1	17.3	371.0	4	5	Pasadena, CIT Bridge lab	CGS	34.14	-118.12
+Whittier Narrows 1987	BRL-040	0.0050	6.0	0.112	13.8	0.118	6.3	0.32	22.8	27.0	24.0	371.0	1	5	Brea Dam, left abut.	USGS	33.8904	-117.926
+Whittier Narrows 1987	BRL-130	0.0050	6.0	0.186	10.0	0.149	10.2	0.36	22.8	27.0	24.0	371.0	1	5	Brea Dam, left abut.	USGS	33.8904	-117.926
+Whittier Narrows 1987	BUE-250	0.02	6.0	0.343	9.8	0.233	15.9	0.38	26.6	30.3	26.3	271.0	4	5	Burbank, 542 N. Buena Vista	USC	34.168	-118.331
+Whittier Narrows 1987	BUE-340	0.02	6.0	0.386	9.2	0.19	11.5	0.38	26.6	30.3	26.3	271.0	4	5	Burbank, 542 N. Buena Vista	USC	34.168	-118.331
+Whittier Narrows 1987	CAM-009	0.02	6.0	0.862	3.1	0.3	21.2	0.34	9.9	17.6	17.4	368.0	4	5	Arcadia, 180 Campus Dr.	USC	34.13	-118.036
+Whittier Narrows 1987	CAM-279	0.02	6.0	0.202	10.5	0.163	7.1	0.28	9.9	17.6	17.4	368.0	4	5	Arcadia, 180 Campus Dr.	USC	34.13	-118.036
+Whittier Narrows 1987	CAS-000	0.02	6.0	0.68	8.0	0.332	27.1	0.51	19.8	24.6	23.4	309.0	4	5	Compton, 14637 Castlegate St.	USC	33.899	-118.196
+Whittier Narrows 1987	CAS-270	0.02	6.0	0.536	8.4	0.333	13.7	0.31	19.8	24.6	23.4	309.0	4	5	Compton, 14637 Castlegate St.	USC	33.899	-118.196
+Whittier Narrows 1987	CAT-090	0.02	6.0	0.042	20.6	0.042	3.8	0.43	31.7	34.9	33.2	361.0	4	5	Carson, 25536 Catskill Ave.	USC	33.812	-118.27
+Whittier Narrows 1987	CAT-180	0.02	6.0	0.038	22.8	0.059	2.4	0.38	31.7	34.9	33.2	361.0	4	5	Carson, 25536 Catskill Ave.	USC	33.812	-118.27
+Whittier Narrows 1987	CBN-040	0.0050	6.0	0.217	7.3	0.2	6.5	0.26	27.1	30.8	26.8	235.0	1	5	Brea, Carbon Canyon Dam, left abut.	ACOE	33.9121	-117.838
+Whittier Narrows 1987	CBN-130	0.0050	6.0	0.196	6.8	0.221	8.7	0.26	27.1	30.8	26.8	235.0	1	5	Brea, Carbon Canyon Dam, left abut.	ACOE	33.9121	-117.838
+Whittier Narrows 1987	CCB-270	0.0050	6.0	0.232	8.7	0.177	8.1	0.33	10.7	18.1	17.3	371.0	4	5	Pasadena, CIT, California Blvd.	CGS	34.14	-118.12
+Whittier Narrows 1987	CCB-360	0.0050	6.0	0.618	5.0	0.271	15.4	0.35	10.7	18.1	17.3	371.0	4	5	Pasadena, CIT, California Blvd.	CGS	34.14	-118.12
+Whittier Narrows 1987	CCN-000	0.0050	6.0	0.065	17.1	0.078	3.1	0.31	31.1	34.4	29.9	278.0	4	5	Los Angeles, Century City CC North	CGS	34.063	-118.418
+Whittier Narrows 1987	CCN-090	0.0050	6.0	0.153	15.7	0.111	6.2	0.34	31.1	34.4	29.9	278.0	4	5	Los Angeles, Century City CC North	CGS	34.063	-118.418
+Whittier Narrows 1987	CCS-000	0.0050	6.0	0.049	20.2	0.051	3.5	0.4	30.9	34.2	29.7	278.0	4	5	Los Angeles, Century City CC South	CGS	34.062	-118.416
+Whittier Narrows 1987	CCS-090	0.0050	6.0	0.064	17.2	0.063	5.4	0.45	30.9	34.2	29.7	278.0	4	5	Los Angeles, Century City CC South	CGS	34.062	-118.416
+Whittier Narrows 1987	CEN-155	0.02	6.0	0.058	14.8	0.059	3.1	0.26	32.7	35.8	31.5	235.0	4	5	Los Angeles, 3960 Centinela St.	USC	34.001	-118.431
+Whittier Narrows 1987	CEN-245	0.02	6.0	0.027	13.2	0.044	2.6	0.3	32.7	35.8	31.5	235.0	4	5	Los Angeles, 3960 Centinela St.	USC	34.001	-118.431
+Whittier Narrows 1987	CIR-090	0.0050	6.0	0.313	7.9	0.239	8.4	0.27	10.7	18.1	17.3	371.0	4	5	Pasadena, CIT Indust. Rel  	CGS	34.14	-118.12
+Whittier Narrows 1987	CIR-180	0.0050	6.0	0.459	5.6	0.228	13.8	0.33	10.7	18.1	17.3	371.0	4	5	Pasadena, CIT Indust. Rel ?	CGS	34.14	-118.12
+Whittier Narrows 1987	CLJ-090	0.0050	6.0	0.04	15.0	0.06	1.5	0.17	47.1	49.3	44.5	390.0	4	5	Rancho Cucamonga, Law & Justice Center	CGS	34.104	-117.574
+Whittier Narrows 1987	CLJ-360	0.0050	6.0	0.041	15.0	0.05	1.4	0.18	47.1	49.3	44.5	390.0	4	5	Rancho Cucamonga, Law & Justice Center	CGS	34.104	-117.574
+Whittier Narrows 1987	CNP-106	0.02	6.0	0.181	14.5	0.139	7.9	0.34	51.6	53.7	49.0	268.0	4	5	Canoga Park, 7769 Topanga Canyon Blvd.	USC	34.212	-118.606
+Whittier Narrows 1987	CNP-196	0.02	6.0	0.225	11.5	0.116	8.1	0.35	51.6	53.7	49.0	268.0	4	5	Canoga Park, 7769 Topanga Canyon Blvd.	USC	34.212	-118.606
+Whittier Narrows 1987	CO2-092	0.02	6.0	0.349	10.5	0.177	14.2	0.38	32.3	35.5	31.1	294.0	4	5	Studio City, Coldwater Canyon	USC	34.146	-118.412
+Whittier Narrows 1987	CO2-182	0.02	6.0	0.451	8.3	0.231	13.8	0.36	32.3	35.5	31.1	294.0	4	5	Studio City, Coldwater Canyon	USC	34.146	-118.412
+Whittier Narrows 1987	COM-140	0.02	6.0	0.226	11.4	0.195	8.8	0.29	14.3	20.5	17.4	337.0	3	5	Hacienda Heights, 16750 Colima Rd.	USC	33.99	-117.943
+Whittier Narrows 1987	COM-230	0.02	6.0	0.191	11.2	0.201	6.5	0.26	14.3	20.5	17.4	337.0	3	5	Hacienda Heights, 16750 Colima Rd.	USC	33.99	-117.943
+Whittier Narrows 1987	CWC-180	0.02	6.0	0.195	11.1	0.116	6.2	0.44	34.5	37.5	33.1	446.0	3	5	North Hollywood, 6850 Coldwater Canyon Ave.	USC	34.194	-118.412
+Whittier Narrows 1987	CWC-270	0.02	6.0	0.283	10.2	0.25	14.3	0.4	34.5	37.5	33.1	446.0	3	5	North Hollywood, 6850 Coldwater Canyon Ave.	USC	34.194	-118.412
+Whittier Narrows 1987	CYP-053	0.02	6.0	0.168	8.1	0.156	8.1	0.36	13.7	20.0	17.0	446.0	3	5	Los Angeles, Divine Savior School, 624 Cypress	USC	34.088	-118.222
+Whittier Narrows 1987	CYP-143	0.02	6.0	0.113	9.8	0.137	9.1	0.49	13.7	20.0	17.0	446.0	3	5	Los Angeles, Divine Savior School, 624 Cypress	USC	34.088	-118.222
+Whittier Narrows 1987	DEL-000	0.02	6.0	0.644	11.2	0.277	28.5	0.6	22.7	27.0	26.7	235.0	4	5	Lakewood, 6701 Del Amo Blvd.	USC	33.846	-118.099
+Whittier Narrows 1987	DEL-090	0.02	6.0	0.272	12.0	0.178	11.8	0.36	22.7	27.0	26.7	235.0	4	5	Lakewood, 6701 Del Amo Blvd.	USC	33.846	-118.099
+Whittier Narrows 1987	DWN-180	0.0050	6.0	0.433	9.3	0.221	28.8	0.59	16.0	21.7	20.8	272.0	4	5	Downey, County Maint. Bldg.	CGS	33.924	-118.167
+Whittier Narrows 1987	DWN-270	0.0050	6.0	0.233	12.3	0.141	13.4	0.48	16.0	21.7	20.8	272.0	4	5	Downey, County Maint. Bldg.	CGS	33.924	-118.167
+Whittier Narrows 1987	EJS-048	0.02	6.0	1.301	5.8	0.426	38.7	0.39	11.7	18.7	18.5	309.0	4	5	Santa Fe Springs, 11500 E. Joslin St.	USC	33.944	-118.087
+Whittier Narrows 1987	EJS-318	0.02	6.0	1.28	6.0	0.443	22.2	0.3	11.7	18.7	18.5	309.0	4	5	Santa Fe Springs, 11500 E. Joslin St.	USC	33.944	-118.087
+Whittier Narrows 1987	EUC-022	0.02	6.0	0.067	16.3	0.071	4.1	0.37	39.1	41.7	39.5	270.0	4	5	Fountain Valley, Euclid	USC	33.719	-117.937
+Whittier Narrows 1987	EUC-292	0.02	6.0	0.052	17.6	0.062	6.0	0.46	39.1	41.7	39.5	270.0	4	5	Fountain Valley, Euclid	USC	33.719	-117.937
+Whittier Narrows 1987	FAI-000	0.02	6.0	0.176	11.4	0.12	6.7	0.34	7.5	16.4	15.7	309.0	4	5	El Monte, 11338 Fairview Ave.	USC	34.093	-118.019
+Whittier Narrows 1987	FAI-270	0.02	6.0	0.483	8.8	0.228	14.9	0.42	7.5	16.4	15.7	309.0	4	5	El Monte, 11338 Fairview Ave.	USC	34.093	-118.019
+Whittier Narrows 1987	FAR-000	0.02	6.0	0.023	10.1	0.048	2.2	0.28	32.9	36.0	31.5	255.0	2	5	Los Angeles, 700 N. Faring Rd.	USC	34.089	-118.435
+Whittier Narrows 1987	FAR-090	0.02	6.0	0.033	10.9	0.053	3.0	0.28	32.9	36.0	31.5	255.0	2	5	Los Angeles, 700 N. Faring Rd.	USC	34.089	-118.435
+Whittier Narrows 1987	FEA-000	0.0050	6.0	0.052	9.3	0.071	3.6	0.31	39.8	42.4	37.9	309.0	3	5	Featherly Park, Park Maint. Bldg.	CGS	33.869	-117.709
+Whittier Narrows 1987	FEA-090	0.0050	6.0	0.07	7.0	0.087	5.1	0.32	39.8	42.4	37.9	309.0	3	5	Featherly Park, Park Maint. Bldg.	CGS	33.869	-117.709
+Whittier Narrows 1987	FIG-058	0.02	6.0	0.152	8.6	0.151	8.0	0.34	12.1	19.0	16.5	405.0	3	5	Los Angeles, 5921 N. Figueroa St.	USC	34.111	-118.189
+Whittier Narrows 1987	FIG-328	0.02	6.0	0.397	5.7	0.166	13.1	0.5	12.1	19.0	16.5	405.0	3	5	Los Angeles, 5921 N. Figueroa St.	USC	34.111	-118.189
+Whittier Narrows 1987	FLE-144	0.02	6.0	0.445	7.7	0.171	19.3	0.52	16.7	22.2	18.9	446.0	4	5	Los Angeles, 3036 Fletcher Dr.	USC	34.115	-118.244
+Whittier Narrows 1987	FLE-234	0.02	6.0	0.37	6.5	0.213	12.5	0.39	16.7	22.2	18.9	446.0	4	5	Los Angeles, 3036 Fletcher Dr.	USC	34.115	-118.244
+Whittier Narrows 1987	FLO-020	0.02	6.0	0.128	9.4	0.115	7.1	0.39	22.6	26.9	23.4	309.0	4	5	Brea, 200 S. Flower Ave.	USC	33.916	-117.896
+Whittier Narrows 1987	GLE-180	0.02	6.0	0.063	11.0	0.089	4.5	0.42	31.9	35.1	30.4	446.0	3	5	Sunland, 10965 Mt. Gleason Ave.	USC	34.269	-118.303
+Whittier Narrows 1987	GLE-270	0.02	6.0	0.054	12.3	0.072	4.0	0.44	31.9	35.1	30.4	446.0	3	5	Sunland, 10965 Mt. Gleason Ave.	USC	34.269	-118.303
+Whittier Narrows 1987	GLP-177	0.02	6.0	0.431	6.5	0.296	17.5	0.34	21.7	26.2	22.8	446.0	3	5	Glendale, 320 Las Palmas Ave.	USC	34.2	-118.231
+Whittier Narrows 1987	GLP-267	0.02	6.0	0.252	7.3	0.166	8.7	0.29	21.7	26.2	22.8	446.0	3	5	Glendale, 320 Las Palmas Ave.	USC	34.2	-118.231
+Whittier Narrows 1987	GR2-090	0.02	6.0	0.385	8.8	0.191	8.7	0.25	18.9	23.9	20.5	309.0	4	5	Los Angeles, 4312 S. Grand Ave.	USC	34.005	-118.279
+Whittier Narrows 1987	GR2-180	0.02	6.0	0.282	11.1	0.149	8.5	0.3	18.9	23.9	20.5	309.0	4	5	Los Angeles, 4312 S. Grand Ave.	USC	34.005	-118.279
+Whittier Narrows 1987	GRA-015	0.02	6.0	0.092	17.5	0.076	5.5	0.45	19.6	24.5	20.9	405.0	3	5	Covina, 656 S. Grand Ave.	USC	34.078	-117.871
+Whittier Narrows 1987	GRA-105	0.02	6.0	0.084	18.9	0.068	4.1	0.43	19.6	24.5	20.9	405.0	3	5	Covina, 656 S. Grand Ave.	USC	34.078	-117.871
+Whittier Narrows 1987	GRN-180	0.02	6.0	0.831	5.1	0.304	23.1	0.51	4.8	15.4	15.2	401.0	4	5	San Gabriel, 600 E. Grand Ave.	USC	34.091	-118.093
+Whittier Narrows 1987	GRN-270	0.02	6.0	0.376	8.3	0.199	11.4	0.29	4.8	15.4	15.2	401.0	4	5	San Gabriel, 600 E. Grand Ave.	USC	34.091	-118.093
+Whittier Narrows 1987	GRV-060	0.0050	6.0	0.957	5.6	0.384	15.8	0.28	2.9	14.9	14.5	468.0	2	5	Garvey Reservoir Control Building	MWD	34.049	-118.112
+Whittier Narrows 1987	GRV-330	0.0050	6.0	1.143	3.3	0.457	19.0	0.28	2.9	14.9	14.5	468.0	2	5	Garvey Reservoir Control Building	MWD	34.049	-118.112
+Whittier Narrows 1987	HAR-000	0.0050	6.0	0.068	23.7	0.058	4.2	0.56	34.7	37.6	37.1	230.0	4	5	Long Beach, Harbor Admin.	CGS	33.754	-118.2
+Whittier Narrows 1987	HAR-090	0.0050	6.0	0.086	24.9	0.071	7.3	0.59	34.7	37.6	37.1	230.0	4	5	Long Beach, Harbor Admin.	CGS	33.754	-118.2
+Whittier Narrows 1987	ING-000	0.0050	6.0	0.5	7.7	0.299	9.0	0.21	24.3	28.4	25.9	316.0	4	5	Inglewood, Union Oil Yard	CGS	33.905	-118.279
+Whittier Narrows 1987	ING-090	0.0050	6.0	0.339	11.3	0.247	18.1	0.44	24.3	28.4	25.9	316.0	4	5	Inglewood, Union Oil Yard	CGS	33.905	-118.279
+Whittier Narrows 1987	JAB-207	0.02	6.0	0.372	8.2	0.219	18.8	0.4	12.9	16.0221721373851	9.8	309.0	4	5	Bell Gardens, 7420 Jaboneria	USC	33.965	-118.158
+Whittier Narrows 1987	JAB-297	0.02	6.0	0.578	10.4	0.212	21.9	0.44	12.9	16.0221721373851	9.8	309.0	4	5	Bell Gardens, 7420 Jaboneria	USC	33.965	-118.158
+Whittier Narrows 1987	KAG-045	0.02	6.0	0.174	10.4	0.119	7.9	0.3	38.4	41.1	36.3	271.0	4	5	Pacoima, Kagel Canyon, USC	USC	34.25	-118.42
+Whittier Narrows 1987	KAG-315	0.02	6.0	0.16	7.1	0.133	5.5	0.26	38.4	41.1	36.3	271.0	4	5	Pacoima, Kagel Canyon, USC	USC	34.25	-118.42
+Whittier Narrows 1987	KEC-270	0.0050	6.0	0.174	11.6	0.152	5.1	0.28	10.7	18.1	17.3	371.0	4	5	Pasadena, CIT Keck Lab	CGS	34.14	-118.12
+Whittier Narrows 1987	KEC-360	0.0050	6.0	0.267	5.2	0.188	14.1	0.5	10.7	18.1	17.3	371.0	4	5	Pasadena, CIT Keck Lab	CGS	34.14	-118.12
+Whittier Narrows 1987	KRE-090	0.0050	6.0	0.087	3.4	0.112	8.0	0.46	13.9	20.1	18.1	969.0	1	5	Pasadena, CIT, Kresge Lab	CGS	34.149	-118.171
+Whittier Narrows 1987	KRE-360	0.0050	6.0	0.049	6.2	0.089	3.7	0.32	13.9	20.1	18.1	969.0	1	5	Pasadena, CIT, Kresge Lab	CGS	34.149	-118.171
+Whittier Narrows 1987	LAS-160	0.02	6.0	0.025	7.1	0.065	2.3	0.23	51.4	53.4	48.6	623.0	2	5	Malibu, Las Flores Canyon	USC	34.045	-118.638
+Whittier Narrows 1987	LAS-250	0.02	6.0	0.022	7.4	0.055	2.2	0.22	51.4	53.4	48.6	623.0	2	5	Malibu, Las Flores Canyon	USC	34.045	-118.638
+Whittier Narrows 1987	LBR-000	0.0050	6.0	0.259	10.6	0.159	16.9	0.53	25.5	29.4	28.6	405.0	4	5	Long Beach, Rancho Los Cerritos	CGS	33.84	-118.194
+Whittier Narrows 1987	LBR-090	0.0050	6.0	0.368	9.9	0.194	17.1	0.48	25.5	29.4	28.6	405.0	4	5	Long Beach, Rancho Los Cerritos	CGS	33.84	-118.194
+Whittier Narrows 1987	LMD-010	0.0050	6.0	0.038	11.4	0.067	2.5	0.3	71.4	72.9	67.6	271.0	3	5	Lancaster, Medical Office	CGS	34.688	-118.156
+Whittier Narrows 1987	LMD-100	0.0050	6.0	0.046	10.7	0.071	2.8	0.29	71.4	72.9	67.6	271.0	3	5	Lancaster, Medical Office	CGS	34.688	-118.156
+Whittier Narrows 1987	LOA-092	0.02	6.0	0.047	12.5	0.066	5.3	0.46	29.8	33.1	30.0	361.0	4	5	Lawndale, 14801 Osage Ave.	USC	33.897	-118.346
+Whittier Narrows 1987	LOA-182	0.02	6.0	0.052	12.2	0.053	5.4	0.46	29.8	33.1	30.0	361.0	4	5	Lawndale, 14801 Osage Ave.	USC	33.897	-118.346
+Whittier Narrows 1987	LOS-000	0.02	6.0	0.11	8.8	0.109	7.4	0.34	52.0	54.0	48.2	309.0	3	5	Canyon Country, 16628 W. Lost Canyon Rd.	USC	34.419	-118.426
+Whittier Narrows 1987	LOS-270	0.02	6.0	0.09	8.6	0.103	7.0	0.43	52.0	54.0	48.2	309.0	3	5	Canyon Country, 16628 W. Lost Canyon Rd.	USC	34.419	-118.426
+Whittier Narrows 1987	LUR-090	0.0050	6.0	0.747	7.0	0.36	9.8	0.22	10.7	18.1	17.3	371.0	4	5	Pasadena, CIT, Lura St.	CGS	34.14	-118.12
+Whittier Narrows 1987	LUR-180	0.0050	6.0	0.946	5.4	0.352	18.1	0.3	10.7	18.1	17.3	371.0	4	5	Pasadena, CIT, Lura St.	CGS	34.14	-118.12
+Whittier Narrows 1987	LV5-000	0.0050	6.0	0.03	13.9	0.047	2.0	0.28	63.0	64.7	59.1	446.0	3	5	Leona Valley #5, Ritter Ranch	CGS	34.6	-118.241
+Whittier Narrows 1987	LV5-090	0.0050	6.0	0.026	13.8	0.056	2.7	0.3	63.0	64.7	59.1	446.0	3	5	Leona Valley #5, Ritter Ranch	CGS	34.6	-118.241
+Whittier Narrows 1987	LV6-000	0.0050	6.0	0.022	14.1	0.036	1.6	0.23	63.5	65.2	59.6	327.0	4	5	Leona Valley #6	CGS	34.604	-118.244
+Whittier Narrows 1987	LV6-090	0.0050	6.0	0.027	14.4	0.053	1.9	0.25	63.5	65.2	59.6	327.0	4	5	Leona Valley #6	CGS	34.604	-118.244
+Whittier Narrows 1987	MAN-090	0.02	6.0	0.058	20.5	0.054	5.8	0.54	33.7	36.8	33.4	405.0	3	5	Manhattan Beach, 1400 Manhattan Beach Blvd.	USC	33.886	-118.389
+Whittier Narrows 1987	MTW-000	0.0050	6.0	0.147	10.1	0.123	3.3	0.19	19.6	24.4	22.7	822.0	1	5	Mount Wilson, Caltech Seismic Station	CGS	34.224	-118.057
+Whittier Narrows 1987	MTW-090	0.0050	6.0	0.261	8.3	0.186	4.6	0.16	19.6	24.4	22.7	822.0	1	5	Mount Wilson, Caltech Seismic Station	CGS	34.224	-118.057
+Whittier Narrows 1987	MU2-032	0.02	6.0	0.081	11.7	0.089	5.2	0.3	31.1	34.3	29.9	546.0	1	5	Beverly Hills, 12520 Mulholland Dr.	USC	34.127	-118.405
+Whittier Narrows 1987	MU2-122	0.02	6.0	0.131	9.6	0.138	6.5	0.3	31.1	34.3	29.9	546.0	1	5	Beverly Hills, 12520 Mulholland Dr.	USC	34.127	-118.405
+Whittier Narrows 1987	MUD-090	0.0050	6.0	0.22	11.0	0.137	9.4	0.43	10.7	18.1	17.3	371.0	4	5	Pasadena, CIT Mudd Lab	CGS	34.14	-118.12
+Whittier Narrows 1987	MUD-360	0.0050	6.0	0.31	8.9	0.163	15.1	0.51	10.7	18.1	17.3	371.0	4	5	Pasadena, CIT Mudd Lab	CGS	34.14	-118.12
+Whittier Narrows 1987	MUL-009	0.02	6.0	0.103	16.1	0.104	6.5	0.45	34.3	37.2	32.7	356.0	1	5	Beverly Hills, 14145 Mulholland Dr.	USC	34.132	-118.439
+Whittier Narrows 1987	MUL-279	0.02	6.0	0.171	8.9	0.126	10.4	0.46	34.3	37.2	32.7	356.0	1	5	Beverly Hills, 14145 Mulholland Dr.	USC	34.132	-118.439
+Whittier Narrows 1987	NHO-180	0.02	6.0	0.135	8.4	0.127	8.5	0.38	11.4	18.5	16.7	309.0	4	5	Baldwin Park, 3699 N. Holly Ave.	USC	34.1	-117.974
+Whittier Narrows 1987	NHO-270	0.02	6.0	0.059	11.9	0.061	4.4	0.39	11.4	18.5	16.7	309.0	4	5	Baldwin Park, 3699 N. Holly Ave.	USC	34.1	-117.974
+Whittier Narrows 1987	NOR-090	0.0050	6.0	0.13	12.3	0.107	8.4	0.39	15.0	20.9	20.4	270.0	4	5	Norwalk, 12400 Imperial Hwy.	USGS	33.915	-118.067
+Whittier Narrows 1987	NOR-360	0.0050	6.0	0.344	9.4	0.248	20.7	0.54	15.0	20.9	20.4	270.0	4	5	Norwalk, 12400 Imperial Hwy.	USGS	33.915	-118.067
+Whittier Narrows 1987	NWH-180	0.0050	6.0	0.034	17.1	0.044	2.9	0.41	56.1	57.9	52.2	269.0	4	5	Newhall, LA County Fire Station	CGS	34.387	-118.533
+Whittier Narrows 1987	NWH-270	0.0050	6.0	0.044	14.6	0.06	2.9	0.4	56.1	57.9	52.2	269.0	4	5	Newhall, LA County Fire Station	CGS	34.387	-118.533
+Whittier Narrows 1987	NYA-090	0.02	6.0	0.13	5.9	0.134	11.5	0.4	26.4	30.1	26.0	446.0	3	5	La Crescenta, 4747 New York Ave.	USC	34.238	-118.254
+Whittier Narrows 1987	NYA-180	0.02	6.0	0.237	3.7	0.141	10.9	0.48	26.4	30.1	26.0	446.0	3	5	La Crescenta, 4747 New York Ave.	USC	34.238	-118.254
+Whittier Narrows 1987	OAK-080	0.02	6.0	0.069	12.7	0.092	3.4	0.31	20.7	25.3	22.1	446.0	4	5	Glendora, 120 N. Oakbank	USC	34.137	-117.883
+Whittier Narrows 1987	OAK-170	0.02	6.0	0.103	12.6	0.11	4.9	0.32	20.7	25.3	22.1	446.0	4	5	Glendora, 120 N. Oakbank	USC	34.137	-117.883
+Whittier Narrows 1987	OBR-270	0.0050	6.0	1.05	8.0	0.45	16.1	0.27	9.1	17.2	15.2	349.0	4	5	Los Angeles, Obregon Park	CGS	34.037	-118.178
+Whittier Narrows 1987	OBR-360	0.0050	6.0	1.266	7.2	0.4	22.9	0.26	9.1	17.2	15.2	349.0	4	5	Los Angeles, Obregon Park	CGS	34.037	-118.178
+Whittier Narrows 1987	OLD-000	0.02	6.0	0.418	4.7	0.231	10.5	0.28	13.2	19.7	19.2	455.0	3	5	Pasadena, Old House Rd.	USC	34.168	-118.078
+Whittier Narrows 1987	OLD-090	0.02	6.0	0.287	6.9	0.258	8.2	0.28	13.2	19.7	19.2	455.0	3	5	Pasadena, Old House Rd.	USC	34.168	-118.078
+Whittier Narrows 1987	OR2-010	0.02	6.0	0.551	8.3	0.255	32.9	0.65	20.7	25.3	24.5	270.0	4	5	Long Beach, Orange Ave.	USC	33.881	-118.176
+Whittier Narrows 1987	OR2-280	0.02	6.0	0.307	11.8	0.149	10.5	0.37	20.7	25.3	24.5	270.0	4	5	Long Beach, Orange Ave.	USC	33.881	-118.176
+Whittier Narrows 1987	ORN-006	0.0050	6.0	0.26	8.1	0.185	10.2	0.29	22.2	26.5	22.8	376.0	2	5	Orange County Reservoir, Earth Dam Abut.	USGS	33.9354	-117.884
+Whittier Narrows 1987	ORN-096	0.0050	6.0	0.206	9.6	0.198	6.1	0.22	22.2	26.5	22.8	376.0	2	5	Orange County Reservoir, Earth Dam Abut.	USGS	33.9354	-117.884
+Whittier Narrows 1987	ORR-000	0.0050	6.0	0.081	13.1	0.071	4.3	0.42	77.1	78.4	72.2	450.0	2	5	Castaic, Old Ridge Route	CGS	34.564	-118.642
+Whittier Narrows 1987	ORR-090	0.0050	6.0	0.086	11.6	0.065	4.5	0.42	77.1	78.4	72.2	450.0	2	5	Castaic, Old Ridge Route	CGS	34.564	-118.642
+Whittier Narrows 1987	PAS-180	0.0050	6.0	0.217	6.8	0.174	11.6	0.47	10.6	18.1	17.2	415.0	4	5	Pasadena, CIT Athenaeum	CGS	34.139	-118.121
+Whittier Narrows 1987	PAS-270	0.0050	6.0	0.101	11.0	0.101	6.0	0.41	10.6	18.1	17.2	415.0	4	5	Pasadena, CIT Athenaeum	CGS	34.139	-118.121
+Whittier Narrows 1987	PEL-000	0.0050	6.0	0.257	11.5	0.221	9.0	0.31	24.2	28.3	24.1	317.0	4	5	Los Angeles, Hollywood Stor. Bldg. Grounds	CGS	34.089	-118.339
+Whittier Narrows 1987	PEL-090	0.0050	6.0	0.159	13.8	0.124	6.9	0.4	24.2	28.3	24.1	317.0	4	5	Los Angeles, Hollywood Stor. Bldg. Grounds	CGS	34.089	-118.339
+Whittier Narrows 1987	PKC-000	0.0050	6.0	0.137	11.5	0.166	6.2	0.38	38.6	41.2	36.1	508.0	2	5	Pacoima, Kagel Canyon	CGS	34.296	-118.375
+Whittier Narrows 1987	PKC-090	0.0050	6.0	0.189	9.7	0.164	6.8	0.36	38.6	41.2	36.1	508.0	2	5	Pacoima, Kagel Canyon	CGS	34.296	-118.375
+Whittier Narrows 1987	PMN-012	0.0050	6.0	0.034	15.3	0.067	3.4	0.28	30.7	34.0	29.7	230.0	4	5	Pomona, 4th & Locust St.	CGS	34.056	-117.748
+Whittier Narrows 1987	PMN-102	0.0050	6.0	0.034	14.2	0.056	2.4	0.3	30.7	34.0	29.7	230.0	4	5	Pomona, 4th & Locust St.	CGS	34.056	-117.748
+Whittier Narrows 1987	REC-090	0.0050	6.0	0.045	23.0	0.058	3.0	0.45	30.6	33.9	33.7	371.0	4	5	Long Beach, Recreation Park	CGS	33.778	-118.133
+Whittier Narrows 1987	REC-180	0.0050	6.0	0.06	22.5	0.051	6.9	0.55	30.6	33.9	33.7	371.0	4	5	Long Beach, Recreation Park	CGS	33.778	-118.133
+Whittier Narrows 1987	RIM-015	0.02	6.0	0.163	11.2	0.143	6.2	0.34	15.3	21.1	17.8	309.0	4	5	La Puente, 504 Rimgrove Ave.	USC	34.026	-117.918
+Whittier Narrows 1987	RIM-105	0.02	6.0	0.152	14.2	0.118	5.9	0.34	15.3	21.1	17.8	309.0	4	5	La Puente, 504 Rimgrove Ave.	USC	34.026	-117.918
+Whittier Narrows 1987	RIV-180	0.0050	6.0	0.024	15.4	0.05	1.4	0.17	59.6	61.4	56.5	371.0	2	5	Riverside, Airport	CGS	33.951	-117.446
+Whittier Narrows 1987	RIV-270	0.0050	6.0	0.031	12.0	0.047	1.4	0.17	59.6	61.4	56.5	371.0	2	5	Riverside, Airport	CGS	33.951	-117.446
+Whittier Narrows 1987	RO2-090	0.02	6.0	0.161	12.6	0.105	7.2	0.4	38.4	41.1	36.6	271.0	4	5	Panorama City, Roscoe 	USC	34.222	-118.442
+Whittier Narrows 1987	RO2-180	0.02	6.0	0.187	11.3	0.108	7.3	0.39	38.4	41.1	36.6	271.0	4	5	Panorama City, Roscoe 	USC	34.222	-118.442
+Whittier Narrows 1987	RO3-000	0.02	6.0	0.286	8.3	0.202	8.4	0.3	36.7	39.5	35.0	309.0	4	5	Sun Valley, 13248 Roscoe Blvd.	USC	34.221	-118.421
+Whittier Narrows 1987	RO3-090	0.02	6.0	0.228	8.9	0.223	13.4	0.36	36.7	39.5	35.0	309.0	4	5	Sun Valley, 13248 Roscoe Blvd.	USC	34.221	-118.421
+Whittier Narrows 1987	ROS-000	0.0050	6.0	0.046	7.7	0.07	3.8	0.39	88.2	89.4	83.6	271.0	3	5	Rosamond, Goode Ranch	CGS	34.827	-118.265
+Whittier Narrows 1987	ROS-090	0.0050	6.0	0.032	9.4	0.065	3.2	0.34	88.2	89.4	83.6	271.0	3	5	Rosamond, Goode Ranch	CGS	34.827	-118.265
+Whittier Narrows 1987	SAY-045	0.02	6.0	0.042	13.9	0.051	4.3	0.41	43.5	45.9	40.6	339.0	4	5	Sylmar, Sayre St.	USC	34.306	-118.437
+Whittier Narrows 1987	SAY-315	0.02	6.0	0.037	14.6	0.046	2.7	0.39	43.5	45.9	40.6	339.0	4	5	Sylmar, Sayre St.	USC	34.306	-118.437
+Whittier Narrows 1987	SER-000	0.02	6.0	0.02	11.3	0.046	1.4	0.23	35.1	38.1	34.3	309.0	4	5	Villa Park, 17852 Serrano Ave.	USC	33.821	-117.818
+Whittier Narrows 1987	SER-270	0.02	6.0	0.05	10.0	0.072	2.6	0.27	35.1	38.1	34.3	309.0	4	5	Villa Park, 17852 Serrano Ave.	USC	33.821	-117.818
+Whittier Narrows 1987	SMA-270	0.0050	6.0	0.131	11.4	0.128	5.6	0.27	8.6	16.9	15.9	379.0	4	5	San Marino, Southwestern Academy 	CGS	34.115	-118.13
+Whittier Narrows 1987	SMA-360	0.0050	6.0	0.303	7.4	0.204	12.8	0.42	8.6	16.9	15.9	379.0	4	5	San Marino, Southwestern Academy 	CGS	34.115	-118.13
+Whittier Narrows 1987	SOR-225	0.02	6.0	0.188	11.3	0.137	10.5	0.39	12.0	18.9	16.3	309.0	4	5	West Covina, 1307 S. Orange Ave.	USC	34.064	-117.952
+Whittier Narrows 1987	SOR-315	0.02	6.0	0.191	10.6	0.179	7.3	0.28	12.0	18.9	16.3	309.0	4	5	West Covina, 1307 S. Orange Ave.	USC	34.064	-117.952
+Whittier Narrows 1987	STC-090	0.02	6.0	0.24	16.4	0.161	8.6	0.35	43.9	46.3	41.7	281.0	4	5	Northridge, 17645 Saticoy St.	USC	34.209	-118.517
+Whittier Narrows 1987	STC-180	0.02	6.0	0.16	19.8	0.118	5.1	0.37	43.9	46.3	41.7	281.0	4	5	Northridge, 17645 Saticoy St.	USC	34.209	-118.517
+Whittier Narrows 1987	STN-020	0.02	6.0	0.111	11.4	0.099	6.0	0.28	25.3	29.2	25.0	309.0	4	5	Los Angeles, 5360 Saturn St.	USC	34.046	-118.355
+Whittier Narrows 1987	STN-110	0.02	6.0	0.14	12.0	0.141	4.5	0.24	25.3	29.2	25.0	309.0	4	5	Los Angeles, 5360 Saturn St.	USC	34.046	-118.355
+Whittier Narrows 1987	SUL-220	0.02	6.0	0.038	10.3	0.075	3.4	0.32	33.4	36.5	31.9	271.0	2	5	Sun Valley, 8943 Glenoaks Blvd.	USC	34.235	-118.366
+Whittier Narrows 1987	SUL-310	0.02	6.0	0.054	8.1	0.074	3.3	0.24	33.4	36.5	31.9	271.0	2	5	Sun Valley, 8943 Glenoaks Blvd.	USC	34.235	-118.366
+Whittier Narrows 1987	SUN-190	0.02	6.0	0.036	11.5	0.063	2.1	0.22	43.6	46.0	38.7	446.0	2	5	Pacific Palisades, 17281 Sunset Blvd.	USC	34.042	-118.554
+Whittier Narrows 1987	SUN-280	0.02	6.0	0.025	12.9	0.038	2.0	0.29	43.6	46.0	38.7	446.0	2	5	Pacific Palisades, 17281 Sunset Blvd.	USC	34.042	-118.554
+Whittier Narrows 1987	SYL-000	0.0050	6.0	0.056	14.9	0.065	4.4	0.39	45.4	47.7	42.3	441.0	4	5	Sylmar, County Hosp. Parking Lot	CGS	34.326	-118.444
+Whittier Narrows 1987	SYL-090	0.0050	6.0	0.059	13.7	0.055	3.2	0.36	45.4	47.7	42.3	441.0	4	5	Sylmar, County Hosp. Parking Lot	CGS	34.326	-118.444
+Whittier Narrows 1987	TAR-000	0.0050	6.0	1.952	6.5	0.449	20.1	0.32	43.5	45.9	41.2	257.0	2	5	Tarzana, Cedar Hill Nursery A	CGS	34.16	-118.534
+Whittier Narrows 1987	TAR-090	0.0050	6.0	2.43	4.9	0.644	22.9	0.3	43.5	45.9	41.2	257.0	2	5	Tarzana, Cedar Hill Nursery A	CGS	34.16	-118.534
+Whittier Narrows 1987	TOR-090	0.02	6.0	0.029	28.2	0.031	2.6	0.53	35.8	38.7	36.1	371.0	5	5	Torrance, W. 226th St.	USC	33.822	-118.356
+Whittier Narrows 1987	TOR-180	0.02	6.0	0.032	24.1	0.051	2.4	0.43	35.8	38.7	36.1	371.0	5	5	Torrance, W. 226th St.	USC	33.822	-118.356
+Whittier Narrows 1987	TUJ-262	0.02	6.0	0.116	10.6	0.126	4.5	0.19	29.5	32.9	28.5	446.0	1	5	Big Tujunga Station, Angeles National Forest	USC	34.286	-118.225
+Whittier Narrows 1987	TUJ-352	0.02	6.0	0.153	8.0	0.178	6.6	0.21	29.5	32.9	28.5	446.0	1	5	Big Tujunga Station, Angeles National Forest	USC	34.286	-118.225
+Whittier Narrows 1987	VAS-000	0.0050	6.0	0.027	9.1	0.06	2.1	0.2	54.2	56.1	50.4	996.0	1	5	Vasquez Rocks Park	CGS	34.492	-118.327
+Whittier Narrows 1987	VAS-090	0.0050	6.0	0.028	8.4	0.06	2.3	0.19	54.2	56.1	50.4	996.0	1	5	Vasquez Rocks Park	CGS	34.492	-118.327
+Whittier Narrows 1987	VER-083	0.02	6.0	0.186	11.9	0.146	13.1	0.39	14.6	20.7	17.9	309.0	4	5	Los Angeles, 2369 E. Vernon Ave.	USC	34.004	-118.23
+Whittier Narrows 1987	VER-173	0.02	6.0	0.219	11.1	0.175	8.8	0.36	14.6	20.7	17.9	309.0	4	5	Los Angeles, 2369 E. Vernon Ave.	USC	34.004	-118.23
+Whittier Narrows 1987	W70-000	0.02	6.0	0.348	11.2	0.198	19.3	0.54	20.9	25.5	22.2	294.0	4	5	Los Angeles, 924 W. 70th St.	USC	33.976	-118.289
+Whittier Narrows 1987	W70-270	0.02	6.0	0.286	11.2	0.151	8.6	0.4	20.9	25.5	22.2	294.0	4	5	Los Angeles, 924 W. 70th St.	USC	33.976	-118.289
+Whittier Narrows 1987	WAT-180	0.02	6.0	0.19	15.2	0.104	9.0	0.5	27.9	31.5	30.0	161.0	4	5	Carson, Water St.	USC	33.836	-118.24
+Whittier Narrows 1987	WAT-270	0.02	6.0	0.203	14.1	0.133	11.5	0.59	27.9	31.5	30.0	161.0	4	5	Carson, Water St.	USC	33.836	-118.24
+Whittier Narrows 1987	WBA-000	0.02	6.0	0.065	13.9	0.06	6.5	0.4	28.5	32.0	29.6	235.0	4	5	Anaheim, 2000 W. Ball Rd.	USC	33.817	-117.951
+Whittier Narrows 1987	WBA-090	0.02	6.0	0.047	13.5	0.055	3.4	0.35	28.5	32.0	29.6	235.0	4	5	Anaheim, 2000 W. Ball Rd.	USC	33.817	-117.951
+Whittier Narrows 1987	WHD-062	0.0050	6.0	0.512	9.1	0.229	17.8	0.32	4.2	15.2	14.7	299.0	4	5	Whittier Narrows Dam	ACOE	34.02	-118.053
+Whittier Narrows 1987	WHD-152	0.0050	6.0	0.677	7.4	0.316	12.0	0.22	4.2	15.2	14.7	299.0	4	5	Whittier Narrows Dam	ACOE	34.02	-118.053
+Whittier Narrows 1987	WPI-046	0.02	6.0	0.091	12.3	0.088	5.7	0.4	62.6	64.3	58.6	286.0	2	5	Newhall, 26835 W. Pico Canyon Rd.	USC	34.391	-118.622
+Whittier Narrows 1987	WPI-316	0.02	6.0	0.069	11.0	0.055	3.8	0.36	62.6	64.3	58.6	286.0	2	5	Newhall, 26835 W. Pico Canyon Rd.	USC	34.391	-118.622
+Whittier Narrows 1987	WST-000	0.02	6.0	0.483	6.3	0.214	9.8	0.27	20.3	25.0	21.1	315.0	4	5	Los Angeles, 607 Westmoreland Ave.	USC	34.082	-118.298
+Whittier Narrows 1987	WST-270	0.02	6.0	0.251	8.6	0.199	6.1	0.26	20.3	25.0	21.1	315.0	4	5	Los Angeles, 607 Westmoreland Ave.	USC	34.082	-118.298

@@ -34,20 +34,21 @@ public class Slammer
 	public static final int DB_LENGTH    = 19;
 
 	// order of fields for the EQdata.txt file
-	public static final int EQDAT_eq = 0;
-	public static final int EQDAT_mom_mag = 1;
-	public static final int EQDAT_foc_mech = 2;
-	public static final int EQDAT_record = 3;
-	public static final int EQDAT_location = 4;
-	public static final int EQDAT_owner = 5;
-	public static final int EQDAT_latitude = 6;
+	public static final int EQDAT_eq        = 0;
+	public static final int EQDAT_mom_mag   = 1;
+	public static final int EQDAT_foc_mech  = 2;
+	public static final int EQDAT_record    = 3;
+	public static final int EQDAT_location  = 4;
+	public static final int EQDAT_owner     = 5;
+	public static final int EQDAT_latitude  = 6;
 	public static final int EQDAT_longitude = 7;
-	public static final int EQDAT_class = 8;
-	public static final int EQDAT_digi_int = 9;
-	public static final int EQDAT_epi_dist = 10;
-	public static final int EQDAT_foc_dist = 11;
-	public static final int EQDAT_rup_dist = 12;
-	public static final int EQDAT_LENGTH = 13;
+	public static final int EQDAT_class     = 8;
+	public static final int EQDAT_vs30      = 9;
+	public static final int EQDAT_digi_int  = 10;
+	public static final int EQDAT_epi_dist  = 11;
+	public static final int EQDAT_foc_dist  = 12;
+	public static final int EQDAT_rup_dist  = 13;
+	public static final int EQDAT_LENGTH    = 14;
 
 	public static void main(String[] args) throws Exception
 	{
@@ -77,9 +78,6 @@ public class Slammer
 
 				for(i = 1; i < res.length; i++)
 				{
-					if(i > 1)
-						fw.write("\n");
-
 					for(int j = 0; j < res[0].length; j++)
 					{
 						if(j > 0)
@@ -87,6 +85,8 @@ public class Slammer
 
 						fw.write(Utils.shorten(res[i][j]));
 					}
+
+					fw.write("\n");
 				}
 
 				System.out.println(i - 1);
@@ -158,6 +158,8 @@ public class Slammer
 				Object res[][];
 				int c;
 
+				Utils.getDB().runUpdate("delete from data");
+
 				do
 				{
 					c = (char)fr.read();
@@ -173,9 +175,28 @@ public class Slammer
 								case EQDAT_epi_dist:
 								case EQDAT_foc_dist:
 								case EQDAT_rup_dist:
+								case EQDAT_vs30:
 								case EQDAT_latitude:
 								case EQDAT_longitude:
 									cur[i] = Utils.nullify(s);
+									break;
+								case EQDAT_foc_mech:
+									cur[i] = "0";
+									for(int j = 0; j < SlammerTableInterface.FocMechShort.length; j++)
+										if(SlammerTableInterface.FocMechShort[j].equals(s))
+										{
+											cur[i] = Integer.toString(j);
+											break;
+										}
+									break;
+								case EQDAT_class:
+									cur[i] = "0";
+									for(int j = 0; j < SlammerTableInterface.SiteClassArray.length; j++)
+										if(SlammerTableInterface.SiteClassArray[j].equals(s))
+										{
+											cur[i] = Integer.toString(j);
+											break;
+										}
 									break;
 								default:
 									cur[i] = Utils.addQuote(s);
@@ -207,27 +228,29 @@ public class Slammer
 								GUIUtils.popupError("Invalid data in file " + path + " at point " + data.badEntry() + ".");
 								continue;
 							}
+
 							q = "insert into data " +
-								"(eq, record, digi_int, mom_mag, arias, dobry, pga, pgv, mean_per, epi_dist, foc_dist, rup_dist, foc_mech, location, owner, latitude, longitude, class, change, path, select1, analyze, select2)" +
+								"(eq, record, digi_int, mom_mag, arias, dobry, pga, pgv, mean_per, epi_dist, foc_dist, rup_dist, vs30, class, foc_mech, location, owner, latitude, longitude, change, path, select1, analyze, select2)" +
 								" values ( " +
-								"'" + cur[EQDAT_eq] + "'," + // eq
-								"'" + cur[EQDAT_record] + "'," + // record
-								"" + cur[EQDAT_digi_int] + "," + // digi_int
-								"" + cur[EQDAT_mom_mag] + "," + // mom_mag
-								"" + ImportRecords.Arias(data, di) + "," + // arias
-								"" + ImportRecords.Dobry(data, di) + "," + // dobry
-								"" + ImportRecords.PGA(data) + "," + // pga
-								"" + ImportRecords.PGV(data, di) + "," + // pgv
-								"" + ImportRecords.MeanPer(data, di) + "," + // mear_per
-								"" + cur[EQDAT_epi_dist] + "," + // epi_dist
-								"" + cur[EQDAT_foc_dist] + "," + // foc_dist
-								"" + cur[EQDAT_rup_dist] + "," + // rup_dist
-								"" + cur[EQDAT_foc_mech] + "," + // foc_mech
-								"'" + cur[EQDAT_location] + "'," + // location
-								"'" + cur[EQDAT_owner] + "'," + // owner
-								"" + cur[EQDAT_latitude] + "," + // latitude
-								"" + cur[EQDAT_longitude] + "," + // longitude
-								"" + cur[EQDAT_class] + "," + // class
+								"'" + cur[EQDAT_eq] + "'," +
+								"'" + cur[EQDAT_record] + "'," +
+								"" + cur[EQDAT_digi_int] + "," +
+								"" + cur[EQDAT_mom_mag] + "," +
+								"" + ImportRecords.Arias(data, di) + "," +
+								"" + ImportRecords.Dobry(data, di) + "," +
+								"" + ImportRecords.PGA(data) + "," +
+								"" + ImportRecords.PGV(data, di) + "," +
+								"" + ImportRecords.MeanPer(data, di) + "," +
+								"" + cur[EQDAT_epi_dist] + "," +
+								"" + cur[EQDAT_foc_dist] + "," +
+								"" + cur[EQDAT_rup_dist] + "," +
+								"" + cur[EQDAT_vs30] + "," +
+								"" + cur[EQDAT_class] + "," +
+								"" + cur[EQDAT_foc_mech] + "," +
+								"'" + cur[EQDAT_location] + "'," +
+								"'" + cur[EQDAT_owner] + "'," +
+								"" + cur[EQDAT_latitude] + "," +
+								"" + cur[EQDAT_longitude] + "," +
 								"0," + // change
 								"'" + path + "'," + // path
 								"0," + // select1

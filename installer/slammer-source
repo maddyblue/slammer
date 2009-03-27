@@ -1702,3 +1702,5 @@ org/apache/derby/vti/VTICosting.class
 org/apache/derby/vti/VTIEnvironment.class
 org/apache/derby/vti/VTIMetaDataTemplate.class
 org/apache/derby/vti/VTITemplate.class
+records/EQdata.txt
+records/eq.sql
