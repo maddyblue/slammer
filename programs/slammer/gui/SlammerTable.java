@@ -23,7 +23,6 @@ class SlammerTable extends JPanel implements ActionListener, SlammerTableInterfa
 	JRadioButton stationButton = new JRadioButton("Stations");
 	ButtonGroup displayGroup = new ButtonGroup();
 
-
 	/* selectTable determines if this is the table from the select records page, or
 	 * from the records manager page.  If selectTable is false, the records manager
 	 * page is used.
@@ -86,7 +85,7 @@ class SlammerTable extends JPanel implements ActionListener, SlammerTableInterfa
 	{
 		ArrayList list = new ArrayList(fieldArray.length);
 		for(int i = 0; i < fieldArray.length; i++)
-			if(fieldArray[i][colSortField] == Boolean.TRUE) list.add(fieldArray[i][colFieldName]);
+			if(fieldArray[i][colSortField] == Boolean.TRUE) list.add(fieldArray[i][colDispName]);
 		String[] slist = new String[list.size()];
 		for(int i = 0; i < list.size(); i++)
 			slist[i] = list.get(i).toString();
