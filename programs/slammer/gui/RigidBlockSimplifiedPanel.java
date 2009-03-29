@@ -22,9 +22,9 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 	JRadioButton Jibson2007AICA = new JRadioButton("Jibson (2007) Arias intensity and critical acceleration");
 	JRadioButton Jibson2007AICAR = new JRadioButton("Jibson (2007) Arias intensity and critical acceleration ratio");
 	JRadioButton Ambraseys = new JRadioButton("Ambraseys and Menu (1988)");
-	JRadioButton SaygiliRathje2008CARPA = new JRadioButton("Saygili and Rathje (2008) Critical acceleration ratio and peak acceleration");
-	JRadioButton SaygiliRathje2008CARPAPV = new JRadioButton("Saygili and Rathje (2008) Critical acceleration ratio, peak acceleration, peak velocity");
-	JRadioButton SaygiliRathje2008CARPAPVAI = new JRadioButton("Saygili and Rathje (2008) Critical acceleration ratio, peak acceleration, peak velocity, and Arias intensity");
+	JRadioButton SaygiliRathje2008CARPA = new JRadioButton("<html>Saygili and Rathje (2008) Critical acceleration ratio<br/>and peak acceleration</html>");
+	JRadioButton SaygiliRathje2008CARPAPV = new JRadioButton("<html>Saygili and Rathje (2008) Critical acceleration ratio,<br/>peak acceleration, peak velocity</html>");
+	JRadioButton SaygiliRathje2008CARPAPVAI = new JRadioButton("<html>Saygili and Rathje (2008) Critical acceleration ratio,<br/>peak acceleration, peak velocity, and Arias intensity</html>");
 	ButtonGroup group = new ButtonGroup();
 
 	JLabel labelOne = new JLabel(" ");
@@ -146,7 +146,7 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 		int x = 0;
 		int y = 0;
 
-		JPanel sidepanel = new JPanel(new GridLayout(0, 1));
+		Box sidepanel = new Box(BoxLayout.Y_AXIS);
 
 		sidepanel.add(Jibson2007CA);
 		sidepanel.add(Jibson2007CAM);
