@@ -121,8 +121,8 @@ class UtilitiesPanel extends JPanel implements ActionListener
 
 		JPanel panel = new JPanel(new GridLayout(0, 1));
 
-		panel.add(gscm);
 		panel.add(cmgs);
+		panel.add(gscm);
 		panel.add(mult);
 		panel.add(redigit);
 		panel.add(bracket);
@@ -231,7 +231,7 @@ class UtilitiesPanel extends JPanel implements ActionListener
 
 		c.gridy = y++;
 		c.fill = GridBagConstraints.NONE;
-		c.insets = new Insets(0, 0, 10, 0);
+		c.insets = new Insets(10, 0, 10, 0);
 		gridbag.setConstraints(go, c);
 		add(go);
 
@@ -308,17 +308,18 @@ class UtilitiesPanel extends JPanel implements ActionListener
 				{
 					constant1.setText("Digitization Interval (s)");
 					constant1f.setEnabled(true);
-					pane.setText("This program converts a time file (a file containing paired time and acceleration values) into a file containing a sequence of acceleration values having a constant time spacing (digitization interval) using an interpolation algorithm.  The input and output files or directories must be specified or selected using the browser.  The digitization interval for the output file must be specified in the indicated field; any value can be selected by the user, but values of 0.01-0.05 generally are appropriate.  The output file is in the format necessary to run the other programs in this package, but if the original time file had units of g's, it will be necessary to convert to cm/s/s before running other analyses.");
+					pane.setText("This program converts a time file (a file containing paired time and acceleration values) into a file containing a sequence of acceleration values having a constant time spacing (digitization interval) using an interpolation algorithm.  The input and output files or directories must be specified or selected using the browser.  The digitization interval for the output file must be specified in the indicated field; any value can be selected by the user, but values of 0.01-0.05 generally are appropriate.  The output file is in the format necessary to be imported into the program, but it must have units of g.");
 				}
 				else if(bracket.isSelected())
 				{
-					constant1Pre.setText("Trim record between values of ");
+					constant1Pre.setText("Bracket record between values of ");
+					constant1Post.setText(" (in units of source file)");
 					constant1f.setEnabled(true);
-					constant2Pre.setText("Add ");
-					constant2Post.setText(" points to each side for lead-in and -out time.");
+					constant2Pre.setText("Retain ");
+					constant2Post.setText(" points to each side for lead-in and -out time");
 					constant2f.setEnabled(true);
 					constant2f.setText("0");
-					pane.setText("This program removes the points of a record from the beginning and end of the file that have a magnitude less than the specified number, which should be in the same units as the file.");
+					pane.setText("This program removes points from a record from the beginning and end of the file that have values less than that specified in the input box.");
 				}
 				else if(clip.isSelected())
 				{

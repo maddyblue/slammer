@@ -17,8 +17,8 @@ class ProbFailPanel extends JPanel implements ActionListener
 
 	JLabel labelOne = new JLabel("What is the Newmark displacement (in cm)?");
 	JLabel labelRes = new JLabel("Estimated probability of failure:");
-	JTextField labelOnef = new JTextField(15);
-	JLabel labelResf = new JLabel(" ");
+	JTextField labelOnef = new JTextField(7);
+	JTextField labelResf = new JTextField(7);
 	JEditorPane ta = new JEditorPane();
 	JScrollPane sta = new JScrollPane(ta);
 	JButton button = new JButton("Perform Analysis");
@@ -37,6 +37,7 @@ class ProbFailPanel extends JPanel implements ActionListener
 		ta.setEditable(false);
 		ta.setContentType("text/html");
 		ta.setText(probFailureStr);
+		labelResf.setEditable(false);
 
 		JLabel dummy = new JLabel(" ");
 

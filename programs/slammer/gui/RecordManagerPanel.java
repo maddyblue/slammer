@@ -502,7 +502,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 				{
 					int index = spectraCB.getSelectedIndex();
 
-					title = spectraCB.getSelectedItem().toString() + " Response Spectra at ";
+					title = spectraCB.getSelectedItem().toString() + " Response Spectrum at ";
 					xAxis = spectraDomain.getSelectedItem() + " (" + spectraDomainStr[spectraDomain.getSelectedIndex()] + ")";
 					yAxis = "Response (" + spectraCBStr[spectraCB.getSelectedIndex()] + ")";
 					double[] arr = new double[dat.size()];
@@ -514,7 +514,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 					double freqMax = Double.parseDouble(spectraHigh.getText());
 					double damp = Double.parseDouble(spectraDamp.getText()) / 100.0;
 
-					title = title + damp + "% Damping";
+					title = title + spectraDamp.getText()+ "% Damping";
 
 					boolean domainFreq = true;
 
@@ -536,7 +536,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 
 						// make sure we always hit the max frequency
 						 prev = p;
-						 p += Analysis.log10(p + 1) / 8;
+						 p += Math.log10(p + 1.0) / 8.0;
 						 if(p > freqMax)
 							 p = freqMax;
 					}
@@ -568,7 +568,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 			}
 			else if(command.equals("save"))
 			{
-				if(JOptionPane.showConfirmDialog(this, "Are you sure you want to modify these records?", "Are you sure?", JOptionPane.YES_NO_OPTION) != JOptionPane.YES_OPTION)
+				if(JOptionPane.showConfirmDialog(this, "Are you sure you want to modify this record?", "Are you sure?", JOptionPane.YES_NO_OPTION) != JOptionPane.YES_OPTION)
 					return;
 
 				String error = AddRecordsPanel.manipRecord(false,

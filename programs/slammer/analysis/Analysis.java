@@ -94,11 +94,6 @@ public class Analysis
 
 	/* standard functions */
 
-	public static double log10(final double val)
-	{
-		return Math.log(val) / Math.log(10.0);
-	}
-
 	public static double sign(final double val)
 	{
 		if(val >= 0)

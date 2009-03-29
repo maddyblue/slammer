@@ -42,7 +42,7 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 	JButton selectNone = new JButton("Deselect all for analysis");
 	JButton selectAll = new JButton("Select all for analysis");
 	JButton emptyTable = new JButton("Clear table");
-	JButton deleteSelected = new JButton("Delete highlighted record(s)");
+	JButton deleteSelected = new JButton("Clear highlighted record(s)");
 
 	JButton groupManage = new JButton("Manage groups...");
 	GroupFrame groupFrame;

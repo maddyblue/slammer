@@ -162,9 +162,9 @@ class ResultsPanel extends JPanel implements ActionListener
 							final double g = paramUnit ? Analysis.Gcmss : Analysis.Ginss;
 							unitDisplacement = paramUnit ? "(cm)" : "(in)";
 							outputTableModel.setColumnIdentifiers(new Object[] {"Earthquake", "Record",
-								"<--", ParametersPanel.stringRB + " " + unitDisplacement, "-->",
-								"<--", ParametersPanel.stringDC + " " + unitDisplacement, "-->",
-								"<--", ParametersPanel.stringCP + " " + unitDisplacement, "-->"
+								"<----", ParametersPanel.stringRB + " " + unitDisplacement, "---->",
+								"<----", ParametersPanel.stringDC + " " + unitDisplacement, "---->",
+								"<----", ParametersPanel.stringCP + " " + unitDisplacement, "---->"
 						});
 
 							boolean paramDualslope = parent.Parameters.dualSlope.isSelected();

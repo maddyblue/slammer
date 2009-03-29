@@ -63,7 +63,7 @@ public class DecoupledSimplified extends Analysis
 
 		if(doScreening)
 		{
-			double medianfreq = nrffact / 3.477 * (1.87 - log10(allowdisp / (rock * nrffact * dur)));
+			double medianfreq = nrffact / 3.477 * (1.87 - Math.log10(allowdisp / (rock * nrffact * dur)));
 			ret[incr++] = fmtThree.format(medianfreq); // medianfreq
 			ret[incr++] = fmtThree.format(medianfreq * rock); // seiscoef
 		}
