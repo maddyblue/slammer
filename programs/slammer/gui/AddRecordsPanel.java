@@ -8,7 +8,7 @@ import javax.swing.table.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.border.*;
-import java.util.Vector;
+import java.util.ArrayList;
 import slammer.*;
 import slammer.analysis.*;
 import java.io.*;
@@ -44,7 +44,7 @@ class AddRecordsPanel extends JPanel implements ActionListener
 		chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 		chooser.setMultiSelectionEnabled(true);
 
-		Vector list = new Vector();
+		ArrayList list = new ArrayList();
 		list.add(browse);
 		list.add(clearTable);
 		list.add(clearSelected);

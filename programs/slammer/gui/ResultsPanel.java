@@ -8,7 +8,6 @@ import javax.swing.table.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.border.*;
-import java.util.Vector;
 import org.jfree.data.xy.*;
 import org.jfree.data.statistics.HistogramDataset;
 import org.jfree.chart.*;
@@ -78,7 +77,7 @@ class ResultsPanel extends JPanel implements ActionListener
 	boolean paramUnit = false;
 	String unitDisplacement = "";
 	DecimalFormat unitFmt;
-	Vector dataVect[][];
+	ArrayList dataVect[][];
 	XYSeriesCollection xycol;
 	String parameters;
 
@@ -219,7 +218,7 @@ class ResultsPanel extends JPanel implements ActionListener
 							}
 
 							xys = new XYSeries[res.length][3][2];
-							dataVect = new Vector[3][3];
+							dataVect = new ArrayList[3][3];
 
 							String eq, record;
 							DoubleList dat;
@@ -239,7 +238,7 @@ class ResultsPanel extends JPanel implements ActionListener
 							if(parent.Parameters.CAdisp.isSelected())
 							{
 								String value;
-								Vector caVect;
+								java.util.Vector caVect;
 								TableCellEditor editor = null;
 
 								editor = parent.Parameters.dispTable.getCellEditor();
@@ -254,7 +253,7 @@ class ResultsPanel extends JPanel implements ActionListener
 								{
 									for(int j = 0; j < 2; j++)
 									{
-										value = (String)(((Vector)(caVect.elementAt(i))).elementAt(j));
+										value = (String)(((ArrayList)(caVect.get(i))).get(j));
 										if(value == null || value == "")
 										{
 											parent.selectParameters();
@@ -361,23 +360,23 @@ class ResultsPanel extends JPanel implements ActionListener
 
 							if(paramRigid)
 							{
-								dataVect[RB][NOR] = new Vector(res.length - 1);
-								dataVect[RB][INV] = new Vector(res.length - 1);
-								dataVect[RB][AVG] = new Vector(res.length - 1);
+								dataVect[RB][NOR] = new ArrayList(res.length - 1);
+								dataVect[RB][INV] = new ArrayList(res.length - 1);
+								dataVect[RB][AVG] = new ArrayList(res.length - 1);
 							}
 
 							if(paramDecoupled)
 							{
-								dataVect[DC][NOR] = new Vector(res.length - 1);
-								dataVect[DC][INV] = new Vector(res.length - 1);
-								dataVect[DC][AVG] = new Vector(res.length - 1);
+								dataVect[DC][NOR] = new ArrayList(res.length - 1);
+								dataVect[DC][INV] = new ArrayList(res.length - 1);
+								dataVect[DC][AVG] = new ArrayList(res.length - 1);
 							}
 
 							if(paramCoupled)
 							{
-								dataVect[CP][NOR] = new Vector(res.length - 1);
-								dataVect[CP][INV] = new Vector(res.length - 1);
-								dataVect[CP][AVG] = new Vector(res.length - 1);
+								dataVect[CP][NOR] = new ArrayList(res.length - 1);
+								dataVect[CP][INV] = new ArrayList(res.length - 1);
+								dataVect[CP][AVG] = new ArrayList(res.length - 1);
 							}
 
 							iscale = -1.0 * scale;
@@ -462,12 +461,12 @@ class ResultsPanel extends JPanel implements ActionListener
 
 									total[RB] += avg;
 
-									for(j = 0; j < dataVect[RB][AVG].size() && ((Double)dataVect[RB][AVG].elementAt(j)).doubleValue() < avg; j++)
+									for(j = 0; j < dataVect[RB][AVG].size() && ((Double)dataVect[RB][AVG].get(j)).doubleValue() < avg; j++)
 										;
 
-									dataVect[RB][AVG].insertElementAt(new Double(avg), j);
-									dataVect[RB][NOR].insertElementAt(new Double(norm), j);
-									dataVect[RB][INV].insertElementAt(new Double(inv), j);
+									dataVect[RB][AVG].add(j, new Double(avg));
+									dataVect[RB][NOR].add(j, new Double(norm));
+									dataVect[RB][INV].add(j, new Double(inv));
 
 									row[RBC + AVG] = unitFmt.format(avg);
 									row[RBC + NOR] = unitFmt.format(norm);
@@ -489,12 +488,12 @@ class ResultsPanel extends JPanel implements ActionListener
 
 									total[DC] += avg;
 
-									for(j = 0; j < dataVect[DC][AVG].size() && ((Double)dataVect[DC][AVG].elementAt(j)).doubleValue() < avg; j++)
+									for(j = 0; j < dataVect[DC][AVG].size() && ((Double)dataVect[DC][AVG].get(j)).doubleValue() < avg; j++)
 										;
 
-									dataVect[DC][AVG].insertElementAt(new Double(avg), j);
-									dataVect[DC][NOR].insertElementAt(new Double(norm), j);
-									dataVect[DC][INV].insertElementAt(new Double(inv), j);
+									dataVect[DC][AVG].add(j, new Double(avg));
+									dataVect[DC][NOR].add(j, new Double(norm));
+									dataVect[DC][INV].add(j, new Double(inv));
 
 									row[DCC + AVG] = unitFmt.format(avg);
 									row[DCC + NOR] = unitFmt.format(norm);
@@ -516,12 +515,12 @@ class ResultsPanel extends JPanel implements ActionListener
 
 									total[CP] += avg;
 
-									for(j = 0; j < dataVect[CP][AVG].size() && ((Double)dataVect[CP][AVG].elementAt(j)).doubleValue() < avg; j++)
+									for(j = 0; j < dataVect[CP][AVG].size() && ((Double)dataVect[CP][AVG].get(j)).doubleValue() < avg; j++)
 										;
 
-									dataVect[CP][AVG].insertElementAt(new Double(avg), j);
-									dataVect[CP][NOR].insertElementAt(new Double(norm), j);
-									dataVect[CP][INV].insertElementAt(new Double(inv), j);
+									dataVect[CP][AVG].add(j, new Double(avg));
+									dataVect[CP][NOR].add(j, new Double(norm));
+									dataVect[CP][INV].add(j, new Double(inv));
 
 									row[CPC + AVG] = unitFmt.format(avg);
 									row[CPC + NOR] = unitFmt.format(norm);
@@ -542,17 +541,17 @@ class ResultsPanel extends JPanel implements ActionListener
 								if(dataVect[j][AVG] == null || dataVect[j][AVG].size() == 0)
 									continue;
 
-								max = ((Double)dataVect[j][AVG].elementAt(dataVect[j][AVG].size() - 1)).doubleValue();
+								max = ((Double)dataVect[j][AVG].get(dataVect[j][AVG].size() - 1)).doubleValue();
 
 								mean = Double.parseDouble(unitFmt.format(total[j] / num));
 								rmean[j * 3 + 4] = unitFmt.format(mean);
-								rmedian[j * 3 + 4] = unitFmt.format(dataVect[j][AVG].elementAt((int)(num / 2.0)));
+								rmedian[j * 3 + 4] = unitFmt.format(dataVect[j][AVG].get((int)(num / 2.0)));
 
 								value = 0;
 
 								for(int i = 0; i < num; i++)
 								{
-									valtemp = mean - ((Double)dataVect[j][AVG].elementAt(i)).doubleValue();
+									valtemp = mean - ((Double)dataVect[j][AVG].get(i)).doubleValue();
 									value += (valtemp * valtemp);
 								}
 
@@ -669,7 +668,7 @@ class ResultsPanel extends JPanel implements ActionListener
 				double series[] = new double[dataVect[analysis][polarity].size()];
 
 				for(int j = 0; j < dataVect[analysis][polarity].size(); j++)
-					series[j] = (((Double)dataVect[analysis][polarity].elementAt(j)).doubleValue());
+					series[j] = (((Double)dataVect[analysis][polarity].get(j)).doubleValue());
 
 				dataset.addSeries(name, series, (int)Bins.doubleValue());
 

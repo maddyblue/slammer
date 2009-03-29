@@ -7,7 +7,7 @@ import javax.swing.event.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.border.*;
-import java.util.Vector;
+import java.util.ArrayList;
 import javax.swing.table.*;
 import java.io.*;
 import slammer.*;
@@ -48,7 +48,7 @@ class AddRecordsTable extends JPanel implements ActionListener
 		setLayout(new BorderLayout());
 
 		valueSel = valueTF;
-		Vector north = new Vector();
+		ArrayList north = new ArrayList();
 		north.add(new JLabel("Set all values in column "));
 		north.add(colChoose);
 		north.add(new JLabel(" to "));
@@ -57,7 +57,7 @@ class AddRecordsTable extends JPanel implements ActionListener
 		north.add(valueSiteClass);
 		north.add(set);
 
-		Vector trueNorth = new Vector();
+		ArrayList trueNorth = new ArrayList();
 		trueNorth.add(GUIUtils.makeRecursiveLayoutRight(north));
 		trueNorth.add(new JLabel("Earthquake name, Record name, and digitization interval (in seconds) must be specified; other fields are optional."));
 

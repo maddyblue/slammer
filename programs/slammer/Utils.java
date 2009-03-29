@@ -4,14 +4,14 @@ package slammer;
 
 import java.sql.*;
 import javax.swing.*;
-import java.util.Vector;
+import java.util.ArrayList;
 import slammer.gui.*;
 
 public class Utils
 {
 	public static EQDatabase db = null;
-	private static Vector eqVec = new Vector();
-	private static Vector eqMan = new Vector();
+	private static ArrayList eqVec = new ArrayList();
+	private static ArrayList eqMan = new ArrayList();
 
 	private static boolean locked = false;
 
@@ -234,7 +234,7 @@ public class Utils
 	{
 		lock();
 		for(int i = 0; i < eqVec.size(); i++)
-			setEQList((JComboBox)eqVec.elementAt(i), (Boolean)eqMan.elementAt(i));
+			setEQList((JComboBox)eqVec.get(i), (Boolean)eqMan.get(i));
 		unlock();
 	}
 

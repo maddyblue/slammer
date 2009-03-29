@@ -5,7 +5,7 @@ package slammer.gui;
 import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.*;
-import java.util.Vector;
+import java.util.ArrayList;
 
 public class GUIUtils
 {
@@ -31,17 +31,17 @@ public class GUIUtils
 		}
 	}
 
-	public static JPanel makeRecursiveLayoutDown(Vector list)
+	public static JPanel makeRecursiveLayoutDown(ArrayList list)
 	{
 		return makeRecursiveLayout(list, BorderLayout.NORTH, BorderLayout.WEST);
 	}
 
-	public static JPanel makeRecursiveLayoutRight(Vector list)
+	public static JPanel makeRecursiveLayoutRight(ArrayList list)
 	{
 		return makeRecursiveLayout(list, BorderLayout.WEST, BorderLayout.CENTER);
 	}
 
-	private static JPanel makeRecursiveLayout(Vector list, String container, String recursive)
+	private static JPanel makeRecursiveLayout(ArrayList list, String container, String recursive)
 	{
 		JPanel ret = new JPanel(new BorderLayout());
 

@@ -7,7 +7,7 @@ import javax.swing.event.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.border.*;
-import java.util.Vector;
+import java.util.ArrayList;
 import slammer.*;
 
 class SelectRecordsPanel extends JPanel implements ActionListener,TableModelListener
@@ -143,22 +143,22 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 
 	private JPanel createSearchPanel()
 	{
-		JPanel selectHeaderVector = new JPanel(new BorderLayout());
-		selectHeaderVector.add(BorderLayout.WEST, createParmsPanel());
+		JPanel selectHeaderArrayList = new JPanel(new BorderLayout());
+		selectHeaderArrayList.add(BorderLayout.WEST, createParmsPanel());
 
-		Vector checkBoxesVector = new Vector(2);
-		checkBoxesVector.add(createSiteClassPanel());
+		ArrayList checkBoxesArrayList = new ArrayList(2);
+		checkBoxesArrayList.add(createSiteClassPanel());
 
 		JPanel ret = new JPanel(new BorderLayout());
-		ret.add(BorderLayout.NORTH, selectHeaderVector);
-		ret.add(BorderLayout.WEST, GUIUtils.makeRecursiveLayoutDown(checkBoxesVector));
+		ret.add(BorderLayout.NORTH, selectHeaderArrayList);
+		ret.add(BorderLayout.WEST, GUIUtils.makeRecursiveLayoutDown(checkBoxesArrayList));
 		ret.add(BorderLayout.SOUTH, createFocMechPanel());
 		return ret;
 	}
 
 	private JPanel createFocMechPanel()
 	{
-		Vector list = new Vector();
+		ArrayList list = new ArrayList();
 		list.add(new JLabel(SlammerTable.fieldArray[SlammerTable.rowFocMech][SlammerTable.colFieldName].toString() + ": "));
 		list.add(FocMechAll);
 		list.add(FocMechStrikeSlip);
@@ -172,7 +172,7 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 
 	private JPanel createSiteClassPanel()
 	{
-		Vector list = new Vector();
+		ArrayList list = new ArrayList();
 		list.add(new JLabel(SlammerTable.fieldArray[SlammerTable.rowSiteClass][SlammerTable.colFieldName].toString() + ": "));
 		list.add(SiteClassAll);
 		list.add(SiteClassA);
@@ -278,10 +278,10 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 		panel.add(selectRecord);
 
 		/* This is to make it not take up the entire space */
-		Vector list = new Vector();
+		ArrayList list = new ArrayList();
 		list.add(panel);
 		panel = GUIUtils.makeRecursiveLayoutDown(list);
-		list = new Vector();
+		list = new ArrayList();
 		list.add(panel);
 		panel = GUIUtils.makeRecursiveLayoutRight(list);
 

@@ -7,7 +7,6 @@ import javax.swing.event.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.border.*;
-import java.util.Vector;
 import java.io.*;
 import slammer.*;
 import slammer.analysis.*;

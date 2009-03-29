@@ -6,7 +6,7 @@ import java.sql.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.Vector;
+import java.util.ArrayList;
 import slammer.*;
 
 class SlammerTable extends JPanel implements ActionListener, SlammerTableInterface
@@ -65,7 +65,7 @@ class SlammerTable extends JPanel implements ActionListener, SlammerTableInterfa
 
 		JPanel north = new JPanel(new BorderLayout());
 
-		Vector west = new Vector();
+		ArrayList west = new ArrayList();
 		west.add(new JLabel("Sort by "));
 		west.add(primarySort);
 		west.add(new JLabel(" then "));
@@ -73,7 +73,7 @@ class SlammerTable extends JPanel implements ActionListener, SlammerTableInterfa
 		west.add(order);
 		north.add(BorderLayout.WEST, GUIUtils.makeRecursiveLayoutRight(west));
 
-		Vector east = new Vector();
+		ArrayList east = new ArrayList();
 		east.add(new JLabel("Display properties of: "));
 		east.add(recordButton);
 		east.add(stationButton);
@@ -84,12 +84,12 @@ class SlammerTable extends JPanel implements ActionListener, SlammerTableInterfa
 
 	private String[] getSortList()
 	{
-		Vector list = new Vector(fieldArray.length);
+		ArrayList list = new ArrayList(fieldArray.length);
 		for(int i = 0; i < fieldArray.length; i++)
 			if(fieldArray[i][colSortField] == Boolean.TRUE) list.add(fieldArray[i][colFieldName]);
 		String[] slist = new String[list.size()];
 		for(int i = 0; i < list.size(); i++)
-			slist[i] = list.elementAt(i).toString();
+			slist[i] = list.get(i).toString();
 		return slist;
 	}
 
@@ -185,7 +185,7 @@ class SlammerTable extends JPanel implements ActionListener, SlammerTableInterfa
 
 	public static String[][] getSearchList()
 	{
-		Vector rows = new Vector();
+		ArrayList rows = new ArrayList();
 		for(int i = 0; i < fieldArray.length; i++)
 			if(fieldArray[i][colSearchable] == Boolean.TRUE)
 				rows.add(new Integer(i));
@@ -228,12 +228,12 @@ class SlammerTable extends JPanel implements ActionListener, SlammerTableInterfa
 
 	public static Object[] getColumnList(int col, int compareCol, int contain)
 	{
-		Vector v = new Vector();
+		ArrayList v = new ArrayList();
 		for(int i = 0; i < fieldArray.length; i++)
 		{
 			if((contain & ((Integer)(fieldArray[i][compareCol])).intValue()) != 0)
 			{
-				v.addElement(fieldArray[i][col]);
+				v.add(fieldArray[i][col]);
 			}
 		}
 

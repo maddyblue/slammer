@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.border.*;
 import java.io.*;
-import java.util.Vector;
+import java.util.ArrayList;
 import org.jfree.data.xy.*;
 import org.jfree.chart.*;
 import org.jfree.chart.axis.*;
@@ -128,12 +128,12 @@ class RecordManagerPanel extends JPanel implements ActionListener
 	{
 		JPanel panel = new JPanel(new BorderLayout());
 
-		Vector list = new Vector();
+		ArrayList list = new ArrayList();
 		list.add(new JLabel("Display records from: "));
 		list.add(eqList);
 		panel.add(BorderLayout.WEST, GUIUtils.makeRecursiveLayoutRight(list));
 
-		list = new Vector();
+		list = new ArrayList();
 		list.add(graph);
 		list.add(delete);
 		panel.add(BorderLayout.EAST, GUIUtils.makeRecursiveLayoutRight(list));

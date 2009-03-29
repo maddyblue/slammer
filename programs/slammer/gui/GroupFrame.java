@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
-import java.util.Vector;
+import java.util.ArrayList;
 import slammer.*;
 
 class GroupFrame extends JFrame implements ActionListener
@@ -26,7 +26,7 @@ class GroupFrame extends JFrame implements ActionListener
 	SlammerTableModel model;
 	boolean canChange = true;
 
-	public Vector list = new Vector();
+	public ArrayList list = new ArrayList();
 
 	public GroupFrame(SlammerTableModel model, SelectRecordsPanel parent)
 	{
@@ -126,7 +126,7 @@ class GroupFrame extends JFrame implements ActionListener
 		Object sel = changeCB.getSelectedItem();
 		for(int i = 0; i < list.size(); i++)
 		{
-			cur = (JComboBox)list.elementAt(i);
+			cur = (JComboBox)list.get(i);
 			if(cur == null)
 				continue;
 			cur.removeAllItems();
