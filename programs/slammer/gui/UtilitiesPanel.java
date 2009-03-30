@@ -52,10 +52,15 @@ class UtilitiesPanel extends JPanel implements ActionListener
 	JButton destb = new JButton("Browse...");
 	JButton go = new JButton("Execute");
 	JTextField skip = new JTextField("0", 4);
+	JCheckBox overwrite = new JCheckBox("Overwrite without prompting");
 	JEditorPane pane = new JEditorPane();
 	JScrollPane spane = new JScrollPane(pane);
 
-	JTextField headerField = new JTextField(5);
+	int global_overwrite = OVW_NONE;
+
+	public final static int OVW_NONE      = 0;
+	public final static int OVW_OVERWRITE = 1;
+	public final static int OVW_SKIP      = 2;
 
 	public UtilitiesPanel(SlammerTabbedPane parent)
 	{
@@ -96,9 +101,9 @@ class UtilitiesPanel extends JPanel implements ActionListener
 		go.setActionCommand("go");
 		go.addActionListener(this);
 
-		constant1f.setEnabled(false);
-		constant2f.setEnabled(false);
-		constant3f.setEnabled(false);
+		constant1f.setEditable(false);
+		constant2f.setEditable(false);
+		constant3f.setEditable(false);
 
 		pane.setEditable(false);
 		pane.setContentType("text/html");
@@ -229,6 +234,10 @@ class UtilitiesPanel extends JPanel implements ActionListener
 		add(panel);
 
 		c.gridy = y++;
+		gridbag.setConstraints(overwrite, c);
+		add(overwrite);
+
+		c.gridy = y++;
 		c.fill = GridBagConstraints.NONE;
 		c.insets = new Insets(10, 0, 10, 0);
 		gridbag.setConstraints(go, c);
@@ -276,17 +285,17 @@ class UtilitiesPanel extends JPanel implements ActionListener
 			else if(command.equals("change"))
 			{
 				constant1f.setText("");
-				constant1f.setEnabled(false);
+				constant1f.setEditable(false);
 				constant1.setText(" ");
 				constant1Pre.setText("");
 				constant1Post.setText("");
 				constant2f.setText("");
-				constant2f.setEnabled(false);
+				constant2f.setEditable(false);
 				constant2.setText(" ");
 				constant2Pre.setText("");
 				constant2Post.setText("");
 				constant3f.setText("");
-				constant3f.setEnabled(false);
+				constant3f.setEditable(false);
 				constant3.setText(" ");
 				constant3Pre.setText("");
 				constant3Post.setText("");
@@ -300,23 +309,23 @@ class UtilitiesPanel extends JPanel implements ActionListener
 				else if(mult.isSelected())
 				{
 					constant1.setText("Constant");
-					constant1f.setEnabled(true);
+					constant1f.setEditable(true);
 					pane.setText("This program multiplies the values in a file by a user-specified constant.  Both the input and output file or directory must be specified or selected using the browser.  The constant is specified in the \"Constant\" field.");
 				}
 				else if(redigit.isSelected())
 				{
 					constant1.setText("Digitization Interval (s)");
-					constant1f.setEnabled(true);
+					constant1f.setEditable(true);
 					pane.setText("This program converts a time file (a file containing paired time and acceleration values) into a file containing a sequence of acceleration values having a constant time spacing (digitization interval) using an interpolation algorithm.  The input and output files or directories must be specified or selected using the browser.  The digitization interval for the output file must be specified in the indicated field; any value can be selected by the user, but values of 0.01-0.05 generally are appropriate.  The output file is in the format necessary to be imported into the program, but it must have units of g.");
 				}
 				else if(bracket.isSelected())
 				{
 					constant1Pre.setText("Bracket record between values of ");
 					constant1Post.setText(" (in units of source file)");
-					constant1f.setEnabled(true);
+					constant1f.setEditable(true);
 					constant2Pre.setText("Retain ");
 					constant2Post.setText(" points to each side for lead-in and -out time");
-					constant2f.setEnabled(true);
+					constant2f.setEditable(true);
 					constant2f.setText("0");
 					pane.setText("This program removes points from a record from the beginning and end of the file that have values less than that specified in the input box.");
 				}
@@ -324,12 +333,12 @@ class UtilitiesPanel extends JPanel implements ActionListener
 				{
 					constant1Pre.setText("Remove data before ");
 					constant1Post.setText(" seconds");
-					constant1f.setEnabled(true);
+					constant1f.setEditable(true);
 					constant2Pre.setText("Remove data after ");
 					constant2Post.setText(" seconds");
-					constant2f.setEnabled(true);
+					constant2f.setEditable(true);
 					constant3.setText("Digitization Interval (s)");
-					constant3f.setEnabled(true);
+					constant3f.setEditable(true);
 					pane.setText("This program saves all data within (inclusive) the specified range. If the file is shorter than the specified range, the file will simply be copied to the destination.");
 				}
 			}
@@ -425,7 +434,10 @@ class UtilitiesPanel extends JPanel implements ActionListener
 				}
 
 				int ret;
-				String errors = "";
+				boolean ovw = overwrite.isSelected();
+				String results = "";
+				int errors = 0;
+				global_overwrite = OVW_NONE;
 
 				JFrame progFrame = new JFrame("Progress...");
 				JProgressBar prog = new JProgressBar();
@@ -447,7 +459,15 @@ class UtilitiesPanel extends JPanel implements ActionListener
 
 					if(source.isFile())
 					{
-						errors = runUtil(sel, source, dest, skipLines, val1.doubleValue(), val2.doubleValue(), val3.doubleValue());
+						try
+						{
+							results += "<br>" + runUtil(sel, source, dest, skipLines, val1.doubleValue(), val2.doubleValue(), val3.doubleValue(), ovw);
+						}
+						catch (Exception ex)
+						{
+							results = "<br>" + ex.getMessage() + results;
+							errors++;
+						}
 					}
 					else if(source.isDirectory())
 					{
@@ -469,13 +489,21 @@ class UtilitiesPanel extends JPanel implements ActionListener
 							prog.setString(list[j].getAbsolutePath());
 							prog.paintImmediately(0, 0, prog.getWidth(), prog.getHeight());
 
-							errors += runUtil(sel, list[j], d, skipLines, val1.doubleValue(), val2.doubleValue(), val3.doubleValue());
+							try
+							{
+								results += "<br>" + runUtil(sel, list[j], d, skipLines, val1.doubleValue(), val2.doubleValue(), val3.doubleValue(), ovw);
+							}
+							catch (Exception ex)
+							{
+								results = "<br>" + ex.getMessage() + results;
+								errors++;
+							}
 						}
 					}
 				}
 
 				progFrame.dispose();
-				pane.setText(selStr + (errors.equals("") ? " complete." : (" NOT complete.<p>Errors:" + errors)));
+				pane.setText(selStr + (errors == 0 ? " complete" : (" NOT complete: " + errors + " errors")) + "<hr>" + results);
 			}
 		}
 		catch (Exception ex)
@@ -484,14 +512,15 @@ class UtilitiesPanel extends JPanel implements ActionListener
 		}
 	}
 
-	private String runUtil(int sel, File s, File d, int skip, double var1, double var2, double var3) throws IOException
+	private String runUtil(int sel, File s, File d, int skip, double var1, double var2, double var3, boolean ovw) throws Exception
 	{
 		File dest;
+		boolean overwrite = false;
 
 		if(!s.exists() || !s.canRead())
-			return "<br>" + s.getAbsolutePath() + " does not exist or is not readable.\n";
+			throw new Exception("Not readable: " + s.getAbsolutePath());
 		else if(!s.isFile())
-			return "<br>" + s.getAbsolutePath() + " is invalid.\n";
+			throw new Exception("Invalid file: " + s.getAbsolutePath());
 
 		if(d == null)
 			dest = s;
@@ -500,13 +529,40 @@ class UtilitiesPanel extends JPanel implements ActionListener
 		else
 			dest = d;
 
-		DoubleList data = new DoubleList(s.getAbsolutePath(), skip, 1.0, true);
-		if(data.bad())
+		String ret = dest.toString();
+
+		if(dest.exists())
 		{
-			return ("<br>After skipping " + skip + " lines, invalid data encountered in file " + s.getAbsolutePath() + " at point " + data.badEntry() + ".");
+			if(ovw || global_overwrite == OVW_OVERWRITE)
+				overwrite = true;
+			else if(global_overwrite == OVW_SKIP)
+				return "Skip: " + ret;
+			else
+			{
+				Object[] options = { "Overwrite", "Overwrite All", "Skip", "Skip All" };
+				switch(JOptionPane.showOptionDialog(null, "File exists:\n" + dest.toString(), "Overwrite",
+					JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
+					null, options, options[0]))
+				{
+					case 0: // overwrite
+						overwrite = true;
+						break;
+					case 1: // overwrite all
+						overwrite = true;
+						global_overwrite = OVW_OVERWRITE;
+						break;
+					case 3: // skip all
+						global_overwrite = OVW_SKIP;
+					case 2: // skip
+					default:
+						return "Skip: " + ret;
+				}
+			}
 		}
 
-		String err = "";
+		DoubleList data = new DoubleList(s.getAbsolutePath(), skip, 1.0, true);
+		if(data.bad())
+			throw new Exception("Invalid data in " + ret + " at point " + data.badEntry());
 
 		try
 		{
@@ -514,33 +570,33 @@ class UtilitiesPanel extends JPanel implements ActionListener
 
 			switch(sel)
 			{
-				case SELECT_CMGS: // cmgs
+				case SELECT_CMGS:
 					Utilities.CM_GS(data, o);
 					break;
-				case SELECT_GSCM: // gscm
+				case SELECT_GSCM:
 					Utilities.GS_CM(data, o);
 					break;
-				case SELECT_MULT: // mult
+				case SELECT_MULT:
 					Utilities.Mult(data, o, var1);
 					break;
-				case SELECT_REDIGIT: // redigit
-					err = Utilities.Redigitize(data, o, var1);
+				case SELECT_REDIGIT:
+					Utilities.Redigitize(data, o, var1);
 					break;
-				case SELECT_BRACKET: // bracket
+				case SELECT_BRACKET:
 					Utilities.Bracket(data, o, var1, (int)var2);
 					break;
-				case SELECT_TRIM: // clip
+				case SELECT_TRIM:
 					Utilities.Trim(data, o, var1, var2, var3);
 			}
-
-			if(!err.equals(""))
-				err = "<br>" + err + " in file " + s.getAbsolutePath() + ".\n";
 		}
 		catch (Exception ex)
 		{
-			err = "<br>" + ex + ".\n";
+			throw new Exception(ex.getMessage() + ": " + ret);
 		}
 
-		return err;
+		if(overwrite)
+			ret = "(overwritten) " + ret;
+
+		return "Success: " + ret;
 	}
 }

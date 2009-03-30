@@ -10,25 +10,25 @@ import slammer.*;
 
 public class Utilities extends Analysis
 {
-	public static String CM_GS(DoubleList data, FileWriter ofile) throws IOException
+	public static void CM_GS(DoubleList data, FileWriter ofile) throws IOException
 	{
 		final double val = 1.0 / Gcmss;
-		return Mult(data, ofile, val);
+		Mult(data, ofile, val);
 	}
 
-	public static String GS_CM(DoubleList data, FileWriter ofile) throws IOException
+	public static void GS_CM(DoubleList data, FileWriter ofile) throws IOException
 	{
 		final double val = Gcmss;
-		return Mult(data, ofile, val);
+		Mult(data, ofile, val);
 	}
 
-	public static String Mult(DoubleList data, FileWriter ofile, final double value) throws IOException
+	public static void Mult(DoubleList data, FileWriter ofile, final double value) throws IOException
 	{
-		return Shift(data, ofile, value, 0);
+		Shift(data, ofile, value, 0);
 	}
 
 	// first add shift to every value, then multiply by value
-	public static String Shift(DoubleList data, FileWriter ofile, final double value, final double shift) throws IOException
+	public static void Shift(DoubleList data, FileWriter ofile, final double value, final double shift) throws IOException
 	{
 		Double val;
 		double temp;
@@ -39,10 +39,9 @@ public class Utilities extends Analysis
 			ofile.write(temp + "\n");
 		}
 		ofile.close();
-		return null;
 	}
 
-	public static String Bracket(DoubleList data, FileWriter ofile, final double value, final int pad) throws IOException
+	public static void Bracket(DoubleList data, FileWriter ofile, final double value, final int pad) throws IOException
 	{
 		Double val;
 		int top = data.size() - 1;
@@ -88,11 +87,9 @@ public class Utilities extends Analysis
 		}
 
 		ofile.close();
-
-		return null;
 	}
 
-	public static String Redigitize(DoubleList data, FileWriter ofile, final double di) throws IOException
+	public static void Redigitize(DoubleList data, FileWriter ofile, final double di) throws Exception
 	{
 		Double val;
 		double d, r, u, t1 = 0, t2, a1 = 0, a2, t0, a0;
@@ -101,13 +98,13 @@ public class Utilities extends Analysis
 		if((val = data.each()) == null)
 		{
 			ofile.close();
-			return "No data";
+			throw new Exception("No data");
 		}
 		t2 = val.doubleValue();
 		if((val = data.each()) == null)
 		{
 			ofile.close();
-			return "Odd number of values";
+			throw new Exception("Odd number of values");
 		}
 		a2 = val.doubleValue();
 		boolean flag = false;
@@ -127,7 +124,7 @@ public class Utilities extends Analysis
 				if((val = data.each()) == null)
 				{
 					flag = true;
-					return "Odd number of values";
+					throw new Exception("odd number of values");
 				}
 				a2 = val.doubleValue();
 			}
@@ -146,10 +143,9 @@ public class Utilities extends Analysis
 			ofile.write('\n');
 		}
 		ofile.close();
-		return "";
 	}
 
-	public static String Trim(DoubleList data, FileWriter ofile, final double clipL, final double clipR, final double dt) throws IOException
+	public static void Trim(DoubleList data, FileWriter ofile, final double clipL, final double clipR, final double dt) throws IOException
 	{
 		Double val;
 		data.reset();
@@ -165,7 +161,5 @@ public class Utilities extends Analysis
 		}
 
 		ofile.close();
-
-		return "";
 	}
 }
