@@ -27,7 +27,14 @@ class RecordManagerPanel extends JPanel implements ActionListener
 	JComboBox eqList = new JComboBox();
 	JButton graph = new JButton("Graph");
 	JButton graph2 = new JButton("Graph");
+	JButton saveGraph = new JButton("Save results as text");
+	JFileChooser saveChooser = new JFileChooser();
 	JButton delete = new JButton("Delete selected record(s) from database");
+
+	ButtonGroup saveGroup = new ButtonGroup();
+	JRadioButton saveTab = new JRadioButton("Tab");
+	JRadioButton saveSpace = new JRadioButton("Space");
+	JRadioButton saveComma = new JRadioButton("Comma");
 
 	JButton save = new JButton("Save changes");
 
@@ -93,6 +100,10 @@ class RecordManagerPanel extends JPanel implements ActionListener
 		TypeGroup.add(typeFourier);
 		TypeGroup.add(typeSpectra);
 
+		saveGroup.add(saveTab);
+		saveGroup.add(saveSpace);
+		saveGroup.add(saveComma);
+
 		Utils.addEQList(eqList, Boolean.TRUE);
 		eqList.setActionCommand("eqListChange");
 		eqList.addActionListener(this);
@@ -108,6 +119,9 @@ class RecordManagerPanel extends JPanel implements ActionListener
 
 		graph2.setActionCommand("graph");
 		graph2.addActionListener(this);
+
+		saveGraph.setActionCommand("saveGraph");
+		saveGraph.addActionListener(this);
 
 		managerTP.addTab("Modify Record", createModifyPanel());
 		managerTP.addTab("Graphing Options", createGraphPanel());
@@ -218,11 +232,17 @@ class RecordManagerPanel extends JPanel implements ActionListener
 			BorderFactory.createEmptyBorder(2, 1, 2, 1)
 		);
 
+		Border bleft = BorderFactory.createMatteBorder(0, 1, 0, 0, Color.BLACK);
+
+		JPanel graphPanel = new JPanel(new GridLayout(1, 0));
+		graphPanel.add(graph2);
+		graphPanel.add(saveGraph);
+
 		c.gridx = x;
 		c.gridy = y++;
 		c.gridwidth = 3;
-		gridbag.setConstraints(graph2, c);
-		panel.add(graph2);
+		gridbag.setConstraints(graphPanel, c);
+		panel.add(graphPanel);
 		c.gridwidth = 1;
 
 		c.gridx = x++;
@@ -296,10 +316,30 @@ class RecordManagerPanel extends JPanel implements ActionListener
 		gridbag.setConstraints(spectraDomainLabel, c);
 		panel.add(spectraDomainLabel);
 
-		c.gridx = x;
+		c.gridx = x++;
 		c.insets = none;
 		gridbag.setConstraints(spectraHigh, c);
 		panel.add(spectraHigh);
+
+		y -= 5;
+		c.gridy = y++;
+		c.insets = new Insets(0, 10, 0, 0);
+		c.gridx = x++;
+		label = new JLabel("Save delimiter:");
+		gridbag.setConstraints(label, c);
+		panel.add(label);
+
+		c.gridy = y++;
+		gridbag.setConstraints(saveTab, c);
+		panel.add(saveTab);
+
+		c.gridy = y++;
+		gridbag.setConstraints(saveSpace, c);
+		panel.add(saveSpace);
+
+		c.gridy = y++;
+		gridbag.setConstraints(saveComma, c);
+		panel.add(saveComma);
 
 		return panel;
 	}
@@ -371,7 +411,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 				table.setModel(SlammerTable.REFRESH);
 				recordClear();
 			}
-			else if(command.equals("graph") || command.startsWith("data"))
+			else if(command.equals("graph") || command.equals("saveGraph"))
 			{
 				int row = table.getSelectedRow();
 				if(row == -1)
@@ -407,14 +447,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 
 				String xAxis = null, yAxis = null, title = "";
 
-				if(command.startsWith("graph"))
-				{
-					if(typeTime.isSelected()) command = "graphTime";
-					else if(typeFourier.isSelected()) command = "graphFourier";
-					else if(typeSpectra.isSelected()) command = "graphSpectra";
-				}
-
-				if(command.endsWith("Time"))
+				if(typeTime.isSelected())
 				{
 					title = "Time Series";
 					xAxis = "Time (s)";
@@ -463,7 +496,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 						time += di;
 					}
 				}
-				else if(command.endsWith("Fourier"))
+				else if(typeFourier.isSelected())
 				{
 					title = "Fourier Amplitude Spectrum";
 					xAxis = "Frequency (Hz)";
@@ -498,7 +531,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 						freq = i * df;
 					}
 				}
-				else if(command.endsWith("Spectra"))
+				else if(typeSpectra.isSelected())
 				{
 					int index = spectraCB.getSelectedIndex();
 
@@ -544,13 +577,13 @@ class RecordManagerPanel extends JPanel implements ActionListener
 
 				title += ": " + eq + " - " + record;
 
-				if(command.startsWith("graph"))
+				if(command.equals("graph"))
 				{
 					XYSeriesCollection xysc = new XYSeriesCollection(xys);
 
 					JFreeChart chart = ChartFactory.createXYLineChart(title, xAxis, yAxis, xysc, org.jfree.chart.plot.PlotOrientation.VERTICAL, false, true, false);
 
-					if(command.equals("graphFourier") || command.equals("graphSpectra"))
+					if(typeFourier.isSelected() || typeSpectra.isSelected())
 					{
 						chart.getXYPlot().setRangeAxis(new LogarithmicAxis(yAxis));
 						chart.getXYPlot().setDomainAxis(new LogarithmicAxis(xAxis));
@@ -561,9 +594,25 @@ class RecordManagerPanel extends JPanel implements ActionListener
 					frame.setLocationRelativeTo(null);
 					frame.setVisible(true);
 				}
-				else if(command.startsWith("data"))
+				else if(command.equals("saveGraph"))
 				{
+					if(JFileChooser.APPROVE_OPTION == saveChooser.showOpenDialog(this))
+					{
+						double xysdata[][] = xys.toArray();
+						FileWriter w = new FileWriter(saveChooser.getSelectedFile());
 
+						String delim = "\t";
+						if(saveSpace.isSelected()) delim = " ";
+						if(saveComma.isSelected()) delim = ",";
+
+						w.write("# " + title + "\n");
+						w.write("# " + xAxis + delim + yAxis + "\n");
+
+						for(int i = 0; i < xysdata[0].length; i++)
+							w.write(xysdata[0][i] + delim + xysdata[1][i] + "\n");
+
+						w.close();
+					}
 				}
 			}
 			else if(command.equals("save"))
