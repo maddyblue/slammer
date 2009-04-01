@@ -21,17 +21,21 @@ import slammer.analysis.*;
 class ResultsPanel extends JPanel implements ActionListener
 {
 	// array indexes
-	final public static int RB = 0; // rigid block
-	final public static int DC = 1; // decoupled
-	final public static int CP = 2; // coupled
-	final public static int AVG = 2; // average
-	final public static int NOR = 0; // normal
-	final public static int INV = 1; // inverse
+	public final static int RB = 0; // rigid block
+	public final static int DC = 1; // decoupled
+	public final static int CP = 2; // coupled
+	public final static int AVG = 2; // average
+	public final static int NOR = 0; // normal
+	public final static int INV = 1; // inverse
 
 	// table column indicies
-	final public static int RBC = 2;
-	final public static int DCC = 5;
-	final public static int CPC = 8;
+	public final static int RBN = 2;
+	public final static int RBC = 3;
+	public final static int DCN = 6;
+	public final static int DCC = 7;
+	public final static int CPN = 10;
+	public final static int CPC = 11;
+	public final static int LEN = 14;
 
 	String polarityName[] = { "Normal", "Inverse", "Average" };
 
@@ -84,12 +88,6 @@ class ResultsPanel extends JPanel implements ActionListener
 	public ResultsPanel(SlammerTabbedPane parent) throws Exception
 	{
 		this.parent = parent;
-
-		outputTableModel.addColumn("Earthquake");
-		outputTableModel.addColumn("Record");
-		outputTableModel.addColumn(ParametersPanel.stringRB);
-		outputTableModel.addColumn(ParametersPanel.stringDC);
-		outputTableModel.addColumn(ParametersPanel.stringCP);
 
 		Analyze.setActionCommand("analyze");
 		Analyze.addActionListener(this);
@@ -160,11 +158,15 @@ class ResultsPanel extends JPanel implements ActionListener
 							paramUnit = parent.Parameters.unitMetric.isSelected();
 							final double g = paramUnit ? Analysis.Gcmss : Analysis.Ginss;
 							unitDisplacement = paramUnit ? "(cm)" : "(in)";
-							outputTableModel.setColumnIdentifiers(new Object[] {"Earthquake", "Record",
-								"<----", ParametersPanel.stringRB + " " + unitDisplacement, "---->",
-								"<----", ParametersPanel.stringDC + " " + unitDisplacement, "---->",
+							outputTableModel.setColumnIdentifiers(new Object[] {"Earthquake", "Record", "",
+								"<----", ParametersPanel.stringRB + " " + unitDisplacement, "---->", "",
+								"<----", ParametersPanel.stringDC + " " + unitDisplacement, "---->", "",
 								"<----", ParametersPanel.stringCP + " " + unitDisplacement, "---->"
-						});
+							});
+
+							outputTable.getColumnModel().getColumn(RBN).setPreferredWidth(0);
+							outputTable.getColumnModel().getColumn(DCN).setPreferredWidth(0);
+							outputTable.getColumnModel().getColumn(CPN).setPreferredWidth(0);
 
 							boolean paramDualslope = parent.Parameters.dualSlope.isSelected();
 							Double d;
@@ -386,17 +388,17 @@ class ResultsPanel extends JPanel implements ActionListener
 							int j;
 							Object[] row;
 
-							outputTableModel.addRow(new Object[] { null, "Polarity:",
-								polarityName[NOR], polarityName[INV], polarityName[AVG],
-								polarityName[NOR], polarityName[INV], polarityName[AVG],
+							outputTableModel.addRow(new Object[] { null, "Polarity:", null,
+								polarityName[NOR], polarityName[INV], polarityName[AVG], null,
+								polarityName[NOR], polarityName[INV], polarityName[AVG], null,
 								polarityName[NOR], polarityName[INV], polarityName[AVG]
 							});
 
-							outputTableModel.addRow(new Object[] { null, null, null, null, null, null, null, null, null, null, null });
+							outputTableModel.addRow(new Object[0]);
 
 							for(int i = 1; i < res.length && !pm.isCanceled(); i++)
 							{
-								row = new Object[11];
+								row = new Object[LEN];
 								eq = res[i][0].toString();
 								record = res[i][1].toString();
 
@@ -404,15 +406,6 @@ class ResultsPanel extends JPanel implements ActionListener
 
 								row[0] = eq;
 								row[1] = record;
-								row[2] = null;
-								row[3] = null;
-								row[4] = null;
-								row[5] = null;
-								row[6] = null;
-								row[7] = null;
-								row[8] = null;
-								row[9] = null;
-								row[10] = null;
 
 								path = res[i][3].toString();
 								testFile = new File(path);
@@ -532,9 +525,13 @@ class ResultsPanel extends JPanel implements ActionListener
 							pm.update("Calculating stastistics...");
 
 							double max, mean, value, valtemp;
-							Object[] rmean = new Object[] {null, "Mean value", null, null, null, null, null, null, null, null, null};
-							Object[] rmedian = new Object[] {null, "Median value", null, null, null, null, null, null, null, null, null};
-							Object[] rsd = new Object[] {null, "Standard deviation", null, null, null, null, null, null, null, null, null};
+							Object[] rmean = new Object[LEN];
+							Object[] rmedian = new Object[LEN];
+							Object[] rsd = new Object[LEN];
+
+							rmean[1] = "Mean value";
+							rmedian[1] = "Median value";
+							rsd[1] = "Standard deviation";
 
 							for(j = 0; j < dataVect.length; j++)
 							{
@@ -544,8 +541,8 @@ class ResultsPanel extends JPanel implements ActionListener
 								max = ((Double)dataVect[j][AVG].get(dataVect[j][AVG].size() - 1)).doubleValue();
 
 								mean = Double.parseDouble(unitFmt.format(total[j] / num));
-								rmean[j * 3 + 4] = unitFmt.format(mean);
-								rmedian[j * 3 + 4] = unitFmt.format(dataVect[j][AVG].get((int)(num / 2.0)));
+								rmean[j * 4 + 5] = unitFmt.format(mean);
+								rmedian[j * 4 + 5] = unitFmt.format(dataVect[j][AVG].get((int)(num / 2.0)));
 
 								value = 0;
 
@@ -557,10 +554,10 @@ class ResultsPanel extends JPanel implements ActionListener
 
 								value /= num - 1;
 								value = Math.sqrt(value);
-								rsd[j * 3 + 4] = unitFmt.format(value);
+								rsd[j * 4 + 5] = unitFmt.format(value);
 							}
 
-							outputTableModel.addRow(new Object[] {null, null, null, null, null});
+							outputTableModel.addRow(new Object[0]);
 							outputTableModel.addRow(rmean);
 							outputTableModel.addRow(rmedian);
 							outputTableModel.addRow(rsd);
@@ -970,10 +967,7 @@ class ResultsPanel extends JPanel implements ActionListener
 		dataVect = null;
 		xys = null;
 		graphDisp(false, false, false);
-
-		int rows = outputTableModel.getRowCount();
-		while(--rows >= 0)
-			outputTableModel.removeRow(rows);
+		outputTableModel.setRowCount(0);
 	}
 
 	private void graphDisp(boolean rigid, boolean decoupled, boolean coupled)

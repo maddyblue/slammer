@@ -59,16 +59,16 @@ class ParametersPanel extends JPanel implements ActionListener
 	public JCheckBox typeDecoupled = new JCheckBox(stringDC);
 	public JCheckBox typeCoupled = new JCheckBox(stringCP);
 
-	final public static String stringHeight = "Height";
-	final public static String stringVs = "Shear-wave velocity (material above slip surface)";
-	final public static String stringDisp = "Displacement";
-	final public static String stringDamp = "Damping ratio";
-	final public static String stringVr = "Shear-wave velocity (material below slip surface)";
-	final public static String stringSoilModel = "Soil model";
+	public final static String stringHeight = "Height";
+	public final static String stringVs = "Shear-wave velocity (material above slip surface)";
+	public final static String stringDisp = "Displacement";
+	public final static String stringDamp = "Damping ratio";
+	public final static String stringVr = "Shear-wave velocity (material below slip surface)";
+	public final static String stringSoilModel = "Soil model";
 
-	final public static String stringRB = "Rigid Block";
-	final public static String stringDC = "Decoupled";
-	final public static String stringCP = "Coupled";
+	public final static String stringRB = "Rigid Block";
+	public final static String stringDC = "Decoupled";
+	public final static String stringCP = "Coupled";
 
 	JButton next = new JButton("Go to Step 3: Perform Analyses and View Results");
 
