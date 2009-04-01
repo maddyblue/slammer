@@ -26,18 +26,21 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 	JRadioButton SaygiliRathje2008CARPAPVAI = new JRadioButton("<html>Saygili and Rathje (2008) Critical acceleration ratio,<br/>peak acceleration, peak velocity, Arias intensity</html>");
 	ButtonGroup group = new ButtonGroup();
 
-	JLabel labelOne = new JLabel(" ");
-	JLabel labelTwo = new JLabel(" ");
-	JLabel labelThree = new JLabel(" ");
-	JLabel labelFour = new JLabel(" ");
+	JLabel labelAc = new JLabel("Critical (yield) acceleration (g's):");
+	JLabel labelAmax = new JLabel("Peak ground acceleration (g's):");
+	JLabel labelVmax = new JLabel("Peak ground velocity (g's):");
+	JLabel labelIa = new JLabel("Arias intensity (m/s):");
+	JLabel labelM = new JLabel("Magnitude:");
+
 	JLabel labelResCm = new JLabel("Estimated Newmark Displacement (cm):");
 	JLabel labelResIn = new JLabel("Estimated Newmark Displacement (in):");
-	JTextField labelOnef = new JTextField(7);
-	JTextField labelTwof = new JTextField(7);
-	JTextField labelThreef = new JTextField(7);
-	JTextField labelFourf = new JTextField(7);
-	JTextField labelResCmf = new JTextField(7);
-	JTextField labelResInf = new JTextField(7);
+	JTextField fieldAc = new JTextField(7);
+	JTextField fieldAmax = new JTextField(7);
+	JTextField fieldVmax = new JTextField(7);
+	JTextField fieldIa = new JTextField(7);
+	JTextField fieldM = new JTextField(7);
+	JTextField fieldResCm = new JTextField(7);
+	JTextField fieldResIn = new JTextField(7);
 	JEditorPane ta = new JEditorPane();
 	JScrollPane sta = new JScrollPane(ta);
 	JButton button = new JButton("Compute");
@@ -118,12 +121,13 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 		SaygiliRathje2008CARPAPVAI.setActionCommand("change");
 		SaygiliRathje2008CARPAPVAI.addActionListener(this);
 
-		labelOnef.setEditable(false);
-		labelTwof.setEditable(false);
-		labelThreef.setEditable(false);
-		labelFourf.setEditable(false);
-		labelResCmf.setEditable(false);
-		labelResInf.setEditable(false);
+		fieldAc.setEditable(false);
+		fieldAmax.setEditable(false);
+		fieldVmax.setEditable(false);
+		fieldIa.setEditable(false);
+		fieldM.setEditable(false);
+		fieldResCm.setEditable(false);
+		fieldResIn.setEditable(false);
 
 		button.setActionCommand("do");
 		button.addActionListener(this);
@@ -163,7 +167,7 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 
 		c.gridx = x++;
 		c.gridy = y++;
-		c.gridheight = 10;
+		c.gridheight = 11;
 		c.anchor = GridBagConstraints.NORTHWEST;
 		gridbag.setConstraints(sidepanel, c);
 		panel.add(sidepanel);
@@ -187,39 +191,48 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 
 		c.gridy = y++;
 		c.gridwidth = 1;
-		gridbag.setConstraints(labelOne, c);
-		panel.add(labelOne);
+		gridbag.setConstraints(labelAc, c);
+		panel.add(labelAc);
 
 		c.gridx = x--;
-		gridbag.setConstraints(labelOnef, c);
-		panel.add(labelOnef);
+		gridbag.setConstraints(fieldAc, c);
+		panel.add(fieldAc);
 
 		c.gridx = x++;
 		c.gridy = y++;
-		gridbag.setConstraints(labelTwo, c);
-		panel.add(labelTwo);
+		gridbag.setConstraints(labelAmax, c);
+		panel.add(labelAmax);
 
 		c.gridx = x--;
-		gridbag.setConstraints(labelTwof, c);
-		panel.add(labelTwof);
+		gridbag.setConstraints(fieldAmax, c);
+		panel.add(fieldAmax);
 
 		c.gridx = x++;
 		c.gridy = y++;
-		gridbag.setConstraints(labelThree, c);
-		panel.add(labelThree);
+		gridbag.setConstraints(labelVmax, c);
+		panel.add(labelVmax);
 
 		c.gridx = x--;
-		gridbag.setConstraints(labelThreef, c);
-		panel.add(labelThreef);
+		gridbag.setConstraints(fieldVmax, c);
+		panel.add(fieldVmax);
 
 		c.gridx = x++;
 		c.gridy = y++;
-		gridbag.setConstraints(labelFour, c);
-		panel.add(labelFour);
+		gridbag.setConstraints(labelIa, c);
+		panel.add(labelIa);
 
 		c.gridx = x--;
-		gridbag.setConstraints(labelFourf, c);
-		panel.add(labelFourf);
+		gridbag.setConstraints(fieldIa, c);
+		panel.add(fieldIa);
+
+		c.gridx = x++;
+		c.gridy = y++;
+		gridbag.setConstraints(labelM, c);
+		panel.add(labelM);
+
+		c.gridx = x--;
+		gridbag.setConstraints(fieldM, c);
+		panel.add(fieldM);
 
 		c.gridx = x++;
 		c.gridy = y++;
@@ -242,8 +255,8 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 		panel.add(labelResCm);
 
 		c.gridx = x--;
-		gridbag.setConstraints(labelResCmf, c);
-		panel.add(labelResCmf);
+		gridbag.setConstraints(fieldResCm, c);
+		panel.add(fieldResCm);
 
 		c.gridy = y++;
 		c.gridx = x++;
@@ -252,11 +265,11 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 		panel.add(labelResIn);
 
 		c.gridx = x;
-		gridbag.setConstraints(labelResInf, c);
-		panel.add(labelResInf);
+		gridbag.setConstraints(fieldResIn, c);
+		panel.add(fieldResIn);
 
 		c.gridx = 0;
-		c.gridy = 10;
+		c.gridy = 11;
 		c.insets = none;
 		c.gridwidth = 4;
 		c.weightx = 1;
@@ -273,109 +286,77 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 			String command = e.getActionCommand();
 			if(command.equals("change"))
 			{
-				labelOne.setText("");
-				labelTwo.setText("");
-				labelThree.setText("");
-				labelFour.setText("");
-				labelOnef.setText("");
-				labelTwof.setText("");
-				labelThreef.setText("");
-				labelFourf.setText("");
 				ta.setText("");
 
-				labelOnef.setEditable(false);
-				labelTwof.setEditable(false);
-				labelThreef.setEditable(false);
-				labelFourf.setEditable(false);
+				fieldAc.setEditable(false);
+				fieldAmax.setEditable(false);
+				fieldVmax.setEditable(false);
+				fieldIa.setEditable(false);
+				fieldM.setEditable(false);
 
 				if(Jibson1993.isSelected())
 				{
-					labelOne.setText("Critical (yield) acceleration (g's):");
-					labelTwo.setText("Arias intensity (m/s):");
-					labelOnef.setEditable(true);
-					labelTwof.setEditable(true);
+					fieldAc.setEditable(true);
+					fieldIa.setEditable(true);
 					ta.setText(Jibson1993Str);
 				}
 				else if(JibsonAndOthers1998.isSelected())
 				{
-					labelOne.setText("Critical (yield) acceleration (g's):");
-					labelTwo.setText("Arias intensity (m/s):");
-					labelOnef.setEditable(true);
-					labelTwof.setEditable(true);
+					fieldAc.setEditable(true);
+					fieldIa.setEditable(true);
 					ta.setText(JibsonAndOthers1998Str);
 				}
 				else if(Jibson2007CA.isSelected())
 				{
-					labelOne.setText("Critical (yield) acceleration (g's):");
-					labelTwo.setText("Peak ground acceleration (g's):");
-					labelOnef.setEditable(true);
-					labelTwof.setEditable(true);
+					fieldAc.setEditable(true);
+					fieldAmax.setEditable(true);
 					ta.setText(Jibson2007CAStr);
 				}
 				else if(Jibson2007CAM.isSelected())
 				{
-					labelOne.setText("Critical (yield) acceleration (g's):");
-					labelTwo.setText("Peak ground acceleration (g's):");
-					labelThree.setText("Magnitude:");
-					labelOnef.setEditable(true);
-					labelTwof.setEditable(true);
-					labelThreef.setEditable(true);
+					fieldAc.setEditable(true);
+					fieldAmax.setEditable(true);
+					fieldM.setEditable(true);
 					ta.setText(Jibson2007CAMStr);
 				}
 				else if(Jibson2007AICA.isSelected())
 				{
-					labelOne.setText("Critical (yield) acceleration (g's):");
-					labelTwo.setText("Arias intensity (m/s):");
-					labelOnef.setEditable(true);
-					labelTwof.setEditable(true);
+					fieldAc.setEditable(true);
+					fieldIa.setEditable(true);
 					ta.setText(Jibson2007AICAStr);
 				}
 				else if(Jibson2007AICAR.isSelected())
 				{
-					labelOne.setText("Critical (yield) acceleration (g's):");
-					labelTwo.setText("Peak ground acceleration (g's):");
-					labelThree.setText("Arias intensity (m/s):");
-					labelOnef.setEditable(true);
-					labelTwof.setEditable(true);
-					labelThreef.setEditable(true);
+					fieldAc.setEditable(true);
+					fieldAmax.setEditable(true);
+					fieldIa.setEditable(true);
 					ta.setText(Jibson2007AICARStr);
 				}
 				else if(Ambraseys.isSelected())
 				{
-					labelOne.setText("Critical (yield) acceleration (g's):");
-					labelTwo.setText("Peak ground acceleration (g's):");
-					labelOnef.setEditable(true);
-					labelTwof.setEditable(true);
+					fieldAc.setEditable(true);
+					fieldAmax.setEditable(true);
 					ta.setText(AmbraseysStr);
 				}
 				else if(SaygiliRathje2008CARPA.isSelected())
 				{
-					labelOne.setText("Critical (yield) acceleration (g's):");
-					labelTwo.setText("Peak ground acceleration (g's):");
-					labelOnef.setEditable(true);
-					labelTwof.setEditable(true);
+					fieldAc.setEditable(true);
+					fieldAmax.setEditable(true);
 					ta.setText(SaygiliRathje2008CARPAStr);
 				}
 				else if(SaygiliRathje2008CARPAPV.isSelected())
 				{
-					labelOne.setText("Critical (yield) acceleration (g's):");
-					labelTwo.setText("Peak ground acceleration (g's):");
-					labelThree.setText("Peak ground velocity (cm/s):");
-					labelOnef.setEditable(true);
-					labelTwof.setEditable(true);
-					labelThreef.setEditable(true);
+					fieldAc.setEditable(true);
+					fieldAmax.setEditable(true);
+					fieldVmax.setEditable(true);
 					ta.setText(SaygiliRathje2008CARPAPVStr);
 				}
 				else if(SaygiliRathje2008CARPAPVAI.isSelected())
 				{
-					labelOne.setText("Critical (yield) acceleration (g's):");
-					labelTwo.setText("Peak ground acceleration (g's):");
-					labelThree.setText("Peak ground velocity (cm/s):");
-					labelFour.setText("Arias intensity (m/s):");
-					labelOnef.setEditable(true);
-					labelTwof.setEditable(true);
-					labelThreef.setEditable(true);
-					labelFourf.setEditable(true);
+					fieldAc.setEditable(true);
+					fieldAmax.setEditable(true);
+					fieldVmax.setEditable(true);
+					fieldIa.setEditable(true);
 					ta.setText(SaygiliRathje2008CARPAPVAIStr);
 				}
 			}
@@ -383,121 +364,64 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 			{
 				boolean analysis = true;
 
+				double Ac = 0, Amax = 0, Vmax = 0, Ia = 0, M = 0;
+				Double d;
+
+				if(fieldAc.isEditable())
+				{
+					d = (Double)Utils.checkNum(fieldAc.getText(), "critical acceleration field", null, false, null, new Double(0), true, null, false);
+					if(d == null) return;
+					Ac = d.doubleValue();
+				}
+
+				if(fieldAmax.isEditable())
+				{
+					d = (Double)Utils.checkNum(fieldAmax.getText(), "peak ground acceleration field", null, false, null, new Double(0), true, null, false);
+					if(d == null) return;
+					Amax = d.doubleValue();
+				}
+
+				if(fieldVmax.isEditable())
+				{
+					d = (Double)Utils.checkNum(fieldVmax.getText(), "peak ground velocity field", null, false, null, new Double(0), true, null, false);
+					if(d == null) return;
+					Vmax = d.doubleValue();
+				}
+
+				if(fieldIa.isEditable())
+				{
+					d = (Double)Utils.checkNum(fieldIa.getText(), "Arias intensity field", null, false, null, new Double(0), true, null, false);
+					if(d == null) return;
+					Ia = d.doubleValue();
+				}
+
+				if(fieldM.isEditable())
+				{
+					d = (Double)Utils.checkNum(fieldM.getText(), "magnitude field", null, false, null, new Double(0), true, null, false);
+					if(d == null) return;
+					M = d.doubleValue();
+				}
+
 				if(Jibson1993.isSelected())
-				{
-					Double d1 = (Double)Utils.checkNum(labelOnef.getText(), "critical acceleration field", null, false, null, new Double(0), true, null, false);
-					if(d1 == null) return;
-
-					Double d2 = (Double)Utils.checkNum(labelTwof.getText(), "Arias intensity field", null, false, null, new Double(0), false, null, false);
-					if(d2 == null) return;
-
-					labelResCmf.setText(RigidBlockSimplified.Jibson1993(d2.doubleValue(), d1.doubleValue()));
-				}
+					fieldResCm.setText(RigidBlockSimplified.Jibson1993(Ia, Ac));
 				else if(JibsonAndOthers1998.isSelected())
-				{
-					Double d1 = (Double)Utils.checkNum(labelOnef.getText(), "critical acceleration field", null, false, null, new Double(0), true, null, false);
-					if(d1 == null) return;
-
-					Double d2 = (Double)Utils.checkNum(labelTwof.getText(), "Arias intensity field", null, false, null, new Double(0), false, null, false);
-					if(d2 == null) return;
-
-					labelResCmf.setText(RigidBlockSimplified.JibsonAndOthers1998(d2.doubleValue(), d1.doubleValue()));
-				}
+					fieldResCm.setText(RigidBlockSimplified.JibsonAndOthers1998(Ia, Ac));
 				else if(Jibson2007CA.isSelected())
-				{
-					Double d1 = (Double)Utils.checkNum(labelOnef.getText(), "critical acceleration field", null, false, null, new Double(0), true, null, false);
-					if(d1 == null) return;
-
-					Double d2 = (Double)Utils.checkNum(labelTwof.getText(), "peak ground acceleration field", null, false, null, new Double(0), false, null, false);
-					if(d2 == null) return;
-
-					labelResCmf.setText(RigidBlockSimplified.Jibson2007CA(d1.doubleValue(), d2.doubleValue()));
-				}
+					fieldResCm.setText(RigidBlockSimplified.Jibson2007CA(Ac, Amax));
 				else if(Jibson2007CAM.isSelected())
-				{
-					Double d1 = (Double)Utils.checkNum(labelOnef.getText(), "critical acceleration field", null, false, null, new Double(0), true, null, false);
-					if(d1 == null) return;
-
-					Double d2 = (Double)Utils.checkNum(labelTwof.getText(), "peak ground acceleration field", null, false, null, new Double(0), false, null, false);
-					if(d2 == null) return;
-
-					Double d3 = (Double)Utils.checkNum(labelThreef.getText(), "magnitude field", null, false, null, new Double(0), false, null, false);
-					if(d3 == null) return;
-
-					labelResCmf.setText(RigidBlockSimplified.Jibson2007CAM(d1.doubleValue(), d2.doubleValue(), d3.doubleValue()));
-				}
+					fieldResCm.setText(RigidBlockSimplified.Jibson2007CAM(Ac, Amax, M));
 				else if(Jibson2007AICA.isSelected())
-				{
-					Double d1 = (Double)Utils.checkNum(labelOnef.getText(), "critical acceleration field", null, false, null, new Double(0), true, null, false);
-					if(d1 == null) return;
-
-					Double d2 = (Double)Utils.checkNum(labelTwof.getText(), "Arias intensity field", null, false, null, new Double(0), false, null, false);
-					if(d2 == null) return;
-
-					labelResCmf.setText(RigidBlockSimplified.Jibson2007AICA(d2.doubleValue(), d1.doubleValue()));
-				}
+					fieldResCm.setText(RigidBlockSimplified.Jibson2007AICA(Ia, Ac));
 				else if(Jibson2007AICAR.isSelected())
-				{
-					Double d1 = (Double)Utils.checkNum(labelOnef.getText(), "critical acceleration field", null, false, null, new Double(0), true, null, false);
-					if(d1 == null) return;
-
-					Double d2 = (Double)Utils.checkNum(labelTwof.getText(), "peak ground acceleration field", null, false, null, new Double(0), true, null, false);
-					if(d2 == null) return;
-
-					Double d3 = (Double)Utils.checkNum(labelThreef.getText(), "Arias intensity field", null, false, null, new Double(0), false, null, false);
-					if(d3 == null) return;
-
-					labelResCmf.setText(RigidBlockSimplified.Jibson2007AICAR(d3.doubleValue(), d1.doubleValue(), d2.doubleValue()));
-				}
+					fieldResCm.setText(RigidBlockSimplified.Jibson2007AICAR(Ia, Ac, Amax));
 				else if(Ambraseys.isSelected())
-				{
-					Double d1 = (Double)Utils.checkNum(labelOnef.getText(), "critical acceleration field", null, false, null, new Double(0), true, null, false);
-					if(d1 == null) return;
-
-					Double d2 = (Double)Utils.checkNum(labelTwof.getText(), "peak ground acceleration field", null, false, null, new Double(0), false, null, false);
-					if(d2 == null) return;
-
-					labelResCmf.setText(RigidBlockSimplified.AmbraseysAndMenu(d2.doubleValue(), d1.doubleValue()));
-				}
+					fieldResCm.setText(RigidBlockSimplified.AmbraseysAndMenu(Amax, Ac));
 				else if(SaygiliRathje2008CARPA.isSelected())
-				{
-					Double d1 = (Double)Utils.checkNum(labelOnef.getText(), "critical acceleration field", null, false, null, new Double(0), true, null, false);
-					if(d1 == null) return;
-
-					Double d2 = (Double)Utils.checkNum(labelTwof.getText(), "peak ground acceleration field", null, false, null, new Double(0), true, null, false);
-					if(d2 == null) return;
-
-					labelResCmf.setText(RigidBlockSimplified.SaygiliRathje2008CARPA(d1.doubleValue(), d2.doubleValue()));
-				}
+					fieldResCm.setText(RigidBlockSimplified.SaygiliRathje2008CARPA(Ac, Amax));
 				else if(SaygiliRathje2008CARPAPV.isSelected())
-				{
-					Double d1 = (Double)Utils.checkNum(labelOnef.getText(), "critical acceleration field", null, false, null, new Double(0), true, null, false);
-					if(d1 == null) return;
-
-					Double d2 = (Double)Utils.checkNum(labelTwof.getText(), "peak ground acceleration field", null, false, null, new Double(0), true, null, false);
-					if(d2 == null) return;
-
-					Double d3 = (Double)Utils.checkNum(labelThreef.getText(), "peak ground velocity field", null, false, null, new Double(0), true, null, false);
-					if(d3 == null) return;
-
-					labelResCmf.setText(RigidBlockSimplified.SaygiliRathje2008CARPAPV(d1.doubleValue(), d2.doubleValue(), d3.doubleValue()));
-				}
+					fieldResCm.setText(RigidBlockSimplified.SaygiliRathje2008CARPAPV(Ac, Amax, Vmax));
 				else if(SaygiliRathje2008CARPAPVAI.isSelected())
-				{
-					Double d1 = (Double)Utils.checkNum(labelOnef.getText(), "critical acceleration field", null, false, null, new Double(0), true, null, false);
-					if(d1 == null) return;
-
-					Double d2 = (Double)Utils.checkNum(labelTwof.getText(), "peak ground acceleration field", null, false, null, new Double(0), true, null, false);
-					if(d2 == null) return;
-
-					Double d3 = (Double)Utils.checkNum(labelThreef.getText(), "peak ground velocity field", null, false, null, new Double(0), true, null, false);
-					if(d3 == null) return;
-
-					Double d4 = (Double)Utils.checkNum(labelFourf.getText(), "Arias intensity field", null, false, null, new Double(0), true, null, false);
-					if(d4 == null) return;
-
-					labelResCmf.setText(RigidBlockSimplified.SaygiliRathje2008CARPAPVAI(d1.doubleValue(), d2.doubleValue(), d3.doubleValue(), d4.doubleValue()));
-				}
+					fieldResCm.setText(RigidBlockSimplified.SaygiliRathje2008CARPAPVAI(Ac, Amax, Vmax, Ia));
 				else
 				{
 					analysis = false;
@@ -505,7 +429,7 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 				}
 
 				if(analysis)
-					labelResInf.setText(Analysis.fmtOne.format(Double.parseDouble(labelResCmf.getText()) * 2.54));
+					fieldResIn.setText(Analysis.fmtOne.format(Double.parseDouble(fieldResCm.getText()) * 2.54));
 			}
 		}
 		catch (Exception ex)
