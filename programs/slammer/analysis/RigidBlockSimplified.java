@@ -30,7 +30,7 @@ public class RigidBlockSimplified extends Analysis
 
 	public static String Jibson2007AICA(final double arias, final double ca)
 	{
-		return fmtOne.format(Math.pow(10, 2.401 * Math.log10(arias) - 3.481 * Math.log10(ca) - 3.23));
+		return fmtOne.format(Math.pow(10, 2.401 * Math.log10(arias) - 3.481 * Math.log10(ca) - 3.32));
 	}
 
 	public static String Jibson2007AICAR(final double arias, final double ca, final double maxa)
@@ -47,7 +47,7 @@ public class RigidBlockSimplified extends Analysis
 
 	public static String ProbFailure(final double disp)
 	{
-		return fmtThree.format(0.335 * (1 - Math.exp(-0.048 * Math.pow(disp, 1.565))));
+		return fmtThree.format(0.335 * (1.0 - Math.exp(-0.048 * Math.pow(disp, 1.565))));
 	}
 
 	public static String SaygiliRathje2008CARPA(final double ac, final double amax)
@@ -57,7 +57,7 @@ public class RigidBlockSimplified extends Analysis
 		final double ratio3 = ratio2 * ratio;
 		final double ratio4 = ratio3 * ratio;
 		return fmtOne.format(Math.pow(Math.E,
-			5.52 * 4.43 * ratio - 20.39 * ratio2 + 42.61 * ratio3 - 28.74 * ratio4 + 0.72 * Math.log(amax)
+			5.52 - 4.43 * ratio - 20.39 * ratio2 + 42.61 * ratio3 - 28.74 * ratio4 + 0.72 * Math.log(amax)
 		));
 	}
 
@@ -68,7 +68,7 @@ public class RigidBlockSimplified extends Analysis
 		final double ratio3 = ratio2 * ratio;
 		final double ratio4 = ratio3 * ratio;
 		return fmtOne.format(Math.pow(Math.E,
-			-1.56 - 4.58 * ratio - 20.48 * ratio2 + 44.75 * ratio3 - 30.50 * ratio4 - 0.64 * Math.log(amax) + 1.55 * Math.log(vmax)
+			-1.56 - 4.58 * ratio - 20.84 * ratio2 + 44.75 * ratio3 - 30.50 * ratio4 - 0.64 * Math.log(amax) + 1.55 * Math.log(vmax)
 		));
 	}
 
