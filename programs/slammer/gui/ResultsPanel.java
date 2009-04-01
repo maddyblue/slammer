@@ -673,7 +673,6 @@ class ResultsPanel extends JPanel implements ActionListener
 
 				JFreeChart hist = ChartFactory.createHistogram(title, "Displacement " + unitDisplacement, "Number of Records", dataset, org.jfree.chart.plot.PlotOrientation.VERTICAL, false, true, false);
 				ChartFrame frame = new ChartFrame(title, hist);
-				((NumberAxis)(hist.getXYPlot().getRangeAxis())).setTickUnit(new NumberTickUnit(1.0));
 
 				frame.pack();
 				frame.setLocationRelativeTo(null);
