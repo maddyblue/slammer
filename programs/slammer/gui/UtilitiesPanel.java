@@ -52,7 +52,7 @@ class UtilitiesPanel extends JPanel implements ActionListener
 	JButton destb = new JButton("Browse...");
 	JButton go = new JButton("Execute");
 	JTextField skip = new JTextField("0", 4);
-	JCheckBox overwrite = new JCheckBox("Overwrite without prompting");
+	JCheckBox overwrite = new JCheckBox("Overwrite files without prompting");
 	JEditorPane pane = new JEditorPane();
 	JScrollPane spane = new JScrollPane(pane);
 
@@ -229,7 +229,7 @@ class UtilitiesPanel extends JPanel implements ActionListener
 		panel = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
 		panel.add(new JLabel("Skip the first "));
 		panel.add(skip);
-		panel.add(new JLabel(" lines of the source file (use this to skip header data)."));
+		panel.add(new JLabel(" lines of the source file (use this to skip header data)"));
 		gridbag.setConstraints(panel, c);
 		add(panel);
 

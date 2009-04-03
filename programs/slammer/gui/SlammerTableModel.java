@@ -40,14 +40,11 @@ class SlammerTableModel extends DefaultTableModel implements SlammerTableInterfa
 		}
 	}
 
-	// modelint should either be STATION, RECORD, SWAP, or REFRESH.
+	// modelint should either be STATION, RECORD, or REFRESH.
 	public void setModel(int modelint) throws Exception
 	{
 		switch(modelint)
 		{
-			case SWAP:
-				setModel(RSBOTH ^ currentModel);
-				return;
 			case REFRESH:
 				break;
 			case STATION:
@@ -159,8 +156,8 @@ class SlammerTableModel extends DefaultTableModel implements SlammerTableInterfa
 		}
 
 		ret = "SELECT " + ret + " FROM data WHERE select" + (selectTable ? "2" : "1") + "=1 ORDER BY "
-			+ SlammerTable.getColValue(colFieldName, colDBName, primarySort.getSelectedItem().toString()) + " " + primaryOrder + ","
-			+ SlammerTable.getColValue(colFieldName, colDBName, secondarySort.getSelectedItem().toString()) + " " + secondaryOrder;
+			+ SlammerTable.getColValue(colDispName, colDBName, primarySort.getSelectedItem().toString()) + " " + primaryOrder + ","
+			+ SlammerTable.getColValue(colDispName, colDBName, secondarySort.getSelectedItem().toString()) + " " + secondaryOrder;
 		return ret;
 	}
 }

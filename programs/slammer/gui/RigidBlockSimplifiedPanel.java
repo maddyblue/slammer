@@ -429,7 +429,7 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 				}
 
 				if(analysis)
-					fieldResIn.setText(Analysis.fmtOne.format(Double.parseDouble(fieldResCm.getText()) * 2.54));
+					fieldResIn.setText(Analysis.fmtOne.format(Double.parseDouble(fieldResCm.getText()) / 2.54));
 			}
 		}
 		catch (Exception ex)

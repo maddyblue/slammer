@@ -29,13 +29,12 @@ class ResultsPanel extends JPanel implements ActionListener
 	public final static int INV = 1; // inverse
 
 	// table column indicies
-	public final static int RBN = 2;
-	public final static int RBC = 3;
-	public final static int DCN = 6;
-	public final static int DCC = 7;
-	public final static int CPN = 10;
-	public final static int CPC = 11;
-	public final static int LEN = 14;
+	public final static int RBC = 2;
+	public final static int DCN = RBC + 3;
+	public final static int DCC = DCN + 1;
+	public final static int CPN = DCC + 3;
+	public final static int CPC = CPN + 1;
+	public final static int LEN = CPC + 3;
 
 	String polarityName[] = { "Normal", "Inverse", "Average" };
 
@@ -158,13 +157,12 @@ class ResultsPanel extends JPanel implements ActionListener
 							paramUnit = parent.Parameters.unitMetric.isSelected();
 							final double g = paramUnit ? Analysis.Gcmss : Analysis.Ginss;
 							unitDisplacement = paramUnit ? "(cm)" : "(in)";
-							outputTableModel.setColumnIdentifiers(new Object[] {"Earthquake", "Record", "",
+							outputTableModel.setColumnIdentifiers(new Object[] {"Earthquake", "Record",
 								"<----", ParametersPanel.stringRB + " " + unitDisplacement, "---->", "",
 								"<----", ParametersPanel.stringDC + " " + unitDisplacement, "---->", "",
 								"<----", ParametersPanel.stringCP + " " + unitDisplacement, "---->"
 							});
 
-							outputTable.getColumnModel().getColumn(RBN).setPreferredWidth(0);
 							outputTable.getColumnModel().getColumn(DCN).setPreferredWidth(0);
 							outputTable.getColumnModel().getColumn(CPN).setPreferredWidth(0);
 
@@ -388,7 +386,7 @@ class ResultsPanel extends JPanel implements ActionListener
 							int j;
 							Object[] row;
 
-							outputTableModel.addRow(new Object[] { null, "Polarity:", null,
+							outputTableModel.addRow(new Object[] { null, "Polarity:",
 								polarityName[NOR], polarityName[INV], polarityName[AVG], null,
 								polarityName[NOR], polarityName[INV], polarityName[AVG], null,
 								polarityName[NOR], polarityName[INV], polarityName[AVG]
@@ -541,8 +539,8 @@ class ResultsPanel extends JPanel implements ActionListener
 								max = ((Double)dataVect[j][AVG].get(dataVect[j][AVG].size() - 1)).doubleValue();
 
 								mean = Double.parseDouble(unitFmt.format(total[j] / num));
-								rmean[j * 4 + 5] = unitFmt.format(mean);
-								rmedian[j * 4 + 5] = unitFmt.format(dataVect[j][AVG].get((int)(num / 2.0)));
+								rmean[j * 4 + 4] = unitFmt.format(mean);
+								rmedian[j * 4 + 4] = unitFmt.format(dataVect[j][AVG].get((int)(num / 2.0)));
 
 								value = 0;
 
@@ -554,7 +552,7 @@ class ResultsPanel extends JPanel implements ActionListener
 
 								value /= num - 1;
 								value = Math.sqrt(value);
-								rsd[j * 4 + 5] = unitFmt.format(value);
+								rsd[j * 4 + 4] = unitFmt.format(value);
 							}
 
 							outputTableModel.addRow(new Object[0]);

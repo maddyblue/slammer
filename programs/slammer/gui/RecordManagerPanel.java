@@ -31,6 +31,10 @@ class RecordManagerPanel extends JPanel implements ActionListener
 	JFileChooser saveChooser = new JFileChooser();
 	JButton delete = new JButton("Delete selected record(s) from database");
 
+	ButtonGroup timeAxisGroup = new ButtonGroup();
+	JRadioButton timeAxisGs = new JRadioButton("g's", true);
+	JRadioButton timeAxisCmss = new JRadioButton("cm/s/s");
+
 	ButtonGroup saveGroup = new ButtonGroup();
 	JRadioButton saveTab = new JRadioButton("Tab");
 	JRadioButton saveSpace = new JRadioButton("Space");
@@ -99,6 +103,9 @@ class RecordManagerPanel extends JPanel implements ActionListener
 		TypeGroup.add(typeTime);
 		TypeGroup.add(typeFourier);
 		TypeGroup.add(typeSpectra);
+
+		timeAxisGroup.add(timeAxisGs);
+		timeAxisGroup.add(timeAxisCmss);
 
 		saveGroup.add(saveTab);
 		saveGroup.add(saveSpace);
@@ -233,25 +240,43 @@ class RecordManagerPanel extends JPanel implements ActionListener
 		);
 
 		Border bleft = BorderFactory.createMatteBorder(0, 1, 0, 0, Color.BLACK);
+		Border bdown = BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK);
 
 		JPanel graphPanel = new JPanel(new GridLayout(1, 0));
 		graphPanel.add(graph2);
 		graphPanel.add(saveGraph);
 
-		c.gridx = x;
+		c.gridx = x++;
 		c.gridy = y++;
 		c.gridwidth = 3;
 		gridbag.setConstraints(graphPanel, c);
 		panel.add(graphPanel);
 		c.gridwidth = 1;
 
-		c.gridx = x++;
 		c.gridy = y++;
 		typeTime.setBorder(b);
 		typeTime.setBorderPainted(true);
 		gridbag.setConstraints(typeTime, c);
 		panel.add(typeTime);
 
+		c.gridx = x++;
+		c.insets = left;
+		label = new JLabel("Vertical Axis");
+		label.setBorder(bdown);
+		gridbag.setConstraints(label, c);
+		panel.add(label);
+
+		c.gridx = x++;
+		c.insets = none;
+		Box timeAxisPanel = new Box(BoxLayout.X_AXIS);
+		timeAxisPanel.add(timeAxisGs);
+		timeAxisPanel.add(timeAxisCmss);
+		timeAxisPanel.setBorder(bdown);
+		gridbag.setConstraints(timeAxisPanel, c);
+		panel.add(timeAxisPanel);
+		x -= 3;
+
+		c.gridx = x++;
 		c.gridy = y++;
 		typeFourier.setBorder(b);
 		typeFourier.setBorderPainted(true);
@@ -321,7 +346,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 		gridbag.setConstraints(spectraHigh, c);
 		panel.add(spectraHigh);
 
-		y -= 5;
+		y -= 7;
 		c.gridy = y++;
 		c.insets = new Insets(0, 10, 0, 0);
 		c.gridx = x++;
@@ -434,7 +459,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 					return;
 				}
 
-				DoubleList dat = new DoubleList(path);
+				DoubleList dat = new DoubleList(path, 0, 1, typeTime.isSelected() && timeAxisGs.isSelected());
 
 				if(dat.bad())
 				{
@@ -451,13 +476,19 @@ class RecordManagerPanel extends JPanel implements ActionListener
 				{
 					title = "Time Series";
 					xAxis = "Time (s)";
-					yAxis = "Acceleration (cm/s/s)";
 					Double val;
 					double last1 = 0, last2 = 0, current;
 					double diff1, diff2;
 					double time = 0, timeStor = 0, td;
 					int perSec = 50;
 					double interval = 1.0 / (double)perSec;
+
+					yAxis = "Acceleration (";
+					if(timeAxisGs.isSelected())
+						yAxis += "g's";
+					else
+						yAxis += "cm/s/s";
+					yAxis += ")";
 
 					// add the first point
 					if((val = dat.each()) != null)

@@ -14,8 +14,7 @@ public interface SlammerTableInterface
 	public static final int IMCMB   = 1 << 3;
 	public static final int IMBOTH  = IMTBL | IMCMB;
 
-	public static final int SWAP    = 1 << 4;
-	public static final int REFRESH = 1 << 5;
+	public static final int REFRESH = 1 << 4;
 
 	public static final Integer NONEO    = new Integer(NONE);
 
