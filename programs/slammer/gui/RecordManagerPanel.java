@@ -240,7 +240,10 @@ class RecordManagerPanel extends JPanel implements ActionListener
 		);
 
 		Border bleft = BorderFactory.createMatteBorder(0, 1, 0, 0, Color.BLACK);
-		Border bdown = BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK);
+		Border bdown = BorderFactory.createCompoundBorder(
+			BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK),
+			BorderFactory.createEmptyBorder(0, 2, 0, 0)
+		);
 
 		JPanel graphPanel = new JPanel(new GridLayout(1, 0));
 		graphPanel.add(graph2);
@@ -260,14 +263,12 @@ class RecordManagerPanel extends JPanel implements ActionListener
 		panel.add(typeTime);
 
 		c.gridx = x++;
-		c.insets = left;
 		label = new JLabel("Vertical Axis");
 		label.setBorder(bdown);
 		gridbag.setConstraints(label, c);
 		panel.add(label);
 
 		c.gridx = x++;
-		c.insets = none;
 		Box timeAxisPanel = new Box(BoxLayout.X_AXIS);
 		timeAxisPanel.add(timeAxisGs);
 		timeAxisPanel.add(timeAxisCmss);
