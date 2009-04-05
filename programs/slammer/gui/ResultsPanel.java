@@ -434,7 +434,8 @@ class ResultsPanel extends JPanel implements ActionListener
 									iscale = -scale;
 								}
 
-								ain = dat.getAsArray();
+								if(paramDecoupled || paramCoupled)
+									ain = dat.getAsArray();
 
 								// do the actual analysis
 

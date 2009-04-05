@@ -3,34 +3,15 @@
 package slammer;
 
 import java.io.*;
+import java.util.*;
 import slammer.analysis.*;
 import slammer.gui.*;
 
 public class DoubleList
 {
-	class DoubleListElement
-	{
-		protected Double val;
-		protected DoubleListElement next, prev;
 
-		public DoubleListElement()
-		{
-			val = null;
-			next = null;
-			prev = null;
-		}
-
-		public DoubleListElement(Double val)
-		{
-			this.val = val;
-			next = null;
-			prev = null;
-		}
-	}
-
-	/* head is the beginning of the list, pointing to the first element */
-	private DoubleListElement head, current, end;
-	private int length;
+	private ArrayList<Double> data = new ArrayList<Double>(1024);
+	private ListIterator<Double> iter;
 	private int bad = 0;
 
 	public DoubleList(String fname) throws IOException
@@ -46,11 +27,8 @@ public class DoubleList
 	/* skip: the number of lines to skip at the beginning of the file */
 	public DoubleList(String fname, int skip, final double scale, final boolean nomult) throws IOException
 	{
-		head = new DoubleListElement();
-		current = head;
 		FileReader file = new FileReader(fname);
 		Double dbl;
-		length = 0;
 
 		char c;
 		while(skip > 0 && file.ready())
@@ -70,23 +48,18 @@ public class DoubleList
 			}
 			catch (NumberFormatException nfe)
 			{
-				bad = length + 1;
+				bad = data.size() + 1;
 				return;
 			}
 
 			if(dbl == null)
 				break;
 
-			current.next = new DoubleListElement(dbl);
 			if(!nomult)
-				current.next.val *= scale * Analysis.Gcmss;
-			current.next.prev = current;
-			current = current.next;
-			length++;
+				dbl *= scale * Analysis.Gcmss;
+
+			data.add(dbl);
 		}
-		head = head.next;
-		end = current;
-		current = head;
 	}
 
 	private Double nextDouble(FileReader file) throws IOException
@@ -141,45 +114,39 @@ public class DoubleList
 
 	public void reset()
 	{
-		current = head;
+		iter = data.listIterator();
 	}
 
 	public void end()
 	{
-		current = end;
+		iter = data.listIterator(data.size() - 1);
 	}
 
 	public Double each()
 	{
-		if(current == null)
+		if(!iter.hasNext())
 			return null;
 
-		Double ret = current.val;
-		current = current.next;
-		return ret;
+		return iter.next();
 	}
 
 	public void next()
 	{
-		if(current == null)
-			return;
-
-		current = current.next;
+		if(iter.hasNext())
+			iter.next();
 	}
 
 	public Double eachP()
 	{
-		if(current == null)
-				return null;
+		if(!iter.hasPrevious())
+			return null;
 
-		Double ret = current.val;
-		current = current.prev;
-		return ret;
+		return iter.previous();
 	}
 
 	public int size()
 	{
-		return length;
+		return data.size();
 	}
 
 	public void save(String fname)
@@ -216,13 +183,8 @@ public class DoubleList
 	{
 		double[] ret = new double[size()];
 
-		DoubleListElement c = head;
-
-		for(int i = 0; c != null; i++)
-		{
-			ret[i] = c.val.doubleValue();
-			c = c.next;
-		}
+		for(int i = 0; i < ret.length; i++)
+			ret[i] = data.get(i);
 
 		return ret;
 	}
