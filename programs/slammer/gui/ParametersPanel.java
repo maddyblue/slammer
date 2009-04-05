@@ -98,8 +98,8 @@ class ParametersPanel extends JPanel implements ActionListener
 		scaleOn.setActionCommand("scale");
 		scaleOn.addActionListener(this);
 
-		scalePGAval.setEnabled(false);
-		scaleData.setEnabled(false);
+		scalePGAval.setEditable(false);
+		scaleData.setEditable(false);
 
 		SlopeGroup.add(downSlope);
 		downSlope.setActionCommand("slope");
@@ -108,7 +108,7 @@ class ParametersPanel extends JPanel implements ActionListener
 		SlopeGroup.add(dualSlope);
 		dualSlope.setActionCommand("slope");
 		dualSlope.addActionListener(this);
-		thrustAngle.setEnabled(false);
+		thrustAngle.setEditable(false);
 
 		CAgroup.add(CAconst);
 		CAconst.setActionCommand("ca");
@@ -475,7 +475,7 @@ class ParametersPanel extends JPanel implements ActionListener
 			else if(command.equals("ca"))
 			{
 				boolean set = CAdisp.isSelected();
-				CAconstTF.setEnabled(!set);
+				CAconstTF.setEditable(!set);
 				dispTable.setEnabled(set);
 				dispAddRow.setEnabled(set);
 				dispDelRow.setEnabled(set);
@@ -491,12 +491,12 @@ class ParametersPanel extends JPanel implements ActionListener
 			}
 			else if(command.equals("scale"))
 			{
-				scalePGAval.setEnabled(scalePGA.isSelected());
-				scaleData.setEnabled(scaleOn.isSelected());
+				scalePGAval.setEditable(scalePGA.isSelected());
+				scaleData.setEditable(scaleOn.isSelected());
 			}
 			else if(command.equals("slope"))
 			{
-				thrustAngle.setEnabled(dualSlope.isSelected());
+				thrustAngle.setEditable(dualSlope.isSelected());
 			}
 			else if(command.equals("unit"))
 			{
@@ -521,10 +521,10 @@ class ParametersPanel extends JPanel implements ActionListener
 	{
 		boolean selected = typeDecoupled.isSelected() || typeCoupled.isSelected();
 
-		paramHeight.setEnabled(selected);
-		paramVs.setEnabled(selected);
-		paramDamp.setEnabled(selected);
-		paramVr.setEnabled(selected);
+		paramHeight.setEditable(selected);
+		paramVs.setEditable(selected);
+		paramDamp.setEditable(selected);
+		paramVr.setEditable(selected);
 		paramSoilModel.setEnabled(selected);
 	}
 
