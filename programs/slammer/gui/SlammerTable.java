@@ -27,7 +27,7 @@ class SlammerTable extends JPanel implements ActionListener, SlammerTableInterfa
 	 * from the records manager page.  If selectTable is false, the records manager
 	 * page is used.
 	 */
-	public SlammerTable(boolean selectTable) throws Exception
+	public SlammerTable(boolean selectTable, boolean isSlammer) throws Exception
 	{
 		sortList = getSortList();
 		primarySort = new JComboBox(sortList);
@@ -49,7 +49,7 @@ class SlammerTable extends JPanel implements ActionListener, SlammerTableInterfa
 		order.setActionCommand("sort");
 		order.addActionListener(this);
 
-		model = new SlammerTableModel(selectTable, primarySort, secondarySort, order);
+		model = new SlammerTableModel(selectTable, isSlammer, primarySort, secondarySort, order);
 		table = new JTable(model);
 
 		recordButton.setActionCommand("record");

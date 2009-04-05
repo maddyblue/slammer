@@ -10,7 +10,9 @@ import java.awt.*;
  */
 public class SplashScreen extends JComponent
 {
-	public SplashScreen()
+	String name;
+
+	public SplashScreen(String name)
 	{
 		setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 		setBackground(Color.WHITE);
@@ -63,6 +65,8 @@ public class SplashScreen extends JComponent
 			(screen.height - size.height) / 2);
 		win.validate();
 		win.setVisible(true);
+
+		this.name = name;
 	}
 
 	public void dispose()
@@ -103,7 +107,7 @@ public class SplashScreen extends JComponent
 
 		g.setColor(Color.black);
 
-		String str = "Starting Slammer Program";
+		String str = "Starting " + name;
 
 		g.drawString(str,
 			(getWidth() - fm.stringWidth(str)) / 2,

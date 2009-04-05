@@ -7,12 +7,20 @@
 	<target name="filelist">
 
 		<tar
-			destfile="${inst}/slammer-program.tar"
+			destfile="${inst}/program-slammer.tar"
 			basedir="."
 			includes="${prog}/**/*.jar"
+			excludes="${prog}/srm.jar"
 		/>
 
-		<tar destfile="${inst}/slammer-eq-california.tar">
+		<tar
+			destfile="${inst}/program-srm.tar"
+			basedir="."
+			includes="${prog}/**/*.jar"
+			excludes="${prog}/slammer.jar"
+		/>
+
+		<tar destfile="${inst}/eq-california.tar">
 			<tarfileset dir="${rec}" prefix="${rec}">
 				<include name="Cape Mendocino 1992/*" />
 				<include name="Coalinga 1983/*" />
@@ -37,13 +45,13 @@
 			</tarfileset>
 		</tar>
 
-		<tar destfile="${inst}/slammer-eq-chichi.tar">
+		<tar destfile="${inst}/eq-chichi.tar">
 			<tarfileset dir="${rec}" prefix="${rec}">
 				<include name="Chi-Chi, Taiwan 1999/*" />
 			</tarfileset>
 		</tar>
 
-		<tar destfile="${inst}/slammer-eq-international.tar">
+		<tar destfile="${inst}/eq-international.tar">
 			<tarfileset dir="${rec}" prefix="${rec}">
 				<include name="Duzce, Turkey 1999/*" />
 				<include name="Friuli, Italy 1976/*" />
@@ -54,13 +62,13 @@
 			</tarfileset>
 		</tar>
 
-		<tar destfile="${inst}/slammer-eq-otherus.tar">
+		<tar destfile="${inst}/eq-otherus.tar">
 			<tarfileset dir="${rec}" prefix="${rec}">
 				<include name="Nisqually 2001/*" />
 			</tarfileset>
 		</tar>
 
-		<tar destfile="${inst}/slammer-source.tar">
+		<tar destfile="${inst}/program-source.tar">
 			<tarfileset dir="${prog}" prefix="${prog}">
 				<include name="build.xml" />
 				<include name="help/**" />
@@ -68,13 +76,14 @@
 				<include name="slammer/slammer.manifest" />
 				<include name="slammer/images/*" />
 			</tarfileset>
-			<tarfileset dir="${inst}" prefix="${inst}" excludes="*.tar*">
-				<include name="*.html" />
+			<tarfileset dir="${inst}" prefix="${inst}" excludes="*.tar*, *.class">
+				<include name="**/*.html" />
 				<include name="*.java" />
 				<include name="filesize.sh" />
 				<include name="install.mf" />
-				<include name="install.props" />
-				<include name="slammer-*" />
+				<include name="*.props" />
+				<include name="program-*" />
+				<include name="eq-*" />
 			</tarfileset>
 			<tarfileset dir=".">
 				<include name="build.xml" />
@@ -103,13 +112,42 @@
 			manifest="installer/install.mf"
 		>
 			<fileset dir=".">
-				<include name="installer/slammer-*.tar.bz2" />
+				<include name="installer/*.tar.bz2" />
 				<include name="installer/*.class" />
 				<include name="installer/*.html" />
-				<include name="installer/install.props" />
 				<include name="org/**" />
 				<include name="records/eq-*.sql" />
 			</fileset>
+			<tarfileset
+				prefix="${inst}"
+				dir="${inst}/slammer"
+			/>
+		</jar>
+	</target>
+
+	<target name="srminstaller">
+
+		<delete>
+			<fileset dir="installer" includes="*.class" />
+		</delete>
+
+		<javac debug="true" srcdir="installer" />
+
+		<jar
+			jarfile="srminstall.jar"
+			manifest="installer/install.mf"
+		>
+			<fileset dir=".">
+				<include name="installer/*.tar.bz2" />
+				<include name="installer/*.class" />
+				<include name="installer/*.html" />
+				<include name="org/**" />
+				<include name="records/eq-*.sql" />
+			</fileset>
+			<tarfileset
+				prefix="${inst}"
+				dir="${inst}/srm"
+			/>
 		</jar>
 	</target>
 

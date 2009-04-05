@@ -82,7 +82,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 	{
 		this.parent = parent;
 
-		table = new SlammerTable(false);
+		table = new SlammerTable(false, false);
 
 		ListSelectionModel recordSelect = table.getSelectionModel();
 		recordSelect.addListSelectionListener(new ListSelectionListener()

@@ -434,9 +434,6 @@ class ResultsPanel extends JPanel implements ActionListener
 									iscale = -scale;
 								}
 
-								if(paramDecoupled || paramCoupled)
-									ain = dat.getAsArray();
-
 								// do the actual analysis
 
 								if(paramRigid)
@@ -467,6 +464,8 @@ class ResultsPanel extends JPanel implements ActionListener
 
 								if(paramDecoupled)
 								{
+									ain = dat.getAsArray();
+
 									// [i]scale is divided by Gcmss because the algorithm expects input data in Gs, but our input files are in cmss. this has nothing to do with, and is not affected by, the unit base being used (english or metric).
 									norm = Decoupled.Decoupled(ain, uwgt, height, vs, damp, di, scale / Analysis.Gcmss, g, vr, ca, dv3);
 									Analysis.graphData.setKey(row[0] + " - " + row[1] + " - " + ParametersPanel.stringDC + ", " + polarityName[NOR]);
@@ -494,6 +493,8 @@ class ResultsPanel extends JPanel implements ActionListener
 
 								if(paramCoupled)
 								{
+									ain = dat.getAsArray();
+
 									// [i]scale is divided by Gcmss because the algorithm expects input data in Gs, but our input files are in cmss. this has nothing to do with, and is not affected by, the unit base being used (english or metric).
 									norm = Coupled.Coupled(ain, uwgt, height, vs, damp, di, scale / Analysis.Gcmss, g, vr, ca, dv3);
 									Analysis.graphData.setKey(row[0] + " - " + row[1] + " - " + ParametersPanel.stringCP + ", " + polarityName[NOR]);

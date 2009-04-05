@@ -350,7 +350,7 @@ public class Slammer
 			} // }}}
 			else // {{{
 			{
-				SplashScreen splash = new SplashScreen();
+				SplashScreen splash = new SplashScreen("Slammer");
 
 				Utils.startDB();
 				splash.advance();
@@ -383,7 +383,7 @@ public class Slammer
 
 				splash.advance();
 
-				frame.getContentPane().add(new SlammerTabbedPane(frame));
+				frame.getContentPane().add(new SlammerTabbedPane(frame, true));
 				Dimension screen = frame.getToolkit().getScreenSize();
 				frame.setSize((int)(screen.width * 0.8), (int)(screen.height * 0.8));
 				frame.setLocationRelativeTo(null);

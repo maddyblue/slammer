@@ -23,47 +23,59 @@ public class SlammerTabbedPane extends JTabbedPane
 	public UtilitiesPanel Utilities;
 	public RecordManagerPanel RecordManager;
 	public AddRecordsPanel AddRecords;
-
-	public static Help help = new Help();
+	public Help help;
 
 	JTabbedPane Rigorous = new JTabbedPane();
 	JTabbedPane Simplified = new JTabbedPane();
 	JTabbedPane Manager = new JTabbedPane();
 
-	public SlammerTabbedPane(JFrame parent) throws Exception
+	public SlammerTabbedPane(JFrame parent, boolean isSlammer) throws Exception
 	{
-		GettingStarted = new GettingStartedPanel(this);
-		SelectRecords = new SelectRecordsPanel(this);
+		SelectRecords = new SelectRecordsPanel(this, isSlammer);
 		Utilities = new UtilitiesPanel(this);
-		RigidBlockSimplified = new RigidBlockSimplifiedPanel(this);
-		DecoupledSimplified = new DecoupledSimplifiedPanel(this);
-		ProbFail = new ProbFailPanel(this);
-		Results = new ResultsPanel(this);
-		WhichAnalysis = new WhichAnalysisPanel(this);
-		Parameters = new ParametersPanel(this);
 		RecordManager = new RecordManagerPanel(this);
 		AddRecords = new AddRecordsPanel(this);
 
-		Rigorous.addTab("Step 1: Select Records", SelectRecords);
-		Rigorous.addTab("Step 2: Select Analyses", Parameters);
-		Rigorous.addTab("Step 3: Perform Analyses and View Results", Results);
-		Rigorous.addTab("Appendix: Which Analysis Should I Use?", WhichAnalysis);
+		if(isSlammer)
+		{
+			GettingStarted = new GettingStartedPanel(this);
+			RigidBlockSimplified = new RigidBlockSimplifiedPanel(this);
+			DecoupledSimplified = new DecoupledSimplifiedPanel(this);
+			ProbFail = new ProbFailPanel(this);
+			Results = new ResultsPanel(this);
+			WhichAnalysis = new WhichAnalysisPanel(this);
+			Parameters = new ParametersPanel(this);
 
-		Simplified.addTab("Rigid-Block Analyses", RigidBlockSimplified);
-		Simplified.addTab("Decoupled Analysis", DecoupledSimplified);
-		Simplified.addTab("Probability of Failure", ProbFail);
+			Rigorous.addTab("Step 1: Select Records", SelectRecords);
+			Rigorous.addTab("Step 2: Select Analyses", Parameters);
+			Rigorous.addTab("Step 3: Perform Analyses and View Results", Results);
+			Rigorous.addTab("Appendix: Which Analysis Should I Use?", WhichAnalysis);
+
+			Simplified.addTab("Rigid-Block Analyses", RigidBlockSimplified);
+			Simplified.addTab("Decoupled Analysis", DecoupledSimplified);
+			Simplified.addTab("Probability of Failure", ProbFail);
+
+			addTab("Getting Started", GettingStarted);
+			addTab("Rigorous Analyses", Rigorous);
+			addTab("Simplified Analyses", Simplified);
+		}
+		else // isSRM
+		{
+			addTab("Search Records", SelectRecords);
+		}
 
 		Manager.addTab("Manage Records", RecordManager);
 		Manager.addTab("Add Records", AddRecords);
 
-		addTab("Getting Started", GettingStarted);
-		addTab("Rigorous Analyses", Rigorous);
-		addTab("Simplified Analyses", Simplified);
 		addTab("Manage/Add Records", Manager);
 		addTab("Utilities", Utilities);
-		addTab("Help", null);
 
-		addChangeListener(new TabbedListener());
+		if(isSlammer)
+		{
+			addTab("Help", null);
+			help = new Help();
+			addChangeListener(new TabbedListener());
+		}
 	}
 
 	class TabbedListener implements ChangeListener
@@ -75,12 +87,11 @@ public class SlammerTabbedPane extends JTabbedPane
 			if(t.getSelectedIndex() == (t.getTabCount() - 1))
 			{
 				t.setSelectedIndex(last);
-				SlammerTabbedPane.help.setVisible(true);
+				help.setVisible(true);
 			}
 			last = t.getSelectedIndex();
 		}
 	}
-
 
 	public void selectSelectRecords()
 	{

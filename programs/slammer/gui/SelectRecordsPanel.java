@@ -48,14 +48,14 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 	GroupFrame groupFrame;
 
 	SlammerTable table;
-
 	JButton next = new JButton("Go to Step 2: Select Analyses");
-
 	JLabel selectLabel = new JLabel();
+	boolean isSlammer;
 
-	public SelectRecordsPanel(SlammerTabbedPane parent) throws Exception
+	public SelectRecordsPanel(SlammerTabbedPane parent, boolean isSlammer) throws Exception
 	{
 		this.parent = parent;
+		this.isSlammer = isSlammer;
 
 		searchButton.setActionCommand("search");
 		searchButton.addActionListener(this);
@@ -293,22 +293,27 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 		JPanel searchTablePanel = new JPanel(new BorderLayout());
 
 		JPanel header = new JPanel(new BorderLayout());
-		JPanel headerEast = new JPanel(new GridLayout(1, 0));
-		headerEast.add(selectAll);
-		headerEast.add(selectNone);
-		header.add(BorderLayout.EAST, headerEast);
+
+		if(isSlammer)
+		{
+			JPanel headerEast = new JPanel(new GridLayout(1, 0));
+			headerEast.add(selectAll);
+			headerEast.add(selectNone);
+			header.add(BorderLayout.EAST, headerEast);
+		}
+
 		JLabel label = new JLabel("Records selected (units as indicated above):");
 		label.setFont(GUIUtils.headerFont);
 		header.add(BorderLayout.WEST, label);
 		header.setBorder(GUIUtils.makeCompoundBorder(3, 0, 0, 0));
 
-		table = new SlammerTable(true);
+		table = new SlammerTable(true, isSlammer);
 
 		JPanel footer = new JPanel(new BorderLayout());
 		Box footerEast = new Box(BoxLayout.X_AXIS);
 		footerEast.add(emptyTable);
 		footerEast.add(deleteSelected);
-		footerEast.add(next);
+		if(isSlammer) footerEast.add(next);
 		footer.add(BorderLayout.EAST, footerEast);
 		footer.add(BorderLayout.WEST, groupManage);
 
@@ -580,6 +585,13 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 		if(ret2 == null)
 			ret2 = new Object[][]{{null, "0"}};
 
-		selectLabel.setText(ret1[1][0].toString() + " of " + ret2[1][0].toString() + " records selected for analysis");
+		String selectText;
+
+		if(isSlammer)
+			selectText = ret1[1][0].toString() + " of " + ret2[1][0].toString() + " records selected for analysis";
+		else
+			selectText = ret2[1][0].toString() + " records";
+
+		selectLabel.setText(selectText);
 	}
 }

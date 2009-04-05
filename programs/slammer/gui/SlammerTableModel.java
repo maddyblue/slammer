@@ -11,12 +11,13 @@ import slammer.analysis.*;
 class SlammerTableModel extends DefaultTableModel implements SlammerTableInterface
 {
 	int currentModel;
-	boolean selectTable;
+	boolean selectTable, isSlammer;
 	JComboBox primarySort, secondarySort, order;
 
-	public SlammerTableModel(boolean selectTable, JComboBox primarySort, JComboBox secondarySort, JComboBox order) throws Exception
+	public SlammerTableModel(boolean selectTable, boolean isSlammer, JComboBox primarySort, JComboBox secondarySort, JComboBox order) throws Exception
 	{
 		this.selectTable = selectTable;
+		this.isSlammer = isSlammer;
 		this.primarySort = primarySort;
 		this.secondarySort = secondarySort;
 		this.order = order;
@@ -60,9 +61,7 @@ class SlammerTableModel extends DefaultTableModel implements SlammerTableInterfa
 
 		if(ret == null)
 		{
-			int rows = getRowCount();
-			while(--rows >= 0)
-				removeRow(rows);
+			setRowCount(0);
 			return;
 		}
 
@@ -133,6 +132,9 @@ class SlammerTableModel extends DefaultTableModel implements SlammerTableInterfa
 		{
 			if((model & ((Integer)(fieldArray[i][col])).intValue()) != 0)
 			{
+				if(!isSlammer && i == rowAnalyze)
+					continue;
+
 				ret += fieldArray[i][colDBName] + ",";
 			}
 		}

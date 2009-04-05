@@ -157,7 +157,7 @@ public abstract class OperatingSystem
 
 				mkdirs(directory);
 
-				String name = installer.getProperty("app.name");
+				String name = installer.getProperty("app.jar");
 
 				// create app start script
 				String script = directory + File.separatorChar
@@ -180,10 +180,7 @@ public abstract class OperatingSystem
 
 				out.write("cd " + installDir + "/programs\n");
 				out.write("exec \"$JAVA_HOME"
-					+ "/bin/java\" -mx${JAVA_HEAP_SIZE}m -jar slammer.jar\n");
-
-				String jar = installDir + File.separator
-					+ name.toLowerCase() + ".jar";
+					+ "/bin/java\" -mx${JAVA_HEAP_SIZE}m -jar " + name + ".jar\n");
 
 				out.close();
 
