@@ -437,18 +437,18 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 					lefts = textFields[i][0].getText().trim();
 					if(!lefts.equals(""))
 					{
-						left = (Double)Utils.checkNum(lefts, searchList[i][0] + " greater than side", null, false, null, new Double(0), true, null, false);
+						left = (Double)Utils.checkNum(lefts, searchList[i][2] + " greater than side", null, false, null, new Double(0), true, null, false);
 						if(left == null) return;
 					}
 					rights = textFields[i][1].getText().trim();
 					if(!rights.equals(""))
 					{
-						right = (Double)Utils.checkNum(rights, searchList[i][0] + " less than side", null, false, null, new Double(0), false, null, false);
+						right = (Double)Utils.checkNum(rights, searchList[i][2] + " less than side", null, false, null, new Double(0), false, null, false);
 						if(right == null) return;
 					}
 					if(left != null && right != null)
 					{
-						 if(Utils.checkNum(lefts, searchList[i][0] + " greater than side", right, true, "less than side", null, false, null, false) == null) return;
+						 if(Utils.checkNum(lefts, searchList[i][2] + " greater than side", right, true, "less than side", null, false, null, false) == null) return;
 					}
 					if(left != null)
 						where += "and " + searchList[i][1] + ">=" + lefts + " ";

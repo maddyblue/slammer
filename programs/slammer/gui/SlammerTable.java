@@ -189,7 +189,7 @@ class SlammerTable extends JPanel implements ActionListener, SlammerTableInterfa
 			if(fieldArray[i][colSearchable] == Boolean.TRUE)
 				rows.add(new Integer(i));
 
-		String[][] list = new String[rows.size()][2];
+		String[][] list = new String[rows.size()][3];
 		int num;
 		for(int i = 0; rows.size() != 0; i++)
 		{
@@ -198,6 +198,7 @@ class SlammerTable extends JPanel implements ActionListener, SlammerTableInterfa
 			{
 				list[i][0] = makeUnitName(num);
 				list[i][1] = fieldArray[num][colDBName].toString();
+				list[i][2] = fieldArray[num][colDispName].toString();
 			}
 		}
 
