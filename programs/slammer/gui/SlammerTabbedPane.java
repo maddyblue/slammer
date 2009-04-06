@@ -25,9 +25,9 @@ public class SlammerTabbedPane extends JTabbedPane
 	public AddRecordsPanel AddRecords;
 	public Help help;
 
-	JTabbedPane Rigorous = new JTabbedPane();
-	JTabbedPane Simplified = new JTabbedPane();
-	JTabbedPane Manager = new JTabbedPane();
+	JTabbedPane Rigorous;
+	JTabbedPane Simplified;
+	JTabbedPane Manager;
 
 	public SlammerTabbedPane(JFrame parent, boolean isSlammer) throws Exception
 	{
@@ -46,6 +46,10 @@ public class SlammerTabbedPane extends JTabbedPane
 			WhichAnalysis = new WhichAnalysisPanel(this);
 			Parameters = new ParametersPanel(this);
 
+			Rigorous = new JTabbedPane();
+			Simplified = new JTabbedPane();
+			Manager = new JTabbedPane();
+
 			Rigorous.addTab("Step 1: Select Records", SelectRecords);
 			Rigorous.addTab("Step 2: Select Analyses", Parameters);
 			Rigorous.addTab("Step 3: Perform Analyses and View Results", Results);
@@ -55,26 +59,25 @@ public class SlammerTabbedPane extends JTabbedPane
 			Simplified.addTab("Decoupled Analysis", DecoupledSimplified);
 			Simplified.addTab("Probability of Failure", ProbFail);
 
+			Manager.addTab("Manage Records", RecordManager);
+			Manager.addTab("Add Records", AddRecords);
+
 			addTab("Getting Started", GettingStarted);
 			addTab("Rigorous Analyses", Rigorous);
 			addTab("Simplified Analyses", Simplified);
+			addTab("Manage/Add Records", Manager);
+			addTab("Utilities", Utilities);
+			addTab("Help", null);
+
+			help = new Help();
+			addChangeListener(new TabbedListener());
 		}
 		else // isSRM
 		{
-			addTab("Search Records", SelectRecords);
-		}
-
-		Manager.addTab("Manage Records", RecordManager);
-		Manager.addTab("Add Records", AddRecords);
-
-		addTab("Manage/Add Records", Manager);
-		addTab("Utilities", Utilities);
-
-		if(isSlammer)
-		{
-			addTab("Help", null);
-			help = new Help();
-			addChangeListener(new TabbedListener());
+			addTab("Search", SelectRecords);
+			addTab("Manage", RecordManager);
+			addTab("Add", AddRecords);
+			addTab("Modify", Utilities);
 		}
 	}
 

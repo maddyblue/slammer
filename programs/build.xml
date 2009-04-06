@@ -40,7 +40,6 @@
 			<fileset dir=".">
 				<include name="slammer/**/*.class"/>
 				<include name="slammer/images/*.jpg"/>
-				<include name="help/**/*"/>
 			</fileset>
 		</jar>
 	</target>
