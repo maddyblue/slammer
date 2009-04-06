@@ -8,6 +8,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.border.*;
 import java.io.*;
+import java.util.*;
 import slammer.*;
 import slammer.analysis.*;
 
@@ -435,70 +436,85 @@ class UtilitiesPanel extends JPanel implements ActionListener
 
 				int ret;
 				boolean ovw = overwrite.isSelected();
-				String results = "";
+				StringBuilder results = new StringBuilder();
 				int errors = 0;
 				global_overwrite = OVW_NONE;
+				ArrayDeque<File> stack = new ArrayDeque<File>(sources.length);
+				ArrayDeque<File> source_stack = new ArrayDeque<File>(sources.length);
+				TreeMap<File, File> map = new TreeMap<File, File>();
+				File parent;
+
+				for(int i = 0; i < sources.length; i++)
+					source_stack.push(sources[i]);
 
 				JFrame progFrame = new JFrame("Progress...");
 				JProgressBar prog = new JProgressBar();
 				prog.setStringPainted(true);
-				prog.setMinimum(0);
-				prog.setMaximum(sources.length);
 
 				progFrame.getContentPane().add(prog);
 				progFrame.setSize(600, 75);
 				progFrame.setLocationRelativeTo(null);
 				progFrame.setVisible(true);
 
-				for(int i = 0; i < sources.length; i++)
+				while(!source_stack.isEmpty())
 				{
-					source = sources[i];
-					prog.setString(source.getAbsolutePath());
-					prog.setValue(i);
-					prog.paintImmediately(0, 0, prog.getWidth(), prog.getHeight());
+					source = source_stack.pop();
 
 					if(source.isFile())
-					{
-						try
-						{
-							results += "<br>" + runUtil(sel, source, dest, skipLines, val1.doubleValue(), val2.doubleValue(), val3.doubleValue(), ovw);
-						}
-						catch (Exception ex)
-						{
-							results = "<br>" + ex.getMessage() + results;
-							errors++;
-						}
-					}
+						stack.push(source);
 					else if(source.isDirectory())
 					{
+						parent = map.get(source.getParentFile());
+						if(parent != null)
+							map.put(source.getAbsoluteFile(), new File(parent, source.getName()));
+						else
+							map.put(source.getAbsoluteFile(), new File(source.getName()));
+
 						File list[] = source.listFiles();
 
-						if(dest == null)
-							d = null;
-						else
+						if(dest != null)
 						{
-							d = new File(dest, source.getName());
+							d = new File(dest, map.get(source.getAbsoluteFile()).getPath());
 							d.mkdirs();
 						}
 
-						for(int j = 0; j < list.length; j++)
+						for(int i = 0; i < list.length; i++)
 						{
-							if(!list[j].isFile())
-								continue;
-
-							prog.setString(list[j].getAbsolutePath());
-							prog.paintImmediately(0, 0, prog.getWidth(), prog.getHeight());
-
-							try
-							{
-								results += "<br>" + runUtil(sel, list[j], d, skipLines, val1.doubleValue(), val2.doubleValue(), val3.doubleValue(), ovw);
-							}
-							catch (Exception ex)
-							{
-								results = "<br>" + ex.getMessage() + results;
-								errors++;
-							}
+							if(list[i].isFile())
+								stack.push(list[i]);
+							else if(list[i].isDirectory())
+								source_stack.push(list[i]);
 						}
+					}
+				}
+
+				prog.setMaximum(stack.size());
+				int processed = 0;
+
+				while(!stack.isEmpty())
+				{
+					source = stack.pop();
+					prog.setValue(processed++);
+					prog.setString(source.getAbsolutePath());
+					prog.paintImmediately(0, 0, prog.getWidth(), prog.getHeight());
+
+					if(dest == null)
+						d = source;
+					else
+					{
+						d = map.get(source.getParentFile());
+						d = new File(d, source.getName());
+						d = new File(dest, d.getPath());
+					}
+
+					try
+					{
+						results.append("<br>" + runUtil(sel, source, d, skipLines, val1.doubleValue(), val2.doubleValue(), val3.doubleValue(), ovw));
+					}
+					catch (Exception ex)
+					{
+						results.insert(0, "<br>" + ex.getMessage());
+						errors++;
 					}
 				}
 
