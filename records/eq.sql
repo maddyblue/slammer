@@ -840,8 +840,8 @@ Imperial Valley 1979	E12-140	0.0050	6.5	0.381	19.1	0.143	17.6	0.65	32.0	33.5	17.
 Imperial Valley 1979	E12-230	0.0050	6.5	0.328	19.4	0.116	21.7	0.59	32.0	33.5	17.9	197.0	4	1	El Centro Array 12, 907 Brockman	USGS	32.718	-115.637
 Imperial Valley 1979	E13-140	0.0050	6.5	0.265	21.4	0.117	14.7	0.59	36.0	37.3	22.0	250.0	4	1	El Centro Array 13, Strobel residence	USGS	32.709	-115.683
 Imperial Valley 1979	E13-230	0.0050	6.5	0.257	21.2	0.139	13.0	0.47	36.0	37.3	22.0	250.0	4	1	El Centro Array 13, Strobel residence	USGS	32.709	-115.683
-Imperial Valley 1979	ECC-002	0.0050	7.5	0.749	10.4	0.213	37.6	0.88	29.1	30.7	7.3	192.0	4	1	El Centro County Center FF	CGS	32.793	-115.562
-Imperial Valley 1979	ECC-092	0.0050	8.5	0.724	13.2	0.235	68.8	1.26	29.1	30.7	7.3	192.0	4	1	El Centro County Center FF	CGS	32.793	-115.562
+Imperial Valley 1979	ECC-002	0.0050	6.5	0.749	10.4	0.213	37.6	0.88	29.1	30.7	7.3	192.0	4	1	El Centro County Center FF	CGS	32.793	-115.562
+Imperial Valley 1979	ECC-092	0.0050	6.5	0.724	13.2	0.235	68.8	1.26	29.1	30.7	7.3	192.0	4	1	El Centro County Center FF	CGS	32.793	-115.562
 Imperial Valley 1979	EDA-270	0.0050	6.5	1.712	7.0	0.352	71.2	0.5	27.2	29.0	5.1	202.0	4	1	El Centro differential array	USGS	32.796	-115.535
 Imperial Valley 1979	EDA-360	0.0050	6.5	2.106	6.6	0.48	40.4	0.55	27.2	29.0	5.1	202.0	4	1	El Centro differential array	USGS	32.796	-115.535
 Imperial Valley 1979	EMO-000	0.0050	6.5	0.858	8.2	0.314	71.8	1.05	19.4	21.8	0.1	186.0	4	1	Meloland Overpass	CGS	32.773	-115.447

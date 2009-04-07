@@ -566,8 +566,8 @@ Imperial Valley 1979	6.5	SS	E13-230	El Centro Array 13, Strobel residence	USGS	3
 Superstition Hills 1987	6.5	SS	E13-230	El Centro Array 13, Strobel residence	USGS	32.709	-115.683	D	250	0.01	42.4	43.753399867896	19.5
 Nisqually 2001	6.8	N	EAR-000	Woodinville, East Ridge Elem. School	UW	47.7400027777778	-122.04	B	549	0.01	83.0510686264783	98.2	98.2
 Nisqually 2001	6.8	N	EAR-090	Woodinville, East Ridge Elem. School	UW	47.7400027777778	-122.04	B	549	0.01	83.0510686264783	98.2	98.2
-Imperial Valley 1979	7.5	SS	ECC-002	El Centro County Center FF	CGS	32.793	-115.562	D	192	0.005	29.1	30.7	7.3
-Imperial Valley 1979	8.5	SS	ECC-092	El Centro County Center FF	CGS	32.793	-115.562	D	192	0.005	29.1	30.7	7.3
+Imperial Valley 1979	6.5	SS	ECC-002	El Centro County Center FF	CGS	32.793	-115.562	D	192	0.005	29.1	30.7	7.3
+Imperial Valley 1979	6.5	SS	ECC-092	El Centro County Center FF	CGS	32.793	-115.562	D	192	0.005	29.1	30.7	7.3
 Imperial Valley 1979	6.5	SS	EDA-270	El Centro differential array	USGS	32.796	-115.535	D	202	0.005	27.2	29	5.1
 Imperial Valley 1979	6.5	SS	EDA-360	El Centro differential array	USGS	32.796	-115.535	D	202	0.005	27.2	29	5.1
 Landers 1992	7.3	SS	EJS-030	Santa Fe Springs, 11500 E. Joslin St.	USC	33.944	-118.087	D	309	0.02	154.8	155	150.1
