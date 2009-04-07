@@ -77,13 +77,14 @@
 				<include name="slammer/images/*" />
 			</tarfileset>
 			<tarfileset dir="${inst}" prefix="${inst}" excludes="*.tar*, *.class">
-				<include name="**/*.html" />
 				<include name="*.java" />
+				<include name="readme.html" />
 				<include name="filesize.sh" />
 				<include name="install.mf" />
-				<include name="*.props" />
 				<include name="program-*" />
 				<include name="eq-*" />
+				<include name="srm/*" />
+				<include name="slammer/*" />
 			</tarfileset>
 			<tarfileset dir=".">
 				<include name="build.xml" />
