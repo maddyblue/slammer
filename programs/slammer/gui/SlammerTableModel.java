@@ -99,6 +99,13 @@ class SlammerTableModel extends DefaultTableModel implements SlammerTableInterfa
 					data[i][j] = SiteClassArray[Integer.parseInt(ret[i + 1][j].toString())];
 				}
 				else if(
+					cols[j] == fieldArray[rowLat][colAbbrev] ||
+					cols[j] == fieldArray[rowLng][colAbbrev]
+				)
+				{
+					data[i][j] = Analysis.fmtFour.format(Double.parseDouble(ret[i + 1][j].toString()));
+				}
+				else if(
 					cols[j] == fieldArray[rowAriasInt][colAbbrev] ||
 					cols[j] == fieldArray[rowPGA][colAbbrev]
 				)
@@ -109,9 +116,18 @@ class SlammerTableModel extends DefaultTableModel implements SlammerTableInterfa
 				{
 					data[i][j] = Analysis.fmtTwo.format(Double.parseDouble(ret[i + 1][j].toString()));
 				}
-				else if(cols[j] == fieldArray[rowPGV][colAbbrev])
+				else if(
+					cols[j] == fieldArray[rowPGV][colAbbrev] ||
+					cols[j] == fieldArray[rowEpiDist][colAbbrev] ||
+					cols[j] == fieldArray[rowFocalDist][colAbbrev] ||
+					cols[j] == fieldArray[rowRupDist][colAbbrev]
+				)
 				{
 					data[i][j] = Analysis.fmtOne.format(Double.parseDouble(ret[i + 1][j].toString()));
+				}
+				else if(cols[j] == fieldArray[rowVs30][colAbbrev])
+				{
+					data[i][j] = Analysis.fmtZero.format(Double.parseDouble(ret[i + 1][j].toString()));
 				}
 				else
 				{

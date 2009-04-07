@@ -84,7 +84,7 @@ public interface SlammerTableInterface
 	public static final int rowEpiDist    = 11;
 	public static final int rowFocalDist  = 12;
 	public static final int rowRupDist    = 13;
-	public static final int rowVS30       = 14;
+	public static final int rowVs30       = 14;
 	public static final int rowSiteClass  = 15;
 	public static final int rowFocMech    = 16;
 	public static final int rowLocation   = 17;

@@ -168,17 +168,39 @@ public class Slammer
 					{
 						case '\r':
 							break;
+						case '\n':
 						case '\t':
 							switch(i)
 							{
+								// numbers
 								case EQDAT_mom_mag:
+								case EQDAT_digi_int:
+									cur[i] = s;
+									break;
+								// strings
+								case EQDAT_eq:
+								case EQDAT_record:
+								case EQDAT_location:
+								case EQDAT_owner:
+									cur[i] = Utils.addQuote(s);
+									break;
+								case EQDAT_rup_dist:
 								case EQDAT_epi_dist:
 								case EQDAT_foc_dist:
-								case EQDAT_rup_dist:
+									if(i == EQDAT_rup_dist)
+									{
+										cur[i] = Utils.nullify(s);
+										if(cur[i].equals("null"))
+											break;
+									}
+									cur[i] = Analysis.fmtOne.format(Double.parseDouble(s));
+									break;
 								case EQDAT_vs30:
+									cur[i] = Analysis.fmtZero.format(Double.parseDouble(s));
+									break;
 								case EQDAT_latitude:
 								case EQDAT_longitude:
-									cur[i] = Utils.nullify(s);
+									cur[i] = Analysis.fmtFour.format(Double.parseDouble(s));
 									break;
 								case EQDAT_foc_mech:
 									cur[i] = "0";
@@ -199,25 +221,23 @@ public class Slammer
 										}
 									break;
 								default:
-									cur[i] = Utils.addQuote(s);
+									System.err.println("Error: unknown column: " + i + ", " + cur[EQDAT_record]);
 									break;
 							}
 							i++;
 							s = "";
-							break;
-						case '\n':
-						{
-							cur[i] = Utils.nullify(s);
-							s = "";
-							i = 0;
 
+							if(c == '\t')
+								break;
+
+							i = 0;
 							incr = 0;
 							path = "../records/" + cur[EQDAT_eq] + "/" + cur[EQDAT_record];
 
 							res = Utils.getDB().runQuery("select id from data where path='" + path + "'");
 							if(res != null)
 							{
-								System.out.println("Already in db: " + path);
+								System.err.println("Already in db: " + path);
 								continue;
 							}
 
@@ -262,7 +282,6 @@ public class Slammer
 							cur = new String[EQDAT_LENGTH];
 
 							break;
-						}
 						default:
 							s += (char)c;
 							break;
