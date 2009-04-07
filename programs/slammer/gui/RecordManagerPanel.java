@@ -168,7 +168,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 
 		JPanel north = new JPanel(new BorderLayout());
 
-		JLabel label = new JLabel("Modify record:");
+		JLabel label = new JLabel("Modify record properties:");
 		label.setFont(GUIUtils.headerFont);
 
 		JPanel file = new JPanel(new BorderLayout());

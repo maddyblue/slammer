@@ -3,6 +3,7 @@
 package slammer.gui;
 
 import javax.swing.*;
+import javax.swing.border.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
@@ -50,54 +51,116 @@ class GroupFrame extends JFrame implements ActionListener
 		closeB.addActionListener(this);
 
 		delim.addItem("tab");
-		delim.addItem("semi-colon");
-		delim.addItem("comma");
-		delim.addItem("colon");
+		delim.addItem("semi-colon (;)");
+		delim.addItem("comma (,)");
+		delim.addItem("colon (:)");
 		delim.addItem("space");
 
 		addToList(deleteCB);
 		addToList(changeCB);
 		addToList(exportCB);
 
-		JPanel north = new JPanel(new GridLayout(0, 3));
-		north.setLayout(new GridLayout(0, 3));
-		north.setBorder(GUIUtils.makeCompoundBorder(0, 0, 1, 0));
+		GridBagLayout gridbag = new GridBagLayout();
+		GridBagConstraints c = new GridBagConstraints();
+		setLayout(gridbag);
 
-		north.add(new JLabel("Retrieve group:"));
-		north.add(changeCB);
-		north.add(retrieveB);
+		int x = 0;
+		int y = 0;
+		JLabel label;
+		Border b = GUIUtils.makeCompoundBorder(1, 0, 0, 0);
 
-		north.add(new JLabel("Add group:"));
-		north.add(addField);
-		north.add(addGroupB);
+		c.gridx = x++;
+		c.gridy = y++;
+		c.fill = GridBagConstraints.BOTH;
+		label = new JLabel("Retrieve group:");
+		gridbag.setConstraints(label, c);
+		add(label);
 
-		north.add(new JLabel("Delete group:"));
-		north.add(deleteCB);
-		north.add(deleteGroupB);
+		c.gridx = x++;
+		gridbag.setConstraints(changeCB, c);
+		add(changeCB);
 
-		JPanel south = new JPanel();
-		south.setBorder(GUIUtils.makeCompoundBorder(1, 0, 0, 0));
-		south.add(closeB);
+		c.gridx = x;
+		gridbag.setConstraints(retrieveB, c);
+		add(retrieveB);
 
-		JPanel export = new JPanel(new BorderLayout());
+		x = 0;
+		c.gridx = x++;
+		c.gridy = y++;
+		label = new JLabel("Add group:");
+		gridbag.setConstraints(label, c);
+		add(label);
 
-		export.add(BorderLayout.NORTH, new JLabel("Export into a delimited text file:"));
+		c.gridx = x++;
+		gridbag.setConstraints(addField, c);
+		add(addField);
 
-		JPanel exportPanel = new JPanel(new VariableGridLayout(VariableGridLayout.FIXED_NUM_COLUMNS, 2));
-		exportPanel.add(new JLabel("Delimiter:"));
-		exportPanel.add(delim);
-		exportPanel.add(new JLabel("Records:"));
-		exportPanel.add(exportCB);
+		c.gridx = x;
+		gridbag.setConstraints(addGroupB, c);
+		add(addGroupB);
 
-		export.add(BorderLayout.WEST, exportPanel);
-		export.add(BorderLayout.SOUTH, exportB);
+		x = 0;
+		c.gridx = x++;
+		c.gridy = y++;
+		label = new JLabel("Delete group:");
+		gridbag.setConstraints(label, c);
+		add(label);
 
-		Container c = getContentPane();
-		c.setLayout(new BorderLayout());
+		c.gridx = x++;
+		gridbag.setConstraints(deleteCB, c);
+		add(deleteCB);
 
-		c.add(BorderLayout.NORTH, north);
-		c.add(BorderLayout.WEST, export);
-		c.add(BorderLayout.SOUTH, south);
+		c.gridx = x;
+		gridbag.setConstraints(deleteGroupB, c);
+		add(deleteGroupB);
+
+		x = 0;
+		c.gridx = x++;
+		c.gridy = y++;
+		c.gridwidth = 3;
+		label = new JLabel("Export into a delimited text file:");
+		label.setBorder(b);
+		gridbag.setConstraints(label, c);
+		add(label);
+
+		c.gridy = y++;
+		c.gridwidth = 1;
+		label = new JLabel("Delimiter:");
+		gridbag.setConstraints(label, c);
+		add(label);
+
+		c.gridx = x++;
+		gridbag.setConstraints(delim, c);
+		add(delim);
+
+		c.gridx = x;
+		c.gridheight = 2;
+		gridbag.setConstraints(exportB, c);
+		add(exportB);
+
+		x = 0;
+		c.gridy = y++;
+		c.gridx = x++;
+		c.gridheight = 1;
+		label = new JLabel("Records:");
+		gridbag.setConstraints(label, c);
+		add(label);
+
+		c.gridx = x--;
+		gridbag.setConstraints(exportCB, c);
+		add(exportCB);
+
+		c.gridx = x;
+		c.gridy = y++;
+		c.gridwidth = 3;
+		label = new JLabel("");
+		label.setBorder(b);
+		gridbag.setConstraints(label, c);
+		add(label);
+
+		c.gridy = y;
+		gridbag.setConstraints(closeB, c);
+		add(closeB);
 
 		try
 		{
@@ -154,22 +217,26 @@ class GroupFrame extends JFrame implements ActionListener
 			String command = e.getActionCommand();
 			if(command.equals("add"))
 			{
-				canChange = false;
+				String name = addField.getText();
 
-				Object[][] res = Utils.getDB().runQuery("select id,analyze from data where select2=1");
-				if(res == null)
+				if(name == null || name.length() == 0)
 				{
-					addField.setText("Nothing to add");
+					GUIUtils.popupError("Enter a name.");
+					return;
+				}
+				else if(Integer.parseInt(Utils.getDB().runQuery("select count(*) from data where select2=1")[1][0].toString()) == 0)
+				{
+					GUIUtils.popupError("No records selected.");
 					return;
 				}
 
-				String name = addField.getText();
+				canChange = false;
 				Utils.getDB().runUpdate("delete from grp where name='" + name + "'");
-				for(int i = 1; i < res.length; i++)
-					Utils.getDB().runUpdate("insert into grp values(" + res[i][0] + ", '" + name + "', " + res[i][1] + ")");
+				Utils.getDB().runUpdate("insert into grp select id, '" + name + "', analyze from data where select2=1");
 				updateGroupList();
 				if(changeCB.getSelectedItem() == null) changeCB.setSelectedItem(name);
 				canChange = true;
+				addField.setText("");
 
 				Utils.updateEQLists();
 			}
@@ -218,81 +285,62 @@ class GroupFrame extends JFrame implements ActionListener
 					else
 						del = "\t";
 
-					int list[];
-					Object[][] res;
-
-					if(index == 0)
-					{
-						res = Utils.getDB().runQuery("select id from data where select2=1 order by eq, record");
-					}
-					else
-					{
-						String group = exportCB.getSelectedItem().toString();
-						res = Utils.getDB().runQuery("select record from grp where name='" + group + "'");
-					}
-
-					if(res == null || res.length <= 1)
-					{
-						list = new int[0];
-					}
-					else
-					{
-						list = new int[res.length - 1];
-						for(int i = 0; i < list.length; i++)
-							list[i] = Integer.parseInt(res[i + 1][0].toString());
-					}
-
 					delimize(fw, del,
-						SlammerTable.makeUnitName(SlammerTable.rowEarthquake),
-						SlammerTable.makeUnitName(SlammerTable.rowRecord),
-						SlammerTable.makeUnitName(SlammerTable.rowDigInt),
-						SlammerTable.makeUnitName(SlammerTable.rowMagnitude),
-						SlammerTable.makeUnitName(SlammerTable.rowAriasInt),
-						SlammerTable.makeUnitName(SlammerTable.rowDuration),
-						SlammerTable.makeUnitName(SlammerTable.rowPGA),
-						SlammerTable.makeUnitName(SlammerTable.rowPGV),
-						SlammerTable.makeUnitName(SlammerTable.rowMeanPer),
-						SlammerTable.makeUnitName(SlammerTable.rowEpiDist),
-						SlammerTable.makeUnitName(SlammerTable.rowFocalDist),
-						SlammerTable.makeUnitName(SlammerTable.rowRupDist),
-						SlammerTable.makeUnitName(SlammerTable.rowFocMech),
-						SlammerTable.makeUnitName(SlammerTable.rowLocation),
-						SlammerTable.makeUnitName(SlammerTable.rowOwner),
-						SlammerTable.makeUnitName(SlammerTable.rowLat),
-						SlammerTable.makeUnitName(SlammerTable.rowLng),
-						SlammerTable.makeUnitName(SlammerTable.rowSiteClass),
-						SlammerTable.makeUnitName(SlammerTable.rowFile)
+						SlammerTable.makeUnitName(SlammerTable.rowEarthquake, false),
+						SlammerTable.makeUnitName(SlammerTable.rowRecord, false),
+						SlammerTable.makeUnitName(SlammerTable.rowDigInt, false),
+						SlammerTable.makeUnitName(SlammerTable.rowMagnitude, false),
+						SlammerTable.makeUnitName(SlammerTable.rowAriasInt, false),
+						SlammerTable.makeUnitName(SlammerTable.rowDuration, false),
+						SlammerTable.makeUnitName(SlammerTable.rowPGA, false),
+						SlammerTable.makeUnitName(SlammerTable.rowPGV, false),
+						SlammerTable.makeUnitName(SlammerTable.rowMeanPer, false),
+						SlammerTable.makeUnitName(SlammerTable.rowEpiDist, false),
+						SlammerTable.makeUnitName(SlammerTable.rowFocalDist, false),
+						SlammerTable.makeUnitName(SlammerTable.rowRupDist, false),
+						SlammerTable.makeUnitName(SlammerTable.rowVs30, false),
+						SlammerTable.makeUnitName(SlammerTable.rowSiteClass, false),
+						SlammerTable.makeUnitName(SlammerTable.rowFocMech, false),
+						SlammerTable.makeUnitName(SlammerTable.rowLocation, false),
+						SlammerTable.makeUnitName(SlammerTable.rowOwner, false),
+						SlammerTable.makeUnitName(SlammerTable.rowLat, false),
+						SlammerTable.makeUnitName(SlammerTable.rowLng, false),
+						SlammerTable.makeUnitName(SlammerTable.rowFile, false)
 					);
 
-					int incr;
-					for(int i = 0; i < list.length; i++)
+					String query = "select eq, record, digi_int, mom_mag, arias, dobry, pga, pgv, mean_per, epi_dist, foc_dist, rup_dist, vs30, class, foc_mech, location, owner, latitude, longitude, path from data where ";
+
+					if(index == 0)
+						query += "select2=1";
+					else
+						query += "id in (select record from grp where name='" + exportCB.getSelectedItem().toString() + "')";
+					query += " order by eq, record";
+
+					Object[][] res = Utils.getDB().runQuery(query);
+
+					for(int i = 1; res != null && i < res.length; i++)
 					{
-						res = Utils.getDB().runQuery("select eq, record, digi_int, mom_mag, arias, dobry, pga, pgv, mean_per, epi_dist, foc_dist, rup_dist, foc_mech, location, owner, latitude, longitude, class, path from data where id=" + list[i]);
-
-						if(res == null || res.length <= 1)
-							continue;
-
-						incr = 0;
 						delimize(fw, del,
-							Utils.shorten(res[1][incr++]),
-							Utils.shorten(res[1][incr++]),
-							Utils.shorten(res[1][incr++]),
-							Utils.shorten(res[1][incr++]),
-							Utils.shorten(res[1][incr++]),
-							Utils.shorten(res[1][incr++]),
-							Utils.shorten(res[1][incr++]),
-							Utils.shorten(res[1][incr++]),
-							Utils.shorten(res[1][incr++]),
-							Utils.shorten(res[1][incr++]),
-							Utils.shorten(res[1][incr++]),
-							Utils.shorten(res[1][incr++]),
-							Utils.shorten(res[1][incr++]),
-							Utils.shorten(res[1][incr++]),
-							Utils.shorten(res[1][incr++]),
-							Utils.shorten(res[1][incr++]),
-							Utils.shorten(res[1][incr++]),
-							Utils.shorten(res[1][incr++]),
-							Utils.shorten(res[1][incr++])
+							Utils.shorten(res[i][Slammer.DB_eq]),
+							Utils.shorten(res[i][Slammer.DB_record]),
+							Utils.shorten(res[i][Slammer.DB_digi_int]),
+							Utils.shorten(res[i][Slammer.DB_mom_mag]),
+							Utils.shorten(res[i][Slammer.DB_arias]),
+							Utils.shorten(res[i][Slammer.DB_dobry]),
+							Utils.shorten(res[i][Slammer.DB_pga]),
+							Utils.shorten(res[i][Slammer.DB_pgv]),
+							Utils.shorten(res[i][Slammer.DB_mean_per]),
+							Utils.shorten(res[i][Slammer.DB_epi_dist]),
+							Utils.shorten(res[i][Slammer.DB_foc_dist]),
+							Utils.shorten(res[i][Slammer.DB_rup_dist]),
+							Utils.shorten(res[i][Slammer.DB_vs30]),
+							Utils.shorten(res[i][Slammer.DB_class]),
+							Utils.shorten(res[i][Slammer.DB_foc_mech]),
+							Utils.shorten(res[i][Slammer.DB_location]),
+							Utils.shorten(res[i][Slammer.DB_owner]),
+							Utils.shorten(res[i][Slammer.DB_latitude]),
+							Utils.shorten(res[i][Slammer.DB_longitude]),
+							Utils.shorten(res[i][Slammer.DB_LENGTH]) // path
 						);
 					}
 
@@ -306,11 +354,10 @@ class GroupFrame extends JFrame implements ActionListener
 				if(!canChange) return;
 				if(changeCB.getSelectedItem() == null) return;
 
-				Object[][] res = Utils.getDB().runQuery("select record, analyze from grp where name='" +
-				changeCB.getSelectedItem().toString() + "'");
+				String grp = changeCB.getSelectedItem().toString();
 				Utils.getDB().runUpdate("update data set select2=0 where select2=1");
-				for(int i = 1; i < res.length; i++)
-					Utils.getDB().runUpdate("update data set select2=1, analyze=" + res[i][1].toString() + " where id=" + res[i][0].toString());
+				Utils.getDB().runUpdate("update data set select2=1, analyze=0 where id in (select record from grp where name='" + grp + "' and analyze=0)");
+				Utils.getDB().runUpdate("update data set select2=1, analyze=1 where id in (select record from grp where name='" + grp + "' and analyze=1)");
 				if(model != null) model.setModel(SlammerTable.REFRESH);
 
 				parent.updateSelectLabel();
@@ -322,7 +369,7 @@ class GroupFrame extends JFrame implements ActionListener
 		}
 	}
 
-	private void delimize(FileWriter fw, String delim, String eq, String record, String di, String mag, String arias, String dobry, String pga, String pgv, String meanper, String epi, String foc, String rup, String mech, String location, String owner, String lat, String lng, String site, String path) throws IOException
+	private void delimize(FileWriter fw, String delim, String eq, String record, String di, String mag, String arias, String dobry, String pga, String pgv, String meanper, String epi, String foc, String rup, String vs30, String siteclass, String mech, String location, String owner, String lat, String lng, String path) throws IOException
 	{
 		fw.write(
 			          eq
@@ -337,12 +384,13 @@ class GroupFrame extends JFrame implements ActionListener
 			+ delim + epi
 			+ delim + foc
 			+ delim + rup
+			+ delim + vs30
+			+ delim + siteclass
 			+ delim + mech
 			+ delim + location
 			+ delim + owner
 			+ delim + lat
 			+ delim + lng
-			+ delim + site
 			+ delim + path
 			+ "\n");
 	}

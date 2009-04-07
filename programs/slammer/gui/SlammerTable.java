@@ -207,11 +207,25 @@ class SlammerTable extends JPanel implements ActionListener, SlammerTableInterfa
 
 	public static String makeUnitName(int row)
 	{
-		String ret = "<html>" + fieldArray[row][colFieldName].toString();
+		return makeUnitName(row, true);
+	}
+
+	public static String makeUnitName(int row, boolean html)
+	{
+		StringBuilder ret = new StringBuilder();
+
+		if(html)
+			ret.append("<html>" + fieldArray[row][colFieldName].toString());
+		else
+			ret.append(fieldArray[row][colDispName].toString());
+
 		if(fieldArray[row][colUnits].equals("") == false)
-			ret += " (" + fieldArray[row][colUnits].toString() + ")";
-		ret += "</html>";
-		return ret;
+			ret.append(" (" + fieldArray[row][colUnits].toString() + ")");
+
+		if(html)
+			ret.append("</html>");
+
+		return ret.toString();
 	}
 
 	public SlammerTableModel getModel()
