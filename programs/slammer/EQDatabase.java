@@ -163,4 +163,17 @@ public class EQDatabase
 		Object[][] array = runQuery("select pga_g from data where eq='" + eq + "' and record='" + record + "'");
 		return Double.parseDouble((array[1][0]).toString());
 	}
+
+	public void syncRecords(String where) throws SQLException
+	{
+		runUpdate("update data set " +
+			"mag_srch=cast(cast(mom_mag as decimal(10,4)) as double), " +
+			"epi_srch=cast(cast(epi_dist as decimal(10,4)) as double), " +
+			"foc_srch=cast(cast(foc_dist as decimal(10,4)) as double), " +
+			"rup_srch=cast(cast(rup_dist as decimal(10,4)) as double), " +
+			"vs30_srch=cast(cast(vs30 as decimal(10,4)) as double), " +
+			"lat_srch=cast(cast(latitude as decimal(20,15)) as double), " +
+			"lng_srch=cast(cast(longitude as decimal(20,15)) as double) " +
+			where);
+	}
 }

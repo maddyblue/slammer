@@ -31,14 +31,7 @@ class SlammerTableModel extends DefaultTableModel implements SlammerTableInterfa
 
 	public boolean isCellEditable(int row, int col)
 	{
-		if (selectTable && getColumnCount() == (col + 1))
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		return selectTable && getColumnCount() == (col + 1) && isSlammer;
 	}
 
 	// modelint should either be STATION, RECORD, or REFRESH.
@@ -74,65 +67,24 @@ class SlammerTableModel extends DefaultTableModel implements SlammerTableInterfa
 			for(int j = 0; j < cols.length; j++)
 			{
 				if(ret[i + 1][j] == null)
-				{
 					data[i][j] = "";
-				}
-				else if(cols[j] == fieldArray[rowDigInt][colAbbrev])
-				{
-					String temp = ret[i + 1][j].toString();
-					while(temp.endsWith("0"))
-					{
-						temp = temp.substring(0, temp.length() - 1);
-					}
-					data[i][j] = temp;
-				}
 				else if(cols[j] == fieldArray[rowAnalyze][colAbbrev])
-				{
 					data[i][j] = new Boolean(ret[i + 1][j].toString().equals("1"));
-				}
 				else if(cols[j] == fieldArray[rowFocMech][colAbbrev])
-				{
 					data[i][j] = FocMechArray[Integer.parseInt(ret[i + 1][j].toString())];
-				}
 				else if(cols[j] == fieldArray[rowSiteClass][colAbbrev])
-				{
 					data[i][j] = SiteClassArray[Integer.parseInt(ret[i + 1][j].toString())];
-				}
-				else if(
-					cols[j] == fieldArray[rowLat][colAbbrev] ||
-					cols[j] == fieldArray[rowLng][colAbbrev]
-				)
-				{
-					data[i][j] = Analysis.fmtFour.format(Double.parseDouble(ret[i + 1][j].toString()));
-				}
 				else if(
 					cols[j] == fieldArray[rowAriasInt][colAbbrev] ||
 					cols[j] == fieldArray[rowPGA][colAbbrev]
 				)
-				{
 					data[i][j] = Analysis.fmtThree.format(Double.parseDouble(ret[i + 1][j].toString()));
-				}
 				else if(cols[j] == fieldArray[rowMeanPer][colAbbrev])
-				{
 					data[i][j] = Analysis.fmtTwo.format(Double.parseDouble(ret[i + 1][j].toString()));
-				}
-				else if(
-					cols[j] == fieldArray[rowPGV][colAbbrev] ||
-					cols[j] == fieldArray[rowEpiDist][colAbbrev] ||
-					cols[j] == fieldArray[rowFocalDist][colAbbrev] ||
-					cols[j] == fieldArray[rowRupDist][colAbbrev]
-				)
-				{
+				else if(cols[j] == fieldArray[rowPGV][colAbbrev])
 					data[i][j] = Analysis.fmtOne.format(Double.parseDouble(ret[i + 1][j].toString()));
-				}
-				else if(cols[j] == fieldArray[rowVs30][colAbbrev])
-				{
-					data[i][j] = Analysis.fmtZero.format(Double.parseDouble(ret[i + 1][j].toString()));
-				}
 				else
-				{
 					data[i][j] = ret[i + 1][j].toString();
-				}
 			}
 
 		setDataVector(data, cols);

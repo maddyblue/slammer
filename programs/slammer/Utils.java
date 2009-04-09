@@ -297,4 +297,11 @@ public class Utils
 			return "null";
 		return s;
 	}
+
+	public static String nullifys(String s)
+	{
+		if(s == null || s.equals(""))
+			return "null";
+		return "'" + s + "'";
+	}
 }

@@ -33,42 +33,43 @@ public interface SlammerTableInterface
 	public static final Boolean FALSE = Boolean.FALSE;
 
 	public static final Object[][] fieldArray = {
-		//                                                                          sort          select    manager
-		// Field name                           units   abbrev         DB name      field  search display   display   import
-		{ "Import",                             "",     "Import",      "",          FALSE, FALSE, NONEO,    NONEO,    IMTBLO,  "Import"                },
-		{ "File",                               "",     "File",        "",          FALSE, FALSE, NONEO,    NONEO,    IMTBLO,  "File"                  },
-		{ "Earthquake",                         "",     "Earthquake",  "EQ",        TRUE,  FALSE, RSBOTHO,  RSBOTHO,  IMBOTHO, "Earthquake"            },
-		{ "Record",                             "",     "Record",      "RECORD",    TRUE,  FALSE, RSBOTHO,  RSBOTHO,  IMTBLO,  "Record"                },
-		{ "Digitization Interval",              "s",    "Dig. Int.",   "DIGI_INT",  FALSE, FALSE, NONEO,    RECORDO,  IMBOTHO, "Digitization Interval" },
-		{ "Moment Magnitude",                   "",     "Magnitude",   "MOM_MAG",   TRUE,  TRUE,  RECORDO,  RECORDO,  IMBOTHO, "Moment Magnitude"      },
-		{ "Arias Intensity",                    "m/s",  "Arias Int.",  "ARIAS",     TRUE,  TRUE,  RECORDO,  RECORDO,  NONEO,   "Arias Intensity"       },
-		{ "Duration<sub>5-95%</sub>",           "s",    "Duration",    "DOBRY",     TRUE,  TRUE,  RECORDO,  RECORDO,  NONEO,   "Duration 5-95%"        },
-		{ "Peak Acceleration",                  "g",    "PGA",         "PGA",       TRUE,  TRUE,  RECORDO,  RECORDO,  NONEO,   "Peak Acceleration"     },
-		{ "Peak Velocity",                      "cm/s", "PGV",         "PGV",       TRUE,  TRUE,  RECORDO,  RECORDO,  NONEO,   "Peak Velocity"         },
-		{ "Mean Period",                        "s",    "Mean Per.",   "MEAN_PER",  TRUE,  TRUE,  RECORDO,  RECORDO,  NONEO,   "Mean Period"           },
-		{ "Epicentral Distance",                "km",   "Epi. Dist.",  "EPI_DIST",  TRUE,  TRUE,  RECORDO,  RECORDO,  IMBOTHO, "Epicentral Distance"   },
-		{ "Focal Distance",                     "km",   "Focal Dist.", "FOC_DIST",  TRUE,  TRUE,  RECORDO,  RECORDO,  IMBOTHO, "Focal Distance"        },
-		{ "Rupture Distance",                   "km",   "Rup. Dist",   "RUP_DIST",  TRUE,  TRUE,  RECORDO,  RECORDO,  IMBOTHO, "Rupture Distance"      },
-		{ "V<sub>S</sub><sup>30</sup>",         "m/s",  "Vs30",        "VS30",      TRUE,  TRUE,  STATIONO, STATIONO, IMBOTHO, "Vs30"                  },
-		{ "Site Classification (Geomatrix C3)", "",     "Site Class.", "CLASS",     TRUE,  FALSE, STATIONO, STATIONO, IMBOTHO, "Site Classification"   },
-		{ "Focal Mechanism",                    "",     "Foc. Mech.",  "FOC_MECH",  TRUE,  FALSE, RECORDO,  RECORDO,  IMBOTHO, "Focal Mechanism"       },
-		{ "Location",                           "",     "Location",    "LOCATION",  TRUE,  FALSE, STATIONO, STATIONO, IMBOTHO, "Location"              },
-		{ "Owner",                              "",     "Owner",       "OWNER",     TRUE,  FALSE, STATIONO, STATIONO, IMBOTHO, "Owner"                 },
-		{ "Latitude",                           "",     "Lat.",        "LATITUDE",  TRUE,  FALSE, STATIONO, STATIONO, IMBOTHO, "Latitude"              },
-		{ "Longitude",                          "",     "Long.",       "LONGITUDE", TRUE,  FALSE, STATIONO, STATIONO, IMBOTHO, "Longitude"             },
-		{ "Analyze",                            "",     "Analyze",     "ANALYZE",   FALSE, FALSE, RSBOTHO,  NONEO,    NONEO,   "Analyze"               }
+		//                                                             display      search       sort          select    manager
+		// Field name                           units   abbrev         DB name      DB name      field  search display   display   import
+		{ "Import",                             "",     "Import",      "",          "",          FALSE, FALSE, NONEO,    NONEO,    IMTBLO,  "Import"                },
+		{ "File",                               "",     "File",        "",          "",          FALSE, FALSE, NONEO,    NONEO,    IMTBLO,  "File"                  },
+		{ "Earthquake",                         "",     "Earthquake",  "EQ",        "EQ",        TRUE,  FALSE, RSBOTHO,  RSBOTHO,  IMBOTHO, "Earthquake"            },
+		{ "Record",                             "",     "Record",      "RECORD",    "RECORD",    TRUE,  FALSE, RSBOTHO,  RSBOTHO,  IMTBLO,  "Record"                },
+		{ "Digitization Interval",              "s",    "Dig. Int.",   "DIGI_INT",  "DIGI_INT",  FALSE, FALSE, NONEO,    RECORDO,  IMBOTHO, "Digitization Interval" },
+		{ "Moment Magnitude",                   "",     "Magnitude",   "MOM_MAG",   "MAG_SRCH",  TRUE,  TRUE,  RECORDO,  RECORDO,  IMBOTHO, "Moment Magnitude"      },
+		{ "Arias Intensity",                    "m/s",  "Arias Int.",  "ARIAS",     "ARIAS",     TRUE,  TRUE,  RECORDO,  RECORDO,  NONEO,   "Arias Intensity"       },
+		{ "Duration<sub>5-95%</sub>",           "s",    "Duration",    "DOBRY",     "DOBRY",     TRUE,  TRUE,  RECORDO,  RECORDO,  NONEO,   "Duration 5-95%"        },
+		{ "Peak Acceleration",                  "g",    "PGA",         "PGA",       "PGA",       TRUE,  TRUE,  RECORDO,  RECORDO,  NONEO,   "Peak Acceleration"     },
+		{ "Peak Velocity",                      "cm/s", "PGV",         "PGV",       "PGV",       TRUE,  TRUE,  RECORDO,  RECORDO,  NONEO,   "Peak Velocity"         },
+		{ "Mean Period",                        "s",    "Mean Per.",   "MEAN_PER",  "MEAN_PER",  TRUE,  TRUE,  RECORDO,  RECORDO,  NONEO,   "Mean Period"           },
+		{ "Epicentral Distance",                "km",   "Epi. Dist.",  "EPI_DIST",  "EPI_SRCH",  TRUE,  TRUE,  RECORDO,  RECORDO,  IMBOTHO, "Epicentral Distance"   },
+		{ "Focal Distance",                     "km",   "Focal Dist.", "FOC_DIST",  "FOC_SRCH",  TRUE,  TRUE,  RECORDO,  RECORDO,  IMBOTHO, "Focal Distance"        },
+		{ "Rupture Distance",                   "km",   "Rup. Dist",   "RUP_DIST",  "RUP_SRCH",  TRUE,  TRUE,  RECORDO,  RECORDO,  IMBOTHO, "Rupture Distance"      },
+		{ "V<sub>S</sub><sup>30</sup>",         "m/s",  "Vs30",        "VS30",      "VS30_SRCH", TRUE,  TRUE,  STATIONO, STATIONO, IMBOTHO, "Vs30"                  },
+		{ "Site Classification (Geomatrix C3)", "",     "Site Class.", "CLASS",     "CLASS",     TRUE,  FALSE, STATIONO, STATIONO, IMBOTHO, "Site Classification"   },
+		{ "Focal Mechanism",                    "",     "Foc. Mech.",  "FOC_MECH",  "FOC_MECH",  TRUE,  FALSE, RECORDO,  RECORDO,  IMBOTHO, "Focal Mechanism"       },
+		{ "Location",                           "",     "Location",    "LOCATION",  "LOCATION",  TRUE,  FALSE, STATIONO, STATIONO, IMBOTHO, "Location"              },
+		{ "Owner",                              "",     "Owner",       "OWNER",     "OWNER",     TRUE,  FALSE, STATIONO, STATIONO, IMBOTHO, "Owner"                 },
+		{ "Latitude",                           "",     "Lat.",        "LATITUDE",  "LAT_SRCH",  TRUE,  FALSE, STATIONO, STATIONO, IMBOTHO, "Latitude"              },
+		{ "Longitude",                          "",     "Long.",       "LONGITUDE", "LNG_SRCH",  TRUE,  FALSE, STATIONO, STATIONO, IMBOTHO, "Longitude"             },
+		{ "Analyze",                            "",     "Analyze",     "ANALYZE",   "ANALYZE",   FALSE, FALSE, RSBOTHO,  NONEO,    NONEO,   "Analyze"               }
 	};
 
 	public static final int colFieldName      = 0;
 	public static final int colUnits          = 1;
 	public static final int colAbbrev         = 2;
 	public static final int colDBName         = 3;
-	public static final int colSortField      = 4;
-	public static final int colSearchable     = 5;
-	public static final int colSelectDisplay  = 6;
-	public static final int colManagerDisplay = 7;
-	public static final int colImport         = 8;
-	public static final int colDispName       = 9;
+	public static final int colDBSearch       = 4;
+	public static final int colSortField      = 5;
+	public static final int colSearchable     = 6;
+	public static final int colSelectDisplay  = 7;
+	public static final int colManagerDisplay = 8;
+	public static final int colImport         = 9;
+	public static final int colDispName       = 10;
 
 	public static final int rowImport     = 0;
 	public static final int rowFile       = 1;

@@ -197,7 +197,7 @@ class SlammerTable extends JPanel implements ActionListener, SlammerTableInterfa
 			if(fieldArray[num][colSearchable] == Boolean.TRUE)
 			{
 				list[i][0] = makeUnitName(num);
-				list[i][1] = fieldArray[num][colDBName].toString();
+				list[i][1] = fieldArray[num][colDBSearch].toString();
 				list[i][2] = fieldArray[num][colDispName].toString();
 			}
 		}

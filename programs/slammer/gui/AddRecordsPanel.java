@@ -189,26 +189,18 @@ class AddRecordsPanel extends JPanel implements ActionListener
 
 		// verify existence of must-have data
 		if(eq.equals(""))
-		{
 			errors += "Earthquake value is blank.\n";
-		}
 		if(record.equals(""))
-		{
 			errors += "Record value is blank.\n";
-		}
 		if(di.equals(""))
-		{
 			errors += "Digitization interval is blank.\n";
-		}
 
 		// record already here?
 		if(add)
 		{
 			Object[][] res = Utils.getDB().runQuery("select eq from data where eq='" + eq + "' and record='" + record + "'");
 			if(res != null)
-			{
 				errors += "Record already exists in the database.\n";
-			}
 		}
 
 		// check data
@@ -218,96 +210,79 @@ class AddRecordsPanel extends JPanel implements ActionListener
 		{
 			ret = Utils.checkNum(di, "Digitization interval field", null, false, null, new Double(0), false, null, true);
 			if(ret.getClass().getName().equals("java.lang.String"))
-			{
 				errors += ret.toString() + "\n";
-			}
 			else
-			{
 				dig_int = ((Double)ret).doubleValue();
-			}
 		}
 
 		if(!mag.equals("null"))
 		{
 			ret = Utils.checkNum(mag, "Moment Magnitude field", null, false, null, new Double(0), true, null, true);
+			mag = "'" + mag + "'";
 			if(ret.getClass().getName().equals("java.lang.String"))
-			{
 				errors += ret.toString() + "\n";
-			}
 		}
 
 		if(!epidist.equals("null"))
 		{
 			ret = Utils.checkNum(epidist, "Epicentral distance field", null, false, null, new Double(0), true, null, true);
+			epidist = "'" + epidist + "'";
 			if(ret.getClass().getName().equals("java.lang.String"))
-			{
 				errors += ret.toString() + "\n";
-			}
 		}
 
 		if(!focdist.equals("null"))
 		{
 			ret = Utils.checkNum(focdist, "Focal distance field", null, false, null, new Double(0), true, null, true);
+			focdist = "'" + focdist + "'";
 			if(ret.getClass().getName().equals("java.lang.String"))
-			{
 				errors += ret.toString() + "\n";
-			}
 		}
 
 		if(!rupdist.equals("null"))
 		{
 			ret = Utils.checkNum(rupdist, "Rupture distance field", null, false, null, new Double(0), true, null, true);
+			rupdist = "'" + rupdist + "'";
 			if(ret.getClass().getName().equals("java.lang.String"))
-			{
 				errors += ret.toString() + "\n";
-			}
 		}
 
 		if(!vs30.equals("null"))
 		{
 			ret = Utils.checkNum(vs30, "Vs30 field", null, false, null, new Double(0), true, null, true);
+			vs30 = "'" + vs30 + "'";
 			if(ret.getClass().getName().equals("java.lang.String"))
-			{
 				errors += ret.toString() + "\n";
-			}
 		}
 
 		if(!lat.equals("null"))
 		{
 			ret = Utils.checkNum(lat, "Latitude field", new Double(90), true, null, new Double(-90), true, null, true);
+			lat = "'" + lat + "'";
 			if(ret.getClass().getName().equals("java.lang.String"))
-			{
 				errors += ret.toString() + "\n";
-			}
 		}
 
 		if(!lng.equals("null"))
 		{
 			ret = Utils.checkNum(lng, "Longitude field", new Double(180), true, null, new Double(-180), true, null, true);
+			lng = "'" + lng + "'";
 			if(ret.getClass().getName().equals("java.lang.String"))
-			{
 				errors += ret.toString() + "\n";
-			}
 		}
 
 		File f = new File(file);
 		if(!f.isFile() || !f.canRead())
-		{
 			errors += "Cannot read file or file does not exist: " + file + "\n";
-		}
 
 		if(!errors.equals(""))
-		{
 			return ("Errors on file " + file + ", earthquake " + eq + ", record " + record + ":\n" + errors + "\n");
-		}
 
 		// computations
 		data = new DoubleList(file);
 
 		if(data.bad())
-		{
 			return ("Errors on file " + file + ", earthquake " + eq + ", record " + record + ":\nInvalid data at data point " + data.badEntry() + "\n");
-		}
 
 		arias = ImportRecords.Arias(data, dig_int);
 		dobry = ImportRecords.Dobry(data, dig_int);
@@ -326,9 +301,7 @@ class AddRecordsPanel extends JPanel implements ActionListener
 			}
 		}
 		if(pre.equals(focmech))
-		{
 			focmech = "0";
-		}
 
 		pre = siteclass;
 		for(int j = 0; j < SlammerTable.SiteClassArray.length; j++)
@@ -340,9 +313,7 @@ class AddRecordsPanel extends JPanel implements ActionListener
 			}
 		}
 		if(pre.equals(siteclass))
-		{
 			siteclass = "0";
-		}
 
 		if(add)
 		{
@@ -401,6 +372,8 @@ class AddRecordsPanel extends JPanel implements ActionListener
 				+ "  where path='" + file + "'";
 				Utils.getDB().runUpdate(q);
 		}
+
+		Utils.getDB().syncRecords("where eq='" + eq + "' and record='" + record + "'");
 
 		return "";
 	}

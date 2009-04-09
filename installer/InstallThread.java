@@ -157,27 +157,32 @@ public class InstallThread extends Thread
 
 								progress.advance(1);
 
-								q = "insert into data (eq, record, digi_int, mom_mag, arias, dobry, pga, pgv, mean_per, epi_dist, foc_dist, rup_dist, vs30, class, foc_mech, location, owner, latitude, longitude, change, path, select1, analyze, select2) values ('" +
-									cur[DB_eq] + "', '" +
-									cur[DB_record] + "', " +
-									cur[DB_digi_int] + ", " +
-									cur[DB_mom_mag] + ", " +
-									cur[DB_arias] + ", " +
-									cur[DB_dobry] + ", " +
-									cur[DB_pga] + ", " +
-									cur[DB_pgv] + ", " +
-									cur[DB_mean_per] + ", " +
-									cur[DB_epi_dist] + ", " +
-									cur[DB_foc_dist] + ", " +
-									nullify(cur[DB_rup_dist]) + ", " +
-									cur[DB_vs30] + ", " +
-									cur[DB_class] + ", " +
-									cur[DB_foc_mech] + ", '" +
-									cur[DB_location] + "', '" +
-									cur[DB_owner] + "', " +
-									cur[DB_latitude] + ", " +
-									cur[DB_longitude] + ", " +
-									"0, '" + path + "', 0, 0, 0)";
+								q = "insert into data (eq, record, digi_int, mom_mag, arias, dobry, pga, pgv, mean_per, epi_dist, foc_dist, rup_dist, vs30, class, foc_mech, location, owner, latitude, longitude, change, path, select1, analyze, select2) values (" +
+									"'"  + cur[DB_eq] + "'," +
+									"'"  + cur[DB_record] + "'," +
+									       cur[DB_digi_int] + "," +
+									       nullifys(cur[DB_mom_mag]) + "," +
+									       cur[DB_arias] + ", " +
+									       cur[DB_dobry] + ", " +
+									       cur[DB_pga] + ", " +
+									       cur[DB_pgv] + ", " +
+									       cur[DB_mean_per] + ", " +
+									       nullifys(cur[DB_epi_dist]) + "," +
+									       nullifys(cur[DB_foc_dist]) + "," +
+									       nullifys(cur[DB_rup_dist]) + "," +
+									       nullifys(cur[DB_vs30]) + "," +
+									       cur[DB_class] + "," +
+									       cur[DB_foc_mech] + "," +
+									"'"  + cur[DB_location] + "'," +
+									"'"  + cur[DB_owner] + "'," +
+									       nullifys(cur[DB_latitude]) + "," +
+									       nullifys(cur[DB_longitude]) + "," +
+									"0," + // change
+									"'"  + path + "'," + // path
+									"0," + // select1
+									"0," + // analyze
+									"0" + // select2
+									")";
 								runUpdate(q);
 								System.out.println("adding " + cur[0] + " - " + cur[1]);
 							}
@@ -190,6 +195,16 @@ public class InstallThread extends Thread
 					}
 				}
 			}
+
+			runUpdate("update data set " +
+				"mag_srch=cast(cast(mom_mag as decimal(10,4)) as double), " +
+				"epi_srch=cast(cast(epi_dist as decimal(10,4)) as double), " +
+				"foc_srch=cast(cast(foc_dist as decimal(10,4)) as double), " +
+				"rup_srch=cast(cast(rup_dist as decimal(10,4)) as double), " +
+				"vs30_srch=cast(cast(vs30 as decimal(10,4)) as double), " +
+				"lat_srch=cast(cast(latitude as decimal(20,15)) as double), " +
+				"lng_srch=cast(cast(longitude as decimal(20,15)) as double)"
+			);
 
 			closedb();
 		}
@@ -288,28 +303,35 @@ public class InstallThread extends Thread
 				+ "eq        varchar(100) not null,"
 				+ "record    varchar(100) not null,"
 				+ "digi_int  double       not null,"
-				+ "mom_mag   double               ,"
+				+ "mom_mag   varchar(20)          ,"
 				+ "arias     double       not null,"
 				+ "dobry     double       not null,"
 				+ "pga       double       not null,"
 				+ "pgv       double       not null,"
 				+ "mean_per  double       not null,"
-				+ "epi_dist  double               ,"
-				+ "foc_dist  double               ,"
-				+ "rup_dist  double               ,"
-				+ "vs30      double               ,"
+				+ "epi_dist  varchar(20)          ,"
+				+ "foc_dist  varchar(20)          ,"
+				+ "rup_dist  varchar(20)          ,"
+				+ "vs30      varchar(20)          ,"
 				+ "class     smallint     not null,"
 				+ "foc_mech  smallint     not null,"
 				+ "location  varchar(100) not null,"
 				+ "owner     varchar(100) not null,"
-				+ "latitude  double               ,"
-				+ "longitude double               ,"
+				+ "latitude  varchar(20)          ,"
+				+ "longitude varchar(20)          ,"
 				+ "change    smallint     not null,"
 				+ "path      varchar(255) not null,"
 				+ "select1   smallint     not null,"
 				+ "analyze   smallint     not null,"
-				+ "select2   smallint     not null"
-				+ ")");
+				+ "select2   smallint     not null,"
+				+ "mag_srch  double,"
+				+ "epi_srch  double,"
+				+ "foc_srch  double,"
+				+ "rup_srch  double,"
+				+ "vs30_srch double,"
+				+ "lat_srch  double,"
+				+ "lng_srch  double"
+			+ ")");
 
 			runUpdate("create table grp ("
 				+ "record    integer      not null,"
@@ -354,11 +376,11 @@ public class InstallThread extends Thread
 
 	// utility functions
 
-	public static String nullify(String s)
+	public static String nullifys(String s)
 	{
 		if(s == null || s.equals(""))
 			return "null";
-		return s;
+		return "'" + s + "'";
 	}
 
 	public static String addQuote(String str)

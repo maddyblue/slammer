@@ -116,27 +116,34 @@ public class Slammer
 					+ "eq        varchar(100) not null,"
 					+ "record    varchar(100) not null,"
 					+ "digi_int  double       not null,"
-					+ "mom_mag   double               ,"
+					+ "mom_mag   varchar(20)          ,"
 					+ "arias     double       not null,"
 					+ "dobry     double       not null,"
 					+ "pga       double       not null,"
 					+ "pgv       double       not null,"
 					+ "mean_per  double       not null,"
-					+ "epi_dist  double               ,"
-					+ "foc_dist  double               ,"
-					+ "rup_dist  double               ,"
-					+ "vs30      double               ,"
+					+ "epi_dist  varchar(20)          ,"
+					+ "foc_dist  varchar(20)          ,"
+					+ "rup_dist  varchar(20)          ,"
+					+ "vs30      varchar(20)          ,"
 					+ "class     smallint     not null,"
 					+ "foc_mech  smallint     not null,"
 					+ "location  varchar(100) not null,"
 					+ "owner     varchar(100) not null,"
-					+ "latitude  double               ,"
-					+ "longitude double               ,"
+					+ "latitude  varchar(20)          ,"
+					+ "longitude varchar(20)          ,"
 					+ "change    smallint     not null,"
 					+ "path      varchar(255) not null,"
 					+ "select1   smallint     not null,"
 					+ "analyze   smallint     not null,"
-					+ "select2   smallint     not null"
+					+ "select2   smallint     not null,"
+					+ "mag_srch  double,"
+					+ "epi_srch  double,"
+					+ "foc_srch  double,"
+					+ "rup_srch  double,"
+					+ "vs30_srch double,"
+					+ "lat_srch  double,"
+					+ "lng_srch  double"
 					+ ")");
 
 				Utils.getDB().runUpdate("create table grp ("
@@ -173,8 +180,8 @@ public class Slammer
 							switch(i)
 							{
 								// numbers
-								case EQDAT_mom_mag:
 								case EQDAT_digi_int:
+									Double.parseDouble(s); // throw NumberFormatException if not a double
 									cur[i] = s;
 									break;
 								// strings
@@ -184,23 +191,16 @@ public class Slammer
 								case EQDAT_owner:
 									cur[i] = Utils.addQuote(s);
 									break;
-								case EQDAT_rup_dist:
+								case EQDAT_mom_mag:
 								case EQDAT_epi_dist:
 								case EQDAT_foc_dist:
-									if(i == EQDAT_rup_dist)
-									{
-										cur[i] = Utils.nullify(s);
-										if(cur[i].equals("null"))
-											break;
-									}
-									cur[i] = Analysis.fmtOne.format(Double.parseDouble(s));
-									break;
+								case EQDAT_rup_dist:
 								case EQDAT_vs30:
-									cur[i] = Analysis.fmtZero.format(Double.parseDouble(s));
-									break;
 								case EQDAT_latitude:
 								case EQDAT_longitude:
-									cur[i] = Analysis.fmtFour.format(Double.parseDouble(s));
+									cur[i] = Utils.nullifys(s);
+									if(!cur[i].equals("null"))
+										Double.parseDouble(s); // throw NumberFormatException if not a double
 									break;
 								case EQDAT_foc_mech:
 									cur[i] = "0";
@@ -249,30 +249,28 @@ public class Slammer
 								continue;
 							}
 
-							q = "insert into data " +
-								"(eq, record, digi_int, mom_mag, arias, dobry, pga, pgv, mean_per, epi_dist, foc_dist, rup_dist, vs30, class, foc_mech, location, owner, latitude, longitude, change, path, select1, analyze, select2)" +
-								" values ( " +
-								"'" + cur[EQDAT_eq] + "'," +
-								"'" + cur[EQDAT_record] + "'," +
-								"" + cur[EQDAT_digi_int] + "," +
-								"" + cur[EQDAT_mom_mag] + "," +
-								"" + ImportRecords.Arias(data, di) + "," +
-								"" + ImportRecords.Dobry(data, di) + "," +
-								"" + ImportRecords.PGA(data) + "," +
-								"" + ImportRecords.PGV(data, di) + "," +
-								"" + ImportRecords.MeanPer(data, di) + "," +
-								"" + cur[EQDAT_epi_dist] + "," +
-								"" + cur[EQDAT_foc_dist] + "," +
-								"" + cur[EQDAT_rup_dist] + "," +
-								"" + cur[EQDAT_vs30] + "," +
-								"" + cur[EQDAT_class] + "," +
-								"" + cur[EQDAT_foc_mech] + "," +
-								"'" + cur[EQDAT_location] + "'," +
-								"'" + cur[EQDAT_owner] + "'," +
-								"" + cur[EQDAT_latitude] + "," +
-								"" + cur[EQDAT_longitude] + "," +
+							q = "insert into data (eq, record, digi_int, mom_mag, arias, dobry, pga, pgv, mean_per, epi_dist, foc_dist, rup_dist, vs30, class, foc_mech, location, owner, latitude, longitude, change, path, select1, analyze, select2) values (" +
+								"'"  + cur[EQDAT_eq] + "'," +
+								"'"  + cur[EQDAT_record] + "'," +
+								       cur[EQDAT_digi_int] + "," +
+								       cur[EQDAT_mom_mag] + "," +
+								       ImportRecords.Arias(data, di) + "," +
+								       ImportRecords.Dobry(data, di) + "," +
+								       ImportRecords.PGA(data) + "," +
+								       ImportRecords.PGV(data, di) + "," +
+								       ImportRecords.MeanPer(data, di) + "," +
+								       cur[EQDAT_epi_dist] + "," +
+								       cur[EQDAT_foc_dist] + "," +
+								       cur[EQDAT_rup_dist] + "," +
+								       cur[EQDAT_vs30] + "," +
+								       cur[EQDAT_class] + "," +
+								       cur[EQDAT_foc_mech] + "," +
+								"'"  + cur[EQDAT_location] + "'," +
+								"'"  + cur[EQDAT_owner] + "'," +
+								       cur[EQDAT_latitude] + "," +
+								       cur[EQDAT_longitude] + "," +
 								"0," + // change
-								"'" + path + "'," + // path
+								"'"  + path + "'," + // path
 								"0," + // select1
 								"0," + // analyze
 								"0" + // select2
@@ -289,8 +287,14 @@ public class Slammer
 				}	while(fr.ready());
 
 				fr.close();
+				Utils.getDB().syncRecords("");
 				Utils.closeDB();
 			} // }}}
+			else if(args[0].equals("sync"))
+			{
+				Utils.getDB().syncRecords("");
+				Utils.closeDB();
+			}
 			else if(args[0].equals("importsql")) // {{{
 			{
 				FileReader fr = new FileReader(".." + File.separatorChar + "records" + File.separatorChar + "eq.sql");
@@ -300,6 +304,8 @@ public class Slammer
 				int reslen;
 				char c;
 				String q, path;
+
+				Utils.getDB().runUpdate("delete from data");
 
 				do
 				{
@@ -326,22 +332,22 @@ public class Slammer
 								cur[DB_eq] + "', '" +
 								cur[DB_record] + "', " +
 								cur[DB_digi_int] + ", " +
-								Utils.nullify(cur[DB_mom_mag]) + ", " +
+								Utils.nullifys(cur[DB_mom_mag]) + ", " +
 								cur[DB_arias] + ", " +
 								cur[DB_dobry] + ", " +
 								cur[DB_pga] + ", " +
 								cur[DB_pgv] + ", " +
 								cur[DB_mean_per] + ", " +
-								Utils.nullify(cur[DB_epi_dist]) + ", " +
-								Utils.nullify(cur[DB_foc_dist]) + ", " +
-								Utils.nullify(cur[DB_rup_dist]) + ", " +
-								Utils.nullify(cur[DB_vs30]) + ", " +
+								Utils.nullifys(cur[DB_epi_dist]) + ", " +
+								Utils.nullifys(cur[DB_foc_dist]) + ", " +
+								Utils.nullifys(cur[DB_rup_dist]) + ", " +
+								Utils.nullifys(cur[DB_vs30]) + ", " +
 								cur[DB_class] + ", " +
 								cur[DB_foc_mech] + ", '" +
 								cur[DB_location] + "', '" +
 								cur[DB_owner] + "', " +
-								Utils.nullify(cur[DB_latitude]) + ", " +
-								Utils.nullify(cur[DB_longitude]) + ", " +
+								Utils.nullifys(cur[DB_latitude]) + ", " +
+								Utils.nullifys(cur[DB_longitude]) + ", " +
 								0 + ", '" +
 								path + "', 0, 0, 0)";
 							Utils.getDB().runUpdate(q);
@@ -355,8 +361,9 @@ public class Slammer
 					}
 				}	while(fr.ready());
 
-				Utils.closeDB();
 				fr.close();
+				Utils.getDB().syncRecords("");
+				Utils.closeDB();
 			} // }}}
 			else if(args[0].equals("test")) // {{{
 			{
