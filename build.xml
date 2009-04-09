@@ -10,7 +10,6 @@
 			destfile="${inst}/program-slammer.tar"
 			basedir="."
 			includes="${prog}/**/*.jar"
-			excludes="${prog}/srm.jar"
 		/>
 
 		<tar

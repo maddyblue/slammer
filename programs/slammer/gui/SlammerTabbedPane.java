@@ -75,9 +75,9 @@ public class SlammerTabbedPane extends JTabbedPane
 		else // isSRM
 		{
 			addTab("Search", SelectRecords);
-			addTab("Manage", RecordManager);
+			addTab("Manage/View", RecordManager);
 			addTab("Add", AddRecords);
-			addTab("Modify", Utilities);
+			addTab("Utilities", Utilities);
 		}
 	}
 
