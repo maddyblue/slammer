@@ -14,6 +14,8 @@ class SlammerTableModel extends DefaultTableModel implements SlammerTableInterfa
 	boolean selectTable, isSlammer;
 	JComboBox primarySort, secondarySort, order;
 
+	public int[] rowids = null;
+
 	public SlammerTableModel(boolean selectTable, boolean isSlammer, JComboBox primarySort, JComboBox secondarySort, JComboBox order) throws Exception
 	{
 		this.selectTable = selectTable;
@@ -58,12 +60,14 @@ class SlammerTableModel extends DefaultTableModel implements SlammerTableInterfa
 			return;
 		}
 
-		Object cols[] = new Object[ret[0].length];
+		Object cols[] = new Object[ret[0].length - 1];
 		for(int i = 0; i < cols.length; i++)
 			cols[i] = SlammerTable.getColValue(colDBName, colAbbrev, ret[0][i].toString());
 
 		Object data[][] = new Object[ret.length - 1][cols.length];
+		rowids = new int[data.length];
 		for(int i = 0; i < data.length; i++)
+		{
 			for(int j = 0; j < cols.length; j++)
 			{
 				if(ret[i + 1][j] == null)
@@ -86,6 +90,9 @@ class SlammerTableModel extends DefaultTableModel implements SlammerTableInterfa
 				else
 					data[i][j] = ret[i + 1][j].toString();
 			}
+
+			rowids[i] = Integer.parseInt(ret[i + 1][cols.length].toString());
+		}
 
 		setDataVector(data, cols);
 	}
@@ -125,7 +132,7 @@ class SlammerTableModel extends DefaultTableModel implements SlammerTableInterfa
 			secondaryOrder = "desc";
 		}
 
-		ret = "SELECT " + ret + " FROM data WHERE select" + (selectTable ? "2" : "1") + "=1 ORDER BY "
+		ret = "SELECT " + ret + ",id FROM data WHERE select" + (selectTable ? "2" : "1") + "=1 ORDER BY "
 			+ SlammerTable.getColValue(colDispName, colDBName, primarySort.getSelectedItem().toString()) + " " + primaryOrder + ","
 			+ SlammerTable.getColValue(colDispName, colDBName, secondarySort.getSelectedItem().toString()) + " " + secondaryOrder;
 		return ret;
