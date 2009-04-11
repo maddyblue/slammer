@@ -286,7 +286,7 @@ public class ImportRecords extends Analysis
 	 * of America, vol. 59, pp. 909-922.
 	 *
 	 * April Converse made minor changes in 1989.
-	 * Ported to Java by Matt Jibson in 2005.
+	 * Matt Jibson ported to Java with additions in 2005.
 	 *
 	 * arr = time series data, cm/sec/sec
 	 * w = oscillator natural frequency = (2*pi)/(oscillator period)
@@ -294,11 +294,11 @@ public class ImportRecords extends Analysis
 	 * dt = digitization interval
 	 *
 	 * Returns:
-	 * ZA   = maximum absolute acceleration response, cm/sec/sec.
-	 * ZV   =   "     relative velocity       "     , cm/sec.
-	 * ZD   =   "     relative displacement   "     , cm.
-	 * w2*zd= psuedo absolute acceleration
-	 * w*zd = psuedo relative velocity
+	 *       ZA = maximum absolute acceleration response, cm/sec/sec
+	 *       ZV = maximum relative velocity     response, cm/sec
+	 *       ZD = maximum relative displacement response, cm
+	 * w^2 * ZD =  psuedo absolute acceleration response, cm/sec/sec
+	 * w   * ZD =  psuedo relative velocity     response, cm/sec
 	 */
 	public static double[] cmpmax(double[] arr, double w, double d, double dt)
 	{

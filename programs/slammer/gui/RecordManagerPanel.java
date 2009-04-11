@@ -8,6 +8,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.border.*;
 import java.io.*;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import org.jfree.data.xy.*;
 import org.jfree.chart.*;
@@ -36,7 +37,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 	JRadioButton timeAxisCmss = new JRadioButton("cm/s/s");
 
 	ButtonGroup saveGroup = new ButtonGroup();
-	JRadioButton saveTab = new JRadioButton("Tab");
+	JRadioButton saveTab = new JRadioButton("Tab", true);
 	JRadioButton saveSpace = new JRadioButton("Space");
 	JRadioButton saveComma = new JRadioButton("Comma");
 
@@ -440,6 +441,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 			else if(command.equals("graph") || command.equals("saveGraph"))
 			{
 				int row = table.getSelectedRow();
+				boolean save = command.equals("saveGraph");
 				if(row == -1)
 					return;
 
@@ -451,7 +453,9 @@ class RecordManagerPanel extends JPanel implements ActionListener
 				if(res == null) return;
 
 				String path = res[1][0].toString();
-				double di = Double.parseDouble(res[1][1].toString());
+				BigDecimal bdi = new BigDecimal(res[1][1].toString());
+				double di = bdi.doubleValue();
+				BigDecimal x = new BigDecimal(0);
 
 				File f = new File(path);
 				if(f.canRead() == false)
@@ -483,6 +487,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 					double time = 0, timeStor = 0, td;
 					int perSec = 50;
 					double interval = 1.0 / (double)perSec;
+					BigDecimal btd;
 
 					yAxis = "Acceleration (";
 					if(timeAxisGs.isSelected())
@@ -491,41 +496,53 @@ class RecordManagerPanel extends JPanel implements ActionListener
 						yAxis += "cm/s/s";
 					yAxis += ")";
 
-					// add the first point
-					if((val = dat.each()) != null)
+					if(save)
 					{
-						xys.add(time, val);
-						time += di;
-						last2 = val.doubleValue();
-					}
-
-					// don't add the second point, but update the data
-					if((val = dat.each()) != null)
-					{
-						time += di;
-						last1 = val.doubleValue();
-					}
-
-					while((val = dat.each()) != null)
-					{
-						td = time - di;
-						current = val.doubleValue();
-
-						diff1 = last1 - current;
-						diff2 = last1 - last2;
-
-						if(
-							(diff1 <= 0 && diff2 <= 0) ||
-							(diff1 >= 0 && diff2 >= 0) ||
-							(td >= (timeStor + interval)))
+						while((val = dat.each()) != null)
 						{
-							xys.add(td, last1);
-							timeStor = td;
+							xys.add(x.doubleValue(), val);
+							x = x.add(bdi);
+						}
+					}
+					else
+					{
+						// add the first point
+						if((val = dat.each()) != null)
+						{
+							xys.add(x.doubleValue(), val);
+							x = x.add(bdi);
+							last2 = val;
 						}
 
-						last2 = last1;
-						last1 = current;
-						time += di;
+						// don't add the second point, but update the data
+						if((val = dat.each()) != null)
+						{
+							last1 = val;
+							x = x.add(bdi);
+						}
+
+						while((val = dat.each()) != null)
+						{
+							btd = x;
+							td = btd.doubleValue();
+							x = x.add(bdi);
+							current = val.doubleValue();
+
+							diff1 = last1 - current;
+							diff2 = last1 - last2;
+
+							if(
+								(diff1 <= 0 && diff2 <= 0) ||
+								(diff1 >= 0 && diff2 >= 0) ||
+								(td >= (timeStor + interval)))
+							{
+								xys.add(btd.doubleValue(), (float)last1);
+								timeStor = td;
+							}
+
+							last2 = last1;
+							last1 = current;
+						}
 					}
 				}
 				else if(typeFourier.isSelected())
@@ -541,26 +558,37 @@ class RecordManagerPanel extends JPanel implements ActionListener
 
 					double[][] fft = ImportRecords.fftWrap(arr, di);
 
-					double df = 1.0 / ((double)(arr.length) * di);
+					BigDecimal bdf = new BigDecimal(1.0 / ((double)(arr.length) * di));
+					BigDecimal zeroPtOne = new BigDecimal(0.1);
+					BigDecimal ten = new BigDecimal(10);
 
 					double current;
-					double freq = 0;
 					int step, i;
 
-					for(i = 0; i < arr.length;)
+					if(save)
 					{
-						// don't graph anything below 0.1 hz
-						if(freq > 0.1)
-							xys.add(freq, Math.sqrt(Math.pow(fft[i][0], 2) + Math.pow(fft[i][1], 2)));
+						for(i = 0; i < arr.length; i++)
+						{
+							xys.add(x.doubleValue(), Math.sqrt(Math.pow(fft[i][0], 2) + Math.pow(fft[i][1], 2)));
+							x = x.add(bdf);
+						}
+					}
+					else
+					{
+						for(i = 0; i < arr.length; i++)
+						{
+							// don't graph anything below 0.1 hz
+							if(x.compareTo(zeroPtOne) > 0)
+								xys.add(x.doubleValue(), Math.sqrt(Math.pow(fft[i][0], 2) + Math.pow(fft[i][1], 2)));
 
-						// throw out 3/4 of the points above 10 hz
-						if(freq > 10.0)
-							step = 4;
-						else
-							step = 1;
+							// throw out 3/4 of the points above 10 hz
+							if(x.compareTo(ten) > 0)
+								step = 4;
+							else
+								step = 1;
 
-						i += step;
-						freq = i * df;
+							x = x.add(bdf);
+						}
 					}
 				}
 				else if(typeSpectra.isSelected())
