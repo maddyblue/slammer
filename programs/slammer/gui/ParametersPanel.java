@@ -534,6 +534,6 @@ class ParametersPanel extends JPanel implements ActionListener
 
 		downSlope.setEnabled(selected);
 		dualSlope.setEnabled(selected);
-		thrustAngle.setEnabled(selected && dualSlope.isSelected());
+		thrustAngle.setEditable(selected && dualSlope.isSelected());
 	}
 }

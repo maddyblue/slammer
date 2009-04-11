@@ -253,7 +253,7 @@ class ResultsPanel extends JPanel implements ActionListener
 								{
 									for(int j = 0; j < 2; j++)
 									{
-										value = (String)(((ArrayList)(caVect.get(i))).get(j));
+										value = (String)(((java.util.Vector)(caVect.get(i))).get(j));
 										if(value == null || value == "")
 										{
 											parent.selectParameters();
@@ -552,7 +552,7 @@ class ResultsPanel extends JPanel implements ActionListener
 									value += (valtemp * valtemp);
 								}
 
-								value /= num - 1;
+								value /= num;
 								value = Math.sqrt(value);
 								rsd[j * 4 + 4] = unitFmt.format(value);
 							}

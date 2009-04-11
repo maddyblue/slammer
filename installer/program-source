@@ -85,6 +85,7 @@ programs/slammer/gui/SlammerTableModel.java
 programs/slammer/gui/SwingWorker.java
 programs/slammer/gui/UtilitiesPanel.java
 programs/slammer/gui/WhichAnalysisPanel.java
+programs/slammer/gui/WideTextField.java
 programs/slammer/images/Anchorage.jpg
 programs/slammer/images/Black Rapids.jpg
 programs/slammer/images/Georgia.jpg

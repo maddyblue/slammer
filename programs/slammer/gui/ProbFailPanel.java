@@ -14,13 +14,11 @@ class ProbFailPanel extends JPanel implements ActionListener
 {
 	SlammerTabbedPane parent;
 
-	JLabel labelOne = new JLabel("What is the Newmark displacement (in cm)?");
-	JLabel labelRes = new JLabel("Estimated probability of failure:");
-	JTextField labelOnef = new JTextField(7);
-	JTextField labelResf = new JTextField(7);
+	JTextField displacement = new WideTextField(7);
+	JTextField result = new WideTextField(7);
 	JEditorPane ta = new JEditorPane();
 	JScrollPane sta = new JScrollPane(ta);
-	JButton button = new JButton("Perform Analysis");
+	JButton button = new JButton("Compute");
 
 	String probFailureStr = "This program estimates probability of failure as a function of estimated Newmark displacement (specified in indicated field), as described by Jibson and others (1998, 2000). The probability is estimated using the following equation:"
 	+ "<p><i>P(f)</i> = 0.335(1 - exp(-0.048 <i>D<sub>n</sub></i><sup>1.565</sup>)"
@@ -36,9 +34,7 @@ class ProbFailPanel extends JPanel implements ActionListener
 		ta.setEditable(false);
 		ta.setContentType("text/html");
 		ta.setText(probFailureStr);
-		labelResf.setEditable(false);
-
-		JLabel dummy = new JLabel(" ");
+		result.setEditable(false);
 
 		GridBagLayout gridbag = new GridBagLayout();
 		GridBagConstraints c = new GridBagConstraints();
@@ -49,41 +45,50 @@ class ProbFailPanel extends JPanel implements ActionListener
 
 		int x = 0;
 		int y = 0;
+		JLabel label;
 
 		c.gridx = x++;
 		c.gridy = y++;
-		c.fill = GridBagConstraints.HORIZONTAL;
 		c.anchor = GridBagConstraints.NORTHWEST;
-		gridbag.setConstraints(labelOne, c);
-		add(labelOne);
+		label = new JLabel("Input parameter:");
+		label.setFont(GUIUtils.headerFont);
+		gridbag.setConstraints(label, c);
+		add(label);
 
 		c.gridy = y++;
-		gridbag.setConstraints(labelOnef, c);
-		add(labelOnef);
+		label = new JLabel("Newmark displacement (cm):");
+		gridbag.setConstraints(label, c);
+		add(label);
+
+		c.gridx = x--;
+		gridbag.setConstraints(displacement, c);
+		add(displacement);
 
 		c.insets = top;
+		c.gridx = x++;
 		c.gridy = y++;
 		gridbag.setConstraints(button, c);
 		add(button);
 
-		c.insets = top;
 		c.gridy = y++;
-		gridbag.setConstraints(labelRes, c);
-		add(labelRes);
+		label = new JLabel("Result:");
+		label.setFont(GUIUtils.headerFont);
+		gridbag.setConstraints(label, c);
+		add(label);
 
 		c.insets = none;
 		c.gridy = y++;
-		gridbag.setConstraints(labelResf, c);
-		add(labelResf);
+		label = new JLabel("Estimated probability of failure:");
+		gridbag.setConstraints(label, c);
+		add(label);
 
 		c.gridx = x--;
-		c.weightx = 1;
-		gridbag.setConstraints(dummy, c);
-		add(dummy);
+		gridbag.setConstraints(result, c);
+		add(result);
 
 		c.gridy = y;
 		c.gridx = x;
-		c.insets = none;
+		c.insets = top;
 		c.weightx = 1;
 		c.weighty = 1;
 		c.gridwidth = 2;
@@ -99,10 +104,10 @@ class ProbFailPanel extends JPanel implements ActionListener
 			String command = e.getActionCommand();
 			if(command.equals("do"))
 			{
-				Double d1 = (Double)Utils.checkNum(labelOnef.getText(), "Newmark displacement field", null, false, null, new Double(0), true, null, false);
+				Double d1 = (Double)Utils.checkNum(displacement.getText(), "Newmark displacement field", null, false, null, new Double(0), true, null, false);
 				if(d1 == null) return;
 
-				labelResf.setText(RigidBlockSimplified.ProbFailure(d1.doubleValue()));
+				result.setText(RigidBlockSimplified.ProbFailure(d1.doubleValue()));
 			}
 		}
 		catch (Exception ex)

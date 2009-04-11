@@ -26,21 +26,13 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 	JRadioButton SaygiliRathje2008CARPAPVAI = new JRadioButton("<html>Saygili and Rathje (2008) Critical acceleration ratio,<br/>peak acceleration, peak velocity, Arias intensity</html>");
 	ButtonGroup group = new ButtonGroup();
 
-	JLabel labelAc = new JLabel("Critical (yield) acceleration (g's):");
-	JLabel labelAmax = new JLabel("Peak ground acceleration (g's):");
-	JLabel labelVmax = new JLabel("Peak ground velocity (g's):");
-	JLabel labelIa = new JLabel("Arias intensity (m/s):");
-	JLabel labelM = new JLabel("Magnitude:");
-
-	JLabel labelResCm = new JLabel("Estimated Newmark Displacement (cm):");
-	JLabel labelResIn = new JLabel("Estimated Newmark Displacement (in):");
-	JTextField fieldAc = new JTextField(7);
-	JTextField fieldAmax = new JTextField(7);
-	JTextField fieldVmax = new JTextField(7);
-	JTextField fieldIa = new JTextField(7);
-	JTextField fieldM = new JTextField(7);
-	JTextField fieldResCm = new JTextField(7);
-	JTextField fieldResIn = new JTextField(7);
+	JTextField fieldAc = new WideTextField(7);
+	JTextField fieldAmax = new WideTextField(7);
+	JTextField fieldVmax = new WideTextField(7);
+	JTextField fieldIa = new WideTextField(7);
+	JTextField fieldM = new WideTextField(7);
+	JTextField fieldResCm = new WideTextField(7);
+	JTextField fieldResIn = new WideTextField(7);
 	JEditorPane ta = new JEditorPane();
 	JScrollPane sta = new JScrollPane(ta);
 	JButton button = new JButton("Compute");
@@ -151,9 +143,13 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 
 		int x = 0;
 		int y = 0;
+		JLabel label;
 
 		Box sidepanel = new Box(BoxLayout.Y_AXIS);
 
+		label = new JLabel("Select Analysis:");
+		label.setFont(GUIUtils.headerFont);
+		sidepanel.add(label);
 		sidepanel.add(SaygiliRathje2008CARPA);
 		sidepanel.add(SaygiliRathje2008CARPAPV);
 		sidepanel.add(SaygiliRathje2008CARPAPVAI);
@@ -173,8 +169,8 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 		panel.add(sidepanel);
 
 		c.gridx = x++;
-		c.fill = GridBagConstraints.BOTH;
-		JLabel label = new JLabel(" ");
+		c.fill = GridBagConstraints.VERTICAL;
+		label = new JLabel(" ");
 		label.setBorder(b);
 		gridbag.setConstraints(label, c);
 		panel.add(label);
@@ -183,7 +179,7 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 		c.gridwidth = 2;
 		c.gridx = x++;
 		c.gridy = y++;
-		c.fill = GridBagConstraints.HORIZONTAL;
+		c.fill = GridBagConstraints.NONE;
 		label = new JLabel("Input parameters:");
 		label.setFont(GUIUtils.headerFont);
 		gridbag.setConstraints(label, c);
@@ -191,8 +187,9 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 
 		c.gridy = y++;
 		c.gridwidth = 1;
-		gridbag.setConstraints(labelAc, c);
-		panel.add(labelAc);
+		label = new JLabel("Critical (yield) acceleration (g's):");
+		gridbag.setConstraints(label, c);
+		panel.add(label);
 
 		c.gridx = x--;
 		gridbag.setConstraints(fieldAc, c);
@@ -200,8 +197,9 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 
 		c.gridx = x++;
 		c.gridy = y++;
-		gridbag.setConstraints(labelAmax, c);
-		panel.add(labelAmax);
+		label = new JLabel("Peak ground acceleration (g's):");
+		gridbag.setConstraints(label, c);
+		panel.add(label);
 
 		c.gridx = x--;
 		gridbag.setConstraints(fieldAmax, c);
@@ -209,8 +207,9 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 
 		c.gridx = x++;
 		c.gridy = y++;
-		gridbag.setConstraints(labelVmax, c);
-		panel.add(labelVmax);
+		label = new JLabel("Peak ground velocity (g's):");
+		gridbag.setConstraints(label, c);
+		panel.add(label);
 
 		c.gridx = x--;
 		gridbag.setConstraints(fieldVmax, c);
@@ -218,8 +217,9 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 
 		c.gridx = x++;
 		c.gridy = y++;
-		gridbag.setConstraints(labelIa, c);
-		panel.add(labelIa);
+		label = new JLabel("Arias intensity (m/s):");
+		gridbag.setConstraints(label, c);
+		panel.add(label);
 
 		c.gridx = x--;
 		gridbag.setConstraints(fieldIa, c);
@@ -227,8 +227,9 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 
 		c.gridx = x++;
 		c.gridy = y++;
-		gridbag.setConstraints(labelM, c);
-		panel.add(labelM);
+		label = new JLabel("Magnitude:");
+		gridbag.setConstraints(label, c);
+		panel.add(label);
 
 		c.gridx = x--;
 		gridbag.setConstraints(fieldM, c);
@@ -238,7 +239,6 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 		c.gridy = y++;
 		c.insets = top;
 		c.gridwidth = 2;
-		c.fill = GridBagConstraints.NONE;
 		gridbag.setConstraints(button, c);
 		panel.add(button);
 
@@ -250,9 +250,10 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 
 		c.gridy = y++;
 		c.gridwidth = 1;
-		c.fill = GridBagConstraints.HORIZONTAL;
-		gridbag.setConstraints(labelResCm, c);
-		panel.add(labelResCm);
+		c.insets = none;
+		label = new JLabel("Estimated Newmark displacement (cm):");
+		gridbag.setConstraints(label, c);
+		panel.add(label);
 
 		c.gridx = x--;
 		gridbag.setConstraints(fieldResCm, c);
@@ -260,9 +261,9 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 
 		c.gridy = y++;
 		c.gridx = x++;
-		c.insets = none;
-		gridbag.setConstraints(labelResIn, c);
-		panel.add(labelResIn);
+		label = new JLabel("Estimated Newmark displacement (in):");
+		gridbag.setConstraints(label, c);
+		panel.add(label);
 
 		c.gridx = x;
 		gridbag.setConstraints(fieldResIn, c);
