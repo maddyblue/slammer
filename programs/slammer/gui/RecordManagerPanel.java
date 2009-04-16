@@ -166,54 +166,198 @@ class RecordManagerPanel extends JPanel implements ActionListener
 
 	private JPanel createModifyPanel()
 	{
-		JPanel panel = new JPanel(new BorderLayout());
+		GridBagLayout gridbag = new GridBagLayout();
+		GridBagConstraints c =new GridBagConstraints();
+		JPanel panel = new JPanel(gridbag);
 
-		JPanel north = new JPanel(new BorderLayout());
+		int x = 0;
+		int y = 0;
 
+		c.gridx = x++;
+		c.gridy = y++;
+		c.gridwidth = 4;
+		c.anchor = GridBagConstraints.WEST;
 		JLabel label = new JLabel("Modify record properties:");
 		label.setFont(GUIUtils.headerFont);
+		gridbag.setConstraints(label, c);
+		panel.add(label);
 
-		JPanel file = new JPanel(new BorderLayout());
-		file.add(BorderLayout.WEST, new JLabel("File location "));
-		file.add(BorderLayout.CENTER, modFile);
+		c.anchor = GridBagConstraints.EAST;
+		gridbag.setConstraints(save, c);
+		panel.add(save);
 
-		north.add(BorderLayout.WEST, label);
-		north.add(BorderLayout.EAST, save);
-		north.add(BorderLayout.SOUTH, file);
+		c.gridy = y++;
+		c.gridwidth = 1;
+		c.anchor = GridBagConstraints.WEST;
+		c.fill = GridBagConstraints.BOTH;
+		label = new JLabel("File location");
+		gridbag.setConstraints(label, c);
+		panel.add(label);
 
-		panel.add(BorderLayout.NORTH, north);
+		c.gridx = x--;
+		c.gridwidth = 3;
+		c.weightx = 1;
+		gridbag.setConstraints(modFile, c);
+		panel.add(modFile);
+		c.gridwidth = 1;
 
-		JPanel south = new JPanel(new GridLayout(0, 4));
-		south.add(new JLabel("Earthquake name"));
-		south.add(modEq);
-		south.add(new JLabel("     Record name"));
-		south.add(modRec);
-		south.add(new JLabel("Digitization interval (s)"));
-		south.add(modDI);
-		south.add(new JLabel("     Location"));
-		south.add(modLoc);
-		south.add(new JLabel("Moment magnitude"));
-		south.add(modMag);
-		south.add(new JLabel("     Station owner"));
-		south.add(modOwn);
-		south.add(new JLabel("Epicentral distance (km)"));
-		south.add(modEpi);
-		south.add(new JLabel("     Latitude"));
-		south.add(modLat);
-		south.add(new JLabel("Focal distance (km)"));
-		south.add(modFoc);
-		south.add(new JLabel("     Longitude"));
-		south.add(modLng);
-		south.add(new JLabel("Rupture distance (km)"));
-		south.add(modRup);
-		south.add(new JLabel("     Vs30 (m/s)"));
-		south.add(modVs);
-		south.add(new JLabel("Focal mechanism"));
-		south.add(modMech);
-		south.add(new JLabel("     Site classification"));
-		south.add(modSite);
+		int ytop = y;
 
-		panel.add(BorderLayout.SOUTH, south);
+		c.weightx = 0;
+		c.gridx = x++;
+
+		c.gridy = y++;
+		label = new JLabel(SlammerTable.makeUnitName(SlammerTable.rowEarthquake));
+		gridbag.setConstraints(label, c);
+		panel.add(label);
+
+		c.gridy = y++;
+		label = new JLabel(SlammerTable.makeUnitName(SlammerTable.rowDigInt));
+		gridbag.setConstraints(label, c);
+		panel.add(label);
+
+		c.gridy = y++;
+		label = new JLabel(SlammerTable.makeUnitName(SlammerTable.rowMagnitude));
+		gridbag.setConstraints(label, c);
+		panel.add(label);
+
+		c.gridy = y++;
+		label = new JLabel(SlammerTable.makeUnitName(SlammerTable.rowEpiDist));
+		gridbag.setConstraints(label, c);
+		panel.add(label);
+
+		c.gridy = y++;
+		label = new JLabel(SlammerTable.makeUnitName(SlammerTable.rowFocalDist));
+		gridbag.setConstraints(label, c);
+		panel.add(label);
+
+		c.gridy = y++;
+		label = new JLabel(SlammerTable.makeUnitName(SlammerTable.rowRupDist));
+		gridbag.setConstraints(label, c);
+		panel.add(label);
+
+		c.gridy = y++;
+		label = new JLabel(SlammerTable.makeUnitName(SlammerTable.rowFocMech));
+		gridbag.setConstraints(label, c);
+		panel.add(label);
+
+		c.gridx = x++;
+		y = ytop;
+
+		c.gridy = y++;
+		c.weightx = 1;
+		gridbag.setConstraints(modEq, c);
+		panel.add(modEq);
+
+		c.gridy = y++;
+		c.weightx = 1;
+		gridbag.setConstraints(modDI, c);
+		panel.add(modDI);
+
+		c.gridy = y++;
+		c.weightx = 1;
+		gridbag.setConstraints(modMag, c);
+		panel.add(modMag);
+
+		c.gridy = y++;
+		c.weightx = 1;
+		gridbag.setConstraints(modEpi, c);
+		panel.add(modEpi);
+
+		c.gridy = y++;
+		c.weightx = 1;
+		gridbag.setConstraints(modFoc, c);
+		panel.add(modFoc);
+
+		c.gridy = y++;
+		c.weightx = 1;
+		gridbag.setConstraints(modRup, c);
+		panel.add(modRup);
+
+		c.gridy = y++;
+		c.weightx = 1;
+		gridbag.setConstraints(modMech, c);
+		panel.add(modMech);
+
+		c.gridx = x++;
+		y = ytop;
+		c.weightx = 0;
+		c.insets = new Insets(0, 10, 0, 0);
+
+		c.gridy = y++;
+		label = new JLabel(SlammerTable.makeUnitName(SlammerTable.rowRecord));
+		gridbag.setConstraints(label, c);
+		panel.add(label);
+
+		c.gridy = y++;
+		label = new JLabel(SlammerTable.makeUnitName(SlammerTable.rowLocation));
+		gridbag.setConstraints(label, c);
+		panel.add(label);
+
+		c.gridy = y++;
+		label = new JLabel(SlammerTable.makeUnitName(SlammerTable.rowOwner));
+		gridbag.setConstraints(label, c);
+		panel.add(label);
+
+		c.gridy = y++;
+		label = new JLabel(SlammerTable.makeUnitName(SlammerTable.rowLat));
+		gridbag.setConstraints(label, c);
+		panel.add(label);
+
+		c.gridy = y++;
+		label = new JLabel(SlammerTable.makeUnitName(SlammerTable.rowLng));
+		gridbag.setConstraints(label, c);
+		panel.add(label);
+
+		c.gridy = y++;
+		label = new JLabel(SlammerTable.makeUnitName(SlammerTable.rowVs30));
+		gridbag.setConstraints(label, c);
+		panel.add(label);
+
+		c.gridy = y++;
+		label = new JLabel(SlammerTable.makeUnitName(SlammerTable.rowSiteClass));
+		gridbag.setConstraints(label, c);
+		panel.add(label);
+
+		c.gridx = x++;
+		y = ytop;
+		c.weightx = 1;
+		c.insets = new Insets(0, 0, 0, 0);
+
+		c.gridy = y++;
+		c.weightx = 1;
+		gridbag.setConstraints(modRec, c);
+		panel.add(modRec);
+
+		c.gridy = y++;
+		c.weightx = 1;
+		gridbag.setConstraints(modLoc, c);
+		panel.add(modLoc);
+
+		c.gridy = y++;
+		c.weightx = 1;
+		gridbag.setConstraints(modOwn, c);
+		panel.add(modOwn);
+
+		c.gridy = y++;
+		c.weightx = 1;
+		gridbag.setConstraints(modLat, c);
+		panel.add(modLat);
+
+		c.gridy = y++;
+		c.weightx = 1;
+		gridbag.setConstraints(modLng, c);
+		panel.add(modLng);
+
+		c.gridy = y++;
+		c.weightx = 1;
+		gridbag.setConstraints(modVs, c);
+		panel.add(modVs);
+
+		c.gridy = y++;
+		c.weightx = 1;
+		gridbag.setConstraints(modSite, c);
+		panel.add(modSite);
 
 		return panel;
 	}
