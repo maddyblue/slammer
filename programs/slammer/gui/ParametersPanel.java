@@ -47,7 +47,7 @@ class ParametersPanel extends JPanel implements ActionListener
 	public JTextField paramVs = new JTextField(7);
 	public JTextField paramDamp = new JTextField(7);
 	public JTextField paramVr = new JTextField(7);
-	public JComboBox paramSoilModel = new JComboBox(new Object[] {"linear elastic", "equivalent linear"});
+	public JComboBox paramSoilModel = new JComboBox(new Object[] {"Linear elastic", "Equivalent linear"});
 
 	JLabel labelHeight = new JLabel();
 	JLabel labelVs = new JLabel();
@@ -66,11 +66,11 @@ class ParametersPanel extends JPanel implements ActionListener
 	public final static String stringVr = "Shear-wave velocity (material below slip surface)";
 	public final static String stringSoilModel = "Soil model";
 
-	public final static String stringRB = "Rigid Block";
+	public final static String stringRB = "Rigid block";
 	public final static String stringDC = "Decoupled";
 	public final static String stringCP = "Coupled";
 
-	JButton next = new JButton("Go to Step 3: Perform Analyses and View Results");
+	JButton next = new JButton("Go to Step 3: Perform analyses and view results");
 
 	public ParametersPanel(SlammerTabbedPane parent)
 	{
@@ -192,7 +192,7 @@ class ParametersPanel extends JPanel implements ActionListener
 
 		c.gridx = x++;
 		c.gridy = y++;
-		label = new JLabel("Choose Analysis Properties:");
+		label = new JLabel("Choose analysis properties:");
 		label.setFont(GUIUtils.headerFont);
 		c.gridwidth = 5;
 		gridbag.setConstraints(label, c);
@@ -251,7 +251,7 @@ class ParametersPanel extends JPanel implements ActionListener
 		c.gridwidth = 1;
 		c.gridx = x++;
 		c.gridy = y++;
-		label = new JLabel("Critical Acceleration:");
+		label = new JLabel("Critical acceleration:");
 		gridbag.setConstraints(label, c);
 		panel.add(label);
 
@@ -326,7 +326,7 @@ class ParametersPanel extends JPanel implements ActionListener
 		c.gridx = x++;
 		c.gridy = y++;
 		c.weightx = 1;
-		label = new JLabel("Choose Types of Analysis:");
+		label = new JLabel("Choose types of analysis:");
 		label.setFont(GUIUtils.headerFont);
 		c.gridwidth = 4;
 		c.anchor = GridBagConstraints.NORTHWEST;
@@ -351,7 +351,7 @@ class ParametersPanel extends JPanel implements ActionListener
 		c.gridx = x--;
 		c.gridwidth = 2;
 		jp = new JPanel();
-		label = new JLabel("Slope Displacement:");
+		label = new JLabel("Slope displacement:");
 		jp.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
 		jp.add(label);
 		jp.add(downSlope);

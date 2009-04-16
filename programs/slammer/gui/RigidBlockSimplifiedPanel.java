@@ -147,7 +147,7 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 
 		Box sidepanel = new Box(BoxLayout.Y_AXIS);
 
-		label = new JLabel("Select Analysis:");
+		label = new JLabel("Select analysis:");
 		label.setFont(GUIUtils.headerFont);
 		sidepanel.add(label);
 		sidepanel.add(SaygiliRathje2008CARPA);
@@ -187,7 +187,7 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 
 		c.gridy = y++;
 		c.gridwidth = 1;
-		label = new JLabel("Critical (yield) acceleration (g's):");
+		label = new JLabel("Critical (yield) acceleration (g):");
 		gridbag.setConstraints(label, c);
 		panel.add(label);
 
@@ -197,7 +197,7 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 
 		c.gridx = x++;
 		c.gridy = y++;
-		label = new JLabel("Peak ground acceleration (g's):");
+		label = new JLabel("Peak ground acceleration (g):");
 		gridbag.setConstraints(label, c);
 		panel.add(label);
 
@@ -207,7 +207,7 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 
 		c.gridx = x++;
 		c.gridy = y++;
-		label = new JLabel("Peak ground velocity (g's):");
+		label = new JLabel("Peak ground velocity (g):");
 		gridbag.setConstraints(label, c);
 		panel.add(label);
 

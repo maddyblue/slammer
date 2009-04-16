@@ -28,7 +28,7 @@ class UtilitiesPanel extends JPanel implements ActionListener
 	JRadioButton mult = new JRadioButton("Multiply by a constant");
 	JRadioButton redigit = new JRadioButton("Redigitize");
 	JRadioButton bracket = new JRadioButton("Bracket records");
-	JRadioButton clip = new JRadioButton("Trim records");
+	JRadioButton trim = new JRadioButton("Trim records");
 	ButtonGroup group = new ButtonGroup();
 
 	JFileChooser fcs = new JFileChooser();
@@ -77,21 +77,21 @@ class UtilitiesPanel extends JPanel implements ActionListener
 		mult.setActionCommand("change");
 		redigit.setActionCommand("change");
 		bracket.setActionCommand("change");
-		clip.setActionCommand("change");
+		trim.setActionCommand("change");
 
 		cmgs.addActionListener(this);
 		gscm.addActionListener(this);
 		mult.addActionListener(this);
 		redigit.addActionListener(this);
 		bracket.addActionListener(this);
-		clip.addActionListener(this);
+		trim.addActionListener(this);
 
 		group.add(cmgs);
 		group.add(gscm);
 		group.add(mult);
 		group.add(redigit);
 		group.add(bracket);
-		group.add(clip);
+		group.add(trim);
 
 		sourceb.setActionCommand("source");
 		sourceb.addActionListener(this);
@@ -131,7 +131,7 @@ class UtilitiesPanel extends JPanel implements ActionListener
 		panel.add(mult);
 		panel.add(redigit);
 		panel.add(bracket);
-		panel.add(clip);
+		panel.add(trim);
 
 		c.gridx = x++;
 		c.gridy = y;
@@ -315,7 +315,7 @@ class UtilitiesPanel extends JPanel implements ActionListener
 				}
 				else if(redigit.isSelected())
 				{
-					constant1.setText("Digitization Interval (s)");
+					constant1.setText("Digitization interval (s)");
 					constant1f.setEditable(true);
 					pane.setText("This program converts a time file (a file containing paired time and acceleration values) into a file containing a sequence of acceleration values having a constant time spacing (digitization interval) using an interpolation algorithm.  The input and output files or directories must be specified or selected using the browser.  The digitization interval for the output file must be specified in the indicated field; any value can be selected by the user, but values of 0.01-0.05 generally are appropriate.  The output file is in the format necessary to be imported into the program, but it must have units of g.");
 				}
@@ -330,7 +330,7 @@ class UtilitiesPanel extends JPanel implements ActionListener
 					constant2f.setText("0");
 					pane.setText("This program removes points from a record from the beginning and end of the file that have values less than that specified in the input box.");
 				}
-				else if(clip.isSelected())
+				else if(trim.isSelected())
 				{
 					constant1Pre.setText("Remove data before ");
 					constant1Post.setText(" seconds");
@@ -338,7 +338,7 @@ class UtilitiesPanel extends JPanel implements ActionListener
 					constant2Pre.setText("Remove data after ");
 					constant2Post.setText(" seconds");
 					constant2f.setEditable(true);
-					constant3.setText("Digitization Interval (s)");
+					constant3.setText("Digitization interval (s)");
 					constant3f.setEditable(true);
 					pane.setText("This program saves all data within (inclusive) the specified range. If the file is shorter than the specified range, the file will simply be copied to the destination.");
 				}
@@ -403,7 +403,7 @@ class UtilitiesPanel extends JPanel implements ActionListener
 				}
 				else if(redigit.isSelected())
 				{
-					val1 = (Double)Utils.checkNum(constant1f.getText(), "Digitization Interval field", null, false, null, new Double(0), false, null, false);
+					val1 = (Double)Utils.checkNum(constant1f.getText(), "digitization interval field", null, false, null, new Double(0), false, null, false);
 					if(val1 == null) return;
 					sel = SELECT_REDIGIT;
 					selStr = "Redigitization to digitization interval of " + constant1f.getText();
@@ -417,16 +417,16 @@ class UtilitiesPanel extends JPanel implements ActionListener
 					sel = SELECT_BRACKET;
 					selStr = "Bracket";
 				}
-				else if(clip.isSelected())
+				else if(trim.isSelected())
 				{
-					val1 = (Double)Utils.checkNum(constant1f.getText(), "first clip time field", null, false, null, null, false, null, false);
+					val1 = (Double)Utils.checkNum(constant1f.getText(), "first trim time field", null, false, null, null, false, null, false);
 					if(val1 == null) return;
-					val2 = (Double)Utils.checkNum(constant2f.getText(), "second clip time field", null, false, null, null, false, null, false);
+					val2 = (Double)Utils.checkNum(constant2f.getText(), "second trim time field", null, false, null, null, false, null, false);
 					if(val2 == null) return;
 					val3 = (Double)Utils.checkNum(constant3f.getText(), "digitization interval field", null, false, null, null, false, null, false);
 					if(val3 == null) return;
 					sel = SELECT_TRIM;
-					selStr = "Time clip";
+					selStr = "Trim";
 				}
 				else
 				{

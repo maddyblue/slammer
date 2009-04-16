@@ -62,19 +62,19 @@ class WhichAnalysisPanel extends JPanel implements ActionListener
 			String command = e.getActionCommand();
 			if(command.equals("go"))
 			{
-				hd = (Double)Utils.checkNum(h.getText(), "Vertical Thickness field", null, false, null, new Double(0), true, null, false);
+				hd = (Double)Utils.checkNum(h.getText(), "vertical thickness field", null, false, null, new Double(0), true, null, false);
 				if(hd == null) return;
 
-				vsd = (Double)Utils.checkNum(vs.getText(), "Shear Wave Vel. field", null, false, null, new Double(0), true, null, false);
+				vsd = (Double)Utils.checkNum(vs.getText(), "shear-wave velocity field", null, false, null, new Double(0), true, null, false);
 				if(vsd == null) return;
 
-				md = (Double)Utils.checkNum(m.getText(), "Earthquake Magnitude field", null, false, null, new Double(0), true, null, false);
+				md = (Double)Utils.checkNum(m.getText(), "earthquake magnitude field", null, false, null, new Double(0), true, null, false);
 				if(md == null) return;
 
-				rd = (Double)Utils.checkNum(r.getText(), "Earthquake Distance field", null, false, null, new Double(0), true, null, false);
+				rd = (Double)Utils.checkNum(r.getText(), "earthquake distance field", null, false, null, new Double(0), true, null, false);
 				if(rd == null) return;
 
-				meanperd = (Double)Utils.checkNum(meanper.getText(), "Mean Period Sigma field", null, false, null, new Double(0), true, null, false);
+				meanperd = (Double)Utils.checkNum(meanper.getText(), "mean period field", null, false, null, new Double(0), true, null, false);
 				if(meanperd == null) return;
 
 				String[] res = DecoupledSimplified.BrayAndRathje(0, hd.doubleValue(), vsd.doubleValue(), md.doubleValue(), 0, rd.doubleValue(), 0, meanperd.doubleValue(), 0, 0, 0, false);
@@ -167,7 +167,7 @@ class WhichAnalysisPanel extends JPanel implements ActionListener
 
 		c.gridy = y++;
 		c.gridx = x++;
-		label = new JLabel("Mean Period (optional): ");
+		label = new JLabel("Mean period (optional): ");
 		gridbag.setConstraints(label, c);
 		add(label);
 
@@ -202,7 +202,7 @@ class WhichAnalysisPanel extends JPanel implements ActionListener
 
 		c.gridy = y++;
 		c.gridx = x++;
-		label = new JLabel("Rigid Block:");
+		label = new JLabel("Rigid block:");
 		gridbag.setConstraints(label, c);
 		add(label);
 

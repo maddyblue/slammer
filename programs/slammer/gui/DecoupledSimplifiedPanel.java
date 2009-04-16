@@ -103,7 +103,7 @@ class DecoupledSimplifiedPanel extends JPanel implements ActionListener
 		x += 2;
 		c.gridx = x;
 		c.insets = left;
-		label = new JLabel("Standard deviations (sigma), if known:");
+		label = new JLabel("Standard deviations (optional):");
 		label.setFont(GUIUtils.headerFont);
 		gridbag.setConstraints(label, c);
 		add(label);
@@ -443,40 +443,40 @@ class DecoupledSimplifiedPanel extends JPanel implements ActionListener
 			String command = e.getActionCommand();
 			if(command.equals("go"))
 			{
-				kyd = (Double)Utils.checkNum(ky.getText(), "Yield Acceleration field", null, false, null, new Double(0), true, null, false);
+				kyd = (Double)Utils.checkNum(ky.getText(), "critical acceleration field", null, false, null, new Double(0), true, null, false);
 				if(kyd == null) return;
 
-				hd = (Double)Utils.checkNum(h.getText(), "Vertical Thickness field", null, false, null, new Double(0), true, null, false);
+				hd = (Double)Utils.checkNum(h.getText(), "vertical thickness field", null, false, null, new Double(0), true, null, false);
 				if(hd == null) return;
 
-				vsd = (Double)Utils.checkNum(vs.getText(), "Shear Wave Vel. field", null, false, null, new Double(0), true, null, false);
+				vsd = (Double)Utils.checkNum(vs.getText(), "shear-wave velocity field", null, false, null, new Double(0), true, null, false);
 				if(vsd == null) return;
 
-				md = (Double)Utils.checkNum(m.getText(), "Earthquake Magnitude field", null, false, null, new Double(0), true, null, false);
+				md = (Double)Utils.checkNum(m.getText(), "earthquake magnitude field", null, false, null, new Double(0), true, null, false);
 				if(md == null) return;
 
-				rockd = (Double)Utils.checkNum(rock.getText(), "Earthquake Accel. field", null, false, null, new Double(0), true, null, false);
+				rockd = (Double)Utils.checkNum(rock.getText(), "peak bedrock acceleration field", null, false, null, new Double(0), true, null, false);
 				if(rockd == null) return;
 
-				rd = (Double)Utils.checkNum(r.getText(), "Earthquake Distance field", null, false, null, new Double(0), true, null, false);
+				rd = (Double)Utils.checkNum(r.getText(), "earthquake distance field", null, false, null, new Double(0), true, null, false);
 				if(rd == null) return;
 
-				mheaSd = (Double)Utils.checkNum(mheaS.getText(), "Normalized MHEA Sigma field", null, false, null, new Double(0), true, null, false);
+				mheaSd = (Double)Utils.checkNum(mheaS.getText(), "normalized MHEA field", null, false, null, new Double(0), true, null, false);
 				if(mheaSd == null) return;
 
-				meanperSd = (Double)Utils.checkNum(meanperS.getText(), "Mean Period Sigma field", null, false, null, new Double(0), true, null, false);
+				meanperSd = (Double)Utils.checkNum(meanperS.getText(), "mean period field", null, false, null, new Double(0), true, null, false);
 				if(meanperSd == null) return;
 
-				sigdurSd = (Double)Utils.checkNum(sigdurS.getText(), "Significant Duration Sigma field", null, false, null, new Double(0), true, null, false);
+				sigdurSd = (Double)Utils.checkNum(sigdurS.getText(), "significant duration field", null, false, null, new Double(0), true, null, false);
 				if(sigdurSd == null) return;
 
-				normdispSd = (Double)Utils.checkNum(normdispS.getText(), "Normalized Displacement Sigma field", null, false, null, new Double(0), true, null, false);
+				normdispSd = (Double)Utils.checkNum(normdispS.getText(), "normalized displacement field", null, false, null, new Double(0), true, null, false);
 				if(normdispSd == null) return;
 
 				boolean doScreening = allowdisp.getText().equals("") ? false : true;
 				if(doScreening)
 				{
-					allowdispd = (Double)Utils.checkNum(allowdisp.getText(), "Allowable Displacement field", null, false, null, new Double(0), true, null, false);
+					allowdispd = (Double)Utils.checkNum(allowdisp.getText(), "allowable displacement field", null, false, null, new Double(0), true, null, false);
 					if(allowdispd == null) return;
 				}
 				else

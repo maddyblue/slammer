@@ -376,7 +376,7 @@ public class Slammer
 			} // }}}
 			else // {{{
 			{
-				SplashScreen splash = new SplashScreen("Slammer");
+				SplashScreen splash = new SplashScreen("SLAMMER");
 
 				Utils.startDB();
 				splash.advance();
@@ -386,7 +386,7 @@ public class Slammer
 
 				// if the OS supports a native LF, use it
 				UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-				JFrame frame = new JFrame("Slammer");
+				JFrame frame = new JFrame("SLAMMER");
 				frame.setIconImage(new ImageIcon(
 					frame.getClass().getResource("/slammer/images/icon.jpg")).getImage());
 				splash.advance();

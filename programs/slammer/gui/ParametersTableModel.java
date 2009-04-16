@@ -15,7 +15,7 @@ import slammer.*;
 class ParametersTableModel extends DefaultTableModel implements TableModelListener
 {
 	String name;
-	String right = "Critical Acceleration (g)";
+	String right = "Critical acceleration (g)";
 
 	public ParametersTableModel(String left, String name)
 	{

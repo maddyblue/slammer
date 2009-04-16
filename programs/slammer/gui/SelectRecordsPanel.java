@@ -48,7 +48,7 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 	GroupFrame groupFrame;
 
 	SlammerTable table;
-	JButton next = new JButton("Go to Step 2: Select Analyses");
+	JButton next = new JButton("Go to Step 2: Select analyses");
 	JLabel selectLabel = new JLabel();
 	boolean isSlammer;
 

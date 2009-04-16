@@ -42,14 +42,14 @@ class ResultsPanel extends JPanel implements ActionListener
 
 	JTextField decimalsTF = new JTextField("1", 2);
 
-	JButton Analyze = new JButton("Perform Analysis");
+	JButton Analyze = new JButton("Perform analyses");
 	JButton ClearOutput = new JButton("Clear output");
 
 	DefaultTableModel outputTableModel = new DefaultTableModel();
 	JTable outputTable = new JTable(outputTableModel);
 	JScrollPane outputTablePane = new JScrollPane(outputTable);
 
-	JButton saveResultsOutput = new JButton("Save Results Table");
+	JButton saveResultsOutput = new JButton("Save results table");
 	JFileChooser fc = new JFileChooser();
 
 	JButton plotHistogram = new JButton("Plot histogram of displacements");
@@ -757,9 +757,9 @@ class ResultsPanel extends JPanel implements ActionListener
 	{
 		JTabbedPane jtp = new JTabbedPane();
 
-		jtp.add("Graph Displacements", createGraphDisplacementsPanel());
-		jtp.add("Graph Histogram", createGraphHistogramPanel());
-		jtp.add("Save Results Table", createSaveResultsPanel());
+		jtp.add("Graph displacements", createGraphDisplacementsPanel());
+		jtp.add("Graph histogram", createGraphHistogramPanel());
+		jtp.add("Save results table", createSaveResultsPanel());
 
 		return jtp;
 	}

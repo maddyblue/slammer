@@ -60,11 +60,12 @@ class RecordManagerPanel extends JPanel implements ActionListener
 	JComboBox  modMech = new JComboBox(SlammerTable.FocMechArray);
 
 	ButtonGroup TypeGroup = new ButtonGroup();
-	JRadioButton typeTime = new JRadioButton("Time Series", true);
-	JRadioButton typeFourier = new JRadioButton("Fourier Amplitude Spectrum");
-	JRadioButton typeSpectra = new JRadioButton("Response Spectra");
+	JRadioButton typeTime = new JRadioButton("Time series", true);
+	JRadioButton typeFourier = new JRadioButton("Fourier amplitude spectrum");
+	JRadioButton typeSpectra = new JRadioButton("Response spectra");
 
-	JComboBox spectraCB = new JComboBox(new String[] { "Absolute-Acceleration", "Relative-Velocity", "Relative-Displacement", "Psuedo Absolute-Acceleration", "Psuedo Relative-Velocity" });
+	JComboBox spectraCB = new JComboBox(new String[] { "Absolute acceleration", "Relative velocity", "Relative displacement", "Psuedo absolute acceleration", "Psuedo relative velocity" });
+	String[] spectraNames = new String[] { "Absolute-Acceleration", "Relative-Velocity", "Relative-Displacement", "Psuedo-Absolute-Acceleration", "Psuedo-Relative-Velocity" };
 	String[] spectraCBStr = new String[] { "cm/s/s", "cm/s", "cm", "cm/s/s", "cm/s" };
 
 	JComboBox spectraDomain = new JComboBox(new String[] { "Frequency", "Period" });
@@ -131,8 +132,8 @@ class RecordManagerPanel extends JPanel implements ActionListener
 		saveGraph.setActionCommand("saveGraph");
 		saveGraph.addActionListener(this);
 
-		managerTP.addTab("Modify Record", createModifyPanel());
-		managerTP.addTab("Graphing Options", createGraphPanel());
+		managerTP.addTab("Modify record", createModifyPanel());
+		managerTP.addTab("Graphing options", createGraphPanel());
 
 		spectraDomain.setActionCommand("domain");
 		spectraDomain.addActionListener(this);
@@ -173,7 +174,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 		label.setFont(GUIUtils.headerFont);
 
 		JPanel file = new JPanel(new BorderLayout());
-		file.add(BorderLayout.WEST, new JLabel("File Location "));
+		file.add(BorderLayout.WEST, new JLabel("File location "));
 		file.add(BorderLayout.CENTER, modFile);
 
 		north.add(BorderLayout.WEST, label);
@@ -187,29 +188,29 @@ class RecordManagerPanel extends JPanel implements ActionListener
 		south.add(modEq);
 		south.add(new JLabel("     Record name"));
 		south.add(modRec);
-		south.add(new JLabel("Digitization Interval (s)"));
+		south.add(new JLabel("Digitization interval (s)"));
 		south.add(modDI);
-		south.add(new JLabel("     Location [optional]"));
+		south.add(new JLabel("     Location"));
 		south.add(modLoc);
-		south.add(new JLabel("Moment Magnitude [optional]"));
+		south.add(new JLabel("Moment magnitude"));
 		south.add(modMag);
-		south.add(new JLabel("     Station owner [optional]"));
+		south.add(new JLabel("     Station owner"));
 		south.add(modOwn);
-		south.add(new JLabel("Epicentral distance (km) [optional]"));
+		south.add(new JLabel("Epicentral distance (km)"));
 		south.add(modEpi);
-		south.add(new JLabel("     Latitude [optional]"));
+		south.add(new JLabel("     Latitude"));
 		south.add(modLat);
-		south.add(new JLabel("Focal distance (km) [optional]"));
+		south.add(new JLabel("Focal distance (km)"));
 		south.add(modFoc);
-		south.add(new JLabel("     Longitude [optional]"));
+		south.add(new JLabel("     Longitude"));
 		south.add(modLng);
-		south.add(new JLabel("Rupture distance (km) [optional]"));
+		south.add(new JLabel("Rupture distance (km)"));
 		south.add(modRup);
-		south.add(new JLabel("     Vs30 (m/s) [optional]"));
+		south.add(new JLabel("     Vs30 (m/s)"));
 		south.add(modVs);
-		south.add(new JLabel("Focal Mechanism [optional]"));
+		south.add(new JLabel("Focal mechanism"));
 		south.add(modMech);
-		south.add(new JLabel("     Site Class [optional]"));
+		south.add(new JLabel("     Site classification"));
 		south.add(modSite);
 
 		panel.add(BorderLayout.SOUTH, south);
@@ -264,7 +265,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 		panel.add(typeTime);
 
 		c.gridx = x++;
-		label = new JLabel("Vertical Axis");
+		label = new JLabel("Vertical axis");
 		label.setBorder(bdown);
 		gridbag.setConstraints(label, c);
 		panel.add(label);
@@ -304,7 +305,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 		c.gridy = y++;
 		c.gridwidth = 1;
 		c.insets = left;
-		label = new JLabel("Domain Axis");
+		label = new JLabel("Domain axis");
 		gridbag.setConstraints(label, c);
 		panel.add(label);
 
@@ -316,7 +317,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 		c.gridx = x++;
 		c.gridy = y++;
 		c.insets = left;
-		label = new JLabel("Response Type");
+		label = new JLabel("Response type");
 		gridbag.setConstraints(label, c);
 		panel.add(label);
 
@@ -595,9 +596,9 @@ class RecordManagerPanel extends JPanel implements ActionListener
 				{
 					int index = spectraCB.getSelectedIndex();
 
-					title = spectraCB.getSelectedItem().toString() + " Response Spectrum at ";
+					title = spectraNames[index] + " Response Spectrum at ";
 					xAxis = spectraDomain.getSelectedItem() + " (" + spectraDomainStr[spectraDomain.getSelectedIndex()] + ")";
-					yAxis = "Response (" + spectraCBStr[spectraCB.getSelectedIndex()] + ")";
+					yAxis = "Response (" + spectraCBStr[index] + ")";
 					double[] arr = new double[dat.size()];
 
 					Double temp;

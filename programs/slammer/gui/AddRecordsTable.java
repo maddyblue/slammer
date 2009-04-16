@@ -25,7 +25,7 @@ class AddRecordsTable extends JPanel implements ActionListener
 	JTextField valueTextField = new JTextField(15);
 	JComboBox valueFocMech = new JComboBox(SlammerTable.FocMechArray);
 	JComboBox valueSiteClass = new JComboBox(SlammerTable.SiteClassArray);
-	JComboBox colChoose = new JComboBox(SlammerTable.getColumnList(SlammerTable.colFieldName, SlammerTable.colImport, SlammerTable.IMCMB));
+	JComboBox colChoose = new JComboBox(SlammerTable.getColumnList(SlammerTable.colDispName, SlammerTable.colImport, SlammerTable.IMCMB));
 	JButton set = new JButton("Set");
 
 	public AddRecordsTable()
@@ -59,7 +59,7 @@ class AddRecordsTable extends JPanel implements ActionListener
 
 		ArrayList trueNorth = new ArrayList();
 		trueNorth.add(GUIUtils.makeRecursiveLayoutRight(north));
-		trueNorth.add(new JLabel("Earthquake name, Record name, and digitization interval (in seconds) must be specified; other fields are optional."));
+		trueNorth.add(new JLabel("Earthquake name, record name, and digitization interval (in seconds) must be specified; other fields are optional."));
 
 		add(BorderLayout.NORTH, GUIUtils.makeRecursiveLayoutDown(trueNorth));
 
@@ -126,14 +126,14 @@ class AddRecordsTable extends JPanel implements ActionListener
 
 				for(int i = 0; i < SlammerTable.fieldArray.length; i++)
 				{
-					if(col.equals(SlammerTable.fieldArray[SlammerTable.rowFocMech][SlammerTable.colFieldName]))
+					if(col.equals(SlammerTable.fieldArray[SlammerTable.rowFocMech][SlammerTable.colDispName]))
 					{
 						valueSel = valueFM;
 						valueFocMech.setVisible(true);
 						valueTextField.setVisible(false);
 						break;
 					}
-					else if(col.equals(SlammerTable.fieldArray[SlammerTable.rowSiteClass][SlammerTable.colFieldName]))
+					else if(col.equals(SlammerTable.fieldArray[SlammerTable.rowSiteClass][SlammerTable.colDispName]))
 					{
 						valueSel = valueSC;
 						valueSiteClass.setVisible(true);

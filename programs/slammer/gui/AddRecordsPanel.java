@@ -208,7 +208,7 @@ class AddRecordsPanel extends JPanel implements ActionListener
 		// we already checked for an empty di - don't want two errors about it
 		if(!di.equals(""))
 		{
-			ret = Utils.checkNum(di, "Digitization interval field", null, false, null, new Double(0), false, null, true);
+			ret = Utils.checkNum(di, "digitization interval field", null, false, null, new Double(0), false, null, true);
 			if(ret.getClass().getName().equals("java.lang.String"))
 				errors += ret.toString() + "\n";
 			else
@@ -217,7 +217,7 @@ class AddRecordsPanel extends JPanel implements ActionListener
 
 		if(!mag.equals("null"))
 		{
-			ret = Utils.checkNum(mag, "Moment Magnitude field", null, false, null, new Double(0), true, null, true);
+			ret = Utils.checkNum(mag, "moment magnitude field", null, false, null, new Double(0), true, null, true);
 			mag = "'" + mag + "'";
 			if(ret.getClass().getName().equals("java.lang.String"))
 				errors += ret.toString() + "\n";
@@ -225,7 +225,7 @@ class AddRecordsPanel extends JPanel implements ActionListener
 
 		if(!epidist.equals("null"))
 		{
-			ret = Utils.checkNum(epidist, "Epicentral distance field", null, false, null, new Double(0), true, null, true);
+			ret = Utils.checkNum(epidist, "epicentral distance field", null, false, null, new Double(0), true, null, true);
 			epidist = "'" + epidist + "'";
 			if(ret.getClass().getName().equals("java.lang.String"))
 				errors += ret.toString() + "\n";
@@ -233,7 +233,7 @@ class AddRecordsPanel extends JPanel implements ActionListener
 
 		if(!focdist.equals("null"))
 		{
-			ret = Utils.checkNum(focdist, "Focal distance field", null, false, null, new Double(0), true, null, true);
+			ret = Utils.checkNum(focdist, "focal distance field", null, false, null, new Double(0), true, null, true);
 			focdist = "'" + focdist + "'";
 			if(ret.getClass().getName().equals("java.lang.String"))
 				errors += ret.toString() + "\n";
@@ -241,7 +241,7 @@ class AddRecordsPanel extends JPanel implements ActionListener
 
 		if(!rupdist.equals("null"))
 		{
-			ret = Utils.checkNum(rupdist, "Rupture distance field", null, false, null, new Double(0), true, null, true);
+			ret = Utils.checkNum(rupdist, "rupture distance field", null, false, null, new Double(0), true, null, true);
 			rupdist = "'" + rupdist + "'";
 			if(ret.getClass().getName().equals("java.lang.String"))
 				errors += ret.toString() + "\n";
@@ -257,7 +257,7 @@ class AddRecordsPanel extends JPanel implements ActionListener
 
 		if(!lat.equals("null"))
 		{
-			ret = Utils.checkNum(lat, "Latitude field", new Double(90), true, null, new Double(-90), true, null, true);
+			ret = Utils.checkNum(lat, "latitude field", new Double(90), true, null, new Double(-90), true, null, true);
 			lat = "'" + lat + "'";
 			if(ret.getClass().getName().equals("java.lang.String"))
 				errors += ret.toString() + "\n";
@@ -265,7 +265,7 @@ class AddRecordsPanel extends JPanel implements ActionListener
 
 		if(!lng.equals("null"))
 		{
-			ret = Utils.checkNum(lng, "Longitude field", new Double(180), true, null, new Double(-180), true, null, true);
+			ret = Utils.checkNum(lng, "longitude field", new Double(180), true, null, new Double(-180), true, null, true);
 			lng = "'" + lng + "'";
 			if(ret.getClass().getName().equals("java.lang.String"))
 				errors += ret.toString() + "\n";

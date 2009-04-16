@@ -50,17 +50,17 @@ public class SlammerTabbedPane extends JTabbedPane
 			Simplified = new JTabbedPane();
 			Manager = new JTabbedPane();
 
-			Rigorous.addTab("Step 1: Select Records", SelectRecords);
-			Rigorous.addTab("Step 2: Select Analyses", Parameters);
-			Rigorous.addTab("Step 3: Perform Analyses and View Results", Results);
-			Rigorous.addTab("Appendix: Which Analysis Should I Use?", WhichAnalysis);
+			Rigorous.addTab("Step 1: Select records", SelectRecords);
+			Rigorous.addTab("Step 2: Select analyses", Parameters);
+			Rigorous.addTab("Step 3: Perform analyses and view results", Results);
+			Rigorous.addTab("Appendix: Which analysis should I use?", WhichAnalysis);
 
-			Simplified.addTab("Rigid-Block Analyses", RigidBlockSimplified);
-			Simplified.addTab("Decoupled Analysis", DecoupledSimplified);
-			Simplified.addTab("Probability of Failure", ProbFail);
+			Simplified.addTab("Rigid-block analyses", RigidBlockSimplified);
+			Simplified.addTab("Decoupled analysis", DecoupledSimplified);
+			Simplified.addTab("Probability of failure", ProbFail);
 
-			Manager.addTab("Manage Records", RecordManager);
-			Manager.addTab("Add Records", AddRecords);
+			Manager.addTab("Manage records", RecordManager);
+			Manager.addTab("Add records", AddRecords);
 
 			addTab("Getting Started", GettingStarted);
 			addTab("Rigorous Analyses", Rigorous);
