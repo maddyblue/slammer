@@ -828,7 +828,7 @@ class ResultsPanel extends JPanel implements ActionListener
 		panel.add(plotDisplacementLegend);
 
 		c.gridx = x;
-		label = new JLabel(" ");
+		label = new JLabel();
 		c.weightx = 1;
 		gridbag.setConstraints(label, c);
 		panel.add(label);
@@ -908,7 +908,7 @@ class ResultsPanel extends JPanel implements ActionListener
 		panel.add(bins);
 
 		c.gridx = x;
-		label = new JLabel(" ");
+		label = new JLabel();
 		c.weightx = 1;
 		gridbag.setConstraints(label, c);
 		panel.add(label);
@@ -950,7 +950,7 @@ class ResultsPanel extends JPanel implements ActionListener
 		panel.add(saveResultsOutput);
 
 		c.gridx = x;
-		label = new JLabel(" ");
+		label = new JLabel();
 		c.weightx = 1;
 		gridbag.setConstraints(label, c);
 		panel.add(label);
