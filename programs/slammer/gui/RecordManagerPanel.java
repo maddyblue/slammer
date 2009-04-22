@@ -586,9 +586,13 @@ class RecordManagerPanel extends JPanel implements ActionListener
 			else if(command.equals("graph") || command.equals("saveGraph"))
 			{
 				int row = table.getSelectedRow();
-				boolean save = command.equals("saveGraph");
 				if(row == -1)
+				{
+					GUIUtils.popupError("No selected record.");
 					return;
+				}
+
+				boolean save = command.equals("saveGraph");
 
 				String eq = table.getModel().getValueAt(row, 0).toString();
 				String record = table.getModel().getValueAt(row, 1).toString();
@@ -801,7 +805,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 				}
 				else if(command.equals("saveGraph"))
 				{
-					if(JFileChooser.APPROVE_OPTION == saveChooser.showOpenDialog(this))
+					if(JFileChooser.APPROVE_OPTION == saveChooser.showSaveDialog(this))
 					{
 						double xysdata[][] = xys.toArray();
 						FileWriter w = new FileWriter(saveChooser.getSelectedFile());
