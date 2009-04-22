@@ -33,30 +33,30 @@ public interface SlammerTableInterface
 	public static final Boolean FALSE = Boolean.FALSE;
 
 	public static final Object[][] fieldArray = {
-		//                                                             display      search       sort          select    manager
-		// Field name                           units   abbrev         DB name      DB name      field  search display   display   import
-		{ "Import",                             "",     "Import",      "",          "",          FALSE, FALSE, NONEO,    NONEO,    IMTBLO,  "Import"                },
-		{ "File",                               "",     "File",        "",          "",          FALSE, FALSE, NONEO,    NONEO,    IMTBLO,  "File"                  },
-		{ "Earthquake",                         "",     "Earthquake",  "EQ",        "EQ",        TRUE,  FALSE, RSBOTHO,  RSBOTHO,  IMBOTHO, "Earthquake"            },
-		{ "Record",                             "",     "Record",      "RECORD",    "RECORD",    TRUE,  FALSE, RSBOTHO,  RSBOTHO,  IMTBLO,  "Record"                },
-		{ "Digitization interval",              "s",    "Dig. int.",   "DIGI_INT",  "DIGI_INT",  FALSE, FALSE, NONEO,    RECORDO,  IMBOTHO, "Digitization interval" },
-		{ "Moment magnitude",                   "",     "Magnitude",   "MOM_MAG",   "MAG_SRCH",  TRUE,  TRUE,  RECORDO,  RECORDO,  IMBOTHO, "Moment magnitude"      },
-		{ "Arias intensity",                    "m/s",  "Arias int.",  "ARIAS",     "ARIAS",     TRUE,  TRUE,  RECORDO,  RECORDO,  NONEO,   "Arias intensity"       },
-		{ "Duration<sub>5-95%</sub>",           "s",    "Duration",    "DOBRY",     "DOBRY",     TRUE,  TRUE,  RECORDO,  RECORDO,  NONEO,   "Duration 5-95%"        },
-		{ "Peak acceleration",                  "g",    "PGA",         "PGA",       "PGA",       TRUE,  TRUE,  RECORDO,  RECORDO,  NONEO,   "Peak acceleration"     },
-		{ "Peak velocity",                      "cm/s", "PGV",         "PGV",       "PGV",       TRUE,  TRUE,  RECORDO,  RECORDO,  NONEO,   "Peak velocity"         },
-		{ "Mean period",                        "s",    "Mean per.",   "MEAN_PER",  "MEAN_PER",  TRUE,  TRUE,  RECORDO,  RECORDO,  NONEO,   "Mean period"           },
-		{ "Epicentral distance",                "km",   "Epi. dist.",  "EPI_DIST",  "EPI_SRCH",  TRUE,  TRUE,  RECORDO,  RECORDO,  IMBOTHO, "Epicentral distance"   },
-		{ "Focal distance",                     "km",   "Focal dist.", "FOC_DIST",  "FOC_SRCH",  TRUE,  TRUE,  RECORDO,  RECORDO,  IMBOTHO, "Focal distance"        },
-		{ "Rupture distance",                   "km",   "Rup. dist",   "RUP_DIST",  "RUP_SRCH",  TRUE,  TRUE,  RECORDO,  RECORDO,  IMBOTHO, "Rupture distance"      },
-		{ "V<sub>S</sub><sup>30</sup>",         "m/s",  "Vs30",        "VS30",      "VS30_SRCH", TRUE,  TRUE,  STATIONO, STATIONO, IMBOTHO, "Vs30"                  },
-		{ "Site classification (Geomatrix C3)", "",     "Site class.", "CLASS",     "CLASS",     TRUE,  FALSE, STATIONO, STATIONO, IMBOTHO, "Site classification"   },
-		{ "Focal mechanism",                    "",     "Foc. mech.",  "FOC_MECH",  "FOC_MECH",  TRUE,  FALSE, RECORDO,  RECORDO,  IMBOTHO, "Focal mechanism"       },
-		{ "Location",                           "",     "Location",    "LOCATION",  "LOCATION",  TRUE,  FALSE, STATIONO, STATIONO, IMBOTHO, "Location"              },
-		{ "Owner",                              "",     "Owner",       "OWNER",     "OWNER",     TRUE,  FALSE, STATIONO, STATIONO, IMBOTHO, "Owner"                 },
-		{ "Latitude",                           "",     "Latitude",    "LATITUDE",  "LAT_SRCH",  TRUE,  FALSE, STATIONO, STATIONO, IMBOTHO, "Latitude"              },
-		{ "Longitude",                          "",     "Longitude",   "LONGITUDE", "LNG_SRCH",  TRUE,  FALSE, STATIONO, STATIONO, IMBOTHO, "Longitude"             },
-		{ "Analyze",                            "",     "Analyze",     "ANALYZE",   "ANALYZE",   FALSE, FALSE, RSBOTHO,  NONEO,    NONEO,   "Analyze"               }
+		//                                                                     display      search       sort          select    manager
+		// Field name                           units   abbrev                 DB name      DB name      field  search display   display   import   display name
+		{ "Import",                             "",     "Import",              "",          "",          FALSE, FALSE, NONEO,    NONEO,    IMTBLO,  "Import"                },
+		{ "File",                               "",     "File",                "",          "",          FALSE, FALSE, NONEO,    NONEO,    IMTBLO,  "File"                  },
+		{ "Earthquake",                         "",     "Earthquake",          "EQ",        "EQ",        TRUE,  FALSE, RSBOTHO,  RSBOTHO,  IMBOTHO, "Earthquake"            },
+		{ "Record",                             "",     "Record",              "RECORD",    "RECORD",    TRUE,  FALSE, RSBOTHO,  RSBOTHO,  IMTBLO,  "Record"                },
+		{ "Digitization interval",              "s",    "Dig. interval",       "DIGI_INT",  "DIGI_INT",  FALSE, FALSE, NONEO,    RECORDO,  IMBOTHO, "Digitization interval" },
+		{ "Moment magnitude",                   "",     "Magnitude",           "MOM_MAG",   "MAG_SRCH",  TRUE,  TRUE,  RECORDO,  RECORDO,  IMBOTHO, "Moment magnitude"      },
+		{ "Arias intensity",                    "m/s",  "Arias intensity",     "ARIAS",     "ARIAS",     TRUE,  TRUE,  RECORDO,  RECORDO,  NONEO,   "Arias intensity"       },
+		{ "Duration<sub>5-95%</sub>",           "s",    "Duration",            "DOBRY",     "DOBRY",     TRUE,  TRUE,  RECORDO,  RECORDO,  NONEO,   "Duration 5-95%"        },
+		{ "Peak acceleration",                  "g",    "PGA",                 "PGA",       "PGA",       TRUE,  TRUE,  RECORDO,  RECORDO,  NONEO,   "Peak acceleration"     },
+		{ "Peak velocity",                      "cm/s", "PGV",                 "PGV",       "PGV",       TRUE,  TRUE,  RECORDO,  RECORDO,  NONEO,   "Peak velocity"         },
+		{ "Mean period",                        "s",    "Mean period",         "MEAN_PER",  "MEAN_PER",  TRUE,  TRUE,  RECORDO,  RECORDO,  NONEO,   "Mean period"           },
+		{ "Epicentral distance",                "km",   "Epi. distance",       "EPI_DIST",  "EPI_SRCH",  TRUE,  TRUE,  RECORDO,  RECORDO,  IMBOTHO, "Epicentral distance"   },
+		{ "Focal distance",                     "km",   "Focal distance",      "FOC_DIST",  "FOC_SRCH",  TRUE,  TRUE,  RECORDO,  RECORDO,  IMBOTHO, "Focal distance"        },
+		{ "Rupture distance",                   "km",   "Rup. dist",           "RUP_DIST",  "RUP_SRCH",  TRUE,  TRUE,  RECORDO,  RECORDO,  IMBOTHO, "Rupture distance"      },
+		{ "V<sub>S</sub><sup>30</sup>",         "m/s",  "Vs30",                "VS30",      "VS30_SRCH", TRUE,  TRUE,  STATIONO, STATIONO, IMBOTHO, "Vs30"                  },
+		{ "Site classification (Geomatrix C3)", "",     "Site classification", "CLASS",     "CLASS",     TRUE,  FALSE, STATIONO, STATIONO, IMBOTHO, "Site classification"   },
+		{ "Focal mechanism",                    "",     "Focal mechanism",     "FOC_MECH",  "FOC_MECH",  TRUE,  FALSE, RECORDO,  RECORDO,  IMBOTHO, "Focal mechanism"       },
+		{ "Location",                           "",     "Location",            "LOCATION",  "LOCATION",  TRUE,  FALSE, STATIONO, STATIONO, IMBOTHO, "Location"              },
+		{ "Owner",                              "",     "Owner",               "OWNER",     "OWNER",     TRUE,  FALSE, STATIONO, STATIONO, IMBOTHO, "Owner"                 },
+		{ "Latitude",                           "",     "Latitude",            "LATITUDE",  "LAT_SRCH",  TRUE,  FALSE, STATIONO, STATIONO, IMBOTHO, "Latitude"              },
+		{ "Longitude",                          "",     "Longitude",           "LONGITUDE", "LNG_SRCH",  TRUE,  FALSE, STATIONO, STATIONO, IMBOTHO, "Longitude"             },
+		{ "Analyze",                            "",     "Analyze",             "ANALYZE",   "ANALYZE",   FALSE, FALSE, RSBOTHO,  NONEO,    NONEO,   "Analyze"               }
 	};
 
 	public static final int colFieldName      = 0;

@@ -439,8 +439,8 @@ class UtilitiesPanel extends JPanel implements ActionListener
 				StringBuilder results = new StringBuilder();
 				int errors = 0;
 				global_overwrite = OVW_NONE;
-				ArrayDeque<File> stack = new ArrayDeque<File>(sources.length);
-				ArrayDeque<File> source_stack = new ArrayDeque<File>(sources.length);
+				Stack<File> stack = new Stack<File>();
+				Stack<File> source_stack = new Stack<File>();
 				TreeMap<File, File> map = new TreeMap<File, File>();
 				File parent;
 

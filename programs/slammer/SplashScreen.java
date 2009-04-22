@@ -61,8 +61,7 @@ public class SplashScreen extends JComponent
 
 		win.getContentPane().add(BorderLayout.CENTER,this);
 
-		win.setLocation((screen.width - size.width) / 2,
-			(screen.height - size.height) / 2);
+		win.setLocationRelativeTo(null);
 		win.validate();
 		win.setVisible(true);
 
