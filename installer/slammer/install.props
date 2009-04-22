@@ -6,9 +6,6 @@
 app.name=Slammer
 app.jar=slammer
 
-# Info to display on first page of installer
-app.readme=readme.html
-
 # OS-specific stuff
 ostask.unix-script.label=Install shortcut in:
 

@@ -62,8 +62,15 @@ public class SwingInstall extends JFrame
 		String completedInfo = "done-" + clazz.substring(
 			clazz.indexOf('$') + 1) + ".html";
 
+		/*
+		 * Java 1.5 on needs this (on the author's system) for the actual
+		 * readme.html to display. It seems the first TextPanel created
+		 * (even the done-*.html files) do not work. Not sure why.
+		 */
+		new TextPanel("readme.html");
+
 		pages = new Component[] {
-			new TextPanel(installer.getProperty("app.readme")),
+			new TextPanel("readme.html"),
 			chooseDirectory = new ChooseDirectory(),
 			selectComponents = new SelectComponents(),
 			progress = new SwingProgress(),
@@ -189,8 +196,10 @@ public class SwingInstall extends JFrame
 			nextButton.setText("Finish");
 			prevButton.setEnabled(false);
 			nextButton.setEnabled(true);
+			cancelButton.setEnabled(false);
 			break;
 		}
+
 
 		getRootPane().invalidate();
 		getRootPane().validate();

@@ -106,10 +106,6 @@ public abstract class OperatingSystem
 			String osName = System.getProperty("os.name");
 			if(osName.indexOf("Windows") != -1)
 				os = new Windows();
-			else if(osName.indexOf("OS/2") != -1)
-				os = new HalfAnOS();
-			else if(osName.indexOf("VMS") != -1)
-				os = new VMS();
 			else
 				os = new Unix();
 		}
@@ -155,7 +151,8 @@ public abstract class OperatingSystem
 				if(!enabled)
 					return;
 
-				mkdirs(directory);
+				File file = new File(directory);
+				file.mkdirs();
 
 				String name = installer.getProperty("app.jar");
 
@@ -178,7 +175,7 @@ public abstract class OperatingSystem
 				out.write("JAVA_HOME=\"$DEFAULT_JAVA_HOME\"\n");
 				out.write("fi\n");
 
-				out.write("cd " + installDir + "/programs\n");
+				out.write("cd \"" + installDir + "/programs\"\n");
 				out.write("exec \"$JAVA_HOME"
 					+ "/bin/java\" -mx${JAVA_HEAP_SIZE}m -jar " + name + ".jar\n");
 
@@ -193,17 +190,6 @@ public abstract class OperatingSystem
 		public OSTask[] getOSTasks(Install installer)
 		{
 			return new OSTask[] { new ScriptOSTask(installer) };
-		}
-
-		public void mkdirs(String directory) throws IOException
-		{
-			File file = new File(directory);
-			if(!file.exists())
-			{
-				String[] mkdirArgs = { "mkdir", "-m", "755",
-					"-p", directory };
-				exec(mkdirArgs);
-			}
 		}
 
 		public void exec(String[] args) throws IOException
@@ -240,69 +226,6 @@ public abstract class OperatingSystem
 		public String getInstallDirectory(String name)
 		{
 			return "C:\\Program Files\\" + name;
-		}
-
-		public class JEditLauncherOSTask extends OSTask
-		{
-			public JEditLauncherOSTask(Install installer)
-			{
-				super(installer,"jedit-launcher");
-			}
-
-			public String getDefaultDirectory(Install installer)
-			{
-				return null;
-			}
-
-			public void perform(String installDir,
-				Vector filesets)
-			{
-				if(!enabled
-					|| !filesets.contains("jedit-windows"))
-					return;
-
-				// run jEditLauncher installation
-				File executable = new File(installDir,"jedit.exe");
-				if(!executable.exists())
-					return;
-
-				String[] args = { executable.getPath(), "/i",
-					System.getProperty("java.home")
-					+ File.separator
-					+ "bin" };
-
-				try
-				{
-					Runtime.getRuntime().exec(args).waitFor();
-				}
-				catch(IOException io)
-				{
-				}
-				catch(InterruptedException ie)
-				{
-				}
-			}
-		}
-
-		public OSTask[] getOSTasks(Install installer)
-		{
-			return new OSTask[] { /* new JEditLauncherOSTask(installer) */ };
-		}
-	}
-
-	public static class HalfAnOS extends OperatingSystem
-	{
-		public String getInstallDirectory(String name)
-		{
-			return "C:\\" + name;
-		}
-	}
-
-	public static class VMS extends OperatingSystem
-	{
-		public String getInstallDirectory(String name)
-		{
-			return "./" + name.toLowerCase();
 		}
 	}
 
