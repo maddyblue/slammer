@@ -75,15 +75,17 @@
 				<include name="slammer/slammer.manifest" />
 				<include name="slammer/images/*" />
 			</tarfileset>
-			<tarfileset dir="${inst}" prefix="${inst}" excludes="*.tar*, *.class">
+			<tarfileset dir="${inst}" prefix="${inst}" excludes="*.tar*, *.class, *.orig">
 				<include name="*.java" />
 				<include name="readme.html" />
 				<include name="filesize.sh" />
 				<include name="install.mf" />
 				<include name="program-*" />
 				<include name="eq-*" />
-				<include name="srm/*" />
-				<include name="slammer/*" />
+				<include name="srm/*.html" />
+				<include name="srm/install.props" />
+				<include name="slammer/*.html" />
+				<include name="slammer/install.props" />
 			</tarfileset>
 			<tarfileset dir=".">
 				<include name="build.xml" />

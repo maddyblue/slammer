@@ -19,7 +19,7 @@ comp.count=6
 
 comp.0.name=Slammer program (check only on initial install)
 comp.0.disk-size=5
-comp.0.real-size=5400
+comp.0.real-size=5402
 comp.0.fileset=program-slammer
 
 comp.1.name=California records
@@ -52,5 +52,5 @@ comp.4.sqllen=165
 
 comp.5.name=Source code
 comp.5.disk-size=22
-comp.5.real-size=13090
+comp.5.real-size=13094
 comp.5.fileset=program-source
