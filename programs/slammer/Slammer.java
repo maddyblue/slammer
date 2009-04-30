@@ -61,7 +61,7 @@ public class Slammer
 				args = new String[] {""};
 			}
 
-			if(args[0].equals("getsql")) // {{{
+			if(args[0].equals("getsql"))
 			{
 
 				FileWriter fw = new FileWriter(".." + File.separator + "records" + File.separator + "eq.sql");
@@ -93,14 +93,14 @@ public class Slammer
 
 				fw.close();
 				Utils.closeDB();
-			} // }}}
-			else if(args[0].equals("drop")) // {{{
+			}
+			else if(args[0].equals("drop"))
 			{
 				Utils.getDB().runUpdate("drop table data");
 				Utils.getDB().runUpdate("drop table grp");
 				Utils.closeDB();
-			} // }}}
-			else if(args[0].equals("createdb")) // {{{
+			}
+			else if(args[0].equals("createdb"))
 			{
 				Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
 				java.sql.Connection connection = java.sql.DriverManager.getConnection(EQDatabase.url + ";create=true");
@@ -108,8 +108,8 @@ public class Slammer
 				try {
 					java.sql.DriverManager.getConnection(EQDatabase.url + ";shutdown=true");
 				} catch(Exception e) {}
-			} // }}}
-			else if(args[0].equals("createtable")) // {{{
+			}
+			else if(args[0].equals("createtable"))
 			{
 				Utils.getDB().runUpdate("create table data ("
 					+ "id        integer      not null generated always as identity primary key,"
@@ -151,8 +151,8 @@ public class Slammer
 					+ "name      varchar(100) not null,"
 					+ "analyze   smallint     not null"
 					+ ")");
-			} // }}}
-			else if(args[0].equals("import")) // {{{
+			}
+			else if(args[0].equals("import"))
 			{
 				FileReader fr = new FileReader(".." + File.separatorChar + "records" + File.separatorChar + "EQdata.txt");
 				String s = "";
@@ -289,13 +289,13 @@ public class Slammer
 				fr.close();
 				Utils.getDB().syncRecords("");
 				Utils.closeDB();
-			} // }}}
+			}
 			else if(args[0].equals("sync"))
 			{
 				Utils.getDB().syncRecords("");
 				Utils.closeDB();
 			}
-			else if(args[0].equals("importsql")) // {{{
+			else if(args[0].equals("importsql"))
 			{
 				FileReader fr = new FileReader(".." + File.separatorChar + "records" + File.separatorChar + "eq.sql");
 				String s = "";
@@ -364,17 +364,17 @@ public class Slammer
 				fr.close();
 				Utils.getDB().syncRecords("");
 				Utils.closeDB();
-			} // }}}
-			else if(args[0].equals("test")) // {{{
+			}
+			else if(args[0].equals("test"))
 			{
 				junit.textui.TestRunner.run(SlammerTest.suite());
-			} // }}}
-			else if(args[0].equals("testg")) // {{{
+			}
+			else if(args[0].equals("testg"))
 			{
 				junit.swingui.TestRunner tr = new junit.swingui.TestRunner();
 				tr.start(new String[] { "slammer.SlammerTest" });
-			} // }}}
-			else // {{{
+			}
+			else
 			{
 				SplashScreen splash = new SplashScreen("SLAMMER");
 
@@ -417,7 +417,7 @@ public class Slammer
 
 				frame.setVisible(true);
 				splash.dispose();
-			} // }}}
+			}
 		}
 		catch(Exception ex)
 		{

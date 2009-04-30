@@ -136,7 +136,7 @@ class ResultsPanel extends JPanel implements ActionListener
 		clearOutput();
 	}
 
-	public void actionPerformed(java.awt.event.ActionEvent e) // {{{
+	public void actionPerformed(java.awt.event.ActionEvent e)
 	{
 		try
 		{
@@ -725,9 +725,7 @@ class ResultsPanel extends JPanel implements ActionListener
 		{
 			Utils.catchException(ex);
 		}
-	} // }}}
-
-	// {{{ gui layout
+	}
 
 	private JPanel createHeader()
 	{
@@ -957,8 +955,6 @@ class ResultsPanel extends JPanel implements ActionListener
 
 		return panel;
 	}
-
-	// }}}
 
 	private void clearOutput()
 	{
