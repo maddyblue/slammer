@@ -30,10 +30,8 @@ class ResultsPanel extends JPanel implements ActionListener
 
 	// table column indicies
 	public final static int RBC = 2;
-	public final static int DCN = RBC + 3;
-	public final static int DCC = DCN + 1;
-	public final static int CPN = DCC + 3;
-	public final static int CPC = CPN + 1;
+	public final static int DCC = RBC + 3;
+	public final static int CPC = DCC + 3;
 	public final static int LEN = CPC + 3;
 
 	String polarityName[] = { "Normal", "Inverse", "Average" };
@@ -45,9 +43,8 @@ class ResultsPanel extends JPanel implements ActionListener
 	JButton Analyze = new JButton("Perform analyses");
 	JButton ClearOutput = new JButton("Clear output");
 
-	DefaultTableModel outputTableModel = new DefaultTableModel();
-	JTable outputTable = new JTable(outputTableModel);
-	JScrollPane outputTablePane = new JScrollPane(outputTable);
+	JEditorPane outputPane = new JEditorPane("text/html", "");
+	JScrollPane outputPanes = new JScrollPane(outputPane);
 
 	JButton saveResultsOutput = new JButton("Save results table");
 	JFileChooser fc = new JFileChooser();
@@ -87,6 +84,8 @@ class ResultsPanel extends JPanel implements ActionListener
 	public ResultsPanel(SlammerTabbedPane parent) throws Exception
 	{
 		this.parent = parent;
+
+		outputPane.setEditable(false);
 
 		Analyze.setActionCommand("analyze");
 		Analyze.addActionListener(this);
@@ -157,14 +156,13 @@ class ResultsPanel extends JPanel implements ActionListener
 							paramUnit = parent.Parameters.unitMetric.isSelected();
 							final double g = paramUnit ? Analysis.Gcmss : Analysis.Ginss;
 							unitDisplacement = paramUnit ? "(cm)" : "(in)";
-							outputTableModel.setColumnIdentifiers(new Object[] {"Earthquake", "Record",
-								"<----", ParametersPanel.stringRB + " " + unitDisplacement, "---->", "",
-								"<----", ParametersPanel.stringDC + " " + unitDisplacement, "---->", "",
-								"<----", ParametersPanel.stringCP + " " + unitDisplacement, "---->"
-							});
-
-							outputTable.getColumnModel().getColumn(DCN).setPreferredWidth(0);
-							outputTable.getColumnModel().getColumn(CPN).setPreferredWidth(0);
+							StringBuilder outputText = new StringBuilder();
+							outputText.append("<html><body><table border=\"1\"><tr>" +
+								"<th>Earthquake</th><th>Record</th>" +
+								"<th colspan=\"3\">" + ParametersPanel.stringRB + " " + unitDisplacement + "</th>" +
+								"<th colspan=\"3\">" + ParametersPanel.stringDC + " " + unitDisplacement + "</th>" +
+								"<th colspan=\"3\">" + ParametersPanel.stringCP + " " + unitDisplacement + "</th>" +
+								"</tr>");
 
 							boolean paramDualslope = parent.Parameters.dualSlope.isSelected();
 							Double d;
@@ -386,13 +384,10 @@ class ResultsPanel extends JPanel implements ActionListener
 							int j;
 							Object[] row;
 
-							outputTableModel.addRow(new Object[] { null, "Polarity:",
-								polarityName[NOR], polarityName[INV], polarityName[AVG], null,
-								polarityName[NOR], polarityName[INV], polarityName[AVG], null,
-								polarityName[NOR], polarityName[INV], polarityName[AVG]
-							});
-
-							outputTableModel.addRow(new Object[0]);
+							outputText.append(makeRow(new Object[] { null, "Polarity:",
+								polarityName[NOR], polarityName[INV], polarityName[AVG],
+								polarityName[NOR], polarityName[INV], polarityName[AVG],
+								polarityName[NOR], polarityName[INV], polarityName[AVG] }, true));
 
 							for(int i = 1; i < res.length && !pm.isCanceled(); i++)
 							{
@@ -411,7 +406,7 @@ class ResultsPanel extends JPanel implements ActionListener
 								{
 									row[2] = "File does not exist or is not readable";
 									row[3] = path;
-									outputTableModel.addRow(row);
+									outputText.append(makeRow(row));
 									continue;
 								}
 
@@ -420,7 +415,7 @@ class ResultsPanel extends JPanel implements ActionListener
 								{
 									row[2] = "Invalid data at point " + dat.badEntry();
 									row[3] = path;
-									outputTableModel.addRow(row);
+									outputText.append(makeRow(row));
 									continue;
 								}
 
@@ -519,7 +514,7 @@ class ResultsPanel extends JPanel implements ActionListener
 									row[CPC + INV] = unitFmt.format(inv);
 								}
 
-								outputTableModel.addRow(row);
+								outputText.append(makeRow(row));
 							}
 							pm.update("Calculating stastistics...");
 
@@ -540,8 +535,8 @@ class ResultsPanel extends JPanel implements ActionListener
 								max = ((Double)dataVect[j][AVG].get(dataVect[j][AVG].size() - 1)).doubleValue();
 
 								mean = Double.parseDouble(unitFmt.format(total[j] / num));
-								rmean[j * 4 + 4] = unitFmt.format(mean);
-								rmedian[j * 4 + 4] = unitFmt.format(dataVect[j][AVG].get((int)(num / 2.0)));
+								rmean[j * 3 + 4] = unitFmt.format(mean);
+								rmedian[j * 3 + 4] = unitFmt.format(dataVect[j][AVG].get((int)(num / 2.0)));
 
 								value = 0;
 
@@ -553,13 +548,16 @@ class ResultsPanel extends JPanel implements ActionListener
 
 								value /= num;
 								value = Math.sqrt(value);
-								rsd[j * 4 + 4] = unitFmt.format(value);
+								rsd[j * 3 + 4] = unitFmt.format(value);
 							}
 
-							outputTableModel.addRow(new Object[0]);
-							outputTableModel.addRow(rmean);
-							outputTableModel.addRow(rmedian);
-							outputTableModel.addRow(rsd);
+							outputText.append(makeRow((new Object[LEN])));
+							outputText.append(makeRow((rmean)));
+							outputText.append(makeRow((rmedian)));
+							outputText.append(makeRow((rsd)));
+							outputText.append("</table></body></html>");
+
+							outputPane.setText(outputText.toString());
 						}
 						catch(Throwable ex)
 						{
@@ -581,6 +579,7 @@ class ResultsPanel extends JPanel implements ActionListener
 			}
 			else if(command.equals("saveResultsOutput"))
 			{
+				/*
 				if(fc.showSaveDialog(this) == JFileChooser.APPROVE_OPTION)
 				{
 					FileWriter fw = new FileWriter(fc.getSelectedFile());
@@ -629,6 +628,7 @@ class ResultsPanel extends JPanel implements ActionListener
 
 					fw.close();
 				}
+				*/
 			}
 			else if(command.equals("plotHistogram"))
 			{
@@ -748,7 +748,7 @@ class ResultsPanel extends JPanel implements ActionListener
 	{
 		JPanel outputTablePanel = new JPanel(new BorderLayout());
 
-		outputTablePanel.add(BorderLayout.CENTER, outputTablePane);
+		outputTablePanel.add(BorderLayout.CENTER, outputPanes);
 
 		return outputTablePanel;
 	}
@@ -965,7 +965,7 @@ class ResultsPanel extends JPanel implements ActionListener
 		dataVect = null;
 		xys = null;
 		graphDisp(false, false, false);
-		outputTableModel.setRowCount(0);
+		outputPane.setText(null);
 	}
 
 	private void graphDisp(boolean rigid, boolean decoupled, boolean coupled)
@@ -1007,5 +1007,25 @@ class ResultsPanel extends JPanel implements ActionListener
 	private double avg(final double a, final double b)
 	{
 		return (a + b) / 2.0;
+	}
+
+	private static String makeRow(Object[] o)
+	{
+		return makeRow(o, false);
+	}
+
+	private static String makeRow(Object[] o, boolean header)
+	{
+		StringBuilder r = new StringBuilder("<tr>");
+		String cell = header ? "th" : "td";
+
+		for(int i = 0; i < o.length; i++)
+			if(o[i] == null)
+				r.append("<" + cell + "></" + cell + ">");
+			else
+				r.append("<" + cell + ">" + o[i].toString() + "</" + cell + ">");
+
+		r.append("</tr>");
+		return r.toString();
 	}
 }
