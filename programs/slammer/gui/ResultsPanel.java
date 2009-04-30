@@ -29,10 +29,12 @@ class ResultsPanel extends JPanel implements ActionListener
 	public final static int INV = 1; // inverse
 
 	// table column indicies
-	public final static int RBC = 2;
-	public final static int DCC = RBC + 3;
-	public final static int CPC = DCC + 3;
-	public final static int LEN = CPC + 3;
+	public final static int WIDTH = 3;
+	public final static int OFFSET = 2;
+	public final static int RBC = OFFSET;
+	public final static int DCC = RBC + WIDTH;
+	public final static int CPC = DCC + WIDTH;
+	public final static int LEN = CPC + WIDTH;
 
 	String polarityName[] = { "Normal", "Inverse", "Average" };
 
@@ -224,9 +226,9 @@ class ResultsPanel extends JPanel implements ActionListener
 							String eq, record;
 							DoubleList dat;
 							double di;
-							double num = 0;
+							int num = 0;
 							double avg;
-							double total[] = new double[3];
+							double total[][] = new double[3][3];
 							double scale = 1, iscale, scaleRB;
 							double inv, norm;
 							double[][] ca;
@@ -361,30 +363,30 @@ class ResultsPanel extends JPanel implements ActionListener
 
 							if(paramRigid)
 							{
-								dataVect[RB][NOR] = new ArrayList(res.length - 1);
-								dataVect[RB][INV] = new ArrayList(res.length - 1);
-								dataVect[RB][AVG] = new ArrayList(res.length - 1);
+								dataVect[RB][NOR] = new ArrayList<Double>(res.length - 1);
+								dataVect[RB][INV] = new ArrayList<Double>(res.length - 1);
+								dataVect[RB][AVG] = new ArrayList<Double>(res.length - 1);
 							}
 
 							if(paramDecoupled)
 							{
-								dataVect[DC][NOR] = new ArrayList(res.length - 1);
-								dataVect[DC][INV] = new ArrayList(res.length - 1);
-								dataVect[DC][AVG] = new ArrayList(res.length - 1);
+								dataVect[DC][NOR] = new ArrayList<Double>(res.length - 1);
+								dataVect[DC][INV] = new ArrayList<Double>(res.length - 1);
+								dataVect[DC][AVG] = new ArrayList<Double>(res.length - 1);
 							}
 
 							if(paramCoupled)
 							{
-								dataVect[CP][NOR] = new ArrayList(res.length - 1);
-								dataVect[CP][INV] = new ArrayList(res.length - 1);
-								dataVect[CP][AVG] = new ArrayList(res.length - 1);
+								dataVect[CP][NOR] = new ArrayList<Double>(res.length - 1);
+								dataVect[CP][INV] = new ArrayList<Double>(res.length - 1);
+								dataVect[CP][AVG] = new ArrayList<Double>(res.length - 1);
 							}
 
 							iscale = -1.0 * scale;
 
 							pm.setMaximum(res.length);
 
-							int j;
+							int j, k;
 							Object[] row;
 							results = new ArrayList();
 
@@ -462,14 +464,21 @@ class ResultsPanel extends JPanel implements ActionListener
 
 									avg = avg(inv, norm);
 
-									total[RB] += avg;
+									total[RB][NOR] += norm;
+									total[RB][INV] += inv;
+									total[RB][AVG] += avg;
+
+									for(j = 0; j < dataVect[RB][NOR].size() && ((Double)dataVect[RB][NOR].get(j)).doubleValue() < norm; j++)
+										;
+									dataVect[RB][NOR].add(j, new Double(norm));
+
+									for(j = 0; j < dataVect[RB][INV].size() && ((Double)dataVect[RB][INV].get(j)).doubleValue() < inv; j++)
+										;
+									dataVect[RB][INV].add(j, new Double(inv));
 
 									for(j = 0; j < dataVect[RB][AVG].size() && ((Double)dataVect[RB][AVG].get(j)).doubleValue() < avg; j++)
 										;
-
 									dataVect[RB][AVG].add(j, new Double(avg));
-									dataVect[RB][NOR].add(j, new Double(norm));
-									dataVect[RB][INV].add(j, new Double(inv));
 
 									row[RBC + AVG] = unitFmt.format(avg);
 									row[RBC + NOR] = unitFmt.format(norm);
@@ -489,7 +498,9 @@ class ResultsPanel extends JPanel implements ActionListener
 
 									avg = avg(inv, norm);
 
-									total[DC] += avg;
+									total[DC][NOR] += norm;
+									total[DC][INV] += inv;
+									total[DC][AVG] += avg;
 
 									for(j = 0; j < dataVect[DC][AVG].size() && ((Double)dataVect[DC][AVG].get(j)).doubleValue() < avg; j++)
 										;
@@ -516,7 +527,9 @@ class ResultsPanel extends JPanel implements ActionListener
 
 									avg = avg(inv, norm);
 
-									total[CP] += avg;
+									total[CP][NOR] += norm;
+									total[CP][INV] += inv;
+									total[CP][AVG] += avg;
 
 									for(j = 0; j < dataVect[CP][AVG].size() && ((Double)dataVect[CP][AVG].get(j)).doubleValue() < avg; j++)
 										;
@@ -535,7 +548,7 @@ class ResultsPanel extends JPanel implements ActionListener
 							}
 							pm.update("Calculating stastistics...");
 
-							double max, mean, value, valtemp;
+							double mean, value, valtemp;
 							Object[] rmean = new Object[LEN];
 							Object[] rmedian = new Object[LEN];
 							Object[] rsd = new Object[LEN];
@@ -544,28 +557,37 @@ class ResultsPanel extends JPanel implements ActionListener
 							rmedian[1] = "Median value";
 							rsd[1] = "Standard deviation";
 
-							for(j = 0; j < dataVect.length; j++)
+							for(j = 0; j < total.length; j++)
 							{
-								if(dataVect[j][AVG] == null || dataVect[j][AVG].size() == 0)
-									continue;
-
-								max = ((Double)dataVect[j][AVG].get(dataVect[j][AVG].size() - 1)).doubleValue();
-
-								mean = Double.parseDouble(unitFmt.format(total[j] / num));
-								rmean[j * 3 + 4] = unitFmt.format(mean);
-								rmedian[j * 3 + 4] = unitFmt.format(dataVect[j][AVG].get((int)(num / 2.0)));
-
-								value = 0;
-
-								for(int i = 0; i < num; i++)
+								for(k = 0; k < total[j].length; k++)
 								{
-									valtemp = mean - ((Double)dataVect[j][AVG].get(i)).doubleValue();
-									value += (valtemp * valtemp);
-								}
+									if(dataVect[j][k] == null || dataVect[j][k].size() == 0)
+										continue;
 
-								value /= num;
-								value = Math.sqrt(value);
-								rsd[j * 3 + 4] = unitFmt.format(value);
+									mean = Double.parseDouble(unitFmt.format(total[j][k] / num));
+									rmean[j * WIDTH + OFFSET + k] = unitFmt.format(mean);
+
+									if(num % 2 == 0)
+									{
+										double fst = (Double)dataVect[j][k].get(num / 2);
+										double snd = (Double)dataVect[j][k].get(num / 2 - 1);
+										rmedian[j * WIDTH + OFFSET + k] = unitFmt.format(avg(fst, snd));
+									}
+									else
+										rmedian[j * WIDTH + OFFSET + k] = unitFmt.format(dataVect[j][k].get(num / 2));
+
+									value = 0;
+
+									for(int i = 0; i < num; i++)
+									{
+										valtemp = mean - ((Double)dataVect[j][k].get(i)).doubleValue();
+										value += (valtemp * valtemp);
+									}
+
+									value /= num;
+									value = Math.sqrt(value);
+									rsd[j * WIDTH + OFFSET + k] = unitFmt.format(value);
+								}
 							}
 
 							outputText.append(makeRow(new Object[LEN]));
