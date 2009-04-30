@@ -67,11 +67,13 @@ class ResultsPanel extends JPanel implements ActionListener
 	JRadioButton analysisHist[] = new JRadioButton[3];
 	ButtonGroup analysisHistGroup = new ButtonGroup();
 
+	ArrayList results;
 	XYSeries xys[][][];
 
-	JRadioButton outputDelTab = new JRadioButton("Tab delimited", true);
-	JRadioButton outputDelSpace = new JRadioButton("Space delimited");
-	JRadioButton outputDelComma = new JRadioButton("Comma delimited");
+	JRadioButton outputDelTab = new JRadioButton("Text, tab delimited", true);
+	JRadioButton outputDelSpace = new JRadioButton("Text, space delimited");
+	JRadioButton outputDelComma = new JRadioButton("Text, comma delimited");
+	JRadioButton outputDelHTML = new JRadioButton("HTML");
 	ButtonGroup outputDelGroup = new ButtonGroup();
 
 	boolean paramUnit = false;
@@ -108,6 +110,7 @@ class ResultsPanel extends JPanel implements ActionListener
 		outputDelGroup.add(outputDelTab);
 		outputDelGroup.add(outputDelSpace);
 		outputDelGroup.add(outputDelComma);
+		outputDelGroup.add(outputDelHTML);
 
 		polarityGroupDisp.add(polarityNorDisp);
 		polarityGroupDisp.add(polarityInvDisp);
@@ -383,11 +386,22 @@ class ResultsPanel extends JPanel implements ActionListener
 
 							int j;
 							Object[] row;
+							results = new ArrayList();
 
-							outputText.append(makeRow(new Object[] { null, "Polarity:",
+							results.add(new Object[] {
+								"Earthquake", "Record",
+								"<---", ParametersPanel.stringRB + " " + unitDisplacement, "---->",
+								"<---", ParametersPanel.stringDC + " " + unitDisplacement, "---->",
+								"<---", ParametersPanel.stringCP + " " + unitDisplacement, "---->"
+							});
+
+							row = new Object[] { null, "Polarity:",
 								polarityName[NOR], polarityName[INV], polarityName[AVG],
 								polarityName[NOR], polarityName[INV], polarityName[AVG],
-								polarityName[NOR], polarityName[INV], polarityName[AVG] }, true));
+								polarityName[NOR], polarityName[INV], polarityName[AVG] };
+
+							outputText.append(makeRow(row, true));
+							results.add(row);
 
 							for(int i = 1; i < res.length && !pm.isCanceled(); i++)
 							{
@@ -407,6 +421,7 @@ class ResultsPanel extends JPanel implements ActionListener
 									row[2] = "File does not exist or is not readable";
 									row[3] = path;
 									outputText.append(makeRow(row));
+									results.add(row);
 									continue;
 								}
 
@@ -416,6 +431,7 @@ class ResultsPanel extends JPanel implements ActionListener
 									row[2] = "Invalid data at point " + dat.badEntry();
 									row[3] = path;
 									outputText.append(makeRow(row));
+									results.add(row);
 									continue;
 								}
 
@@ -515,6 +531,7 @@ class ResultsPanel extends JPanel implements ActionListener
 								}
 
 								outputText.append(makeRow(row));
+								results.add(row);
 							}
 							pm.update("Calculating stastistics...");
 
@@ -551,11 +568,16 @@ class ResultsPanel extends JPanel implements ActionListener
 								rsd[j * 3 + 4] = unitFmt.format(value);
 							}
 
-							outputText.append(makeRow((new Object[LEN])));
-							outputText.append(makeRow((rmean)));
-							outputText.append(makeRow((rmedian)));
-							outputText.append(makeRow((rsd)));
+							outputText.append(makeRow(new Object[LEN]));
+							outputText.append(makeRow(rmean));
+							outputText.append(makeRow(rmedian));
+							outputText.append(makeRow(rsd));
 							outputText.append("</table></body></html>");
+
+							results.add(new Object[LEN]);
+							results.add(rmean);
+							results.add(rmedian);
+							results.add(rsd);
 
 							outputPane.setText(outputText.toString());
 						}
@@ -579,56 +601,50 @@ class ResultsPanel extends JPanel implements ActionListener
 			}
 			else if(command.equals("saveResultsOutput"))
 			{
-				/*
 				if(fc.showSaveDialog(this) == JFileChooser.APPROVE_OPTION)
 				{
 					FileWriter fw = new FileWriter(fc.getSelectedFile());
 
-					String delim;
-
-					if(outputDelSpace.isSelected())
-						delim = " ";
-					else if(outputDelComma.isSelected())
-						delim = ",";
-					else
-						delim = "\t";
-
-					int c = outputTableModel.getColumnCount();
-					int r = outputTableModel.getRowCount();
-
-					// table column headers
-					for(int i = 0; i < c; i++)
+					if(outputDelHTML.isSelected())
 					{
-						if(i != 0)
-							fw.write(delim);
-
-						fw.write(outputTableModel.getColumnName(i));
+						fw.write(outputPane.getText());
+						fw.close();
 					}
-
-					fw.write("\n");
-
-					Object o;
-
-					for(int i = 0; i < r; i++)
+					else
 					{
-						for(int j = 0; j < c; j++)
+						String delim;
+						if(outputDelSpace.isSelected())
+							delim = " ";
+						else if(outputDelComma.isSelected())
+							delim = ",";
+						else
+							delim = "\t";
+
+						Object o;
+						Object[] r;
+
+						for(int i = 0; i < results.size(); i++)
 						{
-							if(j != 0)
-								fw.write(delim);
+							r = (Object[])results.get(i);
 
-							o = outputTableModel.getValueAt(i, j);
-							if(o == null)
-								o = "";
+							for(int j = 0; j < r.length; j++)
+							{
+								if(j != 0)
+									fw.write(delim);
 
-							fw.write(o.toString());
+								o = r[j];
+								if(o == null)
+									o = "";
+
+								fw.write(o.toString());
+							}
+
+							fw.write("\n");
 						}
 
-						fw.write("\n");
+						fw.close();
 					}
-
-					fw.close();
 				}
-				*/
 			}
 			else if(command.equals("plotHistogram"))
 			{
@@ -930,6 +946,11 @@ class ResultsPanel extends JPanel implements ActionListener
 
 		c.gridx = x++;
 		c.gridy = y++;
+		label = new JLabel("Output format:");
+		gridbag.setConstraints(label, c);
+		panel.add(label);
+
+		c.gridy = y++;
 		gridbag.setConstraints(outputDelTab, c);
 		panel.add(outputDelTab);
 
@@ -937,13 +958,17 @@ class ResultsPanel extends JPanel implements ActionListener
 		gridbag.setConstraints(outputDelSpace, c);
 		panel.add(outputDelSpace);
 
-		c.gridy = y;
+		c.gridy = y++;
 		gridbag.setConstraints(outputDelComma, c);
 		panel.add(outputDelComma);
 
+		c.gridy = y++;
+		gridbag.setConstraints(outputDelHTML, c);
+		panel.add(outputDelHTML);
+
 		c.gridx = x++;
+		c.gridheight = y;
 		c.gridy = 0;
-		c.gridheight = 3;
 		gridbag.setConstraints(saveResultsOutput, c);
 		panel.add(saveResultsOutput);
 
