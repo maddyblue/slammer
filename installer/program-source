@@ -7,7 +7,7 @@ programs/help/terms
 programs/build.xml
 programs/help/help/gettingStarted.html
 programs/help/help/recordManager.html
-programs/help/help/rigorousRigidBlockAnalysis.html
+programs/help/help/rigorous.html
 programs/help/help/simplifiedAnalyses.html
 programs/help/help/utilities.html
 programs/help/images/9a.gif
@@ -23,13 +23,13 @@ programs/help/images/periodratiotable.gif
 programs/help/images/pom.gif
 programs/help/images/table1.gif
 programs/help/images/table2.gif
-programs/help/program/acknowledgements.html
 programs/help/program/eqdata.html
 programs/help/program/eqsets.html
 programs/help/program/fileFormats.html
 programs/help/program/gettingStarted.html
 programs/help/program/introduction.html
 programs/help/program/nav.html
+programs/help/program/records.html
 programs/help/science/newmark.html
 programs/help/terms/ariasIntensity.html
 programs/help/terms/coupledAnalysis.html
@@ -45,6 +45,7 @@ programs/help/terms/newmarkDisplacement.html
 programs/help/terms/pga.html
 programs/help/terms/rigidBlockAnalysis.html
 programs/help/terms/rupDist.html
+programs/help/terms/sitePeriod.html
 programs/help/terms/thrustAngle.html
 programs/slammer/DoubleList.java
 programs/slammer/EQDatabase.java
