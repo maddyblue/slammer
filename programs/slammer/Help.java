@@ -164,6 +164,11 @@ public class Help extends JFrame
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
+			("Strong-Motion Records",
+			"program/records.html"));
+			category.add(book);
+
+			book = new DefaultMutableTreeNode(new BookInfo
 			("File Formats",
 			"program/fileFormats.html"));
 			category.add(book);
@@ -183,11 +188,6 @@ public class Help extends JFrame
 			"program/eqsets.html"));
 			category.add(book);
 
-			book = new DefaultMutableTreeNode(new BookInfo
-			("Acknowledgements",
-			"program/acknowledgements.html"));
-			category.add(book);
-
 		category = new DefaultMutableTreeNode("Program Pages");
 		top.add(category);
 
@@ -200,23 +200,28 @@ public class Help extends JFrame
 			category.add(section);
 
 				book = new DefaultMutableTreeNode(new BookInfo
-				("Rigorous Rigid-Block Analysis",
-				"help/rigorousRigidBlockAnalysis.html"));
+				("Rigorous Analyses",
+				"help/rigorous.html"));
 				section.add(book);
 
 				book = new DefaultMutableTreeNode(new BookInfo
 				("Step1: Select Records",
-				"help/rigorousRigidBlockAnalysis.html#step1"));
+				"help/rigorous.html#step1"));
 				section.add(book);
 
 				book = new DefaultMutableTreeNode(new BookInfo
 				("Step2: Perform Rigid-Block Analysis",
-				"help/rigorousRigidBlockAnalysis.html#step2"));
+				"help/rigorous.html#step2"));
 				section.add(book);
 
 				book = new DefaultMutableTreeNode(new BookInfo
 				("Step3: View Results",
-				"help/rigorousRigidBlockAnalysis.html#step3"));
+				"help/rigorous.html#step3"));
+				section.add(book);
+
+				book = new DefaultMutableTreeNode(new BookInfo
+				("Which Analysis Should I Use?",
+				"help/rigorous.html#which"));
 				section.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
@@ -225,13 +230,13 @@ public class Help extends JFrame
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
-			("Utilities",
-			"help/utilities.html"));
+			("Record Manager",
+			"help/recordManager.html"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
-			("Record Manager",
-			"help/recordManager.html"));
+			("Utilities",
+			"help/utilities.html"));
 			category.add(book);
 
 		category = new DefaultMutableTreeNode("Definition of Terms");
@@ -305,6 +310,11 @@ public class Help extends JFrame
 			book = new DefaultMutableTreeNode(new BookInfo
 			("Rupture Distance",
 			"terms/rupDist.html"));
+			category.add(book);
+
+			book = new DefaultMutableTreeNode(new BookInfo
+			("Site Period",
+			"terms/sitePeriod.html"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
