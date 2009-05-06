@@ -24,6 +24,7 @@ class ResultsPanel extends JPanel implements ActionListener
 	public final static int RB = 0; // rigid block
 	public final static int DC = 1; // decoupled
 	public final static int CP = 2; // coupled
+	public final static int ANALYSIS_TYPES = 3;
 	public final static int AVG = 2; // average
 	public final static int NOR = 0; // normal
 	public final static int INV = 1; // inverse
@@ -65,8 +66,9 @@ class ResultsPanel extends JPanel implements ActionListener
 	JRadioButton polarityInvHist = new JRadioButton(polarityName[INV]);
 	ButtonGroup polarityGroupHist = new ButtonGroup();
 
-	JCheckBox analysisDisp[] = new JCheckBox[3];
-	JRadioButton analysisHist[] = new JRadioButton[3];
+	JCheckBox analysisDisp[] = new JCheckBox[ANALYSIS_TYPES];
+	JRadioButton analysisHist[] = new JRadioButton[ANALYSIS_TYPES];
+	String analysisTitle[] = new String[ANALYSIS_TYPES];
 	ButtonGroup analysisHistGroup = new ButtonGroup();
 
 	ArrayList results;
@@ -131,6 +133,10 @@ class ResultsPanel extends JPanel implements ActionListener
 		analysisHistGroup.add(analysisHist[RB]);
 		analysisHistGroup.add(analysisHist[DC]);
 		analysisHistGroup.add(analysisHist[CP]);
+
+		analysisTitle[RB] = "Rigid-Block";
+		analysisTitle[DC] = "Decoupled";
+		analysisTitle[CP] = "Coupled";
 
 		setLayout(new BorderLayout());
 
@@ -697,7 +703,7 @@ class ResultsPanel extends JPanel implements ActionListener
 				if(Bins == null || dataVect[analysis][polarity] == null)
 					return;
 
-				name = analysisHist[analysis].getText();
+				name = analysisTitle[analysis];
 
 				double series[] = new double[dataVect[analysis][polarity].size()];
 
@@ -734,7 +740,7 @@ class ResultsPanel extends JPanel implements ActionListener
 						else
 							name += ", ";
 
-						name += analysisDisp[i].getText();
+						name += analysisTitle[i];
 
 						for(int j = 0; j < dataVect[i][polarity].size(); j++)
 							xysc.addSeries(xys[j][i][polarity]);

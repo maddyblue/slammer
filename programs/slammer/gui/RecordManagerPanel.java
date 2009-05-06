@@ -377,7 +377,6 @@ class RecordManagerPanel extends JPanel implements ActionListener
 		int x = 0;
 		int y = 0;
 
-		c.anchor = GridBagConstraints.WEST;
 		c.fill = GridBagConstraints.BOTH;
 
 		Border b = BorderFactory.createCompoundBorder(
@@ -398,6 +397,14 @@ class RecordManagerPanel extends JPanel implements ActionListener
 		c.gridx = x++;
 		c.gridy = y++;
 		c.gridwidth = 3;
+		c.anchor = GridBagConstraints.CENTER;
+		label = new JLabel("Select a record above for graphing");
+		label.setFont(GUIUtils.headerFont);
+		gridbag.setConstraints(label, c);
+		panel.add(label);
+		c.anchor = GridBagConstraints.WEST;
+
+		c.gridy = y++;
 		gridbag.setConstraints(graphPanel, c);
 		panel.add(graphPanel);
 		c.gridwidth = 1;

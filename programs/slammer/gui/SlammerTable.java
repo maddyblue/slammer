@@ -162,7 +162,10 @@ class SlammerTable extends JPanel implements ActionListener, SlammerTableInterfa
 			String command = e.getActionCommand();
 			if(command.equals("record"))
 			{
+				int rows[] = table.getSelectedRows();
 				model.setModel(RECORD);
+				for(int i = 0; i < rows.length; i++)
+					table.addRowSelectionInterval(rows[i], rows[i]);
 			}
 			else if(command.equals("sort"))
 			{
@@ -170,7 +173,10 @@ class SlammerTable extends JPanel implements ActionListener, SlammerTableInterfa
 			}
 			else if(command.equals("station"))
 			{
+				int rows[] = table.getSelectedRows();
 				model.setModel(STATION);
+				for(int i = 0; i < rows.length; i++)
+					table.addRowSelectionInterval(rows[i], rows[i]);
 			}
 		}
 		catch(Exception ex)

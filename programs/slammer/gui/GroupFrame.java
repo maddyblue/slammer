@@ -51,9 +51,9 @@ class GroupFrame extends JFrame implements ActionListener
 		closeB.addActionListener(this);
 
 		delim.addItem("tab");
-		delim.addItem("semi-colon (;)");
-		delim.addItem("comma (,)");
-		delim.addItem("colon (:)");
+		delim.addItem("semi-colon");
+		delim.addItem("comma");
+		delim.addItem("colon");
 		delim.addItem("space");
 
 		addToList(deleteCB);

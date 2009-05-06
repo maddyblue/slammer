@@ -105,12 +105,9 @@ class AddRecordsPanel extends JPanel implements ActionListener
 				int incr;
 				for(int i = 0; i < m.getRowCount(); i++)
 				{
-
 					// do we add this row?
 					if(((Boolean)m.getValueAt(i, 0)).booleanValue() == false)
-					{
 						continue;
-					}
 
 					// get the data
 					incr = 1;

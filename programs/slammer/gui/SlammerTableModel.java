@@ -133,8 +133,8 @@ class SlammerTableModel extends DefaultTableModel implements SlammerTableInterfa
 		}
 
 		ret = "SELECT " + ret + ",id FROM data WHERE select" + (selectTable ? "2" : "1") + "=1 ORDER BY "
-			+ SlammerTable.getColValue(colDispName, colDBName, primarySort.getSelectedItem().toString()) + " " + primaryOrder + ","
-			+ SlammerTable.getColValue(colDispName, colDBName, secondarySort.getSelectedItem().toString()) + " " + secondaryOrder;
+			+ SlammerTable.getColValue(colDispName, colDBSearch, primarySort.getSelectedItem().toString()) + " " + primaryOrder + ","
+			+ SlammerTable.getColValue(colDispName, colDBSearch, secondarySort.getSelectedItem().toString()) + " " + secondaryOrder;
 		return ret;
 	}
 }

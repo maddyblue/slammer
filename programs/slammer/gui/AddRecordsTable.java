@@ -91,20 +91,14 @@ class AddRecordsTable extends JPanel implements ActionListener
 				files[0] = f;
 			}
 			else if(f.isDirectory())
-			{
 				files = f.listFiles();
-			}
 			else
-			{
 				return;
-			}
 
 			for(int j = 0; j < files.length; j++)
 			{
 				if(files[j].isFile())
-				{
 					model.addRow(files[j].getAbsolutePath());
-				}
 			}
 		}
 	}
@@ -169,9 +163,7 @@ class AddRecordsTable extends JPanel implements ActionListener
 					if(abbrev.equals(table.getColumnName(i)))
 					{
 						for(int j = 0; j < table.getRowCount(); j++)
-						{
 							table.setValueAt(v, j, i);
-						}
 						break;
 					}
 				}
