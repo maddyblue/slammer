@@ -100,6 +100,7 @@ programs/slammer/images/Turnagain Heights.jpg
 programs/slammer/images/West Fork.jpg
 programs/slammer/images/icon.jpg
 programs/slammer/slammer.manifest
+programs/slammer/srm.manifest
 installer/BZip2Constants.java
 installer/CBZip2InputStream.java
 installer/CBZip2OutputStream.java

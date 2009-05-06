@@ -72,7 +72,7 @@
 				<include name="build.xml" />
 				<include name="help/**" />
 				<include name="slammer/**/*.java" />
-				<include name="slammer/slammer.manifest" />
+				<include name="slammer/*.manifest" />
 				<include name="slammer/images/*" />
 			</tarfileset>
 			<tarfileset dir="${inst}" prefix="${inst}" excludes="*.tar*, *.class, *.orig">
