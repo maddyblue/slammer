@@ -1,4 +1,13 @@
-/* This file is in the public domain. */
+/*
+ * Originally written by Yong-Woo Lee and Ellen Rathje for the SLAMMER project.
+ * This work has been placed into the public domain. You may use this work in
+ * any way and for any purpose you wish.
+ *
+ * THIS SOFTWARE IS PROVIDED AS-IS WITHOUT WARRANTY OF ANY KIND, NOT EVEN THE
+ * IMPLIED WARRANTY OF MERCHANTABILITY. THE AUTHOR OF THIS SOFTWARE, ASSUMES
+ * _NO_ RESPONSIBILITY FOR ANY CONSEQUENCE RESULTING FROM THE USE, MODIFICATION,
+ * OR REDISTRIBUTION OF THIS SOFTWARE.
+ */
 
 package slammer.analysis;
 
@@ -6,7 +15,7 @@ package slammer.analysis;
 public class DeCoupledCommon extends Analysis
 {
 	// main function parameters
-	protected static double uwgt, height, vs, damp, damp1, dt, scal, g, vr, vs1;
+	protected static double uwgt, height, vs, damp, damp1, dt, scal, g, vr, vs1,damps, damps_prev;
 	protected static boolean dv2 = true, dv3;
 
 	// main function variables
@@ -26,6 +35,9 @@ public class DeCoupledCommon extends Analysis
 
 	protected static double ain[];
 
+		
+
+
 	protected static void eq_property()
 	{
 		double gameff2, vs2, com1, com2, damp2, G1, G2, l, m;
@@ -34,6 +46,8 @@ public class DeCoupledCommon extends Analysis
 		vs2 = vs1 / Math.sqrt(1.0 + (gameff2 / gamref));
 		com1 = 1.0 / (1.0 + gameff2 / gamref);
 		com2 = Math.pow(com1, 0.1);
+
+		damps = 0.0;
 
 		if(!dv2)
 			dampf = 0.0;
@@ -44,20 +58,28 @@ public class DeCoupledCommon extends Analysis
 				dampf = 20.0;
 		}
 
-		damp2 = dampf + 0.62 * com2 * (100.0 / Math.PI * (4.0 * ((gameff2 - gamref * Math.log((gamref + gameff2) / gamref)) / (gameff2 * gameff2 / (gameff2 + gamref))) - 2.0)) + 1.0;
+		damps = 0.62 * com2 * (100.0 / Math.PI * (4.0 * ((gameff2 - gamref * Math.log((gamref + gameff2) / gamref)) / (gameff2 * gameff2 / (gameff2 + gamref))) - 2.0)) + 1.0;
+		damp2 = dampf + damps;
 
 		G1 = (uwgt / g) * vs * vs;
 		G2 = (uwgt / g) * vs2 * vs2;
 
 		l = (G1 - G2) / G1;
-		m = ((damp * 100.0) - damp2) / (damp * 100.0);
+		m = ((damps_prev - damps) / damps_prev);
 
 		n = Math.abs(l) * 100.0;
 		o = Math.abs(m) * 100.0;
+		
+	//	System.out.println("out: " + gameff1 + ", " + damps + ", " + dampf + ", " + vs1 + ", " + vs + ", " + vs2 + ", " + uwgt);
 
 		vs = vs2;
+		
+		damps_prev = damps;
 		damp = damp2 * 0.01;
 		dampf = dampf * 0.01;
+
+
+		
 	}
 
 	protected static void residual_mu()
@@ -76,7 +98,7 @@ public class DeCoupledCommon extends Analysis
 	{
 		//effective shear strain calculation
 
-		double mx1 = 0.0, mx = 0.0, mmax;
+		double mx1 = 0.0, mx = 0.0, mmax = 0.0;
 		int jj;
 
 		for(jj = 1; jj <= npts; jj++)
@@ -105,26 +127,28 @@ public class DeCoupledCommon extends Analysis
 				if(Math.abs(mx) > Math.abs(mx1))
 				{
 					mmax = mx;
-					gameff1 = 0.65 * mmax / height;
+					gameff1 = 0.65 * 1.57* mmax / height;
 				}
 				else if(Math.abs(mx) < Math.abs(mx1))
 				{
 					mmax = mx1;
-					gameff1 = 0.65 * mmax / height;
+					gameff1 = 0.65 * 1.57* mmax / height;
 				}
 				else
 				{
 					if(mx > 0)
 					{
 						mmax = mx;
-						gameff1 = 0.65 * mmax / height;
+						gameff1 = 0.65 * 1.57 * mmax / height;
 					}
 					else
 					{
 						mmax = mx1;
-						gameff1 = 0.65 * mmax / height;
+						gameff1 = 0.65 * 1.57 * mmax / height;
 					}
 				}
+
+			
 			}
 		}
 

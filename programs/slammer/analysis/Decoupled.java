@@ -1,4 +1,13 @@
-/* This file is in the public domain. */
+/*
+ * Originally written by Yong-Woo Lee and Ellen Rathje for the SLAMMER project.
+ * This work has been placed into the public domain. You may use this work in
+ * any way and for any purpose you wish.
+ *
+ * THIS SOFTWARE IS PROVIDED AS-IS WITHOUT WARRANTY OF ANY KIND, NOT EVEN THE
+ * IMPLIED WARRANTY OF MERCHANTABILITY. THE AUTHOR OF THIS SOFTWARE, ASSUMES
+ * _NO_ RESPONSIBILITY FOR ANY CONSEQUENCE RESULTING FROM THE USE, MODIFICATION,
+ * OR REDISTRIBUTION OF THIS SOFTWARE.
+ */
 
 package slammer.analysis;
 
@@ -30,6 +39,18 @@ public class Decoupled extends DeCoupledCommon
 		vr = vr_p;
 		dv3 = dv3_p;
 		ain = ain_p;
+
+		if ((g < 33.) && (g > 32.))
+		{
+			uwgt = 120.;
+		}
+		else
+		{
+			uwgt = 20.;
+		}
+
+		//System.out.println("INIT VALUES " + vs + "  " + vr + "  " + uwgt + "     " + damp1 + "  " + damp);
+
 
 		// init graphing
 		setValueSize(dt);
@@ -96,7 +117,7 @@ public class Decoupled extends DeCoupledCommon
 
 		n = 100.0;
 		o = 100.0;
-		gamref = 0.13;
+		gamref = 0.05;
 		damp = damp1 + dampf;
 
 		// Loop for time steps in time histories
@@ -130,20 +151,26 @@ public class Decoupled extends DeCoupledCommon
 
 		omega = Math.PI * vs / (2.0 * height);
 
-		if(!dv2)
-			dampf = 0.0;
-		else
-			dampf = 55.016 * Math.pow((vr / vs), -0.9904) / 100.0;
+	
 
-		// For Linear Elastic
-		for(j = 1; j <= npts; j++)
-		{
-			d_setupstate();
-			d_response();
-		}
+		//if(!dv2)
+		//	dampf = 0.0;
+		//else
+		//	dampf = 55.016 * Math.pow((vr / vs), -0.9904) / 100.0;
+
+		// Calculate final dynamic response using original prop's for LE analysis and EQL properties for EQL analysis
+			for (j = 1; j <= npts; j++)
+			{
+				d_setupstate();
+				d_response();
+			}
+		  
 
 		slide = false;
 		time = 0.0;
+
+		System.out.println("DEC FINAL" + "  " + vs + "  " + damp + "  " + dampf + "  " + gameff1);
+
 
 		avg_acc();
 
@@ -288,7 +315,7 @@ public class Decoupled extends DeCoupledCommon
 	private static void d_eq()
 	{
 		int t = 0;
-
+	
 		while(n > 5.0 || o > 5.0)
 		{
 			for(j = 1; j <= npts; j++)
@@ -296,22 +323,23 @@ public class Decoupled extends DeCoupledCommon
 				d_setupstate();
 				d_response();
 			}
-
+	
 			for(j = 1; j <= npts; j++)
 				effstr();
-
+	
 			eq_property();
-
-			/* Helpful debugging output
+	
+			//* Helpful debugging output
+	
 			t++;
-			System.out.println("ITERATION" + "  " + t + "  " + vs + "  " + vr + "  " + (damp-dampf) + "  " + dampf + "  " + damp + "    " + n + "     " + o);
+			System.out.println("DEC ITERATION" + "  " + t + "  " + vs + "  " + damp + "  " + dampf + "  " + gameff1);
 			//*/
 		}
 	}
 
 	private static void avg_acc()
 	{
-		//effective shear strain calculation
+		//Calculate Kmax
 
 		double mx1 = 0.0, mx = 0.0;
 		int jj;
@@ -352,5 +380,7 @@ public class Decoupled extends DeCoupledCommon
 				}
 			}
 		}
+
+		System.out.println("DEC Kmax: " + mmax);
 	}
 }

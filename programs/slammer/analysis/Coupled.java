@@ -1,4 +1,13 @@
-/* This file is in the public domain. */
+/*
+ * Originally written by Yong-Woo Lee and Ellen Rathje for the SLAMMER project.
+ * This work has been placed into the public domain. You may use this work in
+ * any way and for any purpose you wish.
+ *
+ * THIS SOFTWARE IS PROVIDED AS-IS WITHOUT WARRANTY OF ANY KIND, NOT EVEN THE
+ * IMPLIED WARRANTY OF MERCHANTABILITY. THE AUTHOR OF THIS SOFTWARE, ASSUMES
+ * _NO_ RESPONSIBILITY FOR ANY CONSEQUENCE RESULTING FROM THE USE, MODIFICATION,
+ * OR REDISTRIBUTION OF THIS SOFTWARE.
+ */
 
 package slammer.analysis;
 
@@ -12,11 +21,14 @@ public class Coupled extends DeCoupledCommon
 
 	private static double s1, sdot1, sdotdot1;
 	private static double s2, sdot2, sdotdot2;
-	private static double u1, udot1, udotdot1;
+	private static double u1, udot1, udotdot1,avgacc[];
 	private static double u2, udot2, udotdot2, baseacc;
 	private static double basef, acc11, acc22, normalf1, normalf2;
 
 	private static double COS, SIN, gSIN, gCOS;
+	
+	private static double acc1, acc2;
+	private static double udot[];
 
 	public static double Coupled(double[] ain_p, double uwgt_p, double height_p, double vs_p, double damp1_p, double dt_p, double scal_p, double g_p, double vr_p, double[][] ca, boolean dv3_p)
 	{
@@ -83,6 +95,10 @@ public class Coupled extends DeCoupledCommon
 		s = new double[ain.length];
 		u = new double[ain.length];
 		udotdot = new double[ain.length];
+		avgacc = new double[npts];
+		udot = new double[npts];
+
+
 		//These are previous iteration value
 
 		rho = uwgt / g;
@@ -106,38 +122,29 @@ public class Coupled extends DeCoupledCommon
 		omega = Math.PI * vs / (2.0 * height);
 		L = 2.0 * rho * height / Math.PI;
 		M = rho * height / 2.0;
+
 		damp = damp1 + dampf;
 		n = 100.0;
 		o = 100.0;
-		gamref = 0.13;
+		gamref = 0.05;
 
 		// Finding Equivalent Linear Properties of Soil
 
 		if(dv3)
 			c_eq();
 
-		/* Helpful debugging output
-		int i;
-		System.out.println("Density : " + rho);
-		System.out.println("Height : " + height);
+		// Calculate decoupled dynamic response and Kmax using LE properties or final EQL properties
+		//   These values not used to calculate coupled displacements but provide information on general dynamic response
 
-		if(nmu==1)
+		for (j = 1; j <= npts; j++)
 		{
-			System.out.println("Yield Acceleration Coeff. : " + mu[0]);
-		}
-		if(!(nmu==1))
-		{
-			for(i=1;i<=nmu;i++)
-			{
-				System.out.println("Yield Acceleration Coeff.: " + mu[i-1] + "   over Displacement " + disp[i-1]);
-			}
+			d_setupstate();
+			d_response();
 		}
 
-		System.out.println("Dynamic Properties");
-		System.out.println("Shear Wave Velocity" + "  " + "Damping Ratio");
-		System.out.println("Soil" + "  " + "Rock" + "  " + "Soil" + "  " + "Foundation" + "  " + "Total");
-		System.out.println("INITIAL" + "  " + vs + "  " + vr + "  " + damp + "  " + dampf + "  " + (damp+dampf));
-		// */
+		avg_acc();
+		
+
 
 		// Loop for time steps in time histories
 
@@ -166,6 +173,7 @@ public class Coupled extends DeCoupledCommon
 		{
 			s[j] = 0;
 			u[j] = 0;
+	//		avgacc[j] = 0;
 		}
 
 		for(j = 1; j <= npts; j++)
@@ -283,7 +291,8 @@ public class Coupled extends DeCoupledCommon
 			udot2 = udot1 + deltudot;
 			udotdot2 = ( - (L / M) * acc22 - 2.0 * damp * omega * udot2 - (omega * omega) * u2) / d1;
 		}
-
+	//	System.out.println("COUP avgagg" + "  " + jj + "  " + acc22 + "  " + L + "  " + M + "  " + udotdot2); 
+	//	avgacc[jj - 1] = acc22 + (L / M) * udotdot2;
 		u[jj - 1] = u2;
 	}
 
@@ -360,6 +369,7 @@ public class Coupled extends DeCoupledCommon
 
 	private static void c_slideacc()
 	{
+				
 		///// Update sliding acceleration based on calc'd response
 
 		if(slide)
@@ -367,6 +377,7 @@ public class Coupled extends DeCoupledCommon
 
 		//////  Calc. base force based on udotdot calc
 
+		
 		basef =  - Mtot * ain[j - 1] * gCOS * scal - L * udotdot2 + Mtot * gSIN;
 
 		/////  If sliding is occuring, integrate sdotdot,
@@ -386,21 +397,148 @@ public class Coupled extends DeCoupledCommon
 
 		while(n > 5.0 || o > 5.0)
 		{
-			for(jj = 1; jj <= npts; jj++)
+			acc1 = 0.0;
+			acc2 = 0.0;
+
+			for (j = 1; j <= npts; j++)
 			{
-				coupled_setupstate(jj);
-				solvu(jj);
+				d_setupstate();
+				d_response();
 			}
 
-			for(jj = 1; jj <= npts; jj++)
+			for (j = 1; j <= npts; j++)
 				effstr();
 
 			eq_property();
 
-			/* Helpful debugging output
+			//* Helpful debugging output
+
 			t++;
-			System.out.println("ITERATION" + "  " + t + "  " + vs + "  " + vr + "  " + (damp-dampf) + "  " + dampf + "  " + damp);
+			System.out.println("EQL ITERATION" + "  " + t + "  " + vs + "  " + damp + "  " + dampf + "  " + gameff1);
 			//*/
 		}
 	}
+
+
+	private static void d_response()
+	{
+		double khat, omega, a, b;
+		double deltp, deltu, deltudot, deltudotdot, u2, udot2, udotdot2;
+
+		omega = Math.PI * vs / (2.0 * height);
+
+		khat = (omega * omega) + 2.0 * damp * omega * gamma / (beta * dt) + 1.0 / (beta * (dt * dt));
+		a = 1.0 / (beta * dt) + 2.0 * damp * omega * gamma / beta;
+		b = 1.0 / (2.0 * beta) + dt * 2.0 * damp * omega * (gamma / (2.0 * beta) - 1.0);
+
+		if (j == 1)
+		{
+			deltp = -L / M * (acc2 - acc1);
+			deltu = deltp / khat;
+			deltudot = gamma / (beta * dt) * deltu;
+			u2 = deltu;
+			udot2 = deltudot;
+			udotdot2 = -(L / M) * acc2 - 2.0 * damp * omega * udot2 - (omega * omega) * u2;
+		}
+		else
+		{
+			deltp = -L / M * (acc2 - acc1) + a * udot1 + b * udotdot1;
+			deltu = deltp / khat;
+			deltudot = gamma / (beta * dt) * deltu - gamma / beta * udot1 + dt * (1.0 - gamma / (2.0 * beta)) * udotdot1;
+			deltudotdot = 1.0 / (beta * (dt * dt)) * deltu - 1.0 / (beta * dt) * udot1 - 0.5 / beta * udotdot1;
+			u2 = u1 + deltu;
+			udot2 = udot1 + deltudot;
+			udotdot2 = udotdot1 + deltudotdot;
+		}
+
+		avgacc[j - 1] = acc2;
+		u[j - 1] = u2;
+		udot[j - 1] = udot2;
+		udotdot[j - 1] = udotdot2;
+		avgacc[j - 1] = avgacc[j - 1] + L / Mtot * udotdot[j - 1];
+	}
+
+	private static void d_setupstate()
+	{
+		//set up state from previous time step
+		if (j == 1)
+		{
+			u1 = 0.0;
+			udot1 = 0.0;
+			udotdot1 = 0.0;
+		}
+		else
+		{
+			u1 = u[j - 2];
+			udot1 = udot[j - 2];
+			udotdot1 = udotdot[j - 2];
+		}
+
+		// Set up acceleration loading
+
+		if (j == 1)
+		{
+			acc1 = 0.0;
+			acc2 = ain[j - 1] * g * scal;
+		}
+		else if (!slide)
+		{
+			acc1 = ain[j - 2] * g * scal;
+			acc2 = ain[j - 1] * g * scal;
+			s[j - 1] = s[j - 2];
+		}
+		else
+		{
+			acc1 = ain[j - 2] * g * scal;
+			acc2 = ain[j - 1] * g * scal;
+		}
+	}
+
+	private static void avg_acc()
+	{
+		//Calculate Kmax
+
+		double mx1 = 0.0, mx = 0.0;
+		int jj;
+
+		for(jj = 1; jj <= npts; jj++)
+		{
+			if (jj == 1)
+			{
+				mx1 = avgacc[jj - 1];
+				mx = avgacc[jj - 1];
+			}
+			else
+			{
+				if(avgacc[jj - 1] < 0.0)
+				{
+					if(avgacc[jj - 1] <= mx1)
+						mx1 = avgacc[jj - 1];
+				}
+				else
+				{
+					if(avgacc[jj - 1] >= mx)
+						mx = avgacc[jj - 1];
+				}
+			}
+
+			if(jj == npts)
+			{
+				if(Math.abs(mx) > Math.abs(mx1))
+					mmax = mx;
+				else if(Math.abs(mx) < Math.abs(mx1))
+					mmax = mx1;
+				else
+				{
+					if(mx > 0.0)
+						mmax = mx;
+					else
+						mmax = mx1;
+				}
+			}
+		}
+
+		System.out.println("Kmax: " + mmax);
+	}
+
 }
