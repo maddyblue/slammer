@@ -1,42 +1,32 @@
-/*
- * Originally written by Yong-Woo Lee and Ellen Rathje for the SLAMMER project.
- * This work has been placed into the public domain. You may use this work in
- * any way and for any purpose you wish.
- *
- * THIS SOFTWARE IS PROVIDED AS-IS WITHOUT WARRANTY OF ANY KIND, NOT EVEN THE
- * IMPLIED WARRANTY OF MERCHANTABILITY. THE AUTHOR OF THIS SOFTWARE, ASSUMES
- * _NO_ RESPONSIBILITY FOR ANY CONSEQUENCE RESULTING FROM THE USE, MODIFICATION,
- * OR REDISTRIBUTION OF THIS SOFTWARE.
- */
+/* This file is in the public domain. */
 
 package slammer.analysis;
 
-
-public class DeCoupledCommon extends Analysis
+public abstract class DeCoupledCommon extends Analysis
 {
 	// main function parameters
-	protected static double uwgt, height, vs, damp, damp1, dt, scal, g, vr, vs1,damps, damps_prev;
+	protected static double uwgt, height, vs, damp, damp1, dt, scal, g, vr, vs1;
 	protected static boolean dv2 = true, dv3;
 
 	// main function variables
 	protected static double Mtot, M, L, omega, beta, gamma, angle;
 	protected static int qq, nmu, npts;
 
-	protected static double rho, delt, dampf;
+	protected static double rho, delt, dampf, damps, damps_prev;
 	protected static int j;
+
+	/*
+	 * slide=0 no sliding, slide=1 sliding
+	 * variable that end in 1 are for previous time step
+	 * variable that end in 2 are for current time step
+	 */
+
 	protected static boolean slide;
 
-	//slide=0 no sliding, slide=1 sliding
-	//variable that end in 1 are for previous time step
-	//variable that end in 2 are for current time step
-
-	protected static double mx, mx1, mmax, gameff1, gamref, n, o;
-	protected static double s[], u[], disp[], mu[], udotdot[];
+	protected static double mx, mx1, mmax, gameff1, gamref, n, o, acc1, acc2, u1, udot1, udotdot1;
+	protected static double s[], u[], udot[], udotdot[], disp[], mu[], avgacc[];
 
 	protected static double ain[];
-
-		
-
 
 	protected static void eq_property()
 	{
@@ -69,17 +59,12 @@ public class DeCoupledCommon extends Analysis
 
 		n = Math.abs(l) * 100.0;
 		o = Math.abs(m) * 100.0;
-		
-	//	System.out.println("out: " + gameff1 + ", " + damps + ", " + dampf + ", " + vs1 + ", " + vs + ", " + vs2 + ", " + uwgt);
 
 		vs = vs2;
-		
+
 		damps_prev = damps;
 		damp = damp2 * 0.01;
 		dampf = dampf * 0.01;
-
-
-		
 	}
 
 	protected static void residual_mu()
@@ -96,7 +81,7 @@ public class DeCoupledCommon extends Analysis
 
 	protected static void effstr()
 	{
-		//effective shear strain calculation
+		// effective shear strain calculation
 
 		double mx1 = 0.0, mx = 0.0, mmax = 0.0;
 		int jj;
@@ -127,12 +112,12 @@ public class DeCoupledCommon extends Analysis
 				if(Math.abs(mx) > Math.abs(mx1))
 				{
 					mmax = mx;
-					gameff1 = 0.65 * 1.57* mmax / height;
+					gameff1 = 0.65 * 1.57 * mmax / height;
 				}
 				else if(Math.abs(mx) < Math.abs(mx1))
 				{
 					mmax = mx1;
-					gameff1 = 0.65 * 1.57* mmax / height;
+					gameff1 = 0.65 * 1.57 * mmax / height;
 				}
 				else
 				{
@@ -147,11 +132,124 @@ public class DeCoupledCommon extends Analysis
 						gameff1 = 0.65 * 1.57 * mmax / height;
 					}
 				}
-
-			
 			}
 		}
 
 		gameff1 = Math.abs(gameff1);
+	}
+
+	// calculate Kmax
+	protected static void avg_acc()
+	{
+		double mx1 = 0.0, mx = 0.0;
+		int jj;
+
+		for(jj = 1; jj <= npts; jj++)
+		{
+			if (jj == 1)
+			{
+				mx1 = avgacc[jj - 1];
+				mx = avgacc[jj - 1];
+			}
+			else
+			{
+				if(avgacc[jj - 1] < 0.0)
+				{
+					if(avgacc[jj - 1] <= mx1)
+						mx1 = avgacc[jj - 1];
+				}
+				else
+				{
+					if(avgacc[jj - 1] >= mx)
+						mx = avgacc[jj - 1];
+				}
+			}
+
+			if(jj == npts)
+			{
+				if(Math.abs(mx) > Math.abs(mx1))
+					mmax = mx;
+				else if(Math.abs(mx) < Math.abs(mx1))
+					mmax = mx1;
+				else if(mx > 0.0)
+					mmax = mx;
+				else
+					mmax = mx1;
+			}
+		}
+	}
+
+	protected static void d_response()
+	{
+		double khat, omega, a, b;
+		double deltp, deltu, deltudot, deltudotdot, u2, udot2, udotdot2;
+
+		omega = Math.PI * vs / (2.0 * height);
+
+		khat = (omega * omega) + 2.0 * damp * omega * gamma / (beta * dt) + 1.0 / (beta * (dt * dt));
+		a = 1.0 / (beta * dt) + 2.0 * damp * omega * gamma / beta;
+		b = 1.0 / (2.0 * beta) + dt * 2.0 * damp * omega * (gamma / (2.0 * beta) - 1.0);
+
+		if(j == 1)
+		{
+			deltp = - L / M * (acc2 - acc1);
+			deltu = deltp / khat;
+			deltudot = gamma / (beta * dt) * deltu;
+			u2 = deltu;
+			udot2 = deltudot;
+			udotdot2 = - (L / M) * acc2 - 2.0 * damp * omega * udot2 - (omega * omega) * u2;
+		}
+		else
+		{
+			deltp = - L / M * (acc2 - acc1) + a * udot1 + b * udotdot1;
+			deltu = deltp / khat;
+			deltudot = gamma / (beta * dt) * deltu - gamma / beta * udot1 + dt * (1.0 - gamma / (2.0 * beta)) * udotdot1;
+			deltudotdot = 1.0 / (beta * (dt * dt)) * deltu - 1.0 / (beta * dt) * udot1 - 0.5 / beta * udotdot1;
+			u2 = u1 + deltu;
+			udot2 = udot1 + deltudot;
+			udotdot2 = udotdot1 + deltudotdot;
+		}
+
+		avgacc[j - 1] = acc2;
+		u[j - 1] = u2;
+		udot[j - 1] = udot2;
+		udotdot[j - 1] = udotdot2;
+		avgacc[j - 1] = avgacc[j - 1] + L / Mtot * udotdot[j - 1];
+	}
+
+	protected static void d_setupstate()
+	{
+		// set up state from previous time step
+		if(j == 1)
+		{
+			u1 = 0.0;
+			udot1 = 0.0;
+			udotdot1 = 0.0;
+		}
+		else
+		{
+			u1 = u[j - 2];
+			udot1 = udot[j - 2];
+			udotdot1 = udotdot[j - 2];
+		}
+
+		// set up acceleration loading
+
+		if(j == 1)
+		{
+			acc1 = 0.0;
+			acc2 = ain[j - 1] * g * scal;
+		}
+		else if(!slide)
+		{
+			acc1 = ain[j - 2] * g * scal;
+			acc2 = ain[j - 1] * g * scal;
+			s[j - 1] = s[j - 2];
+		}
+		else
+		{
+			acc1 = ain[j - 2] * g * scal;
+			acc2 = ain[j - 1] * g * scal;
+		}
 	}
 }
