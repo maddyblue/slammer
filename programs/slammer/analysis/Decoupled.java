@@ -98,7 +98,7 @@ public class Decoupled extends DeCoupledCommon
 
 		// for equivalent linear
 		if(dv3)
-			d_eq();
+			eq();
 
 		omega = Math.PI * vs / (2.0 * height);
 
@@ -128,7 +128,7 @@ public class Decoupled extends DeCoupledCommon
 
 	private static void d_sliding()
 	{
-		// Calculate decoupled displacements
+		// calculate decoupled displacements
 
 		double deltacc;
 
@@ -137,7 +137,7 @@ public class Decoupled extends DeCoupledCommon
 		else
 			deltacc = avgacc[j - 1] - avgacc[j - 2];
 
-		if(j == 1) // ADDED
+		if(j == 1) // added
 		{
 			sdot[j - 1] = 0;
 			s[j - 1] = 0;
@@ -171,25 +171,6 @@ public class Decoupled extends DeCoupledCommon
 
 				sdot[j - 1] = 0.0;
 			}
-		}
-	}
-
-	private static void d_eq()
-	{
-		int t = 0;
-
-		while(n > 5.0 || o > 5.0)
-		{
-			for(j = 1; j <= npts; j++)
-			{
-				d_setupstate();
-				d_response();
-			}
-
-			for(j = 1; j <= npts; j++)
-				effstr();
-
-			eq_property();
 		}
 	}
 }

@@ -252,4 +252,23 @@ public abstract class DeCoupledCommon extends Analysis
 			acc2 = ain[j - 1] * g * scal;
 		}
 	}
+
+	protected static void eq()
+	{
+		int t = 0;
+
+		while(n > 5.0 || o > 5.0)
+		{
+			for(j = 1; j <= npts; j++)
+			{
+				d_setupstate();
+				d_response();
+			}
+
+			for(j = 1; j <= npts; j++)
+				effstr();
+
+			eq_property();
+		}
+	}
 }

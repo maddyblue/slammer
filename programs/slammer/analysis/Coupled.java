@@ -69,6 +69,8 @@ public class Coupled extends DeCoupledCommon
 		basef = 0.0;
 		acc11 = 0.0;
 		acc22 = 0.0;
+		acc1 = 0.0;
+		acc2 = 0.0;
 		normalf1 = 0.0;
 		normalf2 = 0.0;
 		mx = 0.0;
@@ -112,13 +114,13 @@ public class Coupled extends DeCoupledCommon
 		// finding equivalent linear properties of soil
 
 		if(dv3)
-			c_eq();
+			eq();
 
 		/*
 		 * Calculate decoupled dynamic response and Kmax using LE properties or
 		 * final EQL properties. These values not used to calculate coupled
 		 * displacements but provide information on general dynamic response.
-		*/
+		 */
 
 		for(j = 1; j <= npts; j++)
 		{
@@ -359,28 +361,6 @@ public class Coupled extends DeCoupledCommon
 		{
 			sdot2 = sdot1 + 0.5 * dt * (sdotdot2 + sdotdot1);
 			s2 = s1 + 0.5 * dt * (sdot2 + sdot1);
-		}
-	}
-
-	private static void c_eq()
-	{
-		int t = 0, jj;
-
-		while(n > 5.0 || o > 5.0)
-		{
-			acc1 = 0.0;
-			acc2 = 0.0;
-
-			for(j = 1; j <= npts; j++)
-			{
-				d_setupstate();
-				d_response();
-			}
-
-			for(j = 1; j <= npts; j++)
-				effstr();
-
-			eq_property();
 		}
 	}
 }
