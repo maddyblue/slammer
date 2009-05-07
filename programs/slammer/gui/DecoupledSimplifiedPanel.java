@@ -400,7 +400,7 @@ class DecoupledSimplifiedPanel extends JPanel implements ActionListener
 		c.gridy = y++;
 		x = 0;
 		c.gridx = x++;
-		label = new JLabel("Estimated displacement (in):");
+		label = new JLabel("Estimated displacement (in.):");
 		gridbag.setConstraints(label, c);
 		add(label);
 

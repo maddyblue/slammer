@@ -261,7 +261,7 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 
 		c.gridy = y++;
 		c.gridx = x++;
-		label = new JLabel("Estimated Newmark displacement (in):");
+		label = new JLabel("Estimated Newmark displacement (in.):");
 		gridbag.setConstraints(label, c);
 		panel.add(label);
 

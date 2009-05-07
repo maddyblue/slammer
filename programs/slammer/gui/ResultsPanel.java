@@ -166,7 +166,7 @@ class ResultsPanel extends JPanel implements ActionListener
 
 							paramUnit = parent.Parameters.unitMetric.isSelected();
 							final double g = paramUnit ? Analysis.Gcmss : Analysis.Ginss;
-							unitDisplacement = paramUnit ? "(cm)" : "(in)";
+							unitDisplacement = paramUnit ? "(cm)" : "(in.)";
 							StringBuilder outputText = new StringBuilder();
 							outputText.append("<html><body><table border=\"1\"><tr>" +
 								"<th>Earthquake</th><th>Record</th>" +

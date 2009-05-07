@@ -456,7 +456,7 @@ class ParametersPanel extends JPanel implements ActionListener
 			labelHeight.setText(stringHeight + " (ft)");
 			labelVs.setText(stringVs + " (ft/s)");
 			labelVr.setText(stringVr + " (ft/s)");
-			dispTableModel.setColName(stringDisp + " (in)");
+			dispTableModel.setColName(stringDisp + " (in.)");
 			try{d = new Double(paramHeight.getText()); paramHeight.setText(Analysis.fmtTwo.format(new Double(d.doubleValue() / Analysis.FTtoM)));} catch(Exception ex){}
 			try{d = new Double(paramVs.getText()); paramVs.setText(Analysis.fmtTwo.format(new Double(d.doubleValue() / Analysis.FTtoM)));} catch(Exception ex){}
 			try{d = new Double(paramVr.getText()); paramVr.setText(Analysis.fmtTwo.format(new Double(d.doubleValue() / Analysis.FTtoM)));} catch(Exception ex){}
