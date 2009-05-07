@@ -1,0 +1,1 @@
+Running ant here will compile, build, and run SLAMMER. It will also build srm.jar, which can be started normally (java -jar srm.jar). slammer.jar and srm.jar must be built before running the installer tasks one directory above. The installer tasks will not build slammer.jar and srm.jar on their own.
