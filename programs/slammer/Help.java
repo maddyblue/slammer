@@ -219,11 +219,6 @@ public class Help extends JFrame
 				"help/rigorous.html#step3"));
 				section.add(book);
 
-				book = new DefaultMutableTreeNode(new BookInfo
-				("Which Analysis Should I Use?",
-				"help/rigorous.html#which"));
-				section.add(book);
-
 			book = new DefaultMutableTreeNode(new BookInfo
 			("Simplified Analyses",
 			"help/simplifiedAnalyses.html"));

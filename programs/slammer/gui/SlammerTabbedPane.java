@@ -19,7 +19,6 @@ public class SlammerTabbedPane extends JTabbedPane
 	public DecoupledSimplifiedPanel DecoupledSimplified;
 	public ProbFailPanel ProbFail;
 	public ResultsPanel Results;
-	public WhichAnalysisPanel WhichAnalysis;
 	public UtilitiesPanel Utilities;
 	public RecordManagerPanel RecordManager;
 	public AddRecordsPanel AddRecords;
@@ -43,7 +42,6 @@ public class SlammerTabbedPane extends JTabbedPane
 			DecoupledSimplified = new DecoupledSimplifiedPanel(this);
 			ProbFail = new ProbFailPanel(this);
 			Results = new ResultsPanel(this);
-			WhichAnalysis = new WhichAnalysisPanel(this);
 			Parameters = new ParametersPanel(this);
 
 			Rigorous = new JTabbedPane();
@@ -53,7 +51,6 @@ public class SlammerTabbedPane extends JTabbedPane
 			Rigorous.addTab("Step 1: Select records", SelectRecords);
 			Rigorous.addTab("Step 2: Select analyses", Parameters);
 			Rigorous.addTab("Step 3: Perform analyses and view results", Results);
-			Rigorous.addTab("Appendix: Which analysis should I use?", WhichAnalysis);
 
 			Simplified.addTab("Rigid-block analyses", RigidBlockSimplified);
 			Simplified.addTab("Decoupled analysis", DecoupledSimplified);
