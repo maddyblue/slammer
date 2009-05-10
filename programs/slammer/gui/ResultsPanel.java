@@ -20,6 +20,44 @@ import slammer.analysis.*;
 
 class ResultsPanel extends JPanel implements ActionListener
 {
+	public class ResultsRenderer extends DefaultTableCellRenderer
+	{
+		// from JTableHeader.java
+		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
+		{
+			if (table != null) {
+				JTableHeader header = table.getTableHeader();
+				if (header != null) {
+					setForeground(header.getForeground());
+					setBackground(header.getBackground());
+					setFont(header.getFont());
+				}
+			}
+
+			setText((value == null) ? "" : value.toString());
+			setBorder(UIManager.getBorder("TableHeader.cellBorder"));
+
+			switch(column)
+			{
+				case RBC + NOR:
+				case DCC + NOR:
+				case CPC + NOR:
+					setHorizontalAlignment(JLabel.LEFT);
+					break;
+				case RBC + AVG:
+				case DCC + AVG:
+				case CPC + AVG:
+					setHorizontalAlignment(JLabel.RIGHT);
+					break;
+				default:
+					setHorizontalAlignment(JLabel.CENTER);
+					break;
+			}
+
+			return this;
+		}
+	}
+
 	// array indexes
 	public final static int RB = 0; // rigid block
 	public final static int DC = 1; // decoupled
@@ -33,8 +71,10 @@ class ResultsPanel extends JPanel implements ActionListener
 	public final static int WIDTH = 3;
 	public final static int OFFSET = 2;
 	public final static int RBC = OFFSET;
-	public final static int DCC = RBC + WIDTH;
-	public final static int CPC = DCC + WIDTH;
+	public final static int DCN = RBC + WIDTH;
+	public final static int DCC = DCN + 1;
+	public final static int CPN = DCC + WIDTH;
+	public final static int CPC = CPN + 1;
 	public final static int LEN = CPC + WIDTH;
 
 	String polarityName[] = { "Normal", "Inverse", "Average" };
@@ -46,8 +86,9 @@ class ResultsPanel extends JPanel implements ActionListener
 	JButton Analyze = new JButton("Perform analyses");
 	JButton ClearOutput = new JButton("Clear output");
 
-	JEditorPane outputPane = new JEditorPane("text/html", "");
-	JScrollPane outputPanes = new JScrollPane(outputPane);
+	DefaultTableModel outputTableModel = new DefaultTableModel();
+	JTable outputTable = new JTable(outputTableModel);
+	JScrollPane outputTablePane = new JScrollPane(outputTable);
 
 	JButton saveResultsOutput = new JButton("Save results table");
 	JFileChooser fc = new JFileChooser();
@@ -74,10 +115,9 @@ class ResultsPanel extends JPanel implements ActionListener
 	ArrayList results;
 	XYSeries xys[][][];
 
-	JRadioButton outputDelTab = new JRadioButton("Text, tab delimited", true);
-	JRadioButton outputDelSpace = new JRadioButton("Text, space delimited");
-	JRadioButton outputDelComma = new JRadioButton("Text, comma delimited");
-	JRadioButton outputDelHTML = new JRadioButton("HTML");
+	JRadioButton outputDelTab = new JRadioButton("Tab delimited", true);
+	JRadioButton outputDelSpace = new JRadioButton("Space delimited");
+	JRadioButton outputDelComma = new JRadioButton("Comma delimited");
 	ButtonGroup outputDelGroup = new ButtonGroup();
 
 	boolean paramUnit = false;
@@ -90,8 +130,6 @@ class ResultsPanel extends JPanel implements ActionListener
 	public ResultsPanel(SlammerTabbedPane parent) throws Exception
 	{
 		this.parent = parent;
-
-		outputPane.setEditable(false);
 
 		Analyze.setActionCommand("analyze");
 		Analyze.addActionListener(this);
@@ -114,7 +152,6 @@ class ResultsPanel extends JPanel implements ActionListener
 		outputDelGroup.add(outputDelTab);
 		outputDelGroup.add(outputDelSpace);
 		outputDelGroup.add(outputDelComma);
-		outputDelGroup.add(outputDelHTML);
 
 		polarityGroupDisp.add(polarityNorDisp);
 		polarityGroupDisp.add(polarityInvDisp);
@@ -167,13 +204,20 @@ class ResultsPanel extends JPanel implements ActionListener
 							paramUnit = parent.Parameters.unitMetric.isSelected();
 							final double g = paramUnit ? Analysis.Gcmss : Analysis.Ginss;
 							unitDisplacement = paramUnit ? "(cm)" : "(in.)";
-							StringBuilder outputText = new StringBuilder();
-							outputText.append("<html><body><table border=\"1\"><tr>" +
-								"<th>Earthquake</th><th>Record</th>" +
-								"<th colspan=\"3\">" + ParametersPanel.stringRB + " " + unitDisplacement + "</th>" +
-								"<th colspan=\"3\">" + ParametersPanel.stringDC + " " + unitDisplacement + "</th>" +
-								"<th colspan=\"3\">" + ParametersPanel.stringCP + " " + unitDisplacement + "</th>" +
-								"</tr>");
+							outputTableModel.setColumnIdentifiers(new Object[] {"Earthquake", "Record",
+								"<----", ParametersPanel.stringRB + " " + unitDisplacement, "---->", "",
+								"<----", ParametersPanel.stringDC + " " + unitDisplacement, "---->", "",
+								"<----", ParametersPanel.stringCP + " " + unitDisplacement, "---->"
+							});
+
+							outputTable.getTableHeader().setDefaultRenderer(new ResultsRenderer());
+
+							outputTable.getColumnModel().getColumn(DCN).setMinWidth(0);
+							outputTable.getColumnModel().getColumn(CPN).setMinWidth(0);
+							outputTable.getColumnModel().getColumn(DCN).setPreferredWidth(5);
+							outputTable.getColumnModel().getColumn(CPN).setPreferredWidth(5);
+							outputTable.getColumnModel().getColumn(DCN).setMaxWidth(5);
+							outputTable.getColumnModel().getColumn(CPN).setMaxWidth(5);
 
 							boolean paramDualslope = parent.Parameters.dualSlope.isSelected();
 							Double d;
@@ -394,22 +438,14 @@ class ResultsPanel extends JPanel implements ActionListener
 
 							int j, k;
 							Object[] row;
-							results = new ArrayList();
 
-							results.add(new Object[] {
-								"Earthquake", "Record",
-								"<---", ParametersPanel.stringRB + " " + unitDisplacement, "---->",
-								"<---", ParametersPanel.stringDC + " " + unitDisplacement, "---->",
-								"<---", ParametersPanel.stringCP + " " + unitDisplacement, "---->"
+							outputTableModel.addRow(new Object[] { null, "Polarity:",
+								polarityName[NOR], polarityName[INV], polarityName[AVG], null,
+								polarityName[NOR], polarityName[INV], polarityName[AVG], null,
+								polarityName[NOR], polarityName[INV], polarityName[AVG]
 							});
 
-							row = new Object[] { null, "Polarity:",
-								polarityName[NOR], polarityName[INV], polarityName[AVG],
-								polarityName[NOR], polarityName[INV], polarityName[AVG],
-								polarityName[NOR], polarityName[INV], polarityName[AVG] };
-
-							outputText.append(makeRow(row, true));
-							results.add(row);
+							outputTableModel.addRow(new Object[0]);
 
 							for(int i = 1; i < res.length && !pm.isCanceled(); i++)
 							{
@@ -428,8 +464,7 @@ class ResultsPanel extends JPanel implements ActionListener
 								{
 									row[2] = "File does not exist or is not readable";
 									row[3] = path;
-									outputText.append(makeRow(row));
-									results.add(row);
+									outputTableModel.addRow(row);
 									continue;
 								}
 
@@ -438,8 +473,7 @@ class ResultsPanel extends JPanel implements ActionListener
 								{
 									row[2] = "Invalid data at point " + dat.badEntry();
 									row[3] = path;
-									outputText.append(makeRow(row));
-									results.add(row);
+									outputTableModel.addRow(row);
 									continue;
 								}
 
@@ -508,12 +542,17 @@ class ResultsPanel extends JPanel implements ActionListener
 									total[DC][INV] += inv;
 									total[DC][AVG] += avg;
 
+									for(j = 0; j < dataVect[DC][NOR].size() && ((Double)dataVect[DC][NOR].get(j)).doubleValue() < norm; j++)
+										;
+									dataVect[DC][NOR].add(j, new Double(norm));
+
+									for(j = 0; j < dataVect[DC][INV].size() && ((Double)dataVect[DC][INV].get(j)).doubleValue() < inv; j++)
+										;
+									dataVect[DC][INV].add(j, new Double(inv));
+
 									for(j = 0; j < dataVect[DC][AVG].size() && ((Double)dataVect[DC][AVG].get(j)).doubleValue() < avg; j++)
 										;
-
 									dataVect[DC][AVG].add(j, new Double(avg));
-									dataVect[DC][NOR].add(j, new Double(norm));
-									dataVect[DC][INV].add(j, new Double(inv));
 
 									row[DCC + AVG] = unitFmt.format(avg);
 									row[DCC + NOR] = unitFmt.format(norm);
@@ -537,24 +576,29 @@ class ResultsPanel extends JPanel implements ActionListener
 									total[CP][INV] += inv;
 									total[CP][AVG] += avg;
 
+									for(j = 0; j < dataVect[CP][NOR].size() && ((Double)dataVect[CP][NOR].get(j)).doubleValue() < norm; j++)
+										;
+									dataVect[CP][NOR].add(j, new Double(norm));
+
+									for(j = 0; j < dataVect[CP][INV].size() && ((Double)dataVect[CP][INV].get(j)).doubleValue() < inv; j++)
+										;
+									dataVect[CP][INV].add(j, new Double(inv));
+
 									for(j = 0; j < dataVect[CP][AVG].size() && ((Double)dataVect[CP][AVG].get(j)).doubleValue() < avg; j++)
 										;
-
 									dataVect[CP][AVG].add(j, new Double(avg));
-									dataVect[CP][NOR].add(j, new Double(norm));
-									dataVect[CP][INV].add(j, new Double(inv));
 
 									row[CPC + AVG] = unitFmt.format(avg);
 									row[CPC + NOR] = unitFmt.format(norm);
 									row[CPC + INV] = unitFmt.format(inv);
 								}
 
-								outputText.append(makeRow(row));
-								results.add(row);
+								outputTableModel.addRow(row);
 							}
 							pm.update("Calculating stastistics...");
 
 							double mean, value, valtemp;
+							int idx;
 							Object[] rmean = new Object[LEN];
 							Object[] rmedian = new Object[LEN];
 							Object[] rsd = new Object[LEN];
@@ -570,17 +614,23 @@ class ResultsPanel extends JPanel implements ActionListener
 									if(dataVect[j][k] == null || dataVect[j][k].size() == 0)
 										continue;
 
+									idx = j * WIDTH + OFFSET + k;
+									if(idx >= DCN)
+										idx++;
+									if(idx >= CPN)
+										idx++;
+
 									mean = Double.parseDouble(unitFmt.format(total[j][k] / num));
-									rmean[j * WIDTH + OFFSET + k] = unitFmt.format(mean);
+									rmean[idx] = unitFmt.format(mean);
 
 									if(num % 2 == 0)
 									{
 										double fst = (Double)dataVect[j][k].get(num / 2);
 										double snd = (Double)dataVect[j][k].get(num / 2 - 1);
-										rmedian[j * WIDTH + OFFSET + k] = unitFmt.format(avg(fst, snd));
+										rmedian[idx] = unitFmt.format(avg(fst, snd));
 									}
 									else
-										rmedian[j * WIDTH + OFFSET + k] = unitFmt.format(dataVect[j][k].get(num / 2));
+										rmedian[idx] = unitFmt.format(dataVect[j][k].get(num / 2));
 
 									value = 0;
 
@@ -592,22 +642,14 @@ class ResultsPanel extends JPanel implements ActionListener
 
 									value /= num;
 									value = Math.sqrt(value);
-									rsd[j * WIDTH + OFFSET + k] = unitFmt.format(value);
+									rsd[idx] = unitFmt.format(value);
 								}
 							}
 
-							outputText.append(makeRow(new Object[LEN]));
-							outputText.append(makeRow(rmean));
-							outputText.append(makeRow(rmedian));
-							outputText.append(makeRow(rsd));
-							outputText.append("</table></body></html>");
-
-							results.add(new Object[LEN]);
-							results.add(rmean);
-							results.add(rmedian);
-							results.add(rsd);
-
-							outputPane.setText(outputText.toString());
+							outputTableModel.addRow(new Object[0]);
+							outputTableModel.addRow(rmean);
+							outputTableModel.addRow(rmedian);
+							outputTableModel.addRow(rsd);
 						}
 						catch(Throwable ex)
 						{
@@ -633,45 +675,49 @@ class ResultsPanel extends JPanel implements ActionListener
 				{
 					FileWriter fw = new FileWriter(fc.getSelectedFile());
 
-					if(outputDelHTML.isSelected())
-					{
-						fw.write(outputPane.getText());
-						fw.close();
-					}
+					String delim;
+
+					if(outputDelSpace.isSelected())
+						delim = " ";
+					else if(outputDelComma.isSelected())
+						delim = ",";
 					else
+						delim = "\t";
+
+					int c = outputTableModel.getColumnCount();
+					int r = outputTableModel.getRowCount();
+
+					// table column headers
+					for(int i = 0; i < c; i++)
 					{
-						String delim;
-						if(outputDelSpace.isSelected())
-							delim = " ";
-						else if(outputDelComma.isSelected())
-							delim = ",";
-						else
-							delim = "\t";
+						if(i != 0)
+							fw.write(delim);
 
-						Object o;
-						Object[] r;
+						fw.write(outputTableModel.getColumnName(i));
+					}
 
-						for(int i = 0; i < results.size(); i++)
+					fw.write("\n");
+
+					Object o;
+
+					for(int i = 0; i < r; i++)
+					{
+						for(int j = 0; j < c; j++)
 						{
-							r = (Object[])results.get(i);
+							if(j != 0)
+								fw.write(delim);
 
-							for(int j = 0; j < r.length; j++)
-							{
-								if(j != 0)
-									fw.write(delim);
+							o = outputTableModel.getValueAt(i, j);
+							if(o == null)
+								o = "";
 
-								o = r[j];
-								if(o == null)
-									o = "";
-
-								fw.write(o.toString());
-							}
-
-							fw.write("\n");
+							fw.write(o.toString());
 						}
 
-						fw.close();
+						fw.write("\n");
 					}
+
+					fw.close();
 				}
 			}
 			else if(command.equals("plotHistogram"))
@@ -790,7 +836,7 @@ class ResultsPanel extends JPanel implements ActionListener
 	{
 		JPanel outputTablePanel = new JPanel(new BorderLayout());
 
-		outputTablePanel.add(BorderLayout.CENTER, outputPanes);
+		outputTablePanel.add(BorderLayout.CENTER, outputTablePane);
 
 		return outputTablePanel;
 	}
@@ -974,11 +1020,6 @@ class ResultsPanel extends JPanel implements ActionListener
 
 		c.gridx = x++;
 		c.gridy = y++;
-		label = new JLabel("Output format:");
-		gridbag.setConstraints(label, c);
-		panel.add(label);
-
-		c.gridy = y++;
 		gridbag.setConstraints(outputDelTab, c);
 		panel.add(outputDelTab);
 
@@ -989,10 +1030,6 @@ class ResultsPanel extends JPanel implements ActionListener
 		c.gridy = y++;
 		gridbag.setConstraints(outputDelComma, c);
 		panel.add(outputDelComma);
-
-		c.gridy = y++;
-		gridbag.setConstraints(outputDelHTML, c);
-		panel.add(outputDelHTML);
 
 		c.gridx = x++;
 		c.gridheight = y;
@@ -1014,7 +1051,7 @@ class ResultsPanel extends JPanel implements ActionListener
 		dataVect = null;
 		xys = null;
 		graphDisp(false, false, false);
-		outputPane.setText(null);
+		outputTableModel.setRowCount(0);
 	}
 
 	private void graphDisp(boolean rigid, boolean decoupled, boolean coupled)
@@ -1056,25 +1093,5 @@ class ResultsPanel extends JPanel implements ActionListener
 	private double avg(final double a, final double b)
 	{
 		return (a + b) / 2.0;
-	}
-
-	private static String makeRow(Object[] o)
-	{
-		return makeRow(o, false);
-	}
-
-	private static String makeRow(Object[] o, boolean header)
-	{
-		StringBuilder r = new StringBuilder("<tr>");
-		String cell = header ? "th" : "td";
-
-		for(int i = 0; i < o.length; i++)
-			if(o[i] == null)
-				r.append("<" + cell + "></" + cell + ">");
-			else
-				r.append("<" + cell + ">" + o[i].toString() + "</" + cell + ">");
-
-		r.append("</tr>");
-		return r.toString();
 	}
 }
