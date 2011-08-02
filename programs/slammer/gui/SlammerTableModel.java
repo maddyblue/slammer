@@ -118,15 +118,15 @@ class SlammerTableModel extends DefaultTableModel implements SlammerTableInterfa
 
 		String ord = order.getSelectedItem().toString();
 		String primaryOrder = "asc", secondaryOrder = "asc";
-		if(ord.equals("A/D"))
+		if(ord.equals("Ascending/Descending"))
 		{
 			secondaryOrder = "desc";
 		}
-		else if(ord.equals("D/A"))
+		else if(ord.equals("Descending/Ascending"))
 		{
 			primaryOrder = "desc";
 		}
-		else if(ord.equals("D/D"))
+		else if(ord.equals("Descending/Descending"))
 		{
 			primaryOrder = "desc";
 			secondaryOrder = "desc";

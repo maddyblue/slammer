@@ -158,10 +158,10 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 		label = new JLabel("Select analysis:");
 		label.setFont(GUIUtils.headerFont);
 		sidepanel.add(label);
+		sidepanel.add(SaygiliRathje2009CARPAM);
 		sidepanel.add(SaygiliRathje2008CARPA);
 		sidepanel.add(SaygiliRathje2008CARPAPV);
 		sidepanel.add(SaygiliRathje2008CARPAPVAI);
-		sidepanel.add(SaygiliRathje2009CARPAM);
 		sidepanel.add(Jibson2007CA);
 		sidepanel.add(Jibson2007CAM);
 		sidepanel.add(Jibson2007AICA);
