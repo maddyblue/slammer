@@ -42,10 +42,10 @@ class SlammerTable extends JPanel implements ActionListener, SlammerTableInterfa
 		secondarySort.setActionCommand("sort");
 		secondarySort.addActionListener(this);
 
-		order.addItem("A/A");
-		order.addItem("A/D");
-		order.addItem("D/A");
-		order.addItem("D/D");
+		order.addItem("Ascending/Ascending");
+		order.addItem("Ascending/Descending");
+		order.addItem("Descending/Ascending");
+		order.addItem("Descending/Descending");
 		order.setActionCommand("sort");
 		order.addActionListener(this);
 

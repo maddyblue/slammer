@@ -60,7 +60,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 	JComboBox  modMech = new JComboBox(SlammerTable.FocMechArray);
 
 	ButtonGroup TypeGroup = new ButtonGroup();
-	JRadioButton typeTime = new JRadioButton("Time series", true);
+	JRadioButton typeTime = new JRadioButton("Time history", true);
 	JRadioButton typeFourier = new JRadioButton("Fourier amplitude spectrum");
 	JRadioButton typeSpectra = new JRadioButton("Response spectra");
 
@@ -133,7 +133,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 		saveGraph.addActionListener(this);
 
 		managerTP.addTab("Modify record", createModifyPanel());
-		managerTP.addTab("Graphing options", createGraphPanel());
+		managerTP.addTab("Graph record", createGraphPanel());
 
 		spectraDomain.setActionCommand("domain");
 		spectraDomain.addActionListener(this);
@@ -399,7 +399,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 		c.gridwidth = 3;
 		c.anchor = GridBagConstraints.CENTER;
 		label = new JLabel("Select a record above for graphing");
-		label.setFont(GUIUtils.headerFont);
+		//label.setFont(GUIUtils.headerFont);
 		gridbag.setConstraints(label, c);
 		panel.add(label);
 		c.anchor = GridBagConstraints.WEST;
@@ -456,7 +456,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 		c.gridy = y++;
 		c.gridwidth = 1;
 		c.insets = left;
-		label = new JLabel("Domain axis");
+		label = new JLabel("Horizontal axis");
 		gridbag.setConstraints(label, c);
 		panel.add(label);
 

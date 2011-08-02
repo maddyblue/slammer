@@ -24,6 +24,7 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 	JRadioButton SaygiliRathje2008CARPA = new JRadioButton("<html>Saygili and Rathje (2008) Critical acceleration ratio<br/>and peak acceleration</html>");
 	JRadioButton SaygiliRathje2008CARPAPV = new JRadioButton("<html>Saygili and Rathje (2008) Critical acceleration ratio,<br/>peak acceleration, peak velocity</html>");
 	JRadioButton SaygiliRathje2008CARPAPVAI = new JRadioButton("<html>Saygili and Rathje (2008) Critical acceleration ratio,<br/>peak acceleration, peak velocity, Arias intensity</html>");
+	JRadioButton SaygiliRathje2009CARPAM = new JRadioButton("<html>Saygili and Rathje (2009) Critical acceleration ratio,<br/>peak acceleration, and magnitude</html>");
 	ButtonGroup group = new ButtonGroup();
 
 	JTextField fieldAc = new WideTextField(7);
@@ -77,6 +78,10 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 	+ "<p>ln <i>D<sub>n</sub></i> = -0.74 - 4.93 ( <i>a<sub>c</sub></i> / <i>a<sub>max</sub></i> ) - 19.91 ( <i>a<sub>c</sub></i> / <i>a<sub>max</sub></i> )<sup>2</sup> + 43.75 ( <i>a<sub>c</sub></i> / <i>a<sub>max</sub></i> )<sup>3</sup> - 30.12 ( <i>a<sub>c</sub></i> / <i>a<sub>max</sub></i> )<sup>4</sup> - 1.30 ln <i>a<sub>max</sub></i> + 1.04 ln <i>v<sub>max</sub></i> + 0.67 ln <i>I<sub>a</sub></i>"
 	+ "<p>where <i>D<sub>n</sub></i> is Newmark displacement in centimeters, <i>a<sub>c</sub></i> is critical acceleration in g's, <i>a<sub>max</sub></i> is peak ground acceleration in g's, <i>v<sub>max</sub></i> is peak ground velocity in centimeters per second, and <i>I<sub>a</sub</i> is Arias intensity in meters per second. The equation was developed by conducting rigorous Newmark integrations on 2383 strong-motion records for critical acceleration values between 0.05 and 0.30 g.  The regression model has standard deviation of 0.20 + 0.79 ( <i>a<sub>c</sub></i> / <i>a<sub>max</sub></i> ).";
 
+	String SaygiliRathje2009CARPAMStr = "This program estimates rigid-block Newmark displacement as a function of critical acceleration ratio, peak acceleration, and moment magnitude as explained in Rathje and Saygili (2009).  The estimate is made using the following regression equation:"
+	+ "<p>ln <i>D<sub>n</sub></i> = 4.89 - 4.85 ( <i>a<sub>c</sub></i> / <i>a<sub>max</sub></i> ) - 19.64 ( <i>a<sub>c</sub></i> / <i>a<sub>max</sub></i> )<sup>2</sup> + 42.49 ( <i>a<sub>c</sub></i> / <i>a<sub>max</sub></i> )<sup>3</sup> - 29.06 ( <i>a<sub>c</sub></i> / <i>a<sub>max</sub></i> )<sup>4</sup> + 0.72 ln <i>a<sub>max</sub></i> + 0.89 + 0.424 ( <b>M</b> - 6 )"
+	+ "<p>where <i>D<sub>n</sub></i> is Newmark displacement in centimeters, <i>a<sub>c</sub></i> is critical acceleration in g's, <i>a<sub>max</sub></i> is horizontal peak ground acceleration (PGA) in g's, and <b>M</b> is moment magnitude.  This equation was developed by conducting rigorous Newmark integrations on more than 2000 single-component strong-motion records for several discrete values of critical acceleration.  The standard deviation of the model is 0.95.";
+
 	public RigidBlockSimplifiedPanel(SlammerTabbedPane parent) throws Exception
 	{
 		this.parent = parent;
@@ -91,6 +96,7 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 		group.add(SaygiliRathje2008CARPA);
 		group.add(SaygiliRathje2008CARPAPV);
 		group.add(SaygiliRathje2008CARPAPVAI);
+		group.add(SaygiliRathje2009CARPAM);
 
 		Jibson1993.setActionCommand("change");
 		Jibson1993.addActionListener(this);
@@ -112,6 +118,8 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 		SaygiliRathje2008CARPAPV.addActionListener(this);
 		SaygiliRathje2008CARPAPVAI.setActionCommand("change");
 		SaygiliRathje2008CARPAPVAI.addActionListener(this);
+		SaygiliRathje2009CARPAM.setActionCommand("change");
+		SaygiliRathje2009CARPAM.addActionListener(this);
 
 		fieldAc.setEditable(false);
 		fieldAmax.setEditable(false);
@@ -153,6 +161,7 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 		sidepanel.add(SaygiliRathje2008CARPA);
 		sidepanel.add(SaygiliRathje2008CARPAPV);
 		sidepanel.add(SaygiliRathje2008CARPAPVAI);
+		sidepanel.add(SaygiliRathje2009CARPAM);
 		sidepanel.add(Jibson2007CA);
 		sidepanel.add(Jibson2007CAM);
 		sidepanel.add(Jibson2007AICA);
@@ -360,6 +369,13 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 					fieldIa.setEditable(true);
 					ta.setText(SaygiliRathje2008CARPAPVAIStr);
 				}
+				else if(SaygiliRathje2009CARPAM.isSelected())
+				{
+					fieldAc.setEditable(true);
+					fieldAmax.setEditable(true);
+					fieldM.setEditable(true);
+					ta.setText(SaygiliRathje2009CARPAMStr);
+				}
 			}
 			else if(command.equals("do"))
 			{
@@ -423,6 +439,8 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 					fieldResCm.setText(RigidBlockSimplified.SaygiliRathje2008CARPAPV(Ac, Amax, Vmax));
 				else if(SaygiliRathje2008CARPAPVAI.isSelected())
 					fieldResCm.setText(RigidBlockSimplified.SaygiliRathje2008CARPAPVAI(Ac, Amax, Vmax, Ia));
+				else if(SaygiliRathje2009CARPAM.isSelected())
+					fieldResCm.setText(RigidBlockSimplified.SaygiliRathje2009CARPAM(Ac, Amax, M));
 				else
 				{
 					analysis = false;

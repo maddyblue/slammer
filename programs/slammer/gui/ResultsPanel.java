@@ -78,15 +78,12 @@ class ResultsPanel extends JPanel implements ActionListener
 	public final static int LEN = CPC + WIDTH;
 
 	String polarityName[] = { "Normal", "Inverse", "Average" };
-
 	SlammerTabbedPane parent;
-
 	JTextField decimalsTF = new JTextField("1", 2);
-
 	JButton Analyze = new JButton("Perform analyses");
 	JButton ClearOutput = new JButton("Clear output");
-
 	DefaultTableModel outputTableModel = new DefaultTableModel();
+
 	JTable outputTable = new JTable(outputTableModel);
 	JScrollPane outputTablePane = new JScrollPane(outputTable);
 
@@ -659,7 +656,8 @@ class ResultsPanel extends JPanel implements ActionListener
 						return null;
 					}
 
-					public void finished() {
+					public void finished()
+					{
 						pm.dispose();
 					}
 				};
@@ -811,7 +809,7 @@ class ResultsPanel extends JPanel implements ActionListener
 				frame.setVisible(true);
 			}
 		}
-		catch (Exception ex)
+		catch(Exception ex)
 		{
 			Utils.catchException(ex);
 		}
@@ -835,7 +833,6 @@ class ResultsPanel extends JPanel implements ActionListener
 	private JPanel createTable()
 	{
 		JPanel outputTablePanel = new JPanel(new BorderLayout());
-
 		outputTablePanel.add(BorderLayout.CENTER, outputTablePane);
 
 		return outputTablePanel;
