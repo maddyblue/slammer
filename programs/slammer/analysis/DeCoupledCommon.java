@@ -5,15 +5,15 @@ package slammer.analysis;
 public abstract class DeCoupledCommon extends Analysis
 {
 	// main function parameters
-	protected static double uwgt, height, vs, damp, damp1, dt, scal, g, vr, vs1;
-	protected static boolean dv2 = true, dv3;
+	protected double uwgt, height, vs, damp, damp1, dt, scal, g, vr, vs1;
+	protected boolean dv2 = true, dv3;
 
 	// main function variables
-	protected static double Mtot, M, L, omega, beta, gamma, angle;
-	protected static int qq, nmu, npts;
+	protected double Mtot, M, L, omega, beta, gamma, angle;
+	protected int qq, nmu, npts;
 
-	protected static double rho, delt, dampf, damps, damps_prev;
-	protected static int j;
+	protected double rho, delt, dampf, damps, damps_prev;
+	protected int j;
 
 	/*
 	 * slide=0 no sliding, slide=1 sliding
@@ -21,14 +21,14 @@ public abstract class DeCoupledCommon extends Analysis
 	 * variable that end in 2 are for current time step
 	 */
 
-	protected static boolean slide;
+	protected boolean slide;
 
-	protected static double mx, mx1, mmax, gameff1, gamref, n, o, acc1, acc2, u1, udot1, udotdot1;
-	protected static double s[], u[], udot[], udotdot[], disp[], mu[], avgacc[];
+	protected double mx, mx1, mmax, gameff1, gamref, n, o, acc1, acc2, u1, udot1, udotdot1;
+	protected double s[], u[], udot[], udotdot[], disp[], mu[], avgacc[];
 
-	protected static double ain[];
+	protected double ain[];
 
-	protected static void eq_property()
+	protected void eq_property()
 	{
 		double gameff2, vs2, com1, com2, damp2, G1, G2, l, m;
 
@@ -67,7 +67,7 @@ public abstract class DeCoupledCommon extends Analysis
 		dampf = dampf * 0.01;
 	}
 
-	protected static void residual_mu()
+	protected void residual_mu()
 	{
 		if(nmu > 1)
 		{
@@ -79,7 +79,7 @@ public abstract class DeCoupledCommon extends Analysis
 		}
 	}
 
-	protected static void effstr()
+	protected void effstr()
 	{
 		// effective shear strain calculation
 
@@ -139,7 +139,7 @@ public abstract class DeCoupledCommon extends Analysis
 	}
 
 	// calculate Kmax
-	protected static void avg_acc()
+	protected void avg_acc()
 	{
 		double mx1 = 0.0, mx = 0.0;
 		int jj;
@@ -179,7 +179,7 @@ public abstract class DeCoupledCommon extends Analysis
 		}
 	}
 
-	protected static void d_response()
+	protected void d_response()
 	{
 		double khat, omega, a, b;
 		double deltp, deltu, deltudot, deltudotdot, u2, udot2, udotdot2;
@@ -217,7 +217,7 @@ public abstract class DeCoupledCommon extends Analysis
 		avgacc[j - 1] = avgacc[j - 1] + L / Mtot * udotdot[j - 1];
 	}
 
-	protected static void d_setupstate()
+	protected void d_setupstate()
 	{
 		// set up state from previous time step
 		if(j == 1)
@@ -253,7 +253,7 @@ public abstract class DeCoupledCommon extends Analysis
 		}
 	}
 
-	protected static void eq()
+	protected void eq()
 	{
 		int t = 0;
 

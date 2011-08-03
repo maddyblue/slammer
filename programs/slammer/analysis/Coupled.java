@@ -6,14 +6,14 @@ import slammer.*;
 
 public class Coupled extends DeCoupledCommon
 {
-	private static double s1, sdot1, sdotdot1;
-	private static double s2, sdot2, sdotdot2;
-	private static double u2, udot2, udotdot2, baseacc;
-	private static double basef, acc11, acc22, normalf1, normalf2;
+	private double s1, sdot1, sdotdot1;
+	private double s2, sdot2, sdotdot2;
+	private double u2, udot2, udotdot2, baseacc;
+	private double basef, acc11, acc22, normalf1, normalf2;
 
-	private static double COS, SIN, gSIN, gCOS;
+	private double COS, SIN, gSIN, gCOS;
 
-	public static double Coupled(double[] ain_p, double uwgt_p, double height_p, double vs_p, double damp1_p, double dt_p, double scal_p, double g_p, double vr_p, double[][] ca, boolean dv3_p)
+	public double Coupled(double[] ain_p, double uwgt_p, double height_p, double vs_p, double damp1_p, double dt_p, double scal_p, double g_p, double vr_p, double[][] ca, boolean dv3_p)
 	{
 		// assign all passed parameters to the local data
 		uwgt = uwgt_p;
@@ -185,7 +185,7 @@ public class Coupled extends DeCoupledCommon
 	}
 
 	// subroutine for the end of sliding
-	private static void slidestop()
+	private void slidestop()
 	{
 		double ddt, acc11, acc22;
 		double acc1b, delt, dd;
@@ -236,7 +236,7 @@ public class Coupled extends DeCoupledCommon
 	}
 
 	//solves for u, udot, and udotdot at next time step
-	private static void solvu(int jj)
+	private void solvu(int jj)
 	{
 		double khat, a, b, deltp, deltu, deltudot;
 		double d1;
@@ -275,7 +275,7 @@ public class Coupled extends DeCoupledCommon
 	}
 
 
-	private static void coupled_setupstate(int jj)
+	private void coupled_setupstate(int jj)
 	{
 		// set up state from previous time step
 		if(jj == 1)
@@ -323,7 +323,7 @@ public class Coupled extends DeCoupledCommon
 		}
 	}
 
-	private static void c_slidingcheck()
+	private void c_slidingcheck()
 	{
 		// check if sliding has started
 		if(!slide)
@@ -344,7 +344,7 @@ public class Coupled extends DeCoupledCommon
 		}
 	}
 
-	private static void c_slideacc()
+	private void c_slideacc()
 	{
 		// update sliding acceleration based on calc'd response
 		if(slide)

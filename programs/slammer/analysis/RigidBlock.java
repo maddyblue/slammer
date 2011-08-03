@@ -8,9 +8,8 @@ import java.io.*;
 
 public class RigidBlock extends Analysis
 {
-	public static double SlammerRigorous(String oname, DoubleList data, final double d, final double[][] disp, final double mult, final boolean dualSlope, final double ta, final double unitMult)
+	public double SlammerRigorous(double[] data, final double d, final double[][] disp, final double mult, final boolean dualSlope, final double ta, final double unitMult)
 	{
-		Double val; // current data value from input file
 		double a, n, q = 0, r = 0, s = 0, t, u = 0, v = 0, y = 0;
 
 		// dual slope calculations
@@ -28,10 +27,9 @@ public class RigidBlock extends Analysis
 
 		setValueSize(d); // init the graphing data
 
-		data.reset();
-		while((val = data.each()) != null)
+		for(int i = 0; i < data.length; i++)
 		{
-			a = val.doubleValue() * mult * unitMult;
+			a = data[i] * mult * unitMult;
 
 			if(dualSlope)
 				a += g;

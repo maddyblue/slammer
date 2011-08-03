@@ -4,6 +4,7 @@ package slammer.analysis;
 
 import java.text.DecimalFormat;
 import org.jfree.data.xy.XYSeries;
+import slammer.*;
 
 public class Analysis
 {
@@ -17,7 +18,7 @@ public class Analysis
 	public static final double CMtoFT = 0.032808399;
 	public static final double FTtoIN = 12.0;
 	public static final double CMtoIN = CMtoFT * FTtoIN; // 0.393700787
-	public static final double Gcmss	= 980.665;
+	public static final double Gcmss  = 980.665;
 	public static final double Gftss  = Gcmss * CMtoFT; // 32.1740486
 	public static final double Ginss  = Gcmss * CMtoIN; // 386.088583
 	public static final double PCFtoKNM3 = 6.3659; // lb/ft^3 to kN/m^3
@@ -26,19 +27,20 @@ public class Analysis
 	public static final double MtoCM = 100;
 	public static final double M3toCM3 = MtoCM * MtoCM * MtoCM;
 
-	private static double time;
-	private static double dint;
-	public static XYSeries graphData;
-	private static double last;
-	private static boolean skipped;
+	private double time;
+	private double dint;
+	private double last;
+	private boolean skipped;
 
-	private static int perSec = 5;
-	private static double interval = 1.0 / (double)perSec;
-	private static double timeStor;
+	private static final int perSec = 5;
+	private static final double interval = 1.0 / (double)perSec;
+	private double timeStor;
 
 	public static boolean testing = false;
 
-	protected static void setValueSize(final double Dint)
+	public XYSeries graphData;
+
+	protected void setValueSize(final double Dint)
 	{
 		if(testing) return;
 
@@ -50,7 +52,7 @@ public class Analysis
 		timeStor = 0;
 	}
 
-	protected static void store(final double d)
+	protected void store(final double d)
 	{
 		if(testing) return;
 
@@ -76,7 +78,7 @@ public class Analysis
 		time += dint;
 	}
 
-	protected static void end(final double d)
+	protected void end(final double d)
 	{
 		if(testing) return;
 
@@ -85,11 +87,27 @@ public class Analysis
 		realStore(d, time);
 	}
 
-	private static void realStore(final double d, final double time)
+	private void realStore(final double d, final double time)
 	{
 		try {graphData.add(new Float(time), new Float(d));}
 		catch (Exception e) {}
 		last = d;
+	}
+
+	/* overridden functions */
+	/* i'm sure there's a better way to do this, but this works */
+
+	public double Decoupled(double[] ain_p, double uwgt_p, double height_p, double vs_p, double damp1_p, double dt_p, double scal_p, double g_p, double vr_p, double[][] ca, boolean dv3_p)
+	{
+		return 0;
+	}
+	public double Coupled(double[] ain_p, double uwgt_p, double height_p, double vs_p, double damp1_p, double dt_p, double scal_p, double g_p, double vr_p, double[][] ca, boolean dv3_p)
+	{
+		return 0;
+	}
+	public double SlammerRigorous(double[] data, final double d, final double[][] disp, final double mult, final boolean dualSlope, final double ta, final double unitMult)
+	{
+		return 0;
 	}
 
 	/* standard functions */

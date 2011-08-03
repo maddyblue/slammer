@@ -14,6 +14,7 @@ import org.jfree.chart.*;
 import org.jfree.chart.axis.*;
 import java.text.DecimalFormat;
 import java.util.*;
+import java.util.concurrent.*;
 import java.io.*;
 import slammer.*;
 import slammer.analysis.*;
@@ -58,6 +59,92 @@ class ResultsPanel extends JPanel implements ActionListener
 		}
 	}
 
+	public class ResultThread implements Runnable
+	{
+		int idx;
+		int row;
+		int analysis;
+		int orientation;
+
+		String eq, record;
+
+		double[] ain;
+
+		double result;
+		XYSeries graphData;
+
+		double scale, scaleRB;
+		double di;
+		double thrust, uwgt, height, vs, damp, vr, g;
+		double[][] ca;
+		boolean paramDualslope, dv3;
+
+		// RigidBlock
+		ResultThread(String eq, String record, int idx, int row, int analysis, int orientation, double[] ain, double di, double[][] ca, double scale, boolean paramDualslope, double thrust, double scaleRB)
+		{
+			this.eq = eq;
+			this.record = record;
+			this.idx = idx;
+			this.row = row;
+			this.analysis = analysis;
+			this.orientation = orientation;
+			this.ain = ain;
+			this.di = di;
+			this.ca = ca;
+			this.scale = scale;
+			this.paramDualslope = paramDualslope;
+			this.thrust = thrust;
+			this.scaleRB = scaleRB;
+		}
+
+		// Decoupled
+		ResultThread(String eq, String record, int idx, int row, int analysis, int orientation, double[] ain, double uwgt, double height, double vs, double damp, double di, double scale, double g, double vr, double[][] ca, boolean dv3)
+		{
+			this.eq = eq;
+			this.record = record;
+			this.idx = idx;
+			this.row = row;
+			this.analysis = analysis;
+			this.orientation = orientation;
+			this.ain = ain;
+			this.uwgt = uwgt;
+			this.height = height;
+			this.vs = vs;
+			this.damp = damp;
+			this.di = di;
+			this.scale = scale;
+			this.g = g;
+			this.vr = vr;
+			this.ca = ca;
+			this.dv3 = dv3;
+		}
+
+		public void run()
+		{
+			Analysis a;
+
+			if(analysis == RB)
+			{
+				a = new RigidBlock();
+				result = a.SlammerRigorous(ain, di, ca, scale, paramDualslope, thrust, scaleRB);
+			}
+			else if(analysis == DC)
+			{
+				a = new Decoupled();
+				result = a.Decoupled(ain, uwgt, height, vs, damp, di, scale, g, vr, ca, dv3);
+			}
+			else if(analysis == CP)
+			{
+				a = new Coupled();
+				result = a.Coupled(ain, uwgt, height, vs, damp, di, scale, g, vr, ca, dv3);
+			}
+			else
+				a = null;
+
+			graphData = a.graphData;
+		}
+	}
+
 	// array indexes
 	public final static int RB = 0; // rigid block
 	public final static int DC = 1; // decoupled
@@ -76,6 +163,10 @@ class ResultsPanel extends JPanel implements ActionListener
 	public final static int CPN = DCC + WIDTH;
 	public final static int CPC = CPN + 1;
 	public final static int LEN = CPC + WIDTH;
+
+	public static int NUM_CORES;
+	java.util.Vector<ResultThread> resultVec;
+	ExecutorService pool;
 
 	String polarityName[] = { "Normal", "Inverse", "Average" };
 	SlammerTabbedPane parent;
@@ -435,6 +526,7 @@ class ResultsPanel extends JPanel implements ActionListener
 
 							int j, k;
 							Object[] row;
+							int rowcount = 2;
 
 							outputTableModel.addRow(new Object[] { null, "Polarity:",
 								polarityName[NOR], polarityName[INV], polarityName[AVG], null,
@@ -443,13 +535,22 @@ class ResultsPanel extends JPanel implements ActionListener
 							});
 
 							outputTableModel.addRow(new Object[0]);
+							resultVec = new java.util.Vector<ResultThread>(res.length * 2 * ANALYSIS_TYPES); // 2 orientations per analysis
+
+							NUM_CORES = Runtime.getRuntime().availableProcessors();
+							pool = Executors.newFixedThreadPool(NUM_CORES);
+							ResultThread rt;
+
+							int row_idx;
+
+							long startTime = System.currentTimeMillis();
 
 							for(int i = 1; i < res.length && !pm.isCanceled(); i++)
 							{
 								row = new Object[LEN];
 								eq = res[i][0].toString();
+								row_idx = i - 1;
 								record = res[i][1].toString();
-
 								pm.update(i, eq + " - " + record);
 
 								row[0] = eq;
@@ -462,6 +563,7 @@ class ResultsPanel extends JPanel implements ActionListener
 									row[2] = "File does not exist or is not readable";
 									row[3] = path;
 									outputTableModel.addRow(row);
+									rowcount++;
 									continue;
 								}
 
@@ -471,6 +573,7 @@ class ResultsPanel extends JPanel implements ActionListener
 									row[2] = "Invalid data at point " + dat.badEntry();
 									row[3] = path;
 									outputTableModel.addRow(row);
+									rowcount++;
 									continue;
 								}
 
@@ -484,115 +587,86 @@ class ResultsPanel extends JPanel implements ActionListener
 									iscale = -scale;
 								}
 
-								if(paramCoupled || paramDecoupled)
-									ain = dat.getAsArray();
+								ain = dat.getAsArray();
 
 								// do the actual analysis
 
 								if(paramRigid)
 								{
-									norm = RigidBlock.SlammerRigorous("norm", dat, di, ca, scale, paramDualslope, thrust, scaleRB);
-									Analysis.graphData.setKey(row[0] + " - " + row[1] + " - " + ParametersPanel.stringRB + ", " + polarityName[NOR]);
-									xys[i - 1][RB][NOR] = Analysis.graphData;
-
-									inv = RigidBlock.SlammerRigorous("inv", dat, di, ca, iscale, paramDualslope, thrust, scaleRB);
-									Analysis.graphData.setKey(row[0] + " - " + row[1] + " - " + ParametersPanel.stringRB + ", " + polarityName[INV]);
-									xys[i - 1][RB][INV] = Analysis.graphData;
-
-									avg = avg(inv, norm);
-
-									total[RB][NOR] += norm;
-									total[RB][INV] += inv;
-									total[RB][AVG] += avg;
-
-									for(j = 0; j < dataVect[RB][NOR].size() && ((Double)dataVect[RB][NOR].get(j)).doubleValue() < norm; j++)
-										;
-									dataVect[RB][NOR].add(j, new Double(norm));
-
-									for(j = 0; j < dataVect[RB][INV].size() && ((Double)dataVect[RB][INV].get(j)).doubleValue() < inv; j++)
-										;
-									dataVect[RB][INV].add(j, new Double(inv));
-
-									for(j = 0; j < dataVect[RB][AVG].size() && ((Double)dataVect[RB][AVG].get(j)).doubleValue() < avg; j++)
-										;
-									dataVect[RB][AVG].add(j, new Double(avg));
-
-									row[RBC + AVG] = unitFmt.format(avg);
-									row[RBC + NOR] = unitFmt.format(norm);
-									row[RBC + INV] = unitFmt.format(inv);
+									rt = new ResultThread(eq, record, row_idx, rowcount, RB, NOR, ain, di, ca, scale, paramDualslope, thrust, scaleRB);
+									pool.execute(rt);
+									resultVec.add(rt);
+									rt = new ResultThread(eq, record, row_idx, rowcount, RB, INV, ain, di, ca, iscale, paramDualslope, thrust, scaleRB);
+									pool.execute(rt);
+									resultVec.add(rt);
 								}
-
 								if(paramDecoupled)
 								{
 									// [i]scale is divided by Gcmss because the algorithm expects input data in Gs, but our input files are in cmss. this has nothing to do with, and is not affected by, the unit base being used (english or metric).
-									norm = Decoupled.Decoupled(ain, uwgt, height, vs, damp, di, scale / Analysis.Gcmss, g, vr, ca, dv3);
-									Analysis.graphData.setKey(row[0] + " - " + row[1] + " - " + ParametersPanel.stringDC + ", " + polarityName[NOR]);
-									xys[i - 1][DC][NOR] = Analysis.graphData;
-
-									inv = Decoupled.Decoupled(ain, uwgt, height, vs, damp, di, iscale / Analysis.Gcmss, g, vr, ca, dv3);
-									Analysis.graphData.setKey(row[0] + " - " + row[1] + " - " + ParametersPanel.stringDC + ", " + polarityName[INV]);
-									xys[i - 1][DC][INV] = Analysis.graphData;
-
-									avg = avg(inv, norm);
-
-									total[DC][NOR] += norm;
-									total[DC][INV] += inv;
-									total[DC][AVG] += avg;
-
-									for(j = 0; j < dataVect[DC][NOR].size() && ((Double)dataVect[DC][NOR].get(j)).doubleValue() < norm; j++)
-										;
-									dataVect[DC][NOR].add(j, new Double(norm));
-
-									for(j = 0; j < dataVect[DC][INV].size() && ((Double)dataVect[DC][INV].get(j)).doubleValue() < inv; j++)
-										;
-									dataVect[DC][INV].add(j, new Double(inv));
-
-									for(j = 0; j < dataVect[DC][AVG].size() && ((Double)dataVect[DC][AVG].get(j)).doubleValue() < avg; j++)
-										;
-									dataVect[DC][AVG].add(j, new Double(avg));
-
-									row[DCC + AVG] = unitFmt.format(avg);
-									row[DCC + NOR] = unitFmt.format(norm);
-									row[DCC + INV] = unitFmt.format(inv);
+									rt = new ResultThread(eq, record, row_idx, rowcount, DC, NOR, ain, uwgt, height, vs, damp, di, scale / Analysis.Gcmss, g, vr, ca, dv3);
+									pool.execute(rt);
+									resultVec.add(rt);
+									rt = new ResultThread(eq, record, row_idx, rowcount, DC, INV, ain, uwgt, height, vs, damp, di, iscale / Analysis.Gcmss, g, vr, ca, dv3);
+									pool.execute(rt);
+									resultVec.add(rt);
 								}
-
 								if(paramCoupled)
 								{
 									// [i]scale is divided by Gcmss because the algorithm expects input data in Gs, but our input files are in cmss. this has nothing to do with, and is not affected by, the unit base being used (english or metric).
-									norm = Coupled.Coupled(ain, uwgt, height, vs, damp, di, scale / Analysis.Gcmss, g, vr, ca, dv3);
-									Analysis.graphData.setKey(row[0] + " - " + row[1] + " - " + ParametersPanel.stringCP + ", " + polarityName[NOR]);
-									xys[i - 1][CP][NOR] = Analysis.graphData;
-
-									inv = Coupled.Coupled(ain, uwgt, height, vs, damp, di, iscale / Analysis.Gcmss, g, vr, ca, dv3);
-									Analysis.graphData.setKey(row[0] + " - " + row[1] + " - " + ParametersPanel.stringCP + ", " + polarityName[INV]);
-									xys[i - 1][CP][INV] = Analysis.graphData;
-
-									avg = avg(inv, norm);
-
-									total[CP][NOR] += norm;
-									total[CP][INV] += inv;
-									total[CP][AVG] += avg;
-
-									for(j = 0; j < dataVect[CP][NOR].size() && ((Double)dataVect[CP][NOR].get(j)).doubleValue() < norm; j++)
-										;
-									dataVect[CP][NOR].add(j, new Double(norm));
-
-									for(j = 0; j < dataVect[CP][INV].size() && ((Double)dataVect[CP][INV].get(j)).doubleValue() < inv; j++)
-										;
-									dataVect[CP][INV].add(j, new Double(inv));
-
-									for(j = 0; j < dataVect[CP][AVG].size() && ((Double)dataVect[CP][AVG].get(j)).doubleValue() < avg; j++)
-										;
-									dataVect[CP][AVG].add(j, new Double(avg));
-
-									row[CPC + AVG] = unitFmt.format(avg);
-									row[CPC + NOR] = unitFmt.format(norm);
-									row[CPC + INV] = unitFmt.format(inv);
+									rt = new ResultThread(eq, record, row_idx, rowcount, CP, NOR, ain, uwgt, height, vs, damp, di, scale / Analysis.Gcmss, g, vr, ca, dv3);
+									pool.execute(rt);
+									resultVec.add(rt);
+									rt = new ResultThread(eq, record, row_idx, rowcount, CP, INV, ain, uwgt, height, vs, damp, di, iscale / Analysis.Gcmss, g, vr, ca, dv3);
+									pool.execute(rt);
+									resultVec.add(rt);
 								}
 
 								outputTableModel.addRow(row);
+								rowcount++;
 							}
-							pm.update("Calculating stastistics...");
+
+							// wait until all threads have released their lock
+							// this is probably unsafe, not sure
+
+							pool.shutdown();
+							pool.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
+
+							pm.update("Calculating results...");
+							ResultThread prt;
+
+							for(int i = 0; i < resultVec.size(); i++)
+							{
+								rt = resultVec.get(i);
+
+								rt.graphData.setKey(rt.eq + " - " + rt.record + " - " + ParametersPanel.stringRB + ", " + polarityName[NOR]);
+								xys[rt.idx][rt.analysis][rt.orientation] = rt.graphData;
+								total[rt.analysis][rt.orientation] += rt.result;
+
+								for(j = 0; j < dataVect[rt.analysis][rt.orientation].size() && ((Double)dataVect[rt.analysis][rt.orientation].get(j)).doubleValue() < rt.result; j++)
+									;
+								dataVect[rt.analysis][rt.orientation].add(j, new Double(rt.result));
+
+								outputTableModel.setValueAt(unitFmt.format(rt.result), rt.row, OFFSET + rt.analysis + WIDTH * rt.analysis + rt.orientation);
+
+								// INV is always second, so NOR was already computed: we can compute avg now
+								if(rt.orientation == INV)
+								{
+									prt = resultVec.get(i - 1); // NOR result
+									avg = avg(rt.result, prt.result);
+
+									total[rt.analysis][AVG] += avg;
+
+									for(j = 0; j < dataVect[rt.analysis][AVG].size() && ((Double)dataVect[rt.analysis][AVG].get(j)).doubleValue() < avg; j++)
+										;
+									dataVect[rt.analysis][AVG].add(j, new Double(avg));
+
+									outputTableModel.setValueAt(unitFmt.format(avg), rt.row, OFFSET + rt.analysis + WIDTH * rt.analysis + AVG);
+								}
+							}
+
+							long stopTime = System.currentTimeMillis();
+							long elapsedTime = stopTime - startTime;
+							System.out.println(elapsedTime);
 
 							double mean, value, valtemp;
 							int idx;

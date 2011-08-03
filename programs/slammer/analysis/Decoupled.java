@@ -6,12 +6,12 @@ import slammer.*;
 
 public class Decoupled extends DeCoupledCommon
 {
-	private static double deltacc;
-	private static double sdot[];
+	private double deltacc;
+	private double sdot[];
 
-	private static double time;
+	private double time;
 
-	public static double Decoupled(double[] ain_p, double uwgt_p, double height_p, double vs_p, double damp1_p, double dt_p, double scal_p, double g_p, double vr_p, double[][] ca, boolean dv3_p)
+	public double Decoupled(double[] ain_p, double uwgt_p, double height_p, double vs_p, double damp1_p, double dt_p, double scal_p, double g_p, double vr_p, double[][] ca, boolean dv3_p)
 	{
 		// assign all passed parameters to the local data
 		uwgt = uwgt_p;
@@ -126,7 +126,7 @@ public class Decoupled extends DeCoupledCommon
 		return Math.abs(s[npts - 1]);
 	}
 
-	private static void d_sliding()
+	private void d_sliding()
 	{
 		// calculate decoupled displacements
 
