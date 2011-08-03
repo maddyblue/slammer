@@ -27,7 +27,7 @@ public class DoubleList
 	/* skip: the number of lines to skip at the beginning of the file */
 	public DoubleList(String fname, int skip, final double scale, final boolean nomult) throws IOException
 	{
-		FileReader file = new FileReader(fname);
+		BufferedReader file = new BufferedReader(new FileReader(fname));
 		Double dbl;
 
 		char c;
@@ -62,7 +62,7 @@ public class DoubleList
 		}
 	}
 
-	private Double nextDouble(FileReader file) throws IOException
+	private Double nextDouble(BufferedReader file) throws IOException
 	{
 		StringBuilder string = new StringBuilder(32);
 		boolean stop = false;
