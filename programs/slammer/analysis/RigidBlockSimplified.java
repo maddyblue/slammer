@@ -90,7 +90,7 @@ public class RigidBlockSimplified extends Analysis
 		final double ratio3 = ratio2 * ratio;
 		final double ratio4 = ratio3 * ratio;
 		return fmtOne.format(Math.pow(Math.E,
-			4.89 - 4.85 * ratio - 19.64 * ratio2 + 42.49 * ratio3 - 29.06 * ratio4 - 0.72 * Math.log(amax) + 0.89 * (M - 6)
+			4.89 - 4.85 * ratio - 19.64 * ratio2 + 42.49 * ratio3 - 29.06 * ratio4 + 0.72 * Math.log(amax) + 0.89 * (M - 6.0)
 		));
 	}
 }
