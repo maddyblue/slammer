@@ -37,6 +37,7 @@ public class SlammerTest extends TestCase
 		Analysis.testing = true; // this lets the swing test suite work
 		TestSuite suite = new TestSuite();
 
+		/*
 		suite.addTest(new SlammerTest("RigorousDecoupledLinear"));
 		suite.addTest(new SlammerTest("RigorousDecoupledEquivalent"));
 		suite.addTest(new SlammerTest("RigorousCoupledLinear"));
@@ -44,9 +45,12 @@ public class SlammerTest extends TestCase
 
 		suite.addTest(new SlammerTest("RigorousRigidBlockDown"));
 		suite.addTest(new SlammerTest("RigorousRigidBlockDual"));
+		*/
 
 		return suite;
 	}
+
+	/*
 
 	public void RigorousDecoupledLinear()
 	{
@@ -83,4 +87,6 @@ public class SlammerTest extends TestCase
 		res = RigidBlock.SlammerRigorous("", dat1, dt, ca, scal, true, 20, 1.0);
 		Assert.assertEquals(35.14587, res, 1e-4);
 	}
+
+	*/
 }
