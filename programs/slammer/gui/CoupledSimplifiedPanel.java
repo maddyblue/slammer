@@ -48,15 +48,16 @@ class CoupledSimplifiedPanel extends JPanel implements ActionListener
 
 		ta.setEditable(false);
 
+		setLayout(new BorderLayout());
+
 		GridBagLayout gridbag = new GridBagLayout();
 		GridBagConstraints c = new GridBagConstraints();
 
-		Insets left = new Insets(0, 20, 0, 0);
-		Insets halfLeft = new Insets(0, 10, 0, 0);
 		Insets top = new Insets(10, 0, 0, 0);
 		Insets none = new Insets(0, 0, 0, 0);
 
-		setLayout(gridbag);
+		JPanel panel = new JPanel();
+		panel.setLayout(gridbag);
 
 		int x = 0;
 		int y = 0;
@@ -69,76 +70,74 @@ class CoupledSimplifiedPanel extends JPanel implements ActionListener
 		label = new JLabel("Input parameters:");
 		label.setFont(GUIUtils.headerFont);
 		gridbag.setConstraints(label, c);
-		add(label);
+		panel.add(label);
 
 		c.gridwidth = 1;
 		c.gridy = y++;
 		x = 0;
 		c.gridx = x++;
-		c.insets = none;
 		label = new JLabel("<html>Yield coefficient, k<sub>y</sub>:</html>");
 		gridbag.setConstraints(label, c);
-		add(label);
+		panel.add(label);
 
 		c.gridx = x++;
 		gridbag.setConstraints(ky, c);
-		add(ky);
+		panel.add(ky);
 
 		c.gridy = y++;
 		x = 0;
 		c.gridx = x++;
-		label = new JLabel("<html>Fundamental site period, T<sub>s</sub>:</html>");
+		label = new JLabel("<html>Fundamental site period, T<sub>s</sub> (s):</html>");
 		gridbag.setConstraints(label, c);
-		add(label);
+		panel.add(label);
 
 		c.gridx = x++;
 		gridbag.setConstraints(ts, c);
-		add(ts);
+		panel.add(ts);
 
 		c.gridy = y++;
 		x = 0;
 		c.gridx = x++;
 		label = new JLabel("<html>Spectral acceleration at 1.5 * T<sub>s</sub> (g):</html>");
 		gridbag.setConstraints(label, c);
-		add(label);
+		panel.add(label);
 
 		c.gridx = x++;
 		gridbag.setConstraints(sa, c);
-		add(sa);
+		panel.add(sa);
 
 		c.gridy = y++;
 		x = 0;
 		c.gridx = x++;
 		label = new JLabel("Earthquake magnitude, M:");
 		gridbag.setConstraints(label, c);
-		add(label);
+		panel.add(label);
 
 		c.gridx = x++;
 		gridbag.setConstraints(m, c);
-		add(m);
+		panel.add(m);
 
 		c.gridy = y++;
 		x = 0;
 		c.gridx = x;
 		c.insets = top;
 		gridbag.setConstraints(go, c);
-		add(go);
+		panel.add(go);
 
 		c.anchor = GridBagConstraints.SOUTHEAST;
 		gridbag.setConstraints(clear, c);
-		add(clear);
+		panel.add(clear);
 
 		c.gridy = y++;
 		x = 0;
 		c.gridx = x;
 		c.gridwidth = 1;
-		c.insets = top;
 		c.fill = GridBagConstraints.NONE;
 		c.anchor = GridBagConstraints.NORTHWEST;
 		label = new JLabel("Results:");
 		label.setFont(GUIUtils.headerFont);
 		gridbag.setConstraints(label, c);
-		add(label);
+		panel.add(label);
 
 		c.gridy = y++;
 		x = 0;
@@ -146,38 +145,31 @@ class CoupledSimplifiedPanel extends JPanel implements ActionListener
 		c.insets = none;
 		label = new JLabel("Estimated displacement (cm):");
 		gridbag.setConstraints(label, c);
-		add(label);
+		panel.add(label);
 
 		c.gridx = x++;
 		gridbag.setConstraints(dispcm, c);
-		add(dispcm);
+		panel.add(dispcm);
 
 		c.gridy = y++;
 		x = 0;
 		c.gridx = x++;
 		label = new JLabel("Estimated displacement (in.):");
 		gridbag.setConstraints(label, c);
-		add(label);
+		panel.add(label);
 
 		c.gridx = x++;
 		gridbag.setConstraints(dispin, c);
-		add(dispin);
+		panel.add(dispin);
 
 		c.gridx = x;
+		c.weightx = 1;
 		label = new JLabel("");
-		c.weightx = 1;
 		gridbag.setConstraints(label, c);
-		add(label);
+		panel.add(label);
 
-		c.gridx = 0;
-		c.gridy = y;
-		c.gridwidth = 5;
-		c.weightx = 1;
-		c.weighty = 1;
-		c.insets = top;
-		c.fill = GridBagConstraints.BOTH;
-		gridbag.setConstraints(ta, c);
-		add(ta);
+		add(BorderLayout.NORTH, panel);
+		add(BorderLayout.CENTER, ta);
 	}
 
 	public void actionPerformed(java.awt.event.ActionEvent e)

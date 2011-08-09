@@ -77,6 +77,8 @@ class DecoupledSimplifiedPanel extends JPanel implements ActionListener
 
 		ta.setEditable(false);
 
+		setLayout(new BorderLayout());
+
 		GridBagLayout gridbag = new GridBagLayout();
 		GridBagConstraints c = new GridBagConstraints();
 
@@ -85,7 +87,8 @@ class DecoupledSimplifiedPanel extends JPanel implements ActionListener
 		Insets top = new Insets(10, 0, 0, 0);
 		Insets none = new Insets(0, 0, 0, 0);
 
-		setLayout(gridbag);
+		JPanel panel = new JPanel();
+		panel.setLayout(gridbag);
 
 		int x = 0;
 		int y = 0;
@@ -98,7 +101,7 @@ class DecoupledSimplifiedPanel extends JPanel implements ActionListener
 		label = new JLabel("Input parameters:");
 		label.setFont(GUIUtils.headerFont);
 		gridbag.setConstraints(label, c);
-		add(label);
+		panel.add(label);
 
 		x += 2;
 		c.gridx = x;
@@ -106,7 +109,7 @@ class DecoupledSimplifiedPanel extends JPanel implements ActionListener
 		label = new JLabel("Standard deviations (optional):");
 		label.setFont(GUIUtils.headerFont);
 		gridbag.setConstraints(label, c);
-		add(label);
+		panel.add(label);
 
 		c.gridwidth = 1;
 		c.gridy = y++;
@@ -115,119 +118,119 @@ class DecoupledSimplifiedPanel extends JPanel implements ActionListener
 		c.insets = none;
 		label = new JLabel("<html>Critical (yield) acceleration, a<sub>c</sub> (g):</html>");
 		gridbag.setConstraints(label, c);
-		add(label);
+		panel.add(label);
 
 		c.gridx = x++;
 		gridbag.setConstraints(ky, c);
-		add(ky);
+		panel.add(ky);
 
 		c.gridx = x++;
 		c.insets = left;
 		label = new JLabel("Normalized MHEA:");
 		gridbag.setConstraints(label, c);
-		add(label);
+		panel.add(label);
 
 		c.gridx = x++;
 		c.insets = none;
 		gridbag.setConstraints(mheaS, c);
-		add(mheaS);
+		panel.add(mheaS);
 
 		c.gridy = y++;
 		x = 0;
 		c.gridx = x++;
 		label = new JLabel("Vertical thickness, h (m):");
 		gridbag.setConstraints(label, c);
-		add(label);
+		panel.add(label);
 
 		c.gridx = x++;
 		gridbag.setConstraints(h, c);
-		add(h);
+		panel.add(h);
 
 		c.gridx = x++;
 		c.insets = left;
 		label = new JLabel("Mean period:");
 		gridbag.setConstraints(label, c);
-		add(label);
+		panel.add(label);
 
 		c.gridx = x++;
 		c.insets = none;
 		gridbag.setConstraints(meanperS, c);
-		add(meanperS);
+		panel.add(meanperS);
 
 		c.gridy = y++;
 		x = 0;
 		c.gridx = x++;
 		label = new JLabel("<html>Shear-wave velocity, V<sub>s</sub> (m/s):</html>");
 		gridbag.setConstraints(label, c);
-		add(label);
+		panel.add(label);
 
 		c.gridx = x++;
 		gridbag.setConstraints(vs, c);
-		add(vs);
+		panel.add(vs);
 
 		c.gridx = x++;
 		c.insets = left;
 		label = new JLabel("Significant duration:");
 		gridbag.setConstraints(label, c);
-		add(label);
+		panel.add(label);
 
 		c.gridx = x++;
 		c.insets = none;
 		gridbag.setConstraints(sigdurS, c);
-		add(sigdurS);
+		panel.add(sigdurS);
 
 		c.gridy = y++;
 		x = 0;
 		c.gridx = x++;
 		label = new JLabel("Earthquake magnitude, M:");
 		gridbag.setConstraints(label, c);
-		add(label);
+		panel.add(label);
 
 		c.gridx = x++;
 		gridbag.setConstraints(m, c);
-		add(m);
+		panel.add(m);
 
 		c.gridx = x++;
 		c.insets = left;
 		label = new JLabel("Normalized displacement:");
 		gridbag.setConstraints(label, c);
-		add(label);
+		panel.add(label);
 
 		c.gridx = x++;
 		c.insets = none;
 		gridbag.setConstraints(normdispS, c);
-		add(normdispS);
+		panel.add(normdispS);
 
 		c.gridy = y++;
 		x = 0;
 		c.gridx = x++;
 		label = new JLabel("Peak bedrock acceleration, MHA (g):");
 		gridbag.setConstraints(label, c);
-		add(label);
+		panel.add(label);
 
 		c.gridx = x--;
 		gridbag.setConstraints(rock, c);
-		add(rock);
+		panel.add(rock);
 
 		c.gridy = y++;
 		c.gridx = x++;
 		label = new JLabel("Earthquake distance, r (km):");
 		gridbag.setConstraints(label, c);
-		add(label);
+		panel.add(label);
 
 		c.gridx = x--;
 		gridbag.setConstraints(r, c);
-		add(r);
+		panel.add(r);
 
 		c.gridy = y++;
 		c.gridx = x;
 		c.insets = top;
 		gridbag.setConstraints(go, c);
-		add(go);
+		panel.add(go);
 
 		c.anchor = GridBagConstraints.SOUTHEAST;
 		gridbag.setConstraints(clear, c);
-		add(clear);
+		panel.add(clear);
 
 		c.gridy = y++;
 		c.gridx = x++;
@@ -237,97 +240,97 @@ class DecoupledSimplifiedPanel extends JPanel implements ActionListener
 		label = new JLabel("Calculations:");
 		label.setFont(GUIUtils.headerFont);
 		gridbag.setConstraints(label, c);
-		add(label);
+		panel.add(label);
 
 		c.gridy = y++;
 		c.insets = none;
 		label = new JLabel("<html>Site period, T<sub>s</sub> (s):</html>");
 		gridbag.setConstraints(label, c);
-		add(label);
+		panel.add(label);
 
 		c.gridx = x--;
 		gridbag.setConstraints(siteper, c);
-		add(siteper);
+		panel.add(siteper);
 
 		c.gridy = y++;
 		c.gridx = x++;
 		label = new JLabel("<html>Mean shaking period, T<sub>m</sub> (s):</html>");
 		gridbag.setConstraints(label, c);
-		add(label);
+		panel.add(label);
 
 		c.gridx = x--;
 		gridbag.setConstraints(meanper, c);
-		add(meanper);
+		panel.add(meanper);
 
 		c.gridy = y++;
 		c.gridx = x++;
 		label = new JLabel("<html>Period ratio, T<sub>s</sub>/T<sub>m</sub>:</html>");
 		gridbag.setConstraints(label, c);
-		add(label);
+		panel.add(label);
 
 		c.gridx = x--;
 		gridbag.setConstraints(tstm, c);
-		add(tstm);
+		panel.add(tstm);
 
 		c.gridy = y++;
 		c.gridx = x++;
 		label = new JLabel("<html>Duration, D<sub>(5-95%)</sub> (s):</html>");
 		gridbag.setConstraints(label, c);
-		add(label);
+		panel.add(label);
 
 		c.gridx = x--;
 		gridbag.setConstraints(dur, c);
-		add(dur);
+		panel.add(dur);
 
 		c.gridy = y++;
 		c.gridx = x++;
 		label = new JLabel("Non-linear response factor (NRF):");
 		gridbag.setConstraints(label, c);
-		add(label);
+		panel.add(label);
 
 		c.gridx = x--;
 		gridbag.setConstraints(nrffact, c);
-		add(nrffact);
+		panel.add(nrffact);
 
 		c.gridy = y++;
 		c.gridx = x++;
 		label = new JLabel("<html>Max. hor. equiv. acc. (MHEA), a<sub>max</sub> (g):</html>");
 		gridbag.setConstraints(label, c);
-		add(label);
+		panel.add(label);
 
 		c.gridx = x--;
 		gridbag.setConstraints(kmax, c);
-		add(kmax);
+		panel.add(kmax);
 
 		c.gridy = y++;
 		c.gridx = x++;
 		label = new JLabel("MHEA/(MHA*NRF):");
 		gridbag.setConstraints(label, c);
-		add(label);
+		panel.add(label);
 
 		c.gridx = x--;
 		gridbag.setConstraints(mheamhanrf, c);
-		add(mheamhanrf);
+		panel.add(mheamhanrf);
 
 		c.gridy = y++;
 		c.gridx = x++;
 		label = new JLabel("<html>a<sub>c</sub>/a<sub>max</sub>:</html>");
 		gridbag.setConstraints(label, c);
-		add(label);
+		panel.add(label);
 
 		c.gridx = x--;
 		gridbag.setConstraints(kykmax, c);
-		add(kykmax);
+		panel.add(kykmax);
 
 		c.gridy = y++;
 		c.gridx = x++;
 		label = new JLabel("Normalized displacement (cm/s):");
 		gridbag.setConstraints(label, c);
-		add(label);
+		panel.add(label);
 
 		c.gridx = x++;
 		gridbag.setConstraints(normdisp, c);
-		add(normdisp);
+		panel.add(normdisp);
 
 		c.gridx = x;
 		c.gridwidth = 2;
@@ -340,7 +343,7 @@ class DecoupledSimplifiedPanel extends JPanel implements ActionListener
 			BorderFactory.createMatteBorder(1, 1, 0, 0, Color.black),
 			BorderFactory.createEmptyBorder(4, 9, 0, 0)));
 		gridbag.setConstraints(label, c);
-		add(label);
+		panel.add(label);
 
 		c.gridy = y++;
 		x = 0;
@@ -351,7 +354,7 @@ class DecoupledSimplifiedPanel extends JPanel implements ActionListener
 		label = new JLabel("Results:");
 		label.setFont(GUIUtils.headerFont);
 		gridbag.setConstraints(label, c);
-		add(label);
+		panel.add(label);
 
 		x += 2;
 		c.gridx = x++;
@@ -365,14 +368,14 @@ class DecoupledSimplifiedPanel extends JPanel implements ActionListener
 			BorderFactory.createMatteBorder(0, 1, 0, 0, Color.black),
 			BorderFactory.createEmptyBorder(0, 9, 0, 0)));
 		gridbag.setConstraints(label, c);
-		add(label);
+		panel.add(label);
 
 		c.gridx = x;
 		c.insets = none;
 		c.gridheight = 1;
 		c.fill = GridBagConstraints.NONE;
 		gridbag.setConstraints(allowdisp, c);
-		add(allowdisp);
+		panel.add(allowdisp);
 
 		c.gridy = y++;
 		x = 0;
@@ -380,60 +383,53 @@ class DecoupledSimplifiedPanel extends JPanel implements ActionListener
 		c.insets = none;
 		label = new JLabel("Estimated displacement (cm):");
 		gridbag.setConstraints(label, c);
-		add(label);
+		panel.add(label);
 
 		c.gridx = x++;
 		gridbag.setConstraints(dispcm, c);
-		add(dispcm);
+		panel.add(dispcm);
 
 		c.gridx = x++;
 		c.insets = left;
 		label = new JLabel("<html>Median F<sub>eq</sub> for screen procedure:</html>");
 		gridbag.setConstraints(label, c);
-		add(label);
+		panel.add(label);
 
 		c.gridx = x++;
 		c.insets = none;
 		gridbag.setConstraints(medianfreq, c);
-		add(medianfreq);
+		panel.add(medianfreq);
 
 		c.gridy = y++;
 		x = 0;
 		c.gridx = x++;
 		label = new JLabel("Estimated displacement (in.):");
 		gridbag.setConstraints(label, c);
-		add(label);
+		panel.add(label);
 
 		c.gridx = x++;
 		gridbag.setConstraints(dispin, c);
-		add(dispin);
+		panel.add(dispin);
 
 		c.gridx = x++;
 		c.insets = left;
 		label = new JLabel("Seismic coefficient for screen procedure:");
 		gridbag.setConstraints(label, c);
-		add(label);
+		panel.add(label);
 
 		c.gridx = x++;
 		c.insets = none;
 		gridbag.setConstraints(seiscoef, c);
-		add(seiscoef);
+		panel.add(seiscoef);
 
 		c.gridx = x;
+		c.weightx = 1;
 		label = new JLabel("");
-		c.weightx = 1;
 		gridbag.setConstraints(label, c);
-		add(label);
+		panel.add(label);
 
-		c.gridx = 0;
-		c.gridy = y;
-		c.gridwidth = 5;
-		c.weightx = 1;
-		c.weighty = 1;
-		c.insets = top;
-		c.fill = GridBagConstraints.BOTH;
-		gridbag.setConstraints(ta, c);
-		add(ta);
+		add(BorderLayout.NORTH, panel);
+		add(BorderLayout.CENTER, ta);;
 	}
 
 	public void actionPerformed(java.awt.event.ActionEvent e)
