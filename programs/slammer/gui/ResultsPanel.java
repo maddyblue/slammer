@@ -37,23 +37,8 @@ class ResultsPanel extends JPanel implements ActionListener
 
 			setText((value == null) ? "" : value.toString());
 			setBorder(UIManager.getBorder("TableHeader.cellBorder"));
-
-			switch(column)
-			{
-				case RBC + NOR:
-				case DCC + NOR:
-				case CPC + NOR:
-					setHorizontalAlignment(JLabel.LEFT);
-					break;
-				case RBC + AVG:
-				case DCC + AVG:
-				case CPC + AVG:
-					setHorizontalAlignment(JLabel.RIGHT);
-					break;
-				default:
-					setHorizontalAlignment(JLabel.CENTER);
-					break;
-			}
+			setPreferredSize(new Dimension(table.getColumnModel().getTotalColumnWidth(), 32));
+			setHorizontalAlignment(JLabel.CENTER);
 
 			return this;
 		}
@@ -292,10 +277,15 @@ class ResultsPanel extends JPanel implements ActionListener
 							paramUnit = parent.Parameters.unitMetric.isSelected();
 							final double g = paramUnit ? Analysis.Gcmss : Analysis.Ginss;
 							unitDisplacement = paramUnit ? "(cm)" : "(in.)";
+
+							String h_rb = "<html>" + ParametersPanel.stringRB + " " + unitDisplacement + "<p>";
+							String h_dc = "<html>" + ParametersPanel.stringDC + " " + unitDisplacement + "<p>";
+							String h_cp = "<html>" + ParametersPanel.stringCP + " " + unitDisplacement + "<p>";
+
 							outputTableModel.setColumnIdentifiers(new Object[] {"Earthquake", "Record",
-								"<----", ParametersPanel.stringRB + " " + unitDisplacement, "---->", "",
-								"<----", ParametersPanel.stringDC + " " + unitDisplacement, "---->", "",
-								"<----", ParametersPanel.stringCP + " " + unitDisplacement, "---->"
+								h_rb + polarityName[NOR], h_rb + polarityName[INV], h_rb + polarityName[AVG], "",
+								h_dc + polarityName[NOR], h_dc + polarityName[INV], h_dc + polarityName[AVG], "",
+								h_cp + polarityName[NOR], h_cp + polarityName[INV], h_cp + polarityName[AVG]
 							});
 
 							outputTable.getTableHeader().setDefaultRenderer(new ResultsRenderer());
@@ -526,15 +516,8 @@ class ResultsPanel extends JPanel implements ActionListener
 
 							int j, k;
 							Object[] row;
-							int rowcount = 2;
+							int rowcount = 0;
 
-							outputTableModel.addRow(new Object[] { null, "Polarity:",
-								polarityName[NOR], polarityName[INV], polarityName[AVG], null,
-								polarityName[NOR], polarityName[INV], polarityName[AVG], null,
-								polarityName[NOR], polarityName[INV], polarityName[AVG]
-							});
-
-							outputTableModel.addRow(new Object[0]);
 							resultVec = new java.util.Vector<ResultThread>(res.length * 2 * ANALYSIS_TYPES); // 2 orientations per analysis
 
 							NUM_CORES = Runtime.getRuntime().availableProcessors();
