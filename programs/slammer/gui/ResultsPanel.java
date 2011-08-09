@@ -46,6 +46,8 @@ class ResultsPanel extends JPanel implements ActionListener
 
 	public class ResultThread implements Runnable
 	{
+		private boolean finished = false;
+
 		int idx;
 		int row;
 		int analysis;
@@ -64,8 +66,10 @@ class ResultsPanel extends JPanel implements ActionListener
 		double[][] ca;
 		boolean paramDualslope, dv3;
 
+		SynchronizedProgressFrame pm;
+
 		// RigidBlock
-		ResultThread(String eq, String record, int idx, int row, int analysis, int orientation, double[] ain, double di, double[][] ca, double scale, boolean paramDualslope, double thrust, double scaleRB)
+		ResultThread(String eq, String record, int idx, int row, int analysis, int orientation, double[] ain, double di, double[][] ca, double scale, boolean paramDualslope, double thrust, double scaleRB, SynchronizedProgressFrame pm)
 		{
 			this.eq = eq;
 			this.record = record;
@@ -80,10 +84,11 @@ class ResultsPanel extends JPanel implements ActionListener
 			this.paramDualslope = paramDualslope;
 			this.thrust = thrust;
 			this.scaleRB = scaleRB;
+			this.pm = pm;
 		}
 
 		// Decoupled
-		ResultThread(String eq, String record, int idx, int row, int analysis, int orientation, double[] ain, double uwgt, double height, double vs, double damp, double di, double scale, double g, double vr, double[][] ca, boolean dv3)
+		ResultThread(String eq, String record, int idx, int row, int analysis, int orientation, double[] ain, double uwgt, double height, double vs, double damp, double di, double scale, double g, double vr, double[][] ca, boolean dv3, SynchronizedProgressFrame pm)
 		{
 			this.eq = eq;
 			this.record = record;
@@ -102,6 +107,7 @@ class ResultsPanel extends JPanel implements ActionListener
 			this.vr = vr;
 			this.ca = ca;
 			this.dv3 = dv3;
+			this.pm = pm;
 		}
 
 		public void run()
@@ -127,6 +133,32 @@ class ResultsPanel extends JPanel implements ActionListener
 				a = null;
 
 			graphData = a.graphData;
+			finished = true;
+			pm.incr(eq + " - " + record);
+		}
+
+		public boolean finished()
+		{
+			return finished;
+		}
+	}
+
+	public class SynchronizedProgressFrame extends ProgressFrame
+	{
+		private int i;
+
+		public SynchronizedProgressFrame(int i)
+		{
+			super(i);
+			this.i = i;
+		}
+
+		public synchronized void incr(String s)
+		{
+			i++;
+
+			if(!isCanceled())
+				update(i, s);
 		}
 	}
 
@@ -266,7 +298,7 @@ class ResultsPanel extends JPanel implements ActionListener
 			{
 				final SwingWorker worker = new SwingWorker()
 				{
-					ProgressFrame pm = new ProgressFrame(0);
+					SynchronizedProgressFrame pm = new SynchronizedProgressFrame(0);
 
 					public Object construct()
 					{
@@ -515,7 +547,8 @@ class ResultsPanel extends JPanel implements ActionListener
 
 							iscale = -1.0 * scale;
 
-							pm.setMaximum(res.length);
+							pm.setMaximum(Integer.MAX_VALUE);
+							pm.update(0, "Initializing");
 
 							int j, k;
 							Object[] row;
@@ -537,7 +570,6 @@ class ResultsPanel extends JPanel implements ActionListener
 								eq = res[i][0].toString();
 								row_idx = i - 1;
 								record = res[i][1].toString();
-								pm.update(i, eq + " - " + record);
 
 								row[0] = eq;
 								row[1] = record;
@@ -579,30 +611,30 @@ class ResultsPanel extends JPanel implements ActionListener
 
 								if(paramRigid)
 								{
-									rt = new ResultThread(eq, record, row_idx, rowcount, RB, NOR, ain, di, ca, scale, paramDualslope, thrust, scaleRB);
+									rt = new ResultThread(eq, record, row_idx, rowcount, RB, NOR, ain, di, ca, scale, paramDualslope, thrust, scaleRB, pm);
 									pool.execute(rt);
 									resultVec.add(rt);
-									rt = new ResultThread(eq, record, row_idx, rowcount, RB, INV, ain, di, ca, iscale, paramDualslope, thrust, scaleRB);
+									rt = new ResultThread(eq, record, row_idx, rowcount, RB, INV, ain, di, ca, iscale, paramDualslope, thrust, scaleRB, pm);
 									pool.execute(rt);
 									resultVec.add(rt);
 								}
 								if(paramDecoupled)
 								{
 									// [i]scale is divided by Gcmss because the algorithm expects input data in Gs, but our input files are in cmss. this has nothing to do with, and is not affected by, the unit base being used (english or metric).
-									rt = new ResultThread(eq, record, row_idx, rowcount, DC, NOR, ain, uwgt, height, vs, damp, di, scale / Analysis.Gcmss, g, vr, ca, dv3);
+									rt = new ResultThread(eq, record, row_idx, rowcount, DC, NOR, ain, uwgt, height, vs, damp, di, scale / Analysis.Gcmss, g, vr, ca, dv3, pm);
 									pool.execute(rt);
 									resultVec.add(rt);
-									rt = new ResultThread(eq, record, row_idx, rowcount, DC, INV, ain, uwgt, height, vs, damp, di, iscale / Analysis.Gcmss, g, vr, ca, dv3);
+									rt = new ResultThread(eq, record, row_idx, rowcount, DC, INV, ain, uwgt, height, vs, damp, di, iscale / Analysis.Gcmss, g, vr, ca, dv3, pm);
 									pool.execute(rt);
 									resultVec.add(rt);
 								}
 								if(paramCoupled)
 								{
 									// [i]scale is divided by Gcmss because the algorithm expects input data in Gs, but our input files are in cmss. this has nothing to do with, and is not affected by, the unit base being used (english or metric).
-									rt = new ResultThread(eq, record, row_idx, rowcount, CP, NOR, ain, uwgt, height, vs, damp, di, scale / Analysis.Gcmss, g, vr, ca, dv3);
+									rt = new ResultThread(eq, record, row_idx, rowcount, CP, NOR, ain, uwgt, height, vs, damp, di, scale / Analysis.Gcmss, g, vr, ca, dv3, pm);
 									pool.execute(rt);
 									resultVec.add(rt);
-									rt = new ResultThread(eq, record, row_idx, rowcount, CP, INV, ain, uwgt, height, vs, damp, di, iscale / Analysis.Gcmss, g, vr, ca, dv3);
+									rt = new ResultThread(eq, record, row_idx, rowcount, CP, INV, ain, uwgt, height, vs, damp, di, iscale / Analysis.Gcmss, g, vr, ca, dv3, pm);
 									pool.execute(rt);
 									resultVec.add(rt);
 								}
@@ -611,11 +643,17 @@ class ResultsPanel extends JPanel implements ActionListener
 								rowcount++;
 							}
 
-							// wait until all threads have released their lock
-							// this is probably unsafe, not sure
-
+							pm.setMaximum(resultVec.size());
 							pool.shutdown();
-							pool.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
+
+							while(!pool.awaitTermination(1, TimeUnit.SECONDS))
+							{
+								if(pm.isCanceled())
+								{
+									pool.shutdownNow();
+									break;
+								}
+							}
 
 							pm.update("Calculating results...");
 							ResultThread prt;
@@ -623,6 +661,9 @@ class ResultsPanel extends JPanel implements ActionListener
 							for(int i = 0; i < resultVec.size(); i++)
 							{
 								rt = resultVec.get(i);
+
+								if(!rt.finished())
+									continue;
 
 								rt.graphData.setKey(rt.eq + " - " + rt.record + " - " + ParametersPanel.stringRB + ", " + polarityName[NOR]);
 								xys[rt.idx][rt.analysis][rt.orientation] = rt.graphData;
@@ -650,63 +691,62 @@ class ResultsPanel extends JPanel implements ActionListener
 								}
 							}
 
-							long stopTime = System.currentTimeMillis();
-							long elapsedTime = stopTime - startTime;
-							System.out.println(elapsedTime);
-
-							double mean, value, valtemp;
-							int idx;
-							Object[] rmean = new Object[LEN];
-							Object[] rmedian = new Object[LEN];
-							Object[] rsd = new Object[LEN];
-
-							rmean[1] = "Mean value";
-							rmedian[1] = "Median value";
-							rsd[1] = "Standard deviation";
-
-							for(j = 0; j < total.length; j++)
+							if(!pm.isCanceled())
 							{
-								for(k = 0; k < total[j].length; k++)
+								double mean, value, valtemp;
+								int idx;
+								Object[] rmean = new Object[LEN];
+								Object[] rmedian = new Object[LEN];
+								Object[] rsd = new Object[LEN];
+
+								rmean[1] = "Mean value";
+								rmedian[1] = "Median value";
+								rsd[1] = "Standard deviation";
+
+								for(j = 0; j < total.length; j++)
 								{
-									if(dataVect[j][k] == null || dataVect[j][k].size() == 0)
-										continue;
-
-									idx = j * WIDTH + RBC + k;
-									if(idx >= DCN)
-										idx++;
-									if(idx >= CPN)
-										idx++;
-
-									mean = Double.parseDouble(unitFmt.format(total[j][k] / num));
-									rmean[idx] = unitFmt.format(mean);
-
-									if(num % 2 == 0)
+									for(k = 0; k < total[j].length; k++)
 									{
-										double fst = (Double)dataVect[j][k].get(num / 2);
-										double snd = (Double)dataVect[j][k].get(num / 2 - 1);
-										rmedian[idx] = unitFmt.format(avg(fst, snd));
+										if(dataVect[j][k] == null || dataVect[j][k].size() == 0)
+											continue;
+
+										idx = j * WIDTH + RBC + k;
+										if(idx >= DCN)
+											idx++;
+										if(idx >= CPN)
+											idx++;
+
+										mean = Double.parseDouble(unitFmt.format(total[j][k] / num));
+										rmean[idx] = unitFmt.format(mean);
+
+										if(num % 2 == 0)
+										{
+											double fst = (Double)dataVect[j][k].get(num / 2);
+											double snd = (Double)dataVect[j][k].get(num / 2 - 1);
+											rmedian[idx] = unitFmt.format(avg(fst, snd));
+										}
+										else
+											rmedian[idx] = unitFmt.format(dataVect[j][k].get(num / 2));
+
+										value = 0;
+
+										for(int i = 0; i < num; i++)
+										{
+											valtemp = mean - ((Double)dataVect[j][k].get(i)).doubleValue();
+											value += (valtemp * valtemp);
+										}
+
+										value /= num;
+										value = Math.sqrt(value);
+										rsd[idx] = unitFmt.format(value);
 									}
-									else
-										rmedian[idx] = unitFmt.format(dataVect[j][k].get(num / 2));
-
-									value = 0;
-
-									for(int i = 0; i < num; i++)
-									{
-										valtemp = mean - ((Double)dataVect[j][k].get(i)).doubleValue();
-										value += (valtemp * valtemp);
-									}
-
-									value /= num;
-									value = Math.sqrt(value);
-									rsd[idx] = unitFmt.format(value);
 								}
-							}
 
-							outputTableModel.addRow(new Object[0]);
-							outputTableModel.addRow(rmean);
-							outputTableModel.addRow(rmedian);
-							outputTableModel.addRow(rsd);
+								outputTableModel.addRow(new Object[0]);
+								outputTableModel.addRow(rmean);
+								outputTableModel.addRow(rmedian);
+								outputTableModel.addRow(rsd);
+							}
 						}
 						catch(Throwable ex)
 						{
