@@ -36,6 +36,13 @@ public class ProgressFrame extends JFrame implements ActionListener
 		setLocationRelativeTo(null);
 
 		setVisible(true);
+
+		addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e)
+			{
+				pressed = true;
+			}
+		});
 	}
 
 	public JPanel createContentPane()
@@ -89,9 +96,16 @@ public class ProgressFrame extends JFrame implements ActionListener
 	{
 		status = i;
 		b.setValue(i);
+		int max;
 
 		if(s != null)
+		{
+			max = b.getMaximum();
+			if(max > 0 && max < Integer.MAX_VALUE)
+				s = s + " (" + status + "/" + b.getMaximum() + ")";
+
 			b.setString(s);
+		}
 
 		return pressed;
 	}
