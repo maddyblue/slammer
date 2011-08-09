@@ -27,7 +27,7 @@ class CoupledSimplifiedPanel extends JPanel implements ActionListener
 
 	JEditorPane ta = new JEditorPane("text/html",
 		"<html>Procedure based on Bray and Travasarou (2007) equation (5):"
-		+ "<p>ln <i>D</i> = -1.10 - 2.83 ln ( <i>k<sub>y</sub></i> ) - 0.333 ( ln ( <i>k<sub>y</sub></i> )<sup>2</sup> ) + 0.566 ln ( <i>k<sub>y</sub></i> ) ln ( <i>S<sub>a</sub></i> ( 1.5 <i>T<sub>s</sub></i> ) ) + 3.04 ln ( <i>S<sub>a</sub></i> ( 1.5 <i>T<sub>s</sub></i> ) ) - 0.244 ( ln ( <i>S<sub>a</sub></i> ( 1.5 <i>T<sub>s</sub></i> ) ) )<sup>2</sup> + 1.50 <i>T<sub>s</sub></i> + 0.278 ( M - 7 ),"
+		+ "<p>ln <i>D</i> = -1.10 - 2.83 ln ( <i>k<sub>y</sub></i> ) - 0.333 ( ln ( <i>k<sub>y</sub></i> ) )<sup>2</sup> + 0.566 ln ( <i>k<sub>y</sub></i> ) ln ( <i>S<sub>a</sub></i> ( 1.5 <i>T<sub>s</sub></i> ) ) + 3.04 ln ( <i>S<sub>a</sub></i> ( 1.5 <i>T<sub>s</sub></i> ) ) - 0.244 ( ln ( <i>S<sub>a</sub></i> ( 1.5 <i>T<sub>s</sub></i> ) ) )<sup>2</sup> + 1.50 <i>T<sub>s</sub></i> + 0.278 ( M - 7 ),"
 		+ "<p>where <i>D</i> is displacement in centimeters and other parameters are as shown above.  This equation assumes that there will be a non-zero displacement; to estimate the probability of a non-zero displacement, see Bray and Travasarou (2007).</html>"
 	);
 
