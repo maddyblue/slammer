@@ -143,7 +143,7 @@ class CoupledSimplifiedPanel extends JPanel implements ActionListener
 		x = 0;
 		c.gridx = x++;
 		c.insets = none;
-		label = new JLabel("Estimated displacement (cm):");
+		label = new JLabel("Estimated mean displacement (cm):");
 		gridbag.setConstraints(label, c);
 		panel.add(label);
 
@@ -154,7 +154,7 @@ class CoupledSimplifiedPanel extends JPanel implements ActionListener
 		c.gridy = y++;
 		x = 0;
 		c.gridx = x++;
-		label = new JLabel("Estimated displacement (in.):");
+		label = new JLabel("Estimated mean displacement (in.):");
 		gridbag.setConstraints(label, c);
 		panel.add(label);
 
