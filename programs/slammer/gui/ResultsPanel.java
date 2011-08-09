@@ -141,8 +141,8 @@ class ResultsPanel extends JPanel implements ActionListener
 
 	// table column indicies
 	public final static int WIDTH = 3;
-	public final static int OFFSET = 2;
-	public final static int RBC = OFFSET;
+	public final static int RBN = 2;
+	public final static int RBC = RBN + 1;
 	public final static int DCN = RBC + WIDTH;
 	public final static int DCC = DCN + 1;
 	public final static int CPN = DCC + WIDTH;
@@ -278,11 +278,11 @@ class ResultsPanel extends JPanel implements ActionListener
 							final double g = paramUnit ? Analysis.Gcmss : Analysis.Ginss;
 							unitDisplacement = paramUnit ? "(cm)" : "(in.)";
 
-							String h_rb = "<html>" + ParametersPanel.stringRB + " " + unitDisplacement + "<p>";
-							String h_dc = "<html>" + ParametersPanel.stringDC + " " + unitDisplacement + "<p>";
-							String h_cp = "<html>" + ParametersPanel.stringCP + " " + unitDisplacement + "<p>";
+							String h_rb = "<html><center>" + ParametersPanel.stringRB + " " + unitDisplacement + "<p>";
+							String h_dc = "<html><center>" + ParametersPanel.stringDC + " " + unitDisplacement + "<p>";
+							String h_cp = "<html><center>" + ParametersPanel.stringCP + " " + unitDisplacement + "<p>";
 
-							outputTableModel.setColumnIdentifiers(new Object[] {"Earthquake", "Record",
+							outputTableModel.setColumnIdentifiers(new Object[] {"Earthquake", "Record", "",
 								h_rb + polarityName[NOR], h_rb + polarityName[INV], h_rb + polarityName[AVG], "",
 								h_dc + polarityName[NOR], h_dc + polarityName[INV], h_dc + polarityName[AVG], "",
 								h_cp + polarityName[NOR], h_cp + polarityName[INV], h_cp + polarityName[AVG]
@@ -290,10 +290,13 @@ class ResultsPanel extends JPanel implements ActionListener
 
 							outputTable.getTableHeader().setDefaultRenderer(new ResultsRenderer());
 
+							outputTable.getColumnModel().getColumn(RBN).setMinWidth(0);
 							outputTable.getColumnModel().getColumn(DCN).setMinWidth(0);
 							outputTable.getColumnModel().getColumn(CPN).setMinWidth(0);
+							outputTable.getColumnModel().getColumn(RBN).setPreferredWidth(5);
 							outputTable.getColumnModel().getColumn(DCN).setPreferredWidth(5);
 							outputTable.getColumnModel().getColumn(CPN).setPreferredWidth(5);
+							outputTable.getColumnModel().getColumn(RBN).setMaxWidth(5);
 							outputTable.getColumnModel().getColumn(DCN).setMaxWidth(5);
 							outputTable.getColumnModel().getColumn(CPN).setMaxWidth(5);
 
@@ -629,7 +632,7 @@ class ResultsPanel extends JPanel implements ActionListener
 									;
 								dataVect[rt.analysis][rt.orientation].add(j, new Double(rt.result));
 
-								outputTableModel.setValueAt(unitFmt.format(rt.result), rt.row, OFFSET + rt.analysis + WIDTH * rt.analysis + rt.orientation);
+								outputTableModel.setValueAt(unitFmt.format(rt.result), rt.row, RBC + rt.analysis + WIDTH * rt.analysis + rt.orientation);
 
 								// INV is always second, so NOR was already computed: we can compute avg now
 								if(rt.orientation == INV)
@@ -643,7 +646,7 @@ class ResultsPanel extends JPanel implements ActionListener
 										;
 									dataVect[rt.analysis][AVG].add(j, new Double(avg));
 
-									outputTableModel.setValueAt(unitFmt.format(avg), rt.row, OFFSET + rt.analysis + WIDTH * rt.analysis + AVG);
+									outputTableModel.setValueAt(unitFmt.format(avg), rt.row, RBC + rt.analysis + WIDTH * rt.analysis + AVG);
 								}
 							}
 
@@ -668,7 +671,7 @@ class ResultsPanel extends JPanel implements ActionListener
 									if(dataVect[j][k] == null || dataVect[j][k].size() == 0)
 										continue;
 
-									idx = j * WIDTH + OFFSET + k;
+									idx = j * WIDTH + RBC + k;
 									if(idx >= DCN)
 										idx++;
 									if(idx >= CPN)
