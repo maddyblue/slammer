@@ -24,6 +24,7 @@ class CoupledSimplifiedPanel extends JPanel implements ActionListener
 
 	JTextField dispcm = new WideTextField(7);
 	JTextField dispin = new WideTextField(7);
+	JTextField probzd = new WideTextField(7);
 
 	JEditorPane ta = new JEditorPane("text/html",
 		"<html>Procedure based on Bray and Travasarou (2007) equation (5):"
@@ -45,6 +46,7 @@ class CoupledSimplifiedPanel extends JPanel implements ActionListener
 
 		dispcm.setEditable(false);
 		dispin.setEditable(false);
+		probzd.setEditable(false);
 
 		ta.setEditable(false);
 
@@ -162,6 +164,17 @@ class CoupledSimplifiedPanel extends JPanel implements ActionListener
 		gridbag.setConstraints(dispin, c);
 		panel.add(dispin);
 
+		c.gridy = y++;
+		x = 0;
+		c.gridx = x++;
+		label = new JLabel("Probability of zero displacement:");
+		gridbag.setConstraints(label, c);
+		panel.add(label);
+
+		c.gridx = x++;
+		gridbag.setConstraints(probzd, c);
+		panel.add(probzd);
+
 		c.gridx = x;
 		c.weightx = 1;
 		label = new JLabel("");
@@ -196,6 +209,7 @@ class CoupledSimplifiedPanel extends JPanel implements ActionListener
 				int incr = 0;
 				dispcm.setText(res[incr++]);
 				dispin.setText(res[incr++]);
+				probzd.setText(res[incr++]);
 			}
 			else if(command.equals("clear"))
 			{
@@ -206,6 +220,7 @@ class CoupledSimplifiedPanel extends JPanel implements ActionListener
 
 				dispcm.setText("");
 				dispin.setText("");
+				probzd.setText("");
 			}
 		}
 		catch (Exception ex)
