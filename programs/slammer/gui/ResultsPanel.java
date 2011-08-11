@@ -523,9 +523,11 @@ class ResultsPanel extends JPanel implements ActionListener
 
 							File testFile;
 							String path;
+							int num_analyses = 0;
 
 							if(paramRigid)
 							{
+								num_analyses++;
 								dataVect[RB][NOR] = new ArrayList<Double>(res.length - 1);
 								dataVect[RB][INV] = new ArrayList<Double>(res.length - 1);
 								dataVect[RB][AVG] = new ArrayList<Double>(res.length - 1);
@@ -533,6 +535,7 @@ class ResultsPanel extends JPanel implements ActionListener
 
 							if(paramDecoupled)
 							{
+								num_analyses++;
 								dataVect[DC][NOR] = new ArrayList<Double>(res.length - 1);
 								dataVect[DC][INV] = new ArrayList<Double>(res.length - 1);
 								dataVect[DC][AVG] = new ArrayList<Double>(res.length - 1);
@@ -540,6 +543,7 @@ class ResultsPanel extends JPanel implements ActionListener
 
 							if(paramCoupled)
 							{
+								num_analyses++;
 								dataVect[CP][NOR] = new ArrayList<Double>(res.length - 1);
 								dataVect[CP][INV] = new ArrayList<Double>(res.length - 1);
 								dataVect[CP][AVG] = new ArrayList<Double>(res.length - 1);
@@ -547,7 +551,7 @@ class ResultsPanel extends JPanel implements ActionListener
 
 							iscale = -1.0 * scale;
 
-							pm.setMaximum(Integer.MAX_VALUE);
+							pm.setMaximum(res.length * 2 * num_analyses);
 							pm.update(0, "Initializing");
 
 							int j, k;
@@ -643,7 +647,6 @@ class ResultsPanel extends JPanel implements ActionListener
 								rowcount++;
 							}
 
-							pm.setMaximum(resultVec.size());
 							pool.shutdown();
 
 							while(!pool.awaitTermination(1, TimeUnit.SECONDS))
