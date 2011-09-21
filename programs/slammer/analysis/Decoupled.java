@@ -11,7 +11,7 @@ public class Decoupled extends DeCoupledCommon
 
 	private double time;
 
-	public double Decoupled(double[] ain_p, double uwgt_p, double height_p, double vs_p, double damp1_p, double dt_p, double scal_p, double g_p, double vr_p, double[][] ca, boolean dv3_p)
+	public double Decoupled(double[] ain_p, double uwgt_p, double height_p, double vs_p, double damp1_p, double refstrain_p, double dt_p, double scal_p, double g_p, double vr_p, double[][] ca, boolean dv3_p)
 	{
 		// assign all passed parameters to the local data
 		uwgt = uwgt_p;
@@ -91,7 +91,7 @@ public class Decoupled extends DeCoupledCommon
 
 		n = 100.0;
 		o = 100.0;
-		gamref = 0.05;
+		gamref = refstrain_p;
 		damp = damp1 + dampf;
 
 		// loop for time steps in time histories

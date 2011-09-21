@@ -46,12 +46,14 @@ class ParametersPanel extends JPanel implements ActionListener
 	public JTextField paramHeight = new JTextField(7);
 	public JTextField paramVs = new JTextField(7);
 	public JTextField paramDamp = new JTextField(7);
+	public JTextField paramRefStrain = new JTextField("0.05", 7);
 	public JTextField paramVr = new JTextField(7);
 	public JComboBox paramSoilModel = new JComboBox(new Object[] {"Linear elastic", "Equivalent linear"});
 
 	JLabel labelHeight = new JLabel();
 	JLabel labelVs = new JLabel();
 	JLabel labelDamp = new JLabel(stringDamp + " (%)");
+	JLabel labelRefStrain = new JLabel(stringRefStrain + " (%)");
 	JLabel labelVr = new JLabel();
 	JLabel labelSoilModel = new JLabel(stringSoilModel);
 
@@ -63,6 +65,7 @@ class ParametersPanel extends JPanel implements ActionListener
 	public final static String stringVs = "Shear-wave velocity (material above slip surface)";
 	public final static String stringDisp = "Displacement";
 	public final static String stringDamp = "Damping ratio";
+	public final static String stringRefStrain = "Reference Strain";
 	public final static String stringVr = "Shear-wave velocity (material below slip surface)";
 	public final static String stringSoilModel = "Soil model";
 
@@ -426,6 +429,17 @@ class ParametersPanel extends JPanel implements ActionListener
 		c.gridy = y++;
 		c.gridx = x++;
 		c.insets = left;
+		gridbag.setConstraints(labelRefStrain, c);
+		panel.add(labelRefStrain, c);
+
+		c.gridx = x--;
+		c.insets = none;
+		gridbag.setConstraints(paramRefStrain, c);
+		panel.add(paramRefStrain, c);
+
+		c.gridy = y++;
+		c.gridx = x++;
+		c.insets = left;
 		gridbag.setConstraints(labelSoilModel, c);
 		panel.add(labelSoilModel, c);
 
@@ -524,6 +538,7 @@ class ParametersPanel extends JPanel implements ActionListener
 		paramHeight.setEditable(selected);
 		paramVs.setEditable(selected);
 		paramDamp.setEditable(selected);
+		paramRefStrain.setEditable(selected);
 		paramVr.setEditable(selected);
 		paramSoilModel.setEnabled(selected);
 	}

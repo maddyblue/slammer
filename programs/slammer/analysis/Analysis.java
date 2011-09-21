@@ -97,11 +97,11 @@ public class Analysis
 	/* overridden functions */
 	/* i'm sure there's a better way to do this, but this works */
 
-	public double Decoupled(double[] ain_p, double uwgt_p, double height_p, double vs_p, double damp1_p, double dt_p, double scal_p, double g_p, double vr_p, double[][] ca, boolean dv3_p)
+	public double Decoupled(double[] ain_p, double uwgt_p, double height_p, double vs_p, double damp1_p, double refstrain, double dt_p, double scal_p, double g_p, double vr_p, double[][] ca, boolean dv3_p)
 	{
 		return 0;
 	}
-	public double Coupled(double[] ain_p, double uwgt_p, double height_p, double vs_p, double damp1_p, double dt_p, double scal_p, double g_p, double vr_p, double[][] ca, boolean dv3_p)
+	public double Coupled(double[] ain_p, double uwgt_p, double height_p, double vs_p, double damp1_p, double refstrain, double dt_p, double scal_p, double g_p, double vr_p, double[][] ca, boolean dv3_p)
 	{
 		return 0;
 	}

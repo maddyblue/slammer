@@ -62,7 +62,7 @@ class ResultsPanel extends JPanel implements ActionListener
 
 		double scale, scaleRB;
 		double di;
-		double thrust, uwgt, height, vs, damp, vr, g;
+		double thrust, uwgt, height, vs, damp, refstrain, vr, g;
 		double[][] ca;
 		boolean paramDualslope, dv3;
 
@@ -88,7 +88,7 @@ class ResultsPanel extends JPanel implements ActionListener
 		}
 
 		// Decoupled
-		ResultThread(String eq, String record, int idx, int row, int analysis, int orientation, double[] ain, double uwgt, double height, double vs, double damp, double di, double scale, double g, double vr, double[][] ca, boolean dv3, SynchronizedProgressFrame pm)
+		ResultThread(String eq, String record, int idx, int row, int analysis, int orientation, double[] ain, double uwgt, double height, double vs, double damp, double refstrain, double di, double scale, double g, double vr, double[][] ca, boolean dv3, SynchronizedProgressFrame pm)
 		{
 			this.eq = eq;
 			this.record = record;
@@ -101,6 +101,7 @@ class ResultsPanel extends JPanel implements ActionListener
 			this.height = height;
 			this.vs = vs;
 			this.damp = damp;
+			this.refstrain = refstrain;
 			this.di = di;
 			this.scale = scale;
 			this.g = g;
@@ -122,12 +123,12 @@ class ResultsPanel extends JPanel implements ActionListener
 			else if(analysis == DC)
 			{
 				a = new Decoupled();
-				result = a.Decoupled(ain, uwgt, height, vs, damp, di, scale, g, vr, ca, dv3);
+				result = a.Decoupled(ain, uwgt, height, vs, damp, refstrain, di, scale, g, vr, ca, dv3);
 			}
 			else if(analysis == CP)
 			{
 				a = new Coupled();
-				result = a.Coupled(ain, uwgt, height, vs, damp, di, scale, g, vr, ca, dv3);
+				result = a.Coupled(ain, uwgt, height, vs, damp, refstrain, di, scale, g, vr, ca, dv3);
 			}
 			else
 				a = null;
@@ -396,7 +397,7 @@ class ResultsPanel extends JPanel implements ActionListener
 							double inv, norm;
 							double[][] ca;
 							double[] ain = null;
-							double thrust = 0, uwgt = 0, height = 0, vs = 0, damp = 0, vr = 0;
+							double thrust = 0, uwgt = 0, height = 0, vs = 0, damp = 0, refstrain = 0, vr = 0;
 							boolean dv3 = false;
 
 							scaleRB = paramUnit ? 1 : Analysis.CMtoIN;
@@ -500,6 +501,15 @@ class ResultsPanel extends JPanel implements ActionListener
 								}
 								else
 									damp = tempd.doubleValue() / 100.0;
+
+								tempd = (Double)Utils.checkNum(parent.Parameters.paramRefStrain.getText(), ParametersPanel.stringRefStrain + " field", null, false, null, null, false, null, false);
+								if(tempd == null)
+								{
+									parent.selectParameters();
+									return null;
+								}
+								else
+									refstrain = tempd.doubleValue();
 
 								dv3 = parent.Parameters.paramSoilModel.getSelectedIndex() == 1;
 
@@ -625,20 +635,20 @@ class ResultsPanel extends JPanel implements ActionListener
 								if(paramDecoupled)
 								{
 									// [i]scale is divided by Gcmss because the algorithm expects input data in Gs, but our input files are in cmss. this has nothing to do with, and is not affected by, the unit base being used (english or metric).
-									rt = new ResultThread(eq, record, row_idx, rowcount, DC, NOR, ain, uwgt, height, vs, damp, di, scale / Analysis.Gcmss, g, vr, ca, dv3, pm);
+									rt = new ResultThread(eq, record, row_idx, rowcount, DC, NOR, ain, uwgt, height, vs, damp, refstrain, di, scale / Analysis.Gcmss, g, vr, ca, dv3, pm);
 									pool.execute(rt);
 									resultVec.add(rt);
-									rt = new ResultThread(eq, record, row_idx, rowcount, DC, INV, ain, uwgt, height, vs, damp, di, iscale / Analysis.Gcmss, g, vr, ca, dv3, pm);
+									rt = new ResultThread(eq, record, row_idx, rowcount, DC, INV, ain, uwgt, height, vs, damp, refstrain, di, iscale / Analysis.Gcmss, g, vr, ca, dv3, pm);
 									pool.execute(rt);
 									resultVec.add(rt);
 								}
 								if(paramCoupled)
 								{
 									// [i]scale is divided by Gcmss because the algorithm expects input data in Gs, but our input files are in cmss. this has nothing to do with, and is not affected by, the unit base being used (english or metric).
-									rt = new ResultThread(eq, record, row_idx, rowcount, CP, NOR, ain, uwgt, height, vs, damp, di, scale / Analysis.Gcmss, g, vr, ca, dv3, pm);
+									rt = new ResultThread(eq, record, row_idx, rowcount, CP, NOR, ain, uwgt, height, vs, damp, refstrain, di, scale / Analysis.Gcmss, g, vr, ca, dv3, pm);
 									pool.execute(rt);
 									resultVec.add(rt);
-									rt = new ResultThread(eq, record, row_idx, rowcount, CP, INV, ain, uwgt, height, vs, damp, di, iscale / Analysis.Gcmss, g, vr, ca, dv3, pm);
+									rt = new ResultThread(eq, record, row_idx, rowcount, CP, INV, ain, uwgt, height, vs, damp, refstrain, di, iscale / Analysis.Gcmss, g, vr, ca, dv3, pm);
 									pool.execute(rt);
 									resultVec.add(rt);
 								}

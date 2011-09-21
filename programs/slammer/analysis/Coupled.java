@@ -13,7 +13,7 @@ public class Coupled extends DeCoupledCommon
 
 	private double COS, SIN, gSIN, gCOS;
 
-	public double Coupled(double[] ain_p, double uwgt_p, double height_p, double vs_p, double damp1_p, double dt_p, double scal_p, double g_p, double vr_p, double[][] ca, boolean dv3_p)
+	public double Coupled(double[] ain_p, double uwgt_p, double height_p, double vs_p, double damp1_p, double refstrain_p, double dt_p, double scal_p, double g_p, double vr_p, double[][] ca, boolean dv3_p)
 	{
 		// assign all passed parameters to the local data
 		uwgt = uwgt_p;
@@ -109,7 +109,7 @@ public class Coupled extends DeCoupledCommon
 		damp = damp1 + dampf;
 		n = 100.0;
 		o = 100.0;
-		gamref = 0.05;
+		gamref = refstrain_p;
 
 		// finding equivalent linear properties of soil
 
