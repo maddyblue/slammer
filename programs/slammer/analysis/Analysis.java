@@ -39,6 +39,7 @@ public class Analysis
 	public static boolean testing = false;
 
 	public XYSeries graphData;
+	public double mmax;
 
 	protected void setValueSize(final double Dint)
 	{

@@ -59,6 +59,7 @@ class ResultsPanel extends JPanel implements ActionListener
 
 		double result;
 		XYSeries graphData;
+		double mmax;
 
 		double scale, scaleRB;
 		double di;
@@ -124,6 +125,7 @@ class ResultsPanel extends JPanel implements ActionListener
 			{
 				a = new Decoupled();
 				result = a.Decoupled(ain, uwgt, height, vs, damp, refstrain, di, scale, g, vr, ca, dv3);
+				mmax = Math.abs(a.mmax);
 			}
 			else if(analysis == CP)
 			{
@@ -178,7 +180,7 @@ class ResultsPanel extends JPanel implements ActionListener
 	public final static int RBC = RBN + 1;
 	public final static int DCN = RBC + WIDTH;
 	public final static int DCC = DCN + 1;
-	public final static int CPN = DCC + WIDTH;
+	public final static int CPN = DCC + WIDTH + 1; // 1 for the kmax column
 	public final static int CPC = CPN + 1;
 	public final static int LEN = CPC + WIDTH;
 
@@ -314,10 +316,11 @@ class ResultsPanel extends JPanel implements ActionListener
 							String h_rb = "<html><center>" + ParametersPanel.stringRB + " " + unitDisplacement + "<p>";
 							String h_dc = "<html><center>" + ParametersPanel.stringDC + " " + unitDisplacement + "<p>";
 							String h_cp = "<html><center>" + ParametersPanel.stringCP + " " + unitDisplacement + "<p>";
+							String h_km = "<html><center>Kmax (g)<p>";
 
 							outputTableModel.setColumnIdentifiers(new Object[] {"Earthquake", "Record", "",
 								h_rb + polarityName[NOR], h_rb + polarityName[INV], h_rb + polarityName[AVG], "",
-								h_dc + polarityName[NOR], h_dc + polarityName[INV], h_dc + polarityName[AVG], "",
+								h_dc + polarityName[NOR], h_dc + polarityName[INV], h_dc + polarityName[AVG], h_km, "",
 								h_cp + polarityName[NOR], h_cp + polarityName[INV], h_cp + polarityName[AVG]
 							});
 
@@ -670,6 +673,7 @@ class ResultsPanel extends JPanel implements ActionListener
 
 							pm.update("Calculating results...");
 							ResultThread prt;
+							int kmax_offset;
 
 							for(int i = 0; i < resultVec.size(); i++)
 							{
@@ -686,7 +690,9 @@ class ResultsPanel extends JPanel implements ActionListener
 									;
 								dataVect[rt.analysis][rt.orientation].add(j, new Double(rt.result));
 
-								outputTableModel.setValueAt(unitFmt.format(rt.result), rt.row, RBC + rt.analysis + WIDTH * rt.analysis + rt.orientation);
+								kmax_offset = rt.analysis == CP ? 1 : 0;
+
+								outputTableModel.setValueAt(unitFmt.format(rt.result), rt.row, RBC + rt.analysis + WIDTH * rt.analysis + rt.orientation + kmax_offset);
 
 								// INV is always second, so NOR was already computed: we can compute avg now
 								if(rt.orientation == INV)
@@ -700,7 +706,12 @@ class ResultsPanel extends JPanel implements ActionListener
 										;
 									dataVect[rt.analysis][AVG].add(j, new Double(avg));
 
-									outputTableModel.setValueAt(unitFmt.format(avg), rt.row, RBC + rt.analysis + WIDTH * rt.analysis + AVG);
+									outputTableModel.setValueAt(unitFmt.format(avg), rt.row, RBC + rt.analysis + WIDTH * rt.analysis + AVG + kmax_offset);
+
+									if(rt.analysis == DC)
+									{
+										outputTableModel.setValueAt(unitFmt.format(rt.mmax / g), rt.row, RBC + rt.analysis + WIDTH * rt.analysis + rt.orientation + 2);
+									}
 								}
 							}
 
@@ -726,8 +737,8 @@ class ResultsPanel extends JPanel implements ActionListener
 										idx = j * WIDTH + RBC + k;
 										if(idx >= DCN)
 											idx++;
-										if(idx >= CPN)
-											idx++;
+										if(idx >= (CPN - 1))
+											idx += 2;
 
 										mean = Double.parseDouble(unitFmt.format(total[j][k] / num));
 										rmean[idx] = unitFmt.format(mean);

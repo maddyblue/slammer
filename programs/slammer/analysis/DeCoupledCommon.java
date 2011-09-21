@@ -23,7 +23,7 @@ public abstract class DeCoupledCommon extends Analysis
 
 	protected boolean slide;
 
-	protected double mx, mx1, mmax, gameff1, gamref, n, o, acc1, acc2, u1, udot1, udotdot1;
+	protected double mx, mx1, gameff1, gamref, n, o, acc1, acc2, u1, udot1, udotdot1;
 	protected double s[], u[], udot[], udotdot[], disp[], mu[], avgacc[];
 
 	protected double ain[];
