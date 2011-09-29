@@ -48,6 +48,6 @@ comp.4.sql=eq-otherus.sql
 comp.4.sqllen=165
 
 comp.5.name=Source code
-comp.5.disk-size=22
-comp.5.real-size=13094
+comp.5.disk-size=23
+comp.5.real-size=13786
 comp.5.fileset=program-source
