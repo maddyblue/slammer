@@ -1598,8 +1598,6 @@ Northridge 1994	JAB-220	0.01	6.7	0.186	17.0	0.098	7.4	0.45	45.3	48.5	44.1	309	4	
 Northridge 1994	JAB-310	0.01	6.7	0.133	20.0	0.068	7.7	0.57	45.3	48.5	44.1	309	4	3	Bell Gardens, 7420 Jaboneria	USC	33.9650	-118.1580
 Northridge 1994	JEN-022	0.0050	6.7	3.241	6.9	0.571	76.0	0.79	13.0	21.8	5.4	373	2	3	Jensen Filtration Plant	MWD	34.3120	-118.4960
 Northridge 1994	JEN-292	0.0050	6.7	6.528	5.7	1.024	66.8	0.58	13.0	21.8	5.4	373	2	3	Jensen Filtration Plant	MWD	34.3120	-118.4960
-Northridge 1994	JFP-022	0.0050	6.7	3.241	6.9	0.571	76.0	0.79	13.0	21.8	5.4	526	1	3	Jensen Filtration Plant, Generator Room	MWD	34.3130	-118.4980
-Northridge 1994	JFP-292	0.0050	6.7	6.526	5.7	1.024	68.0	0.58	13.0	21.8	5.4	526	1	3	Jensen Filtration Plant, Generator Room	MWD	34.3130	-118.4980
 Northridge 1994	KAT-000	0.01	6.7	3.581	6.0	0.877	40.9	0.52	12.2	21.3	13.4	557	2	3	Simi Valley, 6334 Katherine Rd.	USC	34.2640	-118.6660
 Northridge 1994	KAT-090	0.01	6.7	4.058	6.6	0.64	37.8	0.46	12.2	21.3	13.4	557	2	3	Simi Valley, 6334 Katherine Rd.	USC	34.2640	-118.6660
 Northridge 1994	L01-000	0.02	6.7	0.163	13.9	0.087	9.4	0.59	53.3	56.1	35.8	425	2	3	Lake Hughes #1, Fire Station #78	CGS	34.6740	-118.4300

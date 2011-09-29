@@ -21,10 +21,10 @@ comp.0.fileset=program-srm
 
 comp.1.name=California records
 comp.1.disk-size=61
-comp.1.real-size=60009
+comp.1.real-size=59892
 comp.1.fileset=eq-california
 comp.1.sql=eq-california.sql
-comp.1.sqllen=1225
+comp.1.sqllen=1223
 
 comp.2.name=Chi-Chi, Taiwan earthquake records
 comp.2.disk-size=113
@@ -42,7 +42,7 @@ comp.3.sqllen=115
 
 comp.4.name=Other US records
 comp.4.disk-size=38
-comp.4.real-size=38324
+comp.4.real-size=38139
 comp.4.fileset=eq-otherus
 comp.4.sql=eq-otherus.sql
 comp.4.sqllen=165
