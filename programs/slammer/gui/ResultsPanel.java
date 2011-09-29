@@ -316,7 +316,7 @@ class ResultsPanel extends JPanel implements ActionListener
 							String h_rb = "<html><center>" + ParametersPanel.stringRB + " " + unitDisplacement + "<p>";
 							String h_dc = "<html><center>" + ParametersPanel.stringDC + " " + unitDisplacement + "<p>";
 							String h_cp = "<html><center>" + ParametersPanel.stringCP + " " + unitDisplacement + "<p>";
-							String h_km = "<html><center>Kmax (g)<p>";
+							String h_km = "<html><center>K<sub>max</sub> (g)<p>";
 
 							outputTableModel.setColumnIdentifiers(new Object[] {"Earthquake", "Record", "",
 								h_rb + polarityName[NOR], h_rb + polarityName[INV], h_rb + polarityName[AVG], "",
