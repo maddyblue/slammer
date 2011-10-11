@@ -24,7 +24,7 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 	JRadioButton SaygiliRathje2008CARPA = new JRadioButton("<html>Saygili and Rathje (2008) Critical acceleration ratio<br/>and peak acceleration</html>");
 	JRadioButton SaygiliRathje2008CARPAPV = new JRadioButton("<html>Saygili and Rathje (2008) Critical acceleration ratio,<br/>peak acceleration, peak velocity</html>");
 	JRadioButton SaygiliRathje2008CARPAPVAI = new JRadioButton("<html>Saygili and Rathje (2008) Critical acceleration ratio,<br/>peak acceleration, peak velocity, Arias intensity</html>");
-	JRadioButton SaygiliRathje2009CARPAM = new JRadioButton("<html>Saygili and Rathje (2009) Critical acceleration ratio,<br/>peak acceleration, and magnitude</html>");
+	JRadioButton SaygiliRathje2009CARPAM = new JRadioButton("<html>Rathje and Saygili (2009) Critical acceleration ratio,<br/>peak acceleration, and magnitude</html>");
 	ButtonGroup group = new ButtonGroup();
 
 	JTextField fieldAc = new WideTextField(7);
