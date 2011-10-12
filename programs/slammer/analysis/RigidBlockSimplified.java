@@ -61,15 +61,20 @@ public class RigidBlockSimplified extends Analysis
 		));
 	}
 
-	public static String SaygiliRathje2008CARPAPV(final double ac, final double amax, final double vmax)
+	public static double SaygiliRathje2008CARPAPV_d(final double ac, final double amax, final double vmax)
 	{
 		final double ratio = ac / amax;
 		final double ratio2 = ratio * ratio;
 		final double ratio3 = ratio2 * ratio;
 		final double ratio4 = ratio3 * ratio;
-		return fmtOne.format(Math.pow(Math.E,
+		return Math.pow(Math.E,
 			-1.56 - 4.58 * ratio - 20.84 * ratio2 + 44.75 * ratio3 - 30.50 * ratio4 - 0.64 * Math.log(amax) + 1.55 * Math.log(vmax)
-		));
+		);
+	}
+
+	public static String SaygiliRathje2008CARPAPV(final double ac, final double amax, final double vmax)
+	{
+		return fmtOne.format(SaygiliRathje2008CARPAPV_d(ac, amax, vmax));
 	}
 
 	public static String SaygiliRathje2008CARPAPVAI(final double ac, final double amax, final double vmax, final double ia)
@@ -83,14 +88,19 @@ public class RigidBlockSimplified extends Analysis
 		));
 	}
 
-	public static String SaygiliRathje2009CARPAM(final double ac, final double amax, final double M)
+	public static double SaygiliRathje2009CARPAM_d(final double ac, final double amax, final double M)
 	{
 		final double ratio = ac / amax;
 		final double ratio2 = ratio * ratio;
 		final double ratio3 = ratio2 * ratio;
 		final double ratio4 = ratio3 * ratio;
-		return fmtOne.format(Math.pow(Math.E,
+		return Math.pow(Math.E,
 			4.89 - 4.85 * ratio - 19.64 * ratio2 + 42.49 * ratio3 - 29.06 * ratio4 + 0.72 * Math.log(amax) + 0.89 * (M - 6.0)
-		));
+		);
+	}
+
+	public static String SaygiliRathje2009CARPAM(final double ac, final double amax, final double M)
+	{
+		return fmtOne.format(SaygiliRathje2009CARPAM_d(ac, amax, M));
 	}
 }

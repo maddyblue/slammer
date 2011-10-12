@@ -18,6 +18,7 @@ public class SlammerTabbedPane extends JTabbedPane
 	public RigidBlockSimplifiedPanel RigidBlockSimplified;
 	public DecoupledSimplifiedPanel DecoupledSimplified;
 	public CoupledSimplifiedPanel CoupledSimplified;
+	public UnifiedModelPanel UnifiedModel;
 	public ProbFailPanel ProbFail;
 	public ResultsPanel Results;
 	public UtilitiesPanel Utilities;
@@ -42,6 +43,7 @@ public class SlammerTabbedPane extends JTabbedPane
 			RigidBlockSimplified = new RigidBlockSimplifiedPanel(this);
 			DecoupledSimplified = new DecoupledSimplifiedPanel(this);
 			CoupledSimplified = new CoupledSimplifiedPanel(this);
+			UnifiedModel = new UnifiedModelPanel(this);
 			ProbFail = new ProbFailPanel(this);
 			Results = new ResultsPanel(this);
 			Parameters = new ParametersPanel(this);
@@ -57,6 +59,7 @@ public class SlammerTabbedPane extends JTabbedPane
 			Simplified.addTab("Rigid-block analyses", RigidBlockSimplified);
 			Simplified.addTab("Decoupled analysis", DecoupledSimplified);
 			Simplified.addTab("Coupled analysis", CoupledSimplified);
+			Simplified.addTab("Unified model", UnifiedModel);
 			Simplified.addTab("Probability of failure", ProbFail);
 
 			Manager.addTab("Manage records", RecordManager);
