@@ -30,7 +30,7 @@ class UnifiedModelPanel extends JPanel implements ActionListener
 	JTextField fieldResTm = new WideTextField(7);
 	JTextField fieldResPR = new WideTextField(7);
 
-	JTextField fieldAcAmax = new WideTextField(7);
+	JTextField fieldAcPGA = new WideTextField(7);
 	JTextField fieldkmaxPGA = new WideTextField(7);
 	JTextField fieldkvelmaxPGV = new WideTextField(7);
 	JTextField fieldkmax = new WideTextField(7);
@@ -38,6 +38,7 @@ class UnifiedModelPanel extends JPanel implements ActionListener
 	JTextField fieldrbdisp = new WideTextField(7);
 
 	JTextField fieldResCm = new WideTextField(7);
+	JTextField fieldResIn = new WideTextField(7);
 
 	Double Acd, Vthickd, Vsd, Md, PGAd, PGVd, Rd;
 
@@ -60,19 +61,27 @@ class UnifiedModelPanel extends JPanel implements ActionListener
 		group.add(SaygiliRathje2008CARPAPV);
 		group.add(SaygiliRathje2009CARPAM);
 
+		SaygiliRathje2008CARPAPV.setActionCommand("change");
+		SaygiliRathje2008CARPAPV.addActionListener(this);
+		SaygiliRathje2009CARPAM.setActionCommand("change");
+		SaygiliRathje2009CARPAM.addActionListener(this);
+
+		fieldPGV.setEditable(false);
+
 		button.setActionCommand("go");
 		button.addActionListener(this);
 
 		fieldResTs.setEditable(false);
 		fieldResTm.setEditable(false);
 		fieldResPR.setEditable(false);
-		fieldAcAmax.setEditable(false);
+		fieldAcPGA.setEditable(false);
 		fieldkmaxPGA.setEditable(false);
 		fieldkvelmaxPGV.setEditable(false);
 		fieldkmax.setEditable(false);
 		fieldkvelmax.setEditable(false);
 		fieldrbdisp.setEditable(false);
 		fieldResCm.setEditable(false);
+		fieldResIn.setEditable(false);
 
 		ta.setEditable(false);
 		ta.setContentType("text/html");
@@ -105,7 +114,7 @@ class UnifiedModelPanel extends JPanel implements ActionListener
 
 		c.gridx = x++;
 		c.gridy = y++;
-		c.gridheight = 11;
+		c.gridheight = 23;
 		c.anchor = GridBagConstraints.NORTHWEST;
 		gridbag.setConstraints(sidepanel, c);
 		panel.add(sidepanel);
@@ -246,13 +255,13 @@ class UnifiedModelPanel extends JPanel implements ActionListener
 		c.gridy = y++;
 		c.gridx = x++;
 		c.insets = none;
-		label = new JLabel("<html>a<sub>c</sub> / a<sub>max</sub>:</html>");
+		label = new JLabel("<html>a<sub>c</sub> / PGA:</html>");
 		gridbag.setConstraints(label, c);
 		panel.add(label);
 
 		c.gridx = x--;
-		gridbag.setConstraints(fieldAcAmax, c);
-		panel.add(fieldAcAmax);
+		gridbag.setConstraints(fieldAcPGA, c);
+		panel.add(fieldAcPGA);
 
 		c.gridy = y++;
 		c.gridx = x++;
@@ -322,9 +331,20 @@ class UnifiedModelPanel extends JPanel implements ActionListener
 		gridbag.setConstraints(label, c);
 		panel.add(label);
 
-		c.gridx = x++;
+		c.gridx = x--;
 		gridbag.setConstraints(fieldResCm, c);
 		panel.add(fieldResCm);
+
+		c.gridy = y++;
+		c.gridx = x++;
+		c.insets = none;
+		label = new JLabel("Displacement (in.):");
+		gridbag.setConstraints(label, c);
+		panel.add(label);
+
+		c.gridx = x--;
+		gridbag.setConstraints(fieldResIn, c);
+		panel.add(fieldResIn);
 
 		c.gridx = 0;
 		c.gridy = y;
@@ -335,6 +355,8 @@ class UnifiedModelPanel extends JPanel implements ActionListener
 		c.fill = GridBagConstraints.BOTH;
 		gridbag.setConstraints(sta, c);
 		panel.add(sta);
+
+		ta.setText("Based on the model of Rathje and Antonakos (2011).");
 	}
 
 	public void actionPerformed(java.awt.event.ActionEvent e)
@@ -359,8 +381,13 @@ class UnifiedModelPanel extends JPanel implements ActionListener
 				PGAd = (Double)Utils.checkNum(fieldPGA.getText(), "peak ground acceleration field", null, false, null, new Double(0), true, null, false);
 				if(PGAd == null) return;
 
-				PGVd = (Double)Utils.checkNum(fieldPGV.getText(), "peak ground velocity field", null, false, null, new Double(0), true, null, false);
-				if(PGVd == null) return;
+				if(fieldPGV.isEditable())
+				{
+					PGVd = (Double)Utils.checkNum(fieldPGV.getText(), "peak ground velocity field", null, false, null, new Double(0), true, null, false);
+					if(PGVd == null) return;
+				}
+				else
+					PGVd = new Double(0);
 
 				Rd = (Double)Utils.checkNum(fieldR.getText(), "distance field", null, false, null, new Double(0), true, null, false);
 				if(Rd == null) return;
@@ -382,14 +409,18 @@ class UnifiedModelPanel extends JPanel implements ActionListener
 				fieldResTs.setText(res[incr++]);
 				fieldResTm.setText(res[incr++]);
 				fieldResPR.setText(res[incr++]);
-				//fieldAcAmax.setText(res[incr++]);
+				fieldAcPGA.setText(res[incr++]);
 				fieldkmaxPGA.setText(res[incr++]);
 				fieldkvelmaxPGV.setText(res[incr++]);
 				fieldkmax.setText(res[incr++]);
 				fieldkvelmax.setText(res[incr++]);
 				fieldrbdisp.setText(res[incr++]);
 				fieldResCm.setText(res[incr++]);
-
+				fieldResIn.setText(res[incr++]);
+			}
+			else if(command.equals("change"))
+			{
+				fieldPGV.setEditable(!SaygiliRathje2009CARPAM.isSelected());
 			}
 		}
 		catch (Exception ex)

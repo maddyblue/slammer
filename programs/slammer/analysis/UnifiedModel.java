@@ -11,7 +11,7 @@ public class UnifiedModel extends Analysis
 
 	public static String[] UnifiedModel(final double ac, final double h, final double vs, final double m, final double pga, final double pgv, final double r, int method)
 	{
-		String ret[] = new String[9];
+		String ret[] = new String[11];
 		int incr = 0;
 
 		double ts, tm, pr;
@@ -29,6 +29,7 @@ public class UnifiedModel extends Analysis
 		ret[incr++] = fmtThree.format(ts);
 		ret[incr++] = fmtThree.format(tm);
 		ret[incr++] = fmtThree.format(pr);
+		ret[incr++] = fmtThree.format(ac / pga);
 
 		// eq 1
 
@@ -59,12 +60,12 @@ public class UnifiedModel extends Analysis
 		double kmax = kmax_pga * pga;
 		ret[incr++] = fmtThree.format(kmax);
 
-		double kvelmax = kvelmax_pgv * pgv;
-		ret[incr++] = fmtThree.format(kvelmax);
-
 		double disp = 0, dflexible = 0;
 		if(method == METHOD_2008)
 		{
+			double kvelmax = kvelmax_pgv * pgv;
+			ret[incr++] = fmtThree.format(kvelmax);
+
 			disp = RigidBlockSimplified.SaygiliRathje2008CARPAPV_d(ac, kmax, kvelmax);
 			if(ts <= 1.5)
 				dflexible = Math.exp(Math.log(disp) + 3.69 * ts - 1.22 * ts * ts);
@@ -73,6 +74,8 @@ public class UnifiedModel extends Analysis
 		}
 		else if(method == METHOD_2009)
 		{
+			ret[incr++] = "";
+
 			disp = RigidBlockSimplified.SaygiliRathje2009CARPAM_d(ac, kmax, m);
 			if(ts <= 0.5)
 				dflexible = Math.exp(Math.log(disp) + 1.42 * ts);
@@ -81,6 +84,7 @@ public class UnifiedModel extends Analysis
 		}
 		ret[incr++] = fmtThree.format(disp);
 		ret[incr++] = fmtThree.format(dflexible);
+		ret[incr++] = fmtThree.format(dflexible / 2.54);
 
 		return ret;
 	}
