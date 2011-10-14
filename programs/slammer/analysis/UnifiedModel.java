@@ -67,20 +67,20 @@ public class UnifiedModel extends Analysis
 			ret[incr++] = fmtThree.format(kvelmax);
 
 			disp = RigidBlockSimplified.SaygiliRathje2008CARPAPV_d(ac, kmax, kvelmax);
-			if(ts <= 1.5)
-				dflexible = Math.exp(Math.log(disp) + 3.69 * ts - 1.22 * ts * ts);
+			if(ts <= 0.5)
+				dflexible = Math.exp(Math.log(disp) + 1.42 * ts);
 			else
-				dflexible = Math.exp(Math.log(disp) + 2.78);
+				dflexible = Math.exp(Math.log(disp) + 0.71);
 		}
 		else if(method == METHOD_2009)
 		{
 			ret[incr++] = "";
 
 			disp = RigidBlockSimplified.SaygiliRathje2009CARPAM_d(ac, kmax, m);
-			if(ts <= 0.5)
-				dflexible = Math.exp(Math.log(disp) + 1.42 * ts);
+			if(ts <= 1.5)
+				dflexible = Math.exp(Math.log(disp) + 3.69 * ts - 1.22 * ts * ts);
 			else
-				dflexible = Math.exp(Math.log(disp) + 0.71);
+				dflexible = Math.exp(Math.log(disp) + 2.78);
 		}
 		ret[incr++] = fmtThree.format(disp);
 		ret[incr++] = fmtThree.format(dflexible);
