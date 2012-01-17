@@ -815,7 +815,7 @@ class ResultsPanel extends JPanel implements ActionListener
 						if(i != 0)
 							fw.write(delim);
 
-						fw.write(outputTableModel.getColumnName(i));
+						fw.write(outputTableModel.getColumnName(i).replaceAll("\\<.*?\\>", ""));
 					}
 
 					fw.write("\n");
