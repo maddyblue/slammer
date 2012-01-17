@@ -141,6 +141,8 @@ class ParametersPanel extends JPanel implements ActionListener
 		typeDecoupled.addActionListener(this);
 		typeCoupled.setActionCommand("DeCoupled");
 		typeCoupled.addActionListener(this);
+		paramSoilModel.setActionCommand("DeCoupled");
+		paramSoilModel.addActionListener(this);
 		updateDeCoupled();
 
 		updateUnits();
@@ -538,7 +540,7 @@ class ParametersPanel extends JPanel implements ActionListener
 		paramHeight.setEditable(selected);
 		paramVs.setEditable(selected);
 		paramDamp.setEditable(selected);
-		paramRefStrain.setEditable(selected);
+		paramRefStrain.setEditable(selected && paramSoilModel.getSelectedIndex() == 1);
 		paramVr.setEditable(selected);
 		paramSoilModel.setEnabled(selected);
 	}
