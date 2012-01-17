@@ -44,7 +44,7 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 
 	String JibsonAndOthers1998Str = "This program estimates rigid-block Newmark displacement as a function of Arias shaking intensity and critical acceleration as explained in Jibson and others (1998, 2000). The estimate is made using the following regression equation:"
 	+ "<p>log <i>D<sub>n</sub></i> = 1.521 log <i>I<sub>a</sub></i> - 1.993 log <i>a<sub>c</sub></i> - 1.546"
-	+ "<p>where <i>D<sub>n</sub></i> is Newmark displacement in centimeters, <i>I<sub>a</sub></i> is Arias intensity in meters per second, and <i>a<sub>c</sub></i> is critical acceleration in g's. This equation was developed by conducting rigorous Newmark integrations on 555 single-component strong-motion records from 13 earthquakes for several discrete values of critical acceleration. The regression model has an R<sup>2</sup> value of 87% and a model standard deviation of 0.375.</p>";
+	+ "<p>where <i>D<sub>n</sub></i> is Newmark displacement in centimeters, <i>I<sub>a</sub></i> is Arias intensity in meters per second, and <i>a<sub>c</sub></i> is critical acceleration in g's. This equation was developed by conducting rigorous Newmark integrations on 555 single-component strong-motion records from 13 earthquakes for several discrete values of critical acceleration. The regression model has an R<sup>2</sup> value of 83% and a model standard deviation of 0.375.</p>";
 
 	String Jibson2007CAStr = "This program estimates rigid-block Newmark displacement as a function of critical acceleration ratio as explained in Jibson (2007). The estimate is made using the following regression equation:"
 	+ "<p>log <i>D<sub>n</sub></i> = 0.215 + log [ ( 1 - <i>a<sub>c</sub></i> / <i>a<sub>max</sub></i> ) <sup>2.341</sup> ( <i>a<sub>c</sub></i> / <i>a<sub>max</sub></i> ) <sup>-1.438</sup> ]"
@@ -64,7 +64,7 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 
 	String AmbraseysStr = "This program estimates rigid-block Newmark displacement as a function of the critical acceleration and peak ground acceleration using the following equation as explained in Ambraseys and Menu (1988):"
 	+ "<p>log <i>D<sub>n</sub></i> = 0.90 + log[ (1 - a<sub><i>c</i></sub> / a<sub><i>max</i></sub>)<sup>2.53</sup> (a<sub><i>c</i></sub> / a<sub><i>max</i></sub>)<sup>-1.09</sup> ]"
-	+ "<p>where <i>D<sub>n</sub></i> is Newmark displacement in centimeters, <i>a<sub>c</sub></i> is critical (yield) acceleration in g's, and <i>a<sub>max</sub></i> is the peak horizontal ground acceleration in g's.";
+	+ "<p>where <i>D<sub>n</sub></i> is Newmark displacement in centimeters, <i>a<sub>c</sub></i> is critical (yield) acceleration in g's, and <i>a<sub>max</sub></i> is the peak horizontal ground acceleration in g's. This model is based on analysis of 50 strong-motion records from 11 earthquakes.  The model standard deviation is 0.30.";
 
 	String SaygiliRathje2008CARPAStr = "This program estimates rigid-block Newmark displacement as a function of critical acceleration and peak ground acceleration (<i>a<sub>max</sub></i>) as explained in Saygili and Rathje (2008).  The estimate is made using the following regression equation:"
 	+ "<p>ln <i>D<sub>n</sub></i> = 5.52 - 4.43 ( <i>a<sub>c</sub></i> / <i>a<sub>max</sub></i> ) - 20.39 ( <i>a<sub>c</sub></i> / <i>a<sub>max</sub></i> )<sup>2</sup> + 42.61 ( <i>a<sub>c</sub></i> / <i>a<sub>max</sub></i> )<sup>3</sup> - 28.74 ( <i>a<sub>c</sub></i> / <i>a<sub>max</sub></i> )<sup>4</sup> + 0.72 ln <i>a<sub>max</sub></i>"
@@ -196,7 +196,7 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 
 		c.gridy = y++;
 		c.gridwidth = 1;
-		label = new JLabel("Critical (yield) acceleration (g):");
+		label = new JLabel("<html>Critical (yield) acceleration, a<sub>c</sub> or k<sub>y</sub> (g):");
 		gridbag.setConstraints(label, c);
 		panel.add(label);
 
@@ -206,7 +206,7 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 
 		c.gridx = x++;
 		c.gridy = y++;
-		label = new JLabel("Peak ground acceleration (g):");
+		label = new JLabel("Peak ground acceleration, PGA (g):");
 		gridbag.setConstraints(label, c);
 		panel.add(label);
 
@@ -216,7 +216,7 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 
 		c.gridx = x++;
 		c.gridy = y++;
-		label = new JLabel("Peak ground velocity (g):");
+		label = new JLabel("Peak ground velocity, PGV (cm/s):");
 		gridbag.setConstraints(label, c);
 		panel.add(label);
 
@@ -226,7 +226,7 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 
 		c.gridx = x++;
 		c.gridy = y++;
-		label = new JLabel("Arias intensity (m/s):");
+		label = new JLabel("<html>Arias intensity, I<sub>a</sub> (m/s):");
 		gridbag.setConstraints(label, c);
 		panel.add(label);
 
@@ -236,7 +236,7 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 
 		c.gridx = x++;
 		c.gridy = y++;
-		label = new JLabel("Magnitude:");
+		label = new JLabel("Earthquake magnitude, M:");
 		gridbag.setConstraints(label, c);
 		panel.add(label);
 
