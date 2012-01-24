@@ -14,22 +14,18 @@ class UnifiedModelPanel extends JPanel implements ActionListener
 {
 	SlammerTabbedPane parent;
 
-	JRadioButton SaygiliRathje2008CARPAPV = new JRadioButton("<html>Saygili and Rathje (2008) Critical acceleration ratio,<br/>peak acceleration, peak velocity</html>");
-	JRadioButton SaygiliRathje2009CARPAM = new JRadioButton("<html>Rathje and Saygili (2009) Critical acceleration ratio,<br/>peak acceleration, and magnitude</html>", true);
+	JRadioButton SaygiliRathje2008CARPAPV = new JRadioButton("Peak acceleration and velocity");
+	JRadioButton SaygiliRathje2009CARPAM = new JRadioButton("Peak acceleration and magnitude");
 	ButtonGroup group = new ButtonGroup();
 
 	JTextField fieldAc = new WideTextField(7);
-	JTextField fieldVthick = new WideTextField(7);
-	JTextField fieldVs = new WideTextField(7);
+	JTextField fieldTs = new WideTextField(7);
 	JTextField fieldM = new WideTextField(7);
 	JTextField fieldPGA = new WideTextField(7);
 	JTextField fieldPGV = new WideTextField(7);
-	JTextField fieldR = new WideTextField(7);
+	JTextField fieldTm = new WideTextField(7);
 
-	JTextField fieldResTs = new WideTextField(7);
-	JTextField fieldResTm = new WideTextField(7);
 	JTextField fieldResPR = new WideTextField(7);
-
 	JTextField fieldAcPGA = new WideTextField(7);
 	JTextField fieldkmaxPGA = new WideTextField(7);
 	JTextField fieldkvelmaxPGV = new WideTextField(7);
@@ -40,7 +36,7 @@ class UnifiedModelPanel extends JPanel implements ActionListener
 	JTextField fieldResCm = new WideTextField(7);
 	JTextField fieldResIn = new WideTextField(7);
 
-	Double Acd, Vthickd, Vsd, Md, PGAd, PGVd, Rd;
+	Double Acd, Tsd, Md, PGAd, PGVd, Tmd;
 
 	JEditorPane ta = new JEditorPane();
 	JScrollPane sta = new JScrollPane(ta);
@@ -48,11 +44,11 @@ class UnifiedModelPanel extends JPanel implements ActionListener
 
 	String SaygiliRathje2008CARPAPVStr = "This program estimates rigid-block Newmark displacement as a function of critical acceleration, peak ground acceleration (<i>a<sub>max</sub></i>), and peak ground velocity (<i>v<sub>max</sub></i>) as explained in Saygili and Rathje (2008).  The estimate is made using the following regression equation:"
 	+ "<p>ln <i>D<sub>n</sub></i> = -1.56 - 4.58 ( <i>a<sub>c</sub></i> / <i>a<sub>max</sub></i> ) - 20.84 ( <i>a<sub>c</sub></i> / <i>a<sub>max</sub></i> )<sup>2</sup> + 44.75 ( <i>a<sub>c</sub></i> / <i>a<sub>max</sub></i> )<sup>3</sup> - 30.50 ( <i>a<sub>c</sub></i> / <i>a<sub>max</sub></i> )<sup>4</sup> - 0.64 ln <i>a<sub>max</sub></i> + 1.55 ln <i>v<sub>max</sub></i>"
-	+ "<p>where <i>D<sub>n</sub></i> is Newmark displacement in centimeters, <i>a<sub>c</sub></i> is critical acceleration in g's, <i>a<sub>max</sub></i> is peak ground acceleration in g's, and <i>v<sub>max</sub></i> is peak ground velocity in centimeters per second. The equation was developed by conducting rigorous Newmark integrations on 2383 strong-motion records for critical acceleration values between 0.05 and 0.30 g.  The regression model has a standard deviation of 0.41 + 0.52(<i>a<sub>c</sub></i> / <i>a<sub>max</sub></i>).";
+	+ "<p>where <i>D<sub>n</sub></i> is Newmark displacement in centimeters, <i>a<sub>c</sub></i> is critical acceleration in g's, <i>a<sub>max</sub></i> is peak ground acceleration in g's, and <i>v<sub>max</sub></i> is peak ground velocity in centimeters per second. The equation was developed by conducting rigorous Newmark integrations on 2383 strong-motion records for critical acceleration values between 0.05 and 0.30 g.  The regression model has a standard deviation of 0.41 + 0.52(<i>a<sub>c</sub></i> / <i>a<sub>max</sub></i>). This model is intended to give reliable results across a full range of period ratios, including both flexible and rigid masses.";
 
 	String SaygiliRathje2009CARPAMStr = "This program estimates rigid-block Newmark displacement as a function of critical acceleration ratio, peak acceleration, and moment magnitude as explained in Rathje and Saygili (2009).  The estimate is made using the following regression equation:"
 	+ "<p>ln <i>D<sub>n</sub></i> = 4.89 - 4.85 ( <i>a<sub>c</sub></i> / <i>a<sub>max</sub></i> ) - 19.64 ( <i>a<sub>c</sub></i> / <i>a<sub>max</sub></i> )<sup>2</sup> + 42.49 ( <i>a<sub>c</sub></i> / <i>a<sub>max</sub></i> )<sup>3</sup> - 29.06 ( <i>a<sub>c</sub></i> / <i>a<sub>max</sub></i> )<sup>4</sup> + 0.72 ln <i>a<sub>max</sub></i> + 0.89 ( <b>M</b> - 6 )"
-	+ "<p>where <i>D<sub>n</sub></i> is Newmark displacement in centimeters, <i>a<sub>c</sub></i> is critical acceleration in g's, <i>a<sub>max</sub></i> is horizontal peak ground acceleration (PGA) in g's, and <b>M</b> is moment magnitude.  This equation was developed by conducting rigorous Newmark integrations on more than 2000 single-component strong-motion records for several discrete values of critical acceleration.  The standard deviation of the model is 0.95.";
+	+ "<p>where <i>D<sub>n</sub></i> is Newmark displacement in centimeters, <i>a<sub>c</sub></i> is critical acceleration in g's, <i>a<sub>max</sub></i> is horizontal peak ground acceleration (PGA) in g's, and <b>M</b> is moment magnitude.  This equation was developed by conducting rigorous Newmark integrations on more than 2000 single-component strong-motion records for several discrete values of critical acceleration.  The standard deviation of the model is 0.95. This model is intended to give reliable results across a full range of period ratios, including both flexible and rigid masses.";
 
 	public UnifiedModelPanel(SlammerTabbedPane parent) throws Exception
 	{
@@ -71,8 +67,6 @@ class UnifiedModelPanel extends JPanel implements ActionListener
 		button.setActionCommand("go");
 		button.addActionListener(this);
 
-		fieldResTs.setEditable(false);
-		fieldResTm.setEditable(false);
 		fieldResPR.setEditable(false);
 		fieldAcPGA.setEditable(false);
 		fieldkmaxPGA.setEditable(false);
@@ -114,7 +108,7 @@ class UnifiedModelPanel extends JPanel implements ActionListener
 
 		c.gridx = x++;
 		c.gridy = y++;
-		c.gridheight = 23;
+		c.gridheight = 19;
 		c.anchor = GridBagConstraints.NORTHWEST;
 		gridbag.setConstraints(sidepanel, c);
 		panel.add(sidepanel);
@@ -138,7 +132,7 @@ class UnifiedModelPanel extends JPanel implements ActionListener
 
 		c.gridy = y++;
 		c.gridwidth = 1;
-		label = new JLabel("<html>Critical (yield) acceleration, a<sub>c</sub> (g):</html>");
+		label = new JLabel("<html>Critical (yield) acceleration, a<sub>c</sub> or k<sub>y</sub> (g):");
 		gridbag.setConstraints(label, c);
 		panel.add(label);
 
@@ -148,23 +142,13 @@ class UnifiedModelPanel extends JPanel implements ActionListener
 
 		c.gridx = x++;
 		c.gridy = y++;
-		label = new JLabel("Vertical thickness, h (m):");
+		label = new JLabel("<html>Site period, T<sub>s</sub> (s):");
 		gridbag.setConstraints(label, c);
 		panel.add(label);
 
 		c.gridx = x--;
-		gridbag.setConstraints(fieldVthick, c);
-		panel.add(fieldVthick);
-
-		c.gridx = x++;
-		c.gridy = y++;
-		label = new JLabel("<html>Shear-wave velocity, V<sub>s</sub> (m/s):</html>");
-		gridbag.setConstraints(label, c);
-		panel.add(label);
-
-		c.gridx = x--;
-		gridbag.setConstraints(fieldVs, c);
-		panel.add(fieldVs);
+		gridbag.setConstraints(fieldTs, c);
+		panel.add(fieldTs);
 
 		c.gridx = x++;
 		c.gridy = y++;
@@ -198,13 +182,13 @@ class UnifiedModelPanel extends JPanel implements ActionListener
 
 		c.gridx = x++;
 		c.gridy = y++;
-		label = new JLabel("Earthquake distance, r (km):");
+		label = new JLabel("<html>Mean shaking period, T<sub>m</sub> (s):");
 		gridbag.setConstraints(label, c);
 		panel.add(label);
 
 		c.gridx = x--;
-		gridbag.setConstraints(fieldR, c);
-		panel.add(fieldR);
+		gridbag.setConstraints(fieldTm, c);
+		panel.add(fieldTm);
 
 		c.gridx = x++;
 		c.gridy = y++;
@@ -222,29 +206,7 @@ class UnifiedModelPanel extends JPanel implements ActionListener
 		c.gridy = y++;
 		c.gridwidth = 1;
 		c.insets = none;
-		label = new JLabel("<html>Site period, T<sub>s</sub> (s):</html>");
-		gridbag.setConstraints(label, c);
-		panel.add(label);
-
-		c.gridx = x--;
-		gridbag.setConstraints(fieldResTs, c);
-		panel.add(fieldResTs);
-
-		c.gridy = y++;
-		c.gridx = x++;
-		c.insets = none;
-		label = new JLabel("<html>Mean shaking period, T<sub>m</sub> (s):</html>");
-		gridbag.setConstraints(label, c);
-		panel.add(label);
-
-		c.gridx = x--;
-		gridbag.setConstraints(fieldResTm, c);
-		panel.add(fieldResTm);
-
-		c.gridy = y++;
-		c.gridx = x++;
-		c.insets = none;
-		label = new JLabel("<html>Period ratio, T<sub>s</sub>/T<sub>m</sub>:</html>");
+		label = new JLabel("<html>Period ratio, T<sub>s</sub>/T<sub>m</sub>:");
 		gridbag.setConstraints(label, c);
 		panel.add(label);
 
@@ -255,18 +217,7 @@ class UnifiedModelPanel extends JPanel implements ActionListener
 		c.gridy = y++;
 		c.gridx = x++;
 		c.insets = none;
-		label = new JLabel("<html>a<sub>c</sub> / PGA:</html>");
-		gridbag.setConstraints(label, c);
-		panel.add(label);
-
-		c.gridx = x--;
-		gridbag.setConstraints(fieldAcPGA, c);
-		panel.add(fieldAcPGA);
-
-		c.gridy = y++;
-		c.gridx = x++;
-		c.insets = none;
-		label = new JLabel("<html>k<sub>max</sub> / PGA:</html>");
+		label = new JLabel("<html>k<sub>max</sub> / PGA:");
 		gridbag.setConstraints(label, c);
 		panel.add(label);
 
@@ -277,7 +228,7 @@ class UnifiedModelPanel extends JPanel implements ActionListener
 		c.gridy = y++;
 		c.gridx = x++;
 		c.insets = none;
-		label = new JLabel("<html>K-vel<sub>max</sub> / PGV:</html>");
+		label = new JLabel("<html>k-vel<sub>max</sub> / PGV:");
 		gridbag.setConstraints(label, c);
 		panel.add(label);
 
@@ -288,7 +239,7 @@ class UnifiedModelPanel extends JPanel implements ActionListener
 		c.gridy = y++;
 		c.gridx = x++;
 		c.insets = none;
-		label = new JLabel("<html>k<sub>max</sub> (g):</html>");
+		label = new JLabel("<html>k<sub>max</sub> (g):");
 		gridbag.setConstraints(label, c);
 		panel.add(label);
 
@@ -299,7 +250,7 @@ class UnifiedModelPanel extends JPanel implements ActionListener
 		c.gridy = y++;
 		c.gridx = x++;
 		c.insets = none;
-		label = new JLabel("<html>k-vel<sub>max</sub> (cm/s):</html>");
+		label = new JLabel("<html>k-vel<sub>max</sub> (cm/s):");
 		gridbag.setConstraints(label, c);
 		panel.add(label);
 
@@ -310,7 +261,7 @@ class UnifiedModelPanel extends JPanel implements ActionListener
 		c.gridy = y++;
 		c.gridx = x++;
 		c.insets = none;
-		label = new JLabel("<html>Rigid-block displacement (cm):</html>");
+		label = new JLabel("Rigid-block displacement (cm):");
 		gridbag.setConstraints(label, c);
 		panel.add(label);
 
@@ -355,8 +306,6 @@ class UnifiedModelPanel extends JPanel implements ActionListener
 		c.fill = GridBagConstraints.BOTH;
 		gridbag.setConstraints(sta, c);
 		panel.add(sta);
-
-		ta.setText("Based on the model of Rathje and Antonakos (2011).");
 	}
 
 	public void actionPerformed(java.awt.event.ActionEvent e)
@@ -369,11 +318,8 @@ class UnifiedModelPanel extends JPanel implements ActionListener
 				Acd = (Double)Utils.checkNum(fieldAc.getText(), "critical acceleration field", null, false, null, new Double(0), true, null, false);
 				if(Acd == null) return;
 
-				Vthickd = (Double)Utils.checkNum(fieldVthick.getText(), "vertical thickness field", null, false, null, new Double(0), true, null, false);
-				if(Vthickd == null) return;
-
-				Vsd = (Double)Utils.checkNum(fieldVs.getText(), "shear-wave velocity field", null, false, null, new Double(0), true, null, false);
-				if(Vsd == null) return;
+				Tsd = (Double)Utils.checkNum(fieldTs.getText(), "site period field", null, false, null, new Double(0), true, null, false);
+				if(Tsd == null) return;
 
 				Md = (Double)Utils.checkNum(fieldM.getText(), "magnitude field", null, false, null, new Double(0), true, null, false);
 				if(Md == null) return;
@@ -389,8 +335,8 @@ class UnifiedModelPanel extends JPanel implements ActionListener
 				else
 					PGVd = new Double(0);
 
-				Rd = (Double)Utils.checkNum(fieldR.getText(), "distance field", null, false, null, new Double(0), true, null, false);
-				if(Rd == null) return;
+				Tmd = (Double)Utils.checkNum(fieldTm.getText(), "mean shaking period field", null, false, null, new Double(0), true, null, false);
+				if(Tmd == null) return;
 
 				int method = 0;
 				if(SaygiliRathje2008CARPAPV.isSelected())
@@ -403,11 +349,9 @@ class UnifiedModelPanel extends JPanel implements ActionListener
 					return;
 				}
 
-				String[] res = UnifiedModel.UnifiedModel(Acd.doubleValue(), Vthickd.doubleValue(), Vsd.doubleValue(), Md.doubleValue(), PGAd.doubleValue(), PGVd.doubleValue(), Rd.doubleValue(), method);
+				String[] res = UnifiedModel.UnifiedModel(Acd.doubleValue(), Tsd.doubleValue(), Md.doubleValue(), PGAd.doubleValue(), PGVd.doubleValue(), Tmd.doubleValue(), method);
 
 				int incr = 0;
-				fieldResTs.setText(res[incr++]);
-				fieldResTm.setText(res[incr++]);
 				fieldResPR.setText(res[incr++]);
 				fieldAcPGA.setText(res[incr++]);
 				fieldkmaxPGA.setText(res[incr++]);
@@ -421,6 +365,11 @@ class UnifiedModelPanel extends JPanel implements ActionListener
 			else if(command.equals("change"))
 			{
 				fieldPGV.setEditable(!SaygiliRathje2009CARPAM.isSelected());
+
+				if(SaygiliRathje2008CARPAPV.isSelected())
+					ta.setText(SaygiliRathje2008CARPAPVStr);
+				else if(SaygiliRathje2009CARPAM.isSelected())
+					ta.setText(SaygiliRathje2009CARPAMStr);
 			}
 		}
 		catch (Exception ex)

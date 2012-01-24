@@ -9,25 +9,16 @@ public class UnifiedModel extends Analysis
 	public final static int METHOD_2008 = 1;
 	public final static int METHOD_2009 = 2;
 
-	public static String[] UnifiedModel(final double ac, final double h, final double vs, final double m, final double pga, final double pgv, final double r, int method)
+	public static String[] UnifiedModel(final double ac, final double ts, final double m, final double pga, final double pgv, final double tm, int method)
 	{
-		String ret[] = new String[11];
+		String ret[] = new String[9];
 		int incr = 0;
 
-		double ts, tm, pr;
-
-		ts = 4.0 * h / vs;
-
-		if(m <= 7.25)
-			tm = (0.411 + 0.0837 * (m - 6.0) + 0.00208 * r);
-		else
-			tm = (0.411 + 1.25 * 0.0837 + 0.00208 * r);
+		double pr;
 
 		pr = ts / tm;
 		pr = pr > 8.0 ? 8.0 : pr;
 
-		ret[incr++] = fmtThree.format(ts);
-		ret[incr++] = fmtThree.format(tm);
 		ret[incr++] = fmtThree.format(pr);
 		ret[incr++] = fmtThree.format(ac / pga);
 
@@ -83,6 +74,10 @@ public class UnifiedModel extends Analysis
 				dflexible = Math.exp(Math.log(disp) + 2.78);
 		}
 		ret[incr++] = fmtThree.format(disp);
+
+		if(ac > pga || ac > kmax)
+			dflexible = 0;
+
 		ret[incr++] = fmtThree.format(dflexible);
 		ret[incr++] = fmtThree.format(dflexible / 2.54);
 
