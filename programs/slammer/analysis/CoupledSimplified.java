@@ -20,10 +20,10 @@ public class CoupledSimplified extends Analysis
 		final double lnky = Math.log(ky);
 		final double lnky2 = lnky * lnky;
 		final double ts15 = ts * 1.5;
-		final double lnsats15 = Math.log(sa * ts15);
+		final double lnsats15 = Math.log(sa);
 		final double lnsats15_2 = lnsats15 * lnsats15;
 
-		double dispcm = Math.pow(Math.E,
+		double dispcm = Math.exp(
 			-1.1 - 2.83 * lnky - 0.333 * lnky2 + 0.566 * lnky * lnsats15 + 3.04 * lnsats15 - 0.244 * lnsats15_2 + ts15 + 0.278 * (m - 7.0)
 		);
 
