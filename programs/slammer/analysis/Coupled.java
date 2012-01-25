@@ -153,6 +153,12 @@ public class Coupled extends DeCoupledCommon
 		gameff1 = 0.0;
 		omega = Math.PI * vs / (2.0 * height);
 
+		_kmax = mmax;
+		_vs = vs;
+		_damp = damp;
+		_dampf = dampf;
+		_omega = omega;
+
 		for(j = 0; j < npts; j++)
 		{
 			s[j] = 0;

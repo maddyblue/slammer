@@ -5,7 +5,7 @@ package slammer.analysis;
 public abstract class DeCoupledCommon extends Analysis
 {
 	// main function parameters
-	protected double uwgt, height, vs, damp, damp1, dt, scal, g, vr, vs1;
+	protected double uwgt, height, vs, damp, damp1, dt, scal, g, vr, vs1, mmax;
 	protected boolean dv2 = true, dv3;
 
 	// main function variables

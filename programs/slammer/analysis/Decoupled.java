@@ -114,6 +114,12 @@ public class Decoupled extends DeCoupledCommon
 
 		avg_acc();
 
+		_kmax = mmax;
+		_vs = vs;
+		_damp = damp;
+		_dampf = dampf;
+		_omega = omega;
+
 		// calculate decoupled displacements
 		for(j = 1; j <= npts; j++)
 		{

@@ -59,7 +59,7 @@ class ResultsPanel extends JPanel implements ActionListener
 
 		double result;
 		XYSeries graphData;
-		double mmax;
+		double _kmax, _vs, _damp, _dampf, _omega;
 
 		double scale, scaleRB;
 		double di;
@@ -125,12 +125,21 @@ class ResultsPanel extends JPanel implements ActionListener
 			{
 				a = new Decoupled();
 				result = a.Decoupled(ain, uwgt, height, vs, damp, refstrain, di, scale, g, vr, ca, dv3);
-				mmax = Math.abs(a.mmax);
+				_kmax = Math.abs(a._kmax);
+				_vs = Math.abs(a._vs);
+				_damp = Math.abs(a._damp);
+				_dampf = Math.abs(a._dampf);
+				_omega = Math.abs(a._omega);
 			}
 			else if(analysis == CP)
 			{
 				a = new Coupled();
 				result = a.Coupled(ain, uwgt, height, vs, damp, refstrain, di, scale, g, vr, ca, dv3);
+				_kmax = Math.abs(a._kmax);
+				_vs = Math.abs(a._vs);
+				_damp = Math.abs(a._damp);
+				_dampf = Math.abs(a._dampf);
+				_omega = Math.abs(a._omega);
 			}
 			else
 				a = null;
@@ -173,16 +182,27 @@ class ResultsPanel extends JPanel implements ActionListener
 	public final static int AVG = 2; // average
 	public final static int NOR = 0; // normal
 	public final static int INV = 1; // inverse
+	public final static int ORIENTATION_TYPES = 3;
 
 	// table column indicies
-	public final static int WIDTH = 3;
-	public final static int RBN = 2;
-	public final static int RBC = RBN + 1;
-	public final static int DCN = RBC + WIDTH;
-	public final static int DCC = DCN + 1;
-	public final static int CPN = DCC + WIDTH + 1; // 1 for the kmax column
-	public final static int CPC = CPN + 1;
-	public final static int LEN = CPC + WIDTH;
+	public final static int[][] tableCols = {
+	//  N RB  N   DC   N  CP  N DY LEN
+		{ 2, 3, 6,   7, 10, 11, 0, 0, 14 }, // no dynamic
+		{ 2, 3, 12, 13, 16, 17, 6, 7, 20 }  // with dynamic
+	};
+
+	public final static int N_RB = 0;
+	public final static int I_RB = 1;
+	public final static int N_DC = 2;
+	public final static int I_DC = 3;
+	public final static int N_CP = 4;
+	public final static int I_CP = 5;
+	public final static int N_DY = 6;
+	public final static int I_DY = 7;
+	public final static int LEN = 8;
+
+	public final static int NO_DYN = 0;
+	public final static int WITH_DYN = 1;
 
 	public static int NUM_CORES;
 	java.util.Vector<ResultThread> resultVec;
@@ -192,6 +212,7 @@ class ResultsPanel extends JPanel implements ActionListener
 	SlammerTabbedPane parent;
 	JTextField decimalsTF = new JTextField("1", 2);
 	JButton Analyze = new JButton("Perform analyses");
+	JCheckBox dynamicRespParams = new JCheckBox("Dynamic response parameters");
 	JButton ClearOutput = new JButton("Clear output");
 	DefaultTableModel outputTableModel = new DefaultTableModel();
 
@@ -311,30 +332,50 @@ class ResultsPanel extends JPanel implements ActionListener
 
 							paramUnit = parent.Parameters.unitMetric.isSelected();
 							final double g = paramUnit ? Analysis.Gcmss : Analysis.Ginss;
+							int dyn = dynamicRespParams.isSelected() ? WITH_DYN : NO_DYN;
 							unitDisplacement = paramUnit ? "(cm)" : "(in.)";
 
 							String h_rb = "<html><center>" + ParametersPanel.stringRB + " " + unitDisplacement + "<p>";
 							String h_dc = "<html><center>" + ParametersPanel.stringDC + " " + unitDisplacement + "<p>";
 							String h_cp = "<html><center>" + ParametersPanel.stringCP + " " + unitDisplacement + "<p>";
-							String h_km = "<html><center>K<sub>max</sub> (g)<p>";
+							String h_km = "<html><center>k<sub>max</sub> (g)<p>";
+							String h_vs = "<html><center>V<sub>s</sub> (g)<p>";
+							String h_damp = "<html><center>damp<p>";
+							String h_dampf = "<html><center>dampf<p>";
+							String h_omega = "<html><center>omega<p>";
 
-							outputTableModel.setColumnIdentifiers(new Object[] {"Earthquake", "Record", "",
-								h_rb + polarityName[NOR], h_rb + polarityName[INV], h_rb + polarityName[AVG], "",
-								h_dc + polarityName[NOR], h_dc + polarityName[INV], h_dc + polarityName[AVG], h_km, "",
-								h_cp + polarityName[NOR], h_cp + polarityName[INV], h_cp + polarityName[AVG]
-							});
+							if(dyn == NO_DYN)
+								outputTableModel.setColumnIdentifiers(new Object[] {"Earthquake", "Record", "",
+									h_rb + polarityName[NOR], h_rb + polarityName[INV], h_rb + polarityName[AVG], "",
+									h_dc + polarityName[NOR], h_dc + polarityName[INV], h_dc + polarityName[AVG], "",
+									h_cp + polarityName[NOR], h_cp + polarityName[INV], h_cp + polarityName[AVG]
+								});
+							else
+								outputTableModel.setColumnIdentifiers(new Object[] {"Earthquake", "Record", "",
+									h_rb + polarityName[NOR], h_rb + polarityName[INV], h_rb + polarityName[AVG], "",
+									h_km, h_vs, h_damp, h_dampf, h_omega, "",
+									h_dc + polarityName[NOR], h_dc + polarityName[INV], h_dc + polarityName[AVG], "",
+									h_cp + polarityName[NOR], h_cp + polarityName[INV], h_cp + polarityName[AVG]
+								});
 
 							outputTable.getTableHeader().setDefaultRenderer(new ResultsRenderer());
 
-							outputTable.getColumnModel().getColumn(RBN).setMinWidth(0);
-							outputTable.getColumnModel().getColumn(DCN).setMinWidth(0);
-							outputTable.getColumnModel().getColumn(CPN).setMinWidth(0);
-							outputTable.getColumnModel().getColumn(RBN).setPreferredWidth(5);
-							outputTable.getColumnModel().getColumn(DCN).setPreferredWidth(5);
-							outputTable.getColumnModel().getColumn(CPN).setPreferredWidth(5);
-							outputTable.getColumnModel().getColumn(RBN).setMaxWidth(5);
-							outputTable.getColumnModel().getColumn(DCN).setMaxWidth(5);
-							outputTable.getColumnModel().getColumn(CPN).setMaxWidth(5);
+							outputTable.getColumnModel().getColumn(tableCols[dyn][N_RB]).setMinWidth(0);
+							outputTable.getColumnModel().getColumn(tableCols[dyn][N_DC]).setMinWidth(0);
+							outputTable.getColumnModel().getColumn(tableCols[dyn][N_CP]).setMinWidth(0);
+							outputTable.getColumnModel().getColumn(tableCols[dyn][N_RB]).setPreferredWidth(5);
+							outputTable.getColumnModel().getColumn(tableCols[dyn][N_DC]).setPreferredWidth(5);
+							outputTable.getColumnModel().getColumn(tableCols[dyn][N_CP]).setPreferredWidth(5);
+							outputTable.getColumnModel().getColumn(tableCols[dyn][N_RB]).setMaxWidth(5);
+							outputTable.getColumnModel().getColumn(tableCols[dyn][N_DC]).setMaxWidth(5);
+							outputTable.getColumnModel().getColumn(tableCols[dyn][N_CP]).setMaxWidth(5);
+
+							if(dyn == WITH_DYN)
+							{
+								outputTable.getColumnModel().getColumn(tableCols[dyn][N_DY]).setMinWidth(0);
+								outputTable.getColumnModel().getColumn(tableCols[dyn][N_DY]).setPreferredWidth(5);
+								outputTable.getColumnModel().getColumn(tableCols[dyn][N_DY]).setMaxWidth(5);
+							}
 
 							boolean paramDualslope = parent.Parameters.dualSlope.isSelected();
 							Double d;
@@ -583,7 +624,7 @@ class ResultsPanel extends JPanel implements ActionListener
 
 							for(int i = 1; i < res.length && !pm.isCanceled(); i++)
 							{
-								row = new Object[LEN];
+								row = new Object[tableCols[dyn][LEN]];
 								eq = res[i][0].toString();
 								row_idx = i - 1;
 								record = res[i][1].toString();
@@ -673,7 +714,7 @@ class ResultsPanel extends JPanel implements ActionListener
 
 							pm.update("Calculating results...");
 							ResultThread prt;
-							int kmax_offset;
+							int i_analysis;
 
 							for(int i = 0; i < resultVec.size(); i++)
 							{
@@ -685,14 +726,13 @@ class ResultsPanel extends JPanel implements ActionListener
 								rt.graphData.setKey(rt.eq + " - " + rt.record + " - " + ParametersPanel.stringRB + ", " + polarityName[NOR]);
 								xys[rt.idx][rt.analysis][rt.orientation] = rt.graphData;
 								total[rt.analysis][rt.orientation] += rt.result;
+								i_analysis = 1 + rt.analysis * 2;
 
 								for(j = 0; j < dataVect[rt.analysis][rt.orientation].size() && ((Double)dataVect[rt.analysis][rt.orientation].get(j)).doubleValue() < rt.result; j++)
 									;
 								dataVect[rt.analysis][rt.orientation].add(j, new Double(rt.result));
 
-								kmax_offset = rt.analysis == CP ? 1 : 0;
-
-								outputTableModel.setValueAt(unitFmt.format(rt.result), rt.row, RBC + rt.analysis + WIDTH * rt.analysis + rt.orientation + kmax_offset);
+								outputTableModel.setValueAt(unitFmt.format(rt.result), rt.row, tableCols[dyn][i_analysis] + rt.orientation);
 
 								// INV is always second, so NOR was already computed: we can compute avg now
 								if(rt.orientation == INV)
@@ -706,11 +746,15 @@ class ResultsPanel extends JPanel implements ActionListener
 										;
 									dataVect[rt.analysis][AVG].add(j, new Double(avg));
 
-									outputTableModel.setValueAt(unitFmt.format(avg), rt.row, RBC + rt.analysis + WIDTH * rt.analysis + AVG + kmax_offset);
+									outputTableModel.setValueAt(unitFmt.format(avg), rt.row, tableCols[dyn][i_analysis] + AVG);
 
-									if(rt.analysis == DC)
+									if(dyn == WITH_DYN && (rt.analysis == DC || rt.analysis == CP))
 									{
-										outputTableModel.setValueAt(unitFmt.format(rt.mmax / g), rt.row, RBC + rt.analysis + WIDTH * rt.analysis + rt.orientation + 2);
+										outputTableModel.setValueAt(unitFmt.format(rt._kmax / g), rt.row, tableCols[dyn][I_DY] + 0);
+										outputTableModel.setValueAt(unitFmt.format(rt._vs / g), rt.row, tableCols[dyn][I_DY] + 1);
+										outputTableModel.setValueAt(unitFmt.format(rt._damp), rt.row, tableCols[dyn][I_DY] + 2);
+										outputTableModel.setValueAt(unitFmt.format(rt._dampf), rt.row, tableCols[dyn][I_DY] + 3);
+										outputTableModel.setValueAt(unitFmt.format(rt._omega), rt.row, tableCols[dyn][I_DY] + 4);
 									}
 								}
 							}
@@ -719,9 +763,9 @@ class ResultsPanel extends JPanel implements ActionListener
 							{
 								double mean, value, valtemp;
 								int idx;
-								Object[] rmean = new Object[LEN];
-								Object[] rmedian = new Object[LEN];
-								Object[] rsd = new Object[LEN];
+								Object[] rmean = new Object[tableCols[dyn][LEN]];
+								Object[] rmedian = new Object[tableCols[dyn][LEN]];
+								Object[] rsd = new Object[tableCols[dyn][LEN]];
 
 								rmean[1] = "Mean value";
 								rmedian[1] = "Median value";
@@ -734,13 +778,10 @@ class ResultsPanel extends JPanel implements ActionListener
 										if(dataVect[j][k] == null || dataVect[j][k].size() == 0)
 											continue;
 
-										idx = j * WIDTH + RBC + k;
-										if(idx >= DCN)
-											idx++;
-										if(idx >= (CPN - 1))
-											idx += 2;
+										idx = tableCols[dyn][1 + j * 2] + k;
 
 										mean = Double.parseDouble(unitFmt.format(total[j][k] / num));
+										System.out.println(idx + ", " + rmean.length + ", " + j + ", " + k);
 										rmean[idx] = unitFmt.format(mean);
 
 										if(num % 2 == 0)
@@ -949,7 +990,11 @@ class ResultsPanel extends JPanel implements ActionListener
 		JPanel container = new JPanel(new BorderLayout());
 		container.add(containerL, BorderLayout.WEST);
 		container.add(Analyze, BorderLayout.CENTER);
-		container.add(ClearOutput, BorderLayout.EAST);
+
+		JPanel east = new JPanel();
+		east.add(dynamicRespParams);
+		east.add(ClearOutput);
+		container.add(east, BorderLayout.EAST);
 
 		return container;
 	}
