@@ -14,8 +14,8 @@ class UnifiedModelPanel extends JPanel implements ActionListener
 {
 	SlammerTabbedPane parent;
 
-	JRadioButton SaygiliRathje2008CARPAPV = new JRadioButton("Peak acceleration and velocity");
-	JRadioButton SaygiliRathje2009CARPAM = new JRadioButton("Peak acceleration and magnitude");
+	JRadioButton UnifiedPAV = new JRadioButton("Peak acceleration and velocity");
+	JRadioButton UnifiedPAM = new JRadioButton("Peak acceleration and magnitude");
 	ButtonGroup group = new ButtonGroup();
 
 	JTextField fieldAc = new WideTextField(7);
@@ -42,25 +42,20 @@ class UnifiedModelPanel extends JPanel implements ActionListener
 	JScrollPane sta = new JScrollPane(ta);
 	JButton button = new JButton("Compute");
 
-	String SaygiliRathje2008CARPAPVStr = "This program estimates rigid-block Newmark displacement as a function of critical acceleration, peak ground acceleration (<i>a<sub>max</sub></i>), and peak ground velocity (<i>v<sub>max</sub></i>) as explained in Saygili and Rathje (2008).  The estimate is made using the following regression equation:"
-	+ "<p>ln <i>D<sub>n</sub></i> = -1.56 - 4.58 ( <i>a<sub>c</sub></i> / <i>a<sub>max</sub></i> ) - 20.84 ( <i>a<sub>c</sub></i> / <i>a<sub>max</sub></i> )<sup>2</sup> + 44.75 ( <i>a<sub>c</sub></i> / <i>a<sub>max</sub></i> )<sup>3</sup> - 30.50 ( <i>a<sub>c</sub></i> / <i>a<sub>max</sub></i> )<sup>4</sup> - 0.64 ln <i>a<sub>max</sub></i> + 1.55 ln <i>v<sub>max</sub></i>"
-	+ "<p>where <i>D<sub>n</sub></i> is Newmark displacement in centimeters, <i>a<sub>c</sub></i> is critical acceleration in g's, <i>a<sub>max</sub></i> is peak ground acceleration in g's, and <i>v<sub>max</sub></i> is peak ground velocity in centimeters per second. The equation was developed by conducting rigorous Newmark integrations on 2383 strong-motion records for critical acceleration values between 0.05 and 0.30 g.  The regression model has a standard deviation of 0.41 + 0.52(<i>a<sub>c</sub></i> / <i>a<sub>max</sub></i>). This model is intended to give reliable results across a full range of period ratios, including both flexible and rigid masses.";
+	String unifiedStr = "Based on the unified model from Rathje and Antonakos (2001).  The unified model is designed to give reliable results for a full range of period ratios representing both flexible and rigid conditions.";
 
-	String SaygiliRathje2009CARPAMStr = "This program estimates rigid-block Newmark displacement as a function of critical acceleration ratio, peak acceleration, and moment magnitude as explained in Rathje and Saygili (2009).  The estimate is made using the following regression equation:"
-	+ "<p>ln <i>D<sub>n</sub></i> = 4.89 - 4.85 ( <i>a<sub>c</sub></i> / <i>a<sub>max</sub></i> ) - 19.64 ( <i>a<sub>c</sub></i> / <i>a<sub>max</sub></i> )<sup>2</sup> + 42.49 ( <i>a<sub>c</sub></i> / <i>a<sub>max</sub></i> )<sup>3</sup> - 29.06 ( <i>a<sub>c</sub></i> / <i>a<sub>max</sub></i> )<sup>4</sup> + 0.72 ln <i>a<sub>max</sub></i> + 0.89 ( <b>M</b> - 6 )"
-	+ "<p>where <i>D<sub>n</sub></i> is Newmark displacement in centimeters, <i>a<sub>c</sub></i> is critical acceleration in g's, <i>a<sub>max</sub></i> is horizontal peak ground acceleration (PGA) in g's, and <b>M</b> is moment magnitude.  This equation was developed by conducting rigorous Newmark integrations on more than 2000 single-component strong-motion records for several discrete values of critical acceleration.  The standard deviation of the model is 0.95. This model is intended to give reliable results across a full range of period ratios, including both flexible and rigid masses.";
 
 	public UnifiedModelPanel(SlammerTabbedPane parent) throws Exception
 	{
 		this.parent = parent;
 
-		group.add(SaygiliRathje2008CARPAPV);
-		group.add(SaygiliRathje2009CARPAM);
+		group.add(UnifiedPAV);
+		group.add(UnifiedPAM);
 
-		SaygiliRathje2008CARPAPV.setActionCommand("change");
-		SaygiliRathje2008CARPAPV.addActionListener(this);
-		SaygiliRathje2009CARPAM.setActionCommand("change");
-		SaygiliRathje2009CARPAM.addActionListener(this);
+		UnifiedPAV.setActionCommand("change");
+		UnifiedPAV.addActionListener(this);
+		UnifiedPAM.setActionCommand("change");
+		UnifiedPAM.addActionListener(this);
 
 		fieldPGV.setEditable(false);
 
@@ -79,6 +74,7 @@ class UnifiedModelPanel extends JPanel implements ActionListener
 
 		ta.setEditable(false);
 		ta.setContentType("text/html");
+		ta.setText(unifiedStr);
 
 		GridBagLayout gridbag = new GridBagLayout();
 		GridBagConstraints c = new GridBagConstraints();
@@ -103,8 +99,8 @@ class UnifiedModelPanel extends JPanel implements ActionListener
 		label = new JLabel("Select analysis:");
 		label.setFont(GUIUtils.headerFont);
 		sidepanel.add(label);
-		sidepanel.add(SaygiliRathje2009CARPAM);
-		sidepanel.add(SaygiliRathje2008CARPAPV);
+		sidepanel.add(UnifiedPAM);
+		sidepanel.add(UnifiedPAV);
 
 		c.gridx = x++;
 		c.gridy = y++;
@@ -339,9 +335,9 @@ class UnifiedModelPanel extends JPanel implements ActionListener
 				if(Tmd == null) return;
 
 				int method = 0;
-				if(SaygiliRathje2008CARPAPV.isSelected())
+				if(UnifiedPAV.isSelected())
 					method = UnifiedModel.METHOD_2008;
-				else if(SaygiliRathje2009CARPAM.isSelected())
+				else if(UnifiedPAM.isSelected())
 					method = UnifiedModel.METHOD_2009;
 				else
 				{
@@ -364,12 +360,7 @@ class UnifiedModelPanel extends JPanel implements ActionListener
 			}
 			else if(command.equals("change"))
 			{
-				fieldPGV.setEditable(!SaygiliRathje2009CARPAM.isSelected());
-
-				if(SaygiliRathje2008CARPAPV.isSelected())
-					ta.setText(SaygiliRathje2008CARPAPVStr);
-				else if(SaygiliRathje2009CARPAM.isSelected())
-					ta.setText(SaygiliRathje2009CARPAMStr);
+				fieldPGV.setEditable(!UnifiedPAM.isSelected());
 			}
 		}
 		catch (Exception ex)
