@@ -14,8 +14,8 @@ class UnifiedModelPanel extends JPanel implements ActionListener
 {
 	SlammerTabbedPane parent;
 
+	JRadioButton UnifiedPAM = new JRadioButton("Peak acceleration and magnitude", true);
 	JRadioButton UnifiedPAV = new JRadioButton("Peak acceleration and velocity");
-	JRadioButton UnifiedPAM = new JRadioButton("Peak acceleration and magnitude");
 	ButtonGroup group = new ButtonGroup();
 
 	JTextField fieldAc = new WideTextField(7);
@@ -38,12 +38,11 @@ class UnifiedModelPanel extends JPanel implements ActionListener
 
 	Double Acd, Tsd, Md, PGAd, PGVd, Tmd;
 
-	JEditorPane ta = new JEditorPane();
-	JScrollPane sta = new JScrollPane(ta);
-	JButton button = new JButton("Compute");
-
 	String unifiedStr = "Based on the unified model from Rathje and Antonakos (2001).  The unified model is designed to give reliable results for a full range of period ratios representing both flexible and rigid conditions.";
 
+	JEditorPane ta = new JEditorPane("text/html", unifiedStr);
+	JScrollPane sta = new JScrollPane(ta);
+	JButton button = new JButton("Compute");
 
 	public UnifiedModelPanel(SlammerTabbedPane parent) throws Exception
 	{
@@ -73,8 +72,6 @@ class UnifiedModelPanel extends JPanel implements ActionListener
 		fieldResIn.setEditable(false);
 
 		ta.setEditable(false);
-		ta.setContentType("text/html");
-		ta.setText(unifiedStr);
 
 		GridBagLayout gridbag = new GridBagLayout();
 		GridBagConstraints c = new GridBagConstraints();
