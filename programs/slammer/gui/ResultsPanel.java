@@ -59,7 +59,7 @@ class ResultsPanel extends JPanel implements ActionListener
 
 		double result;
 		XYSeries graphData;
-		double _kmax, _vs, _damp, _dampf, _omega;
+		double _kmax, _vs, _damp, _dampf;
 
 		double scale, scaleRB;
 		double di;
@@ -129,7 +129,6 @@ class ResultsPanel extends JPanel implements ActionListener
 				_vs = Math.abs(a._vs);
 				_damp = Math.abs(a._damp);
 				_dampf = Math.abs(a._dampf);
-				_omega = Math.abs(a._omega);
 			}
 			else if(analysis == CP)
 			{
@@ -139,7 +138,6 @@ class ResultsPanel extends JPanel implements ActionListener
 				_vs = Math.abs(a._vs);
 				_damp = Math.abs(a._damp);
 				_dampf = Math.abs(a._dampf);
-				_omega = Math.abs(a._omega);
 			}
 			else
 				a = null;
@@ -188,7 +186,7 @@ class ResultsPanel extends JPanel implements ActionListener
 	public final static int[][] tableCols = {
 	//  N RB  N   DC   N  CP  N DY LEN
 		{ 2, 3, 6,   7, 10, 11, 0, 0, 14 }, // no dynamic
-		{ 2, 3, 12, 13, 16, 17, 6, 7, 20 }  // with dynamic
+		{ 2, 3, 11, 12, 15, 16, 6, 7, 19 }  // with dynamic
 	};
 
 	public final static int N_RB = 0;
@@ -342,7 +340,9 @@ class ResultsPanel extends JPanel implements ActionListener
 							String h_vs = "<html><center>V<sub>s</sub> (g)<p>";
 							String h_damp = "<html><center>damp<p>";
 							String h_dampf = "<html><center>dampf<p>";
-							String h_omega = "<html><center>omega<p>";
+
+							if(parent.Parameters.paramSoilModel.getSelectedIndex() == 1)
+								h_vs = "<html><center>EQL V<sub>s</sub> (g)<p>";
 
 							if(dyn == NO_DYN)
 								outputTableModel.setColumnIdentifiers(new Object[] {"Earthquake", "Record", "",
@@ -353,7 +353,7 @@ class ResultsPanel extends JPanel implements ActionListener
 							else
 								outputTableModel.setColumnIdentifiers(new Object[] {"Earthquake", "Record", "",
 									h_rb + polarityName[NOR], h_rb + polarityName[INV], h_rb + polarityName[AVG], "",
-									h_km, h_vs, h_damp, h_dampf, h_omega, "",
+									h_km, h_vs, h_damp, h_dampf, "",
 									h_dc + polarityName[NOR], h_dc + polarityName[INV], h_dc + polarityName[AVG], "",
 									h_cp + polarityName[NOR], h_cp + polarityName[INV], h_cp + polarityName[AVG]
 								});
@@ -536,6 +536,15 @@ class ResultsPanel extends JPanel implements ActionListener
 								}
 								else
 									vs = tempd.doubleValue();
+
+								tempd = (Double)Utils.checkNum(parent.Parameters.paramVr.getText(), ParametersPanel.stringVr + " field", null, false, null, null, false, null, false);
+								if(tempd == null)
+								{
+									parent.selectParameters();
+									return null;
+								}
+								else
+									vr = tempd.doubleValue();
 
 								tempd = (Double)Utils.checkNum(parent.Parameters.paramDamp.getText(), ParametersPanel.stringDamp + " field", null, false, null, null, false, null, false);
 								if(tempd == null)
@@ -751,10 +760,9 @@ class ResultsPanel extends JPanel implements ActionListener
 									if(dyn == WITH_DYN && (rt.analysis == DC || rt.analysis == CP))
 									{
 										outputTableModel.setValueAt(unitFmt.format(rt._kmax / g), rt.row, tableCols[dyn][I_DY] + 0);
-										outputTableModel.setValueAt(unitFmt.format(rt._vs / g), rt.row, tableCols[dyn][I_DY] + 1);
+										outputTableModel.setValueAt(unitFmt.format(rt._vs), rt.row, tableCols[dyn][I_DY] + 1);
 										outputTableModel.setValueAt(unitFmt.format(rt._damp), rt.row, tableCols[dyn][I_DY] + 2);
 										outputTableModel.setValueAt(unitFmt.format(rt._dampf), rt.row, tableCols[dyn][I_DY] + 3);
-										outputTableModel.setValueAt(unitFmt.format(rt._omega), rt.row, tableCols[dyn][I_DY] + 4);
 									}
 								}
 							}
@@ -781,7 +789,6 @@ class ResultsPanel extends JPanel implements ActionListener
 										idx = tableCols[dyn][1 + j * 2] + k;
 
 										mean = Double.parseDouble(unitFmt.format(total[j][k] / num));
-										System.out.println(idx + ", " + rmean.length + ", " + j + ", " + k);
 										rmean[idx] = unitFmt.format(mean);
 
 										if(num % 2 == 0)
