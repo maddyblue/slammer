@@ -337,12 +337,13 @@ class ResultsPanel extends JPanel implements ActionListener
 							String h_dc = "<html><center>" + ParametersPanel.stringDC + " " + unitDisplacement + "<p>";
 							String h_cp = "<html><center>" + ParametersPanel.stringCP + " " + unitDisplacement + "<p>";
 							String h_km = "<html><center>k<sub>max</sub> (g)<p>";
-							String h_vs = "<html><center>V<sub>s</sub> (g)<p>";
 							String h_damp = "<html><center>damp<p>";
 							String h_dampf = "<html><center>dampf<p>";
 
+							String h_vs = "<html><center>";
 							if(parent.Parameters.paramSoilModel.getSelectedIndex() == 1)
-								h_vs = "<html><center>EQL V<sub>s</sub> (g)<p>";
+								h_vs += "EQL ";
+							h_vs += "V<sub>s</sub> (m/s)<p>";
 
 							if(dyn == NO_DYN)
 								outputTableModel.setColumnIdentifiers(new Object[] {"Earthquake", "Record", "",
@@ -760,7 +761,7 @@ class ResultsPanel extends JPanel implements ActionListener
 									if(dyn == WITH_DYN && (rt.analysis == DC || rt.analysis == CP))
 									{
 										outputTableModel.setValueAt(unitFmt.format(rt._kmax / g), rt.row, tableCols[dyn][I_DY] + 0);
-										outputTableModel.setValueAt(unitFmt.format(rt._vs), rt.row, tableCols[dyn][I_DY] + 1);
+										outputTableModel.setValueAt(unitFmt.format(rt._vs  / Analysis.MtoCM), rt.row, tableCols[dyn][I_DY] + 1);
 										outputTableModel.setValueAt(unitFmt.format(rt._damp), rt.row, tableCols[dyn][I_DY] + 2);
 										outputTableModel.setValueAt(unitFmt.format(rt._dampf), rt.row, tableCols[dyn][I_DY] + 3);
 									}
