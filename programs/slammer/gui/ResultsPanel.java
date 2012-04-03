@@ -667,7 +667,7 @@ class ResultsPanel extends JPanel implements ActionListener
 								if(parent.Parameters.scalePGA.isSelected())
 								{
 									scale = paramScale / Double.parseDouble(res[i][4].toString());
-									iscale = -scale;
+									iscale = -1.0 * scale;
 								}
 
 								ain = dat.getAsArray();
