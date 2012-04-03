@@ -59,7 +59,7 @@ class ResultsPanel extends JPanel implements ActionListener
 
 		double result;
 		XYSeries graphData;
-		double _kmax, _vs, _damp, _dampf;
+		double _kmax, _vs, _damp;
 
 		double scale, scaleRB;
 		double di;
@@ -128,7 +128,6 @@ class ResultsPanel extends JPanel implements ActionListener
 				_kmax = Math.abs(a._kmax);
 				_vs = Math.abs(a._vs);
 				_damp = Math.abs(a._damp);
-				_dampf = Math.abs(a._dampf);
 			}
 			else if(analysis == CP)
 			{
@@ -137,7 +136,6 @@ class ResultsPanel extends JPanel implements ActionListener
 				_kmax = Math.abs(a._kmax);
 				_vs = Math.abs(a._vs);
 				_damp = Math.abs(a._damp);
-				_dampf = Math.abs(a._dampf);
 			}
 			else
 				a = null;
@@ -184,9 +182,9 @@ class ResultsPanel extends JPanel implements ActionListener
 
 	// table column indicies
 	public final static int[][] tableCols = {
-	//  N RB  N   DC   N  CP  N DY LEN
-		{ 2, 3, 6,   7, 10, 11, 0, 0, 14 }, // no dynamic
-		{ 2, 3, 11, 12, 15, 16, 6, 7, 19 }  // with dynamic
+	//  N RB  N DC   N  CP  N   DY LEN
+		{ 2, 3, 6, 7, 10, 11, 0,   0, 14 }, // no dynamic
+		{ 2, 3, 6, 7, 10, 11, 14, 15, 18 }, // with dynamic
 	};
 
 	public final static int N_RB = 0;
@@ -210,7 +208,7 @@ class ResultsPanel extends JPanel implements ActionListener
 	SlammerTabbedPane parent;
 	JTextField decimalsTF = new JTextField("1", 2);
 	JButton Analyze = new JButton("Perform analyses");
-	JCheckBox dynamicRespParams = new JCheckBox("Dynamic response parameters");
+	JCheckBox dynamicRespParams = new JCheckBox("Display dynamic response parameters");
 	JButton ClearOutput = new JButton("Clear output");
 	DefaultTableModel outputTableModel = new DefaultTableModel();
 
@@ -338,7 +336,6 @@ class ResultsPanel extends JPanel implements ActionListener
 							String h_cp = "<html><center>" + ParametersPanel.stringCP + " " + unitDisplacement + "<p>";
 							String h_km = "<html><center>k<sub>max</sub> (g)<p>";
 							String h_damp = "<html><center>damp<p>";
-							String h_dampf = "<html><center>dampf<p>";
 
 							String h_vs = "<html><center>";
 							if(parent.Parameters.paramSoilModel.getSelectedIndex() == 1)
@@ -354,9 +351,9 @@ class ResultsPanel extends JPanel implements ActionListener
 							else
 								outputTableModel.setColumnIdentifiers(new Object[] {"Earthquake", "Record", "",
 									h_rb + polarityName[NOR], h_rb + polarityName[INV], h_rb + polarityName[AVG], "",
-									h_km, h_vs, h_damp, h_dampf, "",
 									h_dc + polarityName[NOR], h_dc + polarityName[INV], h_dc + polarityName[AVG], "",
-									h_cp + polarityName[NOR], h_cp + polarityName[INV], h_cp + polarityName[AVG]
+									h_cp + polarityName[NOR], h_cp + polarityName[INV], h_cp + polarityName[AVG], "",
+									h_km, h_vs, h_damp
 								});
 
 							outputTable.getTableHeader().setDefaultRenderer(new ResultsRenderer());
@@ -763,7 +760,6 @@ class ResultsPanel extends JPanel implements ActionListener
 										outputTableModel.setValueAt(unitFmt.format(rt._kmax / g), rt.row, tableCols[dyn][I_DY] + 0);
 										outputTableModel.setValueAt(unitFmt.format(rt._vs  / Analysis.MtoCM), rt.row, tableCols[dyn][I_DY] + 1);
 										outputTableModel.setValueAt(unitFmt.format(rt._damp), rt.row, tableCols[dyn][I_DY] + 2);
-										outputTableModel.setValueAt(unitFmt.format(rt._dampf), rt.row, tableCols[dyn][I_DY] + 3);
 									}
 								}
 							}
