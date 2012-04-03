@@ -38,7 +38,7 @@ class UnifiedModelPanel extends JPanel implements ActionListener
 
 	Double Acd, Tsd, Md, PGAd, PGVd, Tmd;
 
-	String unifiedStr = "Based on the unified model from Rathje and Antonakos (2001).  The unified model is designed to give reliable results for a full range of period ratios representing both flexible and rigid conditions.";
+	String unifiedStr = "Based on the unified model from Rathje and Antonakos (2011).  The unified model is designed to give reliable results for a full range of period ratios representing both flexible and rigid conditions.";
 
 	JEditorPane ta = new JEditorPane("text/html", unifiedStr);
 	JScrollPane sta = new JScrollPane(ta);
@@ -118,7 +118,7 @@ class UnifiedModelPanel extends JPanel implements ActionListener
 		c.gridx = x++;
 		c.gridy = y++;
 		c.fill = GridBagConstraints.NONE;
-		label = new JLabel("Input parameters:");
+		label = new JLabel("Input parameters (Rathje and Antonakos, 2011):");
 		label.setFont(GUIUtils.headerFont);
 		gridbag.setConstraints(label, c);
 		panel.add(label);

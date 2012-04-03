@@ -49,13 +49,15 @@ class ProbFailPanel extends JPanel implements ActionListener
 
 		c.gridx = x++;
 		c.gridy = y++;
+		c.gridwidth = 2;
 		c.anchor = GridBagConstraints.NORTHWEST;
-		label = new JLabel("Input parameter:");
+		label = new JLabel("Input parameter (Jibson and others, 1998, 2000):");
 		label.setFont(GUIUtils.headerFont);
 		gridbag.setConstraints(label, c);
 		add(label);
 
 		c.gridy = y++;
+		c.gridwidth = 1;
 		label = new JLabel("Newmark displacement (cm):");
 		gridbag.setConstraints(label, c);
 		add(label);

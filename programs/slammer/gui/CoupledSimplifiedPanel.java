@@ -71,7 +71,7 @@ class CoupledSimplifiedPanel extends JPanel implements ActionListener
 		c.gridy = y++;
 		c.gridwidth = 2;
 		c.anchor = GridBagConstraints.NORTHWEST;
-		label = new JLabel("Input parameters:");
+		label = new JLabel("Input parameters (Bray and Travasarou, 2007):");
 		label.setFont(GUIUtils.headerFont);
 		gridbag.setConstraints(label, c);
 		panel.add(label);
