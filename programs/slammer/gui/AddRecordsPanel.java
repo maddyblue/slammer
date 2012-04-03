@@ -119,13 +119,13 @@ class AddRecordsPanel extends JPanel implements ActionListener
 					epidist = Utils.nullify(m.getValueAt(i, incr++).toString());
 					focdist = Utils.nullify(m.getValueAt(i, incr++).toString());
 					rupdist = Utils.nullify(m.getValueAt(i, incr++).toString());
-					vs30 = Utils.nullify(m.getValueAt(i, incr++).toString());
 					focmech = m.getValueAt(i, incr++).toString();
 					loc = Utils.addQuote(m.getValueAt(i, incr++).toString());
 					owner = Utils.addQuote(m.getValueAt(i, incr++).toString());
+					vs30 = Utils.nullify(m.getValueAt(i, incr++).toString());
+					siteclass = m.getValueAt(i, incr++).toString();
 					lat = Utils.nullify(m.getValueAt(i, incr++).toString());
 					lng = Utils.nullify(m.getValueAt(i, incr++).toString());
-					siteclass = m.getValueAt(i, incr++).toString();
 
 					prog.setString(file);
 					prog.setValue(i);
