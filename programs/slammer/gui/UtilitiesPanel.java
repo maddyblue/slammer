@@ -230,7 +230,7 @@ class UtilitiesPanel extends JPanel implements ActionListener
 		panel = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
 		panel.add(new JLabel("Delete the first "));
 		panel.add(skip);
-		panel.add(new JLabel(" lines of the source file (use this to skip header data)"));
+		panel.add(new JLabel(" lines of the source file (use this to delete header data)"));
 		gridbag.setConstraints(panel, c);
 		add(panel);
 
