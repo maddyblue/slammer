@@ -42,7 +42,7 @@ public interface SlammerTableInterface
 		{ "Digitization interval",              "s",    "Digitization interval", "DIGI_INT",  "DIGI_INT",  FALSE, FALSE, NONEO,    RECORDO,  IMBOTHO, "Digitization interval" },
 		{ "Moment magnitude",                   "",     "Magnitude",             "MOM_MAG",   "MAG_SRCH",  TRUE,  TRUE,  RECORDO,  RECORDO,  IMBOTHO, "Moment magnitude"      },
 		{ "Arias intensity",                    "m/s",  "Arias intensity",       "ARIAS",     "ARIAS",     TRUE,  TRUE,  RECORDO,  RECORDO,  NONEO,   "Arias intensity"       },
-		{ "Duration<sub>5-95%</sub>",           "s",    "Duration",              "DOBRY",     "DOBRY",     TRUE,  TRUE,  RECORDO,  RECORDO,  NONEO,   "Duration 5-95%"        },
+		{ "Duration<sub>5-95%</sub>",           "s",    "Duration (5-95%)",              "DOBRY",     "DOBRY",     TRUE,  TRUE,  RECORDO,  RECORDO,  NONEO,   "Duration 5-95%"        },
 		{ "Peak acceleration",                  "g",    "PGA",                   "PGA",       "PGA",       TRUE,  TRUE,  RECORDO,  RECORDO,  NONEO,   "Peak acceleration"     },
 		{ "Peak velocity",                      "cm/s", "PGV",                   "PGV",       "PGV",       TRUE,  TRUE,  RECORDO,  RECORDO,  NONEO,   "Peak velocity"         },
 		{ "Mean period",                        "s",    "Mean period",           "MEAN_PER",  "MEAN_PER",  TRUE,  TRUE,  RECORDO,  RECORDO,  NONEO,   "Mean period"           },
