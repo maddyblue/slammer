@@ -84,7 +84,7 @@ class UnifiedModelPanel extends JPanel implements ActionListener
 			BorderFactory.createMatteBorder(0, 0, 0, 1, Color.BLACK)
 		);
 
-		JPanel panel = this;
+		JPanel panel = new JPanel();
 		panel.setLayout(gridbag);
 
 		int x = 0;
@@ -290,15 +290,15 @@ class UnifiedModelPanel extends JPanel implements ActionListener
 		gridbag.setConstraints(fieldResIn, c);
 		panel.add(fieldResIn);
 
-		c.gridx = 0;
-		c.gridy = y;
-		c.insets = none;
-		c.gridwidth = 4;
+		c.gridx = x + 2;
 		c.weightx = 1;
-		c.weighty = 1;
-		c.fill = GridBagConstraints.BOTH;
-		gridbag.setConstraints(sta, c);
-		panel.add(sta);
+		label = new JLabel("");
+		gridbag.setConstraints(label, c);
+		panel.add(label);
+
+		setLayout(new BorderLayout());
+		add(panel, BorderLayout.NORTH);
+		add(sta, BorderLayout.CENTER);
 	}
 
 	public void actionPerformed(java.awt.event.ActionEvent e)

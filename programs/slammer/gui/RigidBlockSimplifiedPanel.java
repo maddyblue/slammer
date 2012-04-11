@@ -146,7 +146,7 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 			BorderFactory.createMatteBorder(0, 0, 0, 1, Color.BLACK)
 		);
 
-		JPanel panel = this;
+		JPanel panel = new JPanel();
 		panel.setLayout(gridbag);
 
 		int x = 0;
@@ -278,15 +278,15 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 		gridbag.setConstraints(fieldResIn, c);
 		panel.add(fieldResIn);
 
-		c.gridx = 0;
-		c.gridy = 11;
-		c.insets = none;
-		c.gridwidth = 4;
+		c.gridx = x + 1;
 		c.weightx = 1;
-		c.weighty = 1;
-		c.fill = GridBagConstraints.BOTH;
-		gridbag.setConstraints(sta, c);
-		panel.add(sta);
+		label = new JLabel("");
+		gridbag.setConstraints(label, c);
+		panel.add(label);
+
+		setLayout(new BorderLayout());
+		add(panel, BorderLayout.NORTH);
+		add(sta, BorderLayout.CENTER);
 	}
 
 	public void actionPerformed(java.awt.event.ActionEvent e)
