@@ -500,6 +500,8 @@ class UtilitiesPanel extends JPanel implements ActionListener
 
 					if(dest == null)
 						d = source;
+					else if(!dest.exists() || dest.isFile())
+						d = dest;
 					else
 					{
 						d = map.get(source.getParentFile());
