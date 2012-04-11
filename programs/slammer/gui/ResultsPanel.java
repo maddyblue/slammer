@@ -686,20 +686,20 @@ class ResultsPanel extends JPanel implements ActionListener
 								if(paramDecoupled)
 								{
 									// [i]scale is divided by Gcmss because the algorithm expects input data in Gs, but our input files are in cmss. this has nothing to do with, and is not affected by, the unit base being used (english or metric).
-									rt = new ResultThread(eq, record, row_idx, rowcount, DC, NOR, ain, uwgt, height, vs, damp, refstrain, di, scale / Analysis.Gcmss, g, vr, ca, dv3, pm);
+									rt = new ResultThread(eq, record, row_idx, rowcount, DC, NOR, ain, uwgt, height, vs, damp, refstrain, di, iscale / Analysis.Gcmss, g, vr, ca, dv3, pm);
 									pool.execute(rt);
 									resultVec.add(rt);
-									rt = new ResultThread(eq, record, row_idx, rowcount, DC, INV, ain, uwgt, height, vs, damp, refstrain, di, iscale / Analysis.Gcmss, g, vr, ca, dv3, pm);
+									rt = new ResultThread(eq, record, row_idx, rowcount, DC, INV, ain, uwgt, height, vs, damp, refstrain, di, scale / Analysis.Gcmss, g, vr, ca, dv3, pm);
 									pool.execute(rt);
 									resultVec.add(rt);
 								}
 								if(paramCoupled)
 								{
 									// [i]scale is divided by Gcmss because the algorithm expects input data in Gs, but our input files are in cmss. this has nothing to do with, and is not affected by, the unit base being used (english or metric).
-									rt = new ResultThread(eq, record, row_idx, rowcount, CP, NOR, ain, uwgt, height, vs, damp, refstrain, di, scale / Analysis.Gcmss, g, vr, ca, dv3, pm);
+									rt = new ResultThread(eq, record, row_idx, rowcount, CP, NOR, ain, uwgt, height, vs, damp, refstrain, di, iscale / Analysis.Gcmss, g, vr, ca, dv3, pm);
 									pool.execute(rt);
 									resultVec.add(rt);
-									rt = new ResultThread(eq, record, row_idx, rowcount, CP, INV, ain, uwgt, height, vs, damp, refstrain, di, iscale / Analysis.Gcmss, g, vr, ca, dv3, pm);
+									rt = new ResultThread(eq, record, row_idx, rowcount, CP, INV, ain, uwgt, height, vs, damp, refstrain, di, scale / Analysis.Gcmss, g, vr, ca, dv3, pm);
 									pool.execute(rt);
 									resultVec.add(rt);
 								}
