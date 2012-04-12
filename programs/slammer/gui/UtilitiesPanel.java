@@ -366,6 +366,10 @@ class UtilitiesPanel extends JPanel implements ActionListener
 					GUIUtils.popupError("Destination must be a directory.");
 					return;
 				}
+				else if(dest != null && !dest.exists() && sources.length > 1)
+				{
+					dest.mkdirs();
+				}
 
 				temp = skip.getText();
 				int skipLines;
