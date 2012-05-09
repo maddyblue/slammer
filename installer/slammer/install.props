@@ -15,8 +15,8 @@ ostask.unix-script.label=Install shortcut in:
 comp.count=6
 
 comp.0.name=Slammer program (check only on initial install)
-comp.0.disk-size=5
-comp.0.real-size=5402
+comp.0.disk-size=6
+comp.0.real-size=5476
 comp.0.fileset=program-slammer
 
 comp.1.name=California records
@@ -49,5 +49,5 @@ comp.4.sqllen=165
 
 comp.5.name=Source code
 comp.5.disk-size=23
-comp.5.real-size=13786
+comp.5.real-size=13792
 comp.5.fileset=program-source

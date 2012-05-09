@@ -60,16 +60,15 @@ programs/slammer/analysis/Coupled.java
 programs/slammer/analysis/CoupledSimplified.java
 programs/slammer/analysis/DeCoupledCommon.java
 programs/slammer/analysis/Decoupled.java
-programs/slammer/analysis/DecoupledSimplified.java
 programs/slammer/analysis/ImportRecords.java
 programs/slammer/analysis/RigidBlock.java
 programs/slammer/analysis/RigidBlockSimplified.java
+programs/slammer/analysis/UnifiedModel.java
 programs/slammer/analysis/Utilities.java
 programs/slammer/gui/AddRecordsPanel.java
 programs/slammer/gui/AddRecordsTable.java
 programs/slammer/gui/AddRecordsTableModel.java
 programs/slammer/gui/CoupledSimplifiedPanel.java
-programs/slammer/gui/DecoupledSimplifiedPanel.java
 programs/slammer/gui/GUIUtils.java
 programs/slammer/gui/GettingStartedPanel.java
 programs/slammer/gui/GroupFrame.java
@@ -86,6 +85,7 @@ programs/slammer/gui/SlammerTable.java
 programs/slammer/gui/SlammerTableInterface.java
 programs/slammer/gui/SlammerTableModel.java
 programs/slammer/gui/SwingWorker.java
+programs/slammer/gui/UnifiedModelPanel.java
 programs/slammer/gui/UtilitiesPanel.java
 programs/slammer/gui/WideTextField.java
 programs/slammer/images/Anchorage.jpg
@@ -1372,6 +1372,7 @@ org/apache/derby/impl/sql/execute/rts/RealMaterializedResultSetStatistics.class
 org/apache/derby/impl/sql/execute/rts/RealNestedLoopJoinStatistics.class
 org/apache/derby/impl/sql/execute/rts/RealNestedLoopLeftOuterJoinStatistics.class
 org/apache/derby/impl/sql/execute/rts/RealNoPutResultSetStatistics.class
+org/apache/derby/impl/sql/execute/rts/RealNoRowsResultSetStatistics (1).class
 org/apache/derby/impl/sql/execute/rts/RealNoRowsResultSetStatistics.class
 org/apache/derby/impl/sql/execute/rts/RealNormalizeResultSetStatistics.class
 org/apache/derby/impl/sql/execute/rts/RealOnceResultSetStatistics.class
