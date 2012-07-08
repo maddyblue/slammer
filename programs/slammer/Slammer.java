@@ -388,7 +388,7 @@ public class Slammer
 				UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 				JFrame frame = new JFrame("SLAMMER");
 				frame.setIconImage(new ImageIcon(
-					frame.getClass().getResource("/slammer/images/icon.jpg")).getImage());
+					frame.getClass().getResource("/slammer/images/icon.png")).getImage());
 				splash.advance();
 
 				frame.addWindowListener(new WindowAdapter() {
