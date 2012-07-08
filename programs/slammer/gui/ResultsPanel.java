@@ -220,7 +220,7 @@ class ResultsPanel extends JPanel implements ActionListener
 
 	JButton plotHistogram = new JButton("Plot histogram of displacements");
 	JButton plotDisplacement = new JButton("Plot displacements versus time");
-	JCheckBox plotDisplacementLegend = new JCheckBox("Display legend", false);
+	JCheckBox plotDisplacementLegend = new JCheckBox("Display explanation", false);
 	JTextField outputBins = new JTextField("10", 2);
 
 	JRadioButton polarityNorDisp = new JRadioButton(polarityName[NOR], true);
@@ -335,7 +335,7 @@ class ResultsPanel extends JPanel implements ActionListener
 							String h_dc = "<html><center>" + ParametersPanel.stringDC + " " + unitDisplacement + "<p>";
 							String h_cp = "<html><center>" + ParametersPanel.stringCP + " " + unitDisplacement + "<p>";
 							String h_km = "<html><center>k<sub>max</sub> (g)<p>";
-							String h_damp = "<html><center>damp<p>";
+							String h_damp = "<html><center>Damping (%)<p>";
 
 							String h_vs = "<html><center>";
 							if(parent.Parameters.paramSoilModel.getSelectedIndex() == 1)
