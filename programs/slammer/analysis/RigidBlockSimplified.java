@@ -30,7 +30,7 @@ public class RigidBlockSimplified extends Analysis
 
 	public static String Jibson2007AICA(final double arias, final double ca)
 	{
-		return fmtOne.format(Math.pow(10, 2.401 * Math.log10(arias) - 3.481 * Math.log10(ca) - 3.32));
+		return fmtOne.format(Math.pow(10, 2.401 * Math.log10(arias) - 3.481 * Math.log10(ca) - 3.23));
 	}
 
 	public static String Jibson2007AICAR(final double arias, final double ca, final double maxa)
