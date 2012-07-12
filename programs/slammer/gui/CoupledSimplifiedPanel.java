@@ -29,7 +29,7 @@ class CoupledSimplifiedPanel extends JPanel implements ActionListener
 	JEditorPane ta = new JEditorPane("text/html",
 		"<html>Procedure based on Bray and Travasarou (2007) equation (5):"
 		+ "<p>ln <i>D</i> = -1.10 - 2.83 ln ( <i>k<sub>y</sub></i> ) - 0.333 ( ln ( <i>k<sub>y</sub></i> ) )<sup>2</sup> + 0.566 ln ( <i>k<sub>y</sub></i> ) ln ( <i>S<sub>a</sub></i> ( 1.5 <i>T<sub>s</sub></i> ) ) + 3.04 ln ( <i>S<sub>a</sub></i> ( 1.5 <i>T<sub>s</sub></i> ) ) - 0.244 ( ln ( <i>S<sub>a</sub></i> ( 1.5 <i>T<sub>s</sub></i> ) ) )<sup>2</sup> + 1.50 <i>T<sub>s</sub></i> + 0.278 ( M - 7 ),"
-		+ "<p>where <i>D</i> is displacement in centimeters and other parameters are as shown above.  The probability of zero displacement is estimated based on the following equation:"
+		+ "<p>where <i>D</i> is displacement in centimeters and other parameters are as shown above.  The model has a standard deviation of 0.66.  The probability of zero displacement is estimated based on the following equation:"
 		+ "<p>P(<i>D</i> = 0) = 1 - F(-1.76 - 3.22 ln ( <i>k<sub>y</sub></i> ) - 0.484 <i>T<sub>s</sub></i> ln ( <i>k<sub>y</sub></i> ) + 3.52 ln ( <i>S<sub>a</sub></i> ( 1.5 <i>T<sub>s</sub></i> ) ) ),"
 		+ "<p>where F is the standard normal cumulative distribution function. This model is based on analysis of 688 strong-motion records from 41 earthquakes."
 	);
@@ -91,7 +91,7 @@ class CoupledSimplifiedPanel extends JPanel implements ActionListener
 		c.gridy = y++;
 		x = 0;
 		c.gridx = x++;
-		label = new JLabel("<html>Fundamental site period, T<sub>s</sub> (s):");
+		label = new JLabel("<html>Site period, T<sub>s</sub> (s):");
 		gridbag.setConstraints(label, c);
 		panel.add(label);
 
@@ -102,7 +102,7 @@ class CoupledSimplifiedPanel extends JPanel implements ActionListener
 		c.gridy = y++;
 		x = 0;
 		c.gridx = x++;
-		label = new JLabel("<html>Spectral acceleration at 1.5 * T<sub>s</sub> (g):");
+		label = new JLabel("<html>Spectral acceleration at 1.5 * T<sub>s</sub>, S<sub>a</sub> (1.5 T<sub>s</sub>) (g):");
 		gridbag.setConstraints(label, c);
 		panel.add(label);
 
