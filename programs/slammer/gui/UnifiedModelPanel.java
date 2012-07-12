@@ -253,17 +253,6 @@ class UnifiedModelPanel extends JPanel implements ActionListener
 
 		c.gridy = y++;
 		c.gridx = x++;
-		c.insets = none;
-		label = new JLabel("Rigid-block displacement (cm):");
-		gridbag.setConstraints(label, c);
-		panel.add(label);
-
-		c.gridx = x--;
-		gridbag.setConstraints(fieldrbdisp, c);
-		panel.add(fieldrbdisp);
-
-		c.gridy = y++;
-		c.gridx = x++;
 		label = new JLabel("Results:");
 		label.setFont(GUIUtils.headerFont);
 		gridbag.setConstraints(label, c);
