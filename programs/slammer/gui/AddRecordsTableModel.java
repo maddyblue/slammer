@@ -8,9 +8,14 @@ import slammer.*;
 
 public class AddRecordsTableModel extends DefaultTableModel
 {
+	private int fileCol;
+
 	public AddRecordsTableModel()
 	{
 		setColumnIdentifiers(SlammerTable.getColumnList(SlammerTable.colAbbrev, SlammerTable.colImport, SlammerTable.IMTBL));
+
+		for(fileCol = 0; getColumnName(fileCol) != SlammerTable.fieldArray[SlammerTable.rowFile][SlammerTable.colAbbrev]; fileCol++)
+			;
 	}
 
 	public boolean isCellEditable(int row, int col)
@@ -36,6 +41,13 @@ public class AddRecordsTableModel extends DefaultTableModel
 
 	public void addRow(String s)
 	{
+		// check if this file is already here
+		for(int i = 0; i < getRowCount(); i++)
+		{
+			if(((String)getValueAt(i, fileCol)).equals(s))
+				return;
+		}
+
 		String sep = System.getProperty("file.separator");
 		String name, eq = "";
 		int locL, locR;
