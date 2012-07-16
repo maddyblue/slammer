@@ -139,7 +139,7 @@ class AddRecordsTable extends JPanel implements ActionListener
 			else if(command.equals("set"))
 			{
 				int col;
-				String abbrev = SlammerTable.getColValue(SlammerTable.colFieldName, SlammerTable.colAbbrev, (String)colChoose.getSelectedItem());
+				String abbrev = SlammerTable.getColValue(SlammerTable.colDispName, SlammerTable.colAbbrev, (String)colChoose.getSelectedItem());
 				String v;
 
 				switch(valueSel)
