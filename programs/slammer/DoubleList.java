@@ -119,7 +119,7 @@ public class DoubleList
 
 	public void end()
 	{
-		iter = data.listIterator(data.size() - 1);
+		iter = data.listIterator(data.size());
 	}
 
 	public Double each()
