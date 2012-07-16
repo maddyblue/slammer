@@ -135,7 +135,7 @@ class UtilitiesPanel extends JPanel implements ActionListener
 
 		c.gridx = x++;
 		c.gridy = y;
-		c.gridheight = 12;
+		c.gridheight = 13;
 		c.anchor = GridBagConstraints.NORTHWEST;
 		gridbag.setConstraints(panel, c);
 		add(panel);
