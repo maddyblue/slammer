@@ -38,7 +38,9 @@ class ProbFailPanel extends JPanel implements ActionListener
 
 		GridBagLayout gridbag = new GridBagLayout();
 		GridBagConstraints c = new GridBagConstraints();
-		setLayout(gridbag);
+
+		JPanel panel = new JPanel();
+		panel.setLayout(gridbag);
 
 		Insets top = new Insets(10, 0, 0, 0);
 		Insets none = new Insets(0, 0, 0, 0);
@@ -50,53 +52,53 @@ class ProbFailPanel extends JPanel implements ActionListener
 		c.gridx = x++;
 		c.gridy = y++;
 		c.gridwidth = 2;
-		c.anchor = GridBagConstraints.NORTHWEST;
+		c.anchor = GridBagConstraints.WEST;
 		label = new JLabel("Input parameter (Jibson and others, 1998, 2000):");
 		label.setFont(GUIUtils.headerFont);
 		gridbag.setConstraints(label, c);
-		add(label);
+		panel.add(label);
 
 		c.gridy = y++;
 		c.gridwidth = 1;
 		label = new JLabel("Newmark displacement (cm):");
 		gridbag.setConstraints(label, c);
-		add(label);
+		panel.add(label);
 
 		c.gridx = x--;
 		gridbag.setConstraints(displacement, c);
-		add(displacement);
+		panel.add(displacement);
 
 		c.insets = top;
 		c.gridx = x++;
 		c.gridy = y++;
 		gridbag.setConstraints(button, c);
-		add(button);
+		panel.add(button);
 
 		c.gridy = y++;
 		label = new JLabel("Result:");
 		label.setFont(GUIUtils.headerFont);
 		gridbag.setConstraints(label, c);
-		add(label);
+		panel.add(label);
 
 		c.insets = none;
 		c.gridy = y++;
 		label = new JLabel("Estimated probability of failure:");
 		gridbag.setConstraints(label, c);
-		add(label);
+		panel.add(label);
 
 		c.gridx = x--;
 		gridbag.setConstraints(result, c);
-		add(result);
-
-		c.gridy = y;
-		c.gridx = x;
-		c.insets = top;
+		panel.add(result);
+		
+		c.gridx = x + 2;
 		c.weightx = 1;
-		c.weighty = 1;
-		c.gridwidth = 2;
-		c.fill = GridBagConstraints.BOTH;
-		gridbag.setConstraints(sta, c);
-		add(sta);
+		label = new JLabel("");
+		gridbag.setConstraints(label, c);
+		panel.add(label);
+
+		setLayout(new BorderLayout());
+		add(panel, BorderLayout.NORTH);
+		add(sta, BorderLayout.CENTER);
 	}
 
 	public void actionPerformed(java.awt.event.ActionEvent e)
