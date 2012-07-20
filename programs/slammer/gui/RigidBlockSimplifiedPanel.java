@@ -172,7 +172,7 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 
 		c.gridx = x++;
 		c.gridy = y++;
-		c.gridheight = 11;
+		c.gridheight = 12;
 		c.anchor = GridBagConstraints.NORTHWEST;
 		gridbag.setConstraints(sidepanel, c);
 		panel.add(sidepanel);
@@ -185,10 +185,11 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 		panel.add(label);
 
 		c.gridheight = 1;
-		c.gridwidth = 2;
+		c.gridwidth = 3;
 		c.gridx = x++;
 		c.gridy = y++;
 		c.fill = GridBagConstraints.NONE;
+		c.anchor = GridBagConstraints.WEST;
 		label = new JLabel("Input parameters:");
 		label.setFont(GUIUtils.headerFont);
 		gridbag.setConstraints(label, c);
@@ -203,6 +204,13 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 		c.gridx = x--;
 		gridbag.setConstraints(fieldAc, c);
 		panel.add(fieldAc);
+
+		c.gridx = x + 2;
+		c.insets = GUIUtils.insetsLeft;
+		label = new JLabel(ParametersPanel.stringHelp);
+		gridbag.setConstraints(label, c);
+		panel.add(label);
+		c.insets = GUIUtils.insetsNone;
 
 		c.gridx = x++;
 		c.gridy = y++;
@@ -274,11 +282,12 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 		gridbag.setConstraints(label, c);
 		panel.add(label);
 
-		c.gridx = x;
+		c.gridx = x--;
 		gridbag.setConstraints(fieldResIn, c);
 		panel.add(fieldResIn);
 
-		c.gridx = x + 1;
+		c.gridx = x + 2;
+		c.gridy = y;
 		c.weightx = 1;
 		label = new JLabel("");
 		gridbag.setConstraints(label, c);

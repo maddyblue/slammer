@@ -33,6 +33,7 @@ class CoupledSimplifiedPanel extends JPanel implements ActionListener
 		+ "<p>P(<i>D</i> = 0) = 1 - F(-1.76 - 3.22 ln ( <i>k<sub>y</sub></i> ) - 0.484 <i>T<sub>s</sub></i> ln ( <i>k<sub>y</sub></i> ) + 3.52 ln ( <i>S<sub>a</sub></i> ( 1.5 <i>T<sub>s</sub></i> ) ) ),"
 		+ "<p>where F is the standard normal cumulative distribution function. This model is based on analysis of 688 strong-motion records from 41 earthquakes."
 	);
+	JScrollPane sta = new JScrollPane(ta);
 
 	Double kyd, tsd, sad, md;
 
@@ -52,8 +53,6 @@ class CoupledSimplifiedPanel extends JPanel implements ActionListener
 
 		ta.setEditable(false);
 
-		setLayout(new BorderLayout());
-
 		GridBagLayout gridbag = new GridBagLayout();
 		GridBagConstraints c = new GridBagConstraints();
 
@@ -69,8 +68,8 @@ class CoupledSimplifiedPanel extends JPanel implements ActionListener
 
 		c.gridx = x;
 		c.gridy = y++;
-		c.gridwidth = 2;
-		c.anchor = GridBagConstraints.NORTHWEST;
+		c.gridwidth = 3;
+		c.anchor = GridBagConstraints.WEST;
 		label = new JLabel("Input parameters (Bray and Travasarou, 2007):");
 		label.setFont(GUIUtils.headerFont);
 		gridbag.setConstraints(label, c);
@@ -87,6 +86,13 @@ class CoupledSimplifiedPanel extends JPanel implements ActionListener
 		c.gridx = x++;
 		gridbag.setConstraints(ky, c);
 		panel.add(ky);
+
+		c.gridx = x;
+		c.insets = GUIUtils.insetsLeft;
+		label = new JLabel(ParametersPanel.stringHelp);
+		gridbag.setConstraints(label, c);
+		panel.add(label);
+		c.insets = GUIUtils.insetsNone;
 
 		c.gridy = y++;
 		x = 0;
@@ -135,9 +141,8 @@ class CoupledSimplifiedPanel extends JPanel implements ActionListener
 		c.gridy = y++;
 		x = 0;
 		c.gridx = x;
-		c.gridwidth = 1;
 		c.fill = GridBagConstraints.NONE;
-		c.anchor = GridBagConstraints.NORTHWEST;
+		c.anchor = GridBagConstraints.WEST;
 		label = new JLabel("Results:");
 		label.setFont(GUIUtils.headerFont);
 		gridbag.setConstraints(label, c);
@@ -173,18 +178,19 @@ class CoupledSimplifiedPanel extends JPanel implements ActionListener
 		gridbag.setConstraints(label, c);
 		panel.add(label);
 
-		c.gridx = x++;
+		c.gridx = x--;
 		gridbag.setConstraints(probzd, c);
 		panel.add(probzd);
 
-		c.gridx = x;
+		c.gridx = x + 2;
 		c.weightx = 1;
 		label = new JLabel("");
 		gridbag.setConstraints(label, c);
 		panel.add(label);
 
-		add(BorderLayout.NORTH, panel);
-		add(BorderLayout.CENTER, ta);
+		setLayout(new BorderLayout());
+		add(panel, BorderLayout.NORTH);
+		add(sta, BorderLayout.CENTER);
 	}
 
 	public void actionPerformed(java.awt.event.ActionEvent e)

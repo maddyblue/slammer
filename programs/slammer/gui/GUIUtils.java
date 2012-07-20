@@ -12,6 +12,9 @@ public class GUIUtils
 	public static final Font headerFont = new Font(null, Font.BOLD, 16);
 	public static Color bg = new Color(204,204,204);
 
+	public final static Insets insetsLeft = new Insets(0, 10, 0, 0);
+	public final static Insets insetsNone = new Insets(0, 0, 0, 0);
+
 	public static void popupError(String er)
 	{
 		if(er.indexOf("\n") == -1)

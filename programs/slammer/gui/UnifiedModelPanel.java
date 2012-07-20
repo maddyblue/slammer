@@ -114,9 +114,10 @@ class UnifiedModelPanel extends JPanel implements ActionListener
 		panel.add(label);
 
 		c.gridheight = 1;
-		c.gridwidth = 2;
+		c.gridwidth = 3;
 		c.gridx = x++;
 		c.gridy = y++;
+		c.anchor = GridBagConstraints.WEST;
 		c.fill = GridBagConstraints.NONE;
 		label = new JLabel("Input parameters (Rathje and Antonakos, 2011):");
 		label.setFont(GUIUtils.headerFont);
@@ -132,6 +133,13 @@ class UnifiedModelPanel extends JPanel implements ActionListener
 		c.gridx = x--;
 		gridbag.setConstraints(fieldAc, c);
 		panel.add(fieldAc);
+
+		c.gridx = x + 2;
+		c.insets = GUIUtils.insetsLeft;
+		label = new JLabel(ParametersPanel.stringHelp);
+		gridbag.setConstraints(label, c);
+		panel.add(label);
+		c.insets = GUIUtils.insetsNone;
 
 		c.gridx = x++;
 		c.gridy = y++;

@@ -73,6 +73,8 @@ class ParametersPanel extends JPanel implements ActionListener
 	public final static String stringDC = "Decoupled";
 	public final static String stringCP = "Coupled";
 
+	public final static String stringHelp = "<html>See <i>Definition of terms</i> in the Help files for definitions of input parameters and for guidance in estimating appropriate input values.";
+
 	JButton next = new JButton("Go to Step 3: Perform analyses and view results");
 
 	public ParametersPanel(SlammerTabbedPane parent)
@@ -223,6 +225,11 @@ class ParametersPanel extends JPanel implements ActionListener
 		c.gridx = x++;
 		gridbag.setConstraints(unitEnglish, c);
 		panel.add(unitEnglish);
+
+		c.gridx = x + 1;
+		label = new JLabel(stringHelp);
+		gridbag.setConstraints(label, c);
+		panel.add(label);
 
 		x = 1;
 		c.gridx = x++;
