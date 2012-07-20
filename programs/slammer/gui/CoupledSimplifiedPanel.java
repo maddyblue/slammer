@@ -15,7 +15,6 @@ class CoupledSimplifiedPanel extends JPanel implements ActionListener
 	SlammerTabbedPane parent;
 
 	JButton go = new JButton("Compute");
-	JButton clear = new JButton("Clear fields");
 
 	JTextField ky = new WideTextField(7);
 	JTextField ts = new WideTextField(7);
@@ -43,9 +42,6 @@ class CoupledSimplifiedPanel extends JPanel implements ActionListener
 
 		go.setActionCommand("go");
 		go.addActionListener(this);
-
-		clear.setActionCommand("clear");
-		clear.addActionListener(this);
 
 		dispcm.setEditable(false);
 		dispin.setEditable(false);
@@ -134,10 +130,6 @@ class CoupledSimplifiedPanel extends JPanel implements ActionListener
 		gridbag.setConstraints(go, c);
 		panel.add(go);
 
-		c.anchor = GridBagConstraints.SOUTHEAST;
-		gridbag.setConstraints(clear, c);
-		panel.add(clear);
-
 		c.gridy = y++;
 		x = 0;
 		c.gridx = x;
@@ -218,17 +210,6 @@ class CoupledSimplifiedPanel extends JPanel implements ActionListener
 				dispcm.setText(res[incr++]);
 				dispin.setText(res[incr++]);
 				probzd.setText(res[incr++]);
-			}
-			else if(command.equals("clear"))
-			{
-				ky.setText("");
-				ts.setText("");
-				sa.setText("");
-				m.setText("");
-
-				dispcm.setText("");
-				dispin.setText("");
-				probzd.setText("");
 			}
 		}
 		catch (Exception ex)
