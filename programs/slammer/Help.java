@@ -183,11 +183,6 @@ public class Help extends JFrame
 			"program/eqdata.html"));
 			category.add(book);
 
-			book = new DefaultMutableTreeNode(new BookInfo
-			("Adding Earthquake Sets From CD",
-			"program/eqsets.html"));
-			category.add(book);
-
 		category = new DefaultMutableTreeNode("Program Pages");
 		top.add(category);
 
