@@ -183,6 +183,11 @@ public class Help extends JFrame
 			"program/eqdata.html"));
 			category.add(book);
 
+			book = new DefaultMutableTreeNode(new BookInfo
+			("References",
+			"program/references.html"));
+			category.add(book);
+
 		category = new DefaultMutableTreeNode("Program Pages");
 		top.add(category);
 
@@ -232,84 +237,43 @@ public class Help extends JFrame
 		category = new DefaultMutableTreeNode("Definition of Terms");
 		top.add(category);
 
-			book = new DefaultMutableTreeNode(new BookInfo
-			("Arias Intensity",
-			"terms/ariasIntensity.html"));
-			category.add(book);
+		String[][] terms = {
+			{ "Arias intensity", "ariasIntensity" },
+			{ "Coupled analysis", "coupledAnalysis" },
+			{ "Critical acceleration", "criticalAcceleration" },
+			{ "Decoupled analysis", "decoupledAnalysis" },
+			{ "Digitization interval", "digitizationInterval" },
+			{ "Duration", "duration" },
+			{ "Dynamic analysis", "dynamicAnalysis" },
+			{ "Epicentral distance", "epicentralDistance" },
+			{ "Equivalent-linear analysis", "equivalentLinearAnalysis" },
+			{ "Focal distance", "focalDistance" },
+			{ "Focal mechanism", "focalMechanism" },
+			{ "Fundamental site period", "fundamentalSitePeriod" },
+			{ "<html>k<sub>max</sub>", "kMax" },
+			{ "Linear elastic analysis", "linearElasticAnalysis" },
+			{ "Mean shaking period", "meanShakingPeriod" },
+			{ "Newmark analysis", "newmarkAnalysis" },
+			{ "Newmark displacement", "newmarkDisplacement" },
+			{ "Peak ground acceleration", "peakGroundAcceleration" },
+			{ "Peak ground velocity", "peakGroundVelocity" },
+			{ "Period ratio", "periodRatio" },
+			{ "Reference strain", "referenceStrain" },
+			{ "Rigid-block analysis", "rigidBlockAnalysis" },
+			{ "Rupture distance", "ruptureDistance" },
+			{ "Shear-wave velocity", "shearWaveVelocity" },
+			{ "Site classification", "siteClassification" },
+			{ "Site period", "sitePeriod" },
+			{ "Spectral acceleration", "spectralAcceleration" },
+			{ "Thrust angle", "thrustAngle" },
+			{ "<html>Vs<sup>30</sup>", "vs30" },
+			{ "Yield coefficient", "yieldCoefficient" },
+		};
 
-			book = new DefaultMutableTreeNode(new BookInfo
-			("Coupled Analysis",
-			"terms/coupledAnalysis.html"));
+		for(int i = 0; i < terms.length; i++)
+		{
+			book = new DefaultMutableTreeNode(new BookInfo(terms[i][0], "help/terms.html#" + terms[i][1]));
 			category.add(book);
-
-			book = new DefaultMutableTreeNode(new BookInfo
-			("Critical Acceleration",
-			"terms/criticalAcceleration.html"));
-			category.add(book);
-
-			book = new DefaultMutableTreeNode(new BookInfo
-			("Decoupled Analysis",
-			"terms/decoupledAnalysis.html"));
-			category.add(book);
-
-			book = new DefaultMutableTreeNode(new BookInfo
-			("Digitization Interval",
-			"terms/digint.html"));
-			category.add(book);
-
-			book = new DefaultMutableTreeNode(new BookInfo
-			("Dobry Duration",
-			"terms/dobryDuration.html"));
-			category.add(book);
-
-			book = new DefaultMutableTreeNode(new BookInfo
-			("Epicentral Distance",
-			"terms/epiDist.html"));
-			category.add(book);
-
-			book = new DefaultMutableTreeNode(new BookInfo
-			("Focal Distance",
-			"terms/focDist.html"));
-			category.add(book);
-
-			book = new DefaultMutableTreeNode(new BookInfo
-			("Mean Period",
-			"terms/meanPeriod.html"));
-			category.add(book);
-
-			book = new DefaultMutableTreeNode(new BookInfo
-			("Newmark Analysis",
-			"terms/newmarkAnalysis.html"));
-			category.add(book);
-
-			book = new DefaultMutableTreeNode(new BookInfo
-			("Newmark Displacement",
-			"terms/newmarkDisplacement.html"));
-			category.add(book);
-
-			book = new DefaultMutableTreeNode(new BookInfo
-			("Peak Ground Acceleration",
-			"terms/pga.html"));
-			category.add(book);
-
-			book = new DefaultMutableTreeNode(new BookInfo
-			("Rigid-Block Analysis",
-			"terms/rigidBlockAnalysis.html"));
-			category.add(book);
-
-			book = new DefaultMutableTreeNode(new BookInfo
-			("Rupture Distance",
-			"terms/rupDist.html"));
-			category.add(book);
-
-			book = new DefaultMutableTreeNode(new BookInfo
-			("Site Period",
-			"terms/sitePeriod.html"));
-			category.add(book);
-
-			book = new DefaultMutableTreeNode(new BookInfo
-			("Thrust Angle",
-			"terms/thrustAngle.html"));
-			category.add(book);
+		}
 	}
 }

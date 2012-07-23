@@ -1,0 +1,99 @@
+<html>
+<body>
+
+<h2>Definition of Terms</h2>
+
+<p><a name="ariasIntensity"><b>Arias intensity.</b></a> Arias (1970) intensity is a quantitative measure of total shaking intensity that is useful in seismic hazard analysis and correlates well with the distribution of earthquake-induced landslides. Arias intensity is the integral over time of the square of the acceleration, expressed as</p>
+
+<p><img src="file:help/images/arias.gif" /></p>
+
+<p>where <i>I</i><sub><i>a</i></sub> is Arias intensity (in units of velocity, typically meters per second), <i>g</i> is the acceleration of Earth&rsquo;s gravity, <i>a</i>(<i>t</i>) is the ground acceleration as a function of time, and <i>T</i> is the total duration of strong shaking. An Arias intensity thus can be calculated for each directional component of a strong-motion record. Because Arias intensity is the integral of the entire record, it implicitly accounts for duration, amplitude and frequency content. Arias intensity is proportional to the RMS acceleration.</p>
+
+<p><a name="coupledAnalysis"><b>Coupled analysis.</b></a> Coupled sliding-block analysis is a modification of traditional Newmark analysis in which the potential landslide block is modeled as a flexible mass rather than a rigid block. Coupled analysis models the interaction of sliding/limited shear stresses on the dynamic response of the sliding mass. The dynamic response of the sliding mass is computed using a one-dimensional, modal analysis in the time domain (Rathje and Bray, 1999). The sliding mass is defined by its height, shear-wave velocity, and damping ratio; the shear-wave velocity below the sliding mass is also specified (this can be conservatively taken as rock). The modal analysis has a rigid base, but the effects of a visco-elastic base are modeled through additional damping that is assigned based on the V<sub>s</sub> of the base and the V<sub>s</sub> of the sliding mass (Lee, 2004). The dynamic response can be modeled as linear elastic or equivalent linear. Coupled analysis is considered the most rigorous and yields the most accurate estimates of displacement for deeper landslides in softer material.</p>
+
+<p><a name="criticalAcceleration"><b>Critical acceleration.</b></a> Also known as yield acceleration, critical acceleration is the base acceleration that must be exceeded for a landslide block to begin moving relative to its base. Thus, critical acceleration is the threshold acceleration required to initiate downslope movement. Accelerations below the critical level will cause no permanent downslope movement of the landslide block; once the critical acceleration is exceeded, the landslide will begin to move downslope. The critical acceleration can be determined by iteratively conducting pseudostatic limit-equilibrium analyses until a ground acceleration is found that yields a factor of safety of 1.0, or it can be estimated using the following equation:</p>
+
+<p><i>a</i><sub><i>c</i></sub> = (<i>FS</i> &ndash; 1)<i>g</i> sin &alpha;</p>
+
+<p>where <i>a</i><sub><i>c</i></sub> is the critical acceleration in terms of <i>g</i>, the acceleration of Earth&rsquo;s gravity, <i>FS</i> is the static factor of safety, and &alpha; is the thrust angle (the angle from the horizontal that the center of mass of the landslide block first moves). For slope-parallel sliding (infinite slope), the thrust angle is simply the slope angle.</p>
+
+<p><a name="decoupledAnalysis"><b>Decoupled analysis.</b></a> A modification of traditional Newmark analysis that does not require the potential landslide mass to behave as a rigid block but rather models it with an elastic dynamic response. Decoupled sliding-block analysis computes the dynamic response of the sliding mass without consideration of sliding and then uses the computed response in a rigid sliding-block analysis. The dynamic response of the sliding mass is computed using a one-dimensional, modal analysis in the time domain (Rathje and Bray, 1999). The sliding mass is defined by its height, shear-wave velocity, and damping ratio; the shear-wave velocity (V<sub>s</sub>) below the sliding mass is also specified (this can be conservatively taken as rock). The modal analysis has a rigid base, but the effects of a visco-elastic base are modeled through additional damping that is assigned based on the V<sub>s</sub> of the base and the V<sub>s</sub> of the sliding mass (Lee, 2004). The dynamic response can be modeled as linear elastic or equivalent linear.</p>
+
+<p>The most commonly used decoupled analysis was developed by Makdisi and Seed (1978) and estimates the effect of dynamic response on permanent slip in a two-step procedure: (1) Perform a dynamic analysis of the slope (using programs such as QUAD4M or SHAKE) assuming no failure surface; estimate acceleration time histories at several points within the slope and develop an average acceleration time history for the slope mass above the potential failure surface. (2) Use this average time history as the input in a rigid-block analysis and estimate the permanent displacement. This approach is referred to as a decoupled analysis because the computation of the dynamic response and the plastic slip are performed independently. Decoupled analysis thus does not take into account the effects of permanent block movement on ground motion.</p>
+
+<p><a name="digitizationInterval"><b>Digitization interval.</b></a> Digitization interval is the time spacing between acceleration values in a strong-motion record. Some strong-motion records contain pairs of time and acceleration values, and the time values are not evenly spaced. Such records are called time files; they can be converted to files of acceleration values at a constant digitization interval using the Redigitize program on the &ldquo;Utilities&rdquo; page.</p>
+
+<p><a name="duration"><b>Duration.</b></a> Dobry and others (1978) defined a specific measure of the shaking duration of an earthquake acceleration-time history (strong-motion record) based on Arias (1970) intensity. Dobry duration is the time required to build up the central 90 percent of the Arias (1970) intensity; thus Dobry duration is commonly abbreviated as D<sub>(5-95%)</sub>. Dobry and others (1978) proposed an empirical relationship between this measure of duration and earthquake magnitude:</p>
+
+<p>log D<sub>(5-95%)</sub> = 0.432M &ndash; 1.83</p>
+
+<p>where D<sub>(5-95%)</sub> is Dobry duration in seconds, and M is unspecified earthquake magnitude. This initial equation was based on a small number of records, however, and more complex models that use a larger database have been developed.</p>
+
+<p><a name="dynamicAnalysis"><b>Dynamic analysis.</b></a> For flexible sliding masses, decoupled and coupled sliding-block analyses are available (Rathje and Bray 1999). Decoupled sliding-block analysis computes the dynamic response of the sliding mass without consideration of sliding and then uses the computed response in a rigid sliding-block analysis. Coupled sliding-block analysis models the interaction of sliding/limited shear stresses on the dynamic response of the sliding mass. For both decoupled and coupled analyses, the dynamic response of the sliding mass is computed using a one-dimensional, modal analysis in the time domain (Rathje and Bray, 1999). The sliding mass is defined by its height, shear-wave velocity, and damping ratio; the shear-wave velocity below the sliding mass is also specified (this can be conservatively taken as rock). The modal analysis has a rigid base, but the effects of a visco-elastic base are modeled through additional damping that is assigned based on the V<sub>s</sub> of the base and the V<sub>s</sub> of the sliding mass (Lee, 2004). The dynamic response can be modeled as linear elastic or equivalent linear.</p>
+
+<p><a name="epicentralDistance"><b>Epicentral distance.</b></a> Epicentral distance is the distance from the earthquake epicenter to the recording site of a strong-motion record. The epicenter is the point on the surface of the Earth directly above the earthquake focus or hypocenter.</p>
+
+<p><a name="equivalentLinearAnalysis"><b>Equivalent-linear analysis.</b></a> Equivalent-linear analysis uses strain-compatible soil properties (V<sub>s</sub>, damping) in the dynamic analysis of the sliding mass in a manner similar to the site response program SHAKE. The strain-compatible properties are determined through iteration, in which the properties are modified based on the induced shear strain, and then the induced strains are re-computed based on the modified properties. Iterations continue until the modified properties are compatible with the induced strains. The strains used to select the soil properties are computed at mid-depth of the sliding mass. The peak strain is computed at mid-depth and then converted to an effective strain for soil property selection by multiplying by 0.65.</p>
+
+<p><a name="focalDistance"><b>Focal distance.</b></a> Focal distance is the distance from the earthquake focus or hypocenter to the recording site of a strong-motion record. The focus or hypocenter is the point beneath the surface of the Earth where the earthquake rupture initiated. The focal distance is calculated by using the epicentral distance and focal depth in the Pythagorean theorem.</p>
+
+<p><a name="focalMechanism"><b>Focal mechanism.</b></a> The focal mechanism of an earthquake refers to the geometry of slip along the fault plane and is classified into the following categories: strike-slip, normal, reverse, oblique normal, and oblique reverse.</p>
+
+<p><a name="fundamentalSitePeriod"><b>Fundamental site period.</b></a> See <b>Site period</b>.</p>
+
+<p><a name="kMax"><b>k</b><sub><b>max</b></sub><b>.</b></a> k<sub>max</sub> is the maximum value of the k-time history. The k-time history is the seismic loading for the sliding mass and represents the average acceleration within the sliding mass at each time step (Seed and Martin, 1966). k<sub>max</sub> also is proportional to the maximum shear force at the base of the sliding mass.</p>
+
+<p><a name="linearElasticAnalysis"><b>Linear elastic analysis.</b></a> Linear elastic analysis uses the input values of V<sub>s</sub> and damping in the dynamic analysis of the sliding mass.</p>
+
+<p><a name="meanShakingPeriod"><b>Mean shaking period.</b></a> Mean shaking period, T<sub>m</sub>, is a measure of the frequency content of a strong-motion record and is defined as the average period weighted by the Fourier amplitude coefficients over a frequency range of 0.25 to 20 Hz (Rathje and others, 1998; Rathje and others, 2004). T<sub>m</sub> was defined by Rathje and others (2004) as follows:</p>
+
+<ul>
+	<li>For 5.0 &le; <i>M</i><sub><i>w</i></sub> &le; 7.25:
+		<p>&nbsp;&nbsp;&nbsp;&nbsp;ln(<i>T</i><sub><i>m</i></sub>) = -1.00 + 0.18(<i>M</i><sub><i>w</i></sub> - 6) + 0.0038<i>R</i> + 0.078<i>S</i><sub><i>C</i></sub> + 0.27<i>S</i><sub><i>D</i></sub> + 0.40(1 - <i>R</i>/20)<i>FD</i></p>
+	<li>For <i>M</i><sub><i>w</i></sub> &gt; 7.25:
+		<p>&nbsp;&nbsp;&nbsp;&nbsp;ln(<i>T</i><sub><i>m</i></sub>) = -0.78 + 0.0038<i>R</i> + 0.078<i>S</i><sub><i>C</i></sub> + 0.27<i>S</i><sub><i>D</i></sub> + 0.40(1 - <i>R</i>/20)<i>FD</i></p>
+	</li>
+</ul>
+
+<p>where <i>T</i><sub><i>m</i></sub> is mean shaking period in seconds, <i>M</i><sub><i>w</i></sub> is moment magnitude, <i>R</i> is the closest distance to the fault rupture plane in kilometers, <i>S</i><sub><i>C</i></sub> and <i>S</i><sub><i>D</i></sub> are indicator variables that designate site class (<i>S</i><sub><i>C</i></sub> = <i>S</i><sub><i>D</i></sub> = 0 for site class B, <i>S</i><sub><i>C</i></sub> = 1 and <i>S</i><sub><i>D</i></sub> = 0 for site class C, <i>S</i><sub><i>C</i></sub> = 0 and <i>S</i><sub><i>D</i></sub> = 1 for site class D), and <i>FD</i> is an indicator variable that designates forward directivity conditions (<i>FD</i> = 1 for sites with <i>M</i><sub><i>w</i></sub> &ge; 6.0, <i>R</i> &le; 20 km, azimuth angle &le; 30&deg;, and rupture length ratio &ge; 0.5; <i>FD</i> = 0 otherwise or if conditions are unknown).</p>
+
+<p><a name="newmarkAnalysis"><b>Newmark analysis.</b></a> Newmark (1965) proposed a method of analyzing the dynamic performance of slopes that effectively bridges the gap between overly simplistic pseudostatic analysis and very sophisticated, but highly complex, finite-element modeling. Although Newmark introduced his method to analyze the performance of artificial embankments, Wilson and Keefer (1983) showed that using Newmark&rsquo;s method to model the dynamic behavior of landslides on natural slopes yields reasonable and useful results. Newmark analysis is commonly referred to as <i>rigid-block analysis</i> and is explained under the entry for that term.</p>
+
+<p><a name="newmarkDisplacement"><b>Newmark displacement.</b></a> Newmark displacement is the amount of coseismic inertial displacement that will result from a specified slope being shaken by a given strong-motion record as estimated using a Newmark sliding-block analysis. Such displacements are always referred to as Newmark displacements to differentiate them from actual measured field displacements. Estimated Newmark displacements might or might not correspond closely to field displacements, depending on soil properties, pore-pressure effects, landslide type and geometry, and other factors. Rather than being thought of as a measurable field displacement, Newmark displacement should be considered a performance index that helps predict how a slope will perform during earthquake shaking.</p>
+
+<p><a name="peakGroundAcceleration"><b>Peak ground acceleration.</b></a> Peak ground acceleration (MHA, PGA, or <i>a</i><sub><i>max</i></sub>) is the most widely used measure of earthquake-shaking intensity. It is the maximum absolute value of acceleration in a strong-motion record. Each bi-directional component of a three-component strong-motion record will have its own PGA. Generally PGA is assumed to refer to horizontal ground motions because vertical accelerations are not used in the analyses.</p>
+
+<p><a name="peakGroundVelocity"><b>Peak ground velocity.</b></a> Peak ground velocity (PGV) is the maximum absolute value of velocity in a strong-motion record, Each bi-directional component of a three-component strong-motion record will have its own PGV. Generally PGV is assumed to refer to horizontal ground motions because vertical accelerations are not used in the analyses.</p>
+
+<p><a name="periodRatio"><b>Period ratio.</b></a> The period ratio is the ratio of the fundamental site period, T<sub>s</sub>, to the mean period of the earthquake shaking, T<sub>m</sub>, and is designated T<sub>s</sub>/T<sub>m</sub>.</p>
+
+<p><a name="referenceStrain"><b>Reference strain.</b></a> The reference strain is used to set the nonlinear modulus reduction (G/G<sub>max</sub>) and damping-ratio curves for the soil within the sliding mass. The reference strain is the shear strain associated with G/G<sub>max</sub>=0.5. The user-specified reference strain is used in the models of Darendeli and Stokoe (2001) for modulus-reduction and damping curves.</p>
+
+<p><a name="rigidBlockAnalysis"><b>Rigid-block analysis.</b></a> Rigid-block analysis, first developed by Newmark (1965), treats a potential landslide block as a rigid mass (no internal deformation) that slides in a perfectly plastic manner on an inclined plane. Thus, the mass experiences no permanent displacement until the base acceleration exceeds the critical (yield) acceleration of the block; when the base acceleration exceeds the critical acceleration, the block begins to move downslope. Displacements are estimated using a two-stage integration procedure: (1) the parts of the acceleration-time history that lie above the critical acceleration are integrated to yield a velocity-time history; (2) the velocity-time history is then integrated to yield the cumulative displacement of the landslide block. Rigid-block analysis yields satisfactory results for relatively thin landslides in stiff or brittle material having period ratios (T<sub>s</sub>/T<sub>m</sub>) less than about 0.1. For thicker landslides in softer materials, rigid-block analysis tends to be conservative to very conservative.</p>
+
+<p><a name="ruptureDistance"><b>Rupture distance.</b></a> Rupture distance is the distance from the recording site of a strong-motion record to the closest point on the fault-rupture surface. It can only be determined if a fault-rupture surface has been defined seismologically. This distance does not always relate closely to the epicentral or focal distance but is commonly closely correlated with strong shaking and damage.</p>
+
+<p><a name="shearWaveVelocity"><b>Shear-wave velocity.</b></a> The shear-wave velocity, V<sub>s</sub>, is the velocity with which a shear wave passes through earth material. Shear-wave velocity increases in denser and more competent materials. Thus, softer soils have the lowest shear-wave velocities and harder rocks have the highest shear-wave velocities.</p>
+
+<p><a name="siteClassification"><b>Site classification.</b></a> Site classification refers to the rock or soil conditions beneath a strong-motion station, which can affect the shaking response of the site. We use Geomatrix site classifications (factor 3), defined as follows:</p>
+
+<ul>
+	<li>A&mdash;Rock. V<sub>s</sub> &gt; 600 m/s or &lt; 5 m of soil over rock.</li>
+	<li>B&mdash;Shallow (stiff) soil. Soil profile up to 20 m thick overlying rock.</li>
+	<li>C&mdash;Deep, narrow soil. Soil profile at least 20 m thick overlying rock, in a narrow canyon or valley no more than several kilometers wide.</li>
+	<li>D&mdash;Deep, broad soil. Soil profile at least 20 m thick overlying rock, in a broad valley.</li>
+	<li>E&mdash;Soft, deep soil. Deep soil profile with average V<sub>s</sub> &lt; 150 m/s.</li>
+</ul>
+
+<p><a name="sitePeriod"><b>Site period.</b></a> Site period, T<sub>s</sub>, is the fundamental period of the potential landslide mass, estimated in a 1-D analysis as 4H/V<sub>s</sub>, where H is the maximum vertical thickness of the landslide mass and V<sub>s</sub> is the shear-wave velocity of the landslide material. In a 2-D analysis of a triangular cross-section, T<sub>s</sub> is estimated as 2.6H/V<sub>s</sub>.</p>
+
+<p><a name="spectralAcceleration"><b>Spectral acceleration.</b></a> Spectral acceleration is the motion experienced by a structure, as modeled by a particle on a massless vertical rod having the same natural period of vibration as the structure. It is thus the acceleration experienced at a specific frequency or frequency range.</p>
+
+<p><a name="thrustAngle"><b>Thrust angle.</b></a> The thrust angle is the direction the center of gravity of the slide mass moves when displacement first occurs. For a planar slip surface parallel to the slope (an infinite slope), this angle is the slope angle. For simple planar block sliding, the thrust angle is the inclination of the basal shear surface. For circular rotational movement, Newmark (1965) showed that the thrust angle is the angle between the vertical and a line segment connecting the center of gravity of the slide mass and the center of the slip circle. For irregular shear surfaces, the thrust angle can be approximated visually, by estimating an &ldquo;equivalent&rdquo; circular surface, or by averaging the inclinations of line segments approximating the surface.</p>
+
+<p><a name="vs30"><b>V</b><sub><b>s</b></sub><sup><b>30</b></sup><b>.</b></a> V<sub>s</sub><sup>30</sup> is the average shear-wave velocity of earth material within 30 m of the ground surface.</p>
+
+<p><a name="yieldCoefficient"><b>Yield coefficient.</b></a> The yield coefficient is analogous to critical acceleration; when multiplied by g, it is the acceleration that will initiate downslope movement of a landslide block.</p>
+
+</body>
+</html>
