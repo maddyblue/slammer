@@ -20,7 +20,6 @@ import slammer.gui.*;
 public class Help extends JFrame
 {
 	private JEditorPane htmlPane;
-	private boolean DEBUG = false;
 	private URL helpURL;
 
 	private boolean playWithLineStyle = false;
@@ -59,7 +58,8 @@ public class Help extends JFrame
 				}
 				else
 				{
-					displayURL(helpURL);
+					NodeData n = (NodeData)nodeInfo;
+					displayURL(n.url);
 				}
 			}
 		});
@@ -122,6 +122,41 @@ public class Help extends JFrame
 		}
 	}
 
+	public class NodeData
+	{
+		public URL url;
+		public String name;
+
+		public NodeData(String n, String u)
+		{
+			name = n;
+
+			try
+			{
+				url = new URL(prefix + u);
+			}
+			catch (java.net.MalformedURLException exc)
+			{
+				System.err.println("Attempted to create a Node "
+				+ "with a bad URL: " + url);
+				url = null;
+			}
+		}
+
+		public String toString()
+		{
+			return name;
+		}
+	}
+
+	private class Node extends DefaultMutableTreeNode
+	{
+		public Node(String s, String filename)
+		{
+			super(new NodeData(s, filename));
+		}
+	}
+
 	private void initHelp()
 	{
 		String s = null;
@@ -151,11 +186,11 @@ public class Help extends JFrame
 
 	private void createNodes(DefaultMutableTreeNode top)
 	{
-		DefaultMutableTreeNode category = null;
+		Node category = null;
 		DefaultMutableTreeNode book = null;
-		DefaultMutableTreeNode section = null;
+		Node section = null;
 
-		category = new DefaultMutableTreeNode("Help Files");
+		category = new Node("General Information", "program/introduction.html");
 		top.add(category);
 
 			book = new DefaultMutableTreeNode(new BookInfo
@@ -174,21 +209,16 @@ public class Help extends JFrame
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
-			("Navigating the Program Pages",
-			"program/nav.html"));
-			category.add(book);
-
-			book = new DefaultMutableTreeNode(new BookInfo
 			("Earthquake Data",
 			"program/eqdata.html"));
 			category.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
-			("References",
-			"program/references.html"));
+			("Navigating the Program Pages",
+			"program/nav.html"));
 			category.add(book);
 
-		category = new DefaultMutableTreeNode("Program Pages");
+		category = new Node("Program Pages", "help/gettingStarted.html");
 		top.add(category);
 
 			book = new DefaultMutableTreeNode(new BookInfo
@@ -196,45 +226,66 @@ public class Help extends JFrame
 			"help/gettingStarted.html"));
 			category.add(book);
 
-			section = new DefaultMutableTreeNode("Rigorous Rigid-Block Analysis");
+			section = new Node("Rigorous Analyses", "help/rigorous.html");
 			category.add(section);
 
 				book = new DefaultMutableTreeNode(new BookInfo
-				("Rigorous Analyses",
-				"help/rigorous.html"));
-				section.add(book);
-
-				book = new DefaultMutableTreeNode(new BookInfo
-				("Step1: Select Records",
+				("Step 1: Select records",
 				"help/rigorous.html#step1"));
 				section.add(book);
 
 				book = new DefaultMutableTreeNode(new BookInfo
-				("Step2: Perform Rigid-Block Analysis",
+				("Step 2: Select analyses",
 				"help/rigorous.html#step2"));
 				section.add(book);
 
 				book = new DefaultMutableTreeNode(new BookInfo
-				("Step3: View Results",
+				("Step 3: Perform analyses and view results",
 				"help/rigorous.html#step3"));
 				section.add(book);
 
-			book = new DefaultMutableTreeNode(new BookInfo
-			("Simplified Analyses",
-			"help/simplifiedAnalyses.html"));
-			category.add(book);
+			section = new Node("Simplified Empirical Models", "help/simplifiedAnalyses.html");
+			category.add(section);
 
-			book = new DefaultMutableTreeNode(new BookInfo
-			("Record Manager",
-			"help/recordManager.html"));
-			category.add(book);
+				book = new DefaultMutableTreeNode(new BookInfo
+				("Rigid",
+				"help/simplifiedAnalyses.html#rigid"));
+				section.add(book);
+
+				book = new DefaultMutableTreeNode(new BookInfo
+				("Flexible (coupled)",
+				"help/simplifiedAnalyses.html#coupled"));
+				section.add(book);
+
+				book = new DefaultMutableTreeNode(new BookInfo
+				("Flexible/Rigid (unified)",
+				"help/simplifiedAnalyses.html#unified"));
+				section.add(book);
+
+				book = new DefaultMutableTreeNode(new BookInfo
+				("Probability of failure",
+				"help/simplifiedAnalyses.html#failure"));
+				section.add(book);
+
+			section = new Node("Manage/Add records", "help/recordManager.html");
+			category.add(section);
+
+				book = new DefaultMutableTreeNode(new BookInfo
+				("Manage records",
+				"help/recordManager.html#manage"));
+				section.add(book);
+
+				book = new DefaultMutableTreeNode(new BookInfo
+				("Add records",
+				"help/recordManager.html#add"));
+				section.add(book);
 
 			book = new DefaultMutableTreeNode(new BookInfo
 			("Utilities",
 			"help/utilities.html"));
 			category.add(book);
 
-		category = new DefaultMutableTreeNode("Definition of Terms");
+		category = new Node("Definition of Terms", "help/terms.html");
 		top.add(category);
 
 		String[][] terms = {
@@ -275,5 +326,11 @@ public class Help extends JFrame
 			book = new DefaultMutableTreeNode(new BookInfo(terms[i][0], "help/terms.html#" + terms[i][1]));
 			category.add(book);
 		}
+
+		book = new DefaultMutableTreeNode(new BookInfo
+		("References",
+		"program/references.html"));
+		top.add(book);
+
 	}
 }
