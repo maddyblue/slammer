@@ -317,7 +317,7 @@ public class Help extends JFrame
 			{ "Site period", "sitePeriod" },
 			{ "Spectral acceleration", "spectralAcceleration" },
 			{ "Thrust angle", "thrustAngle" },
-			{ "<html>Vs<sup>30</sup>", "vs30" },
+			{ "<html>V<sub>s</sub><sup>30</sup>", "vs30" },
 			{ "Yield coefficient", "yieldCoefficient" },
 		};
 
