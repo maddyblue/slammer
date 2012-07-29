@@ -25,7 +25,6 @@ function process_eq {
 
 mk_contents installer/program-slammer
 mk_contents installer/program-srm
-mk_contents installer/program-source
 
 for file in california chichi international otherus
 do

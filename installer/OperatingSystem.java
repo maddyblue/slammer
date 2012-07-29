@@ -225,7 +225,11 @@ public abstract class OperatingSystem
 	{
 		public String getInstallDirectory(String name)
 		{
-			return "C:\\Program Files\\" + name;
+			String dir = System.getenv("ProgramFiles");
+			if(!new File(dir, name).canWrite())
+				dir = System.getProperty("user.home");
+
+			return new File(dir, name).getPath();
 		}
 	}
 

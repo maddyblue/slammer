@@ -23,29 +23,20 @@ public class Install
 	public static void main(String[] args)
 	{
 		String javaVersion = System.getProperty("java.version");
-		if(javaVersion.compareTo("1.4") < 0)
+		if(javaVersion.compareTo("1.6") < 0)
 		{
 			System.err.println("You are running Java version "
 				+ javaVersion + ".");
-			System.err.println("This installer requires Java 1.4 or later.");
+			System.err.println("This installer requires Java 1.6 or later.");
 			System.exit(1);
 		}
 
 		if(args.length == 0)
 			new SwingInstall();
-		else if(args.length == 1 && args[0].equals("text"))
-			new ConsoleInstall();
-		else if(args.length >= 2 && args[0].equals("auto"))
-			new NonInteractiveInstall(args);
 		else
 		{
 			System.err.println("Usage:");
 			System.err.println("java -jar <installer JAR>");
-			System.err.println("java -jar <installer JAR> text");
-			System.err.println("java -jar <installer JAR> auto"
-				+ " <install dir> [unix-script=<dir>]");
-			System.err.println("text parameter starts installer in text-only mode.");
-			System.err.println("auto parameter starts installer in non-interactive mode.");
 		}
 	}
 

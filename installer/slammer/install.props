@@ -12,7 +12,7 @@ ostask.unix-script.label=Install shortcut in:
 # Each component must have a name, a size, and a 'fileset'. The fileset is the
 # name of a resource, relative to the root of the JAR, where the list of files
 # is stored, newline delimited
-comp.count=6
+comp.count=5
 
 comp.0.name=Slammer program (check only on initial install)
 comp.0.disk-size=6
@@ -46,8 +46,3 @@ comp.4.real-size=38139
 comp.4.fileset=eq-otherus
 comp.4.sql=eq-otherus.sql
 comp.4.sqllen=165
-
-comp.5.name=Source code
-comp.5.disk-size=23
-comp.5.real-size=13792
-comp.5.fileset=program-source
