@@ -207,10 +207,14 @@ class RigidBlockSimplifiedPanel extends JPanel implements ActionListener
 
 		c.gridx = x + 2;
 		c.insets = GUIUtils.insetsLeft;
+		c.gridheight = 5;
+		c.anchor = GridBagConstraints.NORTHWEST;
 		label = new JLabel(ParametersPanel.stringHelp);
 		gridbag.setConstraints(label, c);
 		panel.add(label);
 		c.insets = GUIUtils.insetsNone;
+		c.gridheight = 1;
+		c.anchor = GridBagConstraints.WEST;
 
 		c.gridx = x++;
 		c.gridy = y++;
