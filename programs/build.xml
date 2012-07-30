@@ -39,7 +39,7 @@
 		>
 			<fileset dir=".">
 				<include name="slammer/**/*.class"/>
-				<include name="slammer/images/*.jpg"/>
+				<include name="slammer/images/*"/>
 			</fileset>
 		</jar>
 	</target>
