@@ -3,7 +3,7 @@
 ###
 
 # Program name
-app.name=Slammer
+app.name=SLAMMER
 app.jar=slammer
 
 # OS-specific stuff
@@ -14,7 +14,7 @@ ostask.unix-script.label=Install shortcut in:
 # is stored, newline delimited
 comp.count=5
 
-comp.0.name=Slammer program (check only on initial install)
+comp.0.name=SLAMMER program (check only on initial install)
 comp.0.disk-size=6
 comp.0.real-size=5476
 comp.0.fileset=program-slammer
