@@ -39,6 +39,7 @@ public class Help extends JFrame
 		final JTree tree = new JTree(top);
 		tree.getSelectionModel().setSelectionMode
 		(TreeSelectionModel.SINGLE_TREE_SELECTION);
+		tree.setRowHeight(0);
 
 		//Listen for when the selection changes.
 		tree.addTreeSelectionListener(new TreeSelectionListener()
