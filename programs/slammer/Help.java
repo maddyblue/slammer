@@ -29,7 +29,7 @@ public class Help extends JFrame
 
 	public Help()
 	{
-		super("Slammer Help");
+		super("SLAMMER help");
 
 		//Create the nodes.
 		DefaultMutableTreeNode top = new DefaultMutableTreeNode("Help");
