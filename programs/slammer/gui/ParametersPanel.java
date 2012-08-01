@@ -227,9 +227,13 @@ class ParametersPanel extends JPanel implements ActionListener
 		panel.add(unitEnglish);
 
 		c.gridx = x + 1;
+		c.gridheight = 5;
+		c.anchor = GridBagConstraints.NORTHWEST;
 		label = new JLabel(stringHelp);
 		gridbag.setConstraints(label, c);
 		panel.add(label);
+		c.gridheight = 1;
+		c.anchor = GridBagConstraints.WEST;
 
 		x = 1;
 		c.gridx = x++;
