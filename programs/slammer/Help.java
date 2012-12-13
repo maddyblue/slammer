@@ -7,7 +7,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.tree.TreeSelectionModel;
-import java.net.URL;
+import java.net.*;
 import java.io.IOException;
 import javax.swing.JEditorPane;
 import javax.swing.JScrollPane;
@@ -20,12 +20,30 @@ import slammer.gui.*;
 public class Help extends JFrame
 {
 	private JEditorPane htmlPane;
-	private URL helpURL;
 
 	private boolean playWithLineStyle = false;
 	private String lineStyle = "Angled";
 
-	public static final String prefix = "jar:file:slammer.jar!/help/";
+	public static URL getUrl(String location)
+	{
+		ClassLoader loader = Help.class.getClassLoader();
+		String[] sp = location.split("#", 2);
+		URL url = loader.getResource("help/" + sp[0]);
+
+		if(sp.length == 2)
+		{
+			try
+			{
+			url = new URL(url, "#" + sp[1]);
+			}
+			catch(MalformedURLException ex)
+			{
+				return null;
+			}
+		}
+
+		return url;
+	}
 
 	public Help()
 	{
@@ -105,16 +123,7 @@ public class Help extends JFrame
 		public BookInfo(String book, String filename)
 		{
 			bookName = book;
-			try
-			{
-				bookURL = new URL(prefix + filename);
-			}
-			catch (java.net.MalformedURLException exc)
-			{
-				System.err.println("Attempted to create a BookInfo "
-				+ "with a bad URL: " + bookURL);
-				bookURL = null;
-			}
+			bookURL = getUrl(filename);
 		}
 
 		public String toString()
@@ -131,17 +140,7 @@ public class Help extends JFrame
 		public NodeData(String n, String u)
 		{
 			name = n;
-
-			try
-			{
-				url = new URL(prefix + u);
-			}
-			catch (java.net.MalformedURLException exc)
-			{
-				System.err.println("Attempted to create a Node "
-				+ "with a bad URL: " + url);
-				url = null;
-			}
+			url = getUrl(u);
 		}
 
 		public String toString()
@@ -160,17 +159,7 @@ public class Help extends JFrame
 
 	private void initHelp()
 	{
-		String s = null;
-		try
-		{
-			s = prefix + "program/introduction.html";
-			helpURL = new URL(s);
-			displayURL(helpURL);
-		}
-		catch (Exception e)
-		{
-			System.err.println("Couldn't create help URL: " + s);
-		}
+		displayURL(getUrl("program/introduction.html"));
 	}
 
 	private void displayURL(URL url)
