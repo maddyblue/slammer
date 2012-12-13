@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 function print_size {
 	echo -n $1 "(" `cat $1 | wc -l` "): "

@@ -67,7 +67,7 @@
 			</tarfileset>
 		</tar>
 
-		<exec executable="sh">
+		<exec executable="bash">
 			<arg line="installer/filesize.sh" />
 		</exec>
 
