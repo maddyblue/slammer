@@ -279,6 +279,7 @@ public class Help extends JFrame
 		top.add(category);
 
 		String[][] terms = {
+			{ "Abbreviations", "abbreviations" },
 			{ "Arias intensity", "ariasIntensity" },
 			{ "Coupled analysis", "coupledAnalysis" },
 			{ "Critical acceleration", "criticalAcceleration" },
