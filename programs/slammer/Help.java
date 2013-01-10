@@ -3,6 +3,7 @@
 package slammer;
 
 import javax.swing.JTree;
+import javax.swing.text.html.HTMLDocument;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.event.TreeSelectionEvent;
@@ -13,6 +14,7 @@ import javax.swing.JEditorPane;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JFrame;
+import javax.swing.UIManager;
 import java.awt.*;
 import java.awt.event.*;
 import slammer.gui.*;
@@ -20,6 +22,7 @@ import slammer.gui.*;
 public class Help extends JFrame
 {
 	private JEditorPane htmlPane;
+	private String bodyRule;
 
 	private boolean playWithLineStyle = false;
 	private String lineStyle = "Angled";
@@ -97,6 +100,9 @@ public class Help extends JFrame
 		initHelp();
 		JScrollPane htmlView = new JScrollPane(htmlPane);
 
+		Font font = UIManager.getFont("Label.font");
+		bodyRule = "body { font-family: " + font.getFamily() + "; " + "font-size: " + font.getSize() + "pt; }";
+
 		//Add the scroll panes to a split pane.
 		JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 		splitPane.setTopComponent(treeView);
@@ -167,6 +173,7 @@ public class Help extends JFrame
 		try
 		{
 			htmlPane.setPage(url);
+			((HTMLDocument)htmlPane.getDocument()).getStyleSheet().addRule(bodyRule);
 		}
 		catch (IOException e)
 		{
