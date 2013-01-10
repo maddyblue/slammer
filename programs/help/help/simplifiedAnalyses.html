@@ -7,18 +7,18 @@
 
 <p><a name="rigid"><b>Rigid.</b></a> Several types of simplified rigid-block analysis are available. Clicking on any of these analyses (1) causes a description of that analysis to appear in the bottom part of the window and (2) activates data-input boxes that specify what data are required (active boxes turn white). When the required parameters have been entered, click &ldquo;Compute,&rdquo; and the estimated Newmark displacement (in centimeters and inches) is shown under &ldquo;Results.&rdquo;</p>
 
-<p><a name="coupled"><b>Flexible (coupled).</b></a> The simplified procedure for the fully coupled, non-linear sliding-block analysis of Bray and Travasarou (2007) is the basis for this analysis. The analysis requires the following input parameters:</p>
+<p><a name="coupled"><b>Flexible (coupled).</b></a> This tab computes displacement using the empirical model of Bray and Travasarou (2007), which is based on fully coupled, equivalent-linear sliding-block analysis of a modal system. The model requires the following input parameters:</p>
 
 <ul>
 	<li>Critical acceleration, a<sub>c</sub> (g), or yield coefficient, k<sub>y</sub>, which are equivalent.</li>
 	<li>Site period, T<sub>s</sub> (s). The fundamental site period can be estimated as 4H/V<sub>s</sub> for a 1-D model or 2.6H/V<sub>s</sub> for a 2-D analysis of a triangular-shaped sliding mass, where H is the height of the landslide mass and V<sub>s</sub> is the shear-wave velocity of the landslide material.</li>
-	<li>Spectral acceleration at 1.5 * T<sub>s</sub> (g). This can estimated by calculating the site period (T<sub>s</sub>), multiplying by 1.5, and then estimating the spectral acceleration at that period using published attenuation equations such as Abrahamson and Silva (1997).</li>
+	<li>Spectral acceleration at 1.5 * T<sub>s</sub> (g). This can be estimated by calculating the site period (T<sub>s</sub>), multiplying by 1.5, and then estimating the spectral acceleration at that period using published attenuation equations such as Abrahamson and Silva (1997, 2008).</li>
 	<li>Earthquake moment magnitude, M.</li>
 </ul>
 
 <p>This analysis calculates (1) the probability of zero displacement and (2) an estimate of the non-zero displacement. Results are shown in both centimeters and inches.</p>
 
-<p><a name="unified"><b>Flexible/Rigid (unified model).</b></a> This model was developed by Rathje and Antonakos (2011) to provide reliable results across the full range of flexible and rigid slope conditions. The analysis requires the following input parameters:</p>
+<p><a name="unified"><b>Flexible/Rigid (unified model).</b></a> This model was developed by Rathje and Antonakos (2011) to provide reliable results across the full range of flexible and rigid slope conditions. The displacements are based on decoupled, equivalent-linear analysis of layered systems. The model requires the following input parameters:</p>
 
 <ul>
 	<li>Critical or yield acceleration (g), as used elsewhere.</li>

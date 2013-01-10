@@ -13,7 +13,7 @@
 
 <p><i>Select individual records.</i> To search for records individually by name, click on the down arrow under the &ldquo;Earthquake&rdquo; heading. Select an earthquake from the list of earthquakes displayed. Then click the down arrow under &ldquo;Record name&rdquo; and select the desired record from the list. Click &ldquo;Select record&rdquo; to add that record to the &ldquo;Records selected&rdquo; list. For each earthquake, &ldquo;Select all records&rdquo; is displayed at the top of the Record list; use this option to select all records from a given earthquake.</p>
 
-<p>The &ldquo;Records selected&rdquo; list at the bottom of the page displays all of the properties of the earthquake records selected (units are the same as indicated in the search boxes at the top of the page). The table display can be toggled between displaying properties of specific records (e.g., Arias intensity, duration, PGA, PGV, mean period, source distance, etc.) and properties of the station in general (e.g., location, latitude and longitude, site classification, etc.). Records in the table can be sorted by any of the properties listed by selecting those properties in the primary and secondary &ldquo;Sort by&rdquo; boxes at the top of the table. Records can be sorted in any combination of ascending or descending order using the drop-down box next to the sort boxes.</p>
+<p>The &ldquo;Records selected&rdquo; list at the bottom of the page displays all of the properties of the earthquake records selected (units are the same as indicated in the search boxes at the top of the page). The table display can be toggled between displaying properties of specific records (for example, Arias intensity, duration, PGA, PGV, mean period, source distance, etc.) and properties of the station in general (for example, location, latitude and longitude, site classification, etc.). Records in the table can be sorted by any of the properties listed by selecting those properties in the primary and secondary &ldquo;Sort by&rdquo; boxes at the top of the table. Records can be sorted in any combination of ascending or descending order using the drop-down box next to the sort boxes.</p>
 
 <p>The last column on the right contains a check box that allows the user to indicate whether or not each record is to be included in the analysis. When records are added to the table, they are selected by default. All the records on the list can be selected or deselected by clicking on the buttons at the upper right corner of the list. Individual records can be selected or deselected by clicking the individual check box corresponding to that record. The &ldquo;Clear table&rdquo; button at the bottom removes all records from the table; the &ldquo;Clear highlighted record(s)&rdquo; button removes all highlighted records.</p>
 
@@ -23,7 +23,7 @@
 
 <h3><a name="step2">Step 2: Select analyses</a></h3>
 
-<p>This page requires the user to specify basic analysis properties and the types of analyses to be performed.</p>
+<p>This page requires the user to specify basic calculation parameters and the types of analyses to be performed.</p>
 
 <p><i>Choose analysis properties</i>: The following analysis properties must be specified:</p>
 
@@ -37,7 +37,7 @@
 
 <ul>
 	<li>Rigid Block: This type of analysis can be conducted so as to allow only downslope displacement or to allow both upslope and downslope displacement. If the latter is selected, the thrust angle of the potential landslide block must be specified.</li>
-	<li>Coupled and Decoupled: Conducting coupled and (or) decoupled analysis requires specifying several slope properties: (1) Height, the maximum vertical thickness of the potential landslide block, (2) the shear-wave velocity of the material above the slip surface, (3) the shear-wave velocity of the material below the slip surface, (4) the damping ratio, and (5) the reference strain (default is 0.05). The type of soil model, linear elastic or equivalent linear, also must be specified. The equivalent linear analysis is the most complex and requires the greatest computing time.</li>
+	<li>Coupled and Decoupled: Conducting coupled and (or) decoupled analysis of a flexible sliding block requires specifying several slope properties: (1) Height, the maximum vertical thickness of the potential sliding block, (2) the shear-wave velocity of the material above the slip surface, (3) the shear-wave velocity of the material below the slip surface (commonly taken as rock), (4) the damping ratio of the material within the sliding block, and (5) the reference strain used to define the nonlinear modulus reduction and damping curves of the soil within the sliding block (default is 0.05 percent). The type of soil model, linear elastic or equivalent linear, also must be specified. The equivalent linear analysis is the most complex and requires the greatest computing time.</li>
 </ul>
 
 <p>When all parameters have been entered on this page, click on &ldquo;Go to Step 3: Perform analyses and view results&rdquo; at the lower right, or click the &ldquo;Step 3: Perform analyses and view results&rdquo; tab on the top of the page.</p>
@@ -48,7 +48,7 @@
 
 <p>The results table shows the earthquake name, the record name, and calculated displacements for the types of analysis selected. Three displacements are shown for each type of analysis and for each record analyzed: (1) normal polarity (the &ldquo;top&rdquo; or positive accelerations), (2) inverse polarity (the &ldquo;bottom&rdquo; or negative accelerations), and (3) the average of the two polarities. All displacements are given in centimeters if metric units were specified or in inches if English units were specified. At the bottom of the table, the mean, median, and standard deviation (based on population) of the average displacements are shown.</p>
 
-<p>Clicking the &ldquo;Display dynamic response parameters&rdquo; box at the upper right will display the k<sub>max</sub>, V<sub>s</sub>, and damping for each of the records analyzed if coupled and (or) decoupled analysis is performed.</p>
+<p>Clicking the &ldquo;Display dynamic response parameters&rdquo; box at the upper right provides information about the dynamic response induced within the sliding mass for decoupled and coupled analysis. When clicked, the results table will display the maximum seismic coefficient induced by the earthquake motion (k<sub>max</sub>), the shear wave velocity (V<sub>s</sub>), and the damping for each of the records analyzed. V<sub>s</sub> and damping represent the properties of the sliding mass used in the dynamic response analysis. When performing equivalent-linear analysis these values will be different than those input in Step 2 because of the nonlinear response of the sliding mass.</p>
 
 <p>Click on &ldquo;Clear output&rdquo; in the upper right part of the page to clear the currently displayed results and any corresponding plots.</p>
 
