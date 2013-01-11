@@ -116,11 +116,6 @@ public class InstallThread extends Thread
 			progress.setMaximum(sqllen * 2);
 			progress.advance(sqllen); // go back to 50%
 
-			StringBuilder q;
-
-			q = new StringBuilder("insert into data (eq, record, digi_int, mom_mag, arias, dobry, pga, pgv, mean_per, epi_dist, foc_dist, rup_dist, vs30, class, foc_mech, location, owner, latitude, longitude, change, path, select1, analyze, select2) values ");
-			boolean first = true;
-
 			for(int i = 0; i < dbvect.size(); i++)
 			{
 				sqlfile = (String)dbvect.elementAt(i);
@@ -162,10 +157,7 @@ public class InstallThread extends Thread
 
 								progress.advance(1);
 
-								if(first)
-									first = false;
-								else
-									q.append(",");
+								StringBuilder q = new StringBuilder("insert into data (eq, record, digi_int, mom_mag, arias, dobry, pga, pgv, mean_per, epi_dist, foc_dist, rup_dist, vs30, class, foc_mech, location, owner, latitude, longitude, change, path, select1, analyze, select2) values ");
 
 								q.append("(" +
 									"'"  + cur[DB_eq] + "'," +
@@ -193,6 +185,7 @@ public class InstallThread extends Thread
 									"0," + // analyze
 									"0" + // select2
 									")");
+									runUpdate(q.toString());
 							}
 
 							break;
@@ -204,7 +197,6 @@ public class InstallThread extends Thread
 				}
 			}
 
-			runUpdate(q.toString());
 
 			runUpdate("update data set " +
 				"mag_srch=cast(cast(mom_mag as decimal(10,4)) as double), " +

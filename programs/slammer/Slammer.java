@@ -304,8 +304,6 @@ public class Slammer
 				int reslen;
 				char c;
 				String path;
-				StringBuilder q = new StringBuilder("insert into data (eq, record, digi_int, mom_mag, arias, dobry, pga, pgv, mean_per, epi_dist, foc_dist, rup_dist, vs30, class, foc_mech, location, owner, latitude, longitude, change, path, select1, analyze, select2) values ");
-				boolean first = true;
 
 				Utils.getDB().runUpdate("delete from data");
 
@@ -330,11 +328,7 @@ public class Slammer
 
 							path = ".." + File.separatorChar + "records" + File.separator + cur[DB_eq] + File.separator + cur[DB_record];
 
-							if(first)
-								first = false;
-							else
-								q.append(",\n");
-
+							StringBuilder q = new StringBuilder("insert into data (eq, record, digi_int, mom_mag, arias, dobry, pga, pgv, mean_per, epi_dist, foc_dist, rup_dist, vs30, class, foc_mech, location, owner, latitude, longitude, change, path, select1, analyze, select2) values ");
 							q.append("('" +
 								cur[DB_eq] + "', '" +
 								cur[DB_record] + "', " +
@@ -357,6 +351,7 @@ public class Slammer
 								Utils.nullifys(cur[DB_longitude]) + ", " +
 								0 + ", '" +
 								path + "', 0, 0, 0)");
+							Utils.getDB().runUpdate(q.toString());
 
 							break;
 						}
@@ -367,7 +362,6 @@ public class Slammer
 				}	while(fr.ready());
 
 				fr.close();
-				Utils.getDB().runUpdate(q.toString());
 				Utils.getDB().syncRecords("");
 				Utils.closeDB();
 			}
