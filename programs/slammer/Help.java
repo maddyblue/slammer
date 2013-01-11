@@ -80,7 +80,6 @@ public class Help extends JFrame
 				}
 				else
 				{
-					System.out.println(nodeInfo);
 					NodeData n = (NodeData)nodeInfo;
 					displayURL(n.url);
 				}
