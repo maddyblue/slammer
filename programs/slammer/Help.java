@@ -53,7 +53,7 @@ public class Help extends JFrame
 		super("SLAMMER help");
 
 		//Create the nodes.
-		DefaultMutableTreeNode top = new DefaultMutableTreeNode("Help");
+		Node top = new Node("Help", "program/introduction.html");
 		createNodes(top);
 
 		//Create a tree that allows one selection at a time.
@@ -80,6 +80,7 @@ public class Help extends JFrame
 				}
 				else
 				{
+					System.out.println(nodeInfo);
 					NodeData n = (NodeData)nodeInfo;
 					displayURL(n.url);
 				}
@@ -303,7 +304,6 @@ public class Help extends JFrame
 			{ "Linear elastic analysis", "linearElasticAnalysis" },
 			{ "Mean shaking period", "meanShakingPeriod" },
 			{ "Newmark analysis", "newmarkAnalysis" },
-			{ "Newmark displacement", "newmarkDisplacement" },
 			{ "Peak ground acceleration", "peakGroundAcceleration" },
 			{ "Peak ground velocity", "peakGroundVelocity" },
 			{ "Period ratio", "periodRatio" },
@@ -326,7 +326,7 @@ public class Help extends JFrame
 		}
 
 		book = new DefaultMutableTreeNode(new BookInfo
-		("References",
+		("References Cited",
 		"program/references.html"));
 		top.add(book);
 
