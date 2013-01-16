@@ -12,7 +12,21 @@ public class EQDatabase
 	public EQDatabase() throws Exception
 	{
 		Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
-		connection = java.sql.DriverManager.getConnection(url);
+
+		try
+		{
+			connection = java.sql.DriverManager.getConnection(url);
+		}
+		catch (SQLException ex)
+		{
+			SQLException e = ex.getNextException();
+			if (e != null && e.getErrorCode() == 45000)
+			{
+				throw new Exception("The SLAMMER database is already in use. Only one instance of SLAMMER can be running at once.");
+			}
+
+			throw ex;
+		}
 	}
 
 	private String format(Object obj, int len)
