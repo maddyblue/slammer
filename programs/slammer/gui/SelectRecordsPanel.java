@@ -44,7 +44,7 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 	JButton emptyTable = new JButton("Clear table");
 	JButton deleteSelected = new JButton("Clear highlighted record(s)");
 
-	JButton groupManage = new JButton("Manage groups...");
+	JButton groupManage = new JButton("Group Manager");
 	GroupFrame groupFrame;
 
 	SlammerTable table;

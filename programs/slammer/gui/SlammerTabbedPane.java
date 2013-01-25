@@ -67,7 +67,7 @@ public class SlammerTabbedPane extends JTabbedPane
 			addTab("Simplified Empirical Models", Simplified);
 			addTab("Manage/Add Records", Manager);
 			addTab("Utilities", Utilities);
-			addTab("Help", null);
+			addTab("User Guide", null);
 
 			help = new Help();
 			addChangeListener(new TabbedListener());

@@ -50,10 +50,10 @@ public class Help extends JFrame
 
 	public Help()
 	{
-		super("SLAMMER help");
+		super("SLAMMER User Guide");
 
 		//Create the nodes.
-		Node top = new Node("Help", "program/introduction.html");
+		Node top = new Node("User Guide", "program/introduction.html");
 		createNodes(top);
 
 		//Create a tree that allows one selection at a time.
@@ -315,7 +315,7 @@ public class Help extends JFrame
 			{ "Spectral acceleration", "spectralAcceleration" },
 			{ "Thrust angle", "thrustAngle" },
 			{ "<html>V<sub>s</sub><sup>30</sup>", "vs30" },
-			{ "Yield coefficient", "yieldCoefficient" },
+			{ "Yield acceleration", "yieldCoefficient" },
 		};
 
 		for(int i = 0; i < terms.length; i++)
