@@ -4,6 +4,7 @@
 *.swp
 *.tar
 *~
+.DS_STORE
 programs/database
 programs/slammer.jar
 programs/srm.jar
