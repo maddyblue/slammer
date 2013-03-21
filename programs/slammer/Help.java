@@ -2,7 +2,7 @@
 
 package slammer;
 
-import javax.swing.JTree;
+import javax.swing.*;
 import javax.swing.text.html.HTMLDocument;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.event.TreeSelectionListener;
@@ -51,6 +51,9 @@ public class Help extends JFrame
 	public Help()
 	{
 		super("SLAMMER User Guide");
+
+		setIconImage(new ImageIcon(
+			getClass().getResource("/slammer/images/icon.png")).getImage());
 
 		//Create the nodes.
 		Node top = new Node("User Guide", "program/introduction.html");
