@@ -100,11 +100,12 @@ public class Help extends JFrame
 		//Create the HTML viewing pane.
 		htmlPane = new JEditorPane();
 		htmlPane.setEditable(false);
-		initHelp();
 		JScrollPane htmlView = new JScrollPane(htmlPane);
 
 		Font font = UIManager.getFont("Label.font");
 		bodyRule = "body { font-family: " + font.getFamily() + "; " + "font-size: " + font.getSize() + "pt; }";
+
+		initHelp();
 
 		//Add the scroll panes to a split pane.
 		JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
