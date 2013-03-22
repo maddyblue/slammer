@@ -23,7 +23,7 @@ class GettingStartedPanel extends JPanel
 
 		Font font = UIManager.getFont("Label.font");
 		String bodyRule = "body { font-family: " + font.getFamily() + "; " + "font-size: " + font.getSize() + "pt; }";
-		((HTMLDocument)startedPane.getDocument()).getStyleSheet().addRule(bodyRule);
+		//((HTMLDocument)startedPane.getDocument()).getStyleSheet().addRule(bodyRule);
 
 		setLayout(new BorderLayout());
 

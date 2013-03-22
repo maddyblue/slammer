@@ -177,7 +177,7 @@ public class Help extends JFrame
 		try
 		{
 			htmlPane.setPage(url);
-			((HTMLDocument)htmlPane.getDocument()).getStyleSheet().addRule(bodyRule);
+			//((HTMLDocument)htmlPane.getDocument()).getStyleSheet().addRule(bodyRule);
 		}
 		catch (IOException e)
 		{
