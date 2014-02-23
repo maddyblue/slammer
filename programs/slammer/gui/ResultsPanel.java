@@ -340,7 +340,9 @@ class ResultsPanel extends JPanel implements ActionListener
 							String h_vs = "<html><center>";
 							if(parent.Parameters.paramSoilModel.getSelectedIndex() == 1)
 								h_vs += "EQL ";
-							h_vs += "V<sub>s</sub> (m/s)<p>";
+							h_vs += "V<sub>s</sub> (";
+							h_vs += paramUnit ? "m/s" : "ft/s";
+							h_vs += ")<p>";
 
 							if(dyn == NO_DYN)
 								outputTableModel.setColumnIdentifiers(new Object[] {"Earthquake", "Record", "",
@@ -757,8 +759,9 @@ class ResultsPanel extends JPanel implements ActionListener
 
 									if(dyn == WITH_DYN && (rt.analysis == DC || rt.analysis == CP))
 									{
+										double vs_conv = paramUnit ? Analysis.MtoCM : Analysis.FTtoIN;
 										outputTableModel.setValueAt(unitFmt.format(rt._kmax / g), rt.row, tableCols[dyn][I_DY] + 0);
-										outputTableModel.setValueAt(unitFmt.format(rt._vs  / Analysis.MtoCM), rt.row, tableCols[dyn][I_DY] + 1);
+										outputTableModel.setValueAt(unitFmt.format(rt._vs / vs_conv), rt.row, tableCols[dyn][I_DY] + 1);
 										outputTableModel.setValueAt(unitFmt.format(rt._damp), rt.row, tableCols[dyn][I_DY] + 2);
 									}
 								}
