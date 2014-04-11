@@ -105,22 +105,28 @@ class SlammerTable extends JPanel implements ActionListener, SlammerTableInterfa
 	public void deleteSelected(boolean fromDB) throws Exception
 	{
 		int[] rows = table.getSelectedRows();
+		if (rows.length == 0) {
+			return;
+		}
 		StringBuilder query = new StringBuilder("where id in (");
+		Object[] objs = new Object[rows.length + 1];
+		objs[0] = 0;
 
 		for(int i = rows.length - 1; i >= 0; i--)
 		{
-			query.append(model.rowids[rows[i]]);
+			query.append("?");
+			objs[i+1] = model.rowids[rows[i]];
 			if(i > 0)
 				query.append(",");
 		}
 		query.append(")");
 
-		Utils.getDB().runUpdate("update data set " + selectStr + "=0 " + query);
+		Utils.getDB().preparedUpdate("update data set " + selectStr + "=? " + query, objs);
 		model.setModel(REFRESH);
 
 		if(fromDB)
 		{
-			Utils.getDB().runUpdate("delete from data " + query);
+			Utils.getDB().preparedUpdate("delete from data " + query, objs);
 			Utils.updateEQLists();
 		}
 	}

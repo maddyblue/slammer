@@ -566,7 +566,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 					}
 				}
 
-				Utils.getDB().runUpdate("update data set select1=0 where select1=1");
+				Utils.getDB().preparedUpdate("update data set select1=? where select1=?", 0, 1);
 
 				if(isEq)
 				{

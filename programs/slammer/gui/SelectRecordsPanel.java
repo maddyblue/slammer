@@ -340,7 +340,7 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 				{
 					if(record == "Select all records")
 					{
-						Utils.getDB().runUpdate("update data set select2=1, analyze=1 where eq='" + eq + "' and select2=0");
+						Utils.getDB().preparedUpdate("update data set select2=?, analyze=? where eq=? and select2=?", 1, 1, eq, 0);
 						table.setModel(SlammerTable.REFRESH);
 					}
 					else
@@ -350,7 +350,7 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 			}
 			else if(command.equals("all"))
 			{
-				Utils.getDB().runUpdate("update data set analyze=1 where select2=1 and analyze=0");
+				Utils.getDB().preparedUpdate("update data set analyze=? where select2=? and analyze=?", 1, 1, 0);
 				table.setModel(SlammerTable.REFRESH);
 				updateSelectLabel();
 			}
@@ -421,15 +421,18 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 			}
 			else if(command.equals("none"))
 			{
-				Utils.getDB().runUpdate("update data set analyze=0 where select2=1 and analyze=1");
+				Utils.getDB().preparedUpdate("update data set analyze=? where select2=? and analyze=?", 0, 1, 1);
 				table.setModel(SlammerTable.REFRESH);
 				updateSelectLabel();
 			}
 			else if(command.equals("search"))
 			{
-				String where = "";
+				StringBuilder where = new StringBuilder();
 				String lefts, rights;
 				Double left = null,right = null;
+				ArrayList objs = new ArrayList();
+				objs.add(1);
+				objs.add(1);
 				for(int i = 0; i < textFields.length; i++)
 				{
 					left = null;
@@ -450,10 +453,14 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 					{
 						 if(Utils.checkNum(lefts, searchList[i][2] + " greater than side", right, true, "less than side", null, false, null, false) == null) return;
 					}
-					if(left != null)
-						where += "and " + searchList[i][1] + ">=" + lefts + " ";
-					if(right != null)
-						where += "and " + searchList[i][1] + "<=" + rights + " ";
+					if(left != null) {
+						where.append("and " + searchList[i][1] + ">= ? ");
+						objs.add(left);
+					}
+					if(right != null) {
+						where.append("and " + searchList[i][1] + "<= ? ");
+						objs.add(right);
+					}
 				}
 
 				String FocMechWhere = "";
@@ -480,14 +487,14 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 				if(SiteClassAll.isSelected())
 					SiteClassWhere = "";
 
-				where += fixCheckBoxWhere(FocMechWhere, SiteClassWhere);
+				where.append(fixCheckBoxWhere(FocMechWhere, SiteClassWhere));
 
-				if(!where.equals(""))
+				if(where.length() > 0)
 				{
-					where = "where " + where.substring(4);
+					where = new StringBuilder("where " + where.substring(4));
 					try
 					{
-						int result = Utils.getDB().runUpdate("update data set select2=1, analyze=1 " + where);
+						int result = Utils.getDB().preparedUpdate("update data set select2=?, analyze=? " + where, objs.toArray());
 						if(result == 0)
 						{
 							searchTA.setText("Search complete. No records found.");
@@ -569,8 +576,8 @@ class SelectRecordsPanel extends JPanel implements ActionListener,TableModelList
 
 	private String fixCheckBoxWhere(String one, String two)
 	{
-		boolean oneb = (one.equals("") ? true : false);
-		boolean twob = (two.equals("") ? true : false);
+		boolean oneb = one.equals("");
+		boolean twob = two.equals("");
 		if(oneb && twob) return "";
 		if(oneb) return ("and ( " + two + ") ");
 		if(twob) return ("and ( " + one + ") ");

@@ -224,15 +224,15 @@ class GroupFrame extends JFrame implements ActionListener
 					GUIUtils.popupError("Enter a name.");
 					return;
 				}
-				else if(Integer.parseInt(Utils.getDB().runQuery("select count(*) from data where select2=1")[1][0].toString()) == 0)
+				else if(Integer.parseInt(Utils.getDB().preparedQuery("select count(*) from data where select2=?", 1)[1][0].toString()) == 0)
 				{
 					GUIUtils.popupError("No records selected.");
 					return;
 				}
 
 				canChange = false;
-				Utils.getDB().runUpdate("delete from grp where name='" + name + "'");
-				Utils.getDB().runUpdate("insert into grp select id, '" + name + "', analyze from data where select2=1");
+				Utils.getDB().preparedUpdate("delete from grp where name=?", name);
+				Utils.getDB().preparedUpdate("insert into grp select id, ?, analyze from data where select2=?", name, 1);
 				updateGroupList();
 				if(changeCB.getSelectedItem() == null) changeCB.setSelectedItem(name);
 				canChange = true;
@@ -250,7 +250,7 @@ class GroupFrame extends JFrame implements ActionListener
 
 				canChange = false;
 				String s = deleteCB.getSelectedItem().toString();
-				Utils.getDB().runUpdate("delete from grp where name='" + s + "'");
+				Utils.getDB().preparedUpdate("delete from grp where name=?", s);
 				if(changeCB.getSelectedItem() == s) changeCB.setSelectedItem(null);
 				updateGroupList();
 				canChange = true;
@@ -355,9 +355,9 @@ class GroupFrame extends JFrame implements ActionListener
 				if(changeCB.getSelectedItem() == null) return;
 
 				String grp = changeCB.getSelectedItem().toString();
-				Utils.getDB().runUpdate("update data set select2=0 where select2=1");
-				Utils.getDB().runUpdate("update data set select2=1, analyze=0 where id in (select record from grp where name='" + grp + "' and analyze=0)");
-				Utils.getDB().runUpdate("update data set select2=1, analyze=1 where id in (select record from grp where name='" + grp + "' and analyze=1)");
+				Utils.getDB().preparedUpdate("update data set select2=? where select2=?", 0, 1);
+				Utils.getDB().preparedUpdate("update data set select2=?, analyze=? where id in (select record from grp where name='" + grp + "' and analyze=0)", 1, 0);
+				Utils.getDB().preparedUpdate("update data set select2=?, analyze=? where id in (select record from grp where name='" + grp + "' and analyze=1)", 1, 1);
 				if(model != null) model.setModel(SlammerTable.REFRESH);
 
 				parent.updateSelectLabel();

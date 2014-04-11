@@ -238,7 +238,7 @@ public class Slammer
 							incr = 0;
 							path = "../records/" + cur[EQDAT_eq] + "/" + cur[EQDAT_record];
 
-							res = Utils.getDB().runQuery("select id from data where path='" + path + "'");
+							res = Utils.getDB().preparedQuery("select id from data where path=?", path);
 							if(res != null)
 							{
 								System.err.println("Already in db: " + path);
