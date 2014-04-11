@@ -21,7 +21,7 @@ public class SRM
 			Utils.startDB();
 			splash.advance();
 
-			Utils.getDB().runUpdate("update data set select1=0, select2=0");
+			Utils.getDB().preparedUpdate("update data set select1=?, select2=?", 0, 0);
 			splash.advance();
 
 			// if the OS supports a native LF, use it

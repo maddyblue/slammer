@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import slammer.*;
 import slammer.analysis.*;
 import java.io.*;
+import java.sql.*;
 
 class AddRecordsPanel extends JPanel implements ActionListener
 {
@@ -111,21 +112,21 @@ class AddRecordsPanel extends JPanel implements ActionListener
 
 					// get the data
 					incr = 1;
-					file = Utils.addQuote(m.getValueAt(i, incr++).toString());
-					eq = Utils.addQuote(m.getValueAt(i, incr++).toString());
-					record = Utils.addQuote(m.getValueAt(i, incr++).toString());
+					file = m.getValueAt(i, incr++).toString();
+					eq = m.getValueAt(i, incr++).toString();
+					record = m.getValueAt(i, incr++).toString();
 					di = m.getValueAt(i, incr++).toString();
-					mag = Utils.nullify(m.getValueAt(i, incr++).toString());
-					epidist = Utils.nullify(m.getValueAt(i, incr++).toString());
-					focdist = Utils.nullify(m.getValueAt(i, incr++).toString());
-					rupdist = Utils.nullify(m.getValueAt(i, incr++).toString());
+					mag = m.getValueAt(i, incr++).toString();
+					epidist = m.getValueAt(i, incr++).toString();
+					focdist = m.getValueAt(i, incr++).toString();
+					rupdist = m.getValueAt(i, incr++).toString();
 					focmech = m.getValueAt(i, incr++).toString();
-					loc = Utils.addQuote(m.getValueAt(i, incr++).toString());
-					owner = Utils.addQuote(m.getValueAt(i, incr++).toString());
-					vs30 = Utils.nullify(m.getValueAt(i, incr++).toString());
+					loc = m.getValueAt(i, incr++).toString();
+					owner = m.getValueAt(i, incr++).toString();
+					vs30 = m.getValueAt(i, incr++).toString();
 					siteclass = m.getValueAt(i, incr++).toString();
-					lat = Utils.nullify(m.getValueAt(i, incr++).toString());
-					lng = Utils.nullify(m.getValueAt(i, incr++).toString());
+					lat = m.getValueAt(i, incr++).toString();
+					lng = m.getValueAt(i, incr++).toString();
 
 					prog.setString(file);
 					prog.setValue(i);
@@ -179,10 +180,8 @@ class AddRecordsPanel extends JPanel implements ActionListener
 		String errors = "", pre;
 		Object ret;
 		DoubleList data;
-
-		eq = Utils.addQuote(eq);
-		record = Utils.addQuote(record);
-		file = Utils.addQuote(file);
+		int siteclassI = 0, focmechI = 0;
+		String nulls = new String();
 
 		// verify existence of must-have data
 		if(eq.equals(""))
@@ -195,7 +194,7 @@ class AddRecordsPanel extends JPanel implements ActionListener
 		// record already here?
 		if(add)
 		{
-			Object[][] res = Utils.getDB().runQuery("select eq from data where eq='" + eq + "' and record='" + record + "'");
+			Object[][] res = Utils.getDB().preparedQuery("select eq from data where eq=? and record=?", eq, record);
 			if(res != null)
 				errors += "Record already exists in the database.\n";
 		}
@@ -212,61 +211,61 @@ class AddRecordsPanel extends JPanel implements ActionListener
 				dig_int = ((Double)ret).doubleValue();
 		}
 
-		if(!mag.equals("null"))
+		if(!mag.equals(""))
 		{
 			ret = Utils.checkNum(mag, "moment magnitude field", null, false, null, new Double(0), true, null, true);
-			mag = "'" + mag + "'";
 			if(ret.getClass().getName().equals("java.lang.String"))
 				errors += ret.toString() + "\n";
 		}
+		else mag = nulls;
 
-		if(!epidist.equals("null"))
+		if(!epidist.equals(""))
 		{
 			ret = Utils.checkNum(epidist, "epicentral distance field", null, false, null, new Double(0), true, null, true);
-			epidist = "'" + epidist + "'";
 			if(ret.getClass().getName().equals("java.lang.String"))
 				errors += ret.toString() + "\n";
 		}
+		else epidist = nulls;
 
-		if(!focdist.equals("null"))
+		if(!focdist.equals(""))
 		{
 			ret = Utils.checkNum(focdist, "focal distance field", null, false, null, new Double(0), true, null, true);
-			focdist = "'" + focdist + "'";
 			if(ret.getClass().getName().equals("java.lang.String"))
 				errors += ret.toString() + "\n";
 		}
+		else focdist = nulls;
 
-		if(!rupdist.equals("null"))
+		if(!rupdist.equals(""))
 		{
 			ret = Utils.checkNum(rupdist, "rupture distance field", null, false, null, new Double(0), true, null, true);
-			rupdist = "'" + rupdist + "'";
 			if(ret.getClass().getName().equals("java.lang.String"))
 				errors += ret.toString() + "\n";
 		}
+		else rupdist = nulls;
 
-		if(!vs30.equals("null"))
+		if(!vs30.equals(""))
 		{
 			ret = Utils.checkNum(vs30, "Vs30 field", null, false, null, new Double(0), true, null, true);
-			vs30 = "'" + vs30 + "'";
 			if(ret.getClass().getName().equals("java.lang.String"))
 				errors += ret.toString() + "\n";
 		}
+		else vs30 = nulls;
 
-		if(!lat.equals("null"))
+		if(!lat.equals(""))
 		{
 			ret = Utils.checkNum(lat, "latitude field", new Double(90), true, null, new Double(-90), true, null, true);
-			lat = "'" + lat + "'";
 			if(ret.getClass().getName().equals("java.lang.String"))
 				errors += ret.toString() + "\n";
 		}
+		else lat = nulls;
 
-		if(!lng.equals("null"))
+		if(!lng.equals(""))
 		{
 			ret = Utils.checkNum(lng, "longitude field", new Double(180), true, null, new Double(-180), true, null, true);
-			lng = "'" + lng + "'";
 			if(ret.getClass().getName().equals("java.lang.String"))
 				errors += ret.toString() + "\n";
 		}
+		else lng = nulls;
 
 		File f = new File(file);
 		if(!f.isFile() || !f.canRead())
@@ -293,85 +292,119 @@ class AddRecordsPanel extends JPanel implements ActionListener
 		{
 			if(focmech.equals(SlammerTable.FocMechArray[j]))
 			{
-				focmech = Integer.toString(j);
+				focmechI = j;
 				break;
 			}
 		}
 		if(pre.equals(focmech))
-			focmech = "0";
+			focmechI = 0;
 
 		pre = siteclass;
 		for(int j = 0; j < SlammerTable.SiteClassArray.length; j++)
 		{
 			if(siteclass.equals(SlammerTable.SiteClassArray[j]))
 			{
-				siteclass = Integer.toString(j);
+				siteclassI = j;
 				break;
 			}
 		}
 		if(pre.equals(siteclass))
-			siteclass = "0";
+			siteclassI = 0;
 
+		String q;
+		Object[] objects;
 		if(add)
 		{
 			// add it to the db
-			String q = "insert into data " +
-				"(eq, record, digi_int, mom_mag, arias, dobry, pga, pgv, mean_per, epi_dist, foc_dist, rup_dist, vs30, foc_mech, location, owner, latitude, longitude, class, change, path, select1, analyze, select2) values ( '" +
-				eq + "', '" +
-				record + "', " +
-				di + ", " +
-				mag + ", " +
-				arias + ", " +
-				dobry + ", " +
-				pga + ", " +
-				pgv + ", " +
-				meanper + ", " +
-				epidist + ", " +
-				focdist + ", " +
-				rupdist + ", " +
-				vs30 + ", " +
-				focmech + ", '" +
-				loc + "', '" +
-				owner + "', " +
-				lat + ", " +
-				lng + ", " +
-				siteclass + ", " +
-				1 + ", '" +
-				file + "', " +
-				0 + ", " +
-				0 + ", " +
-				0 + ")";
-			Utils.getDB().runUpdate(q);
+			q = "insert into data " +
+				"(eq, record, digi_int, mom_mag, arias, dobry, pga, pgv, mean_per, epi_dist, foc_dist, rup_dist, vs30, foc_mech, location, owner, latitude, longitude, class, change, path, select1, analyze, select2) values " +
+				"(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			objects = new Object[] {
+				eq,
+				record,
+				dig_int,
+				mag,
+				arias,
+				dobry,
+				pga,
+				pgv,
+				meanper,
+				epidist,
+				focdist,
+				rupdist,
+				vs30,
+				focmechI,
+				loc,
+				owner,
+				lat,
+				lng,
+				siteclassI,
+				1,
+				file,
+				0,
+				0,
+				0,
+			};
 		}
 		else
 		{
-			// modify it in the db
-			String q = "update data set"
-				+   " eq='"        + eq
-				+ "', record='"    + record
-				+ "', digi_int= "  + di
-				+ " , mom_mag= "   + mag
-				+ " , arias= "     + arias
-				+ " , dobry= "     + dobry
-				+ " , pga= "       + pga
-				+ " , pgv= "       + pgv
-				+ " , mean_per= "  + meanper
-				+ " , epi_dist= "  + epidist
-				+ " , foc_dist= "  + focdist
-				+ " , rup_dist= "  + rupdist
-				+ " , vs30= "      + vs30
-				+ " , foc_mech= "  + focmech
-				+ " , location='"  + loc
-				+ "', owner='"     + owner
-				+ "', latitude= "  + lat
-				+ " , longitude= " + lng
-				+ " , class= "     + siteclass
-				+ "  where path='" + file + "'";
-				Utils.getDB().runUpdate(q);
+			q = "update data set" +
+				" eq=?" +
+				", record=?" +
+				", digi_int=?" +
+				", mom_mag=?" +
+				", arias=?" +
+				", dobry=?" +
+				", pga=?" +
+				", pgv=?" +
+				", mean_per=?" +
+				", epi_dist=?" +
+				", foc_dist=?" +
+				", rup_dist=?" +
+				", vs30=?" +
+				", foc_mech=?" +
+				", location=?" +
+				", owner=?" +
+				", latitude=?" +
+				", longitude=?" +
+				", class=?" +
+				"  where path=?";
+			objects = new Object[] {
+				eq,
+				record,
+				di,
+				mag,
+				arias,
+				dobry,
+				pga,
+				pgv,
+				meanper,
+				epidist,
+				focdist,
+				rupdist,
+				vs30,
+				focmechI,
+				loc,
+				owner,
+				lat,
+				lng,
+				siteclassI,
+				file,
+			};
 		}
 
-		Utils.getDB().syncRecords("where eq='" + eq + "' and record='" + record + "'");
+		PreparedStatement ps = Utils.getDB().preparedStatement(q);
+		for(int i = 0; i < objects.length; i++) {
+			if (objects[i] == nulls) {
+				ps.setNull(i+1, Types.VARCHAR);
+			} else {
+				ps.setObject(i+1, objects[i]);
+			}
+		}
+		ps.executeUpdate();
+		ps.close();
 
+		Utils.getDB().syncRecords("where eq=? and record=?", eq, record);
 		return "";
 	}
 }

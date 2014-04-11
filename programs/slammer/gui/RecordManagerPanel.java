@@ -570,21 +570,16 @@ class RecordManagerPanel extends JPanel implements ActionListener
 
 				if(isEq)
 				{
-					String where;
-
 					if(index == 0) // "All earthquakes"
-						where = "";
+						Utils.getDB().preparedUpdate("update data set select1=?", 1);
 					else
-						where = "where eq='" + (String)eqList.getSelectedItem() + "'";
-
-					Utils.getDB().runUpdate("update data set select1=1 " + where);
+						Utils.getDB().preparedUpdate("update data set select1=? where eq=?", 1, eqList.getSelectedItem());
 				}
 				else
 				{
-					Object[][] res = Utils.getDB().runQuery("select record,analyze from grp where name='" + (String)eqList.getSelectedItem() + "'");
-
+					Object[][] res = Utils.getDB().preparedQuery("select record,analyze from grp where name=?", eqList.getSelectedItem());
 					for(int i = 1; i < res.length; i++)
-						Utils.getDB().runUpdate("update data set select1=1 where id=" + res[i][0].toString());
+						Utils.getDB().preparedUpdate("update data set select1=? where id=?", 1, res[i][0].toString());
 				}
 
 				table.setModel(SlammerTable.REFRESH);
@@ -605,7 +600,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 				String record = table.getModel().getValueAt(row, 1).toString();
 
 				Object[][] res = null;
-				res = Utils.getDB().runQuery("select path,digi_int from data where eq='" + eq + "' and record='" + record + "'");
+				res = Utils.getDB().preparedQuery("select path,digi_int from data where eq=? and record=?", eq, record);
 				if(res == null) return;
 
 				String path = res[1][0].toString();
@@ -841,22 +836,23 @@ class RecordManagerPanel extends JPanel implements ActionListener
 					modEq.getText(),
 					modRec.getText(),
 					modDI.getText(),
-					Utils.nullify(modMag.getText()),
-					Utils.nullify(modEpi.getText()),
-					Utils.nullify(modFoc.getText()),
-					Utils.nullify(modRup.getText()),
-					Utils.nullify(modVs.getText()),
+					modMag.getText(),
+					modEpi.getText(),
+					modFoc.getText(),
+					modRup.getText(),
+					modVs.getText(),
 					modMech.getSelectedItem().toString(),
 					modLoc.getText(),
 					modOwn.getText(),
-					Utils.nullify(modLat.getText()),
-					Utils.nullify(modLng.getText()),
+					modLat.getText(),
+					modLng.getText(),
 					modSite.getSelectedItem().toString()
 				);
 
 				if(!error.equals(""))
 					GUIUtils.popupError(error);
 
+				Utils.updateEQLists();
 				table.setModel(SlammerTable.REFRESH);
 			}
 		}
@@ -885,7 +881,7 @@ class RecordManagerPanel extends JPanel implements ActionListener
 
 			try
 			{
-				res = Utils.getDB().runQuery("select path, eq, record, digi_int, location, mom_mag, owner, epi_dist, latitude, foc_dist, longitude, rup_dist, vs30, class, foc_mech, change from data where eq='" + eq + "' and record='" + record + "'");
+				res = Utils.getDB().preparedQuery("select path, eq, record, digi_int, location, mom_mag, owner, epi_dist, latitude, foc_dist, longitude, rup_dist, vs30, class, foc_mech, change from data where eq=? and record=?", eq, record);
 			}
 			catch(Exception ex)
 			{

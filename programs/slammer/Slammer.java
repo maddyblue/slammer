@@ -61,6 +61,7 @@ public class Slammer
 				args = new String[] {""};
 			}
 
+			/*
 			if(args[0].equals("getsql"))
 			{
 
@@ -94,10 +95,12 @@ public class Slammer
 				fw.close();
 				Utils.closeDB();
 			}
-			else if(args[0].equals("drop"))
+			else
+			*/
+			if(args[0].equals("drop"))
 			{
-				Utils.getDB().runUpdate("drop table data");
-				Utils.getDB().runUpdate("drop table grp");
+				Utils.getDB().preparedUpdate("drop table data");
+				Utils.getDB().preparedUpdate("drop table grp");
 				Utils.closeDB();
 			}
 			else if(args[0].equals("createdb"))
@@ -111,7 +114,7 @@ public class Slammer
 			}
 			else if(args[0].equals("createtable"))
 			{
-				Utils.getDB().runUpdate("create table data ("
+				Utils.getDB().preparedUpdate("create table data ("
 					+ "id        integer      not null generated always as identity primary key,"
 					+ "eq        varchar(100) not null,"
 					+ "record    varchar(100) not null,"
@@ -146,12 +149,13 @@ public class Slammer
 					+ "lng_srch  double"
 					+ ")");
 
-				Utils.getDB().runUpdate("create table grp ("
+				Utils.getDB().preparedUpdate("create table grp ("
 					+ "record    integer      not null,"
 					+ "name      varchar(100) not null,"
 					+ "analyze   smallint     not null"
 					+ ")");
 			}
+			/*
 			else if(args[0].equals("import"))
 			{
 				FileReader fr = new FileReader(".." + File.separatorChar + "records" + File.separatorChar + "EQdata.txt");
@@ -165,7 +169,7 @@ public class Slammer
 				Object res[][];
 				int c;
 
-				Utils.getDB().runUpdate("delete from data");
+				Utils.getDB().preparedUpdate("delete from data");
 
 				do
 				{
@@ -290,11 +294,13 @@ public class Slammer
 				Utils.getDB().syncRecords("");
 				Utils.closeDB();
 			}
+			*/
 			else if(args[0].equals("sync"))
 			{
 				Utils.getDB().syncRecords("");
 				Utils.closeDB();
 			}
+			/*
 			else if(args[0].equals("importsql"))
 			{
 				FileReader fr = new FileReader(".." + File.separatorChar + "records" + File.separatorChar + "eq.sql");
@@ -305,7 +311,8 @@ public class Slammer
 				char c;
 				String path;
 
-				Utils.getDB().runUpdate("delete from data");
+				Utils.getDB().preparedUpdate("delete from data");
+				String q = "insert into data (eq, record, digi_int, mom_mag, arias, dobry, pga, pgv, mean_per, epi_dist, foc_dist, rup_dist, vs30, class, foc_mech, location, owner, latitude, longitude, change, path, select1, analyze, select2) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 				do
 				{
@@ -316,42 +323,45 @@ public class Slammer
 						case '\r':
 							break;
 						case '\t':
-							cur[j] = Utils.addQuote(s);
+							cur[j] = s;
 							j++;
 							s = "";
 							break;
 						case '\n':
 						{
-							cur[j] = Utils.addQuote(s);
+							cur[j] = s;
 							s = "";
 							j = 0;
 
 							path = ".." + File.separatorChar + "records" + File.separator + cur[DB_eq] + File.separator + cur[DB_record];
 
-							StringBuilder q = new StringBuilder("insert into data (eq, record, digi_int, mom_mag, arias, dobry, pga, pgv, mean_per, epi_dist, foc_dist, rup_dist, vs30, class, foc_mech, location, owner, latitude, longitude, change, path, select1, analyze, select2) values ");
-							q.append("('" +
-								cur[DB_eq] + "', '" +
-								cur[DB_record] + "', " +
-								cur[DB_digi_int] + ", " +
-								Utils.nullifys(cur[DB_mom_mag]) + ", " +
-								cur[DB_arias] + ", " +
-								cur[DB_dobry] + ", " +
-								cur[DB_pga] + ", " +
-								cur[DB_pgv] + ", " +
-								cur[DB_mean_per] + ", " +
-								Utils.nullifys(cur[DB_epi_dist]) + ", " +
-								Utils.nullifys(cur[DB_foc_dist]) + ", " +
-								Utils.nullifys(cur[DB_rup_dist]) + ", " +
-								Utils.nullifys(cur[DB_vs30]) + ", " +
-								cur[DB_class] + ", " +
-								cur[DB_foc_mech] + ", '" +
-								cur[DB_location] + "', '" +
-								cur[DB_owner] + "', " +
-								Utils.nullifys(cur[DB_latitude]) + ", " +
-								Utils.nullifys(cur[DB_longitude]) + ", " +
-								0 + ", '" +
-								path + "', 0, 0, 0)");
-							Utils.getDB().runUpdate(q.toString());
+							Object[] objects = new Object[] {
+								cur[DB_eq],
+								cur[DB_record],
+								cur[DB_digi_int],
+								cur[DB_mom_mag],
+								cur[DB_arias],
+								cur[DB_dobry],
+								cur[DB_pga],
+								cur[DB_pgv],
+								cur[DB_mean_per],
+								cur[DB_epi_dist],
+								cur[DB_foc_dist],
+								cur[DB_rup_dist],
+								cur[DB_vs30],
+								cur[DB_class],
+								cur[DB_foc_mech],
+								cur[DB_location],
+								cur[DB_owner],
+								cur[DB_latitude],
+								cur[DB_longitude],
+								0,
+								path,
+								0,
+								0,
+								0,
+							};
+							Utils.getDB().preparedUpdate(q, objects);
 
 							break;
 						}
@@ -365,6 +375,7 @@ public class Slammer
 				Utils.getDB().syncRecords("");
 				Utils.closeDB();
 			}
+			*/
 			else if(args[0].equals("test"))
 			{
 				junit.textui.TestRunner.run(SlammerTest.suite());
@@ -381,7 +392,7 @@ public class Slammer
 				Utils.startDB();
 				splash.advance();
 
-				Utils.getDB().runUpdate("update data set select1=0, select2=0");
+				Utils.getDB().preparedUpdate("update data set select1=?, select2=?", 0, 0);
 				splash.advance();
 
 				// if the OS supports a native LF, use it

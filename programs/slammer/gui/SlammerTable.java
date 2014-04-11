@@ -127,26 +127,29 @@ class SlammerTable extends JPanel implements ActionListener, SlammerTableInterfa
 
 	public void empty() throws Exception
 	{
-		Utils.getDB().runUpdate("update data set " + selectStr + "=0 where " + selectStr + "=1");
+		Utils.getDB().preparedUpdate("update data set " + selectStr + "=? where " + selectStr + "=?", 0, 1);
 		model.setModel(REFRESH);
 	}
 
 	private void set(int row, String value) throws Exception
 	{
+		System.out.println("SLAMMER TABLE SET " + value);
+		return;
+		/*
 		Utils.getDB().set(
 			model.getValueAt(row, 0).toString(),
 			model.getValueAt(row, 1).toString(),
-			value
+			value,
+			null
 			);
+			*/
 	}
 
 	public void addRecord(String eq, String record, boolean setAnalyze) throws Exception
 	{
-		String set = selectStr + "=1";
+		Utils.getDB().set(eq, record, selectStr, 1);
 		if(setAnalyze)
-			 set += ", analyze=1";
-
-		Utils.getDB().set(eq, record, set);
+			Utils.getDB().set(eq, record, "analyze", 1);
 		model.setModel(REFRESH);
 	}
 

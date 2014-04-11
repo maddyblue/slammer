@@ -116,6 +116,7 @@ public class InstallThread extends Thread
 			progress.setMaximum(sqllen * 2);
 			progress.advance(sqllen); // go back to 50%
 
+			String q = "insert into data (eq, record, digi_int, mom_mag, arias, dobry, pga, pgv, mean_per, epi_dist, foc_dist, rup_dist, vs30, class, foc_mech, location, owner, latitude, longitude, change, path, select1, analyze, select2) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			for(int i = 0; i < dbvect.size(); i++)
 			{
 				sqlfile = (String)dbvect.elementAt(i);
@@ -137,55 +138,52 @@ public class InstallThread extends Thread
 						case '\r':
 							break;
 						case '\t':
-							cur[j] = addQuote(s);
+							cur[j] = s;
 							j++;
 							s = "";
 							break;
 						case '\n':
 						{
-							cur[j] = addQuote(s);
+							cur[j] = s;
 							s = "";
 							j = 0;
 
-							if(countQuery("select count(*) from data where eq='" + cur[0] + "' and record='" + cur[1] + "'") > 0)
+							if(countQuery("select count(*) from data where eq=? and record=?", cur[0], cur[1]) > 0)
 							{
 								System.out.println(cur[0] + " - " + cur[1] + ": already in db");
 							}
 							else
 							{
-								path = installDir + File.separator + "records" + File.separator + cur[0] + File.separator + cur[1];
-
 								progress.advance(1);
-
-								StringBuilder q = new StringBuilder("insert into data (eq, record, digi_int, mom_mag, arias, dobry, pga, pgv, mean_per, epi_dist, foc_dist, rup_dist, vs30, class, foc_mech, location, owner, latitude, longitude, change, path, select1, analyze, select2) values ");
-
-								q.append("(" +
-									"'"  + cur[DB_eq] + "'," +
-									"'"  + cur[DB_record] + "'," +
-									       cur[DB_digi_int] + "," +
-									       nullifys(cur[DB_mom_mag]) + "," +
-									       cur[DB_arias] + ", " +
-									       cur[DB_dobry] + ", " +
-									       cur[DB_pga] + ", " +
-									       cur[DB_pgv] + ", " +
-									       cur[DB_mean_per] + ", " +
-									       nullifys(cur[DB_epi_dist]) + "," +
-									       nullifys(cur[DB_foc_dist]) + "," +
-									       nullifys(cur[DB_rup_dist]) + "," +
-									       nullifys(cur[DB_vs30]) + "," +
-									       cur[DB_class] + "," +
-									       cur[DB_foc_mech] + "," +
-									"'"  + cur[DB_location] + "'," +
-									"'"  + cur[DB_owner] + "'," +
-									       nullifys(cur[DB_latitude]) + "," +
-									       nullifys(cur[DB_longitude]) + "," +
-									"0," + // change
-									"'"  + path + "'," + // path
-									"0," + // select1
-									"0," + // analyze
-									"0" + // select2
-									")");
-									runUpdate(q.toString());
+								path = installDir + File.separator + "records" + File.separator + cur[0] + File.separator + cur[1];
+								PreparedStatement ps = preparedStatement(q);
+								int idx = 1;
+								ps.setObject(idx++, cur[DB_eq]);
+								ps.setObject(idx++, cur[DB_record]);
+								ps.setObject(idx++, cur[DB_digi_int]);
+								ps.setObject(idx++, nullify(cur[DB_mom_mag]), Types.VARCHAR);
+								ps.setObject(idx++, cur[DB_arias]);
+								ps.setObject(idx++, cur[DB_dobry]);
+								ps.setObject(idx++, cur[DB_pga]);
+								ps.setObject(idx++, cur[DB_pgv]);
+								ps.setObject(idx++, cur[DB_mean_per]);
+								ps.setObject(idx++, nullify(cur[DB_epi_dist]), Types.VARCHAR);
+								ps.setObject(idx++, nullify(cur[DB_foc_dist]), Types.VARCHAR);
+								ps.setObject(idx++, nullify(cur[DB_rup_dist]), Types.VARCHAR);
+								ps.setObject(idx++, nullify(cur[DB_vs30]), Types.VARCHAR);
+								ps.setObject(idx++, cur[DB_class]);
+								ps.setObject(idx++, cur[DB_foc_mech]);
+								ps.setObject(idx++, cur[DB_location]);
+								ps.setObject(idx++, cur[DB_owner]);
+								ps.setObject(idx++, nullify(cur[DB_latitude]), Types.VARCHAR);
+								ps.setObject(idx++, nullify(cur[DB_longitude]), Types.VARCHAR);
+								ps.setObject(idx++, 0);
+								ps.setObject(idx++, path);
+								ps.setObject(idx++, 0);
+								ps.setObject(idx++, 0);
+								ps.setObject(idx++, 0);
+								ps.executeUpdate();
+								ps.close();
 							}
 
 							break;
@@ -198,7 +196,7 @@ public class InstallThread extends Thread
 			}
 
 
-			runUpdate("update data set " +
+			preparedUpdate("update data set " +
 				"mag_srch=cast(cast(mom_mag as decimal(10,4)) as double), " +
 				"epi_srch=cast(cast(epi_dist as decimal(10,4)) as double), " +
 				"foc_srch=cast(cast(foc_dist as decimal(10,4)) as double), " +
@@ -300,7 +298,7 @@ public class InstallThread extends Thread
 
 		if(newDB)
 		{
-			runUpdate("create table data ("
+			preparedUpdate("create table data ("
 				+ "id        integer      not null generated always as identity primary key,"
 				+ "eq        varchar(100) not null,"
 				+ "record    varchar(100) not null,"
@@ -335,7 +333,7 @@ public class InstallThread extends Thread
 				+ "lng_srch  double"
 			+ ")");
 
-			runUpdate("create table grp ("
+			preparedUpdate("create table grp ("
 				+ "record    integer      not null,"
 				+ "name      varchar(100) not null,"
 				+ "analyze   smallint     not null"
@@ -343,24 +341,34 @@ public class InstallThread extends Thread
 		}
 	}
 
-	private int runUpdate(String update) throws SQLException
+	public int preparedUpdate(String update, Object... objects) throws SQLException
 	{
-		Statement statement = connection.createStatement();
-		int result = statement.executeUpdate(update);
-		statement.close();
-		return result;
+		PreparedStatement ps = connection.prepareStatement(update);
+		for(int i = 0; i < objects.length; i++)
+		{
+			ps.setObject(i+1, objects[i]);
+		}
+		int i = ps.executeUpdate();
+		ps.close();
+		return i;
 	}
 
-	private int countQuery(String query) throws SQLException
+	public PreparedStatement preparedStatement(String s) throws SQLException
 	{
-		Statement statement = connection.createStatement();
-		ResultSet result = null;
+		return connection.prepareStatement(s);
+	}
 
-		result = statement.executeQuery(query);
+	private int countQuery(String query, Object... objects) throws SQLException
+	{
+		PreparedStatement ps = connection.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+		for(int i = 0; i < objects.length; i++)
+		{
+			ps.setObject(i+1, objects[i]);
+		}
+		ResultSet result = ps.executeQuery();
 		result.next();
 		int ret = result.getInt(1);
-		statement.close();
-
+		ps.close();
 		return ret;
 	}
 
@@ -376,30 +384,10 @@ public class InstallThread extends Thread
 		}
 	}
 
-	// utility functions
-
-	public static String nullifys(String s)
-	{
-		if(s == null || s.equals(""))
-			return "null";
-		return "'" + s + "'";
-	}
-
-	public static String addQuote(String str)
-	{
-		String ret = "";
-		char c;
-		for(int i = 0; i < str.length(); i++)
-		{
-			c = str.charAt(i);
-			switch(c)
-			{
-				case '\'':
-					ret += '\'';
-					break;
-			}
-			ret += c;
+	public String nullify(String s) {
+		if (s.equals("")) {
+			return null;
 		}
-		return ret;
+		return s;
 	}
 }

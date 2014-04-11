@@ -61,33 +61,57 @@ public class EQDatabase
 		return str;
 	}
 
-	public void set(String eq, String record, String set) throws SQLException
+	public void set(String eq, String record, String setCol, Object v) throws SQLException
 	{
-		runUpdate("update data set " + set + " where eq='" + eq + "' and record='" + record + "'");
+		preparedUpdate("update data set " + setCol + "=? where eq=? and record=?", v, eq, record);
 	}
 
 	public int runUpdate(String update) throws SQLException
 	{
-		Statement statement = connection.createStatement();
-		int i = statement.executeUpdate(update);
-		statement.close();
+		return preparedUpdate(update);
+	}
+	
+	public PreparedStatement preparedStatement(String s) throws SQLException
+	{
+		return connection.prepareStatement(s);
+	}
+
+	public int preparedUpdate(String update, Object... objects) throws SQLException
+	{
+		PreparedStatement ps = connection.prepareStatement(update);
+		for(int i = 0; i < objects.length; i++)
+		{
+			ps.setObject(i+1, objects[i]);
+		}
+		int i = ps.executeUpdate();
+		ps.close();
 		return i;
 	}
 
-	// print determines if the returned results from the query are printed
 	public Object[][] runQuery(String query) throws SQLException
 	{
-		Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-		ResultSet result = null;
+		return preparedQuery(query);
+	}
+
+	public Object[][] preparedQuery(String query, Object... objects) throws SQLException
+	{
+		PreparedStatement ps = connection.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+		for(int i = 0; i < objects.length; i++)
+		{
+			ps.setObject(i+1, objects[i]);
+		}
+		Object[][] results = getResults(ps.executeQuery());
+		ps.close();
+		return results;
+	}
+
+	private Object[][] getResults(ResultSet result) throws SQLException
+	{
 		ResultSetMetaData resdata;
-
-		result = statement.executeQuery(query);
-
 		int row_count = 0;
 		while(result.next()) row_count++;
 		if(row_count <= 0)
 		{
-			statement.close();
 			return null;
 		}
 
@@ -118,8 +142,6 @@ public class EQDatabase
 				if(temp > col_len[i2 - 1]) col_len[i2 - 1] = temp;
 			}
 		}
-		statement.close();
-
 		return array;
 	}
 
@@ -136,13 +158,13 @@ public class EQDatabase
 
 	public Double getDI(String eq, String record) throws SQLException
 	{
-		Object[][] array = runQuery("select digi_int from data where eq='" + eq + "' and record='" + record + "'");
+		Object[][] array = preparedQuery("select digi_int from data where eq=? and record=?", eq, record);
 		return new Double((array[1][0]).toString());
 	}
 
 	public String[] getEQList() throws SQLException
 	{
-		Object[][] array = runQuery("select distinct(eq) from data order by eq");
+		Object[][] array = preparedQuery("select distinct(eq) from data order by eq");
 
 		if(array == null)
 			return (new String[0]);
@@ -157,7 +179,7 @@ public class EQDatabase
 
 	public String[] getRecordList(String eq) throws SQLException
 	{
-		Object[][] array = runQuery("select record from data where eq='" + eq + "' order by record");
+		Object[][] array = preparedQuery("select record from data where eq=? order by record", eq);
 		String[] list = new String[array.length - 1];
 		for(int i = 0; i < list.length; i++)
 		{
@@ -168,19 +190,19 @@ public class EQDatabase
 
 	public String getPath(String eq, String record) throws SQLException
 	{
-		Object[][] array = runQuery("select path from data where eq='" + eq + "' and record='" + record + "'");
+		Object[][] array = preparedQuery("select path from data where eq=? and record=?", eq, record);
 		return array[1][0].toString();
 	}
 
 	public double getPGA(String eq, String record) throws SQLException
 	{
-		Object[][] array = runQuery("select pga_g from data where eq='" + eq + "' and record='" + record + "'");
+		Object[][] array = preparedQuery("select pga_g from data where eq=? and record=?", eq, record);
 		return Double.parseDouble((array[1][0]).toString());
 	}
 
-	public void syncRecords(String where) throws SQLException
+	public void syncRecords(String where, Object... objects) throws SQLException
 	{
-		runUpdate("update data set " +
+		preparedUpdate("update data set " +
 			"mag_srch=cast(cast(mom_mag as decimal(10,4)) as double), " +
 			"epi_srch=cast(cast(epi_dist as decimal(10,4)) as double), " +
 			"foc_srch=cast(cast(foc_dist as decimal(10,4)) as double), " +
@@ -188,6 +210,6 @@ public class EQDatabase
 			"vs30_srch=cast(cast(vs30 as decimal(10,4)) as double), " +
 			"lat_srch=cast(cast(latitude as decimal(20,15)) as double), " +
 			"lng_srch=cast(cast(longitude as decimal(20,15)) as double) " +
-			where);
+			where, objects);
 	}
 }

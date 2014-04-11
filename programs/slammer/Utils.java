@@ -51,43 +51,6 @@ public class Utils
 		GUIUtils.popupError("Error: " + ex.getMessage() + "\n" + trace);
 	}
 
-	public static String addSlashes(String str)
-	{
-		String ret = "";
-		char c;
-		for(int i = 0; i < str.length(); i++)
-		{
-			c = str.charAt(i);
-			switch(c)
-			{
-				case '\\':
-				case '\'':
-					ret += '\\';
-					break;
-			}
-			ret += c;
-		}
-		return ret;
-	}
-
-	public static String addQuote(String str)
-	{
-		String ret = "";
-		char c;
-		for(int i = 0; i < str.length(); i++)
-		{
-			c = str.charAt(i);
-			switch(c)
-			{
-				case '\'':
-					ret += '\'';
-					break;
-			}
-			ret += c;
-		}
-		return ret;
-	}
-
 	public static Object checkNum(String str, String label, Double lt, boolean lte, String lts, Double gt, boolean gte, String gts, boolean ret)
 	{
 		Object o = checkNum(str, label, lt, lte, lts, gt, gte, gts);
@@ -289,19 +252,5 @@ public class Utils
 		if(s == null)
 			return "";
 		return s.toString();
-	}
-
-	public static String nullify(String s)
-	{
-		if(s == null || s.equals(""))
-			return "null";
-		return s;
-	}
-
-	public static String nullifys(String s)
-	{
-		if(s == null || s.equals(""))
-			return "null";
-		return "'" + s + "'";
 	}
 }
