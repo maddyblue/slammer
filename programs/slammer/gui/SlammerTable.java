@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import slammer.*;
 
 class SlammerTable extends JPanel implements ActionListener, SlammerTableInterface
@@ -126,7 +127,7 @@ class SlammerTable extends JPanel implements ActionListener, SlammerTableInterfa
 
 		if(fromDB)
 		{
-			Utils.getDB().preparedUpdate("delete from data " + query, objs);
+			Utils.getDB().preparedUpdate("delete from data " + query, Arrays.copyOfRange(objs, 1, 3));
 			Utils.updateEQLists();
 		}
 	}
