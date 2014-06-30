@@ -16,7 +16,12 @@ public class ImportRecords extends Analysis
 
 	public static String Arias(DoubleList data, final double di)
 	{
-		return fmtThree.format(AriasDobry(data, di, false));
+		return fmtThree.format(arias(data, di));
+	}
+
+	public static double arias(DoubleList data, final double di)
+	{
+		return AriasDobry(data, di, false);
 	}
 
 	/* Arias, with optional dobry.  If the boolean dobry is true, this function
@@ -62,15 +67,30 @@ public class ImportRecords extends Analysis
 
 	public static String Dobry(DoubleList data, final double di)
 	{
-		return fmtOne.format(AriasDobry(data, di, true));
+		return fmtOne.format(dobry(data, di));
+	}
+
+	public static double dobry(DoubleList data, final double di)
+	{
+		return AriasDobry(data, di, true);
 	}
 
 	public static String PGA(DoubleList data)
 	{
-		return fmtThree.format(FindMax(data) / Gcmss); // store in g's, but expect to be in cm/s/s
+		return fmtThree.format(pga(data));
+	}
+
+	public static double pga(DoubleList data)
+	{
+		return FindMax(data) / Gcmss; // store in g's, but expect to be in cm/s/s
 	}
 
 	public static String PGV(DoubleList data, final double di)
+	{
+		return fmtOne.format(pgv(data, di));
+	}
+
+	public static double pgv(DoubleList data, final double di)
 	{
 		Double val;
 		double max, cur, curabs;
@@ -88,7 +108,7 @@ public class ImportRecords extends Analysis
 				max = curabs;
 		}
 
-		return fmtOne.format(max * di);
+		return max * di;
 	}
 
 	private static double FindMax(DoubleList data)
@@ -105,6 +125,11 @@ public class ImportRecords extends Analysis
 	}
 
 	public static String MeanPer(DoubleList data, final double di)
+	{
+		return fmtTwo.format(meanPer(data, di));
+	}
+
+	public static double meanPer(DoubleList data, final double di)
 	{
 		double[] arr = new double[data.size()];
 
@@ -135,7 +160,7 @@ public class ImportRecords extends Analysis
 			}
 		}
 
-		return fmtTwo.format(top / bot);
+		return top / bot;
 	}
 
 	public static double[][] fftWrap(final double[] array, final double di)

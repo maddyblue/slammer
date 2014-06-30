@@ -176,7 +176,7 @@ class AddRecordsPanel extends JPanel implements ActionListener
 	public static String manipRecord(boolean add, String file, String eq, String record, String di, String mag, String epidist, String focdist, String rupdist, String vs30, String focmech, String loc, String owner, String lat, String lng, String siteclass) throws Exception
 	{
 		double dig_int = 0;
-		String arias, dobry, pga, pgv, meanper;
+		double arias, dobry, pga, pgv, meanper;
 		String errors = "", pre;
 		Object ret;
 		DoubleList data;
@@ -280,11 +280,11 @@ class AddRecordsPanel extends JPanel implements ActionListener
 		if(data.bad())
 			return ("Errors on file " + file + ", earthquake " + eq + ", record " + record + ":\nInvalid data at data point " + data.badEntry() + "\n");
 
-		arias = ImportRecords.Arias(data, dig_int);
-		dobry = ImportRecords.Dobry(data, dig_int);
-		meanper = ImportRecords.MeanPer(data, dig_int);
-		pga = ImportRecords.PGA(data);
-		pgv = ImportRecords.PGV(data, dig_int);
+		arias = ImportRecords.arias(data, dig_int);
+		dobry = ImportRecords.dobry(data, dig_int);
+		meanper = ImportRecords.meanPer(data, dig_int);
+		pga = ImportRecords.pga(data);
+		pgv = ImportRecords.pgv(data, dig_int);
 
 		// a few conversions
 		pre = focmech;
