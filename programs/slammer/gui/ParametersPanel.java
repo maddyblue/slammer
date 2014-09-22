@@ -73,7 +73,7 @@ class ParametersPanel extends JPanel implements ActionListener
 	public final static String stringDC = "Decoupled";
 	public final static String stringCP = "Coupled";
 
-	public final static String stringHelp = "<html><div style=\"width: 100px;\">See <i>Definition of terms</i> in the Help files for definitions of input parameters and for guidance in estimating appropriate input values.</div></html>";
+	public final static String stringHelp = "<html><div style=\"width: 100px;\">See <i>Definition of terms</i> in the User Guide for definitions of input parameters and for guidance in estimating appropriate input values.</div></html>";
 
 	JButton next = new JButton("Go to Step 3: Perform analyses and view results");
 
