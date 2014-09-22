@@ -127,7 +127,7 @@ class SlammerTable extends JPanel implements ActionListener, SlammerTableInterfa
 
 		if(fromDB)
 		{
-			Utils.getDB().preparedUpdate("delete from data " + query, Arrays.copyOfRange(objs, 1, 3));
+			Utils.getDB().preparedUpdate("delete from data " + query, Arrays.copyOfRange(objs, 1, objs.length));
 			Utils.updateEQLists();
 		}
 	}
