@@ -4,6 +4,7 @@ package slammer.analysis;
 
 import java.text.DecimalFormat;
 import slammer.*;
+import java.math.*;
 
 public class ImportRecords extends Analysis
 {
@@ -14,6 +15,14 @@ public class ImportRecords extends Analysis
 	 * Java.
 	 */
 
+	// From: http://stackoverflow.com/a/2808648/864236
+	public static double round(double value, int places) {
+		if (places < 0) throw new IllegalArgumentException();
+		BigDecimal bd = new BigDecimal(value);
+		bd = bd.setScale(places, RoundingMode.HALF_UP);
+		return bd.doubleValue();
+	}
+
 	public static String Arias(DoubleList data, final double di)
 	{
 		return fmtThree.format(arias(data, di));
@@ -21,7 +30,7 @@ public class ImportRecords extends Analysis
 
 	public static double arias(DoubleList data, final double di)
 	{
-		return AriasDobry(data, di, false);
+		return round(AriasDobry(data, di, false), 3);
 	}
 
 	/* Arias, with optional dobry.  If the boolean dobry is true, this function
@@ -72,7 +81,7 @@ public class ImportRecords extends Analysis
 
 	public static double dobry(DoubleList data, final double di)
 	{
-		return AriasDobry(data, di, true);
+		return round(AriasDobry(data, di, true), 1);
 	}
 
 	public static String PGA(DoubleList data)
@@ -82,7 +91,7 @@ public class ImportRecords extends Analysis
 
 	public static double pga(DoubleList data)
 	{
-		return FindMax(data) / Gcmss; // store in g's, but expect to be in cm/s/s
+		return round(FindMax(data) / Gcmss, 3); // store in g's, but expect to be in cm/s/s
 	}
 
 	public static String PGV(DoubleList data, final double di)
@@ -108,7 +117,7 @@ public class ImportRecords extends Analysis
 				max = curabs;
 		}
 
-		return max * di;
+		return round(max * di, 1);
 	}
 
 	private static double FindMax(DoubleList data)
@@ -160,7 +169,7 @@ public class ImportRecords extends Analysis
 			}
 		}
 
-		return top / bot;
+		return round(top / bot, 2);
 	}
 
 	public static double[][] fftWrap(final double[] array, final double di)
