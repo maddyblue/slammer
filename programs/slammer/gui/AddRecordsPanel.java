@@ -177,7 +177,7 @@ class AddRecordsPanel extends JPanel implements ActionListener
 	{
 		double dig_int = 0;
 		double arias, dobry, pga, pgv, meanper;
-		String errors = "", pre;
+		String errors = "";
 		Object ret;
 		DoubleList data;
 		int siteclassI = 0, focmechI = 0;
@@ -287,7 +287,6 @@ class AddRecordsPanel extends JPanel implements ActionListener
 		pgv = ImportRecords.pgv(data, dig_int);
 
 		// a few conversions
-		pre = focmech;
 		for(int j = 0; j < SlammerTable.FocMechArray.length; j++)
 		{
 			if(focmech.equals(SlammerTable.FocMechArray[j]))
@@ -296,10 +295,7 @@ class AddRecordsPanel extends JPanel implements ActionListener
 				break;
 			}
 		}
-		if(pre.equals(focmech))
-			focmechI = 0;
 
-		pre = siteclass;
 		for(int j = 0; j < SlammerTable.SiteClassArray.length; j++)
 		{
 			if(siteclass.equals(SlammerTable.SiteClassArray[j]))
@@ -308,8 +304,6 @@ class AddRecordsPanel extends JPanel implements ActionListener
 				break;
 			}
 		}
-		if(pre.equals(siteclass))
-			siteclassI = 0;
 
 		String q;
 		Object[] objects;
