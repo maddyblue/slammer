@@ -66,6 +66,7 @@ class AddRecordsTable extends JPanel implements ActionListener
 		JPanel t = new JPanel(new BorderLayout());
 		t.add(BorderLayout.NORTH, table.getTableHeader());
 		t.add(BorderLayout.CENTER, table);
+		ExcelAdapter myAd = new ExcelAdapter(table);
 
 		JScrollPane scroll = new JScrollPane(t);
 
